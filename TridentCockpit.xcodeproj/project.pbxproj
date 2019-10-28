@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
+		0A5CBCAE23675F920055131A /* SF-Pro-Display-Thin.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */; };
+		0A5CBCAF23675F920055131A /* SF-Pro-Display-Light.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBC9C23675F410055131A /* SF-Pro-Display-Light.otf */; };
+		0A5CBCB023675F920055131A /* SF-Pro-Display-Regular.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBC9D23675F410055131A /* SF-Pro-Display-Regular.otf */; };
+		0A5CBCB123675F920055131A /* SF-Pro-Display-Bold.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBC9E23675F410055131A /* SF-Pro-Display-Bold.otf */; };
+		0A5CBCB223675F920055131A /* SF-Pro-Display-Medium.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBC9F23675F410055131A /* SF-Pro-Display-Medium.otf */; };
+		0A5CBCB323675F920055131A /* SF-Pro-Display-Heavy.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA023675F410055131A /* SF-Pro-Display-Heavy.otf */; };
+		0A5CBCB423675F920055131A /* SF-Pro-Display-Semibold.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA123675F410055131A /* SF-Pro-Display-Semibold.otf */; };
+		0A5CBCB523675F920055131A /* SF-Pro-Display-Ultralight.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA223675F410055131A /* SF-Pro-Display-Ultralight.otf */; };
+		0A5CBCB623675F920055131A /* SF-Pro-Display-Black.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA323675F410055131A /* SF-Pro-Display-Black.otf */; };
 		0A7130D423636AF200817593 /* FlatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130C823636AF100817593 /* FlatButton.swift */; };
 		0A7130D523636AF200817593 /* AutoSWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130C923636AF100817593 /* AutoSWindowController.swift */; };
 		0A7130D623636AF200817593 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CA23636AF100817593 /* Extensions.swift */; };
@@ -56,6 +65,24 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0A5CBCAD23675F740055131A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Fonts;
+			dstSubfolderSpec = 7;
+			files = (
+				0A5CBCAE23675F920055131A /* SF-Pro-Display-Thin.otf in CopyFiles */,
+				0A5CBCAF23675F920055131A /* SF-Pro-Display-Light.otf in CopyFiles */,
+				0A5CBCB023675F920055131A /* SF-Pro-Display-Regular.otf in CopyFiles */,
+				0A5CBCB123675F920055131A /* SF-Pro-Display-Bold.otf in CopyFiles */,
+				0A5CBCB223675F920055131A /* SF-Pro-Display-Medium.otf in CopyFiles */,
+				0A5CBCB323675F920055131A /* SF-Pro-Display-Heavy.otf in CopyFiles */,
+				0A5CBCB423675F920055131A /* SF-Pro-Display-Semibold.otf in CopyFiles */,
+				0A5CBCB523675F920055131A /* SF-Pro-Display-Ultralight.otf in CopyFiles */,
+				0A5CBCB623675F920055131A /* SF-Pro-Display-Black.otf in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0AD99392236703FC00D037A3 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -72,6 +99,15 @@
 /* Begin PBXFileReference section */
 		0A2FF3112363A0BD008FD68B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A2FF3122363A13B008FD68B /* TridentCockpit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TridentCockpit.entitlements; sourceTree = "<group>"; };
+		0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
+		0A5CBC9C23675F410055131A /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
+		0A5CBC9D23675F410055131A /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
+		0A5CBC9E23675F410055131A /* SF-Pro-Display-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Bold.otf"; sourceTree = "<group>"; };
+		0A5CBC9F23675F410055131A /* SF-Pro-Display-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.otf"; sourceTree = "<group>"; };
+		0A5CBCA023675F410055131A /* SF-Pro-Display-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Heavy.otf"; sourceTree = "<group>"; };
+		0A5CBCA123675F410055131A /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
+		0A5CBCA223675F410055131A /* SF-Pro-Display-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Ultralight.otf"; sourceTree = "<group>"; };
+		0A5CBCA323675F410055131A /* SF-Pro-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Black.otf"; sourceTree = "<group>"; };
 		0A7130B4236369EA00817593 /* TridentCockpit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TridentCockpit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A7130C0236369EC00817593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A7130C723636AF100817593 /* TridentCockpit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TridentCockpit-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -141,10 +177,27 @@
 			path = ThirdParty;
 			sourceTree = "<group>";
 		};
+		0A5CBC9A23675F410055131A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */,
+				0A5CBC9C23675F410055131A /* SF-Pro-Display-Light.otf */,
+				0A5CBC9D23675F410055131A /* SF-Pro-Display-Regular.otf */,
+				0A5CBC9E23675F410055131A /* SF-Pro-Display-Bold.otf */,
+				0A5CBC9F23675F410055131A /* SF-Pro-Display-Medium.otf */,
+				0A5CBCA023675F410055131A /* SF-Pro-Display-Heavy.otf */,
+				0A5CBCA123675F410055131A /* SF-Pro-Display-Semibold.otf */,
+				0A5CBCA223675F410055131A /* SF-Pro-Display-Ultralight.otf */,
+				0A5CBCA323675F410055131A /* SF-Pro-Display-Black.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		0A7130AB236369EA00817593 = {
 			isa = PBXGroup;
 			children = (
 				0A7130B6236369EA00817593 /* TridentCockpit */,
+				0A5CBC9A23675F410055131A /* Fonts */,
 				0A7130B5236369EA00817593 /* Products */,
 				0A713126236371ED00817593 /* Frameworks */,
 			);
@@ -239,6 +292,7 @@
 				0A7130B1236369EA00817593 /* Frameworks */,
 				0A7130B2236369EA00817593 /* Resources */,
 				0AD99392236703FC00D037A3 /* Embed Frameworks */,
+				0A5CBCAD23675F740055131A /* CopyFiles */,
 			);
 			buildRules = (
 			);
