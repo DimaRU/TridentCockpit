@@ -1,0 +1,551 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
+		0A7130D423636AF200817593 /* FlatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130C823636AF100817593 /* FlatButton.swift */; };
+		0A7130D523636AF200817593 /* AutoSWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130C923636AF100817593 /* AutoSWindowController.swift */; };
+		0A7130D623636AF200817593 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CA23636AF100817593 /* Extensions.swift */; };
+		0A7130D723636AF200817593 /* DisplayManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CB23636AF100817593 /* DisplayManage.swift */; };
+		0A7130D823636AF200817593 /* VideoDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CC23636AF100817593 /* VideoDecoder.swift */; };
+		0A7130D923636AF200817593 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CD23636AF100817593 /* AppDelegate.swift */; };
+		0A7130DA23636AF200817593 /* FloatingViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */; };
+		0A7130DB23636AF200817593 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CF23636AF100817593 /* Preferences.swift */; };
+		0A7130DC23636AF200817593 /* RovModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130D023636AF100817593 /* RovModelView.swift */; };
+		0A7130DD23636AF200817593 /* TridentDrive.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130D123636AF100817593 /* TridentDrive.swift */; };
+		0A7130DE23636AF200817593 /* CameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130D223636AF200817593 /* CameraControlView.swift */; };
+		0A7130DF23636AF200817593 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130D323636AF200817593 /* VideoViewController.swift */; };
+		0A7130FD23636B0200817593 /* RovTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E123636B0200817593 /* RovTopic.swift */; };
+		0A7130FE23636B0200817593 /* RovBarometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E223636B0200817593 /* RovBarometer.swift */; };
+		0A7130FF23636B0200817593 /* I2CStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E323636B0200817593 /* I2CStats.swift */; };
+		0A71310023636B0200817593 /* BatteryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E423636B0200817593 /* BatteryState.swift */; };
+		0A71310123636B0200817593 /* RovCameraObjectTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E523636B0200817593 /* RovCameraObjectTrack.swift */; };
+		0A71310223636B0200817593 /* RovSafetyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E623636B0200817593 /* RovSafetyState.swift */; };
+		0A71310323636B0200817593 /* RovVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E723636B0200817593 /* RovVector3.swift */; };
+		0A71310423636B0200817593 /* RovControlDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E823636B0200817593 /* RovControlDescriptor.swift */; };
+		0A71310523636B0200817593 /* RovBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E923636B0200817593 /* RovBeacon.swift */; };
+		0A71310623636B0200817593 /* RovQuaternion+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130EA23636B0200817593 /* RovQuaternion+extensions.swift */; };
+		0A71310723636B0200817593 /* RovFuelgauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130EB23636B0200817593 /* RovFuelgauge.swift */; };
+		0A71310823636B0200817593 /* RovFirmware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130EC23636B0200817593 /* RovFirmware.swift */; };
+		0A71310923636B0200817593 /* RovAttitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130ED23636B0200817593 /* RovAttitude.swift */; };
+		0A71310A23636B0200817593 /* RovCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130EE23636B0200817593 /* RovCommon.swift */; };
+		0A71310B23636B0200817593 /* RovTridentControlTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130EF23636B0200817593 /* RovTridentControlTarget.swift */; };
+		0A71310C23636B0200817593 /* RovPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F023636B0200817593 /* RovPoint.swift */; };
+		0A71310D23636B0200817593 /* RovTridentMotorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F123636B0200817593 /* RovTridentMotorCommand.swift */; };
+		0A71310E23636B0200817593 /* RovTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F223636B0200817593 /* RovTemperature.swift */; };
+		0A71310F23636B0200817593 /* RovDepth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F323636B0200817593 /* RovDepth.swift */; };
+		0A71311023636B0200817593 /* RovQuaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F423636B0200817593 /* RovQuaternion.swift */; };
+		0A71311123636B0200817593 /* RovControllerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F523636B0200817593 /* RovControllerStatus.swift */; };
+		0A71311223636B0200817593 /* DDSTypeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F623636B0200817593 /* DDSTypeString.swift */; };
+		0A71311323636B0200817593 /* RovRecording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F723636B0200817593 /* RovRecording.swift */; };
+		0A71311423636B0200817593 /* RovVideoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F823636B0200817593 /* RovVideoData.swift */; };
+		0A71311523636B0200817593 /* RovSubsystemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F923636B0200817593 /* RovSubsystemStatus.swift */; };
+		0A71311623636B0200817593 /* RovChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130FA23636B0200817593 /* RovChannel.swift */; };
+		0A71311723636B0200817593 /* RovCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130FB23636B0200817593 /* RovCamera.swift */; };
+		0A71311823636B0200817593 /* RovLightPower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130FC23636B0200817593 /* RovLightPower.swift */; };
+		0A71311A23636B1700817593 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A71311923636B1700817593 /* Main.storyboard */; };
+		0A71311C23636B5C00817593 /* TridentCockpit.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A71311B23636B5C00817593 /* TridentCockpit.scnassets */; };
+		0A71313B23637F0700817593 /* FastRTPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71313A23637F0700817593 /* FastRTPS.swift */; };
+		0AD99390236703FC00D037A3 /* FastRTPSBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD9938F236703FC00D037A3 /* FastRTPSBridge.framework */; };
+		0AD99391236703FC00D037A3 /* FastRTPSBridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD9938F236703FC00D037A3 /* FastRTPSBridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		0AD99392236703FC00D037A3 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0AD99391236703FC00D037A3 /* FastRTPSBridge.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		0A2FF3112363A0BD008FD68B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0A2FF3122363A13B008FD68B /* TridentCockpit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TridentCockpit.entitlements; sourceTree = "<group>"; };
+		0A7130B4236369EA00817593 /* TridentCockpit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TridentCockpit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A7130C0236369EC00817593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A7130C723636AF100817593 /* TridentCockpit-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TridentCockpit-Bridging-Header.h"; sourceTree = "<group>"; };
+		0A7130C823636AF100817593 /* FlatButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatButton.swift; sourceTree = "<group>"; };
+		0A7130C923636AF100817593 /* AutoSWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoSWindowController.swift; sourceTree = "<group>"; };
+		0A7130CA23636AF100817593 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		0A7130CB23636AF100817593 /* DisplayManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayManage.swift; sourceTree = "<group>"; };
+		0A7130CC23636AF100817593 /* VideoDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDecoder.swift; sourceTree = "<group>"; };
+		0A7130CD23636AF100817593 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingViewProtocol.swift; sourceTree = "<group>"; };
+		0A7130CF23636AF100817593 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		0A7130D023636AF100817593 /* RovModelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovModelView.swift; sourceTree = "<group>"; };
+		0A7130D123636AF100817593 /* TridentDrive.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TridentDrive.swift; sourceTree = "<group>"; };
+		0A7130D223636AF200817593 /* CameraControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraControlView.swift; sourceTree = "<group>"; };
+		0A7130D323636AF200817593 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		0A7130E123636B0200817593 /* RovTopic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovTopic.swift; sourceTree = "<group>"; };
+		0A7130E223636B0200817593 /* RovBarometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovBarometer.swift; sourceTree = "<group>"; };
+		0A7130E323636B0200817593 /* I2CStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = I2CStats.swift; sourceTree = "<group>"; };
+		0A7130E423636B0200817593 /* BatteryState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BatteryState.swift; sourceTree = "<group>"; };
+		0A7130E523636B0200817593 /* RovCameraObjectTrack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovCameraObjectTrack.swift; sourceTree = "<group>"; };
+		0A7130E623636B0200817593 /* RovSafetyState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovSafetyState.swift; sourceTree = "<group>"; };
+		0A7130E723636B0200817593 /* RovVector3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovVector3.swift; sourceTree = "<group>"; };
+		0A7130E823636B0200817593 /* RovControlDescriptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovControlDescriptor.swift; sourceTree = "<group>"; };
+		0A7130E923636B0200817593 /* RovBeacon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovBeacon.swift; sourceTree = "<group>"; };
+		0A7130EA23636B0200817593 /* RovQuaternion+extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RovQuaternion+extensions.swift"; sourceTree = "<group>"; };
+		0A7130EB23636B0200817593 /* RovFuelgauge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovFuelgauge.swift; sourceTree = "<group>"; };
+		0A7130EC23636B0200817593 /* RovFirmware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovFirmware.swift; sourceTree = "<group>"; };
+		0A7130ED23636B0200817593 /* RovAttitude.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovAttitude.swift; sourceTree = "<group>"; };
+		0A7130EE23636B0200817593 /* RovCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovCommon.swift; sourceTree = "<group>"; };
+		0A7130EF23636B0200817593 /* RovTridentControlTarget.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovTridentControlTarget.swift; sourceTree = "<group>"; };
+		0A7130F023636B0200817593 /* RovPoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovPoint.swift; sourceTree = "<group>"; };
+		0A7130F123636B0200817593 /* RovTridentMotorCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovTridentMotorCommand.swift; sourceTree = "<group>"; };
+		0A7130F223636B0200817593 /* RovTemperature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovTemperature.swift; sourceTree = "<group>"; };
+		0A7130F323636B0200817593 /* RovDepth.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovDepth.swift; sourceTree = "<group>"; };
+		0A7130F423636B0200817593 /* RovQuaternion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovQuaternion.swift; sourceTree = "<group>"; };
+		0A7130F523636B0200817593 /* RovControllerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovControllerStatus.swift; sourceTree = "<group>"; };
+		0A7130F623636B0200817593 /* DDSTypeString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSTypeString.swift; sourceTree = "<group>"; };
+		0A7130F723636B0200817593 /* RovRecording.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovRecording.swift; sourceTree = "<group>"; };
+		0A7130F823636B0200817593 /* RovVideoData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovVideoData.swift; sourceTree = "<group>"; };
+		0A7130F923636B0200817593 /* RovSubsystemStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovSubsystemStatus.swift; sourceTree = "<group>"; };
+		0A7130FA23636B0200817593 /* RovChannel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovChannel.swift; sourceTree = "<group>"; };
+		0A7130FB23636B0200817593 /* RovCamera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovCamera.swift; sourceTree = "<group>"; };
+		0A7130FC23636B0200817593 /* RovLightPower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovLightPower.swift; sourceTree = "<group>"; };
+		0A71311923636B1700817593 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		0A71311B23636B5C00817593 /* TridentCockpit.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = TridentCockpit.scnassets; sourceTree = "<group>"; };
+		0A71313A23637F0700817593 /* FastRTPS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastRTPS.swift; sourceTree = "<group>"; };
+		0AD9938F236703FC00D037A3 /* FastRTPSBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FastRTPSBridge.framework; path = Carthage/Build/Mac/FastRTPSBridge.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		0A7130B1236369EA00817593 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0AD99390236703FC00D037A3 /* FastRTPSBridge.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		0A5CBC992367507F0055131A /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				0A7130C823636AF100817593 /* FlatButton.swift */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		0A7130AB236369EA00817593 = {
+			isa = PBXGroup;
+			children = (
+				0A7130B6236369EA00817593 /* TridentCockpit */,
+				0A7130B5236369EA00817593 /* Products */,
+				0A713126236371ED00817593 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		0A7130B5236369EA00817593 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0A7130B4236369EA00817593 /* TridentCockpit.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0A7130B6236369EA00817593 /* TridentCockpit */ = {
+			isa = PBXGroup;
+			children = (
+				0A7130CD23636AF100817593 /* AppDelegate.swift */,
+				0A7130D323636AF200817593 /* VideoViewController.swift */,
+				0A7130C923636AF100817593 /* AutoSWindowController.swift */,
+				0A7130D223636AF200817593 /* CameraControlView.swift */,
+				0A7130CB23636AF100817593 /* DisplayManage.swift */,
+				0A7130CA23636AF100817593 /* Extensions.swift */,
+				0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */,
+				0A7130CF23636AF100817593 /* Preferences.swift */,
+				0A7130D023636AF100817593 /* RovModelView.swift */,
+				0A7130D123636AF100817593 /* TridentDrive.swift */,
+				0A7130CC23636AF100817593 /* VideoDecoder.swift */,
+				0A71313A23637F0700817593 /* FastRTPS.swift */,
+				0A5CBC992367507F0055131A /* ThirdParty */,
+				0A7130E023636B0200817593 /* Model */,
+				0A71311B23636B5C00817593 /* TridentCockpit.scnassets */,
+				0A2FF3112363A0BD008FD68B /* Assets.xcassets */,
+				0A7130C0236369EC00817593 /* Info.plist */,
+				0A71311923636B1700817593 /* Main.storyboard */,
+				0A7130C723636AF100817593 /* TridentCockpit-Bridging-Header.h */,
+				0A2FF3122363A13B008FD68B /* TridentCockpit.entitlements */,
+			);
+			path = TridentCockpit;
+			sourceTree = "<group>";
+		};
+		0A7130E023636B0200817593 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0A7130E123636B0200817593 /* RovTopic.swift */,
+				0A7130E223636B0200817593 /* RovBarometer.swift */,
+				0A7130E323636B0200817593 /* I2CStats.swift */,
+				0A7130E423636B0200817593 /* BatteryState.swift */,
+				0A7130E523636B0200817593 /* RovCameraObjectTrack.swift */,
+				0A7130E623636B0200817593 /* RovSafetyState.swift */,
+				0A7130E723636B0200817593 /* RovVector3.swift */,
+				0A7130E823636B0200817593 /* RovControlDescriptor.swift */,
+				0A7130E923636B0200817593 /* RovBeacon.swift */,
+				0A7130EA23636B0200817593 /* RovQuaternion+extensions.swift */,
+				0A7130EB23636B0200817593 /* RovFuelgauge.swift */,
+				0A7130EC23636B0200817593 /* RovFirmware.swift */,
+				0A7130ED23636B0200817593 /* RovAttitude.swift */,
+				0A7130EE23636B0200817593 /* RovCommon.swift */,
+				0A7130EF23636B0200817593 /* RovTridentControlTarget.swift */,
+				0A7130F023636B0200817593 /* RovPoint.swift */,
+				0A7130F123636B0200817593 /* RovTridentMotorCommand.swift */,
+				0A7130F223636B0200817593 /* RovTemperature.swift */,
+				0A7130F323636B0200817593 /* RovDepth.swift */,
+				0A7130F423636B0200817593 /* RovQuaternion.swift */,
+				0A7130F523636B0200817593 /* RovControllerStatus.swift */,
+				0A7130F623636B0200817593 /* DDSTypeString.swift */,
+				0A7130F723636B0200817593 /* RovRecording.swift */,
+				0A7130F823636B0200817593 /* RovVideoData.swift */,
+				0A7130F923636B0200817593 /* RovSubsystemStatus.swift */,
+				0A7130FA23636B0200817593 /* RovChannel.swift */,
+				0A7130FB23636B0200817593 /* RovCamera.swift */,
+				0A7130FC23636B0200817593 /* RovLightPower.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0A713126236371ED00817593 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0AD9938F236703FC00D037A3 /* FastRTPSBridge.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		0A7130B3236369EA00817593 /* TridentCockpit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A7130C4236369EC00817593 /* Build configuration list for PBXNativeTarget "TridentCockpit" */;
+			buildPhases = (
+				0A7130B0236369EA00817593 /* Sources */,
+				0A7130B1236369EA00817593 /* Frameworks */,
+				0A7130B2236369EA00817593 /* Resources */,
+				0AD99392236703FC00D037A3 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = TridentCockpit;
+			packageProductDependencies = (
+			);
+			productName = TridentCockpit;
+			productReference = 0A7130B4236369EA00817593 /* TridentCockpit.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		0A7130AC236369EA00817593 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1110;
+				LastUpgradeCheck = 1110;
+				ORGANIZATIONNAME = "Dmitriy Borovikov";
+				TargetAttributes = {
+					0A7130B3236369EA00817593 = {
+						CreatedOnToolsVersion = 11.1;
+						LastSwiftMigration = 1110;
+					};
+				};
+			};
+			buildConfigurationList = 0A7130AF236369EA00817593 /* Build configuration list for PBXProject "TridentCockpit" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 0A7130AB236369EA00817593;
+			packageReferences = (
+			);
+			productRefGroup = 0A7130B5236369EA00817593 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				0A7130B3236369EA00817593 /* TridentCockpit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		0A7130B2236369EA00817593 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A71311A23636B1700817593 /* Main.storyboard in Resources */,
+				0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */,
+				0A71311C23636B5C00817593 /* TridentCockpit.scnassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		0A7130B0236369EA00817593 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A71310A23636B0200817593 /* RovCommon.swift in Sources */,
+				0A7130D923636AF200817593 /* AppDelegate.swift in Sources */,
+				0A71310C23636B0200817593 /* RovPoint.swift in Sources */,
+				0A71311523636B0200817593 /* RovSubsystemStatus.swift in Sources */,
+				0A71310923636B0200817593 /* RovAttitude.swift in Sources */,
+				0A71313B23637F0700817593 /* FastRTPS.swift in Sources */,
+				0A71311623636B0200817593 /* RovChannel.swift in Sources */,
+				0A7130FF23636B0200817593 /* I2CStats.swift in Sources */,
+				0A7130DC23636AF200817593 /* RovModelView.swift in Sources */,
+				0A7130DF23636AF200817593 /* VideoViewController.swift in Sources */,
+				0A7130D523636AF200817593 /* AutoSWindowController.swift in Sources */,
+				0A71310523636B0200817593 /* RovBeacon.swift in Sources */,
+				0A7130DD23636AF200817593 /* TridentDrive.swift in Sources */,
+				0A71310723636B0200817593 /* RovFuelgauge.swift in Sources */,
+				0A71311023636B0200817593 /* RovQuaternion.swift in Sources */,
+				0A7130D723636AF200817593 /* DisplayManage.swift in Sources */,
+				0A7130FD23636B0200817593 /* RovTopic.swift in Sources */,
+				0A7130DA23636AF200817593 /* FloatingViewProtocol.swift in Sources */,
+				0A71310023636B0200817593 /* BatteryState.swift in Sources */,
+				0A7130D623636AF200817593 /* Extensions.swift in Sources */,
+				0A7130DE23636AF200817593 /* CameraControlView.swift in Sources */,
+				0A71310123636B0200817593 /* RovCameraObjectTrack.swift in Sources */,
+				0A71310223636B0200817593 /* RovSafetyState.swift in Sources */,
+				0A71310823636B0200817593 /* RovFirmware.swift in Sources */,
+				0A71311423636B0200817593 /* RovVideoData.swift in Sources */,
+				0A71310623636B0200817593 /* RovQuaternion+extensions.swift in Sources */,
+				0A71311223636B0200817593 /* DDSTypeString.swift in Sources */,
+				0A71311723636B0200817593 /* RovCamera.swift in Sources */,
+				0A71310F23636B0200817593 /* RovDepth.swift in Sources */,
+				0A71311323636B0200817593 /* RovRecording.swift in Sources */,
+				0A71310D23636B0200817593 /* RovTridentMotorCommand.swift in Sources */,
+				0A7130D823636AF200817593 /* VideoDecoder.swift in Sources */,
+				0A71310323636B0200817593 /* RovVector3.swift in Sources */,
+				0A71310423636B0200817593 /* RovControlDescriptor.swift in Sources */,
+				0A71311123636B0200817593 /* RovControllerStatus.swift in Sources */,
+				0A71311823636B0200817593 /* RovLightPower.swift in Sources */,
+				0A7130DB23636AF200817593 /* Preferences.swift in Sources */,
+				0A71310E23636B0200817593 /* RovTemperature.swift in Sources */,
+				0A7130D423636AF200817593 /* FlatButton.swift in Sources */,
+				0A7130FE23636B0200817593 /* RovBarometer.swift in Sources */,
+				0A71310B23636B0200817593 /* RovTridentControlTarget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0A7130C2236369EC00817593 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		0A7130C3236369EC00817593 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		0A7130C5236369EC00817593 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = TridentCockpit/TridentCockpit.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9BEQ8V4XH9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = TridentCockpit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
+				PRODUCT_BUNDLE_IDENTIFIER = in.ioshack.TridentCockpit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TridentCockpit/TridentCockpit-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		0A7130C6236369EC00817593 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = TridentCockpit/TridentCockpit.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 9BEQ8V4XH9;
+				ENABLE_HARDENED_RUNTIME = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
+				INFOPLIST_FILE = TridentCockpit/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
+				PRODUCT_BUNDLE_IDENTIFIER = in.ioshack.TridentCockpit;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TridentCockpit/TridentCockpit-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		0A7130AF236369EA00817593 /* Build configuration list for PBXProject "TridentCockpit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A7130C2236369EC00817593 /* Debug */,
+				0A7130C3236369EC00817593 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		0A7130C4236369EC00817593 /* Build configuration list for PBXNativeTarget "TridentCockpit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A7130C5236369EC00817593 /* Debug */,
+				0A7130C6236369EC00817593 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 0A7130AC236369EA00817593 /* Project object */;
+}
