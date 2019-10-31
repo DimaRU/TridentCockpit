@@ -20,15 +20,28 @@ class VideoView: NSView {
     }
 
     func setupVideoLayer() {
+        var controlTimebase: CMTimebase?
+
         sampleBufferLayer.frame = bounds
         sampleBufferLayer.videoGravity = AVLayerVideoGravity.resizeAspect
         sampleBufferLayer.isOpaque = true
-        
-        wantsLayer = true
-        layer?.contents = NSImage(named: "Trident")
-        layer?.addSublayer(self.sampleBufferLayer)
-    }
 
+        CMTimebaseCreateWithMasterClock(allocator: kCFAllocatorDefault,
+                                        masterClock: CMClockGetHostTimeClock(),
+                                        timebaseOut: &controlTimebase)
+        if let controlTimebase = controlTimebase {
+            sampleBufferLayer.controlTimebase = controlTimebase
+            CMTimebaseSetTime(controlTimebase, time: .zero)
+            CMTimebaseSetRate(controlTimebase, rate: 1.0)
+        }
+
+        sampleBufferLayer.contents = NSImage(named: "Trident")
+        wantsLayer = true
+        layer?.addSublayer(self.sampleBufferLayer)
+        if #available(OSX 10.15, *) {
+            sampleBufferLayer.preventsDisplaySleepDuringVideoPlayback = true
+        }
+    }
 
     override func layout() {
         super.layout()
