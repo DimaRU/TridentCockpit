@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2E42BC236B0EE900B5C569 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E42BB236B0EE900B5C569 /* VideoView.swift */; };
 		0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
 		0A5CBCAE23675F920055131A /* SF-Pro-Display-Thin.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */; };
 		0A5CBCAF23675F920055131A /* SF-Pro-Display-Light.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBC9C23675F410055131A /* SF-Pro-Display-Light.otf */; };
@@ -97,6 +98,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A2E42BB236B0EE900B5C569 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		0A2FF3112363A0BD008FD68B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A2FF3122363A13B008FD68B /* TridentCockpit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TridentCockpit.entitlements; sourceTree = "<group>"; };
 		0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
@@ -216,6 +218,8 @@
 			children = (
 				0A7130CD23636AF100817593 /* AppDelegate.swift */,
 				0A7130D323636AF200817593 /* VideoViewController.swift */,
+				0A2E42BB236B0EE900B5C569 /* VideoView.swift */,
+				0A7130CC23636AF100817593 /* VideoDecoder.swift */,
 				0A7130C923636AF100817593 /* AutoSWindowController.swift */,
 				0A7130D223636AF200817593 /* CameraControlView.swift */,
 				0A7130CB23636AF100817593 /* DisplayManage.swift */,
@@ -224,7 +228,6 @@
 				0A7130CF23636AF100817593 /* Preferences.swift */,
 				0A7130D023636AF100817593 /* RovModelView.swift */,
 				0A7130D123636AF100817593 /* TridentDrive.swift */,
-				0A7130CC23636AF100817593 /* VideoDecoder.swift */,
 				0A71313A23637F0700817593 /* FastRTPS.swift */,
 				0A5CBC992367507F0055131A /* ThirdParty */,
 				0A7130E023636B0200817593 /* Model */,
@@ -395,6 +398,7 @@
 				0A71310423636B0200817593 /* RovControlDescriptor.swift in Sources */,
 				0A71311123636B0200817593 /* RovControllerStatus.swift in Sources */,
 				0A71311823636B0200817593 /* RovLightPower.swift in Sources */,
+				0A2E42BC236B0EE900B5C569 /* VideoView.swift in Sources */,
 				0A7130DB23636AF200817593 /* Preferences.swift in Sources */,
 				0A71310E23636B0200817593 /* RovTemperature.swift in Sources */,
 				0A7130D423636AF200817593 /* FlatButton.swift in Sources */,

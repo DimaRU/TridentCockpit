@@ -7,8 +7,8 @@ import Cocoa
 import SceneKit
 import FastRTPSBridge
 
-class VideoViewController: NSViewController, NSWindowDelegate, VideoDecoderDelegate {
-    @IBOutlet weak var imageView: NSImageView!
+class VideoViewController: NSViewController, NSWindowDelegate {
+    @IBOutlet weak var videoView: VideoView!
     @IBOutlet weak var depthLabel: NSTextField!
     @IBOutlet weak var tempLabel: NSTextField!
     @IBOutlet weak var batteryTimeLabel: NSTextField!
@@ -22,8 +22,6 @@ class VideoViewController: NSViewController, NSWindowDelegate, VideoDecoderDeleg
     @IBOutlet weak var tridentView: RovModelView!
 
     private var videoDecoder: VideoDecoder!
-    private let videoDecoderQueue = DispatchQueue.init(label: "in.ioshack.Trident", qos: .background)
-    private let dispatchGroup = DispatchGroup()
     private let tridentDrive = TridentDrive()
     
     private var lightOn = false
@@ -88,8 +86,7 @@ class VideoViewController: NSViewController, NSWindowDelegate, VideoDecoderDeleg
         lightButton.roundCorners(withRadius: 5)
         lightButton.layer?.backgroundColor = NSColor.white.withAlphaComponent(0.1).cgColor
         
-        videoDecoder = VideoDecoder()
-        imageView.image = NSImage(named: "Trident")
+        videoDecoder = VideoDecoder(sampleBufferLayer: videoView.sampleBufferLayer)
         view.window?.title = "Connecting to Trident..."
 
         
@@ -116,15 +113,10 @@ class VideoViewController: NSViewController, NSWindowDelegate, VideoDecoderDeleg
 
     override func viewDidAppear() {
         super.viewDidAppear()
-        videoDecoder.delegate = self
         DisplayManage.disableSleep()
 
         FastRTPS.registerReader(topic: .rovCamFwdH2640Video) { [weak self] (videoData: RovVideoData) in
-            self?.videoDecoderQueue.async {
-                self?.dispatchGroup.enter()
-                self?.videoDecoder.decodeVideo(data: videoData.data)
-                self?.dispatchGroup.leave()
-            }
+            self?.videoDecoder.decodeVideo(data: videoData.data, timestamp: videoData.timestamp)
         }
         
         tridentDrive.start()
@@ -133,7 +125,6 @@ class VideoViewController: NSViewController, NSWindowDelegate, VideoDecoderDeleg
     override func viewWillDisappear() {
         super.viewWillDisappear()
         tridentDrive.stop()
-        videoDecoder.delegate = nil
         FastRTPS.removeReader(topic: .rovCamFwdH2640Video)
         DisplayManage.enableSleep()
     }
@@ -241,20 +232,7 @@ class VideoViewController: NSViewController, NSWindowDelegate, VideoDecoderDeleg
     }
     
    private func stopVideo() {
-        // terminate the video processing
-        dispatchGroup.wait()
-        videoDecoder.delegate = nil
         videoDecoder.destroyVideoSession()
-
-    }
-    
-    func decompressed(ciImage: CIImage, size: CGSize) {
-        let rep = NSCIImageRep(ciImage: ciImage)
-        let nsImage = NSImage(size: rep.size)
-        nsImage.addRepresentation(rep)
-        DispatchQueue.main.async {
-            self.imageView.image = nsImage
-        }
     }
     
     private func registerReaders() {

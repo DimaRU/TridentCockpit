@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
         <plugIn identifier="com.apple.SceneKitIBPlugin" version="15400"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -31,7 +32,7 @@
                                             <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="Hide TridentApp" keyEquivalent="h" id="Olw-nP-bQN">
+                                        <menuItem title="Hide TridentCockpit" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
                                             </connections>
@@ -49,7 +50,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit TridentApp" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Quit TridentCockpit" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -181,7 +182,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="TridentApp Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="TridentCockpit Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
                                             </connections>
@@ -230,13 +231,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="641" height="361"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" placeholderIntrinsicWidth="1000" placeholderIntrinsicHeight="562" translatesAutoresizingMaskIntoConstraints="NO" id="8S7-OO-7j4">
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="8ZQ-gr-dN8" customClass="VideoView" customModule="TridentCockpit" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="641" height="361"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="8S7-OO-7j4" secondAttribute="height" multiplier="16:9" id="g3f-fw-4Aj"/>
+                                    <constraint firstAttribute="width" secondItem="8ZQ-gr-dN8" secondAttribute="height" multiplier="16:9" id="D1q-wW-aW8"/>
                                 </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="Trident" id="lju-ac-TaH"/>
-                            </imageView>
+                            </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="rbs-P3-fsr">
                                 <rect key="frame" x="406" y="337" width="235" height="24"/>
                                 <subviews>
@@ -428,18 +428,18 @@
                             </customView>
                         </subviews>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="8ZQ-gr-dN8" secondAttribute="trailing" id="6B7-pt-AfN"/>
                             <constraint firstItem="7zE-p2-EwH" firstAttribute="centerX" secondItem="Rxz-w6-QWt" secondAttribute="leading" constant="55" placeholder="YES" identifier="xConstraint" id="7hO-mL-Lru"/>
-                            <constraint firstAttribute="trailing" secondItem="8S7-OO-7j4" secondAttribute="trailing" id="7tC-j4-uay"/>
-                            <constraint firstItem="8S7-OO-7j4" firstAttribute="top" secondItem="Rxz-w6-QWt" secondAttribute="top" id="9Fw-d5-c92"/>
+                            <constraint firstItem="8ZQ-gr-dN8" firstAttribute="leading" secondItem="Rxz-w6-QWt" secondAttribute="leading" id="8f3-df-CxZ"/>
                             <constraint firstItem="d0c-IA-Aeu" firstAttribute="centerY" secondItem="Rxz-w6-QWt" secondAttribute="centerY" constant="105" placeholder="YES" identifier="yConstraint" id="DlY-wW-mAm"/>
                             <constraint firstItem="rbs-P3-fsr" firstAttribute="top" secondItem="Rxz-w6-QWt" secondAttribute="top" id="GyC-3o-XNs"/>
                             <constraint firstAttribute="trailing" secondItem="aaa-wW-Mjv" secondAttribute="trailing" constant="16" id="IaW-ua-6Y9"/>
                             <constraint firstAttribute="trailing" secondItem="rbs-P3-fsr" secondAttribute="trailing" id="KYl-Vq-bNe"/>
                             <constraint firstItem="d0c-IA-Aeu" firstAttribute="centerX" secondItem="Rxz-w6-QWt" secondAttribute="centerX" constant="245.5" placeholder="YES" identifier="xConstraint" id="VSF-iz-9IR"/>
-                            <constraint firstItem="8S7-OO-7j4" firstAttribute="leading" secondItem="Rxz-w6-QWt" secondAttribute="leading" id="YYg-ey-g1Q"/>
-                            <constraint firstAttribute="bottom" secondItem="8S7-OO-7j4" secondAttribute="bottom" id="oaa-gc-lHV"/>
+                            <constraint firstAttribute="bottom" secondItem="8ZQ-gr-dN8" secondAttribute="bottom" id="qMM-jz-gEk"/>
                             <constraint firstAttribute="bottom" secondItem="7zE-p2-EwH" secondAttribute="centerY" constant="180" placeholder="YES" identifier="yConstraint" id="thZ-VK-pfM"/>
                             <constraint firstItem="aaa-wW-Mjv" firstAttribute="top" secondItem="rbs-P3-fsr" secondAttribute="bottom" constant="16" id="urH-gT-CJg"/>
+                            <constraint firstItem="8ZQ-gr-dN8" firstAttribute="top" secondItem="Rxz-w6-QWt" secondAttribute="top" id="wUM-SF-IwC"/>
                         </constraints>
                     </view>
                     <connections>
@@ -447,13 +447,13 @@
                         <outlet property="cameraControlView" destination="7zE-p2-EwH" id="o0G-Pr-BkH"/>
                         <outlet property="cameraTimeLabel" destination="knk-ef-7Td" id="QJx-Xz-iU8"/>
                         <outlet property="depthLabel" destination="q9i-df-4gu" id="Ifw-7C-Vsk"/>
-                        <outlet property="imageView" destination="8S7-OO-7j4" id="Ttq-fi-o1N"/>
                         <outlet property="indicatorsView" destination="rbs-P3-fsr" id="3p5-bi-nbn"/>
                         <outlet property="lightButton" destination="aaa-wW-Mjv" id="BWw-QZ-z4k"/>
                         <outlet property="recordingButton" destination="fux-7J-eaP" id="qf1-lW-92H"/>
                         <outlet property="recordingTimeLabel" destination="Gwh-Mo-Zp4" id="uDw-VB-bHO"/>
                         <outlet property="tempLabel" destination="zWM-Ae-qCL" id="gkP-lb-e06"/>
                         <outlet property="tridentView" destination="d0c-IA-Aeu" id="ZJM-Ta-X40"/>
+                        <outlet property="videoView" destination="8ZQ-gr-dN8" id="a2i-AQ-lgN"/>
                     </connections>
                 </viewController>
                 <customObject id="Z09-aO-Sxq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -463,7 +463,6 @@
     </scenes>
     <resources>
         <image name="Light Off" width="24" height="24"/>
-        <image name="Trident" width="1000" height="562"/>
         <namedColor name="stopActive">
             <color white="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
