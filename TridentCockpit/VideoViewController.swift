@@ -125,7 +125,6 @@ class VideoViewController: NSViewController, NSWindowDelegate {
             self?.videoDecoder.decodeVideo(data: videoData.data, timestamp: videoData.timestamp)
         }
         
-        tridentDrive.start()
     }
 
     override func viewWillDisappear() {
@@ -226,7 +225,8 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
             self.view.layer?.contents = nil
         }
-        
+        tridentDrive.start()
+
         let timeMs = UInt(Date().timeIntervalSince1970 * 1000)
         FastRTPS.send(topic: .rovDatetime, ddsData: String(timeMs))
         FastRTPS.send(topic: .rovVideoOverlayModeCommand, ddsData: Preference.videoOverlayMode ? "on" : "off")
