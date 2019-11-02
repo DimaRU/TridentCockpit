@@ -87,9 +87,9 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         lightButton.layer?.backgroundColor = NSColor.white.withAlphaComponent(0.1).cgColor
         
         videoDecoder = VideoDecoder(sampleBufferLayer: videoView.sampleBufferLayer)
-        view.window?.title = "Connecting to Trident..."
+        view.wantsLayer = true
+        view.layer?.contents = NSImage(named: "Trident")
 
-        
         startRTPS()
     }
 
@@ -106,6 +106,7 @@ class VideoViewController: NSViewController, NSWindowDelegate {
 
     override func viewWillAppear() {
         super.viewWillAppear()
+        view.window?.title = "Connecting to Trident..."
         view.window?.delegate = self
         cameraControlView.addConstraints()
         tridentView.addConstraints()
@@ -113,7 +114,9 @@ class VideoViewController: NSViewController, NSWindowDelegate {
 
     override func viewDidAppear() {
         super.viewDidAppear()
-        DisplayManage.disableSleep()
+        if #available(OSX 10.15, *) {} else {
+            DisplayManage.disableSleep()
+        }
 
         FastRTPS.registerReader(topic: .rovCamFwdH2640Video) { [weak self] (videoData: RovVideoData) in
             self?.videoDecoder.decodeVideo(data: videoData.data, timestamp: videoData.timestamp)
@@ -126,7 +129,9 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         super.viewWillDisappear()
         tridentDrive.stop()
         FastRTPS.removeReader(topic: .rovCamFwdH2640Video)
-        DisplayManage.enableSleep()
+        if #available(OSX 10.15, *) {} else {
+            DisplayManage.enableSleep()
+        }
     }
     
     @IBAction func recordingButtonPress(_ sender: Any) {
@@ -215,7 +220,10 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         self.rovBeacon = rovBeacon
         self.vehicleId = rovBeacon.uuid
         view.window?.title = rovBeacon.uuid
-
+        Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
+            self.view.layer?.contents = nil
+        }
+        
         let timeMs = UInt(Date().timeIntervalSince1970 * 1000)
         FastRTPS.send(topic: .rovDatetime, ddsData: String(timeMs))
         FastRTPS.send(topic: .rovVideoOverlayModeCommand, ddsData: Preference.videoOverlayMode ? "on" : "off")
