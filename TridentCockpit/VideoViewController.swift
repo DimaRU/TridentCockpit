@@ -86,6 +86,9 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         lightButton.roundCorners(withRadius: 5)
         lightButton.layer?.backgroundColor = NSColor.white.withAlphaComponent(0.1).cgColor
         
+        let node = tridentView.modelNode()
+        node.orientation = RovQuaternion(x: -0.119873046875, y: 0.99249267578125, z: 0.01611328125, w: 0.01910400390625).scnQuaternion()
+        
         videoDecoder = VideoDecoder(sampleBufferLayer: videoView.sampleBufferLayer)
         view.wantsLayer = true
         view.layer?.contents = NSImage(named: "Trident")
