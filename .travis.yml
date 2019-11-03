@@ -1,0 +1,20 @@
+language: swift
+osx_image: xcode11.2
+
+branches:
+  only:
+    - master
+    - develop
+
+cache:
+  directories:
+    - Carthage
+
+before_install:
+  - brew update
+  - brew outdated carthage || brew upgrade carthage
+  - carthage update --verbose --no-use-binaries --platform macOS
+
+script:
+  - xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpit CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
+
