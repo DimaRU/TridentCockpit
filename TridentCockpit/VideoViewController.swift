@@ -74,13 +74,14 @@ class VideoViewController: NSViewController, NSWindowDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        depthLabel.stringValue = ""
-        tempLabel.stringValue = ""
-        batteryTimeLabel.stringValue = ""
+        depthLabel.stringValue = "n/a"
+        tempLabel.stringValue = "n/a"
+        batteryTimeLabel.stringValue = "n/a"
         cameraTimeLabel.stringValue = ""
         recordingTimeLabel.stringValue = ""
         cameraTimeLabel.textColor = .systemGray
-
+        cameraControlView.isHidden = true
+        
         indicatorsView.wantsLayer = true
         indicatorsView.layer?.backgroundColor = NSColor(named: "cameraControlBackground")!.cgColor
         lightButton.roundCorners(withRadius: 5)
@@ -222,6 +223,8 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         self.rovBeacon = rovBeacon
         self.vehicleId = rovBeacon.uuid
         view.window?.title = rovBeacon.uuid
+        cameraControlView.isHidden = false
+
         Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
             self.view.layer?.contents = nil
         }
