@@ -6,7 +6,7 @@
 
 <p align=center>
  ·
-<a href="https://github.com/DimaRU/TridentApp/releases">Releases</a> ·
+<a href="https://github.com/DimaRU/TridentCockpit/releases">Releases</a> ·
 
 </p>
 
