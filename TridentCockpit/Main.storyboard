@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15400"/>
-        <plugIn identifier="com.apple.SceneKitIBPlugin" version="15400"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
+        <plugIn identifier="com.apple.SceneKitIBPlugin" version="15505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -94,13 +94,13 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Trident view" id="9Rg-Yx-IoP">
                                     <items>
-                                        <menuItem title="Relative Yaw" keyEquivalent="y" id="vaE-qm-q3j">
+                                        <menuItem title="Relative Yaw" tag="11" keyEquivalent="y" id="vaE-qm-q3j">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="relativeYawAction:" target="Ady-hI-5gd" id="agM-aR-Wx8"/>
                                             </connections>
                                         </menuItem>
-                                        <menuItem title="Absolute Yaw" keyEquivalent="a" id="Wxo-Rw-Ymv">
+                                        <menuItem title="Absolute Yaw" state="on" tag="12" keyEquivalent="a" id="Wxo-Rw-Ymv">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="absoluteYawAction:" target="Ady-hI-5gd" id="0vn-Ar-cff"/>
