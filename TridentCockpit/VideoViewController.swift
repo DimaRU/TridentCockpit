@@ -100,6 +100,7 @@ class VideoViewController: NSViewController, NSWindowDelegate {
     func windowWillClose(_ notification: Notification) {
         tridentDrive.stop()
         stopRTPS()
+        videoDecoder.destroyVideoSession()
         DisplayManage.enableSleep()
     }
     
@@ -207,7 +208,7 @@ class VideoViewController: NSViewController, NSWindowDelegate {
     }
        
     private func startRTPS() {
-        FastRTPS.startRTPS()
+        FastRTPS.createParticipant()
         registerReaders()
         registerWriters()
     }
@@ -215,7 +216,6 @@ class VideoViewController: NSViewController, NSWindowDelegate {
     private func stopRTPS() {
         FastRTPS.resignAll()
         FastRTPS.stopRTPS()
-        stopVideo()
     }
 
     
@@ -243,10 +243,6 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         FastRTPS.send(topic: .rovControllerStateRequested, ddsData: controllerStatus)
         
         FastRTPS.removeReader(topic: .rovBeacon)
-    }
-    
-   private func stopVideo() {
-        videoDecoder.destroyVideoSession()
     }
     
     private func registerReaders() {
