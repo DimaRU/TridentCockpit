@@ -94,6 +94,9 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         view.wantsLayer = true
         view.layer?.contents = NSImage(named: "Trident")
 
+        #if DEBUG
+        setupNotifications()
+        #endif
         startRTPS()
     }
 
