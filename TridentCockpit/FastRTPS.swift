@@ -16,7 +16,7 @@ final class FastRTPS {
 #endif
     
     class func createParticipant(ipv4: String? = nil) {
-        FastRTPS.shared.fastRTPSBridge?.createRTPSParticipant(withName: "TridentCockpitOSX", ipv4: ipv4)
+        FastRTPS.shared.fastRTPSBridge?.createRTPSParticipant(withName: "TridentCockpitOSX", peerIPv4: ipv4)
     }
     
     class func setPartition(name: String) {
