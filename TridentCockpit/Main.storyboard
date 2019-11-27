@@ -233,20 +233,51 @@
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="8ZQ-gr-dN8" customClass="VideoView" customModule="TridentCockpit" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="641" height="361"/>
+                                <subviews>
+                                    <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aaa-wW-Mjv">
+                                        <rect key="frame" x="593" y="327" width="32" height="24"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="24" id="MKV-yS-fIv"/>
+                                            <constraint firstAttribute="width" constant="32" id="zz4-BK-seF"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Light Off" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="8cy-GX-LyS">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" size="24" name="SFCompactDisplay-Regular"/>
+                                        </buttonCell>
+                                        <connections>
+                                            <action selector="lightButtonPress:" target="Wgr-FD-Jeg" id="HBF-is-gNp"/>
+                                        </connections>
+                                    </button>
+                                    <button hidden="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="nMs-kU-0TU" userLabel="Prop Button">
+                                        <rect key="frame" x="594" y="281" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="nbS-SS-aRg"/>
+                                            <constraint firstAttribute="width" constant="30" id="r54-5z-asy"/>
+                                        </constraints>
+                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Prop 1" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="ZaI-av-rhl">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system"/>
+                                        </buttonCell>
+                                    </button>
+                                </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="aaa-wW-Mjv" secondAttribute="trailing" constant="16" id="3ix-Vd-eLv"/>
+                                    <constraint firstItem="nMs-kU-0TU" firstAttribute="top" secondItem="aaa-wW-Mjv" secondAttribute="bottom" constant="16" id="4J7-XE-jxp"/>
                                     <constraint firstAttribute="width" secondItem="8ZQ-gr-dN8" secondAttribute="height" multiplier="16:9" id="D1q-wW-aW8"/>
+                                    <constraint firstItem="nMs-kU-0TU" firstAttribute="centerX" secondItem="aaa-wW-Mjv" secondAttribute="centerX" id="EAX-S5-gqj"/>
+                                    <constraint firstItem="aaa-wW-Mjv" firstAttribute="top" secondItem="8ZQ-gr-dN8" secondAttribute="top" constant="10" id="Got-Dj-1zr"/>
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="rbs-P3-fsr">
-                                <rect key="frame" x="406" y="337" width="235" height="24"/>
+                                <rect key="frame" x="0.0" y="326" width="251" height="35"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qo6-j9-TBw">
-                                        <rect key="frame" x="0.0" y="4" width="235" height="15"/>
+                                        <rect key="frame" x="0.0" y="10" width="251" height="15"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="is9-Bu-2bL">
-                                                <rect key="frame" x="-2" y="0.0" width="48" height="15"/>
+                                                <rect key="frame" x="-2" y="0.0" width="54" height="15"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="eP5-zx-6ZG"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="eP5-zx-6ZG"/>
                                                 </constraints>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="Depth:" id="dZH-uO-kuJ">
                                                     <font key="font" size="13" name="SFProDisplay-Light"/>
@@ -255,7 +286,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q9i-df-4gu">
-                                                <rect key="frame" x="42" y="0.0" width="46" height="15"/>
+                                                <rect key="frame" x="48" y="0.0" width="46" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="42" id="ZJv-A3-Im6"/>
                                                 </constraints>
@@ -266,7 +297,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="frd-FQ-gU0">
-                                                <rect key="frame" x="84" y="0.0" width="22" height="15"/>
+                                                <rect key="frame" x="90" y="0.0" width="22" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="18" id="fLG-GO-NvD"/>
                                                 </constraints>
@@ -277,7 +308,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zWM-Ae-qCL">
-                                                <rect key="frame" x="102" y="0.0" width="37" height="15"/>
+                                                <rect key="frame" x="108" y="0.0" width="37" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="33" id="MUc-6Y-3r2"/>
                                                 </constraints>
@@ -288,7 +319,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EU2-MI-1bX">
-                                                <rect key="frame" x="135" y="0.0" width="52" height="15"/>
+                                                <rect key="frame" x="141" y="0.0" width="52" height="15"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="℃    􀛨" id="Np2-pl-c9e">
                                                     <font key="font" size="13" name="SFProDisplay-Light"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -296,9 +327,9 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q2s-ce-J2h">
-                                                <rect key="frame" x="183" y="0.0" width="54" height="15"/>
+                                                <rect key="frame" x="189" y="0.0" width="64" height="15"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="sXr-lo-cM7"/>
+                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="sXr-lo-cM7"/>
                                                 </constraints>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="10h25m" id="yiv-S7-HtI">
                                                     <font key="font" size="13" name="Menlo-Regular"/>
@@ -327,25 +358,11 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="Qo6-j9-TBw" secondAttribute="trailing" id="Dcg-9C-k9g"/>
-                                    <constraint firstAttribute="height" constant="24" id="kRj-G4-Jkn"/>
+                                    <constraint firstAttribute="height" constant="35" id="kRj-G4-Jkn"/>
                                     <constraint firstItem="Qo6-j9-TBw" firstAttribute="centerY" secondItem="rbs-P3-fsr" secondAttribute="centerY" id="lhY-sL-SWR"/>
                                     <constraint firstItem="Qo6-j9-TBw" firstAttribute="leading" secondItem="rbs-P3-fsr" secondAttribute="leading" id="qXH-42-tE5"/>
                                 </constraints>
                             </customView>
-                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aaa-wW-Mjv">
-                                <rect key="frame" x="595" y="297" width="30" height="24"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="MKV-yS-fIv"/>
-                                    <constraint firstAttribute="width" constant="30" id="zz4-BK-seF"/>
-                                </constraints>
-                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Light Off" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="8cy-GX-LyS">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" size="24" name="SFCompactDisplay-Regular"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="lightButtonPress:" target="Wgr-FD-Jeg" id="HBF-is-gNp"/>
-                                </connections>
-                            </button>
                             <sceneView focusRingType="none" wantsMultisampling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0c-IA-Aeu" customClass="RovModelView" customModule="TridentCockpit" customModuleProvider="target">
                                 <rect key="frame" x="491" y="0.0" width="150" height="150"/>
                                 <constraints>
@@ -433,12 +450,10 @@
                             <constraint firstItem="8ZQ-gr-dN8" firstAttribute="leading" secondItem="Rxz-w6-QWt" secondAttribute="leading" id="8f3-df-CxZ"/>
                             <constraint firstItem="d0c-IA-Aeu" firstAttribute="centerY" secondItem="Rxz-w6-QWt" secondAttribute="centerY" constant="105" placeholder="YES" identifier="yConstraint" id="DlY-wW-mAm"/>
                             <constraint firstItem="rbs-P3-fsr" firstAttribute="top" secondItem="Rxz-w6-QWt" secondAttribute="top" id="GyC-3o-XNs"/>
-                            <constraint firstAttribute="trailing" secondItem="aaa-wW-Mjv" secondAttribute="trailing" constant="16" id="IaW-ua-6Y9"/>
-                            <constraint firstAttribute="trailing" secondItem="rbs-P3-fsr" secondAttribute="trailing" id="KYl-Vq-bNe"/>
+                            <constraint firstItem="rbs-P3-fsr" firstAttribute="leading" secondItem="Rxz-w6-QWt" secondAttribute="leading" id="JZW-K7-dX4"/>
                             <constraint firstItem="d0c-IA-Aeu" firstAttribute="centerX" secondItem="Rxz-w6-QWt" secondAttribute="centerX" constant="245.5" placeholder="YES" identifier="xConstraint" id="VSF-iz-9IR"/>
                             <constraint firstAttribute="bottom" secondItem="8ZQ-gr-dN8" secondAttribute="bottom" id="qMM-jz-gEk"/>
                             <constraint firstAttribute="bottom" secondItem="7zE-p2-EwH" secondAttribute="centerY" constant="180" placeholder="YES" identifier="yConstraint" id="thZ-VK-pfM"/>
-                            <constraint firstItem="aaa-wW-Mjv" firstAttribute="top" secondItem="rbs-P3-fsr" secondAttribute="bottom" constant="16" id="urH-gT-CJg"/>
                             <constraint firstItem="8ZQ-gr-dN8" firstAttribute="top" secondItem="Rxz-w6-QWt" secondAttribute="top" id="wUM-SF-IwC"/>
                         </constraints>
                     </view>
@@ -463,6 +478,7 @@
     </scenes>
     <resources>
         <image name="Light Off" width="24" height="24"/>
+        <image name="Prop 1" width="35" height="35"/>
         <namedColor name="stopActive">
             <color white="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
