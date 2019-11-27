@@ -22,7 +22,7 @@ class VideoViewController: NSViewController, NSWindowDelegate {
     @IBOutlet weak var tridentView: RovModelView!
 
     private var videoDecoder: VideoDecoder!
-    private let tridentDrive = TridentDrive()
+    private let tridentControl = TridentControl()
     
     private var lightOn = false
     private var videoSessionId: UUID?
@@ -101,7 +101,7 @@ class VideoViewController: NSViewController, NSWindowDelegate {
     }
 
     func windowWillClose(_ notification: Notification) {
-        tridentDrive.stop()
+        tridentControl.disable()
         stopRTPS()
         videoDecoder.destroyVideoSession()
         DisplayManage.enableSleep()
@@ -134,7 +134,7 @@ class VideoViewController: NSViewController, NSWindowDelegate {
 
     override func viewWillDisappear() {
         super.viewWillDisappear()
-        tridentDrive.stop()
+        tridentControl.disable()
         FastRTPS.removeReader(topic: .rovCamFwdH2640Video)
         if #available(OSX 10.15, *) {} else {
             DisplayManage.enableSleep()
@@ -183,13 +183,13 @@ class VideoViewController: NSViewController, NSWindowDelegate {
     }
     
     override func keyUp(with event: NSEvent) {
-        if !tridentDrive.processKeyEvent(event: event) {
+        if !tridentControl.processKeyEvent(event: event) {
             super.keyUp(with: event)
         }
     }
     
     override func keyDown(with event: NSEvent) {
-        if !tridentDrive.processKeyEvent(event: event) {
+        if !tridentControl.processKeyEvent(event: event) {
             super.keyDown(with: event)
         }
     }
@@ -237,7 +237,7 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
             self.view.layer?.contents = nil
         }
-        tridentDrive.start()
+        tridentControl.enable()
 
         let timeMs = UInt(Date().timeIntervalSince1970 * 1000)
         FastRTPS.send(topic: .rovDatetime, ddsData: String(timeMs))

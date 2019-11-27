@@ -1,13 +1,14 @@
 /////
-////  TridentDrive.swift
+////  TridentControl.swift
 ///   Copyright © 2019 Dmitriy Borovikov. All rights reserved.
 //
 
 import Cocoa
 import Carbon.HIToolbox
 import FastRTPSBridge
+import GameController
 
-final class TridentDrive {
+final class TridentControl {
     private var leftLever: Float = 0
     private var rightLever: Float = 0
     private var forwardLever: Float = 0
@@ -17,28 +18,29 @@ final class TridentDrive {
     private var tridentCommandTimer: Timer?
     private var zeroCount = 0
 
-    func start() {
-        tridentCommandTimer = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true) { [weak self] timer in
-            guard let self = self else { return }
-            let thrust = self.forwardLever - self.backwardLever
-            let yaw = self.rightLever - self.leftLever
-            let pitch = self.downLever - self.upLever
-            
-            if (thrust, yaw, pitch) == (0, 0, 0) {
-                self.zeroCount += 1
-            } else {
-                self.zeroCount = 0
-            }
-            if self.zeroCount >= 2 {
-                return
-            }
-            let tridentCommand = RovTridentControlTarget(id: "control", pitch: pitch, yaw: yaw, thrust: thrust, lift: 0)
-            FastRTPS.send(topic: .rovControlTarget, ddsData: tridentCommand)
-        }
+    func enable() {
+        tridentCommandTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: controlTimerBlock)
     }
     
-    func stop() {
+    func disable() {
         tridentCommandTimer?.invalidate()
+    }
+    
+    private func controlTimerBlock(timer: Timer) {
+        let thrust = forwardLever - backwardLever
+        let yaw = rightLever - leftLever
+        let pitch = downLever - upLever
+        
+        if (thrust, yaw, pitch) == (0, 0, 0) {
+            zeroCount += 1
+        } else {
+            zeroCount = 0
+        }
+        if zeroCount >= 2 {
+            return
+        }
+        let tridentCommand = RovTridentControlTarget(id: "control", pitch: pitch, yaw: yaw, thrust: thrust, lift: 0)
+        FastRTPS.send(topic: .rovControlTarget, ddsData: tridentCommand)
     }
     
     func processKeyEvent(event: NSEvent) -> Bool {
