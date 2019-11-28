@@ -219,6 +219,7 @@
 			children = (
 				0A7130CD23636AF100817593 /* AppDelegate.swift */,
 				0A7130D323636AF200817593 /* VideoViewController.swift */,
+				0A7130D123636AF100817593 /* TridentControl.swift */,
 				0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */,
 				0A2E42BB236B0EE900B5C569 /* VideoView.swift */,
 				0A7130CC23636AF100817593 /* VideoDecoder.swift */,
@@ -229,7 +230,6 @@
 				0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */,
 				0A7130CF23636AF100817593 /* Preferences.swift */,
 				0A7130D023636AF100817593 /* RovModelView.swift */,
-				0A7130D123636AF100817593 /* TridentControl.swift */,
 				0A71313A23637F0700817593 /* FastRTPS.swift */,
 				0A5CBC992367507F0055131A /* ThirdParty */,
 				0A7130E023636B0200817593 /* Model */,

@@ -17,6 +17,7 @@ class VideoViewController: NSViewController, NSWindowDelegate {
 
     @IBOutlet weak var indicatorsView: NSView!
     @IBOutlet weak var cameraControlView: CameraControlView!
+    @IBOutlet weak var propellerButton: NSButton!
     @IBOutlet weak var lightButton: NSButton!
     @IBOutlet weak var recordingButton: FlatButton!
     @IBOutlet weak var tridentView: RovModelView!
@@ -90,6 +91,7 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         let node = tridentView.modelNode()
         node.orientation = RovQuaternion(x: -0.119873046875, y: 0.99249267578125, z: 0.01611328125, w: 0.01910400390625).scnQuaternion()
         
+        tridentControl.setup(delegate: self)
         videoDecoder = VideoDecoder(sampleBufferLayer: videoView.sampleBufferLayer)
         view.wantsLayer = true
         view.layer?.contents = NSImage(named: "Trident")
@@ -142,16 +144,21 @@ class VideoViewController: NSViewController, NSWindowDelegate {
     }
     
     @IBAction func recordingButtonPress(_ sender: Any) {
-        if let videoSessionId = videoSessionId {
-            stopRecordingSession(id: videoSessionId)
-        } else {
-            startRecordingSession(id: UUID())
-        }
+        switchRecording()
     }
     
     @IBAction func lightButtonPress(_ sender: Any) {
-        let lightPower = RovLightPower.init(id: "fwd", power: lightOn ? 0:1)
-        FastRTPS.send(topic: .rovLightPowerRequested, ddsData: lightPower)
+        switchLight()
+    }
+    
+    @IBAction func propellerButtonPress(_ sender: Any) {
+        guard tridentControl.motorSpeed != nil else { return }
+        let newSpeed = tridentControl.motorSpeed!.rawValue + 1
+        tridentControl.motorSpeed = TridentControl.MotorSpeed(rawValue: newSpeed)
+        if tridentControl.motorSpeed == nil {
+            tridentControl.motorSpeed = .first
+        }
+        updatePropellerButtonState()
     }
     
     @IBAction func relativeYawAction(_ sender: Any) {
@@ -440,4 +447,41 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         FastRTPS.send(topic: .rovVidSessionReq, ddsData: videoSessionCommand)
     }
 
+}
+
+extension VideoViewController: TridentControlDelegate {
+    func control(pitch: Float, yaw: Float, thrust: Float, lift: Float) {
+        let tridentCommand = RovTridentControlTarget(id: "control", pitch: pitch, yaw: yaw, thrust: thrust, lift: lift)
+        FastRTPS.send(topic: .rovControlTarget, ddsData: tridentCommand)
+    }
+    
+    func updatePropellerButtonState() {
+        switch tridentControl.motorSpeed {
+        case .first?:
+            propellerButton.isHidden = false
+            propellerButton.image = NSImage(named: "Prop 1")
+        case .second?:
+            propellerButton.isHidden = false
+            propellerButton.image = NSImage(named: "Prop 2")
+        case .third?:
+            propellerButton.isHidden = false
+            propellerButton.image = NSImage(named: "Prop 3")
+        case nil:
+            propellerButton.isHidden = true
+        }
+    }
+    
+    func switchLight() {
+        let lightPower = RovLightPower(id: "fwd", power: lightOn ? 0:1)
+        FastRTPS.send(topic: .rovLightPowerRequested, ddsData: lightPower)
+    }
+    
+    func switchRecording() {
+        if let videoSessionId = videoSessionId {
+            stopRecordingSession(id: videoSessionId)
+        } else {
+            startRecordingSession(id: UUID())
+        }
+    }
+    
 }

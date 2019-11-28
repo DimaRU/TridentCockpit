@@ -258,6 +258,9 @@
                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                             <font key="font" metaFont="system"/>
                                         </buttonCell>
+                                        <connections>
+                                            <action selector="propellerButtonPress:" target="Wgr-FD-Jeg" id="fjn-Pe-72U"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -464,6 +467,7 @@
                         <outlet property="depthLabel" destination="q9i-df-4gu" id="Ifw-7C-Vsk"/>
                         <outlet property="indicatorsView" destination="rbs-P3-fsr" id="3p5-bi-nbn"/>
                         <outlet property="lightButton" destination="aaa-wW-Mjv" id="BWw-QZ-z4k"/>
+                        <outlet property="propellerButton" destination="nMs-kU-0TU" id="Y4a-fg-hSj"/>
                         <outlet property="recordingButton" destination="fux-7J-eaP" id="qf1-lW-92H"/>
                         <outlet property="recordingTimeLabel" destination="Gwh-Mo-Zp4" id="uDw-VB-bHO"/>
                         <outlet property="tempLabel" destination="zWM-Ae-qCL" id="gkP-lb-e06"/>
