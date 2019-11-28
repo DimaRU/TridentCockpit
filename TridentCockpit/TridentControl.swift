@@ -156,13 +156,11 @@ final class TridentControl {
         case gamepad.leftThumbstick:
             forwardLever = gamepad.leftThumbstick.yAxis.value * motorSpeed!.rate
             backwardLever = 0
-            print("Controller: \(index), LeftThumbstick Y: \(gamepad.leftThumbstick.yAxis.value)")
         case gamepad.rightThumbstick:
             rightLever = gamepad.rightThumbstick.xAxis.value * motorSpeed!.rate
             leftLever = 0
             downLever = gamepad.rightThumbstick.yAxis.value * motorSpeed!.rate
             upLever = 0
-            print("Controller: \(index), rightThumbstick X Y: \(gamepad.rightThumbstick.xAxis.value) \(gamepad.rightThumbstick.yAxis.value)")
         case gamepad.leftShoulder:
             guard gamepad.leftShoulder.value != 0 else { break }
             guard motorSpeed != .first else { break }
@@ -178,13 +176,11 @@ final class TridentControl {
             delegate?.switchLight()
         case gamepad.buttonB:
             guard gamepad.buttonB.value != 0 else { break }
-            print("Controller: \(index), B-Button Pressed!")
         case gamepad.buttonY:
             guard gamepad.buttonY.value != 0 else { break }
             delegate?.switchRecording()
         case gamepad.buttonX:
             guard gamepad.buttonX.value != 0 else { break }
-            print("Controller: \(index), X-Button Pressed!")
         default:
             break
         }
