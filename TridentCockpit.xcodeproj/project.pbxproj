@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0A2E42BC236B0EE900B5C569 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E42BB236B0EE900B5C569 /* VideoView.swift */; };
 		0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
+		0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790B23958380006F10FF /* FastRTPSBridge.framework */; };
+		0A597910239583AB006F10FF /* FastRTPSBridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790B23958380006F10FF /* FastRTPSBridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0A5CBCAE23675F920055131A /* SF-Pro-Display-Thin.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */; };
 		0A5CBCAF23675F920055131A /* SF-Pro-Display-Light.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBC9C23675F410055131A /* SF-Pro-Display-Light.otf */; };
 		0A5CBCB023675F920055131A /* SF-Pro-Display-Regular.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBC9D23675F410055131A /* SF-Pro-Display-Regular.otf */; };
@@ -62,9 +64,24 @@
 		0A71311C23636B5C00817593 /* TridentCockpit.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A71311B23636B5C00817593 /* TridentCockpit.scnassets */; };
 		0A71313B23637F0700817593 /* FastRTPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71313A23637F0700817593 /* FastRTPS.swift */; };
 		0A84F9CE237B37BF009BBAD4 /* SetupNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */; };
-		0AD99390236703FC00D037A3 /* FastRTPSBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD9938F236703FC00D037A3 /* FastRTPSBridge.framework */; };
-		0AD99391236703FC00D037A3 /* FastRTPSBridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AD9938F236703FC00D037A3 /* FastRTPSBridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		0A59790A23958380006F10FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A7130752363503500817593;
+			remoteInfo = "FastRTPSBridge macOS";
+		};
+		0A59790C23958380006F10FF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A8A37DB2366DB1B008E8DC1;
+			remoteInfo = "FastRTPSBridge iOS";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		0A5CBCAD23675F740055131A /* CopyFiles */ = {
@@ -91,7 +108,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0AD99391236703FC00D037A3 /* FastRTPSBridge.framework in Embed Frameworks */,
+				0A597910239583AB006F10FF /* FastRTPSBridge.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +119,7 @@
 		0A2E42BB236B0EE900B5C569 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		0A2FF3112363A0BD008FD68B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A2FF3122363A13B008FD68B /* TridentCockpit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TridentCockpit.entitlements; sourceTree = "<group>"; };
+		0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FastRTPSBridge.xcodeproj; path = FastRTPSBridge/FastRTPSBridge.xcodeproj; sourceTree = "<group>"; };
 		0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		0A5CBC9C23675F410055131A /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
 		0A5CBC9D23675F410055131A /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
@@ -157,7 +175,6 @@
 		0A71311B23636B5C00817593 /* TridentCockpit.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = TridentCockpit.scnassets; sourceTree = "<group>"; };
 		0A71313A23637F0700817593 /* FastRTPS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastRTPS.swift; sourceTree = "<group>"; };
 		0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNotifications.swift; sourceTree = "<group>"; };
-		0AD9938F236703FC00D037A3 /* FastRTPSBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FastRTPSBridge.framework; path = Carthage/Build/Mac/FastRTPSBridge.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -165,13 +182,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AD99390236703FC00D037A3 /* FastRTPSBridge.framework in Frameworks */,
+				0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A59790423958380006F10FF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0A59790B23958380006F10FF /* FastRTPSBridge.framework */,
+				0A59790D23958380006F10FF /* FastRTPSBridge.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0A59790E239583AB006F10FF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		0A5CBC992367507F0055131A /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
@@ -199,10 +232,11 @@
 		0A7130AB236369EA00817593 = {
 			isa = PBXGroup;
 			children = (
+				0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */,
 				0A7130B6236369EA00817593 /* TridentCockpit */,
 				0A5CBC9A23675F410055131A /* Fonts */,
 				0A7130B5236369EA00817593 /* Products */,
-				0A713126236371ED00817593 /* Frameworks */,
+				0A59790E239583AB006F10FF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -277,14 +311,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		0A713126236371ED00817593 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				0AD9938F236703FC00D037A3 /* FastRTPSBridge.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -338,12 +364,35 @@
 			);
 			productRefGroup = 0A7130B5236369EA00817593 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0A59790423958380006F10FF /* Products */;
+					ProjectRef = 0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				0A7130B3236369EA00817593 /* TridentCockpit */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0A59790B23958380006F10FF /* FastRTPSBridge.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FastRTPSBridge.framework;
+			remoteRef = 0A59790A23958380006F10FF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A59790D23958380006F10FF /* FastRTPSBridge.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = FastRTPSBridge.framework;
+			remoteRef = 0A59790C23958380006F10FF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		0A7130B2236369EA00817593 /* Resources */ = {
@@ -539,7 +588,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = TridentCockpit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -570,7 +618,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = TridentCockpit/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
