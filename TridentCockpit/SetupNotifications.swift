@@ -53,7 +53,8 @@ extension VideoViewController {
                 let participantName = userInfo[RTPSNotificationUserInfo.participant.rawValue] as! String
                 let properties = userInfo[RTPSNotificationUserInfo.properties.rawValue] as! Dictionary<String, String>
                 let locators = userInfo[RTPSNotificationUserInfo.locators.rawValue] as! Set<String>
-                print("Discovered Participant:", participantName, properties["dds.sys_info.hostname"]!, locators)
+                let metaLocators = userInfo[RTPSNotificationUserInfo.metaLocators.rawValue] as! Set<String>
+                print("Discovered Participant:", participantName, properties["dds.sys_info.hostname"]!, locators, metaLocators)
             case .removedParticipant:
                 let participantName = userInfo[RTPSNotificationUserInfo.participant.rawValue] as! String
                 print("Removed Participant:", participantName)

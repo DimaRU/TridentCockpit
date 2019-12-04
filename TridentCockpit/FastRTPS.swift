@@ -66,4 +66,8 @@ final class FastRTPS {
     class func resignAll() {
         FastRTPS.shared.fastRTPSBridge?.resignAll()
     }
+
+    class func getIP4Address() -> Set<String> {
+        return FastRTPS.shared.fastRTPSBridge?.getIP4Address() as! Set<String>
+    }
 }
