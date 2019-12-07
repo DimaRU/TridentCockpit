@@ -6,23 +6,20 @@
 import Foundation
 import FastRTPSBridge
 
-enum RovSubTopic: String {
+enum RovWriterTopic: String {
     case pidParametersRequested      = "pid_parameters_requested" // orov::msg::control::PIDParameters
     case pidSetpointRequested        = "pid_setpoint_requested" // orov::msg::control::PIDSetpoint
-    case rovAttitude                 = "rov_attitude" // orov::msg::sensor::Attitude
     case rovCamFwdH2640CtrlRequested = "rov_cam_fwd_H264_0_ctrl_requested" // orov::msg::image::ControlValue
     case rovCamFwdH2641CtrlRequested = "rov_cam_fwd_H264_1_ctrl_requested" // orov::msg::image::ControlValue
     case rovCamFwdH2641Video         = "rov_cam_fwd_H264_1_video" // orov::msg::image::VideoData
     case rovControlTarget            = "rov_control_target" // orov::msg::control::TridentControlTarget
     case rovControllerStateRequested = "rov_controller_state_requested" // orov::msg::control::ControllerStatus
     case rovDatetime                 = "rov_datetime" // DDS::String
-    case rovDepth                    = "rov_depth" // orov::msg::sensor::Depth
     case rovFirmwareCommandReq       = "rov_firmware_command_req" // orov::msg::system::FirmwareCommand
     case rovLightPowerRequested      = "rov_light_power_requested" // orov::msg::device::LightPower
     case rovMcuStatus                = "rov_mcu_status" // orov::msg::system::MCUStatus
     case rovMotorCommandDebug        = "rov_motor_command_debug" // orov::msg::control::TridentMotorCommand
     case rovPingRequest              = "rov_ping_request" // DDS::String
-    case rovTempWater                = "rov_temp_water" // orov::msg::sensor::Temperature
     case rovVactestBlinkCommand      = "rov_vactest_blink_command" // orov::msg::common::Command
     case rovVidSessionReq            = "rov_vid_session_req" // orov::msg::recording::VideoSessionCommand
     case rovVideoOverlayModeCommand  = "rov_video_overlay_mode_command" // DDS::String
@@ -31,7 +28,7 @@ enum RovSubTopic: String {
     case rovDepthConfigRequested     = "rov_depth_config_requested" // orov::msg::sensor::DepthConfig
 }
 
-enum RovPubTopic: String {
+enum RovReaderTopic: String {
     case pidSetpointCurrent         = "pid_setpoint_current" // orov::msg::control::PIDSetpoint
     case pidState                   = "pid_state" // orov::msg::control::PIDState
     case rovAttitude                = "rov_attitude" // orov::msg::sensor::Attitude
@@ -44,7 +41,6 @@ enum RovPubTopic: String {
     case rovCamFwdH2641CtrlDesc     = "rov_cam_fwd_H264_1_ctrl_desc" // orov::msg::image::ControlDescriptor
     case rovCamFwdH2641Video        = "rov_cam_fwd_H264_1_video" // orov::msg::image::VideoData
     case rovCams                    = "rov_cams" // orov::msg::image::Camera
-    case rovControlTarget           = "rov_control_target" // orov::msg::control::TridentControlTarget
     case rovControllerStateCurrent  = "rov_controller_state_current" // orov::msg::control::ControllerStatus
     case rovDepth                   = "rov_depth" // orov::msg::sensor::Depth
     case rovEscFaultAlert           = "rov_esc_fault_alert" // orov::msg::control::ESCFaultAlert

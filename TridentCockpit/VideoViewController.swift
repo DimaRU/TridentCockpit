@@ -17,12 +17,13 @@ class VideoViewController: NSViewController, NSWindowDelegate {
 
     @IBOutlet weak var indicatorsView: NSView!
     @IBOutlet weak var cameraControlView: CameraControlView!
+    @IBOutlet weak var propellerButton: NSButton!
     @IBOutlet weak var lightButton: NSButton!
     @IBOutlet weak var recordingButton: FlatButton!
     @IBOutlet weak var tridentView: RovModelView!
 
     private var videoDecoder: VideoDecoder!
-    private let tridentDrive = TridentDrive()
+    private let tridentControl = TridentControl()
     
     private var lightOn = false
     private var videoSessionId: UUID?
@@ -90,16 +91,20 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         let node = tridentView.modelNode()
         node.orientation = RovQuaternion(x: -0.119873046875, y: 0.99249267578125, z: 0.01611328125, w: 0.01910400390625).scnQuaternion()
         
+        tridentControl.setup(delegate: self)
         videoDecoder = VideoDecoder(sampleBufferLayer: videoView.sampleBufferLayer)
         view.wantsLayer = true
         view.layer?.contents = NSImage(named: "Trident")
 
-        startRTPS()
+        #if DEBUG
+        setupNotifications()
+        #endif
     }
 
     func windowWillClose(_ notification: Notification) {
-        tridentDrive.stop()
+        tridentControl.disable()
         stopRTPS()
+        videoDecoder.destroyVideoSession()
         DisplayManage.enableSleep()
     }
     
@@ -121,16 +126,13 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         if #available(OSX 10.15, *) {} else {
             DisplayManage.disableSleep()
         }
-
-        FastRTPS.registerReader(topic: .rovCamFwdH2640Video) { [weak self] (videoData: RovVideoData) in
-            self?.videoDecoder.decodeVideo(data: videoData.data, timestamp: videoData.timestamp)
-        }
         
+        getConnection()
     }
 
     override func viewWillDisappear() {
         super.viewWillDisappear()
-        tridentDrive.stop()
+        tridentControl.disable()
         FastRTPS.removeReader(topic: .rovCamFwdH2640Video)
         if #available(OSX 10.15, *) {} else {
             DisplayManage.enableSleep()
@@ -138,20 +140,21 @@ class VideoViewController: NSViewController, NSWindowDelegate {
     }
     
     @IBAction func recordingButtonPress(_ sender: Any) {
-        if let videoSessionId = videoSessionId {
-            stopRecordingSession(id: videoSessionId)
-        } else {
-            startRecordingSession(id: UUID())
-        }
+        switchRecording()
     }
     
     @IBAction func lightButtonPress(_ sender: Any) {
-        let lightPower = RovLightPower.init(id: "fwd", power: lightOn ? 0:1)
-        FastRTPS.send(topic: .rovLightPowerRequested, ddsData: lightPower)
+        switchLight()
     }
     
-    @IBAction func absoluteYawAction(_ sender: Any) {
-        tridentView.setCameraPos(yaw: .pi)
+    @IBAction func propellerButtonPress(_ sender: Any) {
+        guard tridentControl.motorSpeed != nil else { return }
+        let newSpeed = tridentControl.motorSpeed!.rawValue + 1
+        tridentControl.motorSpeed = TridentControl.MotorSpeed(rawValue: newSpeed)
+        if tridentControl.motorSpeed == nil {
+            tridentControl.motorSpeed = .first
+        }
+        updatePropellerButtonState()
     }
     
     @IBAction func relativeYawAction(_ sender: Any) {
@@ -159,6 +162,16 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         let o = node.orientation
         let q = RovQuaternion(x: Double(-o.x), y: Double(-o.z), z: Double(-o.y), w: Double(o.w))
         tridentView.setCameraPos(yaw: Float(-q.yaw))
+
+        NSApplication.shared.mainMenu?.recursiveSearch(tag: 11)!.state = .on
+        NSApplication.shared.mainMenu?.recursiveSearch(tag: 12)!.state = .off
+    }
+    
+    @IBAction func absoluteYawAction(_ sender: Any) {
+        tridentView.setCameraPos(yaw: .pi)
+        
+        NSApplication.shared.mainMenu?.recursiveSearch(tag: 11)!.state = .off
+        NSApplication.shared.mainMenu?.recursiveSearch(tag: 12)!.state = .on
     }
     
     @IBAction func stabilizeAction(_ sender: Any) {
@@ -173,13 +186,13 @@ class VideoViewController: NSViewController, NSWindowDelegate {
     }
     
     override func keyUp(with event: NSEvent) {
-        if !tridentDrive.processKeyEvent(event: event) {
+        if !tridentControl.processKeyEvent(event: event) {
             super.keyUp(with: event)
         }
     }
     
     override func keyDown(with event: NSEvent) {
-        if !tridentDrive.processKeyEvent(event: event) {
+        if !tridentControl.processKeyEvent(event: event) {
             super.keyDown(with: event)
         }
     }
@@ -206,8 +219,24 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         menuItem!.state = Preference.tridentStabilize ? .on:.off
     }
        
-    private func startRTPS() {
-        FastRTPS.startRTPS()
+    private func getConnection() {
+        var interfaceAddresses: Set<String> = []
+        DispatchQueue.global(qos: .userInteractive).async {
+            repeat {
+                interfaceAddresses = FastRTPS.getIP4Address()
+                if interfaceAddresses.isEmpty {
+                    Thread.sleep(forTimeInterval: 0.5)
+                }
+            } while interfaceAddresses.isEmpty
+            self.startRTPS(addresses: interfaceAddresses)
+        }
+    }
+
+    private func startRTPS(addresses: Set<String>) {
+        print(addresses)
+        let address = addresses.first { $0.starts(with: "10.1.1.") } ?? addresses.first!
+        let network = address + "/24"
+        FastRTPS.createParticipant(interfaceIPv4: address, networkAddress: network)
         registerReaders()
         registerWriters()
     }
@@ -215,10 +244,8 @@ class VideoViewController: NSViewController, NSWindowDelegate {
     private func stopRTPS() {
         FastRTPS.resignAll()
         FastRTPS.stopRTPS()
-        stopVideo()
     }
 
-    
     private func rovProvision(rovBeacon: RovBeacon) {
         self.rovBeacon = rovBeacon
         self.vehicleId = rovBeacon.uuid
@@ -228,7 +255,7 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
             self.view.layer?.contents = nil
         }
-        tridentDrive.start()
+        tridentControl.enable()
 
         let timeMs = UInt(Date().timeIntervalSince1970 * 1000)
         FastRTPS.send(topic: .rovDatetime, ddsData: String(timeMs))
@@ -241,15 +268,15 @@ class VideoViewController: NSViewController, NSWindowDelegate {
                                                    controllerId: .trident,
                                                    state: Preference.tridentStabilize ? .enabled : .disabled)
         FastRTPS.send(topic: .rovControllerStateRequested, ddsData: controllerStatus)
-        
+
         FastRTPS.removeReader(topic: .rovBeacon)
     }
     
-   private func stopVideo() {
-        videoDecoder.destroyVideoSession()
-    }
-    
     private func registerReaders() {
+        FastRTPS.registerReader(topic: .rovCamFwdH2640Video) { [weak self] (videoData: RovVideoData) in
+            self?.videoDecoder.decodeVideo(data: videoData.data, timestamp: videoData.timestamp)
+        }
+
         FastRTPS.registerReader(topic: .rovTempWater) { [weak self] (temp: RovTemperature) in
             DispatchQueue.main.async {
                 self?.temperature = temp.temperature.temperature
@@ -435,4 +462,41 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         FastRTPS.send(topic: .rovVidSessionReq, ddsData: videoSessionCommand)
     }
 
+}
+
+extension VideoViewController: TridentControlDelegate {
+    func control(pitch: Float, yaw: Float, thrust: Float, lift: Float) {
+        let tridentCommand = RovTridentControlTarget(id: "control", pitch: pitch, yaw: yaw, thrust: thrust, lift: lift)
+        FastRTPS.send(topic: .rovControlTarget, ddsData: tridentCommand)
+    }
+    
+    func updatePropellerButtonState() {
+        switch tridentControl.motorSpeed {
+        case .first?:
+            propellerButton.isHidden = false
+            propellerButton.image = NSImage(named: "Prop 1")
+        case .second?:
+            propellerButton.isHidden = false
+            propellerButton.image = NSImage(named: "Prop 2")
+        case .third?:
+            propellerButton.isHidden = false
+            propellerButton.image = NSImage(named: "Prop 3")
+        case nil:
+            propellerButton.isHidden = true
+        }
+    }
+    
+    func switchLight() {
+        let lightPower = RovLightPower(id: "fwd", power: lightOn ? 0:1)
+        FastRTPS.send(topic: .rovLightPowerRequested, ddsData: lightPower)
+    }
+    
+    func switchRecording() {
+        if let videoSessionId = videoSessionId {
+            stopRecordingSession(id: videoSessionId)
+        } else {
+            startRecordingSession(id: UUID())
+        }
+    }
+    
 }

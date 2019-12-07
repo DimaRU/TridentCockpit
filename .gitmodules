@@ -1,0 +1,4 @@
+[submodule "FastRTPSBridge"]
+	path = FastRTPSBridge
+	url = git@github.com:DimaRU/FastRTPSBridge.git
+	branch = develop

@@ -34,5 +34,7 @@
 	<true/>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
+	<key>CFBundleDisplayName</key>
+	<string>Trident Cockpit</string>
 </dict>
 </plist>
