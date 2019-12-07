@@ -16,10 +16,16 @@
 
 * Controls the Trident Underwater Drone by Sofar Ocean
 * Watch video stream from the drone
-* Keyboard and mouse control (gamepad in plans)
+* Keyboard, mouse and gamepad control 
 * Controls camera, light, stabilization
 * Realtime drone orientation view
 * View depth, temperature, camera and battery times
+
+## Supported gamepads
+
+* Xbox Wireless Controller
+* DualShock 4
+* MFi gamepad
 
 ## Keyboard Shortcuts
 
@@ -50,7 +56,6 @@
 | <kbd>Y</kbd> | Drone view relative yaw |
 | <kbd>A</kbd> | Drone view absolute yaw |
 
-
 ## Building from Source
 
 These instructions will get you a copy of the project up and running on your local machine for development purposes.
@@ -58,10 +63,9 @@ These instructions will get you a copy of the project up and running on your loc
 ### Required software
 
 * CMake
-* Carthage
 
 1. Install Xcode from App Store
-2. Install build tools by running `brew install carthage cmake`
+2. Install build tools by running `brew install cmake`
 
 
 
@@ -71,9 +75,8 @@ These instructions will get you a copy of the project up and running on your loc
 * Run from the terminal:
 
 ```
-git clone https://github.com/DimaRU/TridentCockpit.git
+git clone --recurse-submodules https://github.com/DimaRU/TridentCockpit.git
 cd TridentCockpit
-carthage update --platform macOS
 ```
 
 * Open TridentCockpit.xcodeproj in the [latest public version of Xcode](https://itunes.apple.com/us/app/xcode/id497799835). *TridentCockpit may not build if you use any other version.*
