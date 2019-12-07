@@ -15,8 +15,10 @@ final class FastRTPS {
     lazy var fastRTPSBridge: FastRTPSBridge? = FastRTPSBridge.init(logLevel: .error)
 #endif
     
-    class func createParticipant(ipv4: String? = nil) {
-        FastRTPS.shared.fastRTPSBridge?.createRTPSParticipant(withName: "TridentCockpitOSX", peerIPv4: ipv4)
+    class func createParticipant(interfaceIPv4: String? = nil, networkAddress: String? = nil) {
+        FastRTPS.shared.fastRTPSBridge?.createRTPSParticipant(withName: "TridentCockpitOSX",
+                                                              interfaceIPv4: interfaceIPv4,
+                                                              networkAddress: networkAddress)
     }
     
     class func setPartition(name: String) {

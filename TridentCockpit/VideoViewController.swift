@@ -99,7 +99,6 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         #if DEBUG
         setupNotifications()
         #endif
-        startRTPS()
     }
 
     func windowWillClose(_ notification: Notification) {
@@ -127,11 +126,8 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         if #available(OSX 10.15, *) {} else {
             DisplayManage.disableSleep()
         }
-
-        FastRTPS.registerReader(topic: .rovCamFwdH2640Video) { [weak self] (videoData: RovVideoData) in
-            self?.videoDecoder.decodeVideo(data: videoData.data, timestamp: videoData.timestamp)
-        }
         
+        getConnection()
     }
 
     override func viewWillDisappear() {
@@ -223,8 +219,24 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         menuItem!.state = Preference.tridentStabilize ? .on:.off
     }
        
-    private func startRTPS() {
-        FastRTPS.createParticipant()
+    private func getConnection() {
+        var interfaceAddresses: Set<String> = []
+        DispatchQueue.global(qos: .userInteractive).async {
+            repeat {
+                interfaceAddresses = FastRTPS.getIP4Address()
+                if interfaceAddresses.isEmpty {
+                    Thread.sleep(forTimeInterval: 0.5)
+                }
+            } while interfaceAddresses.isEmpty
+            self.startRTPS(addresses: interfaceAddresses)
+        }
+    }
+
+    private func startRTPS(addresses: Set<String>) {
+        print(addresses)
+        let address = addresses.first { $0.starts(with: "10.1.1.") } ?? addresses.first!
+        let network = address + "/24"
+        FastRTPS.createParticipant(interfaceIPv4: address, networkAddress: network)
         registerReaders()
         registerWriters()
     }
@@ -234,7 +246,6 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         FastRTPS.stopRTPS()
     }
 
-    
     private func rovProvision(rovBeacon: RovBeacon) {
         self.rovBeacon = rovBeacon
         self.vehicleId = rovBeacon.uuid
@@ -257,11 +268,15 @@ class VideoViewController: NSViewController, NSWindowDelegate {
                                                    controllerId: .trident,
                                                    state: Preference.tridentStabilize ? .enabled : .disabled)
         FastRTPS.send(topic: .rovControllerStateRequested, ddsData: controllerStatus)
-        
+
         FastRTPS.removeReader(topic: .rovBeacon)
     }
     
     private func registerReaders() {
+        FastRTPS.registerReader(topic: .rovCamFwdH2640Video) { [weak self] (videoData: RovVideoData) in
+            self?.videoDecoder.decodeVideo(data: videoData.data, timestamp: videoData.timestamp)
+        }
+
         FastRTPS.registerReader(topic: .rovTempWater) { [weak self] (temp: RovTemperature) in
             DispatchQueue.main.async {
                 self?.temperature = temp.temperature.temperature
