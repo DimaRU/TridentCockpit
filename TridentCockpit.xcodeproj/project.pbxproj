@@ -31,7 +31,7 @@
 		0A7130DC23636AF200817593 /* RovModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130D023636AF100817593 /* RovModelView.swift */; };
 		0A7130DD23636AF200817593 /* TridentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130D123636AF100817593 /* TridentControl.swift */; };
 		0A7130DE23636AF200817593 /* CameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130D223636AF200817593 /* CameraControlView.swift */; };
-		0A7130DF23636AF200817593 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130D323636AF200817593 /* VideoViewController.swift */; };
+		0A7130DF23636AF200817593 /* DiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130D323636AF200817593 /* DiveViewController.swift */; };
 		0A7130FD23636B0200817593 /* RovTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E123636B0200817593 /* RovTopic.swift */; };
 		0A7130FE23636B0200817593 /* RovBarometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E223636B0200817593 /* RovBarometer.swift */; };
 		0A7130FF23636B0200817593 /* I2CStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E323636B0200817593 /* I2CStats.swift */; };
@@ -168,7 +168,7 @@
 		0A7130D023636AF100817593 /* RovModelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovModelView.swift; sourceTree = "<group>"; };
 		0A7130D123636AF100817593 /* TridentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TridentControl.swift; sourceTree = "<group>"; };
 		0A7130D223636AF200817593 /* CameraControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraControlView.swift; sourceTree = "<group>"; };
-		0A7130D323636AF200817593 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		0A7130D323636AF200817593 /* DiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiveViewController.swift; sourceTree = "<group>"; };
 		0A7130E123636B0200817593 /* RovTopic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovTopic.swift; sourceTree = "<group>"; };
 		0A7130E223636B0200817593 /* RovBarometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovBarometer.swift; sourceTree = "<group>"; };
 		0A7130E323636B0200817593 /* I2CStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = I2CStats.swift; sourceTree = "<group>"; };
@@ -283,7 +283,7 @@
 			isa = PBXGroup;
 			children = (
 				0A7130CD23636AF100817593 /* AppDelegate.swift */,
-				0A7130D323636AF200817593 /* VideoViewController.swift */,
+				0A7130D323636AF200817593 /* DiveViewController.swift */,
 				0A7130D123636AF100817593 /* TridentControl.swift */,
 				0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */,
 				0A2E42BB236B0EE900B5C569 /* VideoView.swift */,
@@ -492,7 +492,7 @@
 				0A71311623636B0200817593 /* RovChannel.swift in Sources */,
 				0A7130FF23636B0200817593 /* I2CStats.swift in Sources */,
 				0A7130DC23636AF200817593 /* RovModelView.swift in Sources */,
-				0A7130DF23636AF200817593 /* VideoViewController.swift in Sources */,
+				0A7130DF23636AF200817593 /* DiveViewController.swift in Sources */,
 				0A7130D523636AF200817593 /* AutoSWindowController.swift in Sources */,
 				0A71310523636B0200817593 /* RovBeacon.swift in Sources */,
 				0A7130DD23636AF200817593 /* TridentControl.swift in Sources */,

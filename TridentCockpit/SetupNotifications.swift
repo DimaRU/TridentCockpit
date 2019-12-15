@@ -7,7 +7,7 @@
 import Foundation
 import FastRTPSBridge
 
-extension VideoViewController {
+extension DiveViewController {
     func setupNotifications() {
         NotificationCenter.default.addObserver(forName: .RTPSParticipantNotification, object: nil, queue: nil) { notification in
             guard let userInfo = notification.userInfo as? Dictionary<Int, Any>,

@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15505"/>
-        <plugIn identifier="com.apple.SceneKitIBPlugin" version="15505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <plugIn identifier="com.apple.SceneKitIBPlugin" version="15702"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -197,7 +196,6 @@
                     </connections>
                 </application>
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="TridentCockpit" customModuleProvider="target"/>
-                <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
@@ -216,17 +214,44 @@
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="Wgr-FD-Jeg" kind="relationship" relationship="window.shadowedContentViewController" id="VqC-vt-8rz"/>
+                        <segue destination="nS5-Qb-Teg" kind="relationship" relationship="window.shadowedContentViewController" id="hXb-CG-unI"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
-        <!--Video View Controller-->
+        <!--View Controller-->
+        <scene sceneID="VR9-5L-4YC">
+            <objects>
+                <viewController id="nS5-Qb-Teg" sceneMemberID="viewController">
+                    <view key="view" id="7nj-wr-sCV">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <containerView translatesAutoresizingMaskIntoConstraints="NO" id="aZI-1g-UXj">
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <connections>
+                                    <segue destination="Wgr-FD-Jeg" kind="embed" id="tcc-Au-Dry"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="aZI-1g-UXj" firstAttribute="leading" secondItem="7nj-wr-sCV" secondAttribute="leading" id="LJN-Ws-MKh"/>
+                            <constraint firstAttribute="bottom" secondItem="aZI-1g-UXj" secondAttribute="bottom" id="ba8-rl-QzQ"/>
+                            <constraint firstAttribute="trailing" secondItem="aZI-1g-UXj" secondAttribute="trailing" id="hXA-W9-TXC"/>
+                            <constraint firstItem="aZI-1g-UXj" firstAttribute="top" secondItem="7nj-wr-sCV" secondAttribute="top" id="pGA-lm-NOk"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="TOo-29-Q1x" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="618" y="250"/>
+        </scene>
+        <!--Dive View Controller-->
         <scene sceneID="jBG-fP-4Z9">
             <objects>
-                <viewController id="Wgr-FD-Jeg" customClass="VideoViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Wgr-FD-Jeg" customClass="DiveViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" focusRingType="none" id="Rxz-w6-QWt">
                         <rect key="frame" x="0.0" y="0.0" width="641" height="361"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -477,7 +502,7 @@
                 </viewController>
                 <customObject id="Z09-aO-Sxq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-14.5" y="785.5"/>
+            <point key="canvasLocation" x="208" y="707"/>
         </scene>
     </scenes>
     <resources>

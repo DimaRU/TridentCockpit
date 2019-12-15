@@ -1,5 +1,5 @@
 /////
-////  VideoViewController.swift
+////  DiveViewController.swift
 ///   Copyright © 2019 Dmitriy Borovikov. All rights reserved.
 //
 
@@ -7,7 +7,7 @@ import Cocoa
 import SceneKit
 import FastRTPSBridge
 
-class VideoViewController: NSViewController, NSWindowDelegate {
+class DiveViewController: NSViewController, NSWindowDelegate {
     @IBOutlet weak var videoView: VideoView!
     @IBOutlet weak var depthLabel: NSTextField!
     @IBOutlet weak var tempLabel: NSTextField!
@@ -69,7 +69,7 @@ class VideoViewController: NSViewController, NSWindowDelegate {
 
     #if DEBUG
     deinit {
-        print("Deinit VideoViewController")
+        print("Deinit DiveViewController")
     }
     #endif
 
@@ -464,7 +464,7 @@ class VideoViewController: NSViewController, NSWindowDelegate {
 
 }
 
-extension VideoViewController: TridentControlDelegate {
+extension DiveViewController: TridentControlDelegate {
     func control(pitch: Float, yaw: Float, thrust: Float, lift: Float) {
         let tridentCommand = RovTridentControlTarget(id: "control", pitch: pitch, yaw: yaw, thrust: thrust, lift: lift)
         FastRTPS.send(topic: .rovControlTarget, ddsData: tridentCommand)
