@@ -64,6 +64,8 @@
 		0A71311C23636B5C00817593 /* TridentCockpit.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A71311B23636B5C00817593 /* TridentCockpit.scnassets */; };
 		0A71313B23637F0700817593 /* FastRTPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71313A23637F0700817593 /* FastRTPS.swift */; };
 		0A84F9CE237B37BF009BBAD4 /* SetupNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */; };
+		0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; };
+		0AF69E0423A601220037DBDD /* SwiftSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,27 @@
 			proxyType = 2;
 			remoteGlobalIDString = 0A8A37DB2366DB1B008E8DC1;
 			remoteInfo = "FastRTPSBridge iOS";
+		};
+		0AF69DFD23A600FA0037DBDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 180BD1FF1B4C622D000DB241;
+			remoteInfo = "SwiftSH-iOS";
+		};
+		0AF69DFF23A600FA0037DBDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A479FDA239E9F8F00699CE1;
+			remoteInfo = "SwiftSH-macOS";
+		};
+		0AF69E0123A600FA0037DBDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D148CFA21225961009C1CCC;
+			remoteInfo = "SwiftSH Integration Tests";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -109,6 +132,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				0A597910239583AB006F10FF /* FastRTPSBridge.framework in Embed Frameworks */,
+				0AF69E0423A601220037DBDD /* SwiftSH.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,6 +199,7 @@
 		0A71311B23636B5C00817593 /* TridentCockpit.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = TridentCockpit.scnassets; sourceTree = "<group>"; };
 		0A71313A23637F0700817593 /* FastRTPS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastRTPS.swift; sourceTree = "<group>"; };
 		0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNotifications.swift; sourceTree = "<group>"; };
+		0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftSH.xcodeproj; path = SwiftSH/SwiftSH.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */,
+				0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +258,7 @@
 		0A7130AB236369EA00817593 = {
 			isa = PBXGroup;
 			children = (
+				0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */,
 				0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */,
 				0A7130B6236369EA00817593 /* TridentCockpit */,
 				0A5CBC9A23675F410055131A /* Fonts */,
@@ -311,6 +338,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		0AF69DF223A600FA0037DBDD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0AF69DFE23A600FA0037DBDD /* SwiftSH.framework */,
+				0AF69E0023A600FA0037DBDD /* SwiftSH.framework */,
+				0AF69E0223A600FA0037DBDD /* SwiftSH Integration Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -369,6 +406,10 @@
 					ProductGroup = 0A59790423958380006F10FF /* Products */;
 					ProjectRef = 0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */;
 				},
+				{
+					ProductGroup = 0AF69DF223A600FA0037DBDD /* Products */;
+					ProjectRef = 0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -390,6 +431,27 @@
 			fileType = wrapper.framework;
 			path = FastRTPSBridge.framework;
 			remoteRef = 0A59790C23958380006F10FF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0AF69DFE23A600FA0037DBDD /* SwiftSH.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftSH.framework;
+			remoteRef = 0AF69DFD23A600FA0037DBDD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0AF69E0023A600FA0037DBDD /* SwiftSH.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftSH.framework;
+			remoteRef = 0AF69DFF23A600FA0037DBDD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0AF69E0223A600FA0037DBDD /* SwiftSH Integration Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftSH Integration Tests.xctest";
+			remoteRef = 0AF69E0123A600FA0037DBDD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

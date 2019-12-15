@@ -2,3 +2,6 @@
 	path = FastRTPSBridge
 	url = git@github.com:DimaRU/FastRTPSBridge.git
 	branch = develop
+[submodule "SwiftSH"]
+	path = SwiftSH
+	url = https://github.com/DimaRU/SwiftSH.git
