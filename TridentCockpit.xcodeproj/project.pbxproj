@@ -63,6 +63,11 @@
 		0A71311A23636B1700817593 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A71311923636B1700817593 /* Main.storyboard */; };
 		0A71311C23636B5C00817593 /* TridentCockpit.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A71311B23636B5C00817593 /* TridentCockpit.scnassets */; };
 		0A71313B23637F0700817593 /* FastRTPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71313A23637F0700817593 /* FastRTPS.swift */; };
+		0A82780A23A63B220039A774 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780023A63B220039A774 /* DashboardViewController.swift */; };
+		0A82780C23A63B2D0039A774 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780B23A63B2D0039A774 /* WindowController.swift */; };
+		0A82781023A641230039A774 /* PastDivesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780F23A641230039A774 /* PastDivesViewController.swift */; };
+		0A82781223A641750039A774 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781123A641750039A774 /* MaintenanceViewController.swift */; };
+		0A82781423A689E70039A774 /* NSToolbarItemIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781323A689E70039A774 /* NSToolbarItemIdentifier.swift */; };
 		0A84F9CE237B37BF009BBAD4 /* SetupNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */; };
 		0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; };
 		0AF69E0423A601220037DBDD /* SwiftSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -200,6 +205,11 @@
 		0A71311923636B1700817593 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0A71311B23636B5C00817593 /* TridentCockpit.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = TridentCockpit.scnassets; sourceTree = "<group>"; };
 		0A71313A23637F0700817593 /* FastRTPS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastRTPS.swift; sourceTree = "<group>"; };
+		0A82780023A63B220039A774 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		0A82780B23A63B2D0039A774 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		0A82780F23A641230039A774 /* PastDivesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastDivesViewController.swift; sourceTree = "<group>"; };
+		0A82781123A641750039A774 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
+		0A82781323A689E70039A774 /* NSToolbarItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSToolbarItemIdentifier.swift; sourceTree = "<group>"; };
 		0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNotifications.swift; sourceTree = "<group>"; };
 		0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftSH.xcodeproj; path = SwiftSH/SwiftSH.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -284,6 +294,11 @@
 			children = (
 				0A7130CD23636AF100817593 /* AppDelegate.swift */,
 				0A7130D323636AF200817593 /* DiveViewController.swift */,
+				0A82780023A63B220039A774 /* DashboardViewController.swift */,
+				0A82780F23A641230039A774 /* PastDivesViewController.swift */,
+				0A82781123A641750039A774 /* MaintenanceViewController.swift */,
+				0A82780B23A63B2D0039A774 /* WindowController.swift */,
+				0A82781323A689E70039A774 /* NSToolbarItemIdentifier.swift */,
 				0A7130D123636AF100817593 /* TridentControl.swift */,
 				0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */,
 				0A2E42BB236B0EE900B5C569 /* VideoView.swift */,
@@ -501,6 +516,7 @@
 				0A7130D723636AF200817593 /* DisplayManage.swift in Sources */,
 				0A7130FD23636B0200817593 /* RovTopic.swift in Sources */,
 				0A7130DA23636AF200817593 /* FloatingViewProtocol.swift in Sources */,
+				0A82780A23A63B220039A774 /* DashboardViewController.swift in Sources */,
 				0A71310023636B0200817593 /* BatteryState.swift in Sources */,
 				0A7130D623636AF200817593 /* Extensions.swift in Sources */,
 				0A7130DE23636AF200817593 /* CameraControlView.swift in Sources */,
@@ -511,9 +527,12 @@
 				0A71310623636B0200817593 /* RovQuaternion+extensions.swift in Sources */,
 				0A71311223636B0200817593 /* DDSTypeString.swift in Sources */,
 				0A71311723636B0200817593 /* RovCamera.swift in Sources */,
+				0A82781223A641750039A774 /* MaintenanceViewController.swift in Sources */,
 				0A71310F23636B0200817593 /* RovDepth.swift in Sources */,
+				0A82780C23A63B2D0039A774 /* WindowController.swift in Sources */,
 				0A71311323636B0200817593 /* RovRecording.swift in Sources */,
 				0A71310D23636B0200817593 /* RovTridentMotorCommand.swift in Sources */,
+				0A82781023A641230039A774 /* PastDivesViewController.swift in Sources */,
 				0A7130D823636AF200817593 /* VideoDecoder.swift in Sources */,
 				0A71310323636B0200817593 /* RovVector3.swift in Sources */,
 				0A71310423636B0200817593 /* RovControlDescriptor.swift in Sources */,
@@ -524,6 +543,7 @@
 				0A71310E23636B0200817593 /* RovTemperature.swift in Sources */,
 				0A7130D423636AF200817593 /* FlatButton.swift in Sources */,
 				0A7130FE23636B0200817593 /* RovBarometer.swift in Sources */,
+				0A82781423A689E70039A774 /* NSToolbarItemIdentifier.swift in Sources */,
 				0A71310B23636B0200817593 /* RovTridentControlTarget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

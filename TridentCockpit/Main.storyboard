@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
         <plugIn identifier="com.apple.SceneKitIBPlugin" version="15702"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
@@ -203,7 +204,7 @@
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="AutoSWindowController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
+                <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" customClass="WindowController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
                     <window key="window" title="Connecting to Trident..." allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="VideoWindow" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
@@ -232,7 +233,7 @@
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="aZI-1g-UXj">
                                 <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
                                 <connections>
-                                    <segue destination="Wgr-FD-Jeg" kind="embed" id="tcc-Au-Dry"/>
+                                    <segue destination="eM0-Cy-sgR" kind="embed" id="IhN-nf-JrO"/>
                                 </connections>
                             </containerView>
                         </subviews>
@@ -247,6 +248,22 @@
                 <customObject id="TOo-29-Q1x" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="618" y="250"/>
+        </scene>
+        <!--Dashboard View Controller-->
+        <scene sceneID="lQm-bc-DVh">
+            <objects>
+                <viewController id="eM0-Cy-sgR" customClass="DashboardViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="cjp-Az-cgx">
+                        <rect key="frame" x="0.0" y="0.0" width="524" height="361"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                    <connections>
+                        <segue destination="Wgr-FD-Jeg" kind="custom" customClass="SlideUpSegue" customModule="CustomSegue" id="UTz-4g-bmR"/>
+                    </connections>
+                </viewController>
+                <customObject id="IFr-xP-tTH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="355" y="733.5"/>
         </scene>
         <!--Dive View Controller-->
         <scene sceneID="jBG-fP-4Z9">
@@ -502,7 +519,7 @@
                 </viewController>
                 <customObject id="Z09-aO-Sxq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="208" y="707"/>
+            <point key="canvasLocation" x="1057" y="734"/>
         </scene>
     </scenes>
     <resources>
