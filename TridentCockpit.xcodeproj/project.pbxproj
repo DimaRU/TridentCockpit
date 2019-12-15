@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -66,6 +66,8 @@
 		0A84F9CE237B37BF009BBAD4 /* SetupNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */; };
 		0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; };
 		0AF69E0423A601220037DBDD /* SwiftSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0AF69E0723A603AF0037DBDD /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0AF69E0623A603AF0037DBDD /* Moya */; };
+		0AF69E0A23A604580037DBDD /* CustomSegue in Frameworks */ = {isa = PBXBuildFile; productRef = 0AF69E0923A604580037DBDD /* CustomSegue */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -209,6 +211,8 @@
 			files = (
 				0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */,
 				0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */,
+				0AF69E0723A603AF0037DBDD /* Moya in Frameworks */,
+				0AF69E0A23A604580037DBDD /* CustomSegue in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,6 +371,8 @@
 			);
 			name = TridentCockpit;
 			packageProductDependencies = (
+				0AF69E0623A603AF0037DBDD /* Moya */,
+				0AF69E0923A604580037DBDD /* CustomSegue */,
 			);
 			productName = TridentCockpit;
 			productReference = 0A7130B4236369EA00817593 /* TridentCockpit.app */;
@@ -398,6 +404,8 @@
 			);
 			mainGroup = 0A7130AB236369EA00817593;
 			packageReferences = (
+				0AF69E0523A603AF0037DBDD /* XCRemoteSwiftPackageReference "Moya" */,
+				0AF69E0823A604580037DBDD /* XCRemoteSwiftPackageReference "CustomSegue" */,
 			);
 			productRefGroup = 0A7130B5236369EA00817593 /* Products */;
 			projectDirPath = "";
@@ -717,6 +725,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0AF69E0523A603AF0037DBDD /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:Moya/Moya.git";
+			requirement = {
+				kind = exactVersion;
+				version = "14.0.0-beta.6";
+			};
+		};
+		0AF69E0823A604580037DBDD /* XCRemoteSwiftPackageReference "CustomSegue" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DimaRU/CustomSegue.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0AF69E0623A603AF0037DBDD /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AF69E0523A603AF0037DBDD /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		0AF69E0923A604580037DBDD /* CustomSegue */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AF69E0823A604580037DBDD /* XCRemoteSwiftPackageReference "CustomSegue" */;
+			productName = CustomSegue;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0A7130AC236369EA00817593 /* Project object */;
 }
