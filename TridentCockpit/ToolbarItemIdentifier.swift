@@ -1,5 +1,5 @@
 /////
-////  NSToolbarItemIdentifier.swift
+////  ToolbarItemIdentifier.swift
 ///   Copyright © 2019 Dmitriy Borovikov. All rights reserved.
 //
 
@@ -7,7 +7,7 @@
 import Cocoa
 
 // Tag: - ItemIdentifiers
-extension NSToolbarItem.Identifier {
+public extension NSToolbarItem.Identifier {
     static let goDive: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "GoDive")
     static let goMaintenance: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "GoMaintenance")
     static let goPastDives: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "GoPastDives")

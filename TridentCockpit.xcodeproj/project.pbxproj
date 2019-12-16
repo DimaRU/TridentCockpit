@@ -21,7 +21,6 @@
 		0A5CBCB523675F920055131A /* SF-Pro-Display-Ultralight.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA223675F410055131A /* SF-Pro-Display-Ultralight.otf */; };
 		0A5CBCB623675F920055131A /* SF-Pro-Display-Black.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA323675F410055131A /* SF-Pro-Display-Black.otf */; };
 		0A7130D423636AF200817593 /* FlatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130C823636AF100817593 /* FlatButton.swift */; };
-		0A7130D523636AF200817593 /* AutoSWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130C923636AF100817593 /* AutoSWindowController.swift */; };
 		0A7130D623636AF200817593 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CA23636AF100817593 /* Extensions.swift */; };
 		0A7130D723636AF200817593 /* DisplayManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CB23636AF100817593 /* DisplayManage.swift */; };
 		0A7130D823636AF200817593 /* VideoDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CC23636AF100817593 /* VideoDecoder.swift */; };
@@ -67,7 +66,7 @@
 		0A82780C23A63B2D0039A774 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780B23A63B2D0039A774 /* WindowController.swift */; };
 		0A82781023A641230039A774 /* PastDivesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780F23A641230039A774 /* PastDivesViewController.swift */; };
 		0A82781223A641750039A774 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781123A641750039A774 /* MaintenanceViewController.swift */; };
-		0A82781423A689E70039A774 /* NSToolbarItemIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781323A689E70039A774 /* NSToolbarItemIdentifier.swift */; };
+		0A82781423A689E70039A774 /* ToolbarItemIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */; };
 		0A84F9CE237B37BF009BBAD4 /* SetupNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */; };
 		0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; };
 		0AF69E0423A601220037DBDD /* SwiftSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -163,7 +162,6 @@
 		0A7130B4236369EA00817593 /* TridentCockpit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TridentCockpit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A7130C0236369EC00817593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A7130C823636AF100817593 /* FlatButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatButton.swift; sourceTree = "<group>"; };
-		0A7130C923636AF100817593 /* AutoSWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoSWindowController.swift; sourceTree = "<group>"; };
 		0A7130CA23636AF100817593 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0A7130CB23636AF100817593 /* DisplayManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayManage.swift; sourceTree = "<group>"; };
 		0A7130CC23636AF100817593 /* VideoDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDecoder.swift; sourceTree = "<group>"; };
@@ -209,7 +207,7 @@
 		0A82780B23A63B2D0039A774 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		0A82780F23A641230039A774 /* PastDivesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastDivesViewController.swift; sourceTree = "<group>"; };
 		0A82781123A641750039A774 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
-		0A82781323A689E70039A774 /* NSToolbarItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSToolbarItemIdentifier.swift; sourceTree = "<group>"; };
+		0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemIdentifier.swift; sourceTree = "<group>"; };
 		0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNotifications.swift; sourceTree = "<group>"; };
 		0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftSH.xcodeproj; path = SwiftSH/SwiftSH.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -297,13 +295,12 @@
 				0A82780023A63B220039A774 /* DashboardViewController.swift */,
 				0A82780F23A641230039A774 /* PastDivesViewController.swift */,
 				0A82781123A641750039A774 /* MaintenanceViewController.swift */,
+				0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */,
 				0A82780B23A63B2D0039A774 /* WindowController.swift */,
-				0A82781323A689E70039A774 /* NSToolbarItemIdentifier.swift */,
 				0A7130D123636AF100817593 /* TridentControl.swift */,
 				0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */,
 				0A2E42BB236B0EE900B5C569 /* VideoView.swift */,
 				0A7130CC23636AF100817593 /* VideoDecoder.swift */,
-				0A7130C923636AF100817593 /* AutoSWindowController.swift */,
 				0A7130D223636AF200817593 /* CameraControlView.swift */,
 				0A7130CB23636AF100817593 /* DisplayManage.swift */,
 				0A7130CA23636AF100817593 /* Extensions.swift */,
@@ -508,7 +505,6 @@
 				0A7130FF23636B0200817593 /* I2CStats.swift in Sources */,
 				0A7130DC23636AF200817593 /* RovModelView.swift in Sources */,
 				0A7130DF23636AF200817593 /* DiveViewController.swift in Sources */,
-				0A7130D523636AF200817593 /* AutoSWindowController.swift in Sources */,
 				0A71310523636B0200817593 /* RovBeacon.swift in Sources */,
 				0A7130DD23636AF200817593 /* TridentControl.swift in Sources */,
 				0A71310723636B0200817593 /* RovFuelgauge.swift in Sources */,
@@ -543,7 +539,7 @@
 				0A71310E23636B0200817593 /* RovTemperature.swift in Sources */,
 				0A7130D423636AF200817593 /* FlatButton.swift in Sources */,
 				0A7130FE23636B0200817593 /* RovBarometer.swift in Sources */,
-				0A82781423A689E70039A774 /* NSToolbarItemIdentifier.swift in Sources */,
+				0A82781423A689E70039A774 /* ToolbarItemIdentifier.swift in Sources */,
 				0A71310B23636B0200817593 /* RovTridentControlTarget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

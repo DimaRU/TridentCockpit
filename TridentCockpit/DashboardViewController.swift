@@ -10,7 +10,6 @@ class DashboardViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do view setup here.
     }
     
     override func viewDidAppear() {
@@ -20,7 +19,7 @@ class DashboardViewController: NSViewController {
     
     override func viewWillDisappear() {
         print(self.className, #function)
-        view.window?.toolbar?.isVisible = true
+        view.window?.toolbar?.isVisible = false
     }
 
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {

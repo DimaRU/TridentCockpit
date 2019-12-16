@@ -210,15 +210,38 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <toolbar key="toolbar" implicitIdentifier="E14C390F-6303-454D-AC83-1805E97BB5AF" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="55l-dw-dTn">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="jZC-29-Icu"/>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="nbb-27-jKc"/>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="nbb-27-jKc"/>
+                            </defaultToolbarItems>
+                            <connections>
+                                <outlet property="delegate" destination="B8D-0N-5wS" id="ovm-iU-mX7"/>
+                            </connections>
+                        </toolbar>
                         <connections>
                             <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
                         </connections>
                     </window>
                     <connections>
+                        <outlet property="ssidLabel" destination="FqZ-zs-65h" id="UhJ-sD-T1S"/>
+                        <outlet property="toolbar" destination="55l-dw-dTn" id="SAP-rF-hyy"/>
                         <segue destination="nS5-Qb-Teg" kind="relationship" relationship="window.shadowedContentViewController" id="hXb-CG-unI"/>
                     </connections>
                 </windowController>
                 <customObject id="Oky-zY-oP4" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="FqZ-zs-65h">
+                    <rect key="frame" x="0.0" y="0.0" width="98" height="16"/>
+                    <autoresizingMask key="autoresizingMask"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Not connected" id="6nw-br-J1z">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
@@ -227,11 +250,11 @@
             <objects>
                 <viewController id="nS5-Qb-Teg" sceneMemberID="viewController">
                     <view key="view" id="7nj-wr-sCV">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="481" height="315"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <containerView translatesAutoresizingMaskIntoConstraints="NO" id="aZI-1g-UXj">
-                                <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                                <rect key="frame" x="0.0" y="0.0" width="481" height="315"/>
                                 <connections>
                                     <segue destination="eM0-Cy-sgR" kind="embed" id="IhN-nf-JrO"/>
                                 </connections>
@@ -247,7 +270,7 @@
                 </viewController>
                 <customObject id="TOo-29-Q1x" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="618" y="250"/>
+            <point key="canvasLocation" x="662" y="228"/>
         </scene>
         <!--Dashboard View Controller-->
         <scene sceneID="lQm-bc-DVh">
@@ -258,12 +281,27 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                     <connections>
-                        <segue destination="Wgr-FD-Jeg" kind="custom" customClass="SlideUpSegue" customModule="CustomSegue" id="UTz-4g-bmR"/>
+                        <segue destination="Wgr-FD-Jeg" kind="custom" identifier="DiveSeque" customClass="SlideUpSegue" customModule="CustomSegue" id="UTz-4g-bmR"/>
+                        <segue destination="UI2-uK-lo2" kind="custom" identifier="MaintenanceSeque" customClass="SlideUpSegue" customModule="CustomSegue" id="80c-eX-ggM"/>
+                        <segue destination="8Wy-DL-cpJ" kind="custom" identifier="PastDivesSegue" customClass="SlideUpSegue" customModule="CustomSegue" id="trF-oa-fo6"/>
                     </connections>
                 </viewController>
                 <customObject id="IFr-xP-tTH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="355" y="733.5"/>
+            <point key="canvasLocation" x="318" y="708"/>
+        </scene>
+        <!--Maintenance View Controller-->
+        <scene sceneID="cDq-Nm-nDq">
+            <objects>
+                <viewController id="UI2-uK-lo2" customClass="MaintenanceViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="s2l-EA-Z7j">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="Xob-EL-jEy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="230" y="1227"/>
         </scene>
         <!--Dive View Controller-->
         <scene sceneID="jBG-fP-4Z9">
@@ -519,7 +557,20 @@
                 </viewController>
                 <customObject id="Z09-aO-Sxq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1057" y="734"/>
+            <point key="canvasLocation" x="1018" y="708"/>
+        </scene>
+        <!--Past Dives View Controller-->
+        <scene sceneID="aaM-nB-Rxz">
+            <objects>
+                <viewController id="8Wy-DL-cpJ" customClass="PastDivesViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="3rJ-NR-UER">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="ehI-2k-QYV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="745" y="1227"/>
         </scene>
     </scenes>
     <resources>

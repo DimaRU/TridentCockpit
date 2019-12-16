@@ -8,7 +8,8 @@ import Cocoa
 class WindowController: NSWindowController {
 
     @IBOutlet weak var toolbar: NSToolbar!
-
+    @IBOutlet var ssidLabel: NSTextField!
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         self.windowFrameAutosaveName = "TridentVideoWindow"
@@ -50,6 +51,16 @@ extension WindowController: NSToolbarDelegate {
             toolbarItem.paletteLabel = NSLocalizedString("Past Dives", comment: "")
             toolbarItem.toolTip = NSLocalizedString("View Past Dives video", comment: "")
             toolbarItem.image = NSImage(named: NSImage.quickLookTemplateName)!
+        case .connectWiFi:
+            toolbarItem.label = NSLocalizedString("WiFi connect", comment: "")
+            toolbarItem.paletteLabel = NSLocalizedString("WiFi connect", comment: "")
+            toolbarItem.toolTip = NSLocalizedString("Connect Trident WiFi", comment: "")
+            toolbarItem.image = NSImage(named: "wifi")!
+        case .wifiSSID:
+            toolbarItem.label = NSLocalizedString("", comment: "")
+            toolbarItem.paletteLabel = NSLocalizedString("WiFi connect", comment: "")
+            toolbarItem.toolTip = NSLocalizedString("Connected SSID", comment: "")
+            toolbarItem.view = ssidLabel
         default:
             break
         }
@@ -64,6 +75,9 @@ extension WindowController: NSToolbarDelegate {
         case .goDive:
             addedItem.target = self
             addedItem.action = #selector(goDiveScreen(_:))
+        case .goMaintenance:
+            addedItem.target = self
+            addedItem.action = #selector(goMaintenanceScreen(_:))
         case .goPastDives:
             addedItem.target = self
             addedItem.action = #selector(goPastDivesScreen(_:))
@@ -72,11 +86,15 @@ extension WindowController: NSToolbarDelegate {
     }
     
     @IBAction func goDiveScreen(_ sender: Any?) {
-        self.contentViewController?.children.first?.performSegue(withIdentifier: "DiveSeque", sender: sender)
         toolbar.isVisible = false
+        self.contentViewController?.children.first?.performSegue(withIdentifier: "DiveSeque", sender: sender)
     }
     
-    
+    @IBAction func goMaintenanceScreen(_ sender: Any?) {
+        self.contentViewController?.children.first?.performSegue(withIdentifier: "MaintenanceSeque", sender: sender)
+        toolbar.isVisible = false
+    }
+
     @IBAction func goPastDivesScreen(_ sender: Any?) {
         self.contentViewController?.children.first?.performSegue(withIdentifier: "PastDivesSegue", sender: sender)
         toolbar.isVisible = false
@@ -84,11 +102,13 @@ extension WindowController: NSToolbarDelegate {
 
     /// - Tag: DefaultIdentifiers
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        print(#function)
         return [
-            NSToolbarItem.Identifier.goDive,
-            NSToolbarItem.Identifier.goMaintenance,
-            NSToolbarItem.Identifier.goPastDives
+            .goDive,
+            .goMaintenance,
+            .goPastDives,
+            .space,
+            .connectWiFi,
+            .wifiSSID
         ]
     }
 

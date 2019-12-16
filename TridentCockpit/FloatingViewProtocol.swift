@@ -23,19 +23,19 @@ protocol FloatingViewProtocol: NSView {
 extension FloatingViewProtocol {
     func addConstraints() {
         guard xConstraint == nil else { return }
-        guard let superview = superview, let window = window else { return }
+        guard let superview = superview else { return }
         let (defcph, defcpv) = loadPosition()
         let x, y: CGFloat
         if defcph != nil, defcpv != nil {
             cph = defcph!
             cpv = defcpv!
-            x = cph * window.frame.width
-            y = cpv * window.frame.height
+            x = cph * superview.frame.width
+            y = cpv * superview.frame.height
         } else {
             x = frame.midX
             y = frame.midY
-            cph = x / window.frame.width
-            cpv = y / window.frame.height
+            cph = x / superview.frame.width
+            cpv = y / superview.frame.height
         }
         xConstraint = self.centerXAnchor.constraint(equalTo: superview.leadingAnchor, constant: x)
         yConstraint = superview.bottomAnchor.constraint(equalTo: self.centerYAnchor, constant: y)

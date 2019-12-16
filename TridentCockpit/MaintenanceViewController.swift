@@ -6,10 +6,9 @@
 
 import Cocoa
 
-class MaintenanceViewController: NSWindowController {
+class MaintenanceViewController: NSViewController {
 
-    override func windowDidLoad() {
-        super.windowDidLoad()
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
-
 }
