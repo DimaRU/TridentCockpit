@@ -99,6 +99,15 @@ class DiveViewController: NSViewController, NSWindowDelegate {
         #if DEBUG
         setupNotifications()
         #endif
+
+        cameraControlView.addConstraints()
+        tridentView.addConstraints()
+        view.postsFrameChangedNotifications = true
+        NotificationCenter.default.addObserver(forName: NSView.frameDidChangeNotification, object: nil, queue: nil) { [weak self] _ in
+            self?.cameraControlView.superViewDidResize()
+            self?.tridentView.superViewDidResize()
+
+        }
     }
 
     func windowWillClose(_ notification: Notification) {
@@ -108,17 +117,9 @@ class DiveViewController: NSViewController, NSWindowDelegate {
         DisplayManage.enableSleep()
     }
     
-    func windowDidResize(_ notification: Notification) {
-        cameraControlView.windowDidResize()
-        tridentView.windowDidResize()
-    }
-
     override func viewWillAppear() {
         super.viewWillAppear()
-        view.window?.title = "Connecting to Trident..."
         view.window?.delegate = self
-        cameraControlView.addConstraints()
-        tridentView.addConstraints()
     }
 
     override func viewDidAppear() {
