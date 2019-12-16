@@ -138,7 +138,7 @@ final class VideoDecoder {
         
     }
     
-    func destroyVideoSession() {
+    func cleanup() {
         sampleBufferLayer.flush()
         formatDescription = nil
     }

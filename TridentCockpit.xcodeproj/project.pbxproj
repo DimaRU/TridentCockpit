@@ -22,7 +22,7 @@
 		0A5CBCB623675F920055131A /* SF-Pro-Display-Black.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA323675F410055131A /* SF-Pro-Display-Black.otf */; };
 		0A7130D423636AF200817593 /* FlatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130C823636AF100817593 /* FlatButton.swift */; };
 		0A7130D623636AF200817593 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CA23636AF100817593 /* Extensions.swift */; };
-		0A7130D723636AF200817593 /* DisplayManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CB23636AF100817593 /* DisplayManage.swift */; };
+		0A7130D723636AF200817593 /* DisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CB23636AF100817593 /* DisplayManager.swift */; };
 		0A7130D823636AF200817593 /* VideoDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CC23636AF100817593 /* VideoDecoder.swift */; };
 		0A7130D923636AF200817593 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CD23636AF100817593 /* AppDelegate.swift */; };
 		0A7130DA23636AF200817593 /* FloatingViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */; };
@@ -163,7 +163,7 @@
 		0A7130C0236369EC00817593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A7130C823636AF100817593 /* FlatButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatButton.swift; sourceTree = "<group>"; };
 		0A7130CA23636AF100817593 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		0A7130CB23636AF100817593 /* DisplayManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayManage.swift; sourceTree = "<group>"; };
+		0A7130CB23636AF100817593 /* DisplayManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayManager.swift; sourceTree = "<group>"; };
 		0A7130CC23636AF100817593 /* VideoDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDecoder.swift; sourceTree = "<group>"; };
 		0A7130CD23636AF100817593 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingViewProtocol.swift; sourceTree = "<group>"; };
@@ -302,7 +302,7 @@
 				0A2E42BB236B0EE900B5C569 /* VideoView.swift */,
 				0A7130CC23636AF100817593 /* VideoDecoder.swift */,
 				0A7130D223636AF200817593 /* CameraControlView.swift */,
-				0A7130CB23636AF100817593 /* DisplayManage.swift */,
+				0A7130CB23636AF100817593 /* DisplayManager.swift */,
 				0A7130CA23636AF100817593 /* Extensions.swift */,
 				0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */,
 				0A7130CF23636AF100817593 /* Preferences.swift */,
@@ -509,7 +509,7 @@
 				0A7130DD23636AF200817593 /* TridentControl.swift in Sources */,
 				0A71310723636B0200817593 /* RovFuelgauge.swift in Sources */,
 				0A71311023636B0200817593 /* RovQuaternion.swift in Sources */,
-				0A7130D723636AF200817593 /* DisplayManage.swift in Sources */,
+				0A7130D723636AF200817593 /* DisplayManager.swift in Sources */,
 				0A7130FD23636B0200817593 /* RovTopic.swift in Sources */,
 				0A7130DA23636AF200817593 /* FloatingViewProtocol.swift in Sources */,
 				0A82780A23A63B220039A774 /* DashboardViewController.swift in Sources */,

@@ -106,15 +106,15 @@ class DiveViewController: NSViewController, NSWindowDelegate {
         NotificationCenter.default.addObserver(forName: NSView.frameDidChangeNotification, object: nil, queue: nil) { [weak self] _ in
             self?.cameraControlView.superViewDidResize()
             self?.tridentView.superViewDidResize()
-
         }
     }
 
     func windowWillClose(_ notification: Notification) {
         tridentControl.disable()
-        stopRTPS()
-        videoDecoder.destroyVideoSession()
-        DisplayManage.enableSleep()
+        FastRTPS.resignAll()
+        FastRTPS.stopRTPS()
+        videoDecoder.cleanup()
+        DisplayManager.enableSleep()
     }
     
     override func viewWillAppear() {
@@ -125,7 +125,7 @@ class DiveViewController: NSViewController, NSWindowDelegate {
     override func viewDidAppear() {
         super.viewDidAppear()
         if #available(OSX 10.15, *) {} else {
-            DisplayManage.disableSleep()
+            DisplayManager.disableSleep()
         }
         
         getConnection()
@@ -136,7 +136,7 @@ class DiveViewController: NSViewController, NSWindowDelegate {
         tridentControl.disable()
         FastRTPS.removeReader(topic: .rovCamFwdH2640Video)
         if #available(OSX 10.15, *) {} else {
-            DisplayManage.enableSleep()
+            DisplayManager.enableSleep()
         }
     }
     
@@ -242,11 +242,6 @@ class DiveViewController: NSViewController, NSWindowDelegate {
         registerWriters()
     }
     
-    private func stopRTPS() {
-        FastRTPS.resignAll()
-        FastRTPS.stopRTPS()
-    }
-
     private func rovProvision(rovBeacon: RovBeacon) {
         self.rovBeacon = rovBeacon
         self.vehicleId = rovBeacon.uuid
