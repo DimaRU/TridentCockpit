@@ -55,6 +55,7 @@ class DashboardViewController: NSViewController {
     }
     
     func setConnectedState() {
+        FastRTPS.setPartition(name: tridentID)
         view.window?.title = tridentID
         if let toolbar = view.window?.toolbar {
             toolbar.getItem(for: .goDive)?.isEnabled = true
