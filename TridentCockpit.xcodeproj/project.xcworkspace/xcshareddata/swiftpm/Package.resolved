@@ -20,6 +20,15 @@
         }
       },
       {
+        "package": "CircularProgress",
+        "repositoryURL": "https://github.com/sindresorhus/CircularProgress.git",
+        "state": {
+          "branch": null,
+          "revision": "6f66f2d336d40f9804110e5190dcea325d54128b",
+          "version": "2.0.0"
+        }
+      },
+      {
         "package": "CustomSegue",
         "repositoryURL": "https://github.com/DimaRU/CustomSegue.git",
         "state": {

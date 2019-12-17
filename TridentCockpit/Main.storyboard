@@ -277,10 +277,124 @@
             <objects>
                 <viewController id="eM0-Cy-sgR" customClass="DashboardViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="cjp-Az-cgx">
-                        <rect key="frame" x="0.0" y="0.0" width="524" height="361"/>
+                        <rect key="frame" x="0.0" y="0.0" width="671" height="436"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <gridView xPlacement="trailing" yPlacement="fill" rowAlignment="none" rowSpacing="4" columnSpacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="0qR-p2-Gi2">
+                                <rect key="frame" x="256" y="189" width="160" height="59"/>
+                                <rows>
+                                    <gridRow id="GJs-VT-YKq"/>
+                                    <gridRow id="yon-mT-BU8"/>
+                                    <gridRow id="MlJ-UN-t76"/>
+                                </rows>
+                                <columns>
+                                    <gridColumn id="dgq-FP-PQj"/>
+                                    <gridColumn xPlacement="fill" id="PNH-Qo-cCS"/>
+                                </columns>
+                                <gridCells>
+                                    <gridCell row="GJs-VT-YKq" column="dgq-FP-PQj" id="j8s-md-fxK">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nzd-Nx-u3D">
+                                            <rect key="frame" x="45" y="42" width="71" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Trident ID:" id="z9i-zf-Tie">
+                                                <font key="font" metaFont="menu" size="14"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="GJs-VT-YKq" column="PNH-Qo-cCS" id="8pp-v3-Xyb">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="UbI-mt-742">
+                                            <rect key="frame" x="120" y="42" width="42" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="id" id="8fL-lW-0bA">
+                                                <font key="font" metaFont="systemSemibold" size="14"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="yon-mT-BU8" column="dgq-FP-PQj" id="cX3-zy-29H">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZKN-Xx-OAl">
+                                            <rect key="frame" x="-2" y="21" width="118" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Network address:" id="RQZ-Gm-xXg">
+                                                <font key="font" metaFont="menu" size="14"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="yon-mT-BU8" column="PNH-Qo-cCS" id="azb-Sn-LQ0">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gMp-cr-viS">
+                                            <rect key="frame" x="120" y="21" width="42" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="1.1.1.1" id="BnZ-1z-kQb">
+                                                <font key="font" metaFont="systemSemibold" size="14"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="MlJ-UN-t76" column="dgq-FP-PQj" id="uoW-Lm-w82">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3vg-jJ-xwg">
+                                            <rect key="frame" x="18" y="0.0" width="98" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Local address:" id="yEk-kf-Sd8">
+                                                <font key="font" metaFont="menu" size="14"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="MlJ-UN-t76" column="PNH-Qo-cCS" id="Zdy-Td-1dl">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="85a-dQ-2pK">
+                                            <rect key="frame" x="120" y="0.0" width="42" height="17"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="1.1.1.1" id="qsf-Yo-sPs">
+                                                <font key="font" metaFont="systemSemibold" size="14"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                </gridCells>
+                            </gridView>
+                            <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K9v-40-8NJ" customClass="CircularProgress" customModule="CircularProgress">
+                                <rect key="frame" x="20" y="216" width="200" height="200"/>
+                                <subviews>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F1V-Ka-Kvy">
+                                        <rect key="frame" x="34" y="92" width="132" height="16"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Searching for Trident" id="7xl-0y-sra">
+                                            <font key="font" usesAppearanceFont="YES"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="2lD-KN-i6o"/>
+                                    <constraint firstAttribute="height" constant="200" id="CnA-Yj-PSd"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
+                                        <color key="value" name="systemTealColor" catalog="System" colorSpace="catalog"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isIndeterminate" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="K9v-40-8NJ" firstAttribute="centerY" secondItem="cjp-Az-cgx" secondAttribute="centerY" id="Av0-0c-6wi"/>
+                            <constraint firstItem="K9v-40-8NJ" firstAttribute="centerX" secondItem="cjp-Az-cgx" secondAttribute="centerX" id="cJJ-h8-Mww"/>
+                            <constraint firstItem="0qR-p2-Gi2" firstAttribute="centerX" secondItem="cjp-Az-cgx" secondAttribute="centerX" id="fph-0i-O5Q"/>
+                            <constraint firstItem="0qR-p2-Gi2" firstAttribute="centerY" secondItem="cjp-Az-cgx" secondAttribute="centerY" id="osk-Rx-eDo"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="gridView" destination="0qR-p2-Gi2" id="cCY-mN-aR7"/>
+                        <outlet property="localAddressLabel" destination="85a-dQ-2pK" id="7pk-an-RAR"/>
+                        <outlet property="spinner" destination="K9v-40-8NJ" id="SvJ-O5-AhR"/>
+                        <outlet property="tridentIdLabel" destination="UbI-mt-742" id="LJt-wQ-cSB"/>
+                        <outlet property="tridentNetworkAddressLabel" destination="gMp-cr-viS" id="JGv-dX-aMl"/>
                         <segue destination="Wgr-FD-Jeg" kind="custom" identifier="DiveSeque" customClass="SlideUpSegue" customModule="CustomSegue" id="UTz-4g-bmR"/>
                         <segue destination="UI2-uK-lo2" kind="custom" identifier="MaintenanceSeque" customClass="SlideUpSegue" customModule="CustomSegue" id="80c-eX-ggM"/>
                         <segue destination="8Wy-DL-cpJ" kind="custom" identifier="PastDivesSegue" customClass="SlideUpSegue" customModule="CustomSegue" id="trF-oa-fo6"/>
@@ -288,20 +402,20 @@
                 </viewController>
                 <customObject id="IFr-xP-tTH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="318" y="708"/>
+            <point key="canvasLocation" x="249.5" y="730"/>
         </scene>
         <!--Maintenance View Controller-->
         <scene sceneID="cDq-Nm-nDq">
             <objects>
                 <viewController id="UI2-uK-lo2" customClass="MaintenanceViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="s2l-EA-Z7j">
-                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <rect key="frame" x="0.0" y="0.0" width="559" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
                 <customObject id="Xob-EL-jEy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="230" y="1227"/>
+            <point key="canvasLocation" x="85" y="1287"/>
         </scene>
         <!--Dive View Controller-->
         <scene sceneID="jBG-fP-4Z9">
@@ -583,7 +697,7 @@
                 </viewController>
                 <customObject id="ehI-2k-QYV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="745" y="1227"/>
+            <point key="canvasLocation" x="638" y="1287"/>
         </scene>
     </scenes>
     <resources>

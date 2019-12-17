@@ -5,15 +5,23 @@
 
 import Cocoa
 import FastRTPSBridge
+import CircularProgress
 
 class DashboardViewController: NSViewController {
     let stdParticipantList: Set<String> = ["geoserve", "trident-core", "trident-control", "trident-update", "trident-record"]
     var tridentParticipants: Set<String> = []
     var tridentID: String!
     
+    @IBOutlet weak var gridView: NSGridView!
+    @IBOutlet weak var spinner: CircularProgress!
+    @IBOutlet weak var tridentIdLabel: NSTextField!
+    @IBOutlet weak var tridentNetworkAddressLabel: NSTextField!
+    @IBOutlet weak var localAddressLabel: NSTextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        gridView.isHidden = true
         setupNotifications()
         getConnection()
     }
@@ -44,7 +52,7 @@ class DashboardViewController: NSViewController {
             destinationController.vehicleId = tridentID
         }
     }
-
+    
     private func startRTPS(addresses: Set<String>) {
         print(addresses)
         let address = addresses.first { $0.starts(with: "10.1.1.") } ?? addresses.first!
@@ -55,14 +63,23 @@ class DashboardViewController: NSViewController {
     }
     
     func setConnectedState() {
-        FastRTPS.setPartition(name: tridentID)
+        spinner.isHidden = true
+        spinner.isIndeterminate = false
+        gridView.isHidden = false
+        
         view.window?.title = tridentID
+        tridentIdLabel.stringValue = tridentID
+        tridentNetworkAddressLabel.stringValue = FastRTPS.remoteAddress
+        localAddressLabel.stringValue = FastRTPS.localAddress
+        
         if let toolbar = view.window?.toolbar {
             toolbar.getItem(for: .goDive)?.isEnabled = true
             toolbar.getItem(for: .goMaintenance)?.isEnabled = true
             toolbar.getItem(for: .goPastDives)?.isEnabled = true
             toolbar.getItem(for: .connectWiFi)?.isEnabled = true
         }
+        
+        FastRTPS.setPartition(name: tridentID)
     }
     
 }
