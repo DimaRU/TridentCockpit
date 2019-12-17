@@ -10,6 +10,14 @@
 		0A2E42BC236B0EE900B5C569 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E42BB236B0EE900B5C569 /* VideoView.swift */; };
 		0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
 		0A3FD1EF23A8D50000FE9918 /* CircularProgress in Frameworks */ = {isa = PBXBuildFile; productRef = 0A3FD1EE23A8D50000FE9918 /* CircularProgress */; };
+		0A3FD1F223A9443E00FE9918 /* ResinAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F123A9443E00FE9918 /* ResinAPI.swift */; };
+		0A3FD1F423A94A5B00FE9918 /* WifiServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F323A94A5B00FE9918 /* WifiServiceAPI.swift */; };
+		0A3FD1F623A94FAC00FE9918 /* RecordingsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F523A94FAC00FE9918 /* RecordingsAPI.swift */; };
+		0A3FD1F923A9723E00FE9918 /* APIVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F823A9723E00FE9918 /* APIVersion.swift */; };
+		0A3FD1FB23A9726200FE9918 /* DeviceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FA23A9726200FE9918 /* DeviceState.swift */; };
+		0A3FD1FD23A9729800FE9918 /* SSIDInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FC23A9729800FE9918 /* SSIDInfo.swift */; };
+		0A3FD1FF23A972BA00FE9918 /* ConnectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FE23A972B900FE9918 /* ConnectionInfo.swift */; };
+		0A3FD20123A9735300FE9918 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20023A9735300FE9918 /* AppInfo.swift */; };
 		0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790B23958380006F10FF /* FastRTPSBridge.framework */; };
 		0A597910239583AB006F10FF /* FastRTPSBridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790B23958380006F10FF /* FastRTPSBridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0A5CBCAE23675F920055131A /* SF-Pro-Display-Thin.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */; };
@@ -150,6 +158,14 @@
 		0A2E42BB236B0EE900B5C569 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		0A2FF3112363A0BD008FD68B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A2FF3122363A13B008FD68B /* TridentCockpit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TridentCockpit.entitlements; sourceTree = "<group>"; };
+		0A3FD1F123A9443E00FE9918 /* ResinAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinAPI.swift; sourceTree = "<group>"; };
+		0A3FD1F323A94A5B00FE9918 /* WifiServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiServiceAPI.swift; sourceTree = "<group>"; };
+		0A3FD1F523A94FAC00FE9918 /* RecordingsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsAPI.swift; sourceTree = "<group>"; };
+		0A3FD1F823A9723E00FE9918 /* APIVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIVersion.swift; sourceTree = "<group>"; };
+		0A3FD1FA23A9726200FE9918 /* DeviceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceState.swift; sourceTree = "<group>"; };
+		0A3FD1FC23A9729800FE9918 /* SSIDInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSIDInfo.swift; sourceTree = "<group>"; };
+		0A3FD1FE23A972B900FE9918 /* ConnectionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionInfo.swift; sourceTree = "<group>"; };
+		0A3FD20023A9735300FE9918 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FastRTPSBridge.xcodeproj; path = FastRTPSBridge/FastRTPSBridge.xcodeproj; sourceTree = "<group>"; };
 		0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		0A5CBC9C23675F410055131A /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
@@ -229,6 +245,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A3FD1F023A9439100FE9918 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				0A71313A23637F0700817593 /* FastRTPS.swift */,
+				0A3FD1F323A94A5B00FE9918 /* WifiServiceAPI.swift */,
+				0A3FD1F123A9443E00FE9918 /* ResinAPI.swift */,
+				0A3FD1F523A94FAC00FE9918 /* RecordingsAPI.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		0A3FD1F723A9720200FE9918 /* APIModel */ = {
+			isa = PBXGroup;
+			children = (
+				0A3FD1F823A9723E00FE9918 /* APIVersion.swift */,
+				0A3FD1FA23A9726200FE9918 /* DeviceState.swift */,
+				0A3FD1FC23A9729800FE9918 /* SSIDInfo.swift */,
+				0A3FD1FE23A972B900FE9918 /* ConnectionInfo.swift */,
+				0A3FD20023A9735300FE9918 /* AppInfo.swift */,
+			);
+			path = APIModel;
+			sourceTree = "<group>";
+		};
 		0A59790423958380006F10FF /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -309,9 +348,10 @@
 				0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */,
 				0A7130CF23636AF100817593 /* Preferences.swift */,
 				0A7130D023636AF100817593 /* RovModelView.swift */,
-				0A71313A23637F0700817593 /* FastRTPS.swift */,
+				0A3FD1F023A9439100FE9918 /* Networking */,
+				0A3FD1F723A9720200FE9918 /* APIModel */,
+				0A7130E023636B0200817593 /* DDSModel */,
 				0A5CBC992367507F0055131A /* ThirdParty */,
-				0A7130E023636B0200817593 /* Model */,
 				0A71311B23636B5C00817593 /* TridentCockpit.scnassets */,
 				0A2FF3112363A0BD008FD68B /* Assets.xcassets */,
 				0A7130C0236369EC00817593 /* Info.plist */,
@@ -321,7 +361,7 @@
 			path = TridentCockpit;
 			sourceTree = "<group>";
 		};
-		0A7130E023636B0200817593 /* Model */ = {
+		0A7130E023636B0200817593 /* DDSModel */ = {
 			isa = PBXGroup;
 			children = (
 				0A7130E123636B0200817593 /* RovTopic.swift */,
@@ -353,7 +393,7 @@
 				0A7130FB23636B0200817593 /* RovCamera.swift */,
 				0A7130FC23636B0200817593 /* RovLightPower.swift */,
 			);
-			path = Model;
+			path = DDSModel;
 			sourceTree = "<group>";
 		};
 		0AF69DF223A600FA0037DBDD /* Products */ = {
@@ -511,12 +551,15 @@
 				0A7130DF23636AF200817593 /* DiveViewController.swift in Sources */,
 				0A71310523636B0200817593 /* RovBeacon.swift in Sources */,
 				0A7130DD23636AF200817593 /* TridentControl.swift in Sources */,
+				0A3FD1FB23A9726200FE9918 /* DeviceState.swift in Sources */,
 				0A71310723636B0200817593 /* RovFuelgauge.swift in Sources */,
 				0A71311023636B0200817593 /* RovQuaternion.swift in Sources */,
 				0A7130D723636AF200817593 /* DisplayManager.swift in Sources */,
 				0A7130FD23636B0200817593 /* RovTopic.swift in Sources */,
 				0A7130DA23636AF200817593 /* FloatingViewProtocol.swift in Sources */,
+				0A3FD1F923A9723E00FE9918 /* APIVersion.swift in Sources */,
 				0A82780A23A63B220039A774 /* DashboardViewController.swift in Sources */,
+				0A3FD1FF23A972BA00FE9918 /* ConnectionInfo.swift in Sources */,
 				0A71310023636B0200817593 /* BatteryState.swift in Sources */,
 				0A7130D623636AF200817593 /* Extensions.swift in Sources */,
 				0A7130DE23636AF200817593 /* CameraControlView.swift in Sources */,
@@ -526,20 +569,25 @@
 				0A71311423636B0200817593 /* RovVideoData.swift in Sources */,
 				0A71310623636B0200817593 /* RovQuaternion+extensions.swift in Sources */,
 				0A71311223636B0200817593 /* DDSTypeString.swift in Sources */,
+				0A3FD1F423A94A5B00FE9918 /* WifiServiceAPI.swift in Sources */,
 				0A71311723636B0200817593 /* RovCamera.swift in Sources */,
 				0A82781223A641750039A774 /* MaintenanceViewController.swift in Sources */,
 				0A71310F23636B0200817593 /* RovDepth.swift in Sources */,
 				0A82780C23A63B2D0039A774 /* WindowController.swift in Sources */,
+				0A3FD20123A9735300FE9918 /* AppInfo.swift in Sources */,
+				0A3FD1FD23A9729800FE9918 /* SSIDInfo.swift in Sources */,
 				0A71311323636B0200817593 /* RovRecording.swift in Sources */,
 				0A71310D23636B0200817593 /* RovTridentMotorCommand.swift in Sources */,
 				0A82781023A641230039A774 /* PastDivesViewController.swift in Sources */,
 				0A7130D823636AF200817593 /* VideoDecoder.swift in Sources */,
+				0A3FD1F223A9443E00FE9918 /* ResinAPI.swift in Sources */,
 				0A71310323636B0200817593 /* RovVector3.swift in Sources */,
 				0A71310423636B0200817593 /* RovControlDescriptor.swift in Sources */,
 				0A71311123636B0200817593 /* RovControllerStatus.swift in Sources */,
 				0A71311823636B0200817593 /* RovLightPower.swift in Sources */,
 				0A2E42BC236B0EE900B5C569 /* VideoView.swift in Sources */,
 				0A7130DB23636AF200817593 /* Preferences.swift in Sources */,
+				0A3FD1F623A94FAC00FE9918 /* RecordingsAPI.swift in Sources */,
 				0A71310E23636B0200817593 /* RovTemperature.swift in Sources */,
 				0A7130D423636AF200817593 /* FlatButton.swift in Sources */,
 				0A7130FE23636B0200817593 /* RovBarometer.swift in Sources */,
