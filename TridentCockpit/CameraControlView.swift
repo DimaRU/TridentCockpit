@@ -24,17 +24,14 @@ class CameraControlView: NSView, FloatingViewProtocol {
     }
 
     override func mouseDown(with event: NSEvent) {
-        print(#function)
         mouseDownAct(with: event)
     }
 
     override func mouseDragged(with event: NSEvent) {
-        print(#function)
         mouseDraggedAct(with: event)
     }
 
     override func mouseUp(with event: NSEvent) {
-        print(#function)
         mouseUpAct(with: event)
     }
 

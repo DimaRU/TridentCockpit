@@ -7,60 +7,59 @@
 import Foundation
 import FastRTPSBridge
 
-extension DiveViewController {
+extension DashboardViewController {
     func setupNotifications() {
         NotificationCenter.default.addObserver(forName: .RTPSParticipantNotification, object: nil, queue: nil) { notification in
             guard let userInfo = notification.userInfo as? Dictionary<Int, Any>,
                 let rawType = userInfo[RTPSNotificationUserInfo.reason.rawValue] as? Int,
                 let reason = RTPSParticipantNotificationReason(rawValue: rawType)
-               else { return }
+                else { return }
             switch reason {
-            case .discoveredReader:
-                let topicName = userInfo[RTPSNotificationUserInfo.topic.rawValue] as! String
-                let typeName = userInfo[RTPSNotificationUserInfo.typeName.rawValue] as! String
-                let locators = userInfo[RTPSNotificationUserInfo.locators.rawValue] as! Set<String>
-
-                if let topic = RovWriterTopic(rawValue: topicName) {
-                    print("Discovered reader:", topic, typeName, locators)
-                } else {
-                    print("Discovered unknown reader:", topicName, typeName, locators)
-                }
-            case .discoveredWriter:
-                let topicName = userInfo[RTPSNotificationUserInfo.topic.rawValue] as! String
-                let typeName = userInfo[RTPSNotificationUserInfo.typeName.rawValue] as! String
-                let locators = userInfo[RTPSNotificationUserInfo.locators.rawValue] as! Set<String>
-
-                if let topic = RovReaderTopic(rawValue: topicName)  {
-                    print("Discovered writer:", topic, typeName, locators)
-                } else {
-                    print("Discovered unknown writer:", topicName, typeName, locators)
-                }
-            case .removedReader:
-                let topicName = userInfo[RTPSNotificationUserInfo.topic.rawValue] as! String
-                if let topic = RovWriterTopic(rawValue: topicName) {
-                    print("Removed reader:", topic)
-                } else {
-                    print("Removed unknown reader:", topicName)
-                }
-            case .removedWriter:
-                let topicName = userInfo[RTPSNotificationUserInfo.topic.rawValue] as! String
-                if let topic = RovReaderTopic(rawValue: topicName)  {
-                    print("Discovered writer:", topic)
-                } else {
-                    print("Discovered unknown writer:", topicName)
-                }
             case .discoveredParticipant:
                 let participantName = userInfo[RTPSNotificationUserInfo.participant.rawValue] as! String
                 let properties = userInfo[RTPSNotificationUserInfo.properties.rawValue] as! Dictionary<String, String>
                 let locators = userInfo[RTPSNotificationUserInfo.locators.rawValue] as! Set<String>
                 let metaLocators = userInfo[RTPSNotificationUserInfo.metaLocators.rawValue] as! Set<String>
-                print("Discovered Participant:", participantName, properties["dds.sys_info.hostname"]!, locators, metaLocators)
+                print("Discovered Participant:", participantName, properties, locators, metaLocators)
+                if self.stdParticipantList.contains(participantName) {
+                    self.tridentParticipants.insert(participantName)
+                } else {
+                    print("Unknown participant:", participantName)
+                }
+                if participantName == "trident-core" {
+                    self.tridentID = properties["dds.sys_info.hostname"]!
+                    FastRTPS.setPartition(name: self.tridentID!)
+                    FastRTPS.remoteAddress = String(locators.first!.split(separator: ":").first!)
+                    print("Trident ID:", properties["dds.sys_info.hostname"]!, "remote ip:", FastRTPS.remoteAddress)
+                    DispatchQueue.main.async {
+                        self.setConnectedState()
+                    }
+                }
             case .removedParticipant:
                 let participantName = userInfo[RTPSNotificationUserInfo.participant.rawValue] as! String
                 print("Removed Participant:", participantName)
             case .droppedParticipant:
                 let participantName = userInfo[RTPSNotificationUserInfo.participant.rawValue] as! String
                 print("Dropped Participant:", participantName)
+                
+                #if DEBUG
+            case .discoveredReader:
+                let topicName = userInfo[RTPSNotificationUserInfo.topic.rawValue] as! String
+                let typeName = userInfo[RTPSNotificationUserInfo.typeName.rawValue] as! String
+                let locators = userInfo[RTPSNotificationUserInfo.locators.rawValue] as! Set<String>
+                print("Discovered reader:", topicName, typeName, locators)
+            case .discoveredWriter:
+                let topicName = userInfo[RTPSNotificationUserInfo.topic.rawValue] as! String
+                let typeName = userInfo[RTPSNotificationUserInfo.typeName.rawValue] as! String
+                let locators = userInfo[RTPSNotificationUserInfo.locators.rawValue] as! Set<String>
+                print("Discovered writer:", topicName, typeName, locators)
+            case .removedReader:
+                let topicName = userInfo[RTPSNotificationUserInfo.topic.rawValue] as! String
+                print("Removed reader:", topicName)
+            case .removedWriter:
+                let topicName = userInfo[RTPSNotificationUserInfo.topic.rawValue] as! String
+                print("Removed writer:", topicName)
+                #endif
             default:
                 break
             }
@@ -72,7 +71,6 @@ extension DiveViewController {
                 let reason = RTPSReaderWriterNotificationReason(rawValue: rawType)
                else { return }
             switch reason {
-                
             case .readerMatchedMatching:
                 let topicName = userInfo[RTPSNotificationUserInfo.topic.rawValue] as! String
                 guard let topic = RovReaderTopic(rawValue: topicName) else { return }

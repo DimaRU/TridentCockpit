@@ -8,6 +8,9 @@ import CDRCodable
 import FastRTPSBridge
 
 final class FastRTPS {
+    var localIPAddress: String = ""
+    var remoteIPAddress: String = ""
+    
     private static let shared = FastRTPS()
 #if DEBUG
     lazy var fastRTPSBridge: FastRTPSBridge? = FastRTPSBridge.init(logLevel: .warning)
@@ -15,6 +18,16 @@ final class FastRTPS {
     lazy var fastRTPSBridge: FastRTPSBridge? = FastRTPSBridge.init(logLevel: .error)
 #endif
     
+    class var localAddress: String {
+        get { FastRTPS.shared.localIPAddress }
+        set { FastRTPS.shared.localIPAddress = newValue }
+    }
+
+    class var remoteAddress: String {
+        get { FastRTPS.shared.remoteIPAddress }
+        set { FastRTPS.shared.remoteIPAddress = newValue }
+    }
+
     class func createParticipant(interfaceIPv4: String? = nil, networkAddress: String? = nil) {
         FastRTPS.shared.fastRTPSBridge?.createRTPSParticipant(withName: "TridentCockpitOSX",
                                                               interfaceIPv4: interfaceIPv4,

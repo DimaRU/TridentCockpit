@@ -12,11 +12,16 @@ public extension NSToolbarItem.Identifier {
     static let goMaintenance: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "GoMaintenance")
     static let goPastDives: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "GoPastDives")
     static let connectWiFi: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "ConnectWiFi")
-    static let disconnectWiFI: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "DisconnectWiFI")
+//    static let disconnectWiFI: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "DisconnectWiFI")
     static let wifiSSID: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "WifiSSID")
     static let connectCamera: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "ConnectCamera")
     static let goDashboard: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "GoDashboard")
     static let ssidView: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "SSIDView")
 //    static let : NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "")
+}
 
+extension NSToolbar {
+    func getItem(for identifier: NSToolbarItem.Identifier) -> NSToolbarItem? {
+        return self.items.first(where: { $0.itemIdentifier == identifier})
+    }
 }

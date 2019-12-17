@@ -21,19 +21,14 @@ class WindowController: NSWindowController {
 
 // MARK: - NSToolbarDelegate
 extension WindowController: NSToolbarDelegate {
-    /**    NSToolbar delegates require this function.
-     It takes an identifier, and returns the matching NSToolbarItem. It also takes a parameter telling
-     whether this toolbar item is going into an actual toolbar, or whether it's going to be displayed
-     in a customization palette.
-     */
     /// - Tag: ToolbarItemForIdentifier
     func toolbar(
         _ toolbar: NSToolbar,
         itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
         willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
-        print(#function, itemIdentifier.rawValue)
-
         let toolbarItem = NSToolbarItem(itemIdentifier: itemIdentifier)
+        toolbarItem.autovalidates = false
+        toolbarItem.isEnabled = false
 
         switch itemIdentifier {
         case .goDive:
@@ -57,10 +52,11 @@ extension WindowController: NSToolbarDelegate {
             toolbarItem.toolTip = NSLocalizedString("Connect Trident WiFi", comment: "")
             toolbarItem.image = NSImage(named: "wifi")!
         case .wifiSSID:
-            toolbarItem.label = NSLocalizedString("", comment: "")
-            toolbarItem.paletteLabel = NSLocalizedString("WiFi connect", comment: "")
+            toolbarItem.label = NSLocalizedString("SSID", comment: "")
+            toolbarItem.paletteLabel = NSLocalizedString("SSID", comment: "")
             toolbarItem.toolTip = NSLocalizedString("Connected SSID", comment: "")
             toolbarItem.view = ssidLabel
+            toolbarItem.isEnabled = true
         default:
             break
         }
@@ -70,7 +66,6 @@ extension WindowController: NSToolbarDelegate {
     func toolbarWillAddItem(_ notification: Notification) {
         let userInfo = notification.userInfo!
         guard let addedItem = userInfo["item"] as? NSToolbarItem else { return }
-        print(#function, addedItem.itemIdentifier.rawValue)
         switch addedItem.itemIdentifier {
         case .goDive:
             addedItem.target = self
@@ -105,7 +100,6 @@ extension WindowController: NSToolbarDelegate {
         return [
             .goDive,
             .goMaintenance,
-            .goPastDives,
             .space,
             .connectWiFi,
             .wifiSSID
@@ -114,7 +108,6 @@ extension WindowController: NSToolbarDelegate {
 
     /// - Tag: AllowedToolbarItems
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        print(#function)
         return [ NSToolbarItem.Identifier.space,
                  NSToolbarItem.Identifier.flexibleSpace,
         ]
