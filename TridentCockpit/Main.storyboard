@@ -395,9 +395,9 @@
                         <outlet property="spinner" destination="K9v-40-8NJ" id="SvJ-O5-AhR"/>
                         <outlet property="tridentIdLabel" destination="UbI-mt-742" id="LJt-wQ-cSB"/>
                         <outlet property="tridentNetworkAddressLabel" destination="gMp-cr-viS" id="JGv-dX-aMl"/>
-                        <segue destination="Wgr-FD-Jeg" kind="custom" identifier="DiveSeque" customClass="SlideUpSegue" customModule="CustomSegue" id="UTz-4g-bmR"/>
-                        <segue destination="UI2-uK-lo2" kind="custom" identifier="MaintenanceSeque" customClass="SlideUpSegue" customModule="CustomSegue" id="80c-eX-ggM"/>
-                        <segue destination="8Wy-DL-cpJ" kind="custom" identifier="PastDivesSegue" customClass="SlideUpSegue" customModule="CustomSegue" id="trF-oa-fo6"/>
+                        <segue destination="Wgr-FD-Jeg" kind="custom" identifier="DiveSeque" customClass="SlideUpSegue" customModule="TridentCockpit" customModuleProvider="target" id="UTz-4g-bmR"/>
+                        <segue destination="UI2-uK-lo2" kind="custom" identifier="MaintenanceSeque" customClass="SlideUpSegue" customModule="TridentCockpit" customModuleProvider="target" id="80c-eX-ggM"/>
+                        <segue destination="8Wy-DL-cpJ" kind="custom" identifier="PastDivesSegue" customClass="SlideUpSegue" customModule="TridentCockpit" customModuleProvider="target" id="trF-oa-fo6"/>
                     </connections>
                 </viewController>
                 <customObject id="IFr-xP-tTH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>

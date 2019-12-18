@@ -29,15 +29,6 @@
         }
       },
       {
-        "package": "CustomSegue",
-        "repositoryURL": "https://github.com/DimaRU/CustomSegue.git",
-        "state": {
-          "branch": null,
-          "revision": "16dafe132cb0622ff1c282b7eb216c9c18413bf4",
-          "version": "4.1.1"
-        }
-      },
-      {
         "package": "Moya",
         "repositoryURL": "git@github.com:Moya/Moya.git",
         "state": {

@@ -21,6 +21,7 @@
 		0A3FD20623A97B6D00FE9918 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A3FD20523A97B6D00FE9918 /* PromiseKit */; };
 		0A5107DB23AA807D00C19289 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5107DA23AA807D00C19289 /* NetworkError.swift */; };
 		0A5107DC23AA85B000C19289 /* RestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20223A97A3500FE9918 /* RestProvider.swift */; };
+		0A51082023AADE8F00C19289 /* PresentWithAnimatorSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51081723AADE8F00C19289 /* PresentWithAnimatorSegue.swift */; };
 		0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790B23958380006F10FF /* FastRTPSBridge.framework */; };
 		0A597910239583AB006F10FF /* FastRTPSBridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790B23958380006F10FF /* FastRTPSBridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0A5CBCAE23675F920055131A /* SF-Pro-Display-Thin.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */; };
@@ -83,7 +84,6 @@
 		0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; };
 		0AF69E0423A601220037DBDD /* SwiftSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0AF69E0723A603AF0037DBDD /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0AF69E0623A603AF0037DBDD /* Moya */; };
-		0AF69E0A23A604580037DBDD /* CustomSegue in Frameworks */ = {isa = PBXBuildFile; productRef = 0AF69E0923A604580037DBDD /* CustomSegue */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +171,8 @@
 		0A3FD20023A9735300FE9918 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		0A3FD20223A97A3500FE9918 /* RestProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestProvider.swift; sourceTree = "<group>"; };
 		0A5107DA23AA807D00C19289 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		0A51081423AADE8F00C19289 /* TransitionFromViewSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionFromViewSegue.swift; sourceTree = "<group>"; };
+		0A51081723AADE8F00C19289 /* PresentWithAnimatorSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentWithAnimatorSegue.swift; sourceTree = "<group>"; };
 		0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FastRTPSBridge.xcodeproj; path = FastRTPSBridge/FastRTPSBridge.xcodeproj; sourceTree = "<group>"; };
 		0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		0A5CBC9C23675F410055131A /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
@@ -244,7 +246,6 @@
 				0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */,
 				0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */,
 				0AF69E0723A603AF0037DBDD /* Moya in Frameworks */,
-				0AF69E0A23A604580037DBDD /* CustomSegue in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -276,6 +277,15 @@
 			path = APIModel;
 			sourceTree = "<group>";
 		};
+		0A51080E23AADE8F00C19289 /* CustomSegue */ = {
+			isa = PBXGroup;
+			children = (
+				0A51081723AADE8F00C19289 /* PresentWithAnimatorSegue.swift */,
+				0A51081423AADE8F00C19289 /* TransitionFromViewSegue.swift */,
+			);
+			path = CustomSegue;
+			sourceTree = "<group>";
+		};
 		0A59790423958380006F10FF /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,6 +305,7 @@
 		0A5CBC992367507F0055131A /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				0A51080E23AADE8F00C19289 /* CustomSegue */,
 				0A7130C823636AF100817593 /* FlatButton.swift */,
 			);
 			path = ThirdParty;
@@ -434,7 +445,6 @@
 			name = TridentCockpit;
 			packageProductDependencies = (
 				0AF69E0623A603AF0037DBDD /* Moya */,
-				0AF69E0923A604580037DBDD /* CustomSegue */,
 				0A3FD1EE23A8D50000FE9918 /* CircularProgress */,
 				0A3FD20523A97B6D00FE9918 /* PromiseKit */,
 			);
@@ -469,7 +479,6 @@
 			mainGroup = 0A7130AB236369EA00817593;
 			packageReferences = (
 				0AF69E0523A603AF0037DBDD /* XCRemoteSwiftPackageReference "Moya" */,
-				0AF69E0823A604580037DBDD /* XCRemoteSwiftPackageReference "CustomSegue" */,
 				0A3FD1ED23A8D50000FE9918 /* XCRemoteSwiftPackageReference "CircularProgress" */,
 				0A3FD20423A97B6D00FE9918 /* XCRemoteSwiftPackageReference "PromiseKit" */,
 			);
@@ -548,6 +557,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A51082023AADE8F00C19289 /* PresentWithAnimatorSegue.swift in Sources */,
 				0A71310A23636B0200817593 /* RovCommon.swift in Sources */,
 				0A7130D923636AF200817593 /* AppDelegate.swift in Sources */,
 				0A71310C23636B0200817593 /* RovPoint.swift in Sources */,
@@ -831,14 +841,6 @@
 				version = "14.0.0-beta.6";
 			};
 		};
-		0AF69E0823A604580037DBDD /* XCRemoteSwiftPackageReference "CustomSegue" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/DimaRU/CustomSegue.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.1.1;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -856,11 +858,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0AF69E0523A603AF0037DBDD /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
-		};
-		0AF69E0923A604580037DBDD /* CustomSegue */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0AF69E0823A604580037DBDD /* XCRemoteSwiftPackageReference "CustomSegue" */;
-			productName = CustomSegue;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
