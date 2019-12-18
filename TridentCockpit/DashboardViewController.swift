@@ -6,6 +6,8 @@
 import Cocoa
 import FastRTPSBridge
 import CircularProgress
+import Moya
+import PromiseKit
 
 class DashboardViewController: NSViewController {
     let stdParticipantList: Set<String> = ["geoserve", "trident-core", "trident-control", "trident-update", "trident-record"]
@@ -72,6 +74,20 @@ class DashboardViewController: NSViewController {
         tridentNetworkAddressLabel.stringValue = FastRTPS.remoteAddress
         localAddressLabel.stringValue = FastRTPS.localAddress
         
+        RestProvider.request(MultiTarget(ResinAPI.deviceState))
+            .then { (deviceState: DeviceState) -> Promise<[ConnectionInfo]> in
+                print(deviceState)
+                self.tridentNetworkAddressLabel.stringValue = deviceState.ipAddress
+                return RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
+        }.done { connectionInfo in
+            print(connectionInfo)
+            if let ssid = connectionInfo.first(where: {$0.kind == "802-11-wireless"})?.ssid,
+                let textField = self.view.window?.toolbar?.getItem(for: .wifiSSID)?.view as? NSTextField {
+                textField.stringValue = ssid
+            }
+        }.catch { error in
+            print(error)
+        }
         if let toolbar = view.window?.toolbar {
             toolbar.getItem(for: .goDive)?.isEnabled = true
             toolbar.getItem(for: .goMaintenance)?.isEnabled = true
