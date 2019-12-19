@@ -51,6 +51,11 @@ extension WindowController: NSToolbarDelegate {
             toolbarItem.paletteLabel = NSLocalizedString("WiFi connect", comment: "")
             toolbarItem.toolTip = NSLocalizedString("Connect Trident WiFi", comment: "")
             toolbarItem.image = NSImage(named: "wifi")!
+        case .connectCamera:
+            toolbarItem.label = NSLocalizedString("Camera connect", comment: "")
+            toolbarItem.paletteLabel = NSLocalizedString("Camera connect", comment: "")
+            toolbarItem.toolTip = NSLocalizedString("Connect camera payload", comment: "")
+            toolbarItem.image = NSImage(named: "camera.fill")!
         case .wifiSSID:
             toolbarItem.label = NSLocalizedString("SSID", comment: "")
             toolbarItem.paletteLabel = NSLocalizedString("SSID", comment: "")
@@ -67,32 +72,8 @@ extension WindowController: NSToolbarDelegate {
         let userInfo = notification.userInfo!
         guard let addedItem = userInfo["item"] as? NSToolbarItem else { return }
         switch addedItem.itemIdentifier {
-        case .goDive:
-            addedItem.target = self
-            addedItem.action = #selector(goDiveScreen(_:))
-        case .goMaintenance:
-            addedItem.target = self
-            addedItem.action = #selector(goMaintenanceScreen(_:))
-        case .goPastDives:
-            addedItem.target = self
-            addedItem.action = #selector(goPastDivesScreen(_:))
         default: break
         }
-    }
-    
-    @IBAction func goDiveScreen(_ sender: Any?) {
-        toolbar.isVisible = false
-        self.contentViewController?.children.first?.performSegue(withIdentifier: "DiveSeque", sender: sender)
-    }
-    
-    @IBAction func goMaintenanceScreen(_ sender: Any?) {
-        self.contentViewController?.children.first?.performSegue(withIdentifier: "MaintenanceSeque", sender: sender)
-        toolbar.isVisible = false
-    }
-
-    @IBAction func goPastDivesScreen(_ sender: Any?) {
-        self.contentViewController?.children.first?.performSegue(withIdentifier: "PastDivesSegue", sender: sender)
-        toolbar.isVisible = false
     }
 
     /// - Tag: DefaultIdentifiers
@@ -102,7 +83,9 @@ extension WindowController: NSToolbarDelegate {
             .goMaintenance,
             .space,
             .connectWiFi,
-            .wifiSSID
+            .wifiSSID,
+            .space,
+            .connectCamera
         ]
     }
 
