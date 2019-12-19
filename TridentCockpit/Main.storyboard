@@ -223,7 +223,7 @@
                             </connections>
                         </toolbar>
                         <connections>
-                            <outlet property="delegate" destination="B8D-0N-5wS" id="98r-iN-zZc"/>
+                            <outlet property="delegate" destination="B8D-0N-5wS" id="lOT-g4-nxJ"/>
                         </connections>
                     </window>
                     <connections>
@@ -476,6 +476,8 @@
                                                 <buttonCell key="cell" type="square" title="􀆄" bezelStyle="shadowlessSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="gV9-Td-gp8">
                                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                     <font key="font" metaFont="system" size="20"/>
+                                                    <string key="keyEquivalent">w</string>
+                                                    <modifierMask key="keyEquivalentModifierMask" command="YES"/>
                                                 </buttonCell>
                                                 <color key="contentTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <connections>

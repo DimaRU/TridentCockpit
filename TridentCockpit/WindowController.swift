@@ -5,7 +5,7 @@
 
 import Cocoa
 
-class WindowController: NSWindowController {
+class WindowController: NSWindowController, NSWindowDelegate {
 
     @IBOutlet weak var toolbar: NSToolbar!
     @IBOutlet var ssidLabel: NSTextField!
@@ -17,6 +17,13 @@ class WindowController: NSWindowController {
         toolbar.displayMode = .iconAndLabel
     }
 
+    func windowWillClose(_ notification: Notification) {
+        FastRTPS.resignAll()
+        FastRTPS.stopRTPS()
+        if #available(OSX 10.15, *) {} else {
+            DisplayManager.enableSleep()
+        }
+    }
 }
 
 // MARK: - NSToolbarDelegate

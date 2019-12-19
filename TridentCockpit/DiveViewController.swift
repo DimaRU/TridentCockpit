@@ -7,7 +7,7 @@ import Cocoa
 import SceneKit
 import FastRTPSBridge
 
-class DiveViewController: NSViewController, NSWindowDelegate {
+class DiveViewController: NSViewController {
     @IBOutlet weak var videoView: VideoView!
     @IBOutlet weak var depthLabel: NSTextField!
     @IBOutlet weak var tempLabel: NSTextField!
@@ -106,19 +106,6 @@ class DiveViewController: NSViewController, NSWindowDelegate {
         startRTPS()
     }
 
-    func windowWillClose(_ notification: Notification) {
-        tridentControl.disable()
-        FastRTPS.resignAll()
-        FastRTPS.stopRTPS()
-        videoDecoder.cleanup()
-        DisplayManager.enableSleep()
-    }
-    
-    override func viewWillAppear() {
-        super.viewWillAppear()
-        view.window?.delegate = self
-    }
-
     override func viewDidAppear() {
         super.viewDidAppear()
         if #available(OSX 10.15, *) {} else {
@@ -126,21 +113,14 @@ class DiveViewController: NSViewController, NSWindowDelegate {
         }
     }
 
-    override func viewWillDisappear() {
-        super.viewWillDisappear()
-        tridentControl.disable()
-        FastRTPS.removeReader(topic: .rovCamFwdH2640Video)
-        if #available(OSX 10.15, *) {} else {
-            DisplayManager.enableSleep()
-        }
-    }
-    
     @IBAction func closeButtonPress(_ sender: Any) {
         tridentControl.disable()
         FastRTPS.resignAll()
         videoDecoder.cleanup()
-        DisplayManager.enableSleep()
-        
+        if #available(OSX 10.15, *) {} else {
+            DisplayManager.enableSleep()
+        }
+
         dismiss(sender)
     }
     
