@@ -9,7 +9,6 @@ class WindowController: NSWindowController, NSWindowDelegate {
 
     @IBOutlet weak var toolbar: NSToolbar!
     @IBOutlet var ssidLabel: NSTextField!
-    @IBOutlet var wifiConnectButton: NSButton!
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -38,32 +37,42 @@ extension WindowController: NSToolbarDelegate {
         toolbarItem.autovalidates = false
         toolbarItem.isEnabled = false
 
+        let button = NSButton(frame: NSRect(x: 0, y: 0, width: 44, height: 40))
+        button.title = ""
+        button.bezelStyle = .texturedRounded
+        button.focusRingType = .none
+        
         switch itemIdentifier {
         case .goDive:
             toolbarItem.label = NSLocalizedString("Pilot", comment: "")
             toolbarItem.paletteLabel = NSLocalizedString("Pilot", comment: "")
             toolbarItem.toolTip = NSLocalizedString("Pilot Trident", comment: "")
-            toolbarItem.image = NSImage(named: "underwater")!
+            button.image = NSImage(named: "underwater")!
+            toolbarItem.view = button
         case .goMaintenance:
             toolbarItem.label = NSLocalizedString("Maintenance", comment: "")
             toolbarItem.paletteLabel = NSLocalizedString("Maintenance", comment: "")
             toolbarItem.toolTip = NSLocalizedString("Maintenance Trident", comment: "")
-            toolbarItem.image = NSImage(named: NSImage.actionTemplateName)!
+            button.image = NSImage(named: NSImage.actionTemplateName)!
+            toolbarItem.view = button
         case .goPastDives:
             toolbarItem.label = NSLocalizedString("Past Dives", comment: "")
             toolbarItem.paletteLabel = NSLocalizedString("Past Dives", comment: "")
             toolbarItem.toolTip = NSLocalizedString("View Past Dives video", comment: "")
-            toolbarItem.image = NSImage(named: NSImage.quickLookTemplateName)!
+            button.image = NSImage(named: NSImage.quickLookTemplateName)!
+            toolbarItem.view = button
         case .connectWiFi:
             toolbarItem.label = NSLocalizedString("WiFi connect", comment: "")
             toolbarItem.paletteLabel = NSLocalizedString("WiFi connect", comment: "")
-            toolbarItem.toolTip = NSLocalizedString("Connect Trident WiFi", comment: "")
-            toolbarItem.view = wifiConnectButton
+            button.toolTip = NSLocalizedString("Connect Trident WiFi", comment: "")
+            button.image = NSImage(named: "wifi")!
+            toolbarItem.view = button
         case .connectCamera:
             toolbarItem.label = NSLocalizedString("Camera connect", comment: "")
             toolbarItem.paletteLabel = NSLocalizedString("Camera connect", comment: "")
             toolbarItem.toolTip = NSLocalizedString("Connect camera payload", comment: "")
-            toolbarItem.image = NSImage(named: "camera.fill")!
+            button.image = NSImage(named: "camera.fill")!
+            toolbarItem.view = button
         case .wifiSSID:
             toolbarItem.label = NSLocalizedString("SSID", comment: "")
             toolbarItem.paletteLabel = NSLocalizedString("SSID", comment: "")

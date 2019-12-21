@@ -229,7 +229,6 @@
                     <connections>
                         <outlet property="ssidLabel" destination="FqZ-zs-65h" id="UhJ-sD-T1S"/>
                         <outlet property="toolbar" destination="55l-dw-dTn" id="SAP-rF-hyy"/>
-                        <outlet property="wifiConnectButton" destination="bXC-YL-ZO1" id="4Ze-Cc-9w9"/>
                         <segue destination="nS5-Qb-Teg" kind="relationship" relationship="window.shadowedContentViewController" id="hXb-CG-unI"/>
                     </connections>
                 </windowController>
@@ -243,14 +242,6 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <button id="bXC-YL-ZO1">
-                    <rect key="frame" x="0.0" y="0.0" width="48" height="48"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="wifi" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="8Z1-po-aA7">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
-                    </buttonCell>
-                </button>
             </objects>
             <point key="canvasLocation" x="75" y="250"/>
         </scene>
@@ -305,7 +296,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nzd-Nx-u3D">
                                             <rect key="frame" x="45" y="42" width="71" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Trident ID:" id="z9i-zf-Tie">
-                                                <font key="font" metaFont="system" size="14"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -325,7 +316,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZKN-Xx-OAl">
                                             <rect key="frame" x="-2" y="21" width="118" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Network address:" id="RQZ-Gm-xXg">
-                                                <font key="font" metaFont="system" size="14"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -345,7 +336,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3vg-jJ-xwg">
                                             <rect key="frame" x="18" y="0.0" width="98" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Local address:" id="yEk-kf-Sd8">
-                                                <font key="font" metaFont="system" size="14"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -714,18 +705,18 @@
         <scene sceneID="6fC-J4-RgH">
             <objects>
                 <viewController storyboardIdentifier="WiFiPopupViewController" id="R5m-Oj-R0w" customClass="WiFiPopupViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="g7H-lj-9rF">
-                        <rect key="frame" x="0.0" y="0.0" width="295" height="287"/>
+                    <view key="view" misplaced="YES" id="g7H-lj-9rF">
+                        <rect key="frame" x="0.0" y="0.0" width="295" height="286"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnH-L6-Zpz">
-                                <rect key="frame" x="0.0" y="0.0" width="295" height="287"/>
+                                <rect key="frame" x="0.0" y="0.0" width="295" height="285"/>
                                 <clipView key="contentView" id="vrj-0q-2hM">
-                                    <rect key="frame" x="1" y="1" width="293" height="285"/>
+                                    <rect key="frame" x="1" y="1" width="293" height="283"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="nAL-NW-z6n">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="285"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="293" height="283"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="8"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -733,7 +724,7 @@
                                             <tableColumns>
                                                 <tableColumn width="290" minWidth="100" maxWidth="400" id="Az8-Gr-xRE">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="controlContent" size="11"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -813,7 +804,6 @@
         <image name="Light Off" width="24" height="24"/>
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="Prop 1" width="35" height="35"/>
-        <image name="wifi" width="12" height="12"/>
         <namedColor name="stopActive">
             <color white="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
