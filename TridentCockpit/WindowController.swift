@@ -9,6 +9,7 @@ class WindowController: NSWindowController, NSWindowDelegate {
 
     @IBOutlet weak var toolbar: NSToolbar!
     @IBOutlet var ssidLabel: NSTextField!
+    @IBOutlet var wifiConnectButton: NSButton!
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -57,7 +58,7 @@ extension WindowController: NSToolbarDelegate {
             toolbarItem.label = NSLocalizedString("WiFi connect", comment: "")
             toolbarItem.paletteLabel = NSLocalizedString("WiFi connect", comment: "")
             toolbarItem.toolTip = NSLocalizedString("Connect Trident WiFi", comment: "")
-            toolbarItem.image = NSImage(named: "wifi")!
+            toolbarItem.view = wifiConnectButton
         case .connectCamera:
             toolbarItem.label = NSLocalizedString("Camera connect", comment: "")
             toolbarItem.paletteLabel = NSLocalizedString("Camera connect", comment: "")

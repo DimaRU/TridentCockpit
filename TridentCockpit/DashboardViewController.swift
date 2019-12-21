@@ -15,6 +15,8 @@ class DashboardViewController: NSViewController {
     var tridentID: String!
     var ssid: String?
     weak var toolbar: NSToolbar?
+    var popover: NSPopover?
+
     
     @IBOutlet weak var gridView: NSGridView!
     @IBOutlet weak var spinner: CircularProgress!
@@ -68,8 +70,26 @@ class DashboardViewController: NSViewController {
         }
     }
 
-    @IBAction func connectWifiButtonPress(_ sender: Any?) {
-        print(#function)
+    @IBAction func connectWifiButtonPress(_ sender: NSButton) {
+        RestProvider.request(MultiTarget(WiFiServiceAPI.scan))
+        .then {
+                RestProvider.request(MultiTarget(WiFiServiceAPI.ssids))
+        }.done { (ssids: [SSIDInfo]) -> Void in
+            self.showPopup(with: ssids, view: sender.superview!)
+        }.catch { error in
+            print(error)
+        }
+    }
+    
+    private func showPopup(with ssids: [SSIDInfo], view: NSView) {
+        guard let controller = NSStoryboard.main?.instantiateController(withIdentifier: "WiFiPopupViewController") as? WiFiPopupViewController else { return }
+        popover = NSPopover()
+        popover?.contentViewController = controller
+        popover?.animates = true
+        popover?.behavior = .transient
+        controller.delegate = self
+        controller.ssids = ssids
+        popover?.show(relativeTo: .zero, of: view, preferredEdge: .minY)
     }
 
     @IBAction func connectCameraButtonPress(_ sender: Any?) {
@@ -168,7 +188,17 @@ class DashboardViewController: NSViewController {
             default:
                 break
             }
+            item.isEnabled = false
         }
     }
 
+}
+
+extension DashboardViewController: WiFiPopupDelegate {
+    func select(ssid: String) {
+        print(ssid)
+        self.popover?.performClose(nil)
+        self.popover = nil
+    }
+    
 }
