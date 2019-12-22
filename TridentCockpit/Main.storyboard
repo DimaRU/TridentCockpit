@@ -701,22 +701,125 @@
             </objects>
             <point key="canvasLocation" x="638" y="1287"/>
         </scene>
+        <!--GetSSID Password View Controller-->
+        <scene sceneID="QJe-6V-Qql">
+            <objects>
+                <viewController id="964-mD-uip" customClass="GetSSIDPasswordViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="k2V-LP-Gzv">
+                        <rect key="frame" x="0.0" y="0.0" width="312" height="186"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <gridView fixedFrame="YES" xPlacement="leading" yPlacement="fill" rowAlignment="lastBaseline" rowSpacing="12" columnSpacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="q8O-DT-te1">
+                                <rect key="frame" x="46" y="100" width="220" height="54"/>
+                                <rows>
+                                    <gridRow id="ghB-D1-9b6"/>
+                                    <gridRow id="tIW-lj-Hn0"/>
+                                </rows>
+                                <columns>
+                                    <gridColumn leadingPadding="2" id="gft-o7-Vgz"/>
+                                    <gridColumn xPlacement="fill" width="116" id="6Gm-bw-fI2"/>
+                                </columns>
+                                <gridCells>
+                                    <gridCell row="ghB-D1-9b6" column="gft-o7-Vgz" id="mg1-Xd-SvZ">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eIV-76-CmY">
+                                            <rect key="frame" x="0.0" y="36" width="37" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="SSID:" id="tQs-1e-ZZc">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="ghB-D1-9b6" column="6Gm-bw-fI2" id="tbi-6q-wtm">
+                                        <textField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QGR-pm-ZV1">
+                                            <rect key="frame" x="104" y="33" width="116" height="21"/>
+                                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" enabled="NO" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="4Ef-lk-2TG">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="tIW-lj-Hn0" column="gft-o7-Vgz" id="FgU-ox-Qy0">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aKr-Hf-2v5">
+                                            <rect key="frame" x="0.0" y="3" width="66" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Password:" id="Vl1-Se-qS7">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="tIW-lj-Hn0" column="6Gm-bw-fI2" id="DbG-IN-eDg">
+                                        <secureTextField key="contentView" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QI2-wO-w8F">
+                                            <rect key="frame" x="104" y="0.0" width="116" height="21"/>
+                                            <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="s6D-ki-bny">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                <allowedInputSourceLocales>
+                                                    <string>NSAllRomanInputSourcesLocaleIdentifier</string>
+                                                </allowedInputSourceLocales>
+                                            </secureTextFieldCell>
+                                        </secureTextField>
+                                    </gridCell>
+                                </gridCells>
+                            </gridView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Cz-ZF-BCk">
+                                <rect key="frame" x="172" y="22" width="100" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2Td-fL-kBB">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+DQ
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="okButtonPress:" target="964-mD-uip" id="Srf-Tq-pgU"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7bg-eg-bFU">
+                                <rect key="frame" x="40" y="22" width="100" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3SC-vm-GXE">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="cancelButtonPress:" target="964-mD-uip" id="hlf-wh-RNQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="passwordTextField" destination="QI2-wO-w8F" id="pn1-rH-DbG"/>
+                        <outlet property="ssidTextField" destination="QGR-pm-ZV1" id="XqA-H7-Wi4"/>
+                    </connections>
+                </viewController>
+                <customObject id="aVr-kw-xef" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-372" y="978"/>
+        </scene>
         <!--Wi Fi Popup View Controller-->
         <scene sceneID="6fC-J4-RgH">
             <objects>
                 <viewController storyboardIdentifier="WiFiPopupViewController" id="R5m-Oj-R0w" customClass="WiFiPopupViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="g7H-lj-9rF">
-                        <rect key="frame" x="0.0" y="0.0" width="200" height="247"/>
+                    <view key="view" misplaced="YES" id="g7H-lj-9rF">
+                        <rect key="frame" x="0.0" y="0.0" width="200" height="246"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnH-L6-Zpz">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="247"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="245"/>
                                 <clipView key="contentView" id="vrj-0q-2hM">
-                                    <rect key="frame" x="1" y="1" width="198" height="245"/>
+                                    <rect key="frame" x="1" y="1" width="198" height="243"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" id="nAL-NW-z6n">
-                                            <rect key="frame" x="0.0" y="0.0" width="198" height="245"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="198" height="243"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="8"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -724,7 +827,7 @@
                                             <tableColumns>
                                                 <tableColumn width="195" minWidth="100" maxWidth="400" id="Az8-Gr-xRE">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -770,6 +873,7 @@
                                             <connections>
                                                 <outlet property="dataSource" destination="R5m-Oj-R0w" id="tli-cd-HDk"/>
                                                 <outlet property="delegate" destination="R5m-Oj-R0w" id="fPy-6D-0qM"/>
+                                                <segue destination="964-mD-uip" kind="popover" popoverAnchorView="nAL-NW-z6n" popoverBehavior="t" preferredEdge="maxY" id="6Sz-Ho-Svs"/>
                                             </connections>
                                         </tableView>
                                     </subviews>

@@ -18,13 +18,16 @@ class DashboardViewController: NSViewController {
     var connectedSSID: String? {
         didSet {
             guard let wifiItem = toolbar?.getItem(for: .connectWiFi),
-                let button = wifiItem.view as? NSButton else { return }
+                let button = wifiItem.view as? NSButton,
+                let textField = toolbar?.getItem(for: .wifiSSID)?.view as? NSTextField else { return }
             if connectedSSID != nil {
+                textField.stringValue = connectedSSID!
                 button.image = NSImage(named: "wifi.slash")!
                 wifiItem.label = NSLocalizedString("Disconnect WiFi", comment: "")
                 wifiItem.paletteLabel = NSLocalizedString("Disconnect WiFi", comment: "")
                 wifiItem.toolTip = NSLocalizedString("Disconnect Trident WiFi", comment: "")
             } else {
+                textField.stringValue = NSLocalizedString("Not connected", comment: "")
                 button.image = NSImage(named: "wifi")!
                 wifiItem.label = NSLocalizedString("Connect WiFi", comment: "")
                 wifiItem.paletteLabel = NSLocalizedString("Connect WiFi", comment: "")
@@ -173,9 +176,7 @@ class DashboardViewController: NSViewController {
             return RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
         }.done { connectionInfo in
             print(connectionInfo)
-            if let ssid = connectionInfo.first(where: {$0.kind == "802-11-wireless"})?.ssid,
-                let textField = self.view.window?.toolbar?.getItem(for: .wifiSSID)?.view as? NSTextField {
-                textField.stringValue = ssid
+            if let ssid = connectionInfo.first(where: {$0.kind == "802-11-wireless"})?.ssid {
                 self.connectedSSID = ssid
             }
         }.catch { error in
@@ -185,6 +186,7 @@ class DashboardViewController: NSViewController {
             toolbar.getItem(for: .goDive)?.isEnabled = true
             toolbar.getItem(for: .goMaintenance)?.isEnabled = true
             toolbar.getItem(for: .goPastDives)?.isEnabled = true
+            toolbar.getItem(for: .connectWiFi)?.isEnabled = true
         }
         FastRTPS.setPartition(name: tridentID)
     }
@@ -227,6 +229,7 @@ extension DashboardViewController: WiFiPopupDelegate {
 
 extension DashboardViewController: NSPopoverDelegate {
     func popoverDidClose(_ notification: Notification) {
+        print(#function)
         self.popover = nil
     }
 }
