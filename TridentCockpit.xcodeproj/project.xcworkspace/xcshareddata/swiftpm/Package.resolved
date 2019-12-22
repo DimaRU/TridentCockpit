@@ -30,7 +30,7 @@
       },
       {
         "package": "Moya",
-        "repositoryURL": "git@github.com:Moya/Moya.git",
+        "repositoryURL": "https://github.com/Moya/Moya.git",
         "state": {
           "branch": null,
           "revision": "05f7bbd3c90c7546df5fc8d736213c8ced99a8b7",
@@ -39,7 +39,7 @@
       },
       {
         "package": "PromiseKit",
-        "repositoryURL": "git@github.com:mxcl/PromiseKit.git",
+        "repositoryURL": "https://github.com/mxcl/PromiseKit.git",
         "state": {
           "branch": null,
           "revision": "80963d4317bcdc03891e0fbaa744f20511d1bc08",

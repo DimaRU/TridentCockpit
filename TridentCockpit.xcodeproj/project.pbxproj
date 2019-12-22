@@ -18,7 +18,6 @@
 		0A3FD1FD23A9729800FE9918 /* SSIDInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FC23A9729800FE9918 /* SSIDInfo.swift */; };
 		0A3FD1FF23A972BA00FE9918 /* ConnectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FE23A972B900FE9918 /* ConnectionInfo.swift */; };
 		0A3FD20123A9735300FE9918 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20023A9735300FE9918 /* AppInfo.swift */; };
-		0A3FD20623A97B6D00FE9918 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A3FD20523A97B6D00FE9918 /* PromiseKit */; };
 		0A5107DB23AA807D00C19289 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5107DA23AA807D00C19289 /* NetworkError.swift */; };
 		0A5107DC23AA85B000C19289 /* RestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20223A97A3500FE9918 /* RestProvider.swift */; };
 		0A51082023AADE8F00C19289 /* PresentWithAnimatorSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51081723AADE8F00C19289 /* PresentWithAnimatorSegue.swift */; };
@@ -34,6 +33,8 @@
 		0A5CBCB423675F920055131A /* SF-Pro-Display-Semibold.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA123675F410055131A /* SF-Pro-Display-Semibold.otf */; };
 		0A5CBCB523675F920055131A /* SF-Pro-Display-Ultralight.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA223675F410055131A /* SF-Pro-Display-Ultralight.otf */; };
 		0A5CBCB623675F920055131A /* SF-Pro-Display-Black.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA323675F410055131A /* SF-Pro-Display-Black.otf */; };
+		0A66C52C23AED706001BA93D /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0A66C52B23AED706001BA93D /* Moya */; };
+		0A66C52F23AED776001BA93D /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A66C52E23AED776001BA93D /* PromiseKit */; };
 		0A7130D423636AF200817593 /* FlatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130C823636AF100817593 /* FlatButton.swift */; };
 		0A7130D623636AF200817593 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CA23636AF100817593 /* Extensions.swift */; };
 		0A7130D723636AF200817593 /* DisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CB23636AF100817593 /* DisplayManager.swift */; };
@@ -85,7 +86,6 @@
 		0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */; };
 		0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; };
 		0AF69E0423A601220037DBDD /* SwiftSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0AF69E0723A603AF0037DBDD /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0AF69E0623A603AF0037DBDD /* Moya */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -244,11 +244,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A66C52F23AED776001BA93D /* PromiseKit in Frameworks */,
 				0A3FD1EF23A8D50000FE9918 /* CircularProgress in Frameworks */,
-				0A3FD20623A97B6D00FE9918 /* PromiseKit in Frameworks */,
 				0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */,
+				0A66C52C23AED706001BA93D /* Moya in Frameworks */,
 				0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */,
-				0AF69E0723A603AF0037DBDD /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,9 +448,9 @@
 			);
 			name = TridentCockpit;
 			packageProductDependencies = (
-				0AF69E0623A603AF0037DBDD /* Moya */,
 				0A3FD1EE23A8D50000FE9918 /* CircularProgress */,
-				0A3FD20523A97B6D00FE9918 /* PromiseKit */,
+				0A66C52B23AED706001BA93D /* Moya */,
+				0A66C52E23AED776001BA93D /* PromiseKit */,
 			);
 			productName = TridentCockpit;
 			productReference = 0A7130B4236369EA00817593 /* TridentCockpit.app */;
@@ -482,9 +482,9 @@
 			);
 			mainGroup = 0A7130AB236369EA00817593;
 			packageReferences = (
-				0AF69E0523A603AF0037DBDD /* XCRemoteSwiftPackageReference "Moya" */,
 				0A3FD1ED23A8D50000FE9918 /* XCRemoteSwiftPackageReference "CircularProgress" */,
-				0A3FD20423A97B6D00FE9918 /* XCRemoteSwiftPackageReference "PromiseKit" */,
+				0A66C52A23AED706001BA93D /* XCRemoteSwiftPackageReference "Moya" */,
+				0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */,
 			);
 			productRefGroup = 0A7130B5236369EA00817593 /* Products */;
 			projectDirPath = "";
@@ -831,20 +831,20 @@
 				minimumVersion = 2.0.0;
 			};
 		};
-		0A3FD20423A97B6D00FE9918 /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+		0A66C52A23AED706001BA93D /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:mxcl/PromiseKit.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.12.0;
-			};
-		};
-		0AF69E0523A603AF0037DBDD /* XCRemoteSwiftPackageReference "Moya" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:Moya/Moya.git";
+			repositoryURL = "https://github.com/Moya/Moya.git";
 			requirement = {
 				kind = exactVersion;
 				version = "14.0.0-beta.6";
+			};
+		};
+		0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/PromiseKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.12.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -855,15 +855,15 @@
 			package = 0A3FD1ED23A8D50000FE9918 /* XCRemoteSwiftPackageReference "CircularProgress" */;
 			productName = CircularProgress;
 		};
-		0A3FD20523A97B6D00FE9918 /* PromiseKit */ = {
+		0A66C52B23AED706001BA93D /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A3FD20423A97B6D00FE9918 /* XCRemoteSwiftPackageReference "PromiseKit" */;
-			productName = PromiseKit;
-		};
-		0AF69E0623A603AF0037DBDD /* Moya */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0AF69E0523A603AF0037DBDD /* XCRemoteSwiftPackageReference "Moya" */;
+			package = 0A66C52A23AED706001BA93D /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		0A66C52E23AED776001BA93D /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
