@@ -113,3 +113,10 @@ extension NSMenu {
         return nil
     }
 }
+
+extension NSViewController {
+    static func instantiate<T: NSViewController>() -> T {
+        NSStoryboard.main!.instantiateController(withIdentifier: String(describing: T.self)) as! T
+    }
+}
+

@@ -8,14 +8,10 @@ import Cocoa
 import Moya
 import PromiseKit
 
-protocol WiFiPopupDelegate: NSObject {
-    func select(ssid: String)
-}
-
 class WiFiPopupViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
 
-    weak var delegate: WiFiPopupDelegate?
+    weak var delegate: GetSSIDPasswordProtocol?
     var ssids: [SSIDInfo] = []
     
     private var tableWidth: CGFloat = 0
@@ -37,7 +33,12 @@ class WiFiPopupViewController: NSViewController {
 extension WiFiPopupViewController: NSTableViewDelegate {
     func tableViewSelectionDidChange(_ notification: Notification) {
         guard tableView.selectedRow != -1 else { return }
-        delegate?.select(ssid: ssids[tableView.selectedRow].ssid)
+        let controller: GetSSIDPasswordViewController = NSViewController.instantiate()
+        controller.delegate = delegate
+        controller.ssid = ssids[tableView.selectedRow].ssid
+//        let cellView = tableView.view(atColumn: 0, row: tableView.selectedRow, makeIfNecessary: false)!
+        presentAsModalWindow(controller)
+        dismiss(nil)
     }
 }
 

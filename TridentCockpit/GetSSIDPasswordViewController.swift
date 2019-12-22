@@ -6,7 +6,7 @@
 
 import Cocoa
 
-protocol GetPasswordProtocol: NSObject {
+protocol GetSSIDPasswordProtocol: NSObject {
     func enteredPassword(ssid: String, password: String)
 }
 
@@ -14,10 +14,12 @@ class GetSSIDPasswordViewController: NSViewController {
     @IBOutlet weak var ssidTextField: NSTextField!
     @IBOutlet weak var passwordTextField: NSSecureTextField!
     
-    weak var delegate: GetPasswordProtocol?
+    weak var delegate: GetSSIDPasswordProtocol?
+    var ssid: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ssidTextField.stringValue = NSLocalizedString("Password for Wi-Fi network ", comment: "") + "\"" + ssid + "\""
     }
     
     @IBAction func cancelButtonPress(_ sender: Any) {
@@ -25,7 +27,7 @@ class GetSSIDPasswordViewController: NSViewController {
     }
     
     @IBAction func okButtonPress(_ sender: Any) {
-        delegate?.enteredPassword(ssid: ssidTextField.stringValue, password: passwordTextField.stringValue)
+        delegate?.enteredPassword(ssid: ssid, password: passwordTextField.stringValue)
         dismiss(sender)
     }
 }

@@ -14,7 +14,6 @@ class DashboardViewController: NSViewController {
     var tridentParticipants: Set<String> = []
     var tridentID: String!
     weak var toolbar: NSToolbar?
-    var popover: NSPopover?
     var connectedSSID: String? {
         didSet {
             guard let wifiItem = toolbar?.getItem(for: .connectWiFi),
@@ -122,16 +121,11 @@ class DashboardViewController: NSViewController {
     }
 
     private func showPopup(with ssids: [SSIDInfo], view: NSView) {
-        guard let controller = NSStoryboard.main?.instantiateController(withIdentifier: "WiFiPopupViewController") as? WiFiPopupViewController else { return }
-        popover = NSPopover()
-        popover?.contentViewController = controller
-        popover?.animates = true
-        popover?.behavior = .transient
-        popover?.delegate = self
+        let controller: WiFiPopupViewController = WiFiPopupViewController.instantiate()
         controller.delegate = self
         controller.ssids = ssids
-        popover?.show(relativeTo: .zero, of: view, preferredEdge: .minY)
-    }
+        present(controller, asPopoverRelativeTo: .zero, of: view, preferredEdge: .minY, behavior: .transient)
+   }
 
     @IBAction func connectCameraButtonPress(_ sender: Any?) {
         print(#function)
@@ -219,17 +213,18 @@ class DashboardViewController: NSViewController {
 
 }
 
-extension DashboardViewController: WiFiPopupDelegate {
-    func select(ssid: String) {
-        print(ssid)
-        self.popover?.performClose(nil)
-        self.popover = nil
-    }
-}
-
-extension DashboardViewController: NSPopoverDelegate {
-    func popoverDidClose(_ notification: Notification) {
-        print(#function)
-        self.popover = nil
+extension DashboardViewController: GetSSIDPasswordProtocol {
+    func enteredPassword(ssid: String, password: String) {
+        RestProvider.request(MultiTarget(WiFiServiceAPI.connect(ssid: ssid, passphrase: password)))
+        .then {
+            RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
+        }.done { (connectionInfo: [ConnectionInfo]) in
+            print(connectionInfo)
+            if let ssid = connectionInfo.first(where: {$0.kind == "802-11-wireless"})?.ssid {
+                self.connectedSSID = ssid
+            }
+        }.catch { error in
+            print(error)
+        }
     }
 }
