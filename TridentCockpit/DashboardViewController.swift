@@ -21,16 +21,16 @@ class DashboardViewController: NSViewController {
                 let textField = toolbar?.getItem(for: .wifiSSID)?.view as? NSTextField else { return }
             if connectedSSID != nil {
                 textField.stringValue = connectedSSID!
-                button.image = NSImage(named: "wifi.slash")!
                 wifiItem.label = NSLocalizedString("Disconnect WiFi", comment: "")
                 wifiItem.paletteLabel = NSLocalizedString("Disconnect WiFi", comment: "")
                 wifiItem.toolTip = NSLocalizedString("Disconnect Trident WiFi", comment: "")
+                button.image = NSImage(named: "wifi.slash")!
             } else {
                 textField.stringValue = NSLocalizedString("Not connected", comment: "")
-                button.image = NSImage(named: "wifi")!
                 wifiItem.label = NSLocalizedString("Connect WiFi", comment: "")
                 wifiItem.paletteLabel = NSLocalizedString("Connect WiFi", comment: "")
                 wifiItem.toolTip = NSLocalizedString("Connect Trident WiFi", comment: "")
+                button.image = NSImage(named: "wifi")!
             }
         }
     }
@@ -57,7 +57,6 @@ class DashboardViewController: NSViewController {
     }
     
     override func viewWillDisappear() {
-//        view.window?.toolbar?.isVisible = false
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
@@ -110,8 +109,6 @@ class DashboardViewController: NSViewController {
     private func connectWiFi(view: NSView) {
         RestProvider.request(MultiTarget(WiFiServiceAPI.scan))
         .then {
-            after(seconds: 0.25)
-        }.then {
             RestProvider.request(MultiTarget(WiFiServiceAPI.ssids))
         }.done { (ssids: [SSIDInfo]) -> Void in
             self.showPopup(with: ssids, view: view)
@@ -165,13 +162,13 @@ class DashboardViewController: NSViewController {
         
         RestProvider.request(MultiTarget(ResinAPI.deviceState))
         .then { (deviceState: DeviceState) -> Promise<[ConnectionInfo]> in
-            print(deviceState)
             self.tridentNetworkAddressLabel.stringValue = deviceState.ipAddress
             return RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
         }.done { connectionInfo in
-            print(connectionInfo)
             if let ssid = connectionInfo.first(where: {$0.kind == "802-11-wireless"})?.ssid {
                 self.connectedSSID = ssid
+            } else {
+                self.connectedSSID = nil
             }
         }.catch { error in
             print(error)
@@ -186,7 +183,7 @@ class DashboardViewController: NSViewController {
     }
     
     private func setupToolbarButtons() {
-        guard let toolbar = view.window?.toolbar else { return }
+        guard let toolbar = toolbar else { return }
         toolbar.items.forEach { item in
             switch item.itemIdentifier {
             case .goDive:
@@ -219,7 +216,6 @@ extension DashboardViewController: GetSSIDPasswordProtocol {
         .then {
             RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
         }.done { (connectionInfo: [ConnectionInfo]) in
-            print(connectionInfo)
             if let ssid = connectionInfo.first(where: {$0.kind == "802-11-wireless"})?.ssid {
                 self.connectedSSID = ssid
             }

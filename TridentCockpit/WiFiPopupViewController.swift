@@ -15,11 +15,22 @@ class WiFiPopupViewController: NSViewController {
     var ssids: [SSIDInfo] = []
     
     private var tableWidth: CGFloat = 0
+    private var timer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableWidth = tableView.tableColumns[0].minWidth
-        
+        timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
+            RestProvider.request(MultiTarget(WiFiServiceAPI.scan))
+            .then {
+                RestProvider.request(MultiTarget(WiFiServiceAPI.ssids))
+            }.done { (ssids: [SSIDInfo]) in
+                self.ssids = ssids
+                self.tableView.reloadData()
+            }.catch { error in
+                print(error)
+            }
+        }
     }
     
     func setViewSizeOnContent() {
@@ -28,15 +39,21 @@ class WiFiPopupViewController: NSViewController {
        }
     }
 
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        timer?.invalidate()
+        timer = nil
+    }
 }
 
 extension WiFiPopupViewController: NSTableViewDelegate {
-    func tableViewSelectionDidChange(_ notification: Notification) {
+    func tableViewSelectionIsChanging(_ notification: Notification) {
         guard tableView.selectedRow != -1 else { return }
+        timer?.invalidate()
+        timer = nil
         let controller: GetSSIDPasswordViewController = NSViewController.instantiate()
         controller.delegate = delegate
         controller.ssid = ssids[tableView.selectedRow].ssid
-//        let cellView = tableView.view(atColumn: 0, row: tableView.selectedRow, makeIfNecessary: false)!
         presentAsModalWindow(controller)
         dismiss(nil)
     }

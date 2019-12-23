@@ -62,9 +62,10 @@ extension WindowController: NSToolbarDelegate {
             button.image = NSImage(named: NSImage.quickLookTemplateName)!
             toolbarItem.view = button
         case .connectWiFi:
-            toolbarItem.label = NSLocalizedString("WiFi connect", comment: "")
-            toolbarItem.paletteLabel = NSLocalizedString("WiFi connect", comment: "")
-            button.toolTip = NSLocalizedString("Connect Trident WiFi", comment: "")
+            toolbarItem.label = NSLocalizedString("WiFi", comment: "")
+            toolbarItem.paletteLabel = NSLocalizedString("WiFi", comment: "")
+            toolbarItem.toolTip = NSLocalizedString("Connect Trident WiFi", comment: "")
+            button.image = NSImage(named: "wifi.slash")!
             button.image = NSImage(named: "wifi")!
             toolbarItem.view = button
         case .connectCamera:
