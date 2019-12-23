@@ -86,6 +86,7 @@
 		0A82781423A689E70039A774 /* ToolbarItemIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */; };
 		0A84F9CE237B37BF009BBAD4 /* SetupNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */; };
 		0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */; };
+		0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0ADA653723B119880090D757 /* PayloadProvision.sh */; };
 		0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; };
 		0AF69E0423A601220037DBDD /* SwiftSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -240,6 +241,7 @@
 		0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemIdentifier.swift; sourceTree = "<group>"; };
 		0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNotifications.swift; sourceTree = "<group>"; };
 		0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiPopupViewController.swift; sourceTree = "<group>"; };
+		0ADA653723B119880090D757 /* PayloadProvision.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PayloadProvision.sh; sourceTree = "<group>"; };
 		0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftSH.xcodeproj; path = SwiftSH/SwiftSH.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -384,6 +386,7 @@
 				0A71311B23636B5C00817593 /* TridentCockpit.scnassets */,
 				0A2FF3112363A0BD008FD68B /* Assets.xcassets */,
 				0A7130C0236369EC00817593 /* Info.plist */,
+				0ADA653723B119880090D757 /* PayloadProvision.sh */,
 				0A71311923636B1700817593 /* Main.storyboard */,
 				0A2FF3122363A13B008FD68B /* TridentCockpit.entitlements */,
 			);
@@ -557,6 +560,7 @@
 				0A71311A23636B1700817593 /* Main.storyboard in Resources */,
 				0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */,
 				0A71311C23636B5C00817593 /* TridentCockpit.scnassets in Resources */,
+				0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

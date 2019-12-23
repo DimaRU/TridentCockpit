@@ -45,5 +45,7 @@
 	<string>T3BlblJPVg==</string>
 	<key>RovLogin</key>
 	<string>rov</string>
+	<key>ExposeIP</key>
+	<string>10.1.1.2</string>
 </dict>
 </plist>
