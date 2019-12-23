@@ -8,12 +8,16 @@ import FastRTPSBridge
 import CircularProgress
 import Moya
 import PromiseKit
+import SwiftSH
 
 class DashboardViewController: NSViewController {
     let stdParticipantList: Set<String> = ["geoserve", "trident-core", "trident-control", "trident-update", "trident-record"]
     var tridentParticipants: Set<String> = []
     var tridentID: String!
     weak var toolbar: NSToolbar?
+    var sshCommand: SSHCommand!
+    var deviceState: DeviceState?
+
     var connectedSSID: String? {
         didSet {
             guard let wifiItem = toolbar?.getItem(for: .connectWiFi),
@@ -25,12 +29,14 @@ class DashboardViewController: NSViewController {
                 wifiItem.paletteLabel = NSLocalizedString("Disconnect WiFi", comment: "")
                 wifiItem.toolTip = NSLocalizedString("Disconnect Trident WiFi", comment: "")
                 button.image = NSImage(named: "wifi.slash")!
+                toolbar?.getItem(for: .connectCamera)?.isEnabled = true
             } else {
                 textField.stringValue = NSLocalizedString("Not connected", comment: "")
                 wifiItem.label = NSLocalizedString("Connect WiFi", comment: "")
                 wifiItem.paletteLabel = NSLocalizedString("Connect WiFi", comment: "")
                 wifiItem.toolTip = NSLocalizedString("Connect Trident WiFi", comment: "")
                 button.image = NSImage(named: "wifi")!
+                toolbar?.getItem(for: .connectCamera)?.isEnabled = false
             }
         }
     }
@@ -95,6 +101,10 @@ class DashboardViewController: NSViewController {
         }
     }
 
+    @IBAction func connectCameraButtonPress(_ sender: Any?) {
+        executeScript(name: "PayloadProvision")
+    }
+
     private func disconnectWiFi() {
         RestProvider.request(MultiTarget(WiFiServiceAPI.disconnect))
         .then { _ in
@@ -124,8 +134,29 @@ class DashboardViewController: NSViewController {
         present(controller, asPopoverRelativeTo: .zero, of: view, preferredEdge: .minY, behavior: .transient)
    }
 
-    @IBAction func connectCameraButtonPress(_ sender: Any?) {
-        print(#function)
+    private func executeScript(name: String) {
+        guard let url = Bundle.main.url(forResource: name, withExtension: "sh") else { return }
+        guard let script = try? String(contentsOf: url) else { return }
+        let login = Bundle.main.infoDictionary!["RovLogin"]! as! String
+        let passwordBase64 = Bundle.main.infoDictionary!["RovPassword"]! as! String
+        let password = String(data: Data(base64Encoded: passwordBase64)!, encoding: .utf8)!
+
+        print(script)
+
+        sshCommand = try! SSHCommand(host: FastRTPS.remoteAddress)
+        sshCommand.log.level = .error
+        sshCommand.timeout = 10000
+
+        sshCommand.connect()
+            .authenticate(.byPassword(username: login, password: password))
+            .execute(script) { [unowned self] (command, result: String?, error) in
+                if let result = result {
+                    print(result)
+                } else {
+                    print("ERROR: \(String(describing: error))")
+                }
+                self.sshCommand.disconnect {}
+        }
     }
 
     private func getConnection() {
@@ -162,6 +193,7 @@ class DashboardViewController: NSViewController {
         
         RestProvider.request(MultiTarget(ResinAPI.deviceState))
         .then { (deviceState: DeviceState) -> Promise<[ConnectionInfo]> in
+            self.deviceState = deviceState
             self.tridentNetworkAddressLabel.stringValue = deviceState.ipAddress
             return RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
         }.done { connectionInfo in
@@ -220,6 +252,11 @@ extension DashboardViewController: GetSSIDPasswordProtocol {
                 self.connectedSSID = ssid
                 KeychainService.set(password, key: ssid)
             }
+        }.then {
+            RestProvider.request(MultiTarget(ResinAPI.deviceState))
+        }.done { (deviceState: DeviceState) in
+            self.deviceState = deviceState
+            self.tridentNetworkAddressLabel.stringValue = deviceState.ipAddress
         }.catch { error in
             print(error)
         }

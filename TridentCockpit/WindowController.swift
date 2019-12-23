@@ -69,8 +69,8 @@ extension WindowController: NSToolbarDelegate {
             button.image = NSImage(named: "wifi")!
             toolbarItem.view = button
         case .connectCamera:
-            toolbarItem.label = NSLocalizedString("Camera connect", comment: "")
-            toolbarItem.paletteLabel = NSLocalizedString("Camera connect", comment: "")
+            toolbarItem.label = NSLocalizedString("Payload", comment: "")
+            toolbarItem.paletteLabel = NSLocalizedString("Payload", comment: "")
             toolbarItem.toolTip = NSLocalizedString("Connect camera payload", comment: "")
             button.image = NSImage(named: "camera.fill")!
             toolbarItem.view = button

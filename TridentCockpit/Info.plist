@@ -41,5 +41,9 @@
 	<true/>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
+	<key>RovPassword</key>
+	<string>T3BlblJPVg==</string>
+	<key>RovLogin</key>
+	<string>rov</string>
 </dict>
 </plist>
