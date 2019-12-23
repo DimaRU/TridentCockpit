@@ -20,6 +20,9 @@ class GetSSIDPasswordViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ssidTextField.stringValue = NSLocalizedString("Password for Wi-Fi network ", comment: "") + "\"" + ssid + "\""
+        if let password = KeychainService.get(key: ssid) {
+            passwordTextField.stringValue = password
+        }
     }
     
     @IBAction func cancelButtonPress(_ sender: Any) {

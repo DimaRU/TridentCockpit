@@ -218,6 +218,7 @@ extension DashboardViewController: GetSSIDPasswordProtocol {
         }.done { (connectionInfo: [ConnectionInfo]) in
             if let ssid = connectionInfo.first(where: {$0.kind == "802-11-wireless"})?.ssid {
                 self.connectedSSID = ssid
+                KeychainService.set(password, key: ssid)
             }
         }.catch { error in
             print(error)
