@@ -222,7 +222,7 @@ class DashboardViewController: NSViewController {
             self.tridentNetworkAddressLabel.stringValue = deviceState.ipAddress
             return RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
         }.done { connectionInfo in
-            if let ssid = connectionInfo.first(where: {$0.kind == "802-11-wireless"})?.ssid {
+            if let ssid = connectionInfo.first(where: {$0.kind == "802-11-wireless" && $0.state == "Activated"})?.ssid {
                 self.connectedSSID = ssid
             } else {
                 self.connectedSSID = nil
