@@ -27,10 +27,6 @@ extension DashboardViewController {
                     print("Unknown participant:", participantName)
                 }
                 if participantName == "trident-core" {
-                    self.tridentID = properties["dds.sys_info.hostname"]!
-                    FastRTPS.setPartition(name: self.tridentID!)
-                    FastRTPS.remoteAddress = String(locators.first!.split(separator: ":").first!)
-                    print("Trident ID:", properties["dds.sys_info.hostname"]!, "remote ip:", FastRTPS.remoteAddress)
                     DispatchQueue.main.async {
                         self.setConnectedState()
                     }

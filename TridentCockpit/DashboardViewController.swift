@@ -17,6 +17,9 @@ class DashboardViewController: NSViewController {
     weak var toolbar: NSToolbar?
     var sshCommand: SSHCommand!
     var deviceState: DeviceState?
+    var discovered: [String: String] = [:]
+    var timer: Timer?
+    var ddsListener: DDSDiscoveryListener!
 
     var connectedSSID: String? {
         didSet {
@@ -53,7 +56,7 @@ class DashboardViewController: NSViewController {
         
         gridView.isHidden = true
         setupNotifications()
-        getConnection()
+        ddsDiscovery()
     }
     
     override func viewDidAppear() {
@@ -168,26 +171,39 @@ class DashboardViewController: NSViewController {
         }
     }
 
-    private func getConnection() {
-        var interfaceAddresses: Set<String> = []
-        DispatchQueue.global(qos: .userInteractive).async {
-            repeat {
-                interfaceAddresses = FastRTPS.getIP4Address()
-                if interfaceAddresses.isEmpty {
-                    Thread.sleep(forTimeInterval: 0.5)
-                }
-            } while interfaceAddresses.isEmpty
-            self.startRTPS(addresses: interfaceAddresses)
+    func ddsDiscovery() {
+        ddsListener = DDSDiscoveryListener(port: "8088") { [weak self] (uuidString: String, ipv4: String) in
+            guard let uuid = uuidString.split(separator: ":").last else { return }
+            self?.discovered[ipv4] = String(uuid)
+        }
+        do  {
+            try ddsListener.start()
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+        timer = Timer.scheduledTimer(withTimeInterval: 6, repeats: true) { _ in
+            guard self.discovered.count != 0 else { return }
+            self.ddsListener.stop()
+            self.timer?.invalidate()
+            self.timer = nil
+            self.startRTPS()
         }
     }
+
     
-    private func startRTPS(addresses: Set<String>) {
-        print(addresses)
-        let address = addresses.first { $0.starts(with: "10.1.1.") } ?? addresses.first!
-        FastRTPS.localAddress = address
-        print("Local address:", address)
-        let network = address + "/24"
-        FastRTPS.createParticipant(interfaceIPv4: address, networkAddress: network)
+    private func startRTPS() {
+        let interfaceAddresses = FastRTPS.getIP4Address()
+        print(discovered, interfaceAddresses)
+        let remote = discovered.first { $0.key.starts(with: "10.1.1.") } ?? discovered.first!
+        FastRTPS.remoteAddress = remote.key
+        tridentID = remote.value
+        let remoteStripped = remote.key.split(separator: ".").dropLast()
+        let localAddress = interfaceAddresses.first { $0.split(separator: ".").dropLast() == remoteStripped } ?? interfaceAddresses.first!
+        FastRTPS.localAddress = localAddress
+        print("Local address:", localAddress)
+        let network = FastRTPS.remoteAddress + "/32"
+        FastRTPS.createParticipant(interfaceIPv4: localAddress, networkAddress: network)
+        FastRTPS.setPartition(name: self.tridentID!)
     }
     
     func setConnectedState() {
