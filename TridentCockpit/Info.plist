@@ -45,7 +45,9 @@
 	<string>T3BlblJPVg==</string>
 	<key>RovLogin</key>
 	<string>rov</string>
-	<key>ExposeIP</key>
-	<string>10.1.1.2</string>
+	<key>BasePort</key>
+	<string>9700</string>
+	<key>RedirectPorts</key>
+	<string>80 8080</string>
 </dict>
 </plist>

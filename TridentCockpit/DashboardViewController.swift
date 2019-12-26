@@ -148,7 +148,8 @@ class DashboardViewController: NSViewController {
         guard let url = Bundle.main.url(forResource: name, withExtension: "sh") else { return }
         guard let scriptBody = try? String(contentsOf: url) else { return }
 
-        let exposeIP = Bundle.main.infoDictionary!["ExposeIP"]! as! String
+        let basePort = Bundle.main.infoDictionary!["BasePort"]! as! String
+        let redirectPorts = Bundle.main.infoDictionary!["RedirectPorts"]! as! String
         let login = Bundle.main.infoDictionary!["RovLogin"]! as! String
         let passwordBase64 = Bundle.main.infoDictionary!["RovPassword"]! as! String
         let password = String(data: Data(base64Encoded: passwordBase64)!, encoding: .utf8)!
@@ -157,7 +158,8 @@ class DashboardViewController: NSViewController {
         header += "echo \(password) | sudo -S echo START-SCRIPT\n"
         header += "exec 2>&1\n"
         header += "SOURCEIP=\(FastRTPS.localAddress)\n"
-        header += "EXPOSEIP=\(exposeIP)\n"
+        header += "BASEPORT=\(basePort)\n"
+        header += "REDIRECTPORTS=(\(redirectPorts))\n"
         print(header+scriptBody)
         sshCommand = try! SSHCommand(host: FastRTPS.remoteAddress)
         sshCommand.log.level = .error
