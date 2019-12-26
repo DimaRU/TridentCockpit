@@ -60,6 +60,8 @@ class DashboardViewController: NSViewController {
     }
     
     override func viewDidAppear() {
+        super.viewDidAppear()
+
         if toolbar == nil {
             toolbar = view.window?.toolbar
             setupToolbarButtons()
@@ -68,6 +70,9 @@ class DashboardViewController: NSViewController {
     }
     
     override func viewWillDisappear() {
+        super.viewWillDisappear()
+
+        toolbar?.isVisible = false
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {

@@ -17,13 +17,6 @@ class WindowController: NSWindowController, NSWindowDelegate {
         toolbar.displayMode = .iconAndLabel
     }
 
-    func windowWillClose(_ notification: Notification) {
-        FastRTPS.resignAll()
-        FastRTPS.stopRTPS()
-        if #available(OSX 10.15, *) {} else {
-            DisplayManager.enableSleep()
-        }
-    }
 }
 
 // MARK: - NSToolbarDelegate
@@ -102,7 +95,7 @@ extension WindowController: NSToolbarDelegate {
             .space,
             .connectWiFi,
             .wifiSSID,
-            .space,
+//            .space,
             .connectCamera
         ]
     }

@@ -7,7 +7,7 @@ import Cocoa
 import SceneKit
 import FastRTPSBridge
 
-class DiveViewController: NSViewController {
+class DiveViewController: NSViewController, NSWindowDelegate {
     @IBOutlet weak var videoView: VideoView!
     @IBOutlet weak var depthLabel: NSTextField!
     @IBOutlet weak var tempLabel: NSTextField!
@@ -108,8 +108,17 @@ class DiveViewController: NSViewController {
 
     override func viewDidAppear() {
         super.viewDidAppear()
+        view.window?.delegate = self
         if #available(OSX 10.15, *) {} else {
             DisplayManager.disableSleep()
+        }
+    }
+    
+    func windowWillClose(_ notification: Notification) {
+        FastRTPS.resignAll()
+        FastRTPS.stopRTPS()
+        if #available(OSX 10.15, *) {} else {
+            DisplayManager.enableSleep()
         }
     }
 
