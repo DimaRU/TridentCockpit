@@ -208,7 +208,7 @@ class DiveViewController: NSViewController {
         registerReaders()
         registerWriters()
         
-        rovProvision()
+//        rovProvision()
     }
     
     private func rovProvision() {
@@ -353,8 +353,10 @@ class DiveViewController: NSViewController {
         }
 
         FastRTPS.registerReader(topic: .rovBeacon) { [weak self] (rovBeacon: RovBeacon) in
+            guard self?.rovBeacon == nil else { return }
             DispatchQueue.main.async {
                 self?.rovBeacon = rovBeacon
+                self?.rovProvision()
                 FastRTPS.removeReader(topic: .rovBeacon)
             }
         }

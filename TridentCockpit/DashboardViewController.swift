@@ -60,9 +60,11 @@ class DashboardViewController: NSViewController {
     }
     
     override func viewDidAppear() {
-        toolbar = view.window?.toolbar
+        if toolbar == nil {
+            toolbar = view.window?.toolbar
+            setupToolbarButtons()
+        }
         toolbar?.isVisible = true
-        setupToolbarButtons()
     }
     
     override func viewWillDisappear() {
@@ -261,7 +263,7 @@ class DashboardViewController: NSViewController {
             default:
                 break
             }
-//            item.isEnabled = false
+            item.isEnabled = false
         }
     }
 
