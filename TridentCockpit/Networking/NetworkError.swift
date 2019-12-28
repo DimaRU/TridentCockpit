@@ -10,6 +10,7 @@ enum NetworkError: Error {
     case responceSyntaxError(message: String)
     case serverError(code: Int)
     case unaviable
+    case gone
     
     func message() -> String {
         switch self {
@@ -18,7 +19,8 @@ enum NetworkError: Error {
         case .serverError(let code):
             return "code \(code)"
         case .unaviable,
-             .notFound:
+             .notFound,
+             .gone:
             return ""
         }
     }
@@ -35,6 +37,8 @@ extension NetworkError: LocalizedError {
             return NSLocalizedString("Server error", comment: "Network error")
         case .unaviable:
             return NSLocalizedString("Network unaviable", comment: "Network error")
+        case .gone:
+            return NSLocalizedString("Offline", comment: "Network error")
         }
     }
     
