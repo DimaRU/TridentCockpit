@@ -296,7 +296,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nzd-Nx-u3D">
                                             <rect key="frame" x="45" y="42" width="71" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Trident ID:" id="z9i-zf-Tie">
-                                                <font key="font" metaFont="menuBar"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -316,7 +316,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZKN-Xx-OAl">
                                             <rect key="frame" x="-2" y="21" width="118" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Network address:" id="RQZ-Gm-xXg">
-                                                <font key="font" metaFont="menuBar"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -336,7 +336,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3vg-jJ-xwg">
                                             <rect key="frame" x="18" y="0.0" width="98" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Local address:" id="yEk-kf-Sd8">
-                                                <font key="font" metaFont="menuBar"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -411,11 +411,178 @@
                     <view key="view" id="s2l-EA-Z7j">
                         <rect key="frame" x="0.0" y="0.0" width="559" height="300"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" translatesAutoresizingMaskIntoConstraints="NO" id="iN7-JO-XKY">
+                                <rect key="frame" x="178" y="84" width="203" height="133"/>
+                                <rows>
+                                    <gridRow id="oQV-Kj-zR7"/>
+                                    <gridRow id="kkJ-J8-yqN"/>
+                                    <gridRow id="BEH-0n-ONK"/>
+                                    <gridRow id="rmr-Zt-PhO"/>
+                                    <gridRow id="dv3-PM-vDx"/>
+                                    <gridRow id="2o5-IW-TDh"/>
+                                </rows>
+                                <columns>
+                                    <gridColumn xPlacement="trailing" trailingPadding="4" id="pcr-Bm-0I3"/>
+                                    <gridColumn id="OVJ-sm-dcz"/>
+                                </columns>
+                                <gridCells>
+                                    <gridCell row="oQV-Kj-zR7" column="pcr-Bm-0I3" headOfMergedCell="QbR-aw-5ZA" xPlacement="center" yPlacement="fill" id="QbR-aw-5ZA">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iwl-tZ-HuG">
+                                            <rect key="frame" x="48" y="110" width="108" height="23"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Trident info" id="s9T-nE-VUQ">
+                                                <font key="font" metaFont="systemSemibold" size="20"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="oQV-Kj-zR7" column="OVJ-sm-dcz" headOfMergedCell="QbR-aw-5ZA" id="vfM-WC-1Zn"/>
+                                    <gridCell row="kkJ-J8-yqN" column="pcr-Bm-0I3" id="QNf-dY-P9j">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8od-ya-QMx">
+                                            <rect key="frame" x="32" y="88" width="98" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Battery charge:" id="EJV-dX-1V8">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="kkJ-J8-yqN" column="OVJ-sm-dcz" id="T4A-yf-n4F">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="onq-Fh-KAq">
+                                            <rect key="frame" x="136" y="88" width="32" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="98%" id="Kqu-Uf-sad">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="BEH-0n-ONK" column="pcr-Bm-0I3" id="dkS-Ys-AGh">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gnP-Iu-1pr">
+                                            <rect key="frame" x="20" y="66" width="110" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Internal pressure:" id="urH-7D-yU8">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="BEH-0n-ONK" column="OVJ-sm-dcz" id="vJG-aM-l5V">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NUm-Gz-0IU">
+                                            <rect key="frame" x="136" y="66" width="69" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="32.555kPa" id="Gpf-aU-Vhh">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="rmr-Zt-PhO" column="pcr-Bm-0I3" id="GrB-dd-e7Q">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3w5-fU-hBg">
+                                            <rect key="frame" x="-2" y="44" width="132" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Internal temperature:" id="h5k-eg-JT3">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="rmr-Zt-PhO" column="OVJ-sm-dcz" id="rga-k1-MB0">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gpQ-MY-B9B">
+                                            <rect key="frame" x="136" y="44" width="55" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="23.45℃" id="E1D-zy-FXQ">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="dv3-PM-vDx" column="pcr-Bm-0I3" id="XiC-qr-ALe">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bGh-q2-h6M">
+                                            <rect key="frame" x="69" y="22" width="61" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Pressure:" id="UvJ-bm-Olb">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="dv3-PM-vDx" column="OVJ-sm-dcz" id="1os-ji-mKf">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KHT-x9-5Xj">
+                                            <rect key="frame" x="136" y="22" width="69" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="32.555kPa" id="3Jl-QJ-Iun">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="2o5-IW-TDh" column="pcr-Bm-0I3" id="0x8-Ce-SjJ">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="izX-fq-NjP">
+                                            <rect key="frame" x="45" y="0.0" width="85" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Temperature:" id="p7Q-Gw-A56">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                    <gridCell row="2o5-IW-TDh" column="OVJ-sm-dcz" id="Jhi-Jj-5NA">
+                                        <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bgo-VE-shg">
+                                            <rect key="frame" x="136" y="0.0" width="53" height="16"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="18.88℃" id="yxe-Mf-cUA">
+                                                <font key="font" usesAppearanceFont="YES"/>
+                                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                        </textField>
+                                    </gridCell>
+                                </gridCells>
+                            </gridView>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Gdm-C4-HVI">
+                                <rect key="frame" x="0.0" y="265" width="35" height="35"/>
+                                <subviews>
+                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="52p-gx-6nI">
+                                        <rect key="frame" x="6" y="6" width="24" height="23"/>
+                                        <buttonCell key="cell" type="square" title="􀆄" bezelStyle="shadowlessSquare" alignment="center" imageScaling="proportionallyDown" inset="2" id="r8A-HG-wMn">
+                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                            <font key="font" metaFont="system" size="20"/>
+                                            <string key="keyEquivalent">w</string>
+                                            <modifierMask key="keyEquivalentModifierMask" command="YES"/>
+                                        </buttonCell>
+                                        <color key="contentTintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="closeButtonPress:" target="UI2-uK-lo2" id="3Lk-Pb-Sxl"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="52p-gx-6nI" firstAttribute="centerX" secondItem="Gdm-C4-HVI" secondAttribute="centerX" id="3QE-UM-7Df"/>
+                                    <constraint firstAttribute="width" constant="35" id="BuX-FK-fFd"/>
+                                    <constraint firstAttribute="height" constant="35" id="RsZ-wr-4em"/>
+                                    <constraint firstItem="52p-gx-6nI" firstAttribute="centerY" secondItem="Gdm-C4-HVI" secondAttribute="centerY" id="Yu0-R4-5qh"/>
+                                </constraints>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="iN7-JO-XKY" firstAttribute="centerY" secondItem="s2l-EA-Z7j" secondAttribute="centerY" id="PuR-Xj-cNE"/>
+                            <constraint firstItem="Gdm-C4-HVI" firstAttribute="leading" secondItem="s2l-EA-Z7j" secondAttribute="leading" id="W6c-lI-7kk"/>
+                            <constraint firstItem="Gdm-C4-HVI" firstAttribute="top" secondItem="s2l-EA-Z7j" secondAttribute="top" id="qlJ-44-tnC"/>
+                            <constraint firstItem="iN7-JO-XKY" firstAttribute="centerX" secondItem="s2l-EA-Z7j" secondAttribute="centerX" id="sDo-eR-Rr0"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="batteryChargeLabel" destination="onq-Fh-KAq" id="tCq-Ur-vNu"/>
+                        <outlet property="internalPressureLabel" destination="NUm-Gz-0IU" id="2hM-Py-evL"/>
+                        <outlet property="internalTemperatureLabel" destination="gpQ-MY-B9B" id="eH6-FB-gJp"/>
+                        <outlet property="pressureLabel" destination="KHT-x9-5Xj" id="6Sh-UX-sXN"/>
+                        <outlet property="temperatureLabel" destination="bgo-VE-shg" id="CCP-Ch-Bbz"/>
+                    </connections>
                 </viewController>
                 <customObject id="Xob-EL-jEy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="85" y="1287"/>
+            <point key="canvasLocation" x="84.5" y="1287"/>
         </scene>
         <!--Dive View Controller-->
         <scene sceneID="jBG-fP-4Z9">
@@ -787,13 +954,13 @@ Gw
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnH-L6-Zpz">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="240"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="236"/>
                                 <clipView key="contentView" id="vrj-0q-2hM">
-                                    <rect key="frame" x="1" y="1" width="198" height="238"/>
+                                    <rect key="frame" x="1" y="1" width="198" height="234"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" id="nAL-NW-z6n">
-                                            <rect key="frame" x="0.0" y="0.0" width="198" height="238"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="198" height="234"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="8"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
