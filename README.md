@@ -80,6 +80,8 @@ cd TridentCockpit
 ```
 
 * Open TridentCockpit.xcodeproj in the [latest public version of Xcode](https://itunes.apple.com/us/app/xcode/id497799835). *TridentCockpit may not build if you use any other version.*
+* Change the Team to your own team in the "Signing & Capabilities" panel.
+* Ensure that the scheme is set to TridentCockpit.
 * Build the project.
 
 
