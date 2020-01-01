@@ -30,27 +30,38 @@ class DiveViewController: NSViewController, NSWindowDelegate {
     var vehicleId: String = ""
     private var rovBeacon: RovBeacon?
     
-    private var depth: Float = 0 {
-        didSet { depthLabel.stringValue = String(format: "%.1f", depth) }
-    }
-    private var temperature: Double = 0 {
-        didSet { tempLabel.stringValue = String(format: "%.1f", temperature) }
+    @Average(5) private var depth: Float
+    @Average(10) private var temperature: Double
+
+    private func setupAverage() {
+        _depth.configure { avg in
+            DispatchQueue.main.async {
+                self.depthLabel.stringValue = String(format: "%.1f", avg)
+            }
+        }
+
+        _temperature.configure { avg in
+            DispatchQueue.main.async {
+                self.tempLabel.stringValue = String(format: "%.1f", avg)
+            }
+        }
     }
     
     private var batteryTime: Int32 = 0 {
         didSet {
-            var time = ""
             guard batteryTime != 65535 else {
-                batteryTimeLabel.stringValue = time + "charging"
                 return
             }
+            var time = ""
             if batteryTime / 60 != 0 {
                 time += String(batteryTime / 60) + "h"
             }
             if batteryTime % 60 != 0 {
                 time += String(batteryTime % 60) + "m"
             }
-            batteryTimeLabel.stringValue = time
+            DispatchQueue.main.async {
+                self.batteryTimeLabel.stringValue = time
+            }
         }
     }
 
@@ -63,7 +74,9 @@ class DiveViewController: NSViewController, NSWindowDelegate {
             if cameraTime % 60 != 0 {
                 time += String(cameraTime % 60) + "m"
             }
-            cameraTimeLabel.stringValue = time
+            DispatchQueue.main.async {
+                self.cameraTimeLabel.stringValue = time
+            }
         }
     }
 
@@ -81,6 +94,7 @@ class DiveViewController: NSViewController, NSWindowDelegate {
         cameraTimeLabel.stringValue = ""
         recordingTimeLabel.stringValue = ""
         cameraTimeLabel.textColor = .systemGray
+        setupAverage()
         
         indicatorsView.wantsLayer = true
         indicatorsView.layer?.backgroundColor = NSColor(named: "cameraControlBackground")!.cgColor
@@ -245,27 +259,27 @@ class DiveViewController: NSViewController, NSWindowDelegate {
         }
 
         FastRTPS.registerReader(topic: .rovTempWater) { [weak self] (temp: RovTemperature) in
-            DispatchQueue.main.async {
-                self?.temperature = temp.temperature.temperature
-            }
+            self?.temperature = temp.temperature.temperature
         }
         
         FastRTPS.registerReader(topic: .rovDepth) { [weak self] (depth: RovDepth) in
-            DispatchQueue.main.async {
-                self?.depth = depth.depth
-            }
+            self?.depth = depth.depth
         }
         
         FastRTPS.registerReader(topic: .rovFuelgaugeHealth) { [weak self] (health: RovFuelgaugeHealth) in
-            DispatchQueue.main.async {
-                self?.batteryTime = health.average_time_to_empty_mins
-            }
+            self?.batteryTime = health.average_time_to_empty_mins
         }
         
-        FastRTPS.registerReader(topic: .rovRecordingStats) { [weak self] (recordingStats: RovRecordingStats) in
+        FastRTPS.registerReader(topic: .rovFuelgaugeStatus) { [weak self] (status: RovFuelgaugeStatus) in
+            guard self?.batteryTime == 65535 else { return }
+        
             DispatchQueue.main.async {
-                self?.cameraTime = recordingStats.estRemainingRecTimeS / 60
+                self?.batteryTimeLabel.stringValue = String(format: "charge: %.0f%%", status.state.percentage * 100)
             }
+        }
+
+        FastRTPS.registerReader(topic: .rovRecordingStats) { [weak self] (recordingStats: RovRecordingStats) in
+            self?.cameraTime = recordingStats.estRemainingRecTimeS / 60
         }
         
         FastRTPS.registerReader(topic: .rovAttitude) { [weak self] (attitude: RovAttitude) in
@@ -369,31 +383,6 @@ class DiveViewController: NSViewController, NSWindowDelegate {
                 FastRTPS.removeReader(topic: .rovBeacon)
             }
         }
-
-//        FastRTPS.registerReader(topic: .rovSubsystemStatus) { (status: RovSubsystemStatus) in
-//            print("status:", status.subsystemId.rawValue, status.substate)
-//        }
-//        FastRTPS.registerReader(topic: .rovFirmwareStatus) { (firmwareStatus: RovFirmwareStatus) in
-//            print(firmwareStatus)
-//        }
-//        FastRTPS.registerReader(topic: .rovFirmwareServiceStatus) { (firmwareServiceStatus: RovFirmwareServiceStatus) in
-//            print(firmwareServiceStatus)
-//        }
-//        FastRTPS.registerReader(topic: .rovFirmwareCommandRep) { (command: RovFirmwareCommand) in
-//            print(command)
-//        }
-//        FastRTPS.registerReader(topic: .rovControlCurrent) { (control: RovTridentControlTarget) in
-//            print(control)
-//        }
-//        FastRTPS.registerReader(topic: .navTrackingCurrent) { (cameraObjectTrack: RovCameraObjectTrack) in
-//            print(cameraObjectTrack)
-//        }
-//        FastRTPS.registerReader(topic: .mcuI2cStats) { (stats: I2CStats) in
-//            print(stats)
-//        }
-//        FastRTPS.registerReader(topic: .rovSafety) { (state: RovSafetyState) in
-//            print(state)
-//        }
 
     }
     

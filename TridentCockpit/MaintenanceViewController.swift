@@ -14,22 +14,28 @@ class MaintenanceViewController: NSViewController {
     @IBOutlet weak var pressureLabel: NSTextField!
     @IBOutlet weak var temperatureLabel: NSTextField!
     
-    private var pressure: Double = 0 {
-        didSet { pressureLabel.stringValue = String(format: "%.3f kPa", pressure) }
-    }
+    @Average(10) private var pressure: Double
+    @Average(10) private var temperature: Double
+
     private var internalPressure: Double = 0 {
-        didSet { internalPressureLabel.stringValue = String(format: "%.3f kPa", internalPressure) }
-    }
-    private var temperature: Double = 0 {
-        didSet { temperatureLabel.stringValue = String(format: "%.2f", temperature) }
+        didSet {
+            DispatchQueue.main.async {
+                self.internalPressureLabel.stringValue = String(format: "%.3f kPa", self.internalPressure)
+            }
+        }
     }
     private var internalTemperature: Double = 0 {
-        didSet { internalTemperatureLabel.stringValue = String(format: "%.2f", internalTemperature) }
+        didSet {
+            DispatchQueue.main.async {
+                self.internalTemperatureLabel.stringValue = String(format: "%.2f", self.internalTemperature)
+            }
+        }
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        configurAverage()
         registerReaders()
     }
 
@@ -37,30 +43,35 @@ class MaintenanceViewController: NSViewController {
         FastRTPS.resignAll()
         dismiss(sender)
     }
+    
+    private func configurAverage() {
+        _pressure.configure { avg in
+            DispatchQueue.main.async {
+                self.pressureLabel.stringValue = String(format: "%.3f kPa", avg)
+            }
+        }
+        _temperature.configure { avg in
+            DispatchQueue.main.async {
+                self.temperatureLabel.stringValue = String(format: "%.2f", avg)
+            }
+        }
+    }
 
     private func registerReaders() {
         FastRTPS.registerReader(topic: .rovTempWater) { [weak self] (temp: RovTemperature) in
-            DispatchQueue.main.async {
-                self?.temperature = temp.temperature.temperature
-            }
+            self?.temperature = temp.temperature.temperature
         }
 
         FastRTPS.registerReader(topic: .rovDepth) { [weak self] (depth: RovDepth) in
-            DispatchQueue.main.async {
-                self?.pressure = depth.pressure.fluidPressure / 10
-            }
+            self?.pressure = depth.pressure.fluidPressure / 10
         }
 
         FastRTPS.registerReader(topic: .rovTempInternal) { [weak self] (temp: RovTemperature) in
-            DispatchQueue.main.async {
-                self?.internalTemperature = temp.temperature.temperature
-            }
+            self?.internalTemperature = temp.temperature.temperature
         }
 
         FastRTPS.registerReader(topic: .rovPressureInternal) { [weak self] (baro: RovBarometer) in
-            DispatchQueue.main.async {
-                self?.internalPressure = baro.pressure.fluidPressure / 10
-            }
+            self?.internalPressure = baro.pressure.fluidPressure / 10
         }
 
         FastRTPS.registerReader(topic: .rovFuelgaugeStatus) { [weak self] (status: RovFuelgaugeStatus) in
@@ -98,9 +109,6 @@ class MaintenanceViewController: NSViewController {
 //        }
 //        FastRTPS.registerReader(topic: .rovSafety) { (state: RovSafetyState) in
 //            print(state)
-//        }
-//        FastRTPS.registerReader(topic: .rovAttitude) { (attitude: RovAttitude) in
-//            print(attitude)
 //        }
 //        FastRTPS.registerReader(topic: .rovImuCalibration) { (calibration: IMUCalibration) in
 //            print(calibration)
