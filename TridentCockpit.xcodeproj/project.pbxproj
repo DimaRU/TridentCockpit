@@ -37,6 +37,7 @@
 		0A5CBCB423675F920055131A /* SF-Pro-Display-Semibold.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA123675F410055131A /* SF-Pro-Display-Semibold.otf */; };
 		0A5CBCB523675F920055131A /* SF-Pro-Display-Ultralight.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA223675F410055131A /* SF-Pro-Display-Ultralight.otf */; };
 		0A5CBCB623675F920055131A /* SF-Pro-Display-Black.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA323675F410055131A /* SF-Pro-Display-Black.otf */; };
+		0A5E3FC823BFA10E00EAC519 /* GoproStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5E3FBE23BFA10E00EAC519 /* GoproStatus.swift */; };
 		0A66C52C23AED706001BA93D /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0A66C52B23AED706001BA93D /* Moya */; };
 		0A66C52F23AED776001BA93D /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A66C52E23AED776001BA93D /* PromiseKit */; };
 		0A7130D423636AF200817593 /* FlatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130C823636AF100817593 /* FlatButton.swift */; };
@@ -196,6 +197,7 @@
 		0A5CBCA123675F410055131A /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
 		0A5CBCA223675F410055131A /* SF-Pro-Display-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Ultralight.otf"; sourceTree = "<group>"; };
 		0A5CBCA323675F410055131A /* SF-Pro-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Black.otf"; sourceTree = "<group>"; };
+		0A5E3FBE23BFA10E00EAC519 /* GoproStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoproStatus.swift; sourceTree = "<group>"; };
 		0A7130B4236369EA00817593 /* TridentCockpit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TridentCockpit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A7130C0236369EC00817593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A7130C823636AF100817593 /* FlatButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatButton.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 		0A3FD1F723A9720200FE9918 /* APIModel */ = {
 			isa = PBXGroup;
 			children = (
+				0A5E3FBE23BFA10E00EAC519 /* GoproStatus.swift */,
 				0A3FD1F823A9723E00FE9918 /* APIVersion.swift */,
 				0A3FD1FA23A9726200FE9918 /* DeviceState.swift */,
 				0A3FD1FC23A9729800FE9918 /* SSIDInfo.swift */,
@@ -646,6 +649,7 @@
 				0A7130D423636AF200817593 /* FlatButton.swift in Sources */,
 				0A7130FE23636B0200817593 /* RovBarometer.swift in Sources */,
 				0A5107DB23AA807D00C19289 /* NetworkError.swift in Sources */,
+				0A5E3FC823BFA10E00EAC519 /* GoproStatus.swift in Sources */,
 				0A82781423A689E70039A774 /* ToolbarItemIdentifier.swift in Sources */,
 				0A457D9723B78A7C0042C250 /* Gopro3API.swift in Sources */,
 				0A71310B23636B0200817593 /* RovTridentControlTarget.swift in Sources */,

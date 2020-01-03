@@ -14,7 +14,7 @@ enum Gopro3API {
     case cameraModel
     case shot(on: Bool)
     
-    static var cameraPassword: String!
+    static var cameraPassword: String?
     static let basePort = Int(Bundle.main.infoDictionary!["BasePort"]! as! String)!
     static var liveStremingURL: URL {
         get {
@@ -30,10 +30,10 @@ enum Gopro3API {
         var ptr = data.startIndex
         while ptr < data.endIndex {
             let lenght = Int(UInt(data[ptr]))
-            guard lenght <= data.count - 1 else { break }
-            let range = ptr.advanced(by: 1)..<ptr.advanced(by: 1+lenght)
+            ptr = ptr.advanced(by: 1)
+            let range = ptr..<ptr.advanced(by: lenght)
             strings.append(String(data: data[range], encoding: .ascii) ?? "")
-            ptr = ptr.advanced(by: 1+lenght)
+            ptr = ptr.advanced(by: lenght)
         }
         return strings
     }
@@ -55,6 +55,8 @@ extension Gopro3API {
         switch self {
         case .getPassword:
             return nil
+        case .cameraModel:
+            return nil
         case .status:
             return [URLQueryItem(name: "t", value: Gopro3API.cameraPassword!)]
         case .power(let on):
@@ -67,8 +69,6 @@ extension Gopro3API {
                 URLQueryItem(name: "t", value: Gopro3API.cameraPassword!),
                 URLQueryItem(name: "p", value: on ? "\u{02}" : "\u{00}")
             ]
-        case .cameraModel:
-            return nil
         case .shot(let on):
             return [
                 URLQueryItem(name: "t", value: Gopro3API.cameraPassword!),
@@ -93,6 +93,13 @@ extension Gopro3API {
     }
     
     public static func sendRequest(_ target: Gopro3API, success: @escaping (Data) -> Void, failure: @escaping (Error) -> Void) {
+        if Gopro3API.cameraPassword == nil {
+            if case .getPassword = target {}
+            else {
+                failure(NetworkError.unprovisioned)
+                return
+            }
+        }
         let urlRequest = target.createRequest(target)
         
         let dataTask = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
