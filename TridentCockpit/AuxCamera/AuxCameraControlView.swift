@@ -81,11 +81,25 @@ class AuxCameraControlView: NSView, FloatingViewProtocol {
     
     func loadPosition() -> (cph: CGFloat?, cpv: CGFloat?) {
         return (
-            Preference.cameraControlViewCPH,
-            Preference.cameraControlViewCPV
+            Preference.auxCameraControlViewCPH,
+            Preference.auxCameraControlViewCPV
         )
     }
     
+    override func viewWillMove(toWindow newWindow: NSWindow?) {
+        super.viewWillMove(toWindow: newWindow)
+        guard newWindow == nil else { return }
+        timer?.invalidate()
+        timer = nil
+        liveViewWindowController?.close()
+        liveViewWindowController = nil
+    }
+    
+    #if DEBUG
+    deinit {
+        print("AuxCameraControlView deinit")
+    }
+    #endif
     
     // MARK: Instaniate
     static func instantiate(superView: NSView) -> AuxCameraControlView {
@@ -117,6 +131,8 @@ class AuxCameraControlView: NSView, FloatingViewProtocol {
     private func setup(state: CameraControlViewState) {
         switch state {
         case .off:
+            liveViewWindowController?.close()
+            liveViewWindowController = nil
             powerButton.state = .off
             liveVideoButton.isHidden = true
             recordingTimeLabel.stringValue = ""
@@ -150,6 +166,7 @@ class AuxCameraControlView: NSView, FloatingViewProtocol {
                 // camera is off
                 self.cameraState = .off
                 self.timer?.invalidate()
+                self.timer = nil
             }
             print(error)
         }
@@ -159,9 +176,11 @@ class AuxCameraControlView: NSView, FloatingViewProtocol {
         let status = GoproStatus(data: data)
         cameraState = status.recording ? .recording : .on
         batteryStatusLabel.stringValue = status.battery
-        let (hour, min, sec) = status.videoProgress
-        recordingTimeLabel.stringValue = String(format: "%2.2d:%2.2d:%2.2d", hour, min, sec)
         cameraTime = status.videoRemaining
+        if status.recording {
+            let (hour, min, sec) = status.videoProgress
+            recordingTimeLabel.stringValue = String(format: "%2.2d:%2.2d:%2.2d", hour, min, sec)
+        }
     }
     
     @objc private func windowWillClose(notification: Notification) {
@@ -173,10 +192,10 @@ class AuxCameraControlView: NSView, FloatingViewProtocol {
     
     private func setRefreshTimer(timeInterval: TimeInterval) {
         timer?.invalidate()
-        timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) {
-            self.refreshCameraStatus()
+        timer = Timer.scheduledTimer(withTimeInterval: timeInterval, repeats: true) { [weak self] in
+            self?.refreshCameraStatus()
             if $0.timeInterval == 2 {
-                self.setRefreshTimer(timeInterval: 10)
+                self?.setRefreshTimer(timeInterval: 10)
             }
         }
     }
@@ -190,15 +209,20 @@ class AuxCameraControlView: NSView, FloatingViewProtocol {
         }
         
         Gopro3API.request(.power(on: powerOn))
-        .then {
-            return Gopro3API.attempt(retryCount: 10, delay: .seconds(1)) {
-                Gopro3API.requestData(.status)
+        .then { (Void) -> Promise<Data> in
+            if powerOn {
+                return Gopro3API.attempt(retryCount: 10, delay: .seconds(1)) {
+                    Gopro3API.requestData(.status)
+                }
+            } else {
+                return Promise<Data>.value(Data())
             }
-        }.done { data in
+        }.done { _ in
             if powerOn {
                 self.setRefreshTimer(timeInterval: 2)
             } else {
                 self.timer?.invalidate()
+                self.timer = nil
             }
             self.cameraState = powerOn ? .on : .off
         }.catch {

@@ -161,7 +161,6 @@ class DashboardViewController: NSViewController {
         header += "SOURCEIP=\(FastRTPS.localAddress)\n"
         header += "BASEPORT=\(basePort)\n"
         header += "REDIRECTPORTS=(\(redirectPorts))\n"
-        print(header+scriptBody)
         sshCommand = try! SSHCommand(host: FastRTPS.remoteAddress)
         sshCommand.log.level = .error
         sshCommand.timeout = 10000

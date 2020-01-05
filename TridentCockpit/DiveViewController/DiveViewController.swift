@@ -35,15 +35,15 @@ class DiveViewController: NSViewController, NSWindowDelegate {
     @Average(10) private var temperature: Double
 
     private func setupAverage() {
-        _depth.configure { avg in
+        _depth.configure { [weak self] avg in
             DispatchQueue.main.async {
-                self.depthLabel.stringValue = String(format: "%.1f", avg)
+                self?.depthLabel.stringValue = String(format: "%.1f", avg)
             }
         }
 
-        _temperature.configure { avg in
+        _temperature.configure { [weak self] avg in
             DispatchQueue.main.async {
-                self.tempLabel.stringValue = String(format: "%.1f", avg)
+                self?.tempLabel.stringValue = String(format: "%.1f", avg)
             }
         }
     }
