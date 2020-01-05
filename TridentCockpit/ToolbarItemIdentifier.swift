@@ -16,6 +16,7 @@ public extension NSToolbarItem.Identifier {
     static let connectCamera: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "ConnectCamera")
     static let goDashboard: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "GoDashboard")
     static let ssidView: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "SSIDView")
+    static let auxCameraModelView: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "AuxCameraModelView")
 }
 
 extension NSToolbar {

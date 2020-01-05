@@ -73,6 +73,12 @@ extension WindowController: NSToolbarDelegate {
             toolbarItem.toolTip = NSLocalizedString("Connected SSID", comment: "")
             toolbarItem.view = ssidLabel
             toolbarItem.isEnabled = true
+        case .auxCameraModelView:
+            toolbarItem.label = NSLocalizedString("Model", comment: "")
+            toolbarItem.paletteLabel = NSLocalizedString("Model", comment: "")
+            toolbarItem.toolTip = NSLocalizedString("Connected camera model", comment: "")
+            toolbarItem.view = NSTextField(labelWithString: "")
+            toolbarItem.isEnabled = true
         default:
             break
         }
@@ -96,7 +102,8 @@ extension WindowController: NSToolbarDelegate {
             .connectWiFi,
             .wifiSSID,
 //            .space,
-            .connectCamera
+            .connectCamera,
+            .auxCameraModelView,
         ]
     }
 

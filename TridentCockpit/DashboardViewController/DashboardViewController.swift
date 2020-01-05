@@ -50,6 +50,9 @@ class DashboardViewController: NSViewController {
     @IBOutlet weak var tridentIdLabel: NSTextField!
     @IBOutlet weak var tridentNetworkAddressLabel: NSTextField!
     @IBOutlet weak var localAddressLabel: NSTextField!
+    @IBOutlet weak var cameraModelLabel: NSTextField!
+    @IBOutlet weak var cameraFirmwareLabel: NSTextField!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -192,7 +195,10 @@ class DashboardViewController: NSViewController {
             }
         }.done { data in
             let model = Gopro3API.getString(from: data.advanced(by: 3))
-            print(model)
+            guard let textField = self.toolbar?.getItem(for: .auxCameraModelView)?.view as? NSTextField else { return }
+            textField.stringValue = model[1]
+            self.cameraModelLabel.stringValue = model[1]
+            self.cameraFirmwareLabel.stringValue = model[0]
         }.catch {
             print($0)
         }
