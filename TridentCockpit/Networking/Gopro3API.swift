@@ -15,8 +15,11 @@ enum Gopro3API {
     case shot(on: Bool)
     
     static var cameraPassword: String?
+    static var isConnected: Bool {
+        Gopro3API.cameraPassword != nil
+    }
     static let basePort = Int(Bundle.main.infoDictionary!["BasePort"]! as! String)!
-    static var liveStremingURL: URL {
+    static var liveStreamURL: URL {
         get {
             let streamingPort = Gopro3API.basePort + 1
             let address = FastRTPS.remoteAddress
@@ -77,7 +80,7 @@ extension Gopro3API {
         }
     }
     
-    private func createRequest(_ target: Gopro3API) -> URLRequest {
+    private func createRequest() -> URLRequest {
         var urlComponents = URLComponents()
         urlComponents.scheme = "http"
         urlComponents.host = FastRTPS.remoteAddress
@@ -92,15 +95,15 @@ extension Gopro3API {
         return request
     }
     
-    public static func sendRequest(_ target: Gopro3API, success: @escaping (Data) -> Void, failure: @escaping (Error) -> Void) {
+    func sendRequest(success: @escaping (Data) -> Void, failure: @escaping (Error) -> Void) {
         if Gopro3API.cameraPassword == nil {
-            if case .getPassword = target {}
+            if case .getPassword = self {}
             else {
                 failure(NetworkError.unprovisioned)
                 return
             }
         }
-        let urlRequest = target.createRequest(target)
+        let urlRequest = createRequest()
         
         let dataTask = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
@@ -122,28 +125,39 @@ extension Gopro3API {
                     failure(NetworkError.serverError(code: statusCode))
                 }
             }
-            
             success(data ?? Data())
-
         }
         dataTask.resume()
     }
     
     static func request(_ target: Gopro3API) -> Promise<Void> {
         let (promise, seal) = Promise<Void>.pending()
-        Gopro3API.sendRequest(target,
-                     success: { _ in seal.fulfill(Void()) },
-                     failure: { seal.reject($0)} )
+        target.sendRequest(
+            success: { _ in seal.fulfill(Void()) },
+            failure: { seal.reject($0)} )
         return promise
     }
 
     static func requestData(_ target: Gopro3API) -> Promise<Data> {
         let (promise, seal) = Promise<Data>.pending()
-        Gopro3API.sendRequest(target,
-                             success: { seal.fulfill($0) },
-                             failure: { seal.reject($0) } )
+        target.sendRequest(
+            success: { seal.fulfill($0) },
+            failure: { seal.reject($0) } )
         return promise
     }
-
+    
+    static func attempt<T>(retryCount: Int = 3, delay: DispatchTimeInterval = .seconds(1), _ body: @escaping () -> Promise<T>) -> Promise<T> {
+        var attempts = 0
+        func attempt() -> Promise<T> {
+            attempts += 1
+            return body().recover { error -> Promise<T> in
+                guard case NetworkError.gone = error else { throw error }
+                guard attempts < retryCount else { throw error }
+                return after(delay).then(on: nil, attempt)
+            }
+        }
+        return attempt()
+    }
+    
 }
 

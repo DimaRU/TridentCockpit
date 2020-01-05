@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="AuxCameraControlView" customModule="TestGopro" customModuleProvider="target">
+            <connections>
+                <outlet property="batteryStatusLabel" destination="8ct-6u-ekI" id="d9J-6X-aYg"/>
+                <outlet property="cameraTimeLabel" destination="Ekl-Le-iUS" id="sUb-Lw-Lhj"/>
+                <outlet property="contentView" destination="c22-O7-iKe" id="y0o-d9-Cxf"/>
+                <outlet property="liveVideoButton" destination="vj5-yO-Ush" id="XNj-zG-iI1"/>
+                <outlet property="powerButton" destination="0W5-1d-Er3" id="YCv-et-js7"/>
+                <outlet property="recordingButton" destination="7tm-LU-24j" id="shq-AN-0UG"/>
+                <outlet property="recordingTimeLabel" destination="y7U-0Z-7PQ" id="b7U-fX-KpQ"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="c22-O7-iKe">
+            <rect key="frame" x="0.0" y="0.0" width="110" height="150"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Ekl-Le-iUS">
+                    <rect key="frame" x="2" y="31" width="106" height="30"/>
+                    <textFieldCell key="cell" alignment="center" title="Remaining time: 02h:00m" id="N27-Sp-LkL">
+                        <font key="font" metaFont="system" size="12"/>
+                        <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="y7U-0Z-7PQ">
+                    <rect key="frame" x="22" y="61" width="67" height="15"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="00:00:00" id="DyC-4U-6Bi">
+                        <font key="font" size="13" name="Menlo-Regular"/>
+                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="7tm-LU-24j" customClass="FlatButton" customModule="TridentCockpit" customModuleProvider="target">
+                    <rect key="frame" x="30" y="80" width="50" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="50" id="EO6-vh-1NV"/>
+                        <constraint firstAttribute="height" constant="50" id="L6b-GD-afe"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" alignment="center" borderStyle="border" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="Ch5-zt-iJN">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="25"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="onAnimationDuration">
+                            <real key="value" value="0.10000000000000001"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="offAnimationDuration">
+                            <real key="value" value="0.10000000000000001"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
+                            <color key="value" name="stopNActive"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="activeButtonColor">
+                            <color key="value" name="stopActive"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="activeBorderColor">
+                            <color key="value" white="0.1330000013" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.99999600649999998" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="recordingButtonPress:" target="-2" id="DVa-GU-ZX5"/>
+                    </connections>
+                </button>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="0W5-1d-Er3">
+                    <rect key="frame" x="86" y="4" width="20" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="T4y-Cy-qYy"/>
+                        <constraint firstAttribute="width" constant="20" id="dXu-bw-wFB"/>
+                    </constraints>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="poweroff" imagePosition="only" alignment="center" alternateImage="poweron" state="on" imageScaling="proportionallyUpOrDown" inset="2" id="KlA-vh-qdX">
+                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="powerButtonPress:" target="-2" id="pTp-Y6-3xX"/>
+                    </connections>
+                </button>
+                <stackView distribution="fill" orientation="vertical" alignment="centerX" spacing="-2" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DYG-sR-baQ">
+                    <rect key="frame" x="40" y="4" width="31" height="28"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="SbO-Vo-aZV">
+                            <rect key="frame" x="2" y="13" width="27" height="15"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="􀛨" id="Fe5-4k-CVD">
+                                <font key="font" size="13" name="SFProDisplay-Light"/>
+                                <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8ct-6u-ekI">
+                            <rect key="frame" x="-2" y="0.0" width="35" height="15"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="justified" title="100%" id="gSO-Or-Ne8">
+                                <font key="font" metaFont="system" size="12"/>
+                                <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <visibilityPriorities>
+                        <integer value="1000"/>
+                        <integer value="1000"/>
+                    </visibilityPriorities>
+                    <customSpacing>
+                        <real value="3.4028234663852886e+38"/>
+                        <real value="3.4028234663852886e+38"/>
+                    </customSpacing>
+                </stackView>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="vj5-yO-Ush">
+                    <rect key="frame" x="8" y="4" width="20" height="20"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="live" imagePosition="only" alignment="center" imageScaling="proportionallyUpOrDown" inset="2" id="Fdh-Vr-qVd">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <color key="contentTintColor" white="0.95594411680143176" alpha="1" colorSpace="calibratedWhite"/>
+                    <connections>
+                        <action selector="liveVideoButtonPress:" target="-2" id="yvq-o1-Hx8"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Ekl-Le-iUS" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="4" id="03l-sz-S1F"/>
+                <constraint firstAttribute="bottom" secondItem="DYG-sR-baQ" secondAttribute="bottom" constant="4" id="728-z2-JE2"/>
+                <constraint firstItem="vj5-yO-Ush" firstAttribute="leading" secondItem="c22-O7-iKe" secondAttribute="leading" constant="8" id="9IO-If-Vzb"/>
+                <constraint firstItem="7tm-LU-24j" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" constant="20" symbolic="YES" id="Ddg-pJ-OAQ"/>
+                <constraint firstAttribute="trailing" secondItem="0W5-1d-Er3" secondAttribute="trailing" constant="4" id="E53-UD-Tcw"/>
+                <constraint firstAttribute="trailing" secondItem="Ekl-Le-iUS" secondAttribute="trailing" constant="4" id="IrK-Zl-Lbc"/>
+                <constraint firstItem="y7U-0Z-7PQ" firstAttribute="centerX" secondItem="7tm-LU-24j" secondAttribute="centerX" id="dEU-lZ-dYe"/>
+                <constraint firstAttribute="bottom" secondItem="0W5-1d-Er3" secondAttribute="bottom" constant="4" id="epi-mT-cyq"/>
+                <constraint firstItem="y7U-0Z-7PQ" firstAttribute="top" secondItem="7tm-LU-24j" secondAttribute="bottom" constant="4" id="jXl-hw-elt"/>
+                <constraint firstAttribute="height" constant="150" id="qtQ-3t-6fU"/>
+                <constraint firstItem="7tm-LU-24j" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="sXI-7c-Bpm"/>
+                <constraint firstAttribute="bottom" secondItem="vj5-yO-Ush" secondAttribute="bottom" constant="4" id="uiq-IV-GzK"/>
+                <constraint firstItem="DYG-sR-baQ" firstAttribute="centerX" secondItem="c22-O7-iKe" secondAttribute="centerX" id="upn-zM-hPF"/>
+                <constraint firstAttribute="width" constant="110" id="yS4-nF-CYI"/>
+                <constraint firstItem="Ekl-Le-iUS" firstAttribute="top" secondItem="y7U-0Z-7PQ" secondAttribute="bottom" id="znY-6M-X5i"/>
+            </constraints>
+            <point key="canvasLocation" x="91" y="204"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="live" width="20" height="20"/>
+        <image name="poweroff" width="20" height="20"/>
+        <image name="poweron" width="20" height="20"/>
+        <namedColor name="stopActive">
+            <color white="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+        <namedColor name="stopNActive">
+            <color white="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </namedColor>
+    </resources>
+</document>

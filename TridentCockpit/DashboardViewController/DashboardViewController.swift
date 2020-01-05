@@ -113,6 +113,7 @@ class DashboardViewController: NSViewController {
 
     @IBAction func connectCameraButtonPress(_ sender: Any?) {
         executeScript(name: "PayloadProvision")
+        connectGopro3()
     }
 
     private func disconnectWiFi() {
@@ -177,6 +178,24 @@ class DashboardViewController: NSViewController {
                     print("ERROR: \(String(describing: error))")
                 }
                 self.sshCommand.disconnect {}
+        }
+    }
+    
+    private func connectGopro3() {
+        Gopro3API.requestData(.getPassword)
+        .then { (passwordData: Data) -> Promise<Void> in
+            let password = Gopro3API.getString(from: passwordData.advanced(by: 1)).first!
+            Gopro3API.cameraPassword = password
+            return Gopro3API.request(.power(on: true))
+        }.then {
+            return Gopro3API.attempt(retryCount: 10, delay: .seconds(1)) {
+                Gopro3API.requestData(.cameraModel)
+            }
+        }.done { data in
+            let model = Gopro3API.getString(from: data.advanced(by: 3))
+            print(model)
+        }.catch {
+            print($0)
         }
     }
 

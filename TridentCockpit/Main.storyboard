@@ -856,9 +856,9 @@ Gw
                                         </textFieldCell>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="knk-ef-7Td">
-                                        <rect key="frame" x="2" y="4" width="106" height="32"/>
+                                        <rect key="frame" x="2" y="4" width="106" height="30"/>
                                         <textFieldCell key="cell" alignment="center" title="Remaining time: 2h left" id="BJn-kc-g4o">
-                                            <font key="font" metaFont="system"/>
+                                            <font key="font" metaFont="system" size="12"/>
                                             <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1008,13 +1008,13 @@ Gw
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnH-L6-Zpz">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="232"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="230"/>
                                 <clipView key="contentView" id="vrj-0q-2hM">
-                                    <rect key="frame" x="1" y="1" width="198" height="230"/>
+                                    <rect key="frame" x="1" y="1" width="198" height="228"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" id="nAL-NW-z6n">
-                                            <rect key="frame" x="0.0" y="0.0" width="198" height="230"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="198" height="228"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="8"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>

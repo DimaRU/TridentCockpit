@@ -22,6 +22,7 @@ class DiveViewController: NSViewController, NSWindowDelegate {
     @IBOutlet weak var recordingButton: FlatButton!
     @IBOutlet weak var tridentView: RovModelView!
 
+    private var auxCameraView: AuxCameraControlView?
     private var videoDecoder: VideoDecoder!
     private let tridentControl = TridentControl()
     
@@ -109,12 +110,18 @@ class DiveViewController: NSViewController, NSWindowDelegate {
         view.wantsLayer = true
         view.layer?.contents = NSImage(named: "Trident")
 
-        cameraControlView.addConstraints()
-        tridentView.addConstraints()
+        cameraControlView.addConstraints(defX: view.frame.minX + cameraControlView.frame.midX,
+                                         defY: view.frame.midY)
+        tridentView.addConstraints(defX: view.frame.maxX - tridentView.frame.midX,
+                                   defY: view.frame.minY + tridentView.frame.midY)
+        if Gopro3API.isConnected {
+            auxCameraView = AuxCameraControlView.instantiate(superView: view)
+        }
         view.postsFrameChangedNotifications = true
         NotificationCenter.default.addObserver(forName: NSView.frameDidChangeNotification, object: nil, queue: nil) { [weak self] _ in
             self?.cameraControlView.superViewDidResize()
             self?.tridentView.superViewDidResize()
+            self?.auxCameraView?.superViewDidResize()
         }
         
         startRTPS()

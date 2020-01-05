@@ -88,6 +88,10 @@
 		0A82781223A641750039A774 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781123A641750039A774 /* MaintenanceViewController.swift */; };
 		0A82781423A689E70039A774 /* ToolbarItemIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */; };
 		0A84F9CE237B37BF009BBAD4 /* SetupNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */; };
+		0A98306D23C22FCA00BD234B /* AuxCameraControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A98306223C22FCA00BD234B /* AuxCameraControlView.xib */; };
+		0A98306E23C22FCA00BD234B /* AuxCameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98306C23C22FCA00BD234B /* AuxCameraControlView.swift */; };
+		0A98307023C22FFD00BD234B /* AuxPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98306F23C22FFD00BD234B /* AuxPlayerViewController.swift */; };
+		0A98307423C2355700BD234B /* AuxPlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A98307323C2355700BD234B /* AuxPlayerViewController.storyboard */; };
 		0A9E55BF23BC0AFA008F8A9A /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E55BE23BC0AFA008F8A9A /* Average.swift */; };
 		0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */; };
 		0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0ADA653723B119880090D757 /* PayloadProvision.sh */; };
@@ -248,6 +252,10 @@
 		0A82781123A641750039A774 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
 		0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemIdentifier.swift; sourceTree = "<group>"; };
 		0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNotifications.swift; sourceTree = "<group>"; };
+		0A98306223C22FCA00BD234B /* AuxCameraControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuxCameraControlView.xib; sourceTree = "<group>"; };
+		0A98306C23C22FCA00BD234B /* AuxCameraControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuxCameraControlView.swift; sourceTree = "<group>"; };
+		0A98306F23C22FFD00BD234B /* AuxPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuxPlayerViewController.swift; sourceTree = "<group>"; };
+		0A98307323C2355700BD234B /* AuxPlayerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AuxPlayerViewController.storyboard; sourceTree = "<group>"; };
 		0A9E55BE23BC0AFA008F8A9A /* Average.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Average.swift; sourceTree = "<group>"; };
 		0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiPopupViewController.swift; sourceTree = "<group>"; };
 		0ADA653723B119880090D757 /* PayloadProvision.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PayloadProvision.sh; sourceTree = "<group>"; };
@@ -372,27 +380,20 @@
 		0A7130B6236369EA00817593 /* TridentCockpit */ = {
 			isa = PBXGroup;
 			children = (
-				0A7130CD23636AF100817593 /* AppDelegate.swift */,
-				0A7130D323636AF200817593 /* DiveViewController.swift */,
-				0A82780023A63B220039A774 /* DashboardViewController.swift */,
-				0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */,
-				0A5AF44E23AFAD0800410BCC /* GetSSIDPasswordViewController.swift */,
-				0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */,
+				0A98307623C23F9800BD234B /* DiveViewController */,
+				0A98307723C23FE900BD234B /* DashboardViewController */,
+				0A98307523C23EFD00BD234B /* AuxCamera */,
 				0A82781123A641750039A774 /* MaintenanceViewController.swift */,
 				0A82780F23A641230039A774 /* PastDivesViewController.swift */,
 				0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */,
 				0A82780B23A63B2D0039A774 /* WindowController.swift */,
-				0A7130D123636AF100817593 /* TridentControl.swift */,
-				0A2E42BB236B0EE900B5C569 /* VideoView.swift */,
-				0A7130CC23636AF100817593 /* VideoDecoder.swift */,
-				0A7130D223636AF200817593 /* CameraControlView.swift */,
 				0A7130CB23636AF100817593 /* DisplayManager.swift */,
 				0A7130CA23636AF100817593 /* Extensions.swift */,
 				0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */,
 				0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */,
 				0A7130CF23636AF100817593 /* Preferences.swift */,
-				0A7130D023636AF100817593 /* RovModelView.swift */,
 				0A9E55BE23BC0AFA008F8A9A /* Average.swift */,
+				0A7130CD23636AF100817593 /* AppDelegate.swift */,
 				0A3FD1F023A9439100FE9918 /* Networking */,
 				0A3FD1F723A9720200FE9918 /* APIModel */,
 				0A7130E023636B0200817593 /* DDSModel */,
@@ -441,6 +442,41 @@
 				0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */,
 			);
 			path = DDSModel;
+			sourceTree = "<group>";
+		};
+		0A98307523C23EFD00BD234B /* AuxCamera */ = {
+			isa = PBXGroup;
+			children = (
+				0A98306C23C22FCA00BD234B /* AuxCameraControlView.swift */,
+				0A98306223C22FCA00BD234B /* AuxCameraControlView.xib */,
+				0A98306F23C22FFD00BD234B /* AuxPlayerViewController.swift */,
+				0A98307323C2355700BD234B /* AuxPlayerViewController.storyboard */,
+			);
+			path = AuxCamera;
+			sourceTree = "<group>";
+		};
+		0A98307623C23F9800BD234B /* DiveViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A7130D323636AF200817593 /* DiveViewController.swift */,
+				0A7130D023636AF100817593 /* RovModelView.swift */,
+				0A7130D223636AF200817593 /* CameraControlView.swift */,
+				0A7130CC23636AF100817593 /* VideoDecoder.swift */,
+				0A7130D123636AF100817593 /* TridentControl.swift */,
+				0A2E42BB236B0EE900B5C569 /* VideoView.swift */,
+			);
+			path = DiveViewController;
+			sourceTree = "<group>";
+		};
+		0A98307723C23FE900BD234B /* DashboardViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A82780023A63B220039A774 /* DashboardViewController.swift */,
+				0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */,
+				0A5AF44E23AFAD0800410BCC /* GetSSIDPasswordViewController.swift */,
+				0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */,
+			);
+			path = DashboardViewController;
 			sourceTree = "<group>";
 		};
 		0AF69DF223A600FA0037DBDD /* Products */ = {
@@ -573,9 +609,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A71311A23636B1700817593 /* Main.storyboard in Resources */,
+				0A98307423C2355700BD234B /* AuxPlayerViewController.storyboard in Resources */,
 				0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */,
 				0A71311C23636B5C00817593 /* TridentCockpit.scnassets in Resources */,
 				0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */,
+				0A98306D23C22FCA00BD234B /* AuxCameraControlView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -606,6 +644,7 @@
 				0A51082223AB0FFD00C19289 /* TransitionAnimator.swift in Sources */,
 				0A7130D723636AF200817593 /* DisplayManager.swift in Sources */,
 				0A7130FD23636B0200817593 /* RovTopic.swift in Sources */,
+				0A98306E23C22FCA00BD234B /* AuxCameraControlView.swift in Sources */,
 				0A7130DA23636AF200817593 /* FloatingViewProtocol.swift in Sources */,
 				0A9E55BF23BC0AFA008F8A9A /* Average.swift in Sources */,
 				0A3FD1F923A9723E00FE9918 /* APIVersion.swift in Sources */,
@@ -644,6 +683,7 @@
 				0A71311823636B0200817593 /* RovLightPower.swift in Sources */,
 				0A2E42BC236B0EE900B5C569 /* VideoView.swift in Sources */,
 				0A7130DB23636AF200817593 /* Preferences.swift in Sources */,
+				0A98307023C22FFD00BD234B /* AuxPlayerViewController.swift in Sources */,
 				0A3FD1F623A94FAC00FE9918 /* RecordingsAPI.swift in Sources */,
 				0A71310E23636B0200817593 /* RovTemperature.swift in Sources */,
 				0A7130D423636AF200817593 /* FlatButton.swift in Sources */,

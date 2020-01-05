@@ -6,8 +6,8 @@
 import Cocoa
 
 class CameraControlView: NSView, FloatingViewProtocol {
-    weak var xConstraint: NSLayoutConstraint?
-    weak var yConstraint: NSLayoutConstraint?
+    var xConstraint: NSLayoutConstraint?
+    var yConstraint: NSLayoutConstraint?
 
     var mousePosRelatedToView: CGPoint?
     var isDragging: Bool = false

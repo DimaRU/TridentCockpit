@@ -29,9 +29,9 @@ struct GoproStatus: Codable {
     var photoCount: UInt {
         UInt(data[23]) << 8 + UInt(data[24])
     }
-    var videoRemaining: (UInt, UInt) {
-        let min = UInt(data[25]) << 8 + UInt(data[26])
-        return (min / 60, min % 60)
+    var videoRemaining: UInt32 {
+        let min = UInt32(data[25]) << 8 + UInt32(data[26])
+        return min
     }
     var videoCount: UInt {
         UInt(data[27]) << 8 + UInt(data[28])
@@ -45,7 +45,7 @@ struct GoproStatus: Codable {
         case 1: return "40%"
         case 2: return "70%"
         case 3: return "100%"
-        case 4: return "charging"
+        case 4: return "chg"
         default: return "??"
         }
     }

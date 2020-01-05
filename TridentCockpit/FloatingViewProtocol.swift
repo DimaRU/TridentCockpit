@@ -21,7 +21,7 @@ protocol FloatingViewProtocol: NSView {
 }
 
 extension FloatingViewProtocol {
-    func addConstraints() {
+    func addConstraints(defX: CGFloat, defY: CGFloat) {
         assert(superview != nil)
         guard xConstraint == nil else { return }
         guard let superview = superview else { return }
@@ -33,8 +33,8 @@ extension FloatingViewProtocol {
             x = cph * superview.frame.width
             y = cpv * superview.frame.height
         } else {
-            x = frame.midX
-            y = frame.midY
+            x = defX
+            y = defY
             cph = x / superview.frame.width
             cpv = y / superview.frame.height
         }
