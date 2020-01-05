@@ -25,7 +25,7 @@
 
 * Xbox Wireless Controller
 * DualShock 4
-* MFi gamepad
+* Any MFi certified gamepad
 
 ## Keyboard Shortcuts
 
