@@ -16,30 +16,47 @@ class DashboardViewController: NSViewController {
     var tridentID: String!
     weak var toolbar: NSToolbar?
     var sshCommand: SSHCommand!
-    var deviceState: DeviceState?
     var discovered: [String: String] = [:]
     var timer: Timer?
     var ddsListener: DDSDiscoveryListener!
 
+    var deviceState: DeviceState? {
+        didSet {
+            guard oldValue != deviceState else { return }
+            if deviceState != nil {
+                let addrs = deviceState!.ipAddress.split(separator: " ")
+                tridentNetworkAddressLabel.stringValue = String(addrs.first{ $0.contains("10.1.1.") } ?? "n/a")
+                payloadAddress.stringValue = String(addrs.first{ !$0.contains("10.1.1.") } ?? "n/a")
+            }
+        }
+    }
     var connectedSSID: String? {
         didSet {
-            guard let wifiItem = toolbar?.getItem(for: .connectWiFi),
-                let button = wifiItem.view as? NSButton,
-                let textField = toolbar?.getItem(for: .wifiSSID)?.view as? NSTextField else { return }
+            guard let toolbar = toolbar,
+                let wifiItem = toolbar.getItem(for: .connectWiFi),
+                let button = wifiItem.view as? NSButton else { return }
             if connectedSSID != nil {
-                textField.stringValue = connectedSSID!
-                wifiItem.label = NSLocalizedString("Disconnect WiFi", comment: "")
+                toolbar.appendItem(withItemIdentifier: .wifiSSID)
+                toolbar.appendItem(withItemIdentifier: .connectCamera)
+
+                DispatchQueue.main.async {
+                    let textField = toolbar.getItem(for: .wifiSSID)?.view as? NSTextField
+                    textField?.stringValue = self.connectedSSID!
+                }
+                wifiItem.label = NSLocalizedString("Disconnect", comment: "")
                 wifiItem.paletteLabel = NSLocalizedString("Disconnect WiFi", comment: "")
                 wifiItem.toolTip = NSLocalizedString("Disconnect Trident WiFi", comment: "")
                 button.image = NSImage(named: "wifi.slash")!
-                toolbar?.getItem(for: .connectCamera)?.isEnabled = true
             } else {
-                textField.stringValue = NSLocalizedString("Not connected", comment: "")
-                wifiItem.label = NSLocalizedString("Connect WiFi", comment: "")
+                toolbar.removeItem(itemIdentifier: .auxCameraModel)
+                toolbar.removeItem(itemIdentifier: .connectCamera)
+                toolbar.removeItem(itemIdentifier: .wifiSSID)
+                
+                wifiItem.label = NSLocalizedString("Connect", comment: "")
                 wifiItem.paletteLabel = NSLocalizedString("Connect WiFi", comment: "")
                 wifiItem.toolTip = NSLocalizedString("Connect Trident WiFi", comment: "")
                 button.image = NSImage(named: "wifi")!
-                toolbar?.getItem(for: .connectCamera)?.isEnabled = false
+                Gopro3API.cameraPassword = nil
             }
         }
     }
@@ -50,9 +67,8 @@ class DashboardViewController: NSViewController {
     @IBOutlet weak var tridentIdLabel: NSTextField!
     @IBOutlet weak var tridentNetworkAddressLabel: NSTextField!
     @IBOutlet weak var localAddressLabel: NSTextField!
-    @IBOutlet weak var cameraModelLabel: NSTextField!
-    @IBOutlet weak var cameraFirmwareLabel: NSTextField!
-
+    @IBOutlet weak var payloadAddress: NSTextField!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +83,7 @@ class DashboardViewController: NSViewController {
 
         if toolbar == nil {
             toolbar = view.window?.toolbar
+            toolbar?.delegate = self
             setupToolbarButtons()
         }
         toolbar?.isVisible = true
@@ -121,9 +138,12 @@ class DashboardViewController: NSViewController {
 
     private func disconnectWiFi() {
         RestProvider.request(MultiTarget(WiFiServiceAPI.disconnect))
-        .then { _ in
+        .then {
             RestProvider.request(MultiTarget(WiFiServiceAPI.clear))
-        }.done {
+        }.then {
+            RestProvider.request(MultiTarget(ResinAPI.deviceState))
+        }.done { (deviceState: DeviceState) in
+            self.deviceState = deviceState
             self.connectedSSID = nil
         }.catch { error in
             print(error)
@@ -135,7 +155,7 @@ class DashboardViewController: NSViewController {
         .then {
             RestProvider.request(MultiTarget(WiFiServiceAPI.ssids))
         }.done { (ssids: [SSIDInfo]) -> Void in
-            self.showPopup(with: ssids, view: view)
+            self.showPopup(with: ssids.filter{!$0.ssid.contains("Trident-")}, view: view)
         }.catch { error in
             print(error)
         }
@@ -146,18 +166,18 @@ class DashboardViewController: NSViewController {
         controller.delegate = self
         controller.ssids = ssids
         present(controller, asPopoverRelativeTo: .zero, of: view, preferredEdge: .minY, behavior: .transient)
-   }
+    }
 
     private func executeScript(name: String) {
         guard let url = Bundle.main.url(forResource: name, withExtension: "sh") else { return }
         guard let scriptBody = try? String(contentsOf: url) else { return }
-
+        
         let basePort = Bundle.main.infoDictionary!["BasePort"]! as! String
         let redirectPorts = Bundle.main.infoDictionary!["RedirectPorts"]! as! String
         let login = Bundle.main.infoDictionary!["RovLogin"]! as! String
         let passwordBase64 = Bundle.main.infoDictionary!["RovPassword"]! as! String
         let password = String(data: Data(base64Encoded: passwordBase64)!, encoding: .utf8)!
-
+        
         var header = "#/bin/bash\n"
         header += "echo \(password) | sudo -S echo START-SCRIPT\n"
         header += "exec 2>&1\n"
@@ -184,8 +204,10 @@ class DashboardViewController: NSViewController {
     }
     
     private func connectGopro3() {
-        Gopro3API.requestData(.getPassword)
-        .then { (passwordData: Data) -> Promise<Void> in
+        after(.seconds(1))
+        .then {
+            Gopro3API.requestData(.getPassword)
+        }.then { (passwordData: Data) -> Promise<Void> in
             let password = Gopro3API.getString(from: passwordData.advanced(by: 1)).first!
             Gopro3API.cameraPassword = password
             return Gopro3API.request(.power(on: true))
@@ -195,10 +217,11 @@ class DashboardViewController: NSViewController {
             }
         }.done { data in
             let model = Gopro3API.getString(from: data.advanced(by: 3))
-            guard let textField = self.toolbar?.getItem(for: .auxCameraModel)?.view as? NSTextField else { return }
-            textField.stringValue = model[1]
-            self.cameraModelLabel.stringValue = model[1]
-            self.cameraFirmwareLabel.stringValue = model[0]
+            self.toolbar?.appendItem(withItemIdentifier: .auxCameraModel)
+            DispatchQueue.main.async {
+                guard let textField = self.toolbar?.getItem(for: .auxCameraModel)?.view as? NSTextField else { return }
+                textField.stringValue = model[1] + "\n" + model[0]
+            }
         }.catch {
             print($0)
         }
@@ -252,7 +275,6 @@ class DashboardViewController: NSViewController {
         RestProvider.request(MultiTarget(ResinAPI.deviceState))
         .then { (deviceState: DeviceState) -> Promise<[ConnectionInfo]> in
             self.deviceState = deviceState
-            self.tridentNetworkAddressLabel.stringValue = deviceState.ipAddress
             return RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
         }.done { connectionInfo in
             if let ssid = connectionInfo.first(where: {$0.kind == "802-11-wireless" && $0.state == "Activated"})?.ssid {
@@ -274,30 +296,18 @@ class DashboardViewController: NSViewController {
     
     private func setupToolbarButtons() {
         guard let toolbar = toolbar else { return }
-        toolbar.items.forEach { item in
-            switch item.itemIdentifier {
-            case .goDive:
-                item.target = self
-                item.action = #selector(goDiveScreen(_:))
-            case .goMaintenance:
-                item.target = self
-                item.action = #selector(goMaintenanceScreen(_:))
-            case .goPastDives:
-                item.target = self
-                item.action = #selector(goPastDivesScreen(_:))
-            case .connectWiFi:
-                item.target = self
-                item.action = #selector(connectWifiButtonPress(_:))
-            case .connectCamera:
-                item.target = self
-                item.action = #selector(connectCameraButtonPress(_:))
-            default:
-                break
-            }
-            item.isEnabled = false
+        let list: [NSToolbarItem.Identifier] = [
+            .goDive,
+            .goMaintenance,
+            .space,
+            .connectWiFi,
+        ]
+
+        list.forEach {
+            toolbar.appendItem(withItemIdentifier: $0)
+            toolbar.getItem(for: $0)?.isEnabled = false
         }
     }
-
 }
 
 extension DashboardViewController: GetSSIDPasswordProtocol {
@@ -314,7 +324,6 @@ extension DashboardViewController: GetSSIDPasswordProtocol {
             RestProvider.request(MultiTarget(ResinAPI.deviceState))
         }.done { (deviceState: DeviceState) in
             self.deviceState = deviceState
-            self.tridentNetworkAddressLabel.stringValue = deviceState.ipAddress
         }.catch { error in
             print(error)
         }

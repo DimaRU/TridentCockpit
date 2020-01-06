@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct DeviceState: Codable {
+struct DeviceState: Codable, Equatable {
     let apiPort: Int
     let commit: String
     let status: String

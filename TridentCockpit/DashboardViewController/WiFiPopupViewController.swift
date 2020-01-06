@@ -25,7 +25,7 @@ class WiFiPopupViewController: NSViewController {
             .then {
                 RestProvider.request(MultiTarget(WiFiServiceAPI.ssids))
             }.done { (ssids: [SSIDInfo]) in
-                self.ssids = ssids
+                self.ssids = ssids.filter{!$0.ssid.contains("Trident-")}
                 self.tableView.reloadData()
             }.catch { error in
                 print(error)

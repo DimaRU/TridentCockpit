@@ -88,6 +88,7 @@
 		0A82781223A641750039A774 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781123A641750039A774 /* MaintenanceViewController.swift */; };
 		0A82781423A689E70039A774 /* ToolbarItemIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */; };
 		0A84F9CE237B37BF009BBAD4 /* SetupNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */; };
+		0A95B39723C345EE00468DAF /* ToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95B39623C345EE00468DAF /* ToolbarDelegate.swift */; };
 		0A98306D23C22FCA00BD234B /* AuxCameraControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A98306223C22FCA00BD234B /* AuxCameraControlView.xib */; };
 		0A98306E23C22FCA00BD234B /* AuxCameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98306C23C22FCA00BD234B /* AuxCameraControlView.swift */; };
 		0A98307023C22FFD00BD234B /* AuxPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98306F23C22FFD00BD234B /* AuxPlayerViewController.swift */; };
@@ -252,6 +253,7 @@
 		0A82781123A641750039A774 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
 		0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemIdentifier.swift; sourceTree = "<group>"; };
 		0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNotifications.swift; sourceTree = "<group>"; };
+		0A95B39623C345EE00468DAF /* ToolbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarDelegate.swift; sourceTree = "<group>"; };
 		0A98306223C22FCA00BD234B /* AuxCameraControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuxCameraControlView.xib; sourceTree = "<group>"; };
 		0A98306C23C22FCA00BD234B /* AuxCameraControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuxCameraControlView.swift; sourceTree = "<group>"; };
 		0A98306F23C22FFD00BD234B /* AuxPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuxPlayerViewController.swift; sourceTree = "<group>"; };
@@ -385,8 +387,9 @@
 				0A98307523C23EFD00BD234B /* AuxCamera */,
 				0A82781123A641750039A774 /* MaintenanceViewController.swift */,
 				0A82780F23A641230039A774 /* PastDivesViewController.swift */,
-				0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */,
 				0A82780B23A63B2D0039A774 /* WindowController.swift */,
+				0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */,
+				0A95B39623C345EE00468DAF /* ToolbarDelegate.swift */,
 				0A7130CB23636AF100817593 /* DisplayManager.swift */,
 				0A7130CA23636AF100817593 /* Extensions.swift */,
 				0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */,
@@ -656,6 +659,7 @@
 				0A7130DE23636AF200817593 /* CameraControlView.swift in Sources */,
 				0A71310123636B0200817593 /* RovCameraObjectTrack.swift in Sources */,
 				0A71310223636B0200817593 /* RovSafetyState.swift in Sources */,
+				0A95B39723C345EE00468DAF /* ToolbarDelegate.swift in Sources */,
 				0A2E1DAE23B0CAD9009048A5 /* KeychainService.swift in Sources */,
 				0A71310823636B0200817593 /* RovFirmware.swift in Sources */,
 				0A5AF45023AFAD0800410BCC /* GetSSIDPasswordViewController.swift in Sources */,

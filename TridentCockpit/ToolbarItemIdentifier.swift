@@ -15,7 +15,6 @@ public extension NSToolbarItem.Identifier {
     static let wifiSSID: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "WifiSSID")
     static let connectCamera: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "ConnectCamera")
     static let goDashboard: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "GoDashboard")
-    static let ssidView: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "SSIDView")
     static let auxCameraModel: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "AuxCameraModel")
 }
 
@@ -26,11 +25,23 @@ extension NSToolbar {
     func getButton(for identifier: NSToolbarItem.Identifier) -> NSButton? {
         return self.items.first(where: { $0.itemIdentifier == identifier})?.view as? NSButton
     }
+    
     func insertItem(withItemIdentifier itemIdentifier: NSToolbarItem.Identifier, after: NSToolbarItem.Identifier) {
         let index = self.items.firstIndex { $0.itemIdentifier == after }
         if let index = index {
             insertItem(withItemIdentifier: itemIdentifier, at: index + 1)
         }
+    }
+    func insertItem(withItemIdentifier itemIdentifier: NSToolbarItem.Identifier) {
+        let item = items.firstIndex { $0.itemIdentifier == itemIdentifier }
+        guard item == nil else { return }
+        guard let index = delegate?.toolbarDefaultItemIdentifiers?(self).firstIndex(where: { $0 == itemIdentifier }) else { return }
+        insertItem(withItemIdentifier: itemIdentifier, at: index)
+    }
+    func appendItem(withItemIdentifier itemIdentifier: NSToolbarItem.Identifier) {
+        let item = items.firstIndex { $0.itemIdentifier == itemIdentifier }
+        guard item == nil else { return }
+        insertItem(withItemIdentifier: itemIdentifier, at: items.count)
     }
     func removeItem(itemIdentifier: NSToolbarItem.Identifier) {
         let index = self.items.firstIndex { $0.itemIdentifier == itemIdentifier }
