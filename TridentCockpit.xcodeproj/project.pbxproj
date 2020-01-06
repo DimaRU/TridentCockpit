@@ -86,14 +86,15 @@
 		0A82780C23A63B2D0039A774 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780B23A63B2D0039A774 /* WindowController.swift */; };
 		0A82781023A641230039A774 /* PastDivesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780F23A641230039A774 /* PastDivesViewController.swift */; };
 		0A82781223A641750039A774 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781123A641750039A774 /* MaintenanceViewController.swift */; };
-		0A82781423A689E70039A774 /* ToolbarItemIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */; };
 		0A84F9CE237B37BF009BBAD4 /* SetupNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */; };
 		0A95B39723C345EE00468DAF /* ToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95B39623C345EE00468DAF /* ToolbarDelegate.swift */; };
+		0A95B3A123C375FC00468DAF /* ToolbarItemIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */; };
 		0A98306D23C22FCA00BD234B /* AuxCameraControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A98306223C22FCA00BD234B /* AuxCameraControlView.xib */; };
 		0A98306E23C22FCA00BD234B /* AuxCameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98306C23C22FCA00BD234B /* AuxCameraControlView.swift */; };
 		0A98307023C22FFD00BD234B /* AuxPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98306F23C22FFD00BD234B /* AuxPlayerViewController.swift */; };
 		0A98307423C2355700BD234B /* AuxPlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A98307323C2355700BD234B /* AuxPlayerViewController.storyboard */; };
 		0A9E55BF23BC0AFA008F8A9A /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E55BE23BC0AFA008F8A9A /* Average.swift */; };
+		0AA4290223C38D3B003476CB /* PayloadCleanup.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0AA4290123C38D3B003476CB /* PayloadCleanup.sh */; };
 		0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */; };
 		0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0ADA653723B119880090D757 /* PayloadProvision.sh */; };
 		0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; };
@@ -259,6 +260,7 @@
 		0A98306F23C22FFD00BD234B /* AuxPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuxPlayerViewController.swift; sourceTree = "<group>"; };
 		0A98307323C2355700BD234B /* AuxPlayerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AuxPlayerViewController.storyboard; sourceTree = "<group>"; };
 		0A9E55BE23BC0AFA008F8A9A /* Average.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Average.swift; sourceTree = "<group>"; };
+		0AA4290123C38D3B003476CB /* PayloadCleanup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PayloadCleanup.sh; sourceTree = "<group>"; };
 		0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiPopupViewController.swift; sourceTree = "<group>"; };
 		0ADA653723B119880090D757 /* PayloadProvision.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PayloadProvision.sh; sourceTree = "<group>"; };
 		0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftSH.xcodeproj; path = SwiftSH/SwiftSH.xcodeproj; sourceTree = "<group>"; };
@@ -388,11 +390,9 @@
 				0A82781123A641750039A774 /* MaintenanceViewController.swift */,
 				0A82780F23A641230039A774 /* PastDivesViewController.swift */,
 				0A82780B23A63B2D0039A774 /* WindowController.swift */,
-				0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */,
-				0A95B39623C345EE00468DAF /* ToolbarDelegate.swift */,
+				0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */,
 				0A7130CB23636AF100817593 /* DisplayManager.swift */,
 				0A7130CA23636AF100817593 /* Extensions.swift */,
-				0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */,
 				0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */,
 				0A7130CF23636AF100817593 /* Preferences.swift */,
 				0A9E55BE23BC0AFA008F8A9A /* Average.swift */,
@@ -405,6 +405,7 @@
 				0A2FF3112363A0BD008FD68B /* Assets.xcassets */,
 				0A7130C0236369EC00817593 /* Info.plist */,
 				0ADA653723B119880090D757 /* PayloadProvision.sh */,
+				0AA4290123C38D3B003476CB /* PayloadCleanup.sh */,
 				0A71311923636B1700817593 /* Main.storyboard */,
 				0A2FF3122363A13B008FD68B /* TridentCockpit.entitlements */,
 			);
@@ -478,6 +479,8 @@
 				0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */,
 				0A5AF44E23AFAD0800410BCC /* GetSSIDPasswordViewController.swift */,
 				0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */,
+				0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */,
+				0A95B39623C345EE00468DAF /* ToolbarDelegate.swift */,
 			);
 			path = DashboardViewController;
 			sourceTree = "<group>";
@@ -611,6 +614,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AA4290223C38D3B003476CB /* PayloadCleanup.sh in Resources */,
 				0A71311A23636B1700817593 /* Main.storyboard in Resources */,
 				0A98307423C2355700BD234B /* AuxPlayerViewController.storyboard in Resources */,
 				0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */,
@@ -646,6 +650,7 @@
 				0A71311023636B0200817593 /* RovQuaternion.swift in Sources */,
 				0A51082223AB0FFD00C19289 /* TransitionAnimator.swift in Sources */,
 				0A7130D723636AF200817593 /* DisplayManager.swift in Sources */,
+				0A95B3A123C375FC00468DAF /* ToolbarItemIdentifier.swift in Sources */,
 				0A7130FD23636B0200817593 /* RovTopic.swift in Sources */,
 				0A98306E23C22FCA00BD234B /* AuxCameraControlView.swift in Sources */,
 				0A7130DA23636AF200817593 /* FloatingViewProtocol.swift in Sources */,
@@ -694,7 +699,6 @@
 				0A7130FE23636B0200817593 /* RovBarometer.swift in Sources */,
 				0A5107DB23AA807D00C19289 /* NetworkError.swift in Sources */,
 				0A5E3FC823BFA10E00EAC519 /* GoproStatus.swift in Sources */,
-				0A82781423A689E70039A774 /* ToolbarItemIdentifier.swift in Sources */,
 				0A457D9723B78A7C0042C250 /* Gopro3API.swift in Sources */,
 				0A71310B23636B0200817593 /* RovTridentControlTarget.swift in Sources */,
 			);

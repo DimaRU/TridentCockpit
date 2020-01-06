@@ -24,6 +24,7 @@ do
   ((BASEPORT++))
 done
 sudo iptables -t nat -A trident_cockpit_post -d $TARGETIP -j SNAT --to-source $GATEWAYIP
+sudo iptables -A trident_cockpit_out -p icmp -j ACCEPT
 sudo iptables -A trident_cockpit_out -s $GATEWAYIP -j DROP
 
 sudo iptables -t nat -I PREROUTING -j trident_cockpit_pre

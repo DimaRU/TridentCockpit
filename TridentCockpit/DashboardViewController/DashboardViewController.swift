@@ -11,14 +11,15 @@ import PromiseKit
 import SwiftSH
 
 class DashboardViewController: NSViewController {
+    weak var toolbar: NSToolbar?
+
     let stdParticipantList: Set<String> = ["geoserve", "trident-core", "trident-control", "trident-update", "trident-record"]
     var tridentParticipants: Set<String> = []
     var tridentID: String!
-    weak var toolbar: NSToolbar?
-    var sshCommand: SSHCommand!
     var discovered: [String: String] = [:]
-    var timer: Timer?
     var ddsListener: DDSDiscoveryListener!
+    private var sshCommand: SSHCommand!
+    private var timer: Timer?
 
     var deviceState: DeviceState? {
         didSet {
@@ -62,14 +63,17 @@ class DashboardViewController: NSViewController {
     }
 
     
+    // MARK: Outlets
     @IBOutlet weak var gridView: NSGridView!
     @IBOutlet weak var spinner: CircularProgress!
     @IBOutlet weak var tridentIdLabel: NSTextField!
+    @IBOutlet weak var connectionAddress: NSTextField!
     @IBOutlet weak var tridentNetworkAddressLabel: NSTextField!
     @IBOutlet weak var localAddressLabel: NSTextField!
     @IBOutlet weak var payloadAddress: NSTextField!
     
     
+    // MARK: Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -87,12 +91,18 @@ class DashboardViewController: NSViewController {
             setupToolbarButtons()
         }
         toolbar?.isVisible = true
+        
+        if FastRTPS.remoteAddress != "" {
+            startRefreshDeviceState()
+        }
     }
     
     override func viewWillDisappear() {
         super.viewWillDisappear()
-
         toolbar?.isVisible = false
+        
+        timer?.invalidate()
+        timer = nil
     }
     
     override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
@@ -101,6 +111,7 @@ class DashboardViewController: NSViewController {
         }
     }
     
+    // MARK: Actions
     @IBAction func goDiveScreen(_ sender: Any?) {
         toolbar?.isVisible = false
         DispatchQueue.main.async {
@@ -132,19 +143,32 @@ class DashboardViewController: NSViewController {
     }
 
     @IBAction func connectCameraButtonPress(_ sender: Any?) {
-        executeScript(name: "PayloadProvision")
-        connectGopro3()
+        guard deviceState?.ipAddress.split(separator: " ").count == 2 else { return }
+        executeScript(name: "PayloadProvision") {
+            self.connectGopro3()
+        }
     }
 
+    private func startRefreshDeviceState() {
+        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { [weak self] _ in
+            guard let self = self else { return }
+            RestProvider.request(MultiTarget(ResinAPI.deviceState))
+            .done { (deviceState: DeviceState) in
+                self.deviceState = deviceState
+            }.catch {
+                print($0)
+            }
+        }
+    }
+    
+    // MARK: Private func
     private func disconnectWiFi() {
         RestProvider.request(MultiTarget(WiFiServiceAPI.disconnect))
         .then {
             RestProvider.request(MultiTarget(WiFiServiceAPI.clear))
-        }.then {
-            RestProvider.request(MultiTarget(ResinAPI.deviceState))
-        }.done { (deviceState: DeviceState) in
-            self.deviceState = deviceState
+        }.done {
             self.connectedSSID = nil
+            self.executeScript(name: "PayloadCleanup") {}
         }.catch { error in
             print(error)
         }
@@ -168,7 +192,7 @@ class DashboardViewController: NSViewController {
         present(controller, asPopoverRelativeTo: .zero, of: view, preferredEdge: .minY, behavior: .transient)
     }
 
-    private func executeScript(name: String) {
+    private func executeScript(name: String, completion: @escaping (() -> Void)) {
         guard let url = Bundle.main.url(forResource: name, withExtension: "sh") else { return }
         guard let scriptBody = try? String(contentsOf: url) else { return }
         
@@ -195,6 +219,9 @@ class DashboardViewController: NSViewController {
                     let logStrings = log.split(separator: "\n")
                     if logStrings.last != "OK-SCRIPT" {
                         print(logStrings.filter { !$0.contains("sudo: unable to resolve host") && !$0.contains("START-SCRIPT") })
+                    } else {
+                        print("Script \(name) ok")
+                        completion()
                     }
                 } else {
                     print("ERROR: \(String(describing: error))")
@@ -267,16 +294,13 @@ class DashboardViewController: NSViewController {
         spinner.isIndeterminate = false
         gridView.isHidden = false
         
-        view.window?.title = tridentID
         tridentIdLabel.stringValue = tridentID
-        tridentNetworkAddressLabel.stringValue = FastRTPS.remoteAddress
         localAddressLabel.stringValue = FastRTPS.localAddress
+        connectionAddress.stringValue = FastRTPS.remoteAddress
         
-        RestProvider.request(MultiTarget(ResinAPI.deviceState))
-        .then { (deviceState: DeviceState) -> Promise<[ConnectionInfo]> in
-            self.deviceState = deviceState
-            return RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
-        }.done { connectionInfo in
+        startRefreshDeviceState()
+        RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
+            .done { (connectionInfo: [ConnectionInfo]) in
             if let ssid = connectionInfo.first(where: {$0.kind == "802-11-wireless" && $0.state == "Activated"})?.ssid {
                 self.connectedSSID = ssid
             } else {
@@ -310,20 +334,20 @@ class DashboardViewController: NSViewController {
     }
 }
 
+// MARK: Externsions
 extension DashboardViewController: GetSSIDPasswordProtocol {
     func enteredPassword(ssid: String, password: String) {
         RestProvider.request(MultiTarget(WiFiServiceAPI.connect(ssid: ssid, passphrase: password)))
-        .then {
+        .then { _ in
+            after(.seconds(2))
+        }.then {
             RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
         }.done { (connectionInfo: [ConnectionInfo]) in
-            if let ssid = connectionInfo.first(where: {$0.kind == "802-11-wireless"})?.ssid {
+            if let ssidConnected = connectionInfo.first(where: {$0.kind == "802-11-wireless" && $0.state == "Activated"})?.ssid,
+                ssidConnected == ssid {
                 self.connectedSSID = ssid
                 KeychainService.set(password, key: ssid)
             }
-        }.then {
-            RestProvider.request(MultiTarget(ResinAPI.deviceState))
-        }.done { (deviceState: DeviceState) in
-            self.deviceState = deviceState
         }.catch { error in
             print(error)
         }

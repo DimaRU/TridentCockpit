@@ -31,13 +31,16 @@
         <!--Aux Player View Controller-->
         <scene sceneID="Utz-D2-Hq1">
             <objects>
-                <viewController id="bjB-YU-dy7" customClass="AuxPlayerViewController" customModule="TestGopro" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="bjB-YU-dy7" customClass="AuxPlayerViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="7QZ-Fq-nxg">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <avPlayerView controlsStyle="inline" translatesAutoresizingMaskIntoConstraints="NO" id="IWN-6E-xGL">
                                 <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IWN-6E-xGL" secondAttribute="height" multiplier="16:9" id="cD7-TH-DK5"/>
+                                </constraints>
                             </avPlayerView>
                         </subviews>
                         <constraints>
