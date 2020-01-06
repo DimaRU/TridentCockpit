@@ -195,7 +195,7 @@ class DashboardViewController: NSViewController {
             }
         }.done { data in
             let model = Gopro3API.getString(from: data.advanced(by: 3))
-            guard let textField = self.toolbar?.getItem(for: .auxCameraModelView)?.view as? NSTextField else { return }
+            guard let textField = self.toolbar?.getItem(for: .auxCameraModel)?.view as? NSTextField else { return }
             textField.stringValue = model[1]
             self.cameraModelLabel.stringValue = model[1]
             self.cameraFirmwareLabel.stringValue = model[0]

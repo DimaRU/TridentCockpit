@@ -16,7 +16,7 @@ public extension NSToolbarItem.Identifier {
     static let connectCamera: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "ConnectCamera")
     static let goDashboard: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "GoDashboard")
     static let ssidView: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "SSIDView")
-    static let auxCameraModelView: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "AuxCameraModelView")
+    static let auxCameraModel: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "AuxCameraModel")
 }
 
 extension NSToolbar {
@@ -25,5 +25,17 @@ extension NSToolbar {
     }
     func getButton(for identifier: NSToolbarItem.Identifier) -> NSButton? {
         return self.items.first(where: { $0.itemIdentifier == identifier})?.view as? NSButton
+    }
+    func insertItem(withItemIdentifier itemIdentifier: NSToolbarItem.Identifier, after: NSToolbarItem.Identifier) {
+        let index = self.items.firstIndex { $0.itemIdentifier == after }
+        if let index = index {
+            insertItem(withItemIdentifier: itemIdentifier, at: index + 1)
+        }
+    }
+    func removeItem(itemIdentifier: NSToolbarItem.Identifier) {
+        let index = self.items.firstIndex { $0.itemIdentifier == itemIdentifier }
+        if let index = index {
+            removeItem(at: index)
+        }
     }
 }

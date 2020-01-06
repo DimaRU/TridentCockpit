@@ -8,7 +8,6 @@ import Cocoa
 class WindowController: NSWindowController, NSWindowDelegate {
 
     @IBOutlet weak var toolbar: NSToolbar!
-    @IBOutlet var ssidLabel: NSTextField!
     
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -71,9 +70,9 @@ extension WindowController: NSToolbarDelegate {
             toolbarItem.label = NSLocalizedString("SSID", comment: "")
             toolbarItem.paletteLabel = NSLocalizedString("SSID", comment: "")
             toolbarItem.toolTip = NSLocalizedString("Connected SSID", comment: "")
-            toolbarItem.view = ssidLabel
+            toolbarItem.view = NSTextField(labelWithString: "Not connected")
             toolbarItem.isEnabled = true
-        case .auxCameraModelView:
+        case .auxCameraModel:
             toolbarItem.label = NSLocalizedString("Model", comment: "")
             toolbarItem.paletteLabel = NSLocalizedString("Model", comment: "")
             toolbarItem.toolTip = NSLocalizedString("Connected camera model", comment: "")
@@ -103,7 +102,7 @@ extension WindowController: NSToolbarDelegate {
             .wifiSSID,
 //            .space,
             .connectCamera,
-            .auxCameraModelView,
+            .auxCameraModel,
         ]
     }
 

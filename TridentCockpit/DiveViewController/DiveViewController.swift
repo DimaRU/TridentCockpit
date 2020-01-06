@@ -130,26 +130,20 @@ class DiveViewController: NSViewController, NSWindowDelegate {
     override func viewDidAppear() {
         super.viewDidAppear()
         view.window?.delegate = self
-        if #available(OSX 10.15, *) {} else {
-            DisplayManager.disableSleep()
-        }
+        DisplayManager.disableSleep()
     }
     
     func windowWillClose(_ notification: Notification) {
         FastRTPS.resignAll()
         FastRTPS.stopRTPS()
-        if #available(OSX 10.15, *) {} else {
-            DisplayManager.enableSleep()
-        }
+        DisplayManager.enableSleep()
     }
 
     @IBAction func closeButtonPress(_ sender: Any) {
         tridentControl.disable()
         FastRTPS.resignAll()
         videoDecoder.cleanup()
-        if #available(OSX 10.15, *) {} else {
-            DisplayManager.enableSleep()
-        }
+        DisplayManager.enableSleep()
 
         dismiss(sender)
     }
