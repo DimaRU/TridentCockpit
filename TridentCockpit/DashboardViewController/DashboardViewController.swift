@@ -20,6 +20,7 @@ class DashboardViewController: NSViewController {
     var ddsListener: DDSDiscoveryListener!
     private var sshCommand: SSHCommand!
     private var timer: Timer?
+    private var spinner: CircularProgress?
 
     var deviceState: DeviceState? {
         didSet {
@@ -65,7 +66,6 @@ class DashboardViewController: NSViewController {
     
     // MARK: Outlets
     @IBOutlet weak var gridView: NSGridView!
-    @IBOutlet weak var spinner: CircularProgress!
     @IBOutlet weak var tridentIdLabel: NSTextField!
     @IBOutlet weak var connectionAddress: NSTextField!
     @IBOutlet weak var tridentNetworkAddressLabel: NSTextField!
@@ -78,6 +78,7 @@ class DashboardViewController: NSViewController {
         super.viewDidLoad()
         
         gridView.isHidden = true
+        spinner = addCircularProgressView(to: view)
         setupNotifications()
         ddsDiscovery()
     }
@@ -147,6 +148,28 @@ class DashboardViewController: NSViewController {
         executeScript(name: "PayloadProvision") {
             self.connectGopro3()
         }
+    }
+
+    func addCircularProgressView(to view: NSView) -> CircularProgress {
+        let spinner = CircularProgress(size: 200)
+        spinner.lineWidth = 4
+        spinner.isIndeterminate = true
+        spinner.color = NSColor.systemTeal
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+
+        let textLabel = NSTextField(labelWithString: "Searching for Trident")
+        textLabel.translatesAutoresizingMaskIntoConstraints = false
+        spinner.addSubview(textLabel)
+        view.addSubview(spinner)
+        NSLayoutConstraint.activate([
+            spinner.widthAnchor.constraint(equalToConstant: 200),
+            spinner.heightAnchor.constraint(equalToConstant: 200),
+            textLabel.centerXAnchor.constraint(equalTo: spinner.centerXAnchor),
+            textLabel.centerYAnchor.constraint(equalTo: spinner.centerYAnchor),
+            view.centerXAnchor.constraint(equalTo: spinner.centerXAnchor),
+            view.centerYAnchor.constraint(equalTo: spinner.centerYAnchor),
+        ])
+        return spinner
     }
 
     private func startRefreshDeviceState() {
@@ -290,8 +313,10 @@ class DashboardViewController: NSViewController {
     }
     
     func setConnectedState() {
-        spinner.isHidden = true
-        spinner.isIndeterminate = false
+        if let spinner = spinner {
+            spinner.isIndeterminate = false
+            spinner.removeFromSuperview()
+        }
         gridView.isHidden = false
         
         tridentIdLabel.stringValue = tridentID

@@ -383,37 +383,8 @@
                                     </gridCell>
                                 </gridCells>
                             </gridView>
-                            <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="K9v-40-8NJ" customClass="CircularProgress" customModule="CircularProgress">
-                                <rect key="frame" x="20" y="216" width="200" height="200"/>
-                                <subviews>
-                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="F1V-Ka-Kvy">
-                                        <rect key="frame" x="34" y="92" width="132" height="16"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <textFieldCell key="cell" lineBreakMode="clipping" title="Searching for Trident" id="7xl-0y-sra">
-                                            <font key="font" usesAppearanceFont="YES"/>
-                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                        </textFieldCell>
-                                    </textField>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="2lD-KN-i6o"/>
-                                    <constraint firstAttribute="height" constant="200" id="CnA-Yj-PSd"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="color">
-                                        <color key="value" name="systemTealColor" catalog="System" colorSpace="catalog"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isIndeterminate" value="YES"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
-                                        <real key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="K9v-40-8NJ" firstAttribute="centerY" secondItem="cjp-Az-cgx" secondAttribute="centerY" id="Av0-0c-6wi"/>
-                            <constraint firstItem="K9v-40-8NJ" firstAttribute="centerX" secondItem="cjp-Az-cgx" secondAttribute="centerX" id="cJJ-h8-Mww"/>
                             <constraint firstItem="0qR-p2-Gi2" firstAttribute="centerX" secondItem="cjp-Az-cgx" secondAttribute="centerX" id="fph-0i-O5Q"/>
                             <constraint firstItem="0qR-p2-Gi2" firstAttribute="centerY" secondItem="cjp-Az-cgx" secondAttribute="centerY" id="osk-Rx-eDo"/>
                         </constraints>
@@ -424,7 +395,6 @@
                         <outlet property="gridView" destination="0qR-p2-Gi2" id="cCY-mN-aR7"/>
                         <outlet property="localAddressLabel" destination="85a-dQ-2pK" id="7pk-an-RAR"/>
                         <outlet property="payloadAddress" destination="BjA-uO-KdE" id="1Sd-3B-oPw"/>
-                        <outlet property="spinner" destination="K9v-40-8NJ" id="SvJ-O5-AhR"/>
                         <outlet property="tridentIdLabel" destination="UbI-mt-742" id="LJt-wQ-cSB"/>
                         <outlet property="tridentNetworkAddressLabel" destination="gMp-cr-viS" id="JGv-dX-aMl"/>
                         <segue destination="Wgr-FD-Jeg" kind="custom" identifier="DiveSeque" customClass="SlideUpSegue" customModule="TridentCockpit" customModuleProvider="target" id="UTz-4g-bmR"/>
@@ -1040,13 +1010,13 @@ Gw
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnH-L6-Zpz">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="218"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="216"/>
                                 <clipView key="contentView" id="vrj-0q-2hM">
-                                    <rect key="frame" x="1" y="1" width="198" height="216"/>
+                                    <rect key="frame" x="1" y="1" width="198" height="214"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" id="nAL-NW-z6n">
-                                            <rect key="frame" x="0.0" y="0.0" width="198" height="216"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="198" height="214"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="8"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
