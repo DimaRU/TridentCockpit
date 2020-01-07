@@ -109,8 +109,6 @@ final class VideoDecoder {
         
         if sampleBufferLayer.isReadyForMoreMediaData {
             sampleBufferLayer.enqueue(buffer)
-        } else {
-            print("!isReadyForMoreMediaData")
         }
         if sampleBufferLayer.status == .failed {
             sampleBufferLayer.flush()
