@@ -74,7 +74,7 @@ final class FastRTPS {
                 FastRTPS.shared.fastRTPSBridge?.send(withTopicName: topic.rawValue, data: data)
             }
         } catch {
-            print(error)
+            fatalError(error.localizedDescription)
         }
     }
 

@@ -27,8 +27,8 @@ class WiFiPopupViewController: NSViewController {
             }.done { (ssids: [SSIDInfo]) in
                 self.ssids = ssids.filter{!$0.ssid.contains("Trident-")}
                 self.tableView.reloadData()
-            }.catch { error in
-                print(error)
+            }.catch {
+                self.view.window?.alert(error: $0)
             }
         }
     }

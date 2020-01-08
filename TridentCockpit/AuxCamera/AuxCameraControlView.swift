@@ -167,8 +167,9 @@ class AuxCameraControlView: NSView, FloatingViewProtocol {
                 self.cameraState = .off
                 self.timer?.invalidate()
                 self.timer = nil
+            } else {
+                self.window?.alert(error: error)
             }
-            print(error)
         }
     }
     
@@ -226,7 +227,7 @@ class AuxCameraControlView: NSView, FloatingViewProtocol {
             }
             self.cameraState = powerOn ? .on : .off
         }.catch {
-            print($0)
+            self.window?.alert(error: $0)
         }
     }
     
@@ -243,7 +244,7 @@ class AuxCameraControlView: NSView, FloatingViewProtocol {
             self.cameraState = shotOn ? .recording : .on
             self.setRefreshTimer(timeInterval: shotOn ? 1 : 2)
         }.catch {
-            print($0)
+            self.window?.alert(error: $0)
         }
     }
     

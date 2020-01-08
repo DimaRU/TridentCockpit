@@ -173,13 +173,20 @@ class DashboardViewController: NSViewController {
     }
 
     private func startRefreshDeviceState() {
-        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { [weak self] _ in
-            guard let self = self else { return }
+        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { [weak self] timer in
+            guard let self = self else {
+                timer.invalidate()
+                return
+            }
             RestProvider.request(MultiTarget(ResinAPI.deviceState))
             .done { (deviceState: DeviceState) in
                 self.deviceState = deviceState
-            }.catch {
-                print($0)
+            }.catch { error in
+                self.view.window?.alert(error: error, delay: 2)
+                if let error = error as? NetworkError, case NetworkError.unaviable = error {
+                    self.timer?.invalidate()
+                    self.timer = nil
+                }
             }
         }
     }
@@ -192,8 +199,8 @@ class DashboardViewController: NSViewController {
         }.done {
             self.connectedSSID = nil
             self.executeScript(name: "PayloadCleanup") {}
-        }.catch { error in
-            print(error)
+        }.catch {
+            self.view.window?.alert(error: $0)
         }
     }
 
@@ -203,8 +210,8 @@ class DashboardViewController: NSViewController {
             RestProvider.request(MultiTarget(WiFiServiceAPI.ssids))
         }.done { (ssids: [SSIDInfo]) -> Void in
             self.showPopup(with: ssids.filter{!$0.ssid.contains("Trident-")}, view: view)
-        }.catch { error in
-            print(error)
+        }.catch {
+            self.view.window?.alert(error: $0)
         }
     }
 
@@ -237,16 +244,21 @@ class DashboardViewController: NSViewController {
 
         sshCommand.connect()
             .authenticate(.byPassword(username: login, password: password))
-            .execute(header+scriptBody) { [unowned self] (command, log: String?, error) in
+            .execute(header+scriptBody) { [weak self] (command, log: String?, error) in
+                guard let self = self else { return }
                 if let log = log {
                     let logStrings = log.split(separator: "\n")
                     if logStrings.last != "OK-SCRIPT" {
-                        print(logStrings.filter { !$0.contains("sudo: unable to resolve host") && !$0.contains("START-SCRIPT") })
+                        let fileredLog = logStrings.filter{ !$0.contains("sudo: unable to resolve host") && !$0.contains("START-SCRIPT") }.reduce("") { $0 + $1 + "\n"}
+                        self.view.window?.alert(message: "Error while execute \(name)", informative: fileredLog, delay: 100)
+                        print(fileredLog)
                     } else {
                         print("Script \(name) ok")
                         completion()
                     }
-                } else {
+                }
+                if let error = error {
+                    self.view.window?.alert(error: error)
                     print("ERROR: \(String(describing: error))")
                 }
                 self.sshCommand.disconnect {}
@@ -273,7 +285,7 @@ class DashboardViewController: NSViewController {
                 textField.stringValue = model[1] + "\n" + model[0]
             }
         }.catch {
-            print($0)
+            self.view.window?.alert(error: $0)
         }
     }
 
@@ -331,8 +343,8 @@ class DashboardViewController: NSViewController {
             } else {
                 self.connectedSSID = nil
             }
-        }.catch { error in
-            print(error)
+        }.catch {
+            self.view.window?.alert(error: $0)
         }
         if let toolbar = view.window?.toolbar {
             toolbar.getItem(for: .goDive)?.isEnabled = true
@@ -373,8 +385,8 @@ extension DashboardViewController: GetSSIDPasswordProtocol {
                 self.connectedSSID = ssid
                 KeychainService.set(password, key: ssid)
             }
-        }.catch { error in
-            print(error)
+        }.catch {
+            self.view.window?.alert(error: $0)
         }
     }
 }

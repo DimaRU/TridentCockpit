@@ -18,7 +18,7 @@ enum NetworkError: Error {
         case .responceSyntaxError(let message):
             return message
         case .serverError(let code):
-            return "code \(code)"
+            return "Error code \(code)"
         case .unaviable,
              .notFound,
              .gone,
@@ -40,9 +40,9 @@ extension NetworkError: LocalizedError {
         case .unaviable:
             return NSLocalizedString("Network unaviable", comment: "Network error")
         case .gone:
-            return NSLocalizedString("Offline", comment: "Network error")
+            return NSLocalizedString("Device off power", comment: "Network error")
         case .unprovisioned:
-            return NSLocalizedString("Unprovisioned", comment: "Network error")
+            return NSLocalizedString("Device unprovisioned", comment: "Network error")
         }
     }
     
