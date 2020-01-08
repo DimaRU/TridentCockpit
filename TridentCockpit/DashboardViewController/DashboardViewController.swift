@@ -38,22 +38,20 @@ class DashboardViewController: NSViewController {
                 let wifiItem = toolbar.getItem(for: .connectWiFi),
                 let button = wifiItem.view as? NSButton else { return }
             if connectedSSID != nil {
-                toolbar.appendItem(withItemIdentifier: .wifiSSID)
-                toolbar.appendItem(withItemIdentifier: .connectCamera)
-
-                DispatchQueue.main.async {
-                    let textField = toolbar.getItem(for: .wifiSSID)?.view as? NSTextField
-                    textField?.stringValue = self.connectedSSID!
-                }
+                ssidLabel.stringValue = self.connectedSSID!
+                toolbar.getItem(for: .connectCamera)?.isEnabled = true
+                
                 wifiItem.label = NSLocalizedString("Disconnect", comment: "")
                 wifiItem.paletteLabel = NSLocalizedString("Disconnect WiFi", comment: "")
                 wifiItem.toolTip = NSLocalizedString("Disconnect Trident WiFi", comment: "")
                 button.image = NSImage(named: "wifi.slash")!
             } else {
-                toolbar.removeItem(itemIdentifier: .auxCameraModel)
-                toolbar.removeItem(itemIdentifier: .connectCamera)
-                toolbar.removeItem(itemIdentifier: .wifiSSID)
-                
+                ssidLabel.stringValue = "not connected"
+                cameraModelLabel.stringValue = "n/a"
+                cameraFirmwareLabel.stringValue = "n/a"
+                Gopro3API.cameraPassword = nil
+                toolbar.getItem(for: .connectCamera)?.isEnabled = false
+
                 wifiItem.label = NSLocalizedString("Connect", comment: "")
                 wifiItem.paletteLabel = NSLocalizedString("Connect WiFi", comment: "")
                 wifiItem.toolTip = NSLocalizedString("Connect Trident WiFi", comment: "")
@@ -70,7 +68,10 @@ class DashboardViewController: NSViewController {
     @IBOutlet weak var connectionAddress: NSTextField!
     @IBOutlet weak var tridentNetworkAddressLabel: NSTextField!
     @IBOutlet weak var localAddressLabel: NSTextField!
+    @IBOutlet weak var ssidLabel: NSTextField!
     @IBOutlet weak var payloadAddress: NSTextField!
+    @IBOutlet weak var cameraModelLabel: NSTextField!
+    @IBOutlet weak var cameraFirmwareLabel: NSTextField!
     
     
     // MARK: Overrides
@@ -283,11 +284,8 @@ class DashboardViewController: NSViewController {
             }
         }.done { data in
             let model = Gopro3API.getString(from: data.advanced(by: 3))
-            self.toolbar?.appendItem(withItemIdentifier: .auxCameraModel)
-            DispatchQueue.main.async {
-                guard let textField = self.toolbar?.getItem(for: .auxCameraModel)?.view as? NSTextField else { return }
-                textField.stringValue = model[1] + "\n" + model[0]
-            }
+            self.cameraModelLabel.stringValue = model[1]
+            self.cameraFirmwareLabel.stringValue = model[0]
         }.catch {
             self.view.window?.alert(error: $0)
         }
@@ -366,6 +364,7 @@ class DashboardViewController: NSViewController {
             .goMaintenance,
             .space,
             .connectWiFi,
+            .connectCamera,
         ]
 
         list.forEach {

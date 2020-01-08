@@ -12,10 +12,8 @@ public extension NSToolbarItem.Identifier {
     static let goMaintenance: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "GoMaintenance")
     static let goPastDives: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "GoPastDives")
     static let connectWiFi: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "ConnectWiFi")
-    static let wifiSSID: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "WifiSSID")
     static let connectCamera: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "ConnectCamera")
-    static let goDashboard: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "GoDashboard")
-    static let auxCameraModel: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "AuxCameraModel")
+//    static let goDashboard: NSToolbarItem.Identifier = NSToolbarItem.Identifier(rawValue: "GoDashboard")
 }
 
 extension NSToolbar {

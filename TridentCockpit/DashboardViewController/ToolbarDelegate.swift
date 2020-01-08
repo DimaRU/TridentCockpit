@@ -21,7 +21,7 @@ extension DashboardViewController: NSToolbarDelegate {
         button.bezelStyle = .texturedRounded
         button.focusRingType = .none
         
-        let size = NSSize(width: 50, height: 34)
+        let size = NSSize(width: 50, height: 27)
         switch itemIdentifier {
         case .goDive:
             toolbarItem.label = NSLocalizedString("Pilot", comment: "")
@@ -64,21 +64,6 @@ extension DashboardViewController: NSToolbarDelegate {
             toolbarItem.view = button
             toolbarItem.minSize = size
             toolbarItem.maxSize = size
-        case .wifiSSID:
-            toolbarItem.label = NSLocalizedString("SSID", comment: "")
-            toolbarItem.paletteLabel = NSLocalizedString("SSID", comment: "")
-            toolbarItem.toolTip = NSLocalizedString("Connected SSID", comment: "")
-            toolbarItem.view = NSTextField(labelWithString: "Not connected")
-            toolbarItem.isEnabled = true
-        case .auxCameraModel:
-            toolbarItem.label = NSLocalizedString("Model", comment: "")
-            toolbarItem.paletteLabel = NSLocalizedString("Model", comment: "")
-            toolbarItem.toolTip = NSLocalizedString("Connected camera model", comment: "")
-            let textField = NSTextField(labelWithString: "")
-            textField.font = NSFont.systemFont(ofSize: NSFont.smallSystemFontSize)
-            textField.alignment = .center
-            toolbarItem.view = textField
-            toolbarItem.isEnabled = true
         default:
             break
         }
