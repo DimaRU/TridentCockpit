@@ -107,7 +107,7 @@ extension Gopro3API {
         
         let dataTask = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
-                failure(NetworkError.unaviable)
+                failure(NetworkError.unaviable(message: error!.localizedDescription))
                 return
             }
             

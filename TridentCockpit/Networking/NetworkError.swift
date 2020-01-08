@@ -9,18 +9,18 @@ enum NetworkError: Error {
     case notFound
     case responceSyntaxError(message: String)
     case serverError(code: Int)
-    case unaviable
+    case unaviable(message: String)
     case gone
     case unprovisioned
     
     func message() -> String {
         switch self {
-        case .responceSyntaxError(let message):
+        case .responceSyntaxError(let message),
+             .unaviable(let message):
             return message
         case .serverError(let code):
             return "Error code \(code)"
-        case .unaviable,
-             .notFound,
+        case .notFound,
              .gone,
              .unprovisioned:
             return ""

@@ -31,7 +31,6 @@ class RestProvider {
                      reject: seal.reject))
         return promise
     }
-
     
     private class func sendRequest(_ request: RequestFuture) {
         #if DEBUG
@@ -43,8 +42,8 @@ class RestProvider {
     }
 }
 
+
 extension RestProvider {
-    
     private class func handleRequest(request: RequestFuture, result: Swift.Result<Moya.Response, MoyaError>) {
         switch result {
         case .success(let moyaResponse):
@@ -63,10 +62,7 @@ extension RestProvider {
                 request.reject(error)
             }
         case .failure(let error):
-            #if DEBUG
-            print(error)
-            #endif
-            request.reject(NetworkError.unaviable)
+            request.reject(NetworkError.unaviable(message: error.localizedDescription))
             break
         }
     }
