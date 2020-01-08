@@ -256,10 +256,11 @@ class DashboardViewController: NSViewController {
                         print("Script \(name) ok")
                         completion()
                     }
-                }
-                if let error = error {
-                    self.view.window?.alert(error: error)
-                    print("ERROR: \(String(describing: error))")
+                } else {
+                    if let error = error {
+                        self.view.window?.alert(error: error)
+                        print("ERROR: \(String(describing: error))")
+                    }
                 }
                 self.sshCommand.disconnect {}
         }

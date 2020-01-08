@@ -8,12 +8,19 @@ import Moya
 import Alamofire
 import PromiseKit
 
-fileprivate let restProvider = MoyaProvider<MultiTarget>()
-
 class RestProvider {
     typealias Response = Decodable
     typealias ErrorBlock = (Error) -> Void
     typealias RequestFuture = (target: MultiTarget, resolve: (Response) -> Void, reject: ErrorBlock)
+    
+    static let manager: Session = {
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.timeoutIntervalForRequest = 5
+        configuration.timeoutIntervalForResource = 5
+        return Session(configuration: configuration)
+    }()
+    
+    fileprivate static let restProvider = MoyaProvider<MultiTarget>(session: manager)
     
     // MARK: - Public
     class func request(_ target: MultiTarget) -> Promise<Void> {
@@ -48,7 +55,7 @@ extension RestProvider {
         switch result {
         case .success(let moyaResponse):
             #if DEBUG
-            print(moyaResponse.request?.url?.absoluteString ?? "")
+            print(moyaResponse.request?.url?.absoluteString ?? "", moyaResponse.statusCode)
             #endif
             switch moyaResponse.statusCode {
             case 200...299, 300...399:

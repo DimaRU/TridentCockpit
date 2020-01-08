@@ -14,6 +14,12 @@ enum Gopro3API {
     case cameraModel
     case shot(on: Bool)
     
+    static let sharedSession: URLSession = {
+        let configuration = URLSessionConfiguration.ephemeral
+        configuration.timeoutIntervalForRequest = 5
+        return URLSession(configuration: configuration)
+    }()
+
     static var cameraPassword: String?
     static var isConnected: Bool {
         Gopro3API.cameraPassword != nil
@@ -105,7 +111,7 @@ extension Gopro3API {
         }
         let urlRequest = createRequest()
         
-        let dataTask = URLSession.shared.dataTask(with: urlRequest) { (data, response, error) in
+        let dataTask = Gopro3API.sharedSession.dataTask(with: urlRequest) { (data, response, error) in
             guard error == nil else {
                 failure(NetworkError.unaviable(message: error!.localizedDescription))
                 return
