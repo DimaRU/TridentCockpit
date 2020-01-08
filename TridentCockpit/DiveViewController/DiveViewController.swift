@@ -1,5 +1,5 @@
 /////
-////  VideoViewController.swift
+////  DiveViewController.swift
 ///   Copyright © 2019 Dmitriy Borovikov. All rights reserved.
 //
 
@@ -7,7 +7,7 @@ import Cocoa
 import SceneKit
 import FastRTPSBridge
 
-class VideoViewController: NSViewController, NSWindowDelegate {
+class DiveViewController: NSViewController, NSWindowDelegate {
     @IBOutlet weak var videoView: VideoView!
     @IBOutlet weak var depthLabel: NSTextField!
     @IBOutlet weak var tempLabel: NSTextField!
@@ -22,35 +22,47 @@ class VideoViewController: NSViewController, NSWindowDelegate {
     @IBOutlet weak var recordingButton: FlatButton!
     @IBOutlet weak var tridentView: RovModelView!
 
+    private var auxCameraView: AuxCameraControlView?
     private var videoDecoder: VideoDecoder!
     private let tridentControl = TridentControl()
     
     private var lightOn = false
     private var videoSessionId: UUID?
-    private var vehicleId: String?
+    var vehicleId: String = ""
     private var rovBeacon: RovBeacon?
     
-    private var depth: Float = 0 {
-        didSet { depthLabel.stringValue = String(format: "%.1f", depth) }
-    }
-    private var temperature: Double = 0 {
-        didSet { tempLabel.stringValue = String(format: "%.1f", temperature) }
+    @Average(5) private var depth: Float
+    @Average(10) private var temperature: Double
+
+    private func setupAverage() {
+        _depth.configure { [weak self] avg in
+            DispatchQueue.main.async {
+                self?.depthLabel.stringValue = String(format: "%.1f", avg)
+            }
+        }
+
+        _temperature.configure { [weak self] avg in
+            DispatchQueue.main.async {
+                self?.tempLabel.stringValue = String(format: "%.1f", avg)
+            }
+        }
     }
     
     private var batteryTime: Int32 = 0 {
         didSet {
-            var time = ""
             guard batteryTime != 65535 else {
-                batteryTimeLabel.stringValue = time + "charging"
                 return
             }
+            var time = ""
             if batteryTime / 60 != 0 {
                 time += String(batteryTime / 60) + "h"
             }
             if batteryTime % 60 != 0 {
                 time += String(batteryTime % 60) + "m"
             }
-            batteryTimeLabel.stringValue = time
+            DispatchQueue.main.async {
+                self.batteryTimeLabel.stringValue = time
+            }
         }
     }
 
@@ -63,13 +75,15 @@ class VideoViewController: NSViewController, NSWindowDelegate {
             if cameraTime % 60 != 0 {
                 time += String(cameraTime % 60) + "m"
             }
-            cameraTimeLabel.stringValue = time
+            DispatchQueue.main.async {
+                self.cameraTimeLabel.stringValue = time
+            }
         }
     }
 
     #if DEBUG
     deinit {
-        print("Deinit VideoViewController")
+        print("Deinit DiveViewController")
     }
     #endif
 
@@ -81,7 +95,7 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         cameraTimeLabel.stringValue = ""
         recordingTimeLabel.stringValue = ""
         cameraTimeLabel.textColor = .systemGray
-        cameraControlView.isHidden = true
+        setupAverage()
         
         indicatorsView.wantsLayer = true
         indicatorsView.layer?.backgroundColor = NSColor(named: "cameraControlBackground")!.cgColor
@@ -96,47 +110,42 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         view.wantsLayer = true
         view.layer?.contents = NSImage(named: "Trident")
 
-        #if DEBUG
-        setupNotifications()
-        #endif
-    }
-
-    func windowWillClose(_ notification: Notification) {
-        tridentControl.disable()
-        stopRTPS()
-        videoDecoder.destroyVideoSession()
-        DisplayManage.enableSleep()
-    }
-    
-    func windowDidResize(_ notification: Notification) {
-        cameraControlView.windowDidResize()
-        tridentView.windowDidResize()
-    }
-
-    override func viewWillAppear() {
-        super.viewWillAppear()
-        view.window?.title = "Connecting to Trident..."
-        view.window?.delegate = self
-        cameraControlView.addConstraints()
-        tridentView.addConstraints()
+        cameraControlView.addConstraints(defX: view.frame.minX + cameraControlView.frame.midX,
+                                         defY: view.frame.midY)
+        tridentView.addConstraints(defX: view.frame.maxX - tridentView.frame.midX,
+                                   defY: view.frame.minY + tridentView.frame.midY)
+        if Gopro3API.isConnected {
+            auxCameraView = AuxCameraControlView.instantiate(superView: view)
+        }
+        view.postsFrameChangedNotifications = true
+        NotificationCenter.default.addObserver(forName: NSView.frameDidChangeNotification, object: nil, queue: nil) { [weak self] _ in
+            self?.cameraControlView.superViewDidResize()
+            self?.tridentView.superViewDidResize()
+            self?.auxCameraView?.superViewDidResize()
+        }
+        
+        startRTPS()
     }
 
     override func viewDidAppear() {
         super.viewDidAppear()
-        if #available(OSX 10.15, *) {} else {
-            DisplayManage.disableSleep()
-        }
-        
-        getConnection()
+        view.window?.delegate = self
+        DisplayManager.disableSleep()
+    }
+    
+    func windowWillClose(_ notification: Notification) {
+        FastRTPS.resignAll()
+        FastRTPS.stopRTPS()
+        DisplayManager.enableSleep()
     }
 
-    override func viewWillDisappear() {
-        super.viewWillDisappear()
+    @IBAction func closeButtonPress(_ sender: Any) {
         tridentControl.disable()
-        FastRTPS.removeReader(topic: .rovCamFwdH2640Video)
-        if #available(OSX 10.15, *) {} else {
-            DisplayManage.enableSleep()
-        }
+        FastRTPS.resignAll()
+        videoDecoder.cleanup()
+        DisplayManager.enableSleep()
+
+        dismiss(sender)
     }
     
     @IBAction func recordingButtonPress(_ sender: Any) {
@@ -175,7 +184,7 @@ class VideoViewController: NSViewController, NSWindowDelegate {
     }
     
     @IBAction func stabilizeAction(_ sender: Any) {
-        let controllerStatus = RovControllerStatus(vehicleId: vehicleId ?? "",
+        let controllerStatus = RovControllerStatus(vehicleId: vehicleId,
                                                    controllerId: .trident,
                                                    state: !Preference.tridentStabilize ? .enabled : .disabled)
         FastRTPS.send(topic: .rovControllerStateRequested, ddsData: controllerStatus)
@@ -219,39 +228,14 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         menuItem!.state = Preference.tridentStabilize ? .on:.off
     }
        
-    private func getConnection() {
-        var interfaceAddresses: Set<String> = []
-        DispatchQueue.global(qos: .userInteractive).async {
-            repeat {
-                interfaceAddresses = FastRTPS.getIP4Address()
-                if interfaceAddresses.isEmpty {
-                    Thread.sleep(forTimeInterval: 0.5)
-                }
-            } while interfaceAddresses.isEmpty
-            self.startRTPS(addresses: interfaceAddresses)
-        }
-    }
-
-    private func startRTPS(addresses: Set<String>) {
-        print(addresses)
-        let address = addresses.first { $0.starts(with: "10.1.1.") } ?? addresses.first!
-        let network = address + "/24"
-        FastRTPS.createParticipant(interfaceIPv4: address, networkAddress: network)
+    private func startRTPS() {
         registerReaders()
         registerWriters()
+        
+//        rovProvision()
     }
     
-    private func stopRTPS() {
-        FastRTPS.resignAll()
-        FastRTPS.stopRTPS()
-    }
-
-    private func rovProvision(rovBeacon: RovBeacon) {
-        self.rovBeacon = rovBeacon
-        self.vehicleId = rovBeacon.uuid
-        view.window?.title = rovBeacon.uuid
-        cameraControlView.isHidden = false
-
+    private func rovProvision() {
         Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
             self.view.layer?.contents = nil
         }
@@ -264,41 +248,39 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         FastRTPS.send(topic: .rovVidSessionReq, ddsData: videoReq)
         let lightPower = RovLightPower(id: "fwd", power: 0)
         FastRTPS.send(topic: .rovLightPowerRequested, ddsData: lightPower)
-        let controllerStatus = RovControllerStatus(vehicleId: vehicleId ?? "",
+        let controllerStatus = RovControllerStatus(vehicleId: vehicleId,
                                                    controllerId: .trident,
                                                    state: Preference.tridentStabilize ? .enabled : .disabled)
         FastRTPS.send(topic: .rovControllerStateRequested, ddsData: controllerStatus)
-
-        FastRTPS.removeReader(topic: .rovBeacon)
     }
-    
+
     private func registerReaders() {
         FastRTPS.registerReader(topic: .rovCamFwdH2640Video) { [weak self] (videoData: RovVideoData) in
             self?.videoDecoder.decodeVideo(data: videoData.data, timestamp: videoData.timestamp)
         }
 
         FastRTPS.registerReader(topic: .rovTempWater) { [weak self] (temp: RovTemperature) in
-            DispatchQueue.main.async {
-                self?.temperature = temp.temperature.temperature
-            }
+            self?.temperature = temp.temperature.temperature
         }
         
         FastRTPS.registerReader(topic: .rovDepth) { [weak self] (depth: RovDepth) in
-            DispatchQueue.main.async {
-                self?.depth = depth.depth
-            }
+            self?.depth = depth.depth
         }
         
         FastRTPS.registerReader(topic: .rovFuelgaugeHealth) { [weak self] (health: RovFuelgaugeHealth) in
-            DispatchQueue.main.async {
-                self?.batteryTime = health.average_time_to_empty_mins
-            }
+            self?.batteryTime = health.average_time_to_empty_mins
         }
         
-        FastRTPS.registerReader(topic: .rovRecordingStats) { [weak self] (recordingStats: RovRecordingStats) in
+        FastRTPS.registerReader(topic: .rovFuelgaugeStatus) { [weak self] (status: RovFuelgaugeStatus) in
+            guard self?.batteryTime == 65535 else { return }
+        
             DispatchQueue.main.async {
-                self?.cameraTime = recordingStats.estRemainingRecTimeS / 60
+                self?.batteryTimeLabel.stringValue = String(format: "charge: %.0f%%", status.state.percentage * 100)
             }
+        }
+
+        FastRTPS.registerReader(topic: .rovRecordingStats) { [weak self] (recordingStats: RovRecordingStats) in
+            self?.cameraTime = recordingStats.estRemainingRecTimeS / 60
         }
         
         FastRTPS.registerReader(topic: .rovAttitude) { [weak self] (attitude: RovAttitude) in
@@ -395,36 +377,13 @@ class VideoViewController: NSViewController, NSWindowDelegate {
         }
 
         FastRTPS.registerReader(topic: .rovBeacon) { [weak self] (rovBeacon: RovBeacon) in
-            guard self?.vehicleId == nil else { return }
+            guard self?.rovBeacon == nil else { return }
             DispatchQueue.main.async {
-                self?.rovProvision(rovBeacon: rovBeacon)
+                self?.rovBeacon = rovBeacon
+                self?.rovProvision()
+                FastRTPS.removeReader(topic: .rovBeacon)
             }
         }
-
-//        FastRTPS.registerReader(topic: .rovSubsystemStatus) { (status: RovSubsystemStatus) in
-//            print("status:", status.subsystemId.rawValue, status.substate)
-//        }
-//        FastRTPS.registerReader(topic: .rovFirmwareStatus) { (firmwareStatus: RovFirmwareStatus) in
-//            print(firmwareStatus)
-//        }
-//        FastRTPS.registerReader(topic: .rovFirmwareServiceStatus) { (firmwareServiceStatus: RovFirmwareServiceStatus) in
-//            print(firmwareServiceStatus)
-//        }
-//        FastRTPS.registerReader(topic: .rovFirmwareCommandRep) { (command: RovFirmwareCommand) in
-//            print(command)
-//        }
-//        FastRTPS.registerReader(topic: .rovControlCurrent) { (control: RovTridentControlTarget) in
-//            print(control)
-//        }
-//        FastRTPS.registerReader(topic: .navTrackingCurrent) { (cameraObjectTrack: RovCameraObjectTrack) in
-//            print(cameraObjectTrack)
-//        }
-//        FastRTPS.registerReader(topic: .mcuI2cStats) { (stats: I2CStats) in
-//            print(stats)
-//        }
-//        FastRTPS.registerReader(topic: .rovSafety) { (state: RovSafetyState) in
-//            print(state)
-//        }
 
     }
     
@@ -464,7 +423,7 @@ class VideoViewController: NSViewController, NSWindowDelegate {
 
 }
 
-extension VideoViewController: TridentControlDelegate {
+extension DiveViewController: TridentControlDelegate {
     func control(pitch: Float, yaw: Float, thrust: Float, lift: Float) {
         let tridentCommand = RovTridentControlTarget(id: "control", pitch: pitch, yaw: yaw, thrust: thrust, lift: lift)
         FastRTPS.send(topic: .rovControlTarget, ddsData: tridentCommand)

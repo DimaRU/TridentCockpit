@@ -5,7 +5,7 @@
 
 import IOKit.pwr_mgt
 
-enum DisplayManage {
+enum DisplayManager {
     private static var assertionID: IOPMAssertionID = 0
     private static var sleepDisabled = false
     

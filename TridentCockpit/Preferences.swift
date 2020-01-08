@@ -55,6 +55,12 @@ struct Preference {
 
     @UserPreference("RovModelViewCPH")
     static var rovModelViewCPH: CGFloat?
+    
+    @UserPreference("AuxCameraControlViewCPV")
+    static var auxCameraControlViewCPV: CGFloat?
+
+    @UserPreference("AuxCameraControlViewCPH")
+    static var auxCameraControlViewCPH: CGFloat?
 
     @UserPreferenceWithDefault("TridentStabilize", defaultValue: true)
     static var tridentStabilize: Bool

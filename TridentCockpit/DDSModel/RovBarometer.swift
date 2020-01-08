@@ -18,6 +18,6 @@ struct RovBarometer: DDSKeyed {
     let id: String
 
     var key: Data { id.data(using: .utf8)! }
-    static var ddsTypeName: String { "orov::sensor::Barometer" }
+    static var ddsTypeName: String { "orov::msg::sensor::Barometer" }
 }
 

@@ -3,12 +3,28 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A2E1DAE23B0CAD9009048A5 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */; };
 		0A2E42BC236B0EE900B5C569 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E42BB236B0EE900B5C569 /* VideoView.swift */; };
 		0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
+		0A3FD1EF23A8D50000FE9918 /* CircularProgress in Frameworks */ = {isa = PBXBuildFile; productRef = 0A3FD1EE23A8D50000FE9918 /* CircularProgress */; };
+		0A3FD1F223A9443E00FE9918 /* ResinAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F123A9443E00FE9918 /* ResinAPI.swift */; };
+		0A3FD1F423A94A5B00FE9918 /* WifiServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F323A94A5B00FE9918 /* WifiServiceAPI.swift */; };
+		0A3FD1F623A94FAC00FE9918 /* RecordingsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F523A94FAC00FE9918 /* RecordingsAPI.swift */; };
+		0A3FD1F923A9723E00FE9918 /* APIVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F823A9723E00FE9918 /* APIVersion.swift */; };
+		0A3FD1FB23A9726200FE9918 /* DeviceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FA23A9726200FE9918 /* DeviceState.swift */; };
+		0A3FD1FD23A9729800FE9918 /* SSIDInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FC23A9729800FE9918 /* SSIDInfo.swift */; };
+		0A3FD1FF23A972BA00FE9918 /* ConnectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FE23A972B900FE9918 /* ConnectionInfo.swift */; };
+		0A3FD20123A9735300FE9918 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20023A9735300FE9918 /* AppInfo.swift */; };
+		0A457D9723B78A7C0042C250 /* Gopro3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A457D8D23B78A7C0042C250 /* Gopro3API.swift */; };
+		0A5107DB23AA807D00C19289 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5107DA23AA807D00C19289 /* NetworkError.swift */; };
+		0A5107DC23AA85B000C19289 /* RestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20223A97A3500FE9918 /* RestProvider.swift */; };
+		0A51082023AADE8F00C19289 /* PresentWithAnimatorSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51081723AADE8F00C19289 /* PresentWithAnimatorSegue.swift */; };
+		0A51082223AB0FFD00C19289 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51082123AB0FFD00C19289 /* TransitionAnimator.swift */; };
+		0A55F6D323B969C500B108B0 /* RovIMUCalibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */; };
 		0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790B23958380006F10FF /* FastRTPSBridge.framework */; };
 		0A597910239583AB006F10FF /* FastRTPSBridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790B23958380006F10FF /* FastRTPSBridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0A5CBCAE23675F920055131A /* SF-Pro-Display-Thin.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */; };
@@ -20,10 +36,12 @@
 		0A5CBCB423675F920055131A /* SF-Pro-Display-Semibold.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA123675F410055131A /* SF-Pro-Display-Semibold.otf */; };
 		0A5CBCB523675F920055131A /* SF-Pro-Display-Ultralight.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA223675F410055131A /* SF-Pro-Display-Ultralight.otf */; };
 		0A5CBCB623675F920055131A /* SF-Pro-Display-Black.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA323675F410055131A /* SF-Pro-Display-Black.otf */; };
+		0A5E3FC823BFA10E00EAC519 /* GoproStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5E3FBE23BFA10E00EAC519 /* GoproStatus.swift */; };
+		0A66C52C23AED706001BA93D /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0A66C52B23AED706001BA93D /* Moya */; };
+		0A66C52F23AED776001BA93D /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A66C52E23AED776001BA93D /* PromiseKit */; };
 		0A7130D423636AF200817593 /* FlatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130C823636AF100817593 /* FlatButton.swift */; };
-		0A7130D523636AF200817593 /* AutoSWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130C923636AF100817593 /* AutoSWindowController.swift */; };
 		0A7130D623636AF200817593 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CA23636AF100817593 /* Extensions.swift */; };
-		0A7130D723636AF200817593 /* DisplayManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CB23636AF100817593 /* DisplayManage.swift */; };
+		0A7130D723636AF200817593 /* DisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CB23636AF100817593 /* DisplayManager.swift */; };
 		0A7130D823636AF200817593 /* VideoDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CC23636AF100817593 /* VideoDecoder.swift */; };
 		0A7130D923636AF200817593 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CD23636AF100817593 /* AppDelegate.swift */; };
 		0A7130DA23636AF200817593 /* FloatingViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */; };
@@ -31,7 +49,7 @@
 		0A7130DC23636AF200817593 /* RovModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130D023636AF100817593 /* RovModelView.swift */; };
 		0A7130DD23636AF200817593 /* TridentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130D123636AF100817593 /* TridentControl.swift */; };
 		0A7130DE23636AF200817593 /* CameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130D223636AF200817593 /* CameraControlView.swift */; };
-		0A7130DF23636AF200817593 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130D323636AF200817593 /* VideoViewController.swift */; };
+		0A7130DF23636AF200817593 /* DiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130D323636AF200817593 /* DiveViewController.swift */; };
 		0A7130FD23636B0200817593 /* RovTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E123636B0200817593 /* RovTopic.swift */; };
 		0A7130FE23636B0200817593 /* RovBarometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E223636B0200817593 /* RovBarometer.swift */; };
 		0A7130FF23636B0200817593 /* I2CStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E323636B0200817593 /* I2CStats.swift */; };
@@ -63,7 +81,24 @@
 		0A71311A23636B1700817593 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A71311923636B1700817593 /* Main.storyboard */; };
 		0A71311C23636B5C00817593 /* TridentCockpit.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A71311B23636B5C00817593 /* TridentCockpit.scnassets */; };
 		0A71313B23637F0700817593 /* FastRTPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71313A23637F0700817593 /* FastRTPS.swift */; };
+		0A82780A23A63B220039A774 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780023A63B220039A774 /* DashboardViewController.swift */; };
+		0A82780C23A63B2D0039A774 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780B23A63B2D0039A774 /* WindowController.swift */; };
+		0A82781023A641230039A774 /* PastDivesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780F23A641230039A774 /* PastDivesViewController.swift */; };
+		0A82781223A641750039A774 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781123A641750039A774 /* MaintenanceViewController.swift */; };
 		0A84F9CE237B37BF009BBAD4 /* SetupNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */; };
+		0A95B39723C345EE00468DAF /* ToolbarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95B39623C345EE00468DAF /* ToolbarDelegate.swift */; };
+		0A95B3A123C375FC00468DAF /* ToolbarItemIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */; };
+		0A98306D23C22FCA00BD234B /* AuxCameraControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A98306223C22FCA00BD234B /* AuxCameraControlView.xib */; };
+		0A98306E23C22FCA00BD234B /* AuxCameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98306C23C22FCA00BD234B /* AuxCameraControlView.swift */; };
+		0A98307023C22FFD00BD234B /* AuxPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98306F23C22FFD00BD234B /* AuxPlayerViewController.swift */; };
+		0A98307423C2355700BD234B /* AuxPlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A98307323C2355700BD234B /* AuxPlayerViewController.storyboard */; };
+		0A9E55BF23BC0AFA008F8A9A /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E55BE23BC0AFA008F8A9A /* Average.swift */; };
+		0AA4290223C38D3B003476CB /* PayloadCleanup.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0AA4290123C38D3B003476CB /* PayloadCleanup.sh */; };
+		0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */; };
+		0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0ADA653723B119880090D757 /* PayloadProvision.sh */; };
+		0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; };
+		0AF69E0423A601220037DBDD /* SwiftSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0AFE9C4123B3ED7700C13162 /* DDSDiscoveryListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFE9C3723B3ED7700C13162 /* DDSDiscoveryListener.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +115,27 @@
 			proxyType = 2;
 			remoteGlobalIDString = 0A8A37DB2366DB1B008E8DC1;
 			remoteInfo = "FastRTPSBridge iOS";
+		};
+		0AF69DFD23A600FA0037DBDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 180BD1FF1B4C622D000DB241;
+			remoteInfo = "SwiftSH-iOS";
+		};
+		0AF69DFF23A600FA0037DBDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A479FDA239E9F8F00699CE1;
+			remoteInfo = "SwiftSH-macOS";
+		};
+		0AF69E0123A600FA0037DBDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 7D148CFA21225961009C1CCC;
+			remoteInfo = "SwiftSH Integration Tests";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -109,6 +165,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				0A597910239583AB006F10FF /* FastRTPSBridge.framework in Embed Frameworks */,
+				0AF69E0423A601220037DBDD /* SwiftSH.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,9 +173,24 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		0A2E42BB236B0EE900B5C569 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		0A2FF3112363A0BD008FD68B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A2FF3122363A13B008FD68B /* TridentCockpit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TridentCockpit.entitlements; sourceTree = "<group>"; };
+		0A3FD1F123A9443E00FE9918 /* ResinAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinAPI.swift; sourceTree = "<group>"; };
+		0A3FD1F323A94A5B00FE9918 /* WifiServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiServiceAPI.swift; sourceTree = "<group>"; };
+		0A3FD1F523A94FAC00FE9918 /* RecordingsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsAPI.swift; sourceTree = "<group>"; };
+		0A3FD1F823A9723E00FE9918 /* APIVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIVersion.swift; sourceTree = "<group>"; };
+		0A3FD1FA23A9726200FE9918 /* DeviceState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceState.swift; sourceTree = "<group>"; };
+		0A3FD1FC23A9729800FE9918 /* SSIDInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSIDInfo.swift; sourceTree = "<group>"; };
+		0A3FD1FE23A972B900FE9918 /* ConnectionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionInfo.swift; sourceTree = "<group>"; };
+		0A3FD20023A9735300FE9918 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
+		0A3FD20223A97A3500FE9918 /* RestProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestProvider.swift; sourceTree = "<group>"; };
+		0A457D8D23B78A7C0042C250 /* Gopro3API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gopro3API.swift; sourceTree = "<group>"; };
+		0A5107DA23AA807D00C19289 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		0A51081723AADE8F00C19289 /* PresentWithAnimatorSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentWithAnimatorSegue.swift; sourceTree = "<group>"; };
+		0A51082123AB0FFD00C19289 /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
+		0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RovIMUCalibration.swift; sourceTree = "<group>"; };
 		0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FastRTPSBridge.xcodeproj; path = FastRTPSBridge/FastRTPSBridge.xcodeproj; sourceTree = "<group>"; };
 		0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		0A5CBC9C23675F410055131A /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
@@ -129,12 +201,12 @@
 		0A5CBCA123675F410055131A /* SF-Pro-Display-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Semibold.otf"; sourceTree = "<group>"; };
 		0A5CBCA223675F410055131A /* SF-Pro-Display-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Ultralight.otf"; sourceTree = "<group>"; };
 		0A5CBCA323675F410055131A /* SF-Pro-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Black.otf"; sourceTree = "<group>"; };
+		0A5E3FBE23BFA10E00EAC519 /* GoproStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoproStatus.swift; sourceTree = "<group>"; };
 		0A7130B4236369EA00817593 /* TridentCockpit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TridentCockpit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A7130C0236369EC00817593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A7130C823636AF100817593 /* FlatButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatButton.swift; sourceTree = "<group>"; };
-		0A7130C923636AF100817593 /* AutoSWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoSWindowController.swift; sourceTree = "<group>"; };
 		0A7130CA23636AF100817593 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		0A7130CB23636AF100817593 /* DisplayManage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayManage.swift; sourceTree = "<group>"; };
+		0A7130CB23636AF100817593 /* DisplayManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayManager.swift; sourceTree = "<group>"; };
 		0A7130CC23636AF100817593 /* VideoDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDecoder.swift; sourceTree = "<group>"; };
 		0A7130CD23636AF100817593 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingViewProtocol.swift; sourceTree = "<group>"; };
@@ -142,7 +214,7 @@
 		0A7130D023636AF100817593 /* RovModelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovModelView.swift; sourceTree = "<group>"; };
 		0A7130D123636AF100817593 /* TridentControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TridentControl.swift; sourceTree = "<group>"; };
 		0A7130D223636AF200817593 /* CameraControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraControlView.swift; sourceTree = "<group>"; };
-		0A7130D323636AF200817593 /* VideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		0A7130D323636AF200817593 /* DiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiveViewController.swift; sourceTree = "<group>"; };
 		0A7130E123636B0200817593 /* RovTopic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovTopic.swift; sourceTree = "<group>"; };
 		0A7130E223636B0200817593 /* RovBarometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovBarometer.swift; sourceTree = "<group>"; };
 		0A7130E323636B0200817593 /* I2CStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = I2CStats.swift; sourceTree = "<group>"; };
@@ -174,7 +246,23 @@
 		0A71311923636B1700817593 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		0A71311B23636B5C00817593 /* TridentCockpit.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = TridentCockpit.scnassets; sourceTree = "<group>"; };
 		0A71313A23637F0700817593 /* FastRTPS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastRTPS.swift; sourceTree = "<group>"; };
+		0A82780023A63B220039A774 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		0A82780B23A63B2D0039A774 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
+		0A82780F23A641230039A774 /* PastDivesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastDivesViewController.swift; sourceTree = "<group>"; };
+		0A82781123A641750039A774 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
+		0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemIdentifier.swift; sourceTree = "<group>"; };
 		0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNotifications.swift; sourceTree = "<group>"; };
+		0A95B39623C345EE00468DAF /* ToolbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarDelegate.swift; sourceTree = "<group>"; };
+		0A98306223C22FCA00BD234B /* AuxCameraControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuxCameraControlView.xib; sourceTree = "<group>"; };
+		0A98306C23C22FCA00BD234B /* AuxCameraControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuxCameraControlView.swift; sourceTree = "<group>"; };
+		0A98306F23C22FFD00BD234B /* AuxPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuxPlayerViewController.swift; sourceTree = "<group>"; };
+		0A98307323C2355700BD234B /* AuxPlayerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AuxPlayerViewController.storyboard; sourceTree = "<group>"; };
+		0A9E55BE23BC0AFA008F8A9A /* Average.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Average.swift; sourceTree = "<group>"; };
+		0AA4290123C38D3B003476CB /* PayloadCleanup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PayloadCleanup.sh; sourceTree = "<group>"; };
+		0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiPopupViewController.swift; sourceTree = "<group>"; };
+		0ADA653723B119880090D757 /* PayloadProvision.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PayloadProvision.sh; sourceTree = "<group>"; };
+		0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftSH.xcodeproj; path = SwiftSH/SwiftSH.xcodeproj; sourceTree = "<group>"; };
+		0AFE9C3723B3ED7700C13162 /* DDSDiscoveryListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSDiscoveryListener.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,13 +270,54 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A66C52F23AED776001BA93D /* PromiseKit in Frameworks */,
+				0A3FD1EF23A8D50000FE9918 /* CircularProgress in Frameworks */,
 				0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */,
+				0A66C52C23AED706001BA93D /* Moya in Frameworks */,
+				0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A3FD1F023A9439100FE9918 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				0AFE9C3723B3ED7700C13162 /* DDSDiscoveryListener.swift */,
+				0A3FD20223A97A3500FE9918 /* RestProvider.swift */,
+				0A5107DA23AA807D00C19289 /* NetworkError.swift */,
+				0A3FD1F323A94A5B00FE9918 /* WifiServiceAPI.swift */,
+				0A3FD1F123A9443E00FE9918 /* ResinAPI.swift */,
+				0A3FD1F523A94FAC00FE9918 /* RecordingsAPI.swift */,
+				0A457D8D23B78A7C0042C250 /* Gopro3API.swift */,
+				0A71313A23637F0700817593 /* FastRTPS.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		0A3FD1F723A9720200FE9918 /* APIModel */ = {
+			isa = PBXGroup;
+			children = (
+				0A5E3FBE23BFA10E00EAC519 /* GoproStatus.swift */,
+				0A3FD1F823A9723E00FE9918 /* APIVersion.swift */,
+				0A3FD1FA23A9726200FE9918 /* DeviceState.swift */,
+				0A3FD1FC23A9729800FE9918 /* SSIDInfo.swift */,
+				0A3FD1FE23A972B900FE9918 /* ConnectionInfo.swift */,
+				0A3FD20023A9735300FE9918 /* AppInfo.swift */,
+			);
+			path = APIModel;
+			sourceTree = "<group>";
+		};
+		0A51080E23AADE8F00C19289 /* CustomSegue */ = {
+			isa = PBXGroup;
+			children = (
+				0A51081723AADE8F00C19289 /* PresentWithAnimatorSegue.swift */,
+				0A51082123AB0FFD00C19289 /* TransitionAnimator.swift */,
+			);
+			path = CustomSegue;
+			sourceTree = "<group>";
+		};
 		0A59790423958380006F10FF /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -208,6 +337,7 @@
 		0A5CBC992367507F0055131A /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				0A51080E23AADE8F00C19289 /* CustomSegue */,
 				0A7130C823636AF100817593 /* FlatButton.swift */,
 			);
 			path = ThirdParty;
@@ -232,6 +362,7 @@
 		0A7130AB236369EA00817593 = {
 			isa = PBXGroup;
 			children = (
+				0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */,
 				0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */,
 				0A7130B6236369EA00817593 /* TridentCockpit */,
 				0A5CBC9A23675F410055131A /* Fonts */,
@@ -251,32 +382,35 @@
 		0A7130B6236369EA00817593 /* TridentCockpit */ = {
 			isa = PBXGroup;
 			children = (
-				0A7130CD23636AF100817593 /* AppDelegate.swift */,
-				0A7130D323636AF200817593 /* VideoViewController.swift */,
-				0A7130D123636AF100817593 /* TridentControl.swift */,
-				0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */,
-				0A2E42BB236B0EE900B5C569 /* VideoView.swift */,
-				0A7130CC23636AF100817593 /* VideoDecoder.swift */,
-				0A7130C923636AF100817593 /* AutoSWindowController.swift */,
-				0A7130D223636AF200817593 /* CameraControlView.swift */,
-				0A7130CB23636AF100817593 /* DisplayManage.swift */,
-				0A7130CA23636AF100817593 /* Extensions.swift */,
+				0A98307623C23F9800BD234B /* DiveViewController */,
+				0A98307723C23FE900BD234B /* DashboardViewController */,
+				0A98307523C23EFD00BD234B /* AuxCamera */,
+				0A82781123A641750039A774 /* MaintenanceViewController.swift */,
+				0A82780F23A641230039A774 /* PastDivesViewController.swift */,
+				0A82780B23A63B2D0039A774 /* WindowController.swift */,
 				0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */,
+				0A7130CB23636AF100817593 /* DisplayManager.swift */,
+				0A7130CA23636AF100817593 /* Extensions.swift */,
+				0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */,
 				0A7130CF23636AF100817593 /* Preferences.swift */,
-				0A7130D023636AF100817593 /* RovModelView.swift */,
-				0A71313A23637F0700817593 /* FastRTPS.swift */,
+				0A9E55BE23BC0AFA008F8A9A /* Average.swift */,
+				0A7130CD23636AF100817593 /* AppDelegate.swift */,
+				0A3FD1F023A9439100FE9918 /* Networking */,
+				0A3FD1F723A9720200FE9918 /* APIModel */,
+				0A7130E023636B0200817593 /* DDSModel */,
 				0A5CBC992367507F0055131A /* ThirdParty */,
-				0A7130E023636B0200817593 /* Model */,
 				0A71311B23636B5C00817593 /* TridentCockpit.scnassets */,
 				0A2FF3112363A0BD008FD68B /* Assets.xcassets */,
 				0A7130C0236369EC00817593 /* Info.plist */,
+				0ADA653723B119880090D757 /* PayloadProvision.sh */,
+				0AA4290123C38D3B003476CB /* PayloadCleanup.sh */,
 				0A71311923636B1700817593 /* Main.storyboard */,
 				0A2FF3122363A13B008FD68B /* TridentCockpit.entitlements */,
 			);
 			path = TridentCockpit;
 			sourceTree = "<group>";
 		};
-		0A7130E023636B0200817593 /* Model */ = {
+		0A7130E023636B0200817593 /* DDSModel */ = {
 			isa = PBXGroup;
 			children = (
 				0A7130E123636B0200817593 /* RovTopic.swift */,
@@ -307,8 +441,55 @@
 				0A7130FA23636B0200817593 /* RovChannel.swift */,
 				0A7130FB23636B0200817593 /* RovCamera.swift */,
 				0A7130FC23636B0200817593 /* RovLightPower.swift */,
+				0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */,
 			);
-			path = Model;
+			path = DDSModel;
+			sourceTree = "<group>";
+		};
+		0A98307523C23EFD00BD234B /* AuxCamera */ = {
+			isa = PBXGroup;
+			children = (
+				0A98306C23C22FCA00BD234B /* AuxCameraControlView.swift */,
+				0A98306223C22FCA00BD234B /* AuxCameraControlView.xib */,
+				0A98306F23C22FFD00BD234B /* AuxPlayerViewController.swift */,
+				0A98307323C2355700BD234B /* AuxPlayerViewController.storyboard */,
+			);
+			path = AuxCamera;
+			sourceTree = "<group>";
+		};
+		0A98307623C23F9800BD234B /* DiveViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A7130D323636AF200817593 /* DiveViewController.swift */,
+				0A7130D023636AF100817593 /* RovModelView.swift */,
+				0A7130D223636AF200817593 /* CameraControlView.swift */,
+				0A7130CC23636AF100817593 /* VideoDecoder.swift */,
+				0A7130D123636AF100817593 /* TridentControl.swift */,
+				0A2E42BB236B0EE900B5C569 /* VideoView.swift */,
+			);
+			path = DiveViewController;
+			sourceTree = "<group>";
+		};
+		0A98307723C23FE900BD234B /* DashboardViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A82780023A63B220039A774 /* DashboardViewController.swift */,
+				0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */,
+				0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */,
+				0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */,
+				0A95B39623C345EE00468DAF /* ToolbarDelegate.swift */,
+			);
+			path = DashboardViewController;
+			sourceTree = "<group>";
+		};
+		0AF69DF223A600FA0037DBDD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0AF69DFE23A600FA0037DBDD /* SwiftSH.framework */,
+				0AF69E0023A600FA0037DBDD /* SwiftSH.framework */,
+				0AF69E0223A600FA0037DBDD /* SwiftSH Integration Tests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -330,6 +511,9 @@
 			);
 			name = TridentCockpit;
 			packageProductDependencies = (
+				0A3FD1EE23A8D50000FE9918 /* CircularProgress */,
+				0A66C52B23AED706001BA93D /* Moya */,
+				0A66C52E23AED776001BA93D /* PromiseKit */,
 			);
 			productName = TridentCockpit;
 			productReference = 0A7130B4236369EA00817593 /* TridentCockpit.app */;
@@ -361,6 +545,9 @@
 			);
 			mainGroup = 0A7130AB236369EA00817593;
 			packageReferences = (
+				0A3FD1ED23A8D50000FE9918 /* XCRemoteSwiftPackageReference "CircularProgress" */,
+				0A66C52A23AED706001BA93D /* XCRemoteSwiftPackageReference "Moya" */,
+				0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */,
 			);
 			productRefGroup = 0A7130B5236369EA00817593 /* Products */;
 			projectDirPath = "";
@@ -368,6 +555,10 @@
 				{
 					ProductGroup = 0A59790423958380006F10FF /* Products */;
 					ProjectRef = 0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */;
+				},
+				{
+					ProductGroup = 0AF69DF223A600FA0037DBDD /* Products */;
+					ProjectRef = 0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -392,6 +583,27 @@
 			remoteRef = 0A59790C23958380006F10FF /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		0AF69DFE23A600FA0037DBDD /* SwiftSH.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftSH.framework;
+			remoteRef = 0AF69DFD23A600FA0037DBDD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0AF69E0023A600FA0037DBDD /* SwiftSH.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = SwiftSH.framework;
+			remoteRef = 0AF69DFF23A600FA0037DBDD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0AF69E0223A600FA0037DBDD /* SwiftSH Integration Tests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "SwiftSH Integration Tests.xctest";
+			remoteRef = 0AF69E0123A600FA0037DBDD /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -399,9 +611,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AA4290223C38D3B003476CB /* PayloadCleanup.sh in Resources */,
 				0A71311A23636B1700817593 /* Main.storyboard in Resources */,
+				0A98307423C2355700BD234B /* AuxPlayerViewController.storyboard in Resources */,
 				0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */,
 				0A71311C23636B5C00817593 /* TridentCockpit.scnassets in Resources */,
+				0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */,
+				0A98306D23C22FCA00BD234B /* AuxCameraControlView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -412,6 +628,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A51082023AADE8F00C19289 /* PresentWithAnimatorSegue.swift in Sources */,
 				0A71310A23636B0200817593 /* RovCommon.swift in Sources */,
 				0A7130D923636AF200817593 /* AppDelegate.swift in Sources */,
 				0A71310C23636B0200817593 /* RovPoint.swift in Sources */,
@@ -422,38 +639,63 @@
 				0A71311623636B0200817593 /* RovChannel.swift in Sources */,
 				0A7130FF23636B0200817593 /* I2CStats.swift in Sources */,
 				0A7130DC23636AF200817593 /* RovModelView.swift in Sources */,
-				0A7130DF23636AF200817593 /* VideoViewController.swift in Sources */,
-				0A7130D523636AF200817593 /* AutoSWindowController.swift in Sources */,
+				0A7130DF23636AF200817593 /* DiveViewController.swift in Sources */,
 				0A71310523636B0200817593 /* RovBeacon.swift in Sources */,
 				0A7130DD23636AF200817593 /* TridentControl.swift in Sources */,
+				0A3FD1FB23A9726200FE9918 /* DeviceState.swift in Sources */,
 				0A71310723636B0200817593 /* RovFuelgauge.swift in Sources */,
 				0A71311023636B0200817593 /* RovQuaternion.swift in Sources */,
-				0A7130D723636AF200817593 /* DisplayManage.swift in Sources */,
+				0A51082223AB0FFD00C19289 /* TransitionAnimator.swift in Sources */,
+				0A7130D723636AF200817593 /* DisplayManager.swift in Sources */,
+				0A95B3A123C375FC00468DAF /* ToolbarItemIdentifier.swift in Sources */,
 				0A7130FD23636B0200817593 /* RovTopic.swift in Sources */,
+				0A98306E23C22FCA00BD234B /* AuxCameraControlView.swift in Sources */,
 				0A7130DA23636AF200817593 /* FloatingViewProtocol.swift in Sources */,
+				0A9E55BF23BC0AFA008F8A9A /* Average.swift in Sources */,
+				0A3FD1F923A9723E00FE9918 /* APIVersion.swift in Sources */,
+				0A82780A23A63B220039A774 /* DashboardViewController.swift in Sources */,
+				0A3FD1FF23A972BA00FE9918 /* ConnectionInfo.swift in Sources */,
 				0A71310023636B0200817593 /* BatteryState.swift in Sources */,
+				0AFE9C4123B3ED7700C13162 /* DDSDiscoveryListener.swift in Sources */,
 				0A7130D623636AF200817593 /* Extensions.swift in Sources */,
 				0A7130DE23636AF200817593 /* CameraControlView.swift in Sources */,
 				0A71310123636B0200817593 /* RovCameraObjectTrack.swift in Sources */,
 				0A71310223636B0200817593 /* RovSafetyState.swift in Sources */,
+				0A95B39723C345EE00468DAF /* ToolbarDelegate.swift in Sources */,
+				0A2E1DAE23B0CAD9009048A5 /* KeychainService.swift in Sources */,
 				0A71310823636B0200817593 /* RovFirmware.swift in Sources */,
 				0A71311423636B0200817593 /* RovVideoData.swift in Sources */,
 				0A71310623636B0200817593 /* RovQuaternion+extensions.swift in Sources */,
 				0A71311223636B0200817593 /* DDSTypeString.swift in Sources */,
+				0A3FD1F423A94A5B00FE9918 /* WifiServiceAPI.swift in Sources */,
 				0A71311723636B0200817593 /* RovCamera.swift in Sources */,
+				0A82781223A641750039A774 /* MaintenanceViewController.swift in Sources */,
+				0A55F6D323B969C500B108B0 /* RovIMUCalibration.swift in Sources */,
 				0A71310F23636B0200817593 /* RovDepth.swift in Sources */,
+				0A82780C23A63B2D0039A774 /* WindowController.swift in Sources */,
+				0A3FD20123A9735300FE9918 /* AppInfo.swift in Sources */,
+				0A3FD1FD23A9729800FE9918 /* SSIDInfo.swift in Sources */,
 				0A71311323636B0200817593 /* RovRecording.swift in Sources */,
 				0A71310D23636B0200817593 /* RovTridentMotorCommand.swift in Sources */,
+				0A82781023A641230039A774 /* PastDivesViewController.swift in Sources */,
 				0A7130D823636AF200817593 /* VideoDecoder.swift in Sources */,
+				0A3FD1F223A9443E00FE9918 /* ResinAPI.swift in Sources */,
 				0A71310323636B0200817593 /* RovVector3.swift in Sources */,
+				0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */,
+				0A5107DC23AA85B000C19289 /* RestProvider.swift in Sources */,
 				0A71310423636B0200817593 /* RovControlDescriptor.swift in Sources */,
 				0A71311123636B0200817593 /* RovControllerStatus.swift in Sources */,
 				0A71311823636B0200817593 /* RovLightPower.swift in Sources */,
 				0A2E42BC236B0EE900B5C569 /* VideoView.swift in Sources */,
 				0A7130DB23636AF200817593 /* Preferences.swift in Sources */,
+				0A98307023C22FFD00BD234B /* AuxPlayerViewController.swift in Sources */,
+				0A3FD1F623A94FAC00FE9918 /* RecordingsAPI.swift in Sources */,
 				0A71310E23636B0200817593 /* RovTemperature.swift in Sources */,
 				0A7130D423636AF200817593 /* FlatButton.swift in Sources */,
 				0A7130FE23636B0200817593 /* RovBarometer.swift in Sources */,
+				0A5107DB23AA807D00C19289 /* NetworkError.swift in Sources */,
+				0A5E3FC823BFA10E00EAC519 /* GoproStatus.swift in Sources */,
+				0A457D9723B78A7C0042C250 /* Gopro3API.swift in Sources */,
 				0A71310B23636B0200817593 /* RovTridentControlTarget.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -594,7 +836,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 1.0.0;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = in.ioshack.TridentCockpit;
@@ -624,7 +866,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				MARKETING_VERSION = 1.0.0;
 				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = in.ioshack.TridentCockpit;
@@ -655,6 +897,51 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0A3FD1ED23A8D50000FE9918 /* XCRemoteSwiftPackageReference "CircularProgress" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/CircularProgress.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		0A66C52A23AED706001BA93D /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = exactVersion;
+				version = "14.0.0-beta.6";
+			};
+		};
+		0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mxcl/PromiseKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0A3FD1EE23A8D50000FE9918 /* CircularProgress */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A3FD1ED23A8D50000FE9918 /* XCRemoteSwiftPackageReference "CircularProgress" */;
+			productName = CircularProgress;
+		};
+		0A66C52B23AED706001BA93D /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A66C52A23AED706001BA93D /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		0A66C52E23AED776001BA93D /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0A7130AC236369EA00817593 /* Project object */;
 }

@@ -2,12 +2,66 @@
   "object": {
     "pins": [
       {
+        "package": "Alamofire",
+        "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
+        "state": {
+          "branch": null,
+          "revision": "2cbf59935fbb1f26e352ce4db53f1cf9408d5313",
+          "version": "5.0.0-rc.3"
+        }
+      },
+      {
         "package": "CDRCodable",
         "repositoryURL": "https://github.com/DimaRU/CDRCodable.git",
         "state": {
           "branch": null,
           "revision": "3add6c2eaaaa0459a644cefacedcddecfb38841b",
           "version": "0.0.1"
+        }
+      },
+      {
+        "package": "CircularProgress",
+        "repositoryURL": "https://github.com/sindresorhus/CircularProgress.git",
+        "state": {
+          "branch": null,
+          "revision": "6f66f2d336d40f9804110e5190dcea325d54128b",
+          "version": "2.0.0"
+        }
+      },
+      {
+        "package": "Moya",
+        "repositoryURL": "https://github.com/Moya/Moya.git",
+        "state": {
+          "branch": null,
+          "revision": "05f7bbd3c90c7546df5fc8d736213c8ced99a8b7",
+          "version": "14.0.0-beta.6"
+        }
+      },
+      {
+        "package": "PromiseKit",
+        "repositoryURL": "https://github.com/mxcl/PromiseKit.git",
+        "state": {
+          "branch": null,
+          "revision": "80963d4317bcdc03891e0fbaa744f20511d1bc08",
+          "version": "6.12.0"
+        }
+      },
+      {
+        "package": "ReactiveSwift",
+        "repositoryURL": "https://github.com/Moya/ReactiveSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "f195d82bb30e412e70446e2b4a77e1b514099e88",
+          "version": "6.1.0"
+        }
+      },
+      {
+        "package": "RxSwift",
+        "repositoryURL": "https://github.com/ReactiveX/RxSwift.git",
+        "state": {
+          "branch": null,
+          "revision": "b3e888b4972d9bc76495dd74d30a8c7fad4b9395",
+          "version": "5.0.1"
         }
       }
     ]

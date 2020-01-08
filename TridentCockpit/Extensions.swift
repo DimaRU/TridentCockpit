@@ -95,13 +95,6 @@ extension FloatingPoint {
   }
 }
 
-extension NSWindow {
-    var titlebarHeight: CGFloat {
-        let contentHeight = contentRect(forFrameRect: frame).height
-        return frame.height - contentHeight
-    }
-}
-
 extension NSMenu {
     func recursiveSearch(tag: Int) -> NSMenuItem? {
         for item in items {
@@ -112,4 +105,41 @@ extension NSMenu {
         }
         return nil
     }
+}
+
+extension NSViewController {
+    static func instantiate<T: NSViewController>() -> T {
+        NSStoryboard.main!.instantiateController(withIdentifier: String(describing: T.self)) as! T
+    }
+}
+
+extension NSWindow {
+    func alert(message: String, informative: String, delay: Int = 5) {
+        let alert = NSAlert()
+        alert.messageText = message
+        alert.informativeText = informative
+        alert.alertStyle = .warning
+        
+        alert.beginSheetModal(for: self)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) { [weak self, weak alert] in
+            guard let self = self, let alert = alert else { return }
+            self.endSheet(alert.window, returnCode: .cancel)
+        }
+    }
+    
+    func alert(error: Error, delay: Int = 4) {
+        let alert = NSAlert()
+        alert.messageText = error.localizedDescription
+        if let error = error as? NetworkError {
+            alert.informativeText = error.message()
+        }
+        alert.alertStyle = .warning
+        
+        alert.beginSheetModal(for: self)
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) { [weak self, weak alert] in
+            guard let self = self, let alert = alert else { return }
+            self.endSheet(alert.window, returnCode: .cancel)
+        }
+    }
+
 }
