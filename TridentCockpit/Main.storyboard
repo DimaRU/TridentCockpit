@@ -1001,99 +1001,22 @@ Gw
             </objects>
             <point key="canvasLocation" x="638" y="1287"/>
         </scene>
-        <!--GetSSID Password View Controller-->
-        <scene sceneID="QJe-6V-Qql">
-            <objects>
-                <viewController storyboardIdentifier="GetSSIDPasswordViewController" id="964-mD-uip" customClass="GetSSIDPasswordViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="k2V-LP-Gzv">
-                        <rect key="frame" x="0.0" y="0.0" width="312" height="177"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Cz-ZF-BCk">
-                                <rect key="frame" x="172" y="13" width="100" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="2Td-fL-kBB">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent" base64-UTF8="YES">
-DQ
-</string>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="okButtonPress:" target="964-mD-uip" id="Srf-Tq-pgU"/>
-                                </connections>
-                            </button>
-                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7bg-eg-bFU">
-                                <rect key="frame" x="40" y="13" width="100" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="3SC-vm-GXE">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="cancelButtonPress:" target="964-mD-uip" id="hlf-wh-RNQ"/>
-                                </connections>
-                            </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKr-Hf-2v5">
-                                <rect key="frame" x="46" y="65" width="66" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="Password:" id="Vl1-Se-qS7">
-                                    <font key="font" usesAppearanceFont="YES"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <textField verticalHuggingPriority="750" horizontalCompressionResistancePriority="250" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bnL-Ac-k2L">
-                                <rect key="frame" x="46" y="107" width="222" height="40"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <textFieldCell key="cell" selectable="YES" alignment="center" title="Password for Wi-Fi network &quot;ssidlong-long&quot;" id="i4f-rT-KPK">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                            <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QI2-wO-w8F">
-                                <rect key="frame" x="133" y="62" width="133" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="s6D-ki-bny">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <allowedInputSourceLocales>
-                                        <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                                    </allowedInputSourceLocales>
-                                </secureTextFieldCell>
-                            </secureTextField>
-                        </subviews>
-                    </view>
-                    <connections>
-                        <outlet property="passwordTextField" destination="QI2-wO-w8F" id="pn1-rH-DbG"/>
-                        <outlet property="ssidTextField" destination="bnL-Ac-k2L" id="y8x-qR-xXe"/>
-                    </connections>
-                </viewController>
-                <customObject id="aVr-kw-xef" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-268" y="940"/>
-        </scene>
         <!--Wi Fi Popup View Controller-->
         <scene sceneID="6fC-J4-RgH">
             <objects>
                 <viewController storyboardIdentifier="WiFiPopupViewController" id="R5m-Oj-R0w" customClass="WiFiPopupViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" misplaced="YES" id="g7H-lj-9rF">
+                    <view key="view" id="g7H-lj-9rF">
                         <rect key="frame" x="0.0" y="0.0" width="200" height="246"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnH-L6-Zpz">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="214"/>
-                                <clipView key="contentView" id="vrj-0q-2hM">
-                                    <rect key="frame" x="1" y="1" width="198" height="212"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="246"/>
+                                <clipView key="contentView" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vrj-0q-2hM">
+                                    <rect key="frame" x="1" y="1" width="198" height="244"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" id="nAL-NW-z6n">
-                                            <rect key="frame" x="0.0" y="0.0" width="198" height="212"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="198" height="244"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="8"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -1101,7 +1024,7 @@ Gw
                                             <tableColumns>
                                                 <tableColumn width="195" minWidth="100" maxWidth="400" id="Az8-Gr-xRE">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="controlContent" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -1162,9 +1085,9 @@ Gw
                             </scrollView>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="FnH-L6-Zpz" secondAttribute="bottom" id="7vg-HA-TV3"/>
                             <constraint firstAttribute="trailing" secondItem="FnH-L6-Zpz" secondAttribute="trailing" id="Exv-z3-xbq"/>
                             <constraint firstItem="FnH-L6-Zpz" firstAttribute="leading" secondItem="g7H-lj-9rF" secondAttribute="leading" id="Qis-v5-j7b"/>
+                            <constraint firstAttribute="bottom" secondItem="FnH-L6-Zpz" secondAttribute="bottom" id="Scl-ab-cVg"/>
                             <constraint firstItem="FnH-L6-Zpz" firstAttribute="top" secondItem="g7H-lj-9rF" secondAttribute="top" id="rMG-DW-xoo"/>
                         </constraints>
                     </view>

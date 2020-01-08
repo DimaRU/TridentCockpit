@@ -27,7 +27,6 @@
 		0A55F6D323B969C500B108B0 /* RovIMUCalibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */; };
 		0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790B23958380006F10FF /* FastRTPSBridge.framework */; };
 		0A597910239583AB006F10FF /* FastRTPSBridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790B23958380006F10FF /* FastRTPSBridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0A5AF45023AFAD0800410BCC /* GetSSIDPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5AF44E23AFAD0800410BCC /* GetSSIDPasswordViewController.swift */; };
 		0A5CBCAE23675F920055131A /* SF-Pro-Display-Thin.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */; };
 		0A5CBCAF23675F920055131A /* SF-Pro-Display-Light.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBC9C23675F410055131A /* SF-Pro-Display-Light.otf */; };
 		0A5CBCB023675F920055131A /* SF-Pro-Display-Regular.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBC9D23675F410055131A /* SF-Pro-Display-Regular.otf */; };
@@ -193,7 +192,6 @@
 		0A51082123AB0FFD00C19289 /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
 		0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RovIMUCalibration.swift; sourceTree = "<group>"; };
 		0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FastRTPSBridge.xcodeproj; path = FastRTPSBridge/FastRTPSBridge.xcodeproj; sourceTree = "<group>"; };
-		0A5AF44E23AFAD0800410BCC /* GetSSIDPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetSSIDPasswordViewController.swift; sourceTree = "<group>"; };
 		0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		0A5CBC9C23675F410055131A /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
 		0A5CBC9D23675F410055131A /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
@@ -477,7 +475,6 @@
 			children = (
 				0A82780023A63B220039A774 /* DashboardViewController.swift */,
 				0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */,
-				0A5AF44E23AFAD0800410BCC /* GetSSIDPasswordViewController.swift */,
 				0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */,
 				0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */,
 				0A95B39623C345EE00468DAF /* ToolbarDelegate.swift */,
@@ -667,7 +664,6 @@
 				0A95B39723C345EE00468DAF /* ToolbarDelegate.swift in Sources */,
 				0A2E1DAE23B0CAD9009048A5 /* KeychainService.swift in Sources */,
 				0A71310823636B0200817593 /* RovFirmware.swift in Sources */,
-				0A5AF45023AFAD0800410BCC /* GetSSIDPasswordViewController.swift in Sources */,
 				0A71311423636B0200817593 /* RovVideoData.swift in Sources */,
 				0A71310623636B0200817593 /* RovQuaternion+extensions.swift in Sources */,
 				0A71311223636B0200817593 /* DDSTypeString.swift in Sources */,

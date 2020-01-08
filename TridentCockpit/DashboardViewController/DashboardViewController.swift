@@ -375,7 +375,7 @@ class DashboardViewController: NSViewController {
 }
 
 // MARK: Externsions
-extension DashboardViewController: GetSSIDPasswordProtocol {
+extension DashboardViewController: WiFiPopupProtocol {
     func enteredPassword(ssid: String, password: String) {
         RestProvider.request(MultiTarget(WiFiServiceAPI.connect(ssid: ssid, passphrase: password)))
         .then { _ in

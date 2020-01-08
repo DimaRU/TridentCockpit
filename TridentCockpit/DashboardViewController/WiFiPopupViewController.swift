@@ -8,10 +8,14 @@ import Cocoa
 import Moya
 import PromiseKit
 
+protocol WiFiPopupProtocol: NSObject {
+    func enteredPassword(ssid: String, password: String)
+}
+
 class WiFiPopupViewController: NSViewController {
     @IBOutlet weak var tableView: NSTableView!
 
-    weak var delegate: GetSSIDPasswordProtocol?
+    weak var delegate: WiFiPopupProtocol?
     var ssids: [SSIDInfo] = []
     
     private var tableWidth: CGFloat = 0
@@ -44,6 +48,31 @@ class WiFiPopupViewController: NSViewController {
         timer?.invalidate()
         timer = nil
     }
+    
+    func alertGetPassword(ssid: String) {
+        let alert = NSAlert()
+        alert.messageText = NSLocalizedString("Please enter password for Wi-Fi network ", comment: "") + "\"" + ssid + "\""
+        alert.alertStyle = .informational
+        let passwordLabel = NSTextField(labelWithString: NSLocalizedString("Password:", comment: ""))
+        let passwordField = NSSecureTextField()
+        let stack = NSStackView(views: [passwordLabel, passwordField])
+        let width = 300 - passwordLabel.intrinsicContentSize.width - stack.spacing
+        passwordField.widthAnchor.constraint(equalToConstant: width).isActive = true
+        if let password = KeychainService.get(key: ssid) {
+            passwordField.stringValue = password
+        }
+        stack.frame = NSRect(x: 0, y: 0, width: 300, height: 20)
+        stack.orientation = .horizontal
+        stack.distribution = .fillProportionally
+        alert.accessoryView = stack
+        alert.addButton(withTitle: "Join")
+        alert.addButton(withTitle: "Cancel")
+
+        let responce = alert.runModal()
+        guard responce == .alertFirstButtonReturn else { return }
+        let password = passwordField.stringValue
+        self.delegate?.enteredPassword(ssid: ssid, password: password)
+    }
 }
 
 extension WiFiPopupViewController: NSTableViewDelegate {
@@ -51,13 +80,13 @@ extension WiFiPopupViewController: NSTableViewDelegate {
         guard tableView.selectedRow != -1 else { return }
         timer?.invalidate()
         timer = nil
-        let controller: GetSSIDPasswordViewController = NSViewController.instantiate()
-        controller.delegate = delegate
-        controller.ssid = ssids[tableView.selectedRow].ssid
-        presentAsModalWindow(controller)
         dismiss(nil)
+        DispatchQueue.main.async {
+            self.alertGetPassword(ssid: self.ssids[self.tableView.selectedRow].ssid)
+        }
     }
 }
+
 
 extension WiFiPopupViewController: NSTableViewDataSource {
     func numberOfRows(in tableView: NSTableView) -> Int {
