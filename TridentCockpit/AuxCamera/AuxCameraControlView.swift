@@ -162,12 +162,17 @@ class AuxCameraControlView: NSView, FloatingViewProtocol {
         .done {
             self.decodeCameraStatus(data: $0)
         }.catch { error in
-            if case NetworkError.gone = error {
+            switch error {
+            case NetworkError.gone:
                 // camera is off
                 self.cameraState = .off
                 self.timer?.invalidate()
                 self.timer = nil
-            } else {
+            case NetworkError.unaviable(let message):
+                self.window?.alert(message: "Payload camera connection lost", informative: message, delay: 3)
+                self.timer?.invalidate()
+                self.timer = nil
+            default:
                 self.window?.alert(error: error)
             }
         }

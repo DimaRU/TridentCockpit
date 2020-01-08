@@ -182,10 +182,13 @@ class DashboardViewController: NSViewController {
             .done { (deviceState: DeviceState) in
                 self.deviceState = deviceState
             }.catch { error in
-                self.view.window?.alert(error: error, delay: 2)
-                if let error = error as? NetworkError, case NetworkError.unaviable = error {
+                switch error {
+                case NetworkError.unaviable(let message):
                     self.timer?.invalidate()
                     self.timer = nil
+                    self.view.window?.alert(message: "Trident connection lost", informative: message, delay: 2)
+                default:
+                    self.view.window?.alert(error: error, delay: 2)
                 }
             }
         }
