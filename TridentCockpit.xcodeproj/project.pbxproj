@@ -22,8 +22,6 @@
 		0A457D9723B78A7C0042C250 /* Gopro3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A457D8D23B78A7C0042C250 /* Gopro3API.swift */; };
 		0A5107DB23AA807D00C19289 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5107DA23AA807D00C19289 /* NetworkError.swift */; };
 		0A5107DC23AA85B000C19289 /* RestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20223A97A3500FE9918 /* RestProvider.swift */; };
-		0A51082023AADE8F00C19289 /* PresentWithAnimatorSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51081723AADE8F00C19289 /* PresentWithAnimatorSegue.swift */; };
-		0A51082223AB0FFD00C19289 /* TransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A51082123AB0FFD00C19289 /* TransitionAnimator.swift */; };
 		0A55F6D323B969C500B108B0 /* RovIMUCalibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */; };
 		0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790B23958380006F10FF /* FastRTPSBridge.framework */; };
 		0A597910239583AB006F10FF /* FastRTPSBridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790B23958380006F10FF /* FastRTPSBridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -188,8 +186,6 @@
 		0A3FD20223A97A3500FE9918 /* RestProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestProvider.swift; sourceTree = "<group>"; };
 		0A457D8D23B78A7C0042C250 /* Gopro3API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gopro3API.swift; sourceTree = "<group>"; };
 		0A5107DA23AA807D00C19289 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
-		0A51081723AADE8F00C19289 /* PresentWithAnimatorSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentWithAnimatorSegue.swift; sourceTree = "<group>"; };
-		0A51082123AB0FFD00C19289 /* TransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimator.swift; sourceTree = "<group>"; };
 		0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RovIMUCalibration.swift; sourceTree = "<group>"; };
 		0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FastRTPSBridge.xcodeproj; path = FastRTPSBridge/FastRTPSBridge.xcodeproj; sourceTree = "<group>"; };
 		0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
@@ -309,15 +305,6 @@
 			path = APIModel;
 			sourceTree = "<group>";
 		};
-		0A51080E23AADE8F00C19289 /* CustomSegue */ = {
-			isa = PBXGroup;
-			children = (
-				0A51081723AADE8F00C19289 /* PresentWithAnimatorSegue.swift */,
-				0A51082123AB0FFD00C19289 /* TransitionAnimator.swift */,
-			);
-			path = CustomSegue;
-			sourceTree = "<group>";
-		};
 		0A59790423958380006F10FF /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -337,7 +324,6 @@
 		0A5CBC992367507F0055131A /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
-				0A51080E23AADE8F00C19289 /* CustomSegue */,
 				0A7130C823636AF100817593 /* FlatButton.swift */,
 			);
 			path = ThirdParty;
@@ -628,7 +614,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A51082023AADE8F00C19289 /* PresentWithAnimatorSegue.swift in Sources */,
 				0A71310A23636B0200817593 /* RovCommon.swift in Sources */,
 				0A7130D923636AF200817593 /* AppDelegate.swift in Sources */,
 				0A71310C23636B0200817593 /* RovPoint.swift in Sources */,
@@ -645,7 +630,6 @@
 				0A3FD1FB23A9726200FE9918 /* DeviceState.swift in Sources */,
 				0A71310723636B0200817593 /* RovFuelgauge.swift in Sources */,
 				0A71311023636B0200817593 /* RovQuaternion.swift in Sources */,
-				0A51082223AB0FFD00C19289 /* TransitionAnimator.swift in Sources */,
 				0A7130D723636AF200817593 /* DisplayManager.swift in Sources */,
 				0A95B3A123C375FC00468DAF /* ToolbarItemIdentifier.swift in Sources */,
 				0A7130FD23636B0200817593 /* RovTopic.swift in Sources */,

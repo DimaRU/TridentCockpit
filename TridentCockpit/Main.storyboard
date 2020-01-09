@@ -290,7 +290,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Nzd-Nx-u3D">
                                             <rect key="frame" x="82" y="147" width="71" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Trident ID:" id="z9i-zf-Tie">
-                                                <font key="font" metaFont="label" size="14"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -310,7 +310,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hko-Ti-W3G">
                                             <rect key="frame" x="15" y="126" width="138" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Connection address:" id="uG4-73-TNf">
-                                                <font key="font" metaFont="label" size="14"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -330,7 +330,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZKN-Xx-OAl">
                                             <rect key="frame" x="35" y="105" width="118" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Network address:" id="RQZ-Gm-xXg">
-                                                <font key="font" metaFont="label" size="14"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -350,7 +350,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3vg-jJ-xwg">
                                             <rect key="frame" x="55" y="84" width="98" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Local address:" id="yEk-kf-Sd8">
-                                                <font key="font" metaFont="label" size="14"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -370,7 +370,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="XjA-tN-bkZ">
                                             <rect key="frame" x="22" y="63" width="131" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Onboard WiFi SSID:" id="URh-We-n3H">
-                                                <font key="font" metaFont="label" size="14"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -390,7 +390,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NtT-t8-fnu">
                                             <rect key="frame" x="1" y="42" width="152" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Onboard WiFi address:" id="cyF-9h-59S">
-                                                <font key="font" metaFont="label" size="14"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -410,7 +410,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="22o-i8-4nv">
                                             <rect key="frame" x="-2" y="21" width="155" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Payload camera model:" id="wrL-rB-9JM">
-                                                <font key="font" metaFont="label" size="14"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -430,7 +430,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="dCf-2V-NdK">
                                             <rect key="frame" x="34" y="0.0" width="119" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Payload firmware:" id="SCo-sm-VAp">
-                                                <font key="font" metaFont="label" size="14"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -464,9 +464,6 @@
                         <outlet property="ssidLabel" destination="v2Z-0W-1ti" id="QuD-Hr-HB8"/>
                         <outlet property="tridentIdLabel" destination="UbI-mt-742" id="LJt-wQ-cSB"/>
                         <outlet property="tridentNetworkAddressLabel" destination="gMp-cr-viS" id="JGv-dX-aMl"/>
-                        <segue destination="Wgr-FD-Jeg" kind="custom" identifier="DiveSeque" customClass="SlideUpSegue" customModule="TridentCockpit" customModuleProvider="target" id="UTz-4g-bmR"/>
-                        <segue destination="UI2-uK-lo2" kind="custom" identifier="MaintenanceSeque" customClass="SlideUpSegue" customModule="TridentCockpit" customModuleProvider="target" id="80c-eX-ggM"/>
-                        <segue destination="8Wy-DL-cpJ" kind="custom" identifier="PastDivesSegue" customClass="SlideUpSegue" customModule="TridentCockpit" customModuleProvider="target" id="trF-oa-fo6"/>
                     </connections>
                 </viewController>
                 <customObject id="IFr-xP-tTH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -476,10 +473,10 @@
         <!--Maintenance View Controller-->
         <scene sceneID="cDq-Nm-nDq">
             <objects>
-                <viewController id="UI2-uK-lo2" customClass="MaintenanceViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MaintenanceViewController" id="UI2-uK-lo2" customClass="MaintenanceViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="s2l-EA-Z7j">
                         <rect key="frame" x="0.0" y="0.0" width="559" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <gridView xPlacement="leading" yPlacement="bottom" rowAlignment="none" translatesAutoresizingMaskIntoConstraints="NO" id="iN7-JO-XKY">
                                 <rect key="frame" x="157" y="78" width="246" height="158"/>
@@ -512,7 +509,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="8od-ya-QMx">
                                             <rect key="frame" x="44" y="115" width="104" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Battery charge:" id="EJV-dX-1V8">
-                                                <font key="font" metaFont="label" size="14"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -532,7 +529,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lqK-Jn-4OS">
                                             <rect key="frame" x="55" y="92" width="93" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Battery cycle:" id="0PB-Nd-e3O">
-                                                <font key="font" metaFont="label" size="14"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -552,7 +549,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gnP-Iu-1pr">
                                             <rect key="frame" x="31" y="69" width="117" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Internal pressure:" id="urH-7D-yU8">
-                                                <font key="font" metaFont="label" size="14"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -572,7 +569,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3w5-fU-hBg">
                                             <rect key="frame" x="8" y="46" width="140" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Internal temperature:" id="h5k-eg-JT3">
-                                                <font key="font" metaFont="label" size="14"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -613,7 +610,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bGh-q2-h6M">
                                             <rect key="frame" x="83" y="23" width="65" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Pressure:" id="UvJ-bm-Olb">
-                                                <font key="font" metaFont="label" size="14"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -633,7 +630,7 @@
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="izX-fq-NjP">
                                             <rect key="frame" x="57" y="0.0" width="91" height="17"/>
                                             <textFieldCell key="cell" lineBreakMode="clipping" title="Temperature:" id="p7Q-Gw-A56">
-                                                <font key="font" metaFont="label" size="14"/>
+                                                <font key="font" metaFont="menu" size="14"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             </textFieldCell>
@@ -710,10 +707,10 @@ Gw
         <!--Dive View Controller-->
         <scene sceneID="jBG-fP-4Z9">
             <objects>
-                <viewController id="Wgr-FD-Jeg" customClass="DiveViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DiveViewController" id="Wgr-FD-Jeg" customClass="DiveViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" focusRingType="none" id="Rxz-w6-QWt">
                         <rect key="frame" x="0.0" y="0.0" width="641" height="361"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="8ZQ-gr-dN8" customClass="VideoView" customModule="TridentCockpit" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="641" height="361"/>
@@ -981,10 +978,29 @@ Gw
         <!--Past Dives View Controller-->
         <scene sceneID="aaM-nB-Rxz">
             <objects>
-                <viewController id="8Wy-DL-cpJ" customClass="PastDivesViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PastDivesViewController" id="8Wy-DL-cpJ" customClass="PastDivesViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="3rJ-NR-UER">
                         <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yWS-vt-ray">
+                                <rect key="frame" x="182" y="13" width="87" height="32"/>
+                                <buttonCell key="cell" type="push" title="Dismiss" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="m1P-MH-CHv">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="closeButtonPress:" target="8Wy-DL-cpJ" id="257-mE-2no"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="yWS-vt-ray" firstAttribute="centerX" secondItem="3rJ-NR-UER" secondAttribute="centerX" id="eD0-qb-BW5"/>
+                            <constraint firstAttribute="bottom" secondItem="yWS-vt-ray" secondAttribute="bottom" constant="20" symbolic="YES" id="eUh-A9-H5C"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <customObject id="ehI-2k-QYV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
@@ -1014,7 +1030,7 @@ Gw
                                             <tableColumns>
                                                 <tableColumn width="195" minWidth="100" maxWidth="400" id="Az8-Gr-xRE">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>

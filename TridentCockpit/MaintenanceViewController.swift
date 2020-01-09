@@ -41,7 +41,10 @@ class MaintenanceViewController: NSViewController {
 
     @IBAction func closeButtonPress(_ sender: Any) {
         FastRTPS.resignAll()
-        dismiss(sender)
+        guard let otherViewController = self.parent?.children.first(where: { $0 != self}) else { return }
+        self.parent!.transition(from: self, to: otherViewController, options: .slideDown) {
+            self.removeFromParent()
+        }
     }
     
     private func configurAverage() {

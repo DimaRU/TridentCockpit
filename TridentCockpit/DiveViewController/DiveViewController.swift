@@ -129,7 +129,7 @@ class DiveViewController: NSViewController, NSWindowDelegate {
 
     override func viewDidAppear() {
         super.viewDidAppear()
-        view.window?.delegate = self
+//        view.window?.delegate = self
         DisplayManager.disableSleep()
     }
     
@@ -151,7 +151,10 @@ class DiveViewController: NSViewController, NSWindowDelegate {
             self.videoDecoder.cleanup()
             DisplayManager.enableSleep()
             
-            self.dismiss(sender)
+            guard let otherViewController = self.parent?.children.first(where: { $0 != self}) else { return }
+            self.parent!.transition(from: self, to: otherViewController, options: .slideDown) {
+                self.removeFromParent()
+            }
         }
     }
     

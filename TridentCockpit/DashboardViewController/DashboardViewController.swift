@@ -123,23 +123,26 @@ class DashboardViewController: NSViewController {
     // MARK: Actions
     @IBAction func goDiveScreen(_ sender: Any?) {
         toolbar?.isVisible = false
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "DiveSeque", sender: nil)
+        let diveViewController: DiveViewController = DiveViewController.instantiate()
+        diveViewController.vehicleId = tridentID
+        parent!.addChild(diveViewController)
+        parent!.transition(from: self, to: diveViewController, options: .slideUp) {
         }
     }
         
     @IBAction func goMaintenanceScreen(_ sender: Any?) {
         toolbar?.isVisible = false
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "MaintenanceSeque", sender: sender)
+        let maintenanceViewController: MaintenanceViewController = MaintenanceViewController.instantiate()
+        parent!.addChild(maintenanceViewController)
+        parent!.transition(from: self, to: maintenanceViewController, options: .slideUp) {
         }
-        
     }
     
     @IBAction func goPastDivesScreen(_ sender: Any?) {
         toolbar?.isVisible = false
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "PastDivesSegue", sender: sender)
+        let pastDivesViewController: PastDivesViewController = PastDivesViewController.instantiate()
+        parent!.addChild(pastDivesViewController)
+        parent!.transition(from: self, to: pastDivesViewController, options: .slideUp) {
         }
     }
 
