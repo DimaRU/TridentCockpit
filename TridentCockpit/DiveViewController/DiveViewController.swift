@@ -140,12 +140,20 @@ class DiveViewController: NSViewController, NSWindowDelegate {
     }
 
     @IBAction func closeButtonPress(_ sender: Any) {
-        tridentControl.disable()
-        FastRTPS.resignAll()
-        videoDecoder.cleanup()
-        DisplayManager.enableSleep()
-
-        dismiss(sender)
+        let alert = NSAlert()
+        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: "Cancel")
+        alert.messageText = NSLocalizedString("Leave Pilot Mode?", comment: "")
+        alert.informativeText = NSLocalizedString("Are you sure you want to leave?", comment: "")
+        alert.beginSheetModal(for: view.window!) { responce in
+            guard responce == .alertFirstButtonReturn else { return }
+            self.tridentControl.disable()
+            FastRTPS.resignAll()
+            self.videoDecoder.cleanup()
+            DisplayManager.enableSleep()
+            
+            self.dismiss(sender)
+        }
     }
     
     @IBAction func recordingButtonPress(_ sender: Any) {
