@@ -88,10 +88,9 @@ class DashboardViewController: NSViewController {
         super.viewDidAppear()
 
         if toolbar == nil {
-            toolbar = view.window?.toolbar
-            toolbar?.delegate = self
             setupToolbarButtons()
         }
+        view.window?.toolbar = toolbar
         toolbar?.isVisible = true
         
         if FastRTPS.remoteAddress != "" {
@@ -358,19 +357,13 @@ class DashboardViewController: NSViewController {
     }
     
     private func setupToolbarButtons() {
-        guard let toolbar = toolbar else { return }
-        let list: [NSToolbarItem.Identifier] = [
-            .goDive,
-            .goMaintenance,
-            .space,
-            .connectWiFi,
-            .connectCamera,
-        ]
-
-        list.forEach {
-            toolbar.appendItem(withItemIdentifier: $0)
-            toolbar.getItem(for: $0)?.isEnabled = false
-        }
+        let toolbar = NSToolbar(identifier: .init("DashboardToolbar"))
+        toolbar.delegate = self
+        toolbar.allowsUserCustomization = true
+        toolbar.autosavesConfiguration = true
+        view.window?.toolbar = toolbar
+        self.toolbar = toolbar
+        toolbar.items.forEach{ $0.isEnabled = false }
     }
 }
 

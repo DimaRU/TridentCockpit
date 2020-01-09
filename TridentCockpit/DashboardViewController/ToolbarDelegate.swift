@@ -8,13 +8,11 @@ import Cocoa
 
 extension DashboardViewController: NSToolbarDelegate {
     /// - Tag: ToolbarItemForIdentifier
-    func toolbar(
-        _ toolbar: NSToolbar,
-        itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
-        willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
+    func toolbar(_ toolbar: NSToolbar,
+                 itemForItemIdentifier itemIdentifier: NSToolbarItem.Identifier,
+                 willBeInsertedIntoToolbar flag: Bool) -> NSToolbarItem? {
         let toolbarItem = NSToolbarItem(itemIdentifier: itemIdentifier)
         toolbarItem.autovalidates = false
-        toolbarItem.isEnabled = false
 
         let button = NSButton(frame: NSRect(x: 0, y: 0, width: 44, height: 40))
         button.title = ""
@@ -95,12 +93,27 @@ extension DashboardViewController: NSToolbarDelegate {
 
     /// - Tag: DefaultIdentifiers
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return []
+        return [
+            .goDive,
+            .goMaintenance,
+            .space,
+            .connectWiFi,
+            .connectCamera,
+        ]
+
     }
 
     /// - Tag: AllowedToolbarItems
     func toolbarAllowedItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return []
+        return [
+            .goDive,
+            .goMaintenance,
+            .connectWiFi,
+            .connectCamera,
+            .space,
+            .flexibleSpace,
+            .separator,
+        ]
     }
 
 }
