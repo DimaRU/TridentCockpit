@@ -17,6 +17,7 @@ class DashboardViewController: NSViewController {
     var tridentParticipants: Set<String> = []
     var tridentID: String!
     var discovered: [String: String] = [:]
+    var connectionInfo: [ConnectionInfo] = []
     var ddsListener: DDSDiscoveryListener!
     private var sshCommand: SSHCommand!
     private var timer: Timer?
@@ -25,15 +26,22 @@ class DashboardViewController: NSViewController {
     var deviceState: DeviceState? {
         didSet {
             guard oldValue != deviceState else { return }
+            connectedSSID = connectionInfo.first(where: {$0.kind == "802-11-wireless" && $0.state == "Activated"})?.ssid
             if deviceState != nil {
                 let addrs = deviceState!.ipAddress.split(separator: " ")
-                tridentNetworkAddressLabel.stringValue = String(addrs.first{ $0.contains("10.1.1.") } ?? "n/a")
-                payloadAddress.stringValue = String(addrs.first{ !$0.contains("10.1.1.") } ?? "n/a")
+                if addrs.count >= 2 {
+                    tridentNetworkAddressLabel.stringValue = String(addrs.first{ $0.contains("10.1.1.") } ?? "n/a")
+                    payloadAddress.stringValue = String(addrs.first{ !$0.contains("10.1.1.") } ?? "n/a")
+                } else {
+                    tridentNetworkAddressLabel.stringValue = connectedSSID != nil ? "n/a" : String(addrs[0])
+                    payloadAddress.stringValue = connectedSSID != nil ? String(addrs[0]) : "n/a"
+                }
             }
         }
     }
     var connectedSSID: String? {
         didSet {
+            guard connectedSSID != oldValue else { return }
             guard let toolbar = toolbar,
                 let wifiItem = toolbar.getItem(for: .connectWiFi),
                 let button = wifiItem.view as? NSButton else { return }
@@ -81,7 +89,7 @@ class DashboardViewController: NSViewController {
         gridView.isHidden = true
         spinner = addCircularProgressView(to: view)
         setupNotifications()
-        ddsDiscovery()
+        ddsDiscoveryStart()
     }
     
     override func viewDidAppear() {
@@ -173,13 +181,17 @@ class DashboardViewController: NSViewController {
     }
 
     private func startRefreshDeviceState() {
-        timer = Timer.scheduledTimer(withTimeInterval: 2, repeats: true) { [weak self] timer in
+        timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { [weak self] timer in
             guard let self = self else {
                 timer.invalidate()
                 return
             }
-            RestProvider.request(MultiTarget(ResinAPI.deviceState))
-            .done { (deviceState: DeviceState) in
+            RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
+            .done { (connectionInfo: [ConnectionInfo]) in
+                    self.connectionInfo = connectionInfo
+            }.then {
+                RestProvider.request(MultiTarget(ResinAPI.deviceState))
+            }.done { (deviceState: DeviceState) in
                 self.deviceState = deviceState
             }.catch { error in
                 switch error {
@@ -188,7 +200,7 @@ class DashboardViewController: NSViewController {
                     self.timer = nil
                     self.view.window?.alert(message: "Trident connection lost", informative: message, delay: 2)
                 default:
-                    self.view.window?.alert(error: error, delay: 2)
+                    self.view.window?.alert(error: error, delay: 5)
                 }
             }
         }
@@ -290,7 +302,8 @@ class DashboardViewController: NSViewController {
         }
     }
 
-    func ddsDiscovery() {
+    func ddsDiscoveryStart() {
+        discovered = [:]
         ddsListener = DDSDiscoveryListener(port: "8088") { [weak self] (uuidString: String, ipv4: String) in
             guard let uuid = uuidString.split(separator: ":").last else { return }
             self?.discovered[ipv4] = String(uuid)
@@ -323,6 +336,17 @@ class DashboardViewController: NSViewController {
         let network = FastRTPS.remoteAddress + "/32"
         FastRTPS.createParticipant(interfaceIPv4: localAddress, networkAddress: network)
         FastRTPS.setPartition(name: self.tridentID!)
+    }
+    
+    func setDisconnectedState() {
+        timer?.invalidate()
+        timer = nil
+        FastRTPS.deleteParticipant()
+        toolbar?.items.forEach{ $0.isEnabled = false }
+        connectedSSID = nil
+        gridView.isHidden = true
+        spinner = addCircularProgressView(to: view)
+        ddsDiscoveryStart()
     }
     
     func setConnectedState() {
@@ -376,6 +400,7 @@ extension DashboardViewController: WiFiPopupProtocol {
         }.then {
             RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
         }.done { (connectionInfo: [ConnectionInfo]) in
+            self.connectionInfo = connectionInfo
             if let ssidConnected = connectionInfo.first(where: {$0.kind == "802-11-wireless" && $0.state == "Activated"})?.ssid,
                 ssidConnected == ssid {
                 self.connectedSSID = ssid

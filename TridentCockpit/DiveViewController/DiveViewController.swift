@@ -134,8 +134,7 @@ class DiveViewController: NSViewController, NSWindowDelegate {
     }
     
     func windowWillClose(_ notification: Notification) {
-        FastRTPS.resignAll()
-        FastRTPS.stopRTPS()
+        FastRTPS.deleteParticipant()
         DisplayManager.enableSleep()
     }
 

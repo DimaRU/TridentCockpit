@@ -26,7 +26,8 @@ extension DashboardViewController {
                 } else {
                     print("Unknown participant:", participantName)
                 }
-                if participantName == "trident-core" {
+                if self.tridentParticipants.count == self.stdParticipantList.count {
+                    // All connected
                     DispatchQueue.main.async {
                         self.setConnectedState()
                     }
@@ -37,7 +38,12 @@ extension DashboardViewController {
             case .droppedParticipant:
                 let participantName = userInfo[RTPSNotificationUserInfo.participant.rawValue] as! String
                 print("Dropped Participant:", participantName)
-                
+                self.tridentParticipants.remove(participantName)
+                if self.tridentParticipants.count == self.stdParticipantList.count - 1 {
+                    DispatchQueue.main.async {
+                        self.setDisconnectedState()
+                    }
+                }
                 #if DEBUG
             case .discoveredReader:
                 let topicName = userInfo[RTPSNotificationUserInfo.topic.rawValue] as! String

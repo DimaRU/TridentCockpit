@@ -38,9 +38,10 @@ final class FastRTPS {
         FastRTPS.shared.fastRTPSBridge?.setPartition(name)
     }
 
-    class func stopRTPS() {
-        FastRTPS.shared.fastRTPSBridge?.stopRTPS()
-        FastRTPS.shared.fastRTPSBridge = nil
+    class func deleteParticipant() {
+        FastRTPS.shared.fastRTPSBridge?.deleteParticipant()
+        FastRTPS.shared.localIPAddress = ""
+        FastRTPS.shared.remoteIPAddress = ""
     }
 
     class func registerReader<T: DDSType>(topic: RovReaderTopic, completion: @escaping (T)->Void) {
