@@ -114,35 +114,29 @@ class DashboardViewController: NSViewController {
         timer = nil
     }
     
-    override func prepare(for segue: NSStoryboardSegue, sender: Any?) {
-        if let destinationController = segue.destinationController as? DiveViewController {
-            destinationController.vehicleId = tridentID
-        }
-    }
-    
     // MARK: Actions
     @IBAction func goDiveScreen(_ sender: Any?) {
-        toolbar?.isVisible = false
         let diveViewController: DiveViewController = DiveViewController.instantiate()
         diveViewController.vehicleId = tridentID
         parent!.addChild(diveViewController)
         parent!.transition(from: self, to: diveViewController, options: .slideUp) {
+            self.toolbar?.isVisible = false
         }
     }
         
     @IBAction func goMaintenanceScreen(_ sender: Any?) {
-        toolbar?.isVisible = false
         let maintenanceViewController: MaintenanceViewController = MaintenanceViewController.instantiate()
         parent!.addChild(maintenanceViewController)
         parent!.transition(from: self, to: maintenanceViewController, options: .slideUp) {
+            self.toolbar?.isVisible = false
         }
     }
     
     @IBAction func goPastDivesScreen(_ sender: Any?) {
-        toolbar?.isVisible = false
         let pastDivesViewController: PastDivesViewController = PastDivesViewController.instantiate()
         parent!.addChild(pastDivesViewController)
         parent!.transition(from: self, to: pastDivesViewController, options: .slideUp) {
+            self.toolbar?.isVisible = false
         }
     }
 
@@ -161,7 +155,8 @@ class DashboardViewController: NSViewController {
         }
     }
 
-    func addCircularProgressView(to view: NSView) -> CircularProgress {
+    // MARK: Private func
+    private func addCircularProgressView(to view: NSView) -> CircularProgress {
         let spinner = CircularProgress(size: 200)
         spinner.lineWidth = 4
         spinner.isIndeterminate = true
@@ -209,7 +204,6 @@ class DashboardViewController: NSViewController {
         }
     }
     
-    // MARK: Private func
     private func disconnectWiFi() {
         RestProvider.request(MultiTarget(WiFiServiceAPI.disconnect))
         .then {
@@ -305,7 +299,7 @@ class DashboardViewController: NSViewController {
         }
     }
 
-    func ddsDiscoveryStart() {
+    private func ddsDiscoveryStart() {
         discovered = [:]
         ddsListener = DDSDiscoveryListener(port: "8088") { [weak self] (uuidString: String, ipv4: String) in
             guard let uuid = uuidString.split(separator: ":").last else { return }
@@ -340,10 +334,50 @@ class DashboardViewController: NSViewController {
         FastRTPS.createParticipant(interfaceIPv4: localAddress, networkAddress: network)
         FastRTPS.setPartition(name: self.tridentID!)
     }
-    
+        
+    private func setupToolbarButtons() {
+        let toolbar = NSToolbar(identifier: .init("DashboardToolbar"))
+        toolbar.delegate = self
+        toolbar.allowsUserCustomization = true
+        toolbar.autosavesConfiguration = true
+        view.window?.toolbar = toolbar
+        self.toolbar = toolbar
+        toolbar.items.forEach{ $0.isEnabled = false }
+    }
+
+    // MARK: Internal func
     func setDisconnectedState() {
         timer?.invalidate()
         timer = nil
+        
+        let message = "Trident disconnected"
+        if let otherViewController = self.parent?.children.first(where: { $0 != self}) {
+            let info: String
+            switch otherViewController {
+            case is DiveViewController:
+                info = "Connection to Trident lost. Exiting Pilot Mode."
+            case is MaintenanceViewController:
+                info = "Connection to Trident lost. Exiting Maintenance Mode."
+            case is PastDivesViewController:
+                info = "Connection to Trident lost. Exiting Past Dives Mode."
+            default:
+                fatalError()
+            }
+            let alert = NSAlert()
+            alert.messageText = message
+            alert.informativeText = info
+            alert.alertStyle = .warning
+            alert.beginSheetModal(for: otherViewController.view.window!) { responce in
+                self.parent!.transition(from: otherViewController, to: self, options: .slideDown) {
+                    otherViewController.removeFromParent()
+                }
+            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) { [weak alert] in
+                guard let alert = alert else { return }
+                otherViewController.view.window!.endSheet(alert.window, returnCode: .cancel)
+            }
+            
+        }
         FastRTPS.deleteParticipant()
         toolbar?.items.forEach{ $0.isEnabled = false }
         connectedSSID = nil
@@ -381,16 +415,6 @@ class DashboardViewController: NSViewController {
             toolbar.getItem(for: .connectWiFi)?.isEnabled = true
         }
         FastRTPS.setPartition(name: tridentID)
-    }
-    
-    private func setupToolbarButtons() {
-        let toolbar = NSToolbar(identifier: .init("DashboardToolbar"))
-        toolbar.delegate = self
-        toolbar.allowsUserCustomization = true
-        toolbar.autosavesConfiguration = true
-        view.window?.toolbar = toolbar
-        self.toolbar = toolbar
-        toolbar.items.forEach{ $0.isEnabled = false }
     }
 }
 

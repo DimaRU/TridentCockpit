@@ -129,7 +129,7 @@ class DiveViewController: NSViewController, NSWindowDelegate {
 
     override func viewDidAppear() {
         super.viewDidAppear()
-//        view.window?.delegate = self
+        view.window?.delegate = self
         DisplayManager.disableSleep()
     }
     
