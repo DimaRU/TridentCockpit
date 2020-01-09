@@ -45,14 +45,14 @@ class MaintenanceViewController: NSViewController {
     }
     
     private func configurAverage() {
-        _pressure.configure { avg in
+        _pressure.configure { [weak self] avg in
             DispatchQueue.main.async {
-                self.pressureLabel.stringValue = String(format: "%.3f kPa", avg)
+                self?.pressureLabel.stringValue = String(format: "%.3f kPa", avg)
             }
         }
-        _temperature.configure { avg in
+        _temperature.configure { [weak self] avg in
             DispatchQueue.main.async {
-                self.temperatureLabel.stringValue = String(format: "%.2f", avg)
+                self?.temperatureLabel.stringValue = String(format: "%.2f", avg)
             }
         }
     }
