@@ -14,12 +14,12 @@ extension DashboardViewController: NSToolbarDelegate {
         let toolbarItem = NSToolbarItem(itemIdentifier: itemIdentifier)
         toolbarItem.autovalidates = false
 
-        let button = NSButton(frame: NSRect(x: 0, y: 0, width: 44, height: 40))
+        let button = NSButton()
         button.title = ""
         button.bezelStyle = .texturedRounded
         button.focusRingType = .none
         
-        let size = NSSize(width: 50, height: 27)
+        let size = NSSize(width: 40, height: 27)
         switch itemIdentifier {
         case .goDive:
             toolbarItem.label = NSLocalizedString("Pilot", comment: "")
