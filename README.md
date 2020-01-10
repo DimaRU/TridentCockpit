@@ -19,7 +19,16 @@
 * Keyboard, mouse and gamepad control 
 * Controls camera, light, stabilization
 * Realtime drone orientation view
-* View depth, temperature, camera and battery times
+* Show depth, temperature, camera and battery times
+* Supports payload connection and control. (now GoPro HERO 3/3+)
+
+## Payload control
+#### GoPro HERO 3/3+
+* Control camera power
+* Camera recording control
+* Live preview
+* Show battery level
+* Show recording time left
 
 ## Supported gamepads
 
@@ -87,11 +96,16 @@ cd TridentCockpit
 
 ## Dependencies
 
-* [Eprosima Fast RTPS](https://github.com/eProsima/Fast-RTPS) -  implementation of the OMG RTPS protocol
+* [Eprosima Fast RTPS](https://github.com/eProsima/Fast-RTPS) - implementation of the OMG RTPS protocol. Apache license.
 * [Foonathan memory](https://github.com/foonathan/memory) - Fast RTPS dependency
-* [FlatButton](https://github.com/OskarGroth/FlatButton) - Layer based NSButton with Interface Builder styling options
 * [FastRTPSBridge](https://github.com/DimaRU/FastRTPSBridge) - A Swift wrapper for FastRTPS library
 * [CDRCodable](https://github.com/DimaRU/CDRCodable) - Zero code serialization/deserialization framework for Common Data Representation (CDR) binary format
+* [FlatButton](https://github.com/OskarGroth/FlatButton) - Layer based NSButton with Interface Builder styling options
+* [CircularProgress](https://github.com/sindresorhus/CircularProgress) - Circular progress indicator for your macOS app
+* [Moya](https://github.com/Moya/Moya) - Network abstraction layer written in Swift.
+* [PromiseKit](https://github.com/mxcl/PromiseKit) - Promises for Swift & ObjC.
+* [Alamofire](https://github.com/Alamofire/Alamofire) - Elegant HTTP Networking in Swift.
+* [SwiftSH](https://github.com/Frugghi/SwiftSH) - A Swift SSH framework that wraps libssh2.
 
 
 ## Author
