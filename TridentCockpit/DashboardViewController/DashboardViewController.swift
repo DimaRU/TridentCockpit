@@ -11,8 +11,8 @@ import PromiseKit
 import SwiftSH
 
 class DashboardViewController: NSViewController {
-    weak var toolbar: NSToolbar?
-
+    @IBOutlet var toolbar: NSToolbar!
+    
     let stdParticipantList: Set<String> = ["geoserve", "trident-core", "trident-control", "trident-update", "trident-record"]
     var tridentParticipants: Set<String> = []
     var tridentID: String!
@@ -42,8 +42,7 @@ class DashboardViewController: NSViewController {
     var connectedSSID: String? {
         didSet {
             guard connectedSSID != oldValue else { return }
-            guard let toolbar = toolbar,
-                let wifiItem = toolbar.getItem(for: .connectWiFi),
+            guard let wifiItem = toolbar.getItem(for: .connectWiFi),
                 let button = wifiItem.view as? NSButton else { return }
             if connectedSSID != nil {
                 ssidLabel.stringValue = self.connectedSSID!
@@ -95,20 +94,18 @@ class DashboardViewController: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
 
-        if toolbar == nil {
-            setupToolbarButtons()
-        }
         view.window?.toolbar = toolbar
-        toolbar?.isVisible = true
+        toolbar.isVisible = true
         
         if FastRTPS.remoteAddress != "" {
             startRefreshDeviceState()
+        } else {
+            toolbar.items.forEach{ $0.isEnabled = false }
         }
     }
     
     override func viewWillDisappear() {
         super.viewWillDisappear()
-        toolbar?.isVisible = false
         
         timer?.invalidate()
         timer = nil
@@ -120,15 +117,14 @@ class DashboardViewController: NSViewController {
         diveViewController.vehicleId = tridentID
         parent!.addChild(diveViewController)
         parent!.transition(from: self, to: diveViewController, options: .slideUp) {
-            self.toolbar?.isVisible = false
+            self.toolbar.isVisible = false
         }
     }
         
     @IBAction func goMaintenanceScreen(_ sender: Any?) {
         let maintenanceViewController: MaintenanceViewController = MaintenanceViewController.instantiate()
         parent!.addChild(maintenanceViewController)
-        parent!.transition(from: self, to: maintenanceViewController, options: .slideUp) {
-            self.toolbar?.isVisible = false
+        parent!.transition(from: self, to: maintenanceViewController, options: .slideRight) {
         }
     }
     
@@ -136,7 +132,6 @@ class DashboardViewController: NSViewController {
         let pastDivesViewController: PastDivesViewController = PastDivesViewController.instantiate()
         parent!.addChild(pastDivesViewController)
         parent!.transition(from: self, to: pastDivesViewController, options: .slideUp) {
-            self.toolbar?.isVisible = false
         }
     }
 
@@ -335,16 +330,6 @@ class DashboardViewController: NSViewController {
         FastRTPS.setPartition(name: self.tridentID!)
     }
         
-    private func setupToolbarButtons() {
-        let toolbar = NSToolbar(identifier: .init("DashboardToolbar"))
-        toolbar.delegate = self
-        toolbar.allowsUserCustomization = true
-        toolbar.autosavesConfiguration = true
-        view.window?.toolbar = toolbar
-        self.toolbar = toolbar
-        toolbar.items.forEach{ $0.isEnabled = false }
-    }
-
     // MARK: Internal func
     func setDisconnectedState() {
         timer?.invalidate()
@@ -379,7 +364,7 @@ class DashboardViewController: NSViewController {
             
         }
         FastRTPS.deleteParticipant()
-        toolbar?.items.forEach{ $0.isEnabled = false }
+        toolbar.items.forEach{ $0.isEnabled = false }
         connectedSSID = nil
         gridView.isHidden = true
         spinner = addCircularProgressView(to: view)

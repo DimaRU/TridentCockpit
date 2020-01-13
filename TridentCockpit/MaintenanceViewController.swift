@@ -7,6 +7,7 @@
 import Cocoa
 
 class MaintenanceViewController: NSViewController {
+    @IBOutlet var toolbar: NSToolbar!
     @IBOutlet weak var batteryChargeLabel: NSTextField!
     @IBOutlet weak var batteryCycleLabel: NSTextField!
     @IBOutlet weak var internalPressureLabel: NSTextField!
@@ -34,15 +35,19 @@ class MaintenanceViewController: NSViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         configurAverage()
         registerReaders()
+    }
+    
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        view.window?.toolbar = toolbar
     }
 
     @IBAction func closeButtonPress(_ sender: Any) {
         FastRTPS.resignAll()
         guard let otherViewController = self.parent?.children.first(where: { $0 != self}) else { return }
-        self.parent!.transition(from: self, to: otherViewController, options: .slideDown) {
+        self.parent!.transition(from: self, to: otherViewController, options: .slideRight) {
             self.removeFromParent()
         }
     }

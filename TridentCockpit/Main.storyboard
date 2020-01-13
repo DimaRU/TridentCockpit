@@ -462,11 +462,19 @@
                         <outlet property="localAddressLabel" destination="85a-dQ-2pK" id="7pk-an-RAR"/>
                         <outlet property="payloadAddress" destination="BjA-uO-KdE" id="1Sd-3B-oPw"/>
                         <outlet property="ssidLabel" destination="v2Z-0W-1ti" id="QuD-Hr-HB8"/>
+                        <outlet property="toolbar" destination="Vrq-Ni-Fy9" id="geJ-sN-T10"/>
                         <outlet property="tridentIdLabel" destination="UbI-mt-742" id="LJt-wQ-cSB"/>
                         <outlet property="tridentNetworkAddressLabel" destination="gMp-cr-viS" id="JGv-dX-aMl"/>
                     </connections>
                 </viewController>
                 <customObject id="IFr-xP-tTH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <toolbar implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="Vrq-Ni-Fy9">
+                    <allowedToolbarItems/>
+                    <defaultToolbarItems/>
+                    <connections>
+                        <outlet property="delegate" destination="eM0-Cy-sgR" id="uOb-zq-ryJ"/>
+                    </connections>
+                </toolbar>
             </objects>
             <point key="canvasLocation" x="249.5" y="730"/>
         </scene>
@@ -496,8 +504,8 @@
                                 <gridCells>
                                     <gridCell row="oQV-Kj-zR7" column="pcr-Bm-0I3" headOfMergedCell="QbR-aw-5ZA" xPlacement="center" yPlacement="fill" id="QbR-aw-5ZA">
                                         <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iwl-tZ-HuG">
-                                            <rect key="frame" x="80" y="138" width="96" height="20"/>
-                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Trident info" id="s9T-nE-VUQ">
+                                            <rect key="frame" x="24" y="138" width="207" height="20"/>
+                                            <textFieldCell key="cell" lineBreakMode="clipping" title="Trident maintenance  info" id="s9T-nE-VUQ">
                                                 <font key="font" metaFont="systemSemibold" size="17"/>
                                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -669,25 +677,9 @@
                                     </gridCell>
                                 </gridCells>
                             </gridView>
-                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="DLC-TH-bWL">
-                                <rect key="frame" x="236" y="13" width="87" height="32"/>
-                                <buttonCell key="cell" type="push" title="Dismiss" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="cBk-VP-1on">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="closeButtonPress:" target="UI2-uK-lo2" id="4Ol-oo-E1A"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="DLC-TH-bWL" secondAttribute="bottom" constant="20" id="8Ta-mh-0R4"/>
-                            <constraint firstItem="DLC-TH-bWL" firstAttribute="centerX" secondItem="s2l-EA-Z7j" secondAttribute="centerX" id="Cet-42-Nqx"/>
                             <constraint firstItem="iN7-JO-XKY" firstAttribute="centerY" secondItem="s2l-EA-Z7j" secondAttribute="centerY" priority="750" constant="-7" id="PuR-Xj-cNE"/>
-                            <constraint firstItem="DLC-TH-bWL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN7-JO-XKY" secondAttribute="bottom" constant="20" id="Sg1-j6-YLd"/>
                             <constraint firstItem="iN7-JO-XKY" firstAttribute="centerX" secondItem="s2l-EA-Z7j" secondAttribute="centerX" id="sDo-eR-Rr0"/>
                         </constraints>
                     </view>
@@ -698,9 +690,34 @@ Gw
                         <outlet property="internalTemperatureLabel" destination="gpQ-MY-B9B" id="eH6-FB-gJp"/>
                         <outlet property="pressureLabel" destination="KHT-x9-5Xj" id="6Sh-UX-sXN"/>
                         <outlet property="temperatureLabel" destination="bgo-VE-shg" id="CCP-Ch-Bbz"/>
+                        <outlet property="toolbar" destination="YVA-qq-qdb" id="Ljx-UI-9a6"/>
                     </connections>
                 </viewController>
                 <customObject id="Xob-EL-jEy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <toolbar implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="YVA-qq-qdb">
+                    <allowedToolbarItems>
+                        <toolbarItem implicitItemIdentifier="CB6232D2-8226-418B-BB3B-659DBAB8F2C2" label="Back" paletteLabel="Back" image="NSGoBackTemplate" sizingBehavior="auto" id="B3c-fJ-KPF">
+                            <nil key="toolTip"/>
+                            <button key="view" verticalHuggingPriority="750" id="aBS-Mz-ssl">
+                                <rect key="frame" x="0.0" y="14" width="50" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSGoBackTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VD2-rR-18U">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <connections>
+                                <action selector="closeButtonPress:" target="UI2-uK-lo2" id="ffc-XT-iLL"/>
+                            </connections>
+                        </toolbarItem>
+                    </allowedToolbarItems>
+                    <defaultToolbarItems>
+                        <toolbarItem reference="B3c-fJ-KPF"/>
+                    </defaultToolbarItems>
+                    <connections>
+                        <outlet property="delegate" destination="UI2-uK-lo2" id="Zsa-uG-N1i"/>
+                    </connections>
+                </toolbar>
             </objects>
             <point key="canvasLocation" x="84.5" y="1287"/>
         </scene>
@@ -1030,7 +1047,7 @@ Gw
                                             <tableColumns>
                                                 <tableColumn width="195" minWidth="100" maxWidth="400" id="Az8-Gr-xRE">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="controlContent" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -1109,6 +1126,7 @@ Gw
     <resources>
         <image name="Light Off" width="24" height="24"/>
         <image name="NSActionTemplate" width="14" height="14"/>
+        <image name="NSGoBackTemplate" width="9" height="12"/>
         <image name="Prop 1" width="35" height="35"/>
         <namedColor name="stopActive">
             <color white="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
