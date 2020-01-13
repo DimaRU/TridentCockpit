@@ -1,9 +1,6 @@
-//
-//  AuxPlayerViewController.swift
-//  TestAV
-//
-//  Created by Dmitriy Borovikov on 02.01.2020.
-//  Copyright © 2020 Dmitriy Borovikov. All rights reserved.
+/////
+////  AuxPlayerViewController.swift
+///   Copyright © 2019 Dmitriy Borovikov. All rights reserved.
 //
 
 import Cocoa

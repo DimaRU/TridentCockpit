@@ -65,6 +65,11 @@
 | <kbd>Y</kbd> | Drone view relative yaw |
 | <kbd>A</kbd> | Drone view absolute yaw |
 
+## Installation
+
+To install `Trident Cockpit`, download the release from the [releases page](https://github.com/DimaRU/TridentCockpit/releases).
+These are all signed and notarized to run out of the box on macOS 10.14+.
+
 ## Building from Source
 
 These instructions will get you a copy of the project up and running on your local machine for development purposes.
@@ -75,8 +80,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. Install Xcode from App Store
 2. Install build tools by running `brew install cmake`
-
-
 
 
 ### Build
