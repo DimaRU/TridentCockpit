@@ -47,7 +47,7 @@ class MaintenanceViewController: NSViewController {
     @IBAction func closeButtonPress(_ sender: Any) {
         FastRTPS.resignAll()
         guard let otherViewController = self.parent?.children.first(where: { $0 != self}) else { return }
-        self.parent!.transition(from: self, to: otherViewController, options: .slideRight) {
+        self.parent!.transition(from: self, to: otherViewController, options: .slideLeft) {
             self.removeFromParent()
         }
     }

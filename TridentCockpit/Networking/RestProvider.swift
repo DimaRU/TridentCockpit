@@ -69,6 +69,7 @@ extension RestProvider {
                 request.reject(error)
             }
         case .failure(let error):
+            print(error)
             request.reject(NetworkError.unaviable(message: error.localizedDescription))
             break
         }

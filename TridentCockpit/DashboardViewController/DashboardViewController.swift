@@ -20,8 +20,14 @@ class DashboardViewController: NSViewController {
     var connectionInfo: [ConnectionInfo] = []
     var ddsListener: DDSDiscoveryListener!
     private var sshCommand: SSHCommand!
-    private var timer: Timer?
     private var spinner: CircularProgress?
+    private var timer: Timer? {
+        willSet {
+            if newValue == nil {
+                timer?.invalidate()
+            }
+        }
+    }
 
     var deviceState: DeviceState? {
         didSet {
@@ -39,7 +45,7 @@ class DashboardViewController: NSViewController {
             }
         }
     }
-    var connectedSSID: String? {
+    var connectedSSID: String? = "\nnot existed\n" {
         didSet {
             guard connectedSSID != oldValue else { return }
             guard let wifiItem = toolbar.getItem(for: .connectWiFi),
@@ -49,7 +55,6 @@ class DashboardViewController: NSViewController {
                 toolbar.getItem(for: .connectCamera)?.isEnabled = true
                 
                 wifiItem.label = NSLocalizedString("Disconnect", comment: "")
-                wifiItem.paletteLabel = NSLocalizedString("Disconnect WiFi", comment: "")
                 wifiItem.toolTip = NSLocalizedString("Disconnect Trident WiFi", comment: "")
                 button.image = NSImage(named: "wifi.slash")!
             } else {
@@ -60,7 +65,6 @@ class DashboardViewController: NSViewController {
                 toolbar.getItem(for: .connectCamera)?.isEnabled = false
 
                 wifiItem.label = NSLocalizedString("Connect", comment: "")
-                wifiItem.paletteLabel = NSLocalizedString("Connect WiFi", comment: "")
                 wifiItem.toolTip = NSLocalizedString("Connect Trident WiFi", comment: "")
                 button.image = NSImage(named: "wifi")!
                 Gopro3API.cameraPassword = nil
@@ -94,6 +98,13 @@ class DashboardViewController: NSViewController {
     override func viewDidAppear() {
         super.viewDidAppear()
 
+        if view.window?.toolbar == nil {
+            let wifiItem = toolbar.getItem(for: .connectWiFi)
+            let button = wifiItem?.view as? NSButton
+            // hack!!!
+            button?.image = NSImage(named: "wifi.slash")!
+            button?.image = NSImage(named: "wifi")!
+        }
         view.window?.toolbar = toolbar
         toolbar.isVisible = true
         
@@ -107,7 +118,6 @@ class DashboardViewController: NSViewController {
     override func viewWillDisappear() {
         super.viewWillDisappear()
         
-        timer?.invalidate()
         timer = nil
     }
     
@@ -135,9 +145,10 @@ class DashboardViewController: NSViewController {
         }
     }
 
-    @IBAction func connectWifiButtonPress(_ sender: NSButton) {
+    @IBAction func connectWifiButtonPress(_ sender: Any?) {
+        guard let button = sender as? NSButton else { return }
         if connectedSSID == nil {
-            connectWiFi(view: sender.superview!)
+            connectWiFi(view: button.superview!)
         } else {
             disconnectWiFi()
         }
@@ -189,7 +200,6 @@ class DashboardViewController: NSViewController {
             }.catch { error in
                 switch error {
                 case NetworkError.unaviable(let message):
-                    self.timer?.invalidate()
                     self.timer = nil
                     self.view.window?.alert(message: "Trident connection lost", informative: message, delay: 2)
                 default:
@@ -308,7 +318,6 @@ class DashboardViewController: NSViewController {
         timer = Timer.scheduledTimer(withTimeInterval: 6, repeats: true) { _ in
             guard self.discovered.count != 0 else { return }
             self.ddsListener.stop()
-            self.timer?.invalidate()
             self.timer = nil
             self.startRTPS()
         }
@@ -332,7 +341,6 @@ class DashboardViewController: NSViewController {
         
     // MARK: Internal func
     func setDisconnectedState() {
-        timer?.invalidate()
         timer = nil
         
         let message = "Trident disconnected"
@@ -406,18 +414,20 @@ class DashboardViewController: NSViewController {
 // MARK: Externsions
 extension DashboardViewController: WiFiPopupProtocol {
     func enteredPassword(ssid: String, password: String) {
+        timer = nil
         RestProvider.request(MultiTarget(WiFiServiceAPI.connect(ssid: ssid, passphrase: password)))
         .then { _ in
             after(.seconds(2))
         }.then {
             RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
         }.done { (connectionInfo: [ConnectionInfo]) in
-            self.connectionInfo = connectionInfo
             if let ssidConnected = connectionInfo.first(where: {$0.kind == "802-11-wireless" && $0.state == "Activated"})?.ssid,
                 ssidConnected == ssid {
                 self.connectedSSID = ssid
                 KeychainService.set(password, key: ssid)
             }
+            self.connectionInfo = connectionInfo
+            self.startRefreshDeviceState()
         }.catch {
             self.view.window?.alert(error: $0)
         }
