@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A1A5B7823CE4B150038EABE /* DiveCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7223CE4B150038EABE /* DiveCollectionItem.swift */; };
+		0A1A5B7923CE4B150038EABE /* PreviewVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7323CE4B150038EABE /* PreviewVideoViewController.swift */; };
+		0A1A5B7A23CE4B150038EABE /* DiveCollectionItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7423CE4B150038EABE /* DiveCollectionItem.xib */; };
+		0A1A5B7B23CE4B150038EABE /* PastDivesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7523CE4B150038EABE /* PastDivesViewController.swift */; };
+		0A1A5B7C23CE4B150038EABE /* PastDivesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7623CE4B150038EABE /* PastDivesWorker.swift */; };
+		0A1A5B7D23CE4B150038EABE /* PreviewVideoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7723CE4B150038EABE /* PreviewVideoViewController.storyboard */; };
+		0A1A5B8023CE4B2F0038EABE /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7E23CE4B2F0038EABE /* Date+Extensions.swift */; };
+		0A1A5B8123CE4B2F0038EABE /* iso8601date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7F23CE4B2F0038EABE /* iso8601date.swift */; };
+		0A1A5B8523CE4B550038EABE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B8323CE4B550038EABE /* HeaderView.swift */; };
+		0A1A5B8623CE4B550038EABE /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A1A5B8423CE4B550038EABE /* HeaderView.xib */; };
+		0A1A5B8823CE4B760038EABE /* RecordingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B8723CE4B760038EABE /* RecordingsModel.swift */; };
+		0A1A5B8B23CE4E020038EABE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1A5B8A23CE4E020038EABE /* Kingfisher */; };
 		0A2E1DAE23B0CAD9009048A5 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */; };
 		0A2E42BC236B0EE900B5C569 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E42BB236B0EE900B5C569 /* VideoView.swift */; };
 		0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
@@ -81,7 +93,6 @@
 		0A71313B23637F0700817593 /* FastRTPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71313A23637F0700817593 /* FastRTPS.swift */; };
 		0A82780A23A63B220039A774 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780023A63B220039A774 /* DashboardViewController.swift */; };
 		0A82780C23A63B2D0039A774 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780B23A63B2D0039A774 /* WindowController.swift */; };
-		0A82781023A641230039A774 /* PastDivesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780F23A641230039A774 /* PastDivesViewController.swift */; };
 		0A82781223A641750039A774 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781123A641750039A774 /* MaintenanceViewController.swift */; };
 		0A84F9CE237B37BF009BBAD4 /* SetupNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */; };
 		0A95B3A123C375FC00468DAF /* ToolbarItemIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */; };
@@ -170,6 +181,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A1A5B7223CE4B150038EABE /* DiveCollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiveCollectionItem.swift; sourceTree = "<group>"; };
+		0A1A5B7323CE4B150038EABE /* PreviewVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewVideoViewController.swift; sourceTree = "<group>"; };
+		0A1A5B7423CE4B150038EABE /* DiveCollectionItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiveCollectionItem.xib; sourceTree = "<group>"; };
+		0A1A5B7523CE4B150038EABE /* PastDivesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastDivesViewController.swift; sourceTree = "<group>"; };
+		0A1A5B7623CE4B150038EABE /* PastDivesWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastDivesWorker.swift; sourceTree = "<group>"; };
+		0A1A5B7723CE4B150038EABE /* PreviewVideoViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PreviewVideoViewController.storyboard; sourceTree = "<group>"; };
+		0A1A5B7E23CE4B2F0038EABE /* Date+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		0A1A5B7F23CE4B2F0038EABE /* iso8601date.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iso8601date.swift; sourceTree = "<group>"; };
+		0A1A5B8323CE4B550038EABE /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		0A1A5B8423CE4B550038EABE /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
+		0A1A5B8723CE4B760038EABE /* RecordingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsModel.swift; sourceTree = "<group>"; };
 		0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		0A2E42BB236B0EE900B5C569 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		0A2FF3112363A0BD008FD68B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -243,7 +265,6 @@
 		0A71313A23637F0700817593 /* FastRTPS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastRTPS.swift; sourceTree = "<group>"; };
 		0A82780023A63B220039A774 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		0A82780B23A63B2D0039A774 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
-		0A82780F23A641230039A774 /* PastDivesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastDivesViewController.swift; sourceTree = "<group>"; };
 		0A82781123A641750039A774 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
 		0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemIdentifier.swift; sourceTree = "<group>"; };
 		0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNotifications.swift; sourceTree = "<group>"; };
@@ -265,6 +286,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A1A5B8B23CE4E020038EABE /* Kingfisher in Frameworks */,
 				0A66C52F23AED776001BA93D /* PromiseKit in Frameworks */,
 				0A3FD1EF23A8D50000FE9918 /* CircularProgress in Frameworks */,
 				0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */,
@@ -276,6 +298,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0A1A5B6823CE4AEF0038EABE /* PastDivesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A1A5B7523CE4B150038EABE /* PastDivesViewController.swift */,
+				0A1A5B7623CE4B150038EABE /* PastDivesWorker.swift */,
+				0A1A5B7223CE4B150038EABE /* DiveCollectionItem.swift */,
+				0A1A5B7423CE4B150038EABE /* DiveCollectionItem.xib */,
+				0A1A5B7723CE4B150038EABE /* PreviewVideoViewController.storyboard */,
+				0A1A5B7323CE4B150038EABE /* PreviewVideoViewController.swift */,
+				0A1A5B8323CE4B550038EABE /* HeaderView.swift */,
+				0A1A5B8423CE4B550038EABE /* HeaderView.xib */,
+			);
+			path = PastDivesViewController;
+			sourceTree = "<group>";
+		};
+		0A1A5B8223CE4B3B0038EABE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0A7130CA23636AF100817593 /* Extensions.swift */,
+				0A1A5B7E23CE4B2F0038EABE /* Date+Extensions.swift */,
+				0A1A5B7F23CE4B2F0038EABE /* iso8601date.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0A3FD1F023A9439100FE9918 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -294,6 +341,7 @@
 		0A3FD1F723A9720200FE9918 /* APIModel */ = {
 			isa = PBXGroup;
 			children = (
+				0A1A5B8723CE4B760038EABE /* RecordingsModel.swift */,
 				0A5E3FBE23BFA10E00EAC519 /* GoproStatus.swift */,
 				0A3FD1F823A9723E00FE9918 /* APIVersion.swift */,
 				0A3FD1FA23A9726200FE9918 /* DeviceState.swift */,
@@ -368,18 +416,18 @@
 			isa = PBXGroup;
 			children = (
 				0A98307623C23F9800BD234B /* DiveViewController */,
-				0A98307723C23FE900BD234B /* DashboardViewController */,
 				0A98307523C23EFD00BD234B /* AuxCamera */,
+				0A98307723C23FE900BD234B /* DashboardViewController */,
 				0A82781123A641750039A774 /* MaintenanceViewController.swift */,
-				0A82780F23A641230039A774 /* PastDivesViewController.swift */,
+				0A1A5B6823CE4AEF0038EABE /* PastDivesViewController */,
 				0A82780B23A63B2D0039A774 /* WindowController.swift */,
 				0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */,
 				0A7130CB23636AF100817593 /* DisplayManager.swift */,
-				0A7130CA23636AF100817593 /* Extensions.swift */,
 				0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */,
 				0A7130CF23636AF100817593 /* Preferences.swift */,
 				0A9E55BE23BC0AFA008F8A9A /* Average.swift */,
 				0A7130CD23636AF100817593 /* AppDelegate.swift */,
+				0A1A5B8223CE4B3B0038EABE /* Extensions */,
 				0A3FD1F023A9439100FE9918 /* Networking */,
 				0A3FD1F723A9720200FE9918 /* APIModel */,
 				0A7130E023636B0200817593 /* DDSModel */,
@@ -499,6 +547,7 @@
 				0A3FD1EE23A8D50000FE9918 /* CircularProgress */,
 				0A66C52B23AED706001BA93D /* Moya */,
 				0A66C52E23AED776001BA93D /* PromiseKit */,
+				0A1A5B8A23CE4E020038EABE /* Kingfisher */,
 			);
 			productName = TridentCockpit;
 			productReference = 0A7130B4236369EA00817593 /* TridentCockpit.app */;
@@ -533,6 +582,7 @@
 				0A3FD1ED23A8D50000FE9918 /* XCRemoteSwiftPackageReference "CircularProgress" */,
 				0A66C52A23AED706001BA93D /* XCRemoteSwiftPackageReference "Moya" */,
 				0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */,
+				0A1A5B8923CE4E020038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 0A7130B5236369EA00817593 /* Products */;
 			projectDirPath = "";
@@ -597,12 +647,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0AA4290223C38D3B003476CB /* PayloadCleanup.sh in Resources */,
+				0A1A5B8623CE4B550038EABE /* HeaderView.xib in Resources */,
 				0A71311A23636B1700817593 /* Main.storyboard in Resources */,
+				0A1A5B7A23CE4B150038EABE /* DiveCollectionItem.xib in Resources */,
 				0A98307423C2355700BD234B /* AuxPlayerViewController.storyboard in Resources */,
 				0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */,
 				0A71311C23636B5C00817593 /* TridentCockpit.scnassets in Resources */,
 				0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */,
 				0A98306D23C22FCA00BD234B /* AuxCameraControlView.xib in Resources */,
+				0A1A5B7D23CE4B150038EABE /* PreviewVideoViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,9 +676,11 @@
 				0A71311623636B0200817593 /* RovChannel.swift in Sources */,
 				0A7130FF23636B0200817593 /* I2CStats.swift in Sources */,
 				0A7130DC23636AF200817593 /* RovModelView.swift in Sources */,
+				0A1A5B7923CE4B150038EABE /* PreviewVideoViewController.swift in Sources */,
 				0A7130DF23636AF200817593 /* DiveViewController.swift in Sources */,
 				0A71310523636B0200817593 /* RovBeacon.swift in Sources */,
 				0A7130DD23636AF200817593 /* TridentControl.swift in Sources */,
+				0A1A5B7B23CE4B150038EABE /* PastDivesViewController.swift in Sources */,
 				0A3FD1FB23A9726200FE9918 /* DeviceState.swift in Sources */,
 				0A71310723636B0200817593 /* RovFuelgauge.swift in Sources */,
 				0A71311023636B0200817593 /* RovQuaternion.swift in Sources */,
@@ -634,17 +689,20 @@
 				0A7130FD23636B0200817593 /* RovTopic.swift in Sources */,
 				0A98306E23C22FCA00BD234B /* AuxCameraControlView.swift in Sources */,
 				0A7130DA23636AF200817593 /* FloatingViewProtocol.swift in Sources */,
+				0A1A5B8023CE4B2F0038EABE /* Date+Extensions.swift in Sources */,
 				0A9E55BF23BC0AFA008F8A9A /* Average.swift in Sources */,
 				0A3FD1F923A9723E00FE9918 /* APIVersion.swift in Sources */,
 				0A82780A23A63B220039A774 /* DashboardViewController.swift in Sources */,
 				0A3FD1FF23A972BA00FE9918 /* ConnectionInfo.swift in Sources */,
 				0A71310023636B0200817593 /* BatteryState.swift in Sources */,
 				0AFE9C4123B3ED7700C13162 /* DDSDiscoveryListener.swift in Sources */,
+				0A1A5B8823CE4B760038EABE /* RecordingsModel.swift in Sources */,
 				0A7130D623636AF200817593 /* Extensions.swift in Sources */,
 				0A7130DE23636AF200817593 /* CameraControlView.swift in Sources */,
 				0A71310123636B0200817593 /* RovCameraObjectTrack.swift in Sources */,
 				0A71310223636B0200817593 /* RovSafetyState.swift in Sources */,
 				0A2E1DAE23B0CAD9009048A5 /* KeychainService.swift in Sources */,
+				0A1A5B7823CE4B150038EABE /* DiveCollectionItem.swift in Sources */,
 				0A71310823636B0200817593 /* RovFirmware.swift in Sources */,
 				0A71311423636B0200817593 /* RovVideoData.swift in Sources */,
 				0A71310623636B0200817593 /* RovQuaternion+extensions.swift in Sources */,
@@ -655,14 +713,16 @@
 				0A55F6D323B969C500B108B0 /* RovIMUCalibration.swift in Sources */,
 				0A71310F23636B0200817593 /* RovDepth.swift in Sources */,
 				0A82780C23A63B2D0039A774 /* WindowController.swift in Sources */,
+				0A1A5B7C23CE4B150038EABE /* PastDivesWorker.swift in Sources */,
+				0A1A5B8123CE4B2F0038EABE /* iso8601date.swift in Sources */,
 				0A3FD20123A9735300FE9918 /* AppInfo.swift in Sources */,
 				0A3FD1FD23A9729800FE9918 /* SSIDInfo.swift in Sources */,
 				0A71311323636B0200817593 /* RovRecording.swift in Sources */,
 				0A71310D23636B0200817593 /* RovTridentMotorCommand.swift in Sources */,
-				0A82781023A641230039A774 /* PastDivesViewController.swift in Sources */,
 				0A7130D823636AF200817593 /* VideoDecoder.swift in Sources */,
 				0A3FD1F223A9443E00FE9918 /* ResinAPI.swift in Sources */,
 				0A71310323636B0200817593 /* RovVector3.swift in Sources */,
+				0A1A5B8523CE4B550038EABE /* HeaderView.swift in Sources */,
 				0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */,
 				0A5107DC23AA85B000C19289 /* RestProvider.swift in Sources */,
 				0A71310423636B0200817593 /* RovControlDescriptor.swift in Sources */,
@@ -881,6 +941,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0A1A5B8923CE4E020038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.12.0;
+			};
+		};
 		0A3FD1ED23A8D50000FE9918 /* XCRemoteSwiftPackageReference "CircularProgress" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sindresorhus/CircularProgress.git";
@@ -908,6 +976,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0A1A5B8A23CE4E020038EABE /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A1A5B8923CE4E020038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
 		0A3FD1EE23A8D50000FE9918 /* CircularProgress */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0A3FD1ED23A8D50000FE9918 /* XCRemoteSwiftPackageReference "CircularProgress" */;

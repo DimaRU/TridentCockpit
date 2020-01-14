@@ -1,74 +1,72 @@
 /////
 ////  RecordingsAPI.swift
-///   Copyright © 2019 Dmitriy Borovikov. All rights reserved.
+///   Copyright © 2020 Dmitriy Borovikov. All rights reserved.
 //
 
 
 import Foundation
-import Moya
+import Alamofire
 
-enum RecordingsAPI {
-    case recordings
-    case recording(id: String)
-    case preview(id: String)
-    case video(id: String)
-    case delete(id: String)
-}
+final class RecordingsAPI {
+    static var baseURL: String {
+        return "http://\(FastRTPS.remoteAddress):3000/recordings/"
+    }
+    
+    class func requestRecordings(completion: @escaping (Result<RecordingsResponce, AFError>) -> Void) {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .formatted(Date.iso8601FullFormatter)
 
-extension RecordingsAPI: TargetType {
-    var baseURL: URL {
-        return URL(string: "http://\(FastRTPS.remoteAddress):3000")!
-    }
-    
-    var path: String {
-        switch self {
-        case .recordings:
-            return "/recordings"
-        case .recording(let id):
-            return "/recordings/" + id
-        case .preview(let id):
-            return "/recordings/" + id
-        case .video(let id):
-            return "/recordings/" + id
-        case .delete(let id):
-            return "/recordings/" + id
+        AF.request(baseURL, method: .get)
+            .validate(statusCode: 200..<300)
+            .responseDecodable(of: RecordingsResponce.self, decoder: decoder) {
+                completion($0.result)
         }
     }
-    
-    var method: Moya.Method {
-        switch self {
-        case .recordings,
-             .recording,
-             .preview,
-             .video:
-            return .get
-        case .delete:
-            return .delete
+
+    class func deleteRecording(sessionId: String, completion: @escaping (AFError?) -> Void) {
+        DispatchQueue.main.async {
+            completion(nil)
         }
+//        AF.request(baseURL + sessionId, method: .delete)
+//            .validate(statusCode: 200..<300)
+//            .response(queue: DispatchQueue.main) { responce in
+//                switch responce.result {
+//                case .success(_):
+//                    completion(nil)
+//                case .failure(let error):
+//                    completion(error)
+//                }
+//        }
     }
     
-    var sampleData: Data {
-        return Data()
-    }
-    
-    var task: Task {
-        switch self {
-        case .recordings:
-            return .requestPlain
-        case .recording:
-            return .requestPlain
-        case .preview:
-            return .requestPlain
-        case .video:
-            return .requestPlain
-        case .delete:
-            return .requestPlain
+    class func downloadRecording(recording: Recording,
+                           fileURL: URL,
+                           progress: @escaping (Progress) -> Void,
+                           completion: @escaping (AFError?) -> Void) -> DownloadRequest {
+
+        let destination: DownloadRequest.Destination = { _, _ in
+            return (fileURL, [.removePreviousFile, .createIntermediateDirectories])
         }
+        let downloadRequest = AF.download(baseURL + recording.segments[0].uri, to: destination)
+            .downloadProgress(queue: DispatchQueue.main, closure: progress)
+            .validate(statusCode: 200..<300)
+            .response(queue: DispatchQueue.main) { responce in
+                switch responce.result {
+                case .success(_):
+                    completion(nil)
+                case .failure(let error):
+                    completion(error)
+                }
+        }
+        return downloadRequest
     }
     
-    var headers: [String : String]? {
-        return nil
+    class func videoURL(recording: Recording) -> URL {
+        return URL(string: baseURL + recording.segments[0].uri)!
     }
     
-    
+    class func previewURL(recording: Recording) -> URL {
+        return URL(string: baseURL + recording.previewUri)!
+    }
+
 }
