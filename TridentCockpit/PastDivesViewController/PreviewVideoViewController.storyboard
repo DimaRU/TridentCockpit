@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="dCF-2L-4ni">
+    <dependencies>
+        <plugIn identifier="com.apple.AVKitIBPlugin" version="15702"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15702"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="REH-hj-q2G">
+            <objects>
+                <windowController storyboardIdentifier="auxPlayerPanel" showSeguePresentationStyle="single" id="dCF-2L-4ni" sceneMemberID="viewController">
+                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hasShadow="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="previewVideoWindow" animationBehavior="default" titlebarAppearsTransparent="YES" id="H6c-nf-HKc" customClass="NSPanel">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES" utility="YES" HUD="YES" fullSizeContentView="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="2214" y="313" width="480" height="270"/>
+                        <rect key="screenRect" x="1920" y="0.0" width="1920" height="1057"/>
+                        <connections>
+                            <outlet property="delegate" destination="dCF-2L-4ni" id="Rlk-kD-AEr"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="bjB-YU-dy7" kind="relationship" relationship="window.shadowedContentViewController" id="ql7-Mi-LhH"/>
+                    </connections>
+                </windowController>
+                <customObject id="XuM-jM-bsB" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="686" y="250"/>
+        </scene>
+        <!--Preview Video View Controller-->
+        <scene sceneID="Utz-D2-Hq1">
+            <objects>
+                <viewController id="bjB-YU-dy7" customClass="PreviewVideoViewController" customModule="TestPastDivesView" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="7QZ-Fq-nxg">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <avPlayerView controlsStyle="inline" showsFullScreenToggleButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IWN-6E-xGL">
+                                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="IWN-6E-xGL" secondAttribute="height" multiplier="16:9" id="cD7-TH-DK5"/>
+                                </constraints>
+                            </avPlayerView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="IWN-6E-xGL" firstAttribute="top" secondItem="7QZ-Fq-nxg" secondAttribute="top" id="GkJ-PR-h7H"/>
+                            <constraint firstAttribute="trailing" secondItem="IWN-6E-xGL" secondAttribute="trailing" id="UgP-CM-seI"/>
+                            <constraint firstItem="IWN-6E-xGL" firstAttribute="leading" secondItem="7QZ-Fq-nxg" secondAttribute="leading" id="cVG-22-7eI"/>
+                            <constraint firstAttribute="bottom" secondItem="IWN-6E-xGL" secondAttribute="bottom" id="fpQ-PJ-CZm"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="playerView" destination="IWN-6E-xGL" id="cVK-48-LX9"/>
+                    </connections>
+                </viewController>
+                <customObject id="SZN-y0-Ekh" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="686" y="655"/>
+        </scene>
+    </scenes>
+</document>

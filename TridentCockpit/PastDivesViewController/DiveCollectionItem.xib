@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="DiveCollectionItem" customModule="TestPastDivesView" customModuleProvider="target">
+            <connections>
+                <outlet property="imageView" destination="IAT-uJ-UKx" id="imD-uG-cfk"/>
+                <outlet property="selectImage" destination="LCw-cp-Nwf" id="EoD-FL-Yiv"/>
+                <outlet property="titleLabel" destination="aRC-Vn-ztW" id="0MR-O2-QHn"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="405" height="187"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IAT-uJ-UKx">
+                    <rect key="frame" x="0.0" y="0.0" width="405" height="187"/>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="KoT-UC-djN"/>
+                </imageView>
+                <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="LCw-cp-Nwf">
+                    <rect key="frame" x="20" y="20" width="30" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="lwJ-NN-xbe"/>
+                        <constraint firstAttribute="width" constant="30" id="tY8-FJ-Z9n"/>
+                    </constraints>
+                    <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="CheckCircle" id="A2z-Ae-cLg"/>
+                </imageView>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aRC-Vn-ztW">
+                    <rect key="frame" x="180" y="147" width="46" height="20"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="FAb-9j-VfL">
+                        <font key="font" metaFont="system" size="17"/>
+                        <color key="textColor" white="0.95594411680000002" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="IAT-uJ-UKx" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="8vb-hp-j9j"/>
+                <constraint firstItem="aRC-Vn-ztW" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="20" symbolic="YES" id="DNG-gF-GDA"/>
+                <constraint firstItem="aRC-Vn-ztW" firstAttribute="centerX" secondItem="Hz6-mo-xeY" secondAttribute="centerX" id="GhH-rT-Cto"/>
+                <constraint firstAttribute="bottom" secondItem="IAT-uJ-UKx" secondAttribute="bottom" id="I0o-xb-drQ"/>
+                <constraint firstItem="LCw-cp-Nwf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" symbolic="YES" id="SW9-oa-Car"/>
+                <constraint firstAttribute="trailing" secondItem="IAT-uJ-UKx" secondAttribute="trailing" id="dqp-e3-vqe"/>
+                <constraint firstItem="IAT-uJ-UKx" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="fgr-Fs-Bsq"/>
+                <constraint firstAttribute="bottom" secondItem="LCw-cp-Nwf" secondAttribute="bottom" constant="20" symbolic="YES" id="jyv-F7-3fx"/>
+            </constraints>
+            <point key="canvasLocation" x="101.5" y="111.5"/>
+        </customView>
+        <collectionViewItem title="divePreviewItemIdentifier" id="qUc-0W-HlV" customClass="DiveCollectionItem" customModule="TestPastDivesView" customModuleProvider="target"/>
+    </objects>
+    <resources>
+        <image name="CheckCircle" width="30" height="30"/>
+    </resources>
+</document>
