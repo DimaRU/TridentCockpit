@@ -30,7 +30,7 @@
       },
       {
         "package": "Kingfisher",
-        "repositoryURL": "git@github.com:onevcat/Kingfisher.git",
+        "repositoryURL": "https://github.com/onevcat/Kingfisher",
         "state": {
           "branch": null,
           "revision": "2f9d171f17869768f6dbec1d039b851e2503af35",

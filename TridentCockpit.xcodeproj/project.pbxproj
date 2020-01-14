@@ -18,7 +18,7 @@
 		0A1A5B8523CE4B550038EABE /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B8323CE4B550038EABE /* HeaderView.swift */; };
 		0A1A5B8623CE4B550038EABE /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A1A5B8423CE4B550038EABE /* HeaderView.xib */; };
 		0A1A5B8823CE4B760038EABE /* RecordingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B8723CE4B760038EABE /* RecordingsModel.swift */; };
-		0A1A5B8B23CE4E020038EABE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1A5B8A23CE4E020038EABE /* Kingfisher */; };
+		0A1A5BA023CE57890038EABE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1A5B9F23CE57890038EABE /* Kingfisher */; };
 		0A2E1DAE23B0CAD9009048A5 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */; };
 		0A2E42BC236B0EE900B5C569 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E42BB236B0EE900B5C569 /* VideoView.swift */; };
 		0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
@@ -286,7 +286,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A1A5B8B23CE4E020038EABE /* Kingfisher in Frameworks */,
+				0A1A5BA023CE57890038EABE /* Kingfisher in Frameworks */,
 				0A66C52F23AED776001BA93D /* PromiseKit in Frameworks */,
 				0A3FD1EF23A8D50000FE9918 /* CircularProgress in Frameworks */,
 				0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */,
@@ -547,7 +547,7 @@
 				0A3FD1EE23A8D50000FE9918 /* CircularProgress */,
 				0A66C52B23AED706001BA93D /* Moya */,
 				0A66C52E23AED776001BA93D /* PromiseKit */,
-				0A1A5B8A23CE4E020038EABE /* Kingfisher */,
+				0A1A5B9F23CE57890038EABE /* Kingfisher */,
 			);
 			productName = TridentCockpit;
 			productReference = 0A7130B4236369EA00817593 /* TridentCockpit.app */;
@@ -582,7 +582,7 @@
 				0A3FD1ED23A8D50000FE9918 /* XCRemoteSwiftPackageReference "CircularProgress" */,
 				0A66C52A23AED706001BA93D /* XCRemoteSwiftPackageReference "Moya" */,
 				0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */,
-				0A1A5B8923CE4E020038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				0A1A5B9E23CE57890038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 0A7130B5236369EA00817593 /* Products */;
 			projectDirPath = "";
@@ -941,9 +941,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		0A1A5B8923CE4E020038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+		0A1A5B9E23CE57890038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "git@github.com:onevcat/Kingfisher.git";
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 5.12.0;
@@ -976,9 +976,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0A1A5B8A23CE4E020038EABE /* Kingfisher */ = {
+		0A1A5B9F23CE57890038EABE /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A1A5B8923CE4E020038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			package = 0A1A5B9E23CE57890038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
 		};
 		0A3FD1EE23A8D50000FE9918 /* CircularProgress */ = {

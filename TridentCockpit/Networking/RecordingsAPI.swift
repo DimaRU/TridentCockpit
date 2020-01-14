@@ -24,19 +24,16 @@ final class RecordingsAPI {
     }
 
     class func deleteRecording(sessionId: String, completion: @escaping (AFError?) -> Void) {
-        DispatchQueue.main.async {
-            completion(nil)
+        AF.request(baseURL + sessionId, method: .delete)
+            .validate(statusCode: 200..<300)
+            .response(queue: DispatchQueue.main) { responce in
+                switch responce.result {
+                case .success(_):
+                    completion(nil)
+                case .failure(let error):
+                    completion(error)
+                }
         }
-//        AF.request(baseURL + sessionId, method: .delete)
-//            .validate(statusCode: 200..<300)
-//            .response(queue: DispatchQueue.main) { responce in
-//                switch responce.result {
-//                case .success(_):
-//                    completion(nil)
-//                case .failure(let error):
-//                    completion(error)
-//                }
-//        }
     }
     
     class func downloadRecording(recording: Recording,
