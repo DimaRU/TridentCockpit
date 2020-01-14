@@ -66,7 +66,7 @@ extension DashboardViewController {
                 break
             }
         }
-        
+        #if DEBUG
         NotificationCenter.default.addObserver(forName: .RTPSReaderWriterNotification, object: nil, queue: nil) { notification in
             guard let userInfo = notification.userInfo as? Dictionary<Int, Any>,
                 let rawType = userInfo[RTPSNotificationUserInfo.reason.rawValue] as? Int,
@@ -93,5 +93,6 @@ extension DashboardViewController {
                 break
             }
         }
+        #endif
     }
 }

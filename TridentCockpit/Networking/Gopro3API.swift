@@ -95,7 +95,6 @@ extension Gopro3API {
         urlComponents.queryItems = queryItems
         
         let url = urlComponents.url!
-        print("request url:\(url)")
         var request = URLRequest(url: url)
         request.allHTTPHeaderFields = [:]
         return request
@@ -119,7 +118,6 @@ extension Gopro3API {
             
             if let httpResponse = response as? HTTPURLResponse {
                 let statusCode = httpResponse.statusCode
-                print("status:", statusCode, "bytes:", data?.count ?? 0)
                 switch statusCode {
                 case 200...299:
                     break

@@ -276,7 +276,6 @@ class DashboardViewController: NSViewController {
                 } else {
                     if let error = error {
                         self.view.window?.alert(error: error)
-                        print("ERROR: \(String(describing: error))")
                     }
                 }
                 self.sshCommand.disconnect {}
