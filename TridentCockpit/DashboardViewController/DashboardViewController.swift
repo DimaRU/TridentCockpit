@@ -238,7 +238,7 @@ class DashboardViewController: NSViewController {
         guard let scriptBody = try? String(contentsOf: url) else { return }
         
         let basePort = Bundle.main.infoDictionary!["BasePort"]! as! String
-        let redirectPorts = Bundle.main.infoDictionary!["RedirectPorts"]! as! String
+        let redirectPorts = Gopro3API.redirectPorts
         let login = Bundle.main.infoDictionary!["RovLogin"]! as! String
         let passwordBase64 = Bundle.main.infoDictionary!["RovPassword"]! as! String
         let password = String(data: Data(base64Encoded: passwordBase64)!, encoding: .utf8)!

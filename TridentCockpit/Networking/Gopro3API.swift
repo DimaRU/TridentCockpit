@@ -25,6 +25,7 @@ enum Gopro3API {
         Gopro3API.cameraPassword != nil
     }
     static let basePort = Int(Bundle.main.infoDictionary!["BasePort"]! as! String)!
+    static let redirectPorts = "80 8080"
     static var liveStreamURL: URL {
         get {
             let streamingPort = Gopro3API.basePort + 1
