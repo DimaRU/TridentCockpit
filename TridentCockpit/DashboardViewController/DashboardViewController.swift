@@ -11,8 +11,6 @@ import PromiseKit
 import SwiftSH
 
 class DashboardViewController: NSViewController {
-    @IBOutlet var toolbar: NSToolbar!
-    
     let stdParticipantList: Set<String> = ["geoserve", "trident-core", "trident-control", "trident-update", "trident-record"]
     var tridentParticipants: Set<String> = []
     var tridentID: String!
@@ -22,11 +20,7 @@ class DashboardViewController: NSViewController {
     private var sshCommand: SSHCommand!
     private var spinner: CircularProgress?
     private var timer: Timer? {
-        willSet {
-            if newValue == nil {
-                timer?.invalidate()
-            }
-        }
+        willSet { timer?.invalidate() }
     }
 
     var deviceState: DeviceState? {
@@ -74,6 +68,7 @@ class DashboardViewController: NSViewController {
 
     
     // MARK: Outlets
+    @IBOutlet var toolbar: NSToolbar!
     @IBOutlet weak var gridView: NSGridView!
     @IBOutlet weak var tridentIdLabel: NSTextField!
     @IBOutlet weak var connectionAddress: NSTextField!
@@ -90,6 +85,8 @@ class DashboardViewController: NSViewController {
         super.viewDidLoad()
         
         gridView.isHidden = true
+        parent?.view.wantsLayer = true
+        parent?.view.layer?.contents = NSImage(named: "Trident")
         spinner = addCircularProgressView(to: view)
         setupNotifications()
         ddsDiscoveryStart()
@@ -117,31 +114,29 @@ class DashboardViewController: NSViewController {
     
     override func viewWillDisappear() {
         super.viewWillDisappear()
-        
         timer = nil
     }
     
     // MARK: Actions
     @IBAction func goDiveScreen(_ sender: Any?) {
+        self.toolbar.isVisible = false
         let diveViewController: DiveViewController = DiveViewController.instantiate()
         diveViewController.vehicleId = tridentID
         transition(to: diveViewController, options: .slideUp) {
             self.toolbar.isVisible = false
         }
     }
-        
+
     @IBAction func goMaintenanceScreen(_ sender: Any?) {
         let maintenanceViewController: MaintenanceViewController = MaintenanceViewController.instantiate()
         parent!.addChild(maintenanceViewController)
-        transition(to: maintenanceViewController, options: .slideLeft) {
-        }
+        transition(to: maintenanceViewController, options: .slideLeft)
     }
-    
+
     @IBAction func goPastDivesScreen(_ sender: Any?) {
         let pastDivesViewController: PastDivesViewController = PastDivesViewController.instantiate()
         parent!.addChild(pastDivesViewController)
-        transition(to: pastDivesViewController, options: .slideLeft) {
-        }
+        transition(to: pastDivesViewController, options: .slideLeft)
     }
 
     @IBAction func connectWifiButtonPress(_ sender: Any?) {
@@ -371,6 +366,7 @@ class DashboardViewController: NSViewController {
         toolbar.items.forEach{ $0.isEnabled = false }
         connectedSSID = nil
         gridView.isHidden = true
+        view.layer?.backgroundColor = nil
         spinner = addCircularProgressView(to: view)
         ddsDiscoveryStart()
     }
@@ -380,6 +376,8 @@ class DashboardViewController: NSViewController {
             spinner.isIndeterminate = false
             spinner.removeFromSuperview()
         }
+        
+        view.layer?.backgroundColor = NSColor(named: "splashColor")!.cgColor
         gridView.isHidden = false
         
         tridentIdLabel.stringValue = tridentID

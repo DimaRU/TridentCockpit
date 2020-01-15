@@ -26,9 +26,17 @@ class PastDivesViewController: NSViewController {
     let diveLabelFormatter = DateFormatter()
     let pastDivesWorker = PastDivesWorker()
 
+    #if DEBUG
+    deinit {
+        print(className, #function)
+    }
+    #endif
+    
     // MARK: Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.wantsLayer = true
+        view.layer?.backgroundColor = NSColor(named: "splashColor")!.cgColor
         collectionView.enclosingScrollView?.borderType = .noBorder
         collectionView.register(NSNib(nibNamed: "DiveCollectionItem", bundle: nil), forItemWithIdentifier: divePreviewItemIdentifier)
         sectionFormatter.dateFormat = "MMMM dd"

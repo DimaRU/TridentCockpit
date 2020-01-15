@@ -83,7 +83,7 @@ class DiveViewController: NSViewController, NSWindowDelegate {
 
     #if DEBUG
     deinit {
-        print("Deinit DiveViewController")
+        print(className, #function)
     }
     #endif
 
@@ -108,7 +108,7 @@ class DiveViewController: NSViewController, NSWindowDelegate {
         tridentControl.setup(delegate: self)
         videoDecoder = VideoDecoder(sampleBufferLayer: videoView.sampleBufferLayer)
         view.wantsLayer = true
-        view.layer?.contents = NSImage(named: "Trident")
+        self.view.layer?.backgroundColor = NSColor.black.cgColor
 
         cameraControlView.addConstraints(defX: view.frame.minX + cameraControlView.frame.midX,
                                          defY: view.frame.midY)
@@ -243,9 +243,6 @@ class DiveViewController: NSViewController, NSWindowDelegate {
     }
     
     private func rovProvision() {
-        Timer.scheduledTimer(withTimeInterval: 10, repeats: false) { _ in
-            self.view.layer?.contents = nil
-        }
         tridentControl.enable()
 
         let timeMs = UInt(Date().timeIntervalSince1970 * 1000)

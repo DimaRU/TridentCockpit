@@ -51,6 +51,9 @@ extension RestProvider {
     private class func handleRequest(request: RequestFuture, result: Swift.Result<Moya.Response, MoyaError>) {
         switch result {
         case .success(let moyaResponse):
+            #if DEBUG
+            print(moyaResponse.request?.url?.absoluteString ?? "", moyaResponse.statusCode)
+            #endif
             switch moyaResponse.statusCode {
             case 200...299, 300...399:
                 request.resolve(moyaResponse.data)
