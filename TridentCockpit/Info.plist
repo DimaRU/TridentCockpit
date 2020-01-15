@@ -12,6 +12,8 @@
 	<string>Trident Cockpit</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
 	<key>CFBundleIdentifier</key>
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
@@ -43,8 +45,6 @@
 	<true/>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
-	<key>CFBundleGetInfoString</key>
-	<string></string>
 	<key>RovLogin</key>
 	<string>rov</string>
 	<key>RovPassword</key>
