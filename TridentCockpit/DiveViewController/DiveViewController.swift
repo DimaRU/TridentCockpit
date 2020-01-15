@@ -129,15 +129,9 @@ class DiveViewController: NSViewController, NSWindowDelegate {
 
     override func viewDidAppear() {
         super.viewDidAppear()
-        view.window?.delegate = self
         DisplayManager.disableSleep()
     }
     
-    func windowWillClose(_ notification: Notification) {
-        FastRTPS.deleteParticipant()
-        DisplayManager.enableSleep()
-    }
-
     @IBAction func closeButtonPress(_ sender: Any) {
         let alert = NSAlert()
         alert.addButton(withTitle: "OK")

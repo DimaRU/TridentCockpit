@@ -12,5 +12,10 @@ class WindowController: NSWindowController {
         self.windowFrameAutosaveName = "TridentVideoWindow"
     }
 
+    func windowWillClose(_ notification: Notification) {
+        FastRTPS.deleteParticipant()
+        DisplayManager.enableSleep()
+    }
+
 }
 
