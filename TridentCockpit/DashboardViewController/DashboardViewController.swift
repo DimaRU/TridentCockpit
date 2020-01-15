@@ -125,8 +125,7 @@ class DashboardViewController: NSViewController {
     @IBAction func goDiveScreen(_ sender: Any?) {
         let diveViewController: DiveViewController = DiveViewController.instantiate()
         diveViewController.vehicleId = tridentID
-        parent!.addChild(diveViewController)
-        parent!.transition(from: self, to: diveViewController, options: .slideUp) {
+        transition(to: diveViewController, options: .slideUp) {
             self.toolbar.isVisible = false
         }
     }
@@ -134,14 +133,14 @@ class DashboardViewController: NSViewController {
     @IBAction func goMaintenanceScreen(_ sender: Any?) {
         let maintenanceViewController: MaintenanceViewController = MaintenanceViewController.instantiate()
         parent!.addChild(maintenanceViewController)
-        parent!.transition(from: self, to: maintenanceViewController, options: .slideLeft) {
+        transition(to: maintenanceViewController, options: .slideLeft) {
         }
     }
     
     @IBAction func goPastDivesScreen(_ sender: Any?) {
         let pastDivesViewController: PastDivesViewController = PastDivesViewController.instantiate()
         parent!.addChild(pastDivesViewController)
-        parent!.transition(from: self, to: pastDivesViewController, options: .slideLeft) {
+        transition(to: pastDivesViewController, options: .slideLeft) {
         }
     }
 
@@ -360,9 +359,7 @@ class DashboardViewController: NSViewController {
             alert.informativeText = info
             alert.alertStyle = .warning
             alert.beginSheetModal(for: otherViewController.view.window!) { responce in
-                self.parent!.transition(from: otherViewController, to: self, options: .slideDown) {
-                    otherViewController.removeFromParent()
-                }
+                otherViewController.transitionBack(options: .crossfade)
             }
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) { [weak alert] in
                 guard let alert = alert else { return }

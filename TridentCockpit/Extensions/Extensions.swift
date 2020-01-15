@@ -143,3 +143,27 @@ extension NSWindow {
     }
 
 }
+
+extension NSViewController {
+    func transition(to viewController: NSViewController,
+                    options: NSViewController.TransitionOptions,
+                    completion: (() -> Void)? = nil) {
+
+        parent!.addChild(viewController)
+        parent!.transition(from: self, to: viewController, options: options) {
+            viewController.view.window!.makeFirstResponder(viewController.view)
+            completion?()
+        }
+    }
+
+    func transitionBack(options: NSViewController.TransitionOptions,
+                        completion: (() -> Void)? = nil) {
+        guard let otherViewController = parent?.children.first(where: { $0 != self}) else { return }
+        parent!.transition(from: self, to: otherViewController, options: options) {
+            self.removeFromParent()
+            otherViewController.view.window!.makeFirstResponder(otherViewController.view)
+            completion?()
+        }
+
+    }
+}

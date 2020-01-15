@@ -97,10 +97,7 @@ class PastDivesViewController: NSViewController {
     }
 
     @IBAction func goDashboardButtonPress(_ sender: Any) {
-        guard let otherViewController = self.parent?.children.first(where: { $0 != self}) else { return }
-        self.parent!.transition(from: self, to: otherViewController, options: .slideRight) {
-            self.removeFromParent()
-        }
+        transitionBack(options: .slideRight)
     }
     
     // MARK: Private functions
