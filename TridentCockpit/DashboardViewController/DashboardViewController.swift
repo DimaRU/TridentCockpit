@@ -27,16 +27,18 @@ class DashboardViewController: NSViewController {
         didSet {
             guard oldValue != deviceState else { return }
             connectedSSID = connectionInfo.first(where: {$0.kind == "802-11-wireless" && $0.state == "Activated"})?.ssid
-            if deviceState != nil {
-                let addrs = deviceState!.ipAddress.split(separator: " ")
+            guard let ipAddress = deviceState?.ipAddress else { return }
+                let addrs = ipAddress.split(separator: " ")
                 if addrs.count >= 2 {
                     tridentNetworkAddressLabel.stringValue = String(addrs.first{ $0.contains("10.1.1.") } ?? "n/a")
                     payloadAddress.stringValue = String(addrs.first{ !$0.contains("10.1.1.") } ?? "n/a")
+                    toolbar.getItem(for: .connectCamera)?.isEnabled = true
                 } else {
                     tridentNetworkAddressLabel.stringValue = connectedSSID != nil ? "n/a" : String(addrs[0])
                     payloadAddress.stringValue = connectedSSID != nil ? String(addrs[0]) : "n/a"
+                    toolbar.getItem(for: .connectCamera)?.isEnabled = false
                 }
-            }
+            
         }
     }
     var connectedSSID: String? = "\nnot existed\n" {
@@ -46,15 +48,19 @@ class DashboardViewController: NSViewController {
                 let button = wifiItem.view as? NSButton else { return }
             if connectedSSID != nil {
                 ssidLabel.stringValue = self.connectedSSID!
-                toolbar.getItem(for: .connectCamera)?.isEnabled = true
+//                toolbar.getItem(for: .connectCamera)?.isEnabled = true
                 
                 wifiItem.label = NSLocalizedString("Disconnect", comment: "")
                 wifiItem.toolTip = NSLocalizedString("Disconnect Trident WiFi", comment: "")
                 button.image = NSImage(named: "wifi.slash")!
+                if payloadAddress.stringValue == "n/a" {
+                    payloadAddress.stringValue = "waiting..."
+                }
             } else {
                 ssidLabel.stringValue = "not connected"
                 cameraModelLabel.stringValue = "n/a"
                 cameraFirmwareLabel.stringValue = "n/a"
+                payloadAddress.stringValue = "n/a"
                 Gopro3API.cameraPassword = nil
                 toolbar.getItem(for: .connectCamera)?.isEnabled = false
 
@@ -149,7 +155,7 @@ class DashboardViewController: NSViewController {
     }
 
     @IBAction func connectCameraButtonPress(_ sender: Any?) {
-        guard deviceState?.ipAddress.split(separator: " ").count == 2 else { return }
+        guard let ipAddress = deviceState?.ipAddress, ipAddress.split(separator: " ").count == 2 else { return }
         executeScript(name: "PayloadProvision") {
             self.connectGopro3()
         }
@@ -179,7 +185,7 @@ class DashboardViewController: NSViewController {
     }
 
     private func startRefreshDeviceState() {
-        timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { [weak self] timer in
+        timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { [weak self] timer in
             guard let self = self else {
                 timer.invalidate()
                 return
@@ -195,7 +201,7 @@ class DashboardViewController: NSViewController {
                 switch error {
                 case NetworkError.unaviable(let message):
                     self.timer = nil
-                    self.view.window?.alert(message: "Trident connection lost", informative: message, delay: 2)
+                    self.view.window?.alert(message: "Trident connection lost", informative: message, delay: 4)
                 default:
                     self.view.window?.alert(error: error, delay: 5)
                 }

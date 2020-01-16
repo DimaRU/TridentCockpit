@@ -21,6 +21,11 @@ extension DashboardViewController {
                 let locators = userInfo[RTPSNotificationUserInfo.locators.rawValue] as! Set<String>
                 let metaLocators = userInfo[RTPSNotificationUserInfo.metaLocators.rawValue] as! Set<String>
                 print("Discovered Participant:", participantName, properties, locators, metaLocators)
+                
+                if self.tridentParticipants.contains(participantName) {
+                    print("Rediscovered Participant:", participantName)
+                    break
+                }
                 if self.stdParticipantList.contains(participantName) {
                     self.tridentParticipants.insert(participantName)
                 } else {
@@ -28,6 +33,7 @@ extension DashboardViewController {
                 }
                 if self.tridentParticipants.count == self.stdParticipantList.count {
                     // All connected
+                    print("All needed participant discovered, start connection")
                     DispatchQueue.main.async {
                         self.setConnectedState()
                     }

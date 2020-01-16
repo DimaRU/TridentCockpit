@@ -15,6 +15,6 @@ struct DeviceState: Codable, Equatable {
     let updatePending: Bool
     let osVariant: String
     let osVersion: String
-    let ipAddress: String
+    let ipAddress: String?
     let supervisorVersion: String
 }

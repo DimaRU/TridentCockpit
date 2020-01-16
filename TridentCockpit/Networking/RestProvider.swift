@@ -15,7 +15,7 @@ class RestProvider {
     
     static let manager: Session = {
         let configuration = URLSessionConfiguration.ephemeral
-        configuration.timeoutIntervalForRequest = 2
+        configuration.timeoutIntervalForRequest = 5
         configuration.timeoutIntervalForResource = 5
         return Session(configuration: configuration)
     }()
