@@ -7,13 +7,24 @@ import Cocoa
 import AVKit
 
 class AuxPlayerViewController: NSViewController {
-    @IBOutlet weak var playerView: AVPlayerView!
+    let playerView = AVPlayerView()
 
     var videoURL: URL!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        view.addSubview(playerView)
+        playerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            playerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            playerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            playerView.topAnchor.constraint(equalTo: view.topAnchor),
+            playerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+        playerView.controlsStyle = .inline
+        playerView.videoGravity = .resizeAspect
+        playerView.showsFullScreenToggleButton = false
     }
     
     override func viewWillAppear() {

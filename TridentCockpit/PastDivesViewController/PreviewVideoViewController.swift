@@ -1,13 +1,13 @@
 /////
-////  AuxPlayerViewController.swift
-///   Copyright © 2019 Dmitriy Borovikov. All rights reserved.
+////  PreviewVideoViewController.swift
+///   Copyright © 2020 Dmitriy Borovikov. All rights reserved.
 //
 
 import Cocoa
 import AVKit
 
 class PreviewVideoViewController: NSViewController {
-    @IBOutlet weak var playerView: AVPlayerView!
+    let playerView = AVPlayerView()
     
     var isMouseInWindow = false
     var videoURL: URL! {
@@ -15,13 +15,24 @@ class PreviewVideoViewController: NSViewController {
             let player = AVPlayer(url: videoURL)
             playerView.player = player
             player.rate = 1
-            title = videoURL.absoluteString
         }
     }
     var videoTitle: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        view.addSubview(playerView)
+        playerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            playerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            playerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            playerView.topAnchor.constraint(equalTo: view.topAnchor),
+            playerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+        playerView.controlsStyle = .inline
+        playerView.videoGravity = .resizeAspect
+        playerView.showsFullScreenToggleButton = true
     }
     
     
