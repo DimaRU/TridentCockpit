@@ -29,6 +29,7 @@ class PreviewVideoViewController: NSViewController {
             playerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             playerView.topAnchor.constraint(equalTo: view.topAnchor),
             playerView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            playerView.widthAnchor.constraint(equalTo: playerView.heightAnchor, multiplier: 16.0/9.0),
         ])
         playerView.controlsStyle = .inline
         playerView.videoGravity = .resizeAspect
