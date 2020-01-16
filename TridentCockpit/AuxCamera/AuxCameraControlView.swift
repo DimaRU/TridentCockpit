@@ -206,7 +206,7 @@ class AuxCameraControlView: NSView, FloatingViewProtocol {
         }
     }
     
-    @IBAction func powerButtonPress(_ sender: NSButton) {
+    @IBAction func powerButtonPress(_ sender: Any) {
         let powerOn: Bool
         switch cameraState {
         case .off       : powerOn = true
@@ -236,7 +236,7 @@ class AuxCameraControlView: NSView, FloatingViewProtocol {
         }
     }
     
-    @IBAction func recordingButtonPress(_ sender: FlatButton) {
+    @IBAction func recordingButtonPress(_ sender: Any) {
         let shotOn: Bool
         switch cameraState {
         case .off       : return
@@ -253,7 +253,7 @@ class AuxCameraControlView: NSView, FloatingViewProtocol {
         }
     }
     
-    @IBAction func liveVideoButtonPress(_ sender: NSButton) {
+    @IBAction func liveVideoButtonPress(_ sender: Any) {
         guard liveViewWindowController == nil else { return }
         let storyboard = NSStoryboard(name: .init("AuxPlayerViewController"), bundle: nil)
         if let windowControler = storyboard.instantiateInitialController() as? NSWindowController {

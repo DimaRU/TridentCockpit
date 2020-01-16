@@ -422,6 +422,14 @@ class DiveViewController: NSViewController, NSWindowDelegate {
 }
 
 extension DiveViewController: TridentControlDelegate {
+    func switchAuxRecording() {
+        auxCameraView?.recordingButtonPress(auxCameraView!)
+    }
+    
+    func switchAuxPower() {
+        auxCameraView?.powerButtonPress(auxCameraView!)
+    }
+    
     func control(pitch: Float, yaw: Float, thrust: Float, lift: Float) {
         let tridentCommand = RovTridentControlTarget(id: "control", pitch: pitch, yaw: yaw, thrust: thrust, lift: lift)
         FastRTPS.send(topic: .rovControlTarget, ddsData: tridentCommand)

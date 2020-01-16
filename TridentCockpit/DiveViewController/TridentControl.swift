@@ -11,6 +11,8 @@ protocol TridentControlDelegate: NSObject {
     func updatePropellerButtonState()
     func switchLight()
     func switchRecording()
+    func switchAuxRecording()
+    func switchAuxPower()
     func control(pitch: Float, yaw: Float, thrust: Float, lift: Float)
 }
 
@@ -176,11 +178,13 @@ final class TridentControl {
             delegate?.switchLight()
         case gamepad.buttonB:
             guard gamepad.buttonB.value != 0 else { break }
+            delegate?.switchAuxPower()
         case gamepad.buttonY:
             guard gamepad.buttonY.value != 0 else { break }
             delegate?.switchRecording()
         case gamepad.buttonX:
             guard gamepad.buttonX.value != 0 else { break }
+            delegate?.switchAuxRecording()
         default:
             break
         }
