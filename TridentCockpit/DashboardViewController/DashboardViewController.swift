@@ -135,13 +135,11 @@ class DashboardViewController: NSViewController {
 
     @IBAction func goMaintenanceScreen(_ sender: Any?) {
         let maintenanceViewController: MaintenanceViewController = MaintenanceViewController.instantiate()
-        parent!.addChild(maintenanceViewController)
         transition(to: maintenanceViewController, options: .slideLeft)
     }
 
     @IBAction func goPastDivesScreen(_ sender: Any?) {
         let pastDivesViewController: PastDivesViewController = PastDivesViewController.instantiate()
-        parent!.addChild(pastDivesViewController)
         transition(to: pastDivesViewController, options: .slideLeft)
     }
 
