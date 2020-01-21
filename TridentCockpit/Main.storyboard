@@ -846,10 +846,10 @@
                                 </constraints>
                             </customView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="rbs-P3-fsr">
-                                <rect key="frame" x="0.0" y="326" width="283" height="35"/>
+                                <rect key="frame" x="0.0" y="326" width="289" height="35"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qo6-j9-TBw">
-                                        <rect key="frame" x="8" y="6" width="275" height="23"/>
+                                        <rect key="frame" x="8" y="6" width="281" height="23"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gsA-YI-eNA">
                                                 <rect key="frame" x="0.0" y="0.0" width="24" height="23"/>
@@ -887,18 +887,18 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="frd-FQ-gU0">
-                                                <rect key="frame" x="114" y="4" width="22" height="15"/>
+                                                <rect key="frame" x="114" y="4" width="28" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="18" id="fLG-GO-NvD"/>
                                                 </constraints>
-                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="􀇬" id="4xW-1y-Hcw">
+                                                <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="m 􀇬" id="4xW-1y-Hcw">
                                                     <font key="font" size="13" name="SFProDisplay-Light"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zWM-Ae-qCL">
-                                                <rect key="frame" x="132" y="4" width="37" height="15"/>
+                                                <rect key="frame" x="138" y="4" width="37" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="33" id="MUc-6Y-3r2"/>
                                                 </constraints>
@@ -909,7 +909,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EU2-MI-1bX">
-                                                <rect key="frame" x="165" y="4" width="52" height="15"/>
+                                                <rect key="frame" x="171" y="4" width="52" height="15"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="℃    􀛨" id="Np2-pl-c9e">
                                                     <font key="font" size="13" name="SFProDisplay-Light"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -917,7 +917,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q2s-ce-J2h">
-                                                <rect key="frame" x="213" y="4" width="64" height="15"/>
+                                                <rect key="frame" x="219" y="4" width="64" height="15"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="sXr-lo-cM7"/>
                                                 </constraints>
