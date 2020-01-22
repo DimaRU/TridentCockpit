@@ -33,6 +33,12 @@ class MaintenanceViewController: NSViewController {
         }
     }
 
+    #if DEBUG
+    deinit {
+        print(className, #function)
+    }
+    #endif
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.wantsLayer = true

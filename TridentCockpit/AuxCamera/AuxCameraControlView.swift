@@ -97,7 +97,7 @@ class AuxCameraControlView: NSView, FloatingViewProtocol {
     
     #if DEBUG
     deinit {
-        print("AuxCameraControlView deinit")
+        print(className, #function)
     }
     #endif
     

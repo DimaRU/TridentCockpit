@@ -43,11 +43,7 @@ class PastDivesViewController: NSViewController {
         diveLabelFormatter.dateFormat = "MMM dd hh:mm:ss"
         
         pastDivesWorker.delegate = self
-    }
-
-    override func viewDidAppear() {
-        super.viewDidAppear()
-        view.window?.toolbar = toolbar
+        
         RecordingsAPI.requestRecordings {
             switch $0 {
             case .success(let data):
@@ -58,6 +54,11 @@ class PastDivesViewController: NSViewController {
                 self.sortRecordings([])
             }
         }
+    }
+
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        view.window?.toolbar = toolbar
     }
     
     // MARK: Actions
