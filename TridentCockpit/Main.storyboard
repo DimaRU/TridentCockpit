@@ -807,49 +807,43 @@
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="8ZQ-gr-dN8" customClass="VideoView" customModule="TridentCockpit" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="641" height="361"/>
-                                <subviews>
-                                    <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aaa-wW-Mjv">
-                                        <rect key="frame" x="593" y="327" width="32" height="24"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="24" id="MKV-yS-fIv"/>
-                                            <constraint firstAttribute="width" constant="32" id="zz4-BK-seF"/>
-                                        </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Light Off" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="8cy-GX-LyS">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" size="24" name="SFCompactDisplay-Regular"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="lightButtonPress:" target="Wgr-FD-Jeg" id="HBF-is-gNp"/>
-                                        </connections>
-                                    </button>
-                                    <button hidden="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="nMs-kU-0TU" userLabel="Prop Button">
-                                        <rect key="frame" x="594" y="281" width="30" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="nbS-SS-aRg"/>
-                                            <constraint firstAttribute="width" constant="30" id="r54-5z-asy"/>
-                                        </constraints>
-                                        <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Prop 1" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="ZaI-av-rhl">
-                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                            <font key="font" metaFont="system"/>
-                                        </buttonCell>
-                                        <connections>
-                                            <action selector="propellerButtonPress:" target="Wgr-FD-Jeg" id="fjn-Pe-72U"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="aaa-wW-Mjv" secondAttribute="trailing" constant="16" id="3ix-Vd-eLv"/>
-                                    <constraint firstItem="nMs-kU-0TU" firstAttribute="top" secondItem="aaa-wW-Mjv" secondAttribute="bottom" constant="16" id="4J7-XE-jxp"/>
                                     <constraint firstAttribute="width" secondItem="8ZQ-gr-dN8" secondAttribute="height" multiplier="16:9" id="D1q-wW-aW8"/>
-                                    <constraint firstItem="nMs-kU-0TU" firstAttribute="centerX" secondItem="aaa-wW-Mjv" secondAttribute="centerX" id="EAX-S5-gqj"/>
-                                    <constraint firstItem="aaa-wW-Mjv" firstAttribute="top" secondItem="8ZQ-gr-dN8" secondAttribute="top" constant="10" id="Got-Dj-1zr"/>
                                 </constraints>
                             </customView>
+                            <button focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aaa-wW-Mjv">
+                                <rect key="frame" x="593" y="327" width="32" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="MKV-yS-fIv"/>
+                                    <constraint firstAttribute="width" constant="32" id="zz4-BK-seF"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Light Off" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" focusRingType="none" imageScaling="proportionallyDown" inset="2" id="8cy-GX-LyS">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" size="24" name="SFCompactDisplay-Regular"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="lightButtonPress:" target="Wgr-FD-Jeg" id="HBF-is-gNp"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="nMs-kU-0TU" userLabel="Prop Button">
+                                <rect key="frame" x="594" y="281" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="nbS-SS-aRg"/>
+                                    <constraint firstAttribute="width" constant="30" id="r54-5z-asy"/>
+                                </constraints>
+                                <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="Prop 1" imagePosition="only" alignment="center" focusRingType="none" imageScaling="proportionallyUpOrDown" inset="2" id="ZaI-av-rhl">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="propellerButtonPress:" target="Wgr-FD-Jeg" id="fjn-Pe-72U"/>
+                                </connections>
+                            </button>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="rbs-P3-fsr">
-                                <rect key="frame" x="0.0" y="326" width="289" height="35"/>
+                                <rect key="frame" x="0.0" y="326" width="284" height="35"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qo6-j9-TBw">
-                                        <rect key="frame" x="8" y="6" width="281" height="23"/>
+                                        <rect key="frame" x="8" y="6" width="268" height="23"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gsA-YI-eNA">
                                                 <rect key="frame" x="0.0" y="0.0" width="24" height="23"/>
@@ -917,10 +911,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="q2s-ce-J2h">
-                                                <rect key="frame" x="219" y="4" width="64" height="15"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="sXr-lo-cM7"/>
-                                                </constraints>
+                                                <rect key="frame" x="219" y="4" width="51" height="15"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="10h25m" id="yiv-S7-HtI">
                                                     <font key="font" size="13" name="Menlo-Regular"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -949,7 +940,7 @@
                                     </stackView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="Qo6-j9-TBw" secondAttribute="trailing" id="Dcg-9C-k9g"/>
+                                    <constraint firstAttribute="trailing" secondItem="Qo6-j9-TBw" secondAttribute="trailing" constant="8" id="Dcg-9C-k9g"/>
                                     <constraint firstAttribute="height" constant="35" id="kRj-G4-Jkn"/>
                                     <constraint firstItem="Qo6-j9-TBw" firstAttribute="centerY" secondItem="rbs-P3-fsr" secondAttribute="centerY" id="lhY-sL-SWR"/>
                                     <constraint firstItem="Qo6-j9-TBw" firstAttribute="leading" secondItem="rbs-P3-fsr" secondAttribute="leading" constant="8" id="qXH-42-tE5"/>
@@ -1042,8 +1033,12 @@
                             <constraint firstItem="8ZQ-gr-dN8" firstAttribute="leading" secondItem="Rxz-w6-QWt" secondAttribute="leading" id="8f3-df-CxZ"/>
                             <constraint firstItem="d0c-IA-Aeu" firstAttribute="centerY" secondItem="Rxz-w6-QWt" secondAttribute="centerY" constant="105" placeholder="YES" identifier="yConstraint" id="DlY-wW-mAm"/>
                             <constraint firstItem="rbs-P3-fsr" firstAttribute="top" secondItem="Rxz-w6-QWt" secondAttribute="top" id="GyC-3o-XNs"/>
+                            <constraint firstItem="nMs-kU-0TU" firstAttribute="centerX" secondItem="aaa-wW-Mjv" secondAttribute="centerX" id="HpB-wj-ipP"/>
+                            <constraint firstAttribute="trailing" secondItem="aaa-wW-Mjv" secondAttribute="trailing" constant="16" id="JRw-F6-vfd"/>
                             <constraint firstItem="rbs-P3-fsr" firstAttribute="leading" secondItem="Rxz-w6-QWt" secondAttribute="leading" id="JZW-K7-dX4"/>
+                            <constraint firstItem="aaa-wW-Mjv" firstAttribute="top" secondItem="Rxz-w6-QWt" secondAttribute="top" constant="10" id="NGj-uM-IXv"/>
                             <constraint firstItem="d0c-IA-Aeu" firstAttribute="centerX" secondItem="Rxz-w6-QWt" secondAttribute="centerX" constant="245.5" placeholder="YES" identifier="xConstraint" id="VSF-iz-9IR"/>
+                            <constraint firstItem="nMs-kU-0TU" firstAttribute="top" secondItem="aaa-wW-Mjv" secondAttribute="bottom" constant="16" id="kJ9-Zf-Niu"/>
                             <constraint firstAttribute="bottom" secondItem="8ZQ-gr-dN8" secondAttribute="bottom" id="qMM-jz-gEk"/>
                             <constraint firstAttribute="bottom" secondItem="7zE-p2-EwH" secondAttribute="centerY" constant="180" placeholder="YES" identifier="yConstraint" id="thZ-VK-pfM"/>
                             <constraint firstItem="8ZQ-gr-dN8" firstAttribute="top" secondItem="Rxz-w6-QWt" secondAttribute="top" id="wUM-SF-IwC"/>
@@ -1091,7 +1086,7 @@
                                             <tableColumns>
                                                 <tableColumn width="195" minWidth="100" maxWidth="400" id="Az8-Gr-xRE">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="menu" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
