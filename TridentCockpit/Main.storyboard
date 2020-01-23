@@ -1086,7 +1086,7 @@
                                             <tableColumns>
                                                 <tableColumn width="195" minWidth="100" maxWidth="400" id="Az8-Gr-xRE">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="label" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -1170,18 +1170,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sd-5b-tAb">
-                                <rect key="frame" x="0.0" y="0.0" width="542" height="270"/>
+                                <rect key="frame" x="0.0" y="30" width="542" height="240"/>
                                 <clipView key="contentView" drawsBackground="NO" id="jBg-ef-f5B">
-                                    <rect key="frame" x="1" y="1" width="540" height="268"/>
+                                    <rect key="frame" x="1" y="1" width="540" height="238"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView selectable="YES" allowsMultipleSelection="YES" id="Btu-8U-52P">
-                                            <rect key="frame" x="0.0" y="0.0" width="540" height="234"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="540" height="238"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="4" minimumLineSpacing="4" id="qik-qS-lX2">
                                                 <size key="itemSize" width="250" height="145"/>
                                                 <size key="headerReferenceSize" width="0.0" height="30"/>
-                                                <edgeInsets key="sectionInset" left="4" right="4" top="10" bottom="20"/>
+                                                <edgeInsets key="sectionInset" left="8" right="8" top="10" bottom="20"/>
                                             </collectionViewFlowLayout>
                                             <color key="primaryBackgroundColor" red="1" green="1" blue="1" alpha="0.0" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                             <connections>
@@ -1197,7 +1197,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="KNC-jM-mJZ">
-                                    <rect key="frame" x="463" y="1" width="16" height="228"/>
+                                    <rect key="frame" x="525" y="1" width="16" height="238"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -1216,20 +1216,50 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EKs-52-6u9">
+                                <rect key="frame" x="6" y="8" width="102" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="Available space:" id="jOu-Bq-GaU">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <progressIndicator wantsLayer="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="bCB-Xp-ofF">
+                                <rect key="frame" x="114" y="4" width="150" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="SN6-bl-ivo"/>
+                                </constraints>
+                            </progressIndicator>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yVf-IX-UjS">
+                                <rect key="frame" x="270" y="8" width="145" height="16"/>
+                                <textFieldCell key="cell" lineBreakMode="clipping" title="10.1 GB of 20.0 GB free" id="79H-0u-vwI">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
                         </subviews>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="8sd-5b-tAb" secondAttribute="bottom" id="2Vc-K6-DdO"/>
+                            <constraint firstAttribute="bottom" secondItem="8sd-5b-tAb" secondAttribute="bottom" constant="30" id="2Vc-K6-DdO"/>
+                            <constraint firstItem="yVf-IX-UjS" firstAttribute="leading" secondItem="bCB-Xp-ofF" secondAttribute="trailing" constant="8" id="9Vm-vC-hIb"/>
                             <constraint firstItem="mcn-Qy-t6v" firstAttribute="leading" secondItem="CCQ-5j-Eck" secondAttribute="leading" constant="20" id="Gzx-dd-t0k"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mcn-Qy-t6v" secondAttribute="trailing" constant="20" symbolic="YES" id="JsY-vD-aEV"/>
                             <constraint firstItem="8sd-5b-tAb" firstAttribute="leading" secondItem="CCQ-5j-Eck" secondAttribute="leading" id="MQh-Jy-lJg"/>
+                            <constraint firstItem="bCB-Xp-ofF" firstAttribute="firstBaseline" secondItem="EKs-52-6u9" secondAttribute="firstBaseline" constant="6" id="ODd-Vn-2Hg"/>
+                            <constraint firstItem="EKs-52-6u9" firstAttribute="leading" secondItem="CCQ-5j-Eck" secondAttribute="leading" constant="8" id="Ro4-Ke-ZWw"/>
                             <constraint firstItem="mcn-Qy-t6v" firstAttribute="top" secondItem="CCQ-5j-Eck" secondAttribute="top" constant="8" id="S6l-QR-6bt"/>
                             <constraint firstAttribute="trailing" secondItem="8sd-5b-tAb" secondAttribute="trailing" id="Tg8-vB-fqG"/>
+                            <constraint firstAttribute="bottom" secondItem="EKs-52-6u9" secondAttribute="bottom" constant="8" id="epx-oF-R1o"/>
+                            <constraint firstItem="bCB-Xp-ofF" firstAttribute="leading" secondItem="EKs-52-6u9" secondAttribute="trailing" constant="8" id="iLq-JR-YFL"/>
+                            <constraint firstItem="8sd-5b-tAb" firstAttribute="top" secondItem="CCQ-5j-Eck" secondAttribute="top" constant="30" id="ltj-dC-v1L"/>
+                            <constraint firstItem="yVf-IX-UjS" firstAttribute="centerY" secondItem="EKs-52-6u9" secondAttribute="centerY" id="met-vF-kor"/>
                             <constraint firstItem="v32-SX-WwD" firstAttribute="centerY" secondItem="CCQ-5j-Eck" secondAttribute="centerY" id="q3a-Uf-wyl"/>
-                            <constraint firstItem="8sd-5b-tAb" firstAttribute="top" secondItem="mcn-Qy-t6v" secondAttribute="bottom" constant="8" id="tBW-kU-4Hg"/>
                             <constraint firstItem="v32-SX-WwD" firstAttribute="centerX" secondItem="CCQ-5j-Eck" secondAttribute="centerX" id="yuX-Eb-jGK"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="availableSpaceIndicator" destination="bCB-Xp-ofF" id="mf6-Ui-IYW"/>
+                        <outlet property="availableSpaceLabel" destination="yVf-IX-UjS" id="c0q-W6-ln6"/>
                         <outlet property="collectionView" destination="Btu-8U-52P" id="3yH-VS-No7"/>
                         <outlet property="deleteAfterCheckbox" destination="mcn-Qy-t6v" id="a3k-9Y-BIC"/>
                         <outlet property="noVideoLabel" destination="v32-SX-WwD" id="yHN-EF-ked"/>

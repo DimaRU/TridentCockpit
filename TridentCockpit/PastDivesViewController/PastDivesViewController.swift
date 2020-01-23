@@ -16,6 +16,8 @@ class PastDivesViewController: NSViewController {
     @IBOutlet var toolbar: NSToolbar!
     @IBOutlet weak var deleteAfterCheckbox: NSButton!
     @IBOutlet weak var noVideoLabel: NSTextField!
+    @IBOutlet weak var availableSpaceIndicator: NSProgressIndicator!
+    @IBOutlet weak var availableSpaceLabel: NSTextField!
     
     private var previewWindowController: NSWindowController?
     
@@ -41,6 +43,7 @@ class PastDivesViewController: NSViewController {
         collectionView.register(NSNib(nibNamed: "DiveCollectionItem", bundle: nil), forItemWithIdentifier: divePreviewItemIdentifier)
         sectionFormatter.dateFormat = "MMMM dd"
         diveLabelFormatter.dateFormat = "MMM dd hh:mm:ss"
+        availableSpaceLabel.stringValue = ""
         
         pastDivesWorker.delegate = self
         
@@ -54,6 +57,27 @@ class PastDivesViewController: NSViewController {
                 self.sortRecordings([])
             }
         }
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        
+        FastRTPS.registerReader(topic: .rovRecordingStats) { [weak self] (recordingStats: RovRecordingStats) in
+            DispatchQueue.main.async {
+                let level = Double(recordingStats.diskSpaceTotalBytes - recordingStats.diskSpaceUsedBytes) / Double(recordingStats.diskSpaceTotalBytes)
+                let gigabyte: Double = 1000 * 1000 * 1000
+                let total = Double(recordingStats.diskSpaceTotalBytes) / gigabyte
+                let aviable = Double(recordingStats.diskSpaceTotalBytes - recordingStats.diskSpaceUsedBytes) / gigabyte
+                self?.availableSpaceIndicator.doubleValue = level
+                self?.availableSpaceLabel.stringValue = String(format: "%.1f GB of %.1f GB free", aviable, total)
+            }
+        }
+    }
+    
+    override func viewWillDisappear() {
+        super.viewWillDisappear()
+        
+        FastRTPS.removeReader(topic: .rovRecordingStats)
     }
 
     override func viewDidAppear() {
