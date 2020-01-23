@@ -171,7 +171,8 @@ class PastDivesViewController: NSViewController {
             let previewVideoViewController = windowControler.contentViewController as? PreviewVideoViewController else { return }
         let panel = windowControler.window! as! NSPanel
         panel.isFloatingPanel = true
-        
+        windowControler.window!.contentAspectRatio = NSSize(width: 16, height: 9)
+
         previewVideoViewController.videoURL = RecordingsAPI.videoURL(recording: recording)
         previewVideoViewController.videoTitle = "Dive: " + diveLabelFormatter.string(from: recording.startTimestamp)
         

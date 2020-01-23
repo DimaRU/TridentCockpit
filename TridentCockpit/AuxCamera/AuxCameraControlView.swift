@@ -256,16 +256,16 @@ class AuxCameraControlView: NSView, FloatingViewProtocol {
     @IBAction func liveVideoButtonPress(_ sender: Any) {
         guard liveViewWindowController == nil else { return }
         let storyboard = NSStoryboard(name: .init("AuxPlayerViewController"), bundle: nil)
-        if let windowControler = storyboard.instantiateInitialController() as? NSWindowController {
-            let panel = windowControler.window! as! NSPanel
-            panel.isFloatingPanel = true
-            if let auxPlayerViewController = windowControler.contentViewController as? AuxPlayerViewController {
-                auxPlayerViewController.videoURL = Gopro3API.liveStreamURL
-            }
-            windowControler.showWindow(nil)
-            liveViewWindowController = windowControler
-            NotificationCenter.default.addObserver(self, selector: #selector(windowWillClose(notification:)), name: NSWindow.willCloseNotification, object: windowControler.window)
-            liveVideoButton.isEnabled = false
+        guard let windowControler = storyboard.instantiateInitialController() as? NSWindowController else { return }
+        let panel = windowControler.window! as! NSPanel
+        panel.isFloatingPanel = true
+        windowControler.window!.contentAspectRatio = NSSize(width: 16, height: 9)
+        if let auxPlayerViewController = windowControler.contentViewController as? AuxPlayerViewController {
+            auxPlayerViewController.videoURL = Gopro3API.liveStreamURL
         }
+        windowControler.showWindow(nil)
+        liveViewWindowController = windowControler
+        NotificationCenter.default.addObserver(self, selector: #selector(windowWillClose(notification:)), name: NSWindow.willCloseNotification, object: windowControler.window)
+        liveVideoButton.isEnabled = false
     }
 }
