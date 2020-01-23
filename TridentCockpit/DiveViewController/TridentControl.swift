@@ -35,12 +35,16 @@ final class TridentControl {
     private var downLever: Float = 0
     private var tridentCommandTimer: Timer?
     private var zeroCount = 0
+    private var connectObserver: NSObjectProtocol?
+    private var disconnectObserver: NSObjectProtocol?
+
     
     private weak var delegate: TridentControlDelegate?
     var motorSpeed: MotorSpeed?
 
     func setup(delegate: TridentControlDelegate) {
         self.delegate = delegate
+        connectGameController()
         ObserveForGameControllers()
     }
     
@@ -50,6 +54,15 @@ final class TridentControl {
     
     func disable() {
         tridentCommandTimer?.invalidate()
+        
+        if let connectObserver = connectObserver {
+            NotificationCenter.default.removeObserver(connectObserver)
+        }
+        if let disconnectObserver = disconnectObserver {
+            NotificationCenter.default.removeObserver(disconnectObserver)
+        }
+        connectObserver = nil
+        disconnectObserver = nil
     }
     
     private func controlTimerBlock(timer: Timer) {
@@ -127,29 +140,33 @@ final class TridentControl {
     }
 
     func ObserveForGameControllers() {
-        NotificationCenter.default.addObserver(forName: .GCControllerDidConnect, object: nil, queue: nil) { _ in
-            var indexNumber = 0
-            for controller in GCController.controllers() {
-                if controller.extendedGamepad != nil {
-                    if #available(OSX 10.15, *) {
-                        print(controller.productCategory)
-                    }
-                    controller.playerIndex = GCControllerPlayerIndex(rawValue: indexNumber)!
-                    indexNumber += 1
-                    if self.motorSpeed == nil {
-                        self.motorSpeed = .first
-                        self.delegate?.updatePropellerButtonState()
-                    }
-                    controller.extendedGamepad!.valueChangedHandler = { [weak self] (gamepad: GCExtendedGamepad, element: GCControllerElement) in
-                        self?.controllerInputDetected(gamepad: gamepad, element: element, index: controller.playerIndex.rawValue)
-                    }
-                }
-            }
+        connectObserver = NotificationCenter.default.addObserver(forName: .GCControllerDidConnect, object: nil, queue: nil) { _ in
+            self.connectGameController()
         }
         
-        NotificationCenter.default.addObserver(forName: .GCControllerDidDisconnect, object: nil, queue: nil) { _ in
+        disconnectObserver = NotificationCenter.default.addObserver(forName: .GCControllerDidDisconnect, object: nil, queue: nil) { _ in
             self.motorSpeed = nil
             self.delegate?.updatePropellerButtonState()
+        }
+    }
+    
+    private func connectGameController() {
+        var indexNumber = 0
+        for controller in GCController.controllers() {
+            if controller.extendedGamepad != nil {
+                if #available(OSX 10.15, *) {
+                    print(controller.productCategory)
+                }
+                controller.playerIndex = GCControllerPlayerIndex(rawValue: indexNumber)!
+                indexNumber += 1
+                if self.motorSpeed == nil {
+                    self.motorSpeed = .first
+                    self.delegate?.updatePropellerButtonState()
+                }
+                controller.extendedGamepad!.valueChangedHandler = { [weak self] (gamepad: GCExtendedGamepad, element: GCControllerElement) in
+                    self?.controllerInputDetected(gamepad: gamepad, element: element, index: controller.playerIndex.rawValue)
+                }
+            }
         }
     }
     
