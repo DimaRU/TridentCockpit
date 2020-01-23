@@ -20,9 +20,11 @@
 * Controls camera, light, stabilization
 * Realtime drone orientation view
 * Show depth, temperature, camera and battery times
+* Past dives video from drone: watch, download and delete.
+* Show maintenance data: internal pressure, internal temperature, battery cycle count
 * Supports payload connection and control. (now GoPro HERO 3/3+)
 
-## Payload control
+### Payload control:
 #### GoPro HERO 3/3+
 * Control camera power
 * Camera recording control
@@ -30,11 +32,16 @@
 * Show battery level
 * Show recording time left
 
-## Supported gamepads
+### Supported gamepads
 
 * Xbox Wireless Controller
 * DualShock 4
 * Any MFi certified gamepad
+
+## Installation
+
+To install `Trident Cockpit`, download the release from the [releases page](https://github.com/DimaRU/TridentCockpit/releases).
+These are all signed and notarized to run out of the box on macOS 10.14+.
 
 ## Keyboard Shortcuts
 
@@ -65,11 +72,6 @@
 | <kbd>Y</kbd> | Drone view relative yaw |
 | <kbd>A</kbd> | Drone view absolute yaw |
 
-## Installation
-
-To install `Trident Cockpit`, download the release from the [releases page](https://github.com/DimaRU/TridentCockpit/releases).
-These are all signed and notarized to run out of the box on macOS 10.14+.
-
 ## Building from Source
 
 These instructions will get you a copy of the project up and running on your local machine for development purposes.
@@ -99,7 +101,7 @@ cd TridentCockpit
 
 ## Dependencies
 
-* [Eprosima Fast RTPS](https://github.com/eProsima/Fast-RTPS) - implementation of the OMG RTPS protocol. Apache license.
+* [Eprosima Fast RTPS](https://github.com/eProsima/Fast-RTPS) - implementation of the OMG RTPS protocol.
 * [Foonathan memory](https://github.com/foonathan/memory) - Fast RTPS dependency
 * [FastRTPSBridge](https://github.com/DimaRU/FastRTPSBridge) - A Swift wrapper for FastRTPS library
 * [CDRCodable](https://github.com/DimaRU/CDRCodable) - Zero code serialization/deserialization framework for Common Data Representation (CDR) binary format
@@ -109,6 +111,7 @@ cd TridentCockpit
 * [PromiseKit](https://github.com/mxcl/PromiseKit) - Promises for Swift & ObjC.
 * [Alamofire](https://github.com/Alamofire/Alamofire) - Elegant HTTP Networking in Swift.
 * [SwiftSH](https://github.com/Frugghi/SwiftSH) - A Swift SSH framework that wraps libssh2.
+* [Kingfisher](https://github.com/onevcat/Kingfisher) - A lightweight, pure-Swift library for downloading and caching images from the web.
 
 
 ## Author
