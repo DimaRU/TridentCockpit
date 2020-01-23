@@ -22,7 +22,7 @@
 * Show depth, temperature, camera and battery times
 * Past dives video from drone: watch, download and delete.
 * Show maintenance data: internal pressure, internal temperature, battery cycle count
-* Supports payload connection and control. (now GoPro HERO 3/3+)
+* Support payload connection and control. (now GoPro HERO 3/3+)
 
 ### Payload control:
 #### GoPro HERO 3/3+
@@ -116,7 +116,7 @@ cd TridentCockpit
 
 ## Author
 
-* **Dmitriy Borovikov** - [DimaRU](https://github.com/DimaRU), AOWD diver, iOS developer, Openrov Tdident Kickstarter backer #1284
+* **Dmitriy Borovikov** - [DimaRU](https://github.com/DimaRU), AOWD diver, iOS developer, Openrov Trident Kickstarter backer #1284
 
 ## License
 
