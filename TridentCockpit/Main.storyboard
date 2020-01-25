@@ -1008,7 +1008,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="knk-ef-7Td">
                                         <rect key="frame" x="2" y="4" width="106" height="30"/>
                                         <textFieldCell key="cell" alignment="center" title="Remaining time: 2h left" id="BJn-kc-g4o">
-                                            <font key="font" metaFont="controlContent"/>
+                                            <font key="font" metaFont="label" size="12"/>
                                             <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1086,7 +1086,7 @@
                                             <tableColumns>
                                                 <tableColumn width="195" minWidth="100" maxWidth="400" id="Az8-Gr-xRE">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="label" size="11"/>
+                                                        <font key="font" metaFont="message" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -1224,12 +1224,6 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <progressIndicator wantsLayer="YES" maxValue="1" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="bCB-Xp-ofF">
-                                <rect key="frame" x="114" y="4" width="150" height="20"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="SN6-bl-ivo"/>
-                                </constraints>
-                            </progressIndicator>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yVf-IX-UjS">
                                 <rect key="frame" x="270" y="8" width="145" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="10.1 GB of 20.0 GB free" id="79H-0u-vwI">
@@ -1238,19 +1232,28 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
+                            <levelIndicator verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RnP-QE-lCv">
+                                <rect key="frame" x="114" y="9" width="150" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="8" id="H48-bm-AQM"/>
+                                    <constraint firstAttribute="width" constant="150" id="Pj4-C7-XNL"/>
+                                </constraints>
+                                <levelIndicatorCell key="cell" alignment="left" doubleValue="14" maxValue="100" levelIndicatorStyle="continuousCapacity" id="bRY-Qn-sQv"/>
+                                <color key="fillColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </levelIndicator>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="8sd-5b-tAb" secondAttribute="bottom" constant="30" id="2Vc-K6-DdO"/>
-                            <constraint firstItem="yVf-IX-UjS" firstAttribute="leading" secondItem="bCB-Xp-ofF" secondAttribute="trailing" constant="8" id="9Vm-vC-hIb"/>
+                            <constraint firstItem="RnP-QE-lCv" firstAttribute="leading" secondItem="EKs-52-6u9" secondAttribute="trailing" constant="8" id="DhK-NG-pLc"/>
                             <constraint firstItem="mcn-Qy-t6v" firstAttribute="leading" secondItem="CCQ-5j-Eck" secondAttribute="leading" constant="20" id="Gzx-dd-t0k"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mcn-Qy-t6v" secondAttribute="trailing" constant="20" symbolic="YES" id="JsY-vD-aEV"/>
+                            <constraint firstItem="RnP-QE-lCv" firstAttribute="centerY" secondItem="EKs-52-6u9" secondAttribute="centerY" constant="1" id="M2w-lw-Iga"/>
                             <constraint firstItem="8sd-5b-tAb" firstAttribute="leading" secondItem="CCQ-5j-Eck" secondAttribute="leading" id="MQh-Jy-lJg"/>
-                            <constraint firstItem="bCB-Xp-ofF" firstAttribute="firstBaseline" secondItem="EKs-52-6u9" secondAttribute="firstBaseline" constant="6" id="ODd-Vn-2Hg"/>
                             <constraint firstItem="EKs-52-6u9" firstAttribute="leading" secondItem="CCQ-5j-Eck" secondAttribute="leading" constant="8" id="Ro4-Ke-ZWw"/>
                             <constraint firstItem="mcn-Qy-t6v" firstAttribute="top" secondItem="CCQ-5j-Eck" secondAttribute="top" constant="8" id="S6l-QR-6bt"/>
                             <constraint firstAttribute="trailing" secondItem="8sd-5b-tAb" secondAttribute="trailing" id="Tg8-vB-fqG"/>
+                            <constraint firstItem="yVf-IX-UjS" firstAttribute="leading" secondItem="RnP-QE-lCv" secondAttribute="trailing" constant="8" id="WMR-AY-Mhb"/>
                             <constraint firstAttribute="bottom" secondItem="EKs-52-6u9" secondAttribute="bottom" constant="8" id="epx-oF-R1o"/>
-                            <constraint firstItem="bCB-Xp-ofF" firstAttribute="leading" secondItem="EKs-52-6u9" secondAttribute="trailing" constant="8" id="iLq-JR-YFL"/>
                             <constraint firstItem="8sd-5b-tAb" firstAttribute="top" secondItem="CCQ-5j-Eck" secondAttribute="top" constant="30" id="ltj-dC-v1L"/>
                             <constraint firstItem="yVf-IX-UjS" firstAttribute="centerY" secondItem="EKs-52-6u9" secondAttribute="centerY" id="met-vF-kor"/>
                             <constraint firstItem="v32-SX-WwD" firstAttribute="centerY" secondItem="CCQ-5j-Eck" secondAttribute="centerY" id="q3a-Uf-wyl"/>
@@ -1258,7 +1261,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="availableSpaceIndicator" destination="bCB-Xp-ofF" id="mf6-Ui-IYW"/>
+                        <outlet property="availableSpaceIndicator" destination="RnP-QE-lCv" id="hkU-Lu-MRF"/>
                         <outlet property="availableSpaceLabel" destination="yVf-IX-UjS" id="c0q-W6-ln6"/>
                         <outlet property="collectionView" destination="Btu-8U-52P" id="3yH-VS-No7"/>
                         <outlet property="deleteAfterCheckbox" destination="mcn-Qy-t6v" id="a3k-9Y-BIC"/>

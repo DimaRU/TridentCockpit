@@ -16,8 +16,8 @@ class PastDivesViewController: NSViewController {
     @IBOutlet var toolbar: NSToolbar!
     @IBOutlet weak var deleteAfterCheckbox: NSButton!
     @IBOutlet weak var noVideoLabel: NSTextField!
-    @IBOutlet weak var availableSpaceIndicator: NSProgressIndicator!
     @IBOutlet weak var availableSpaceLabel: NSTextField!
+    @IBOutlet weak var availableSpaceIndicator: NSLevelIndicator!
     
     private var previewWindowController: NSWindowController?
     
@@ -68,7 +68,7 @@ class PastDivesViewController: NSViewController {
                 let gigabyte: Double = 1000 * 1000 * 1000
                 let total = Double(recordingStats.diskSpaceTotalBytes) / gigabyte
                 let aviable = Double(recordingStats.diskSpaceTotalBytes - recordingStats.diskSpaceUsedBytes) / gigabyte
-                self?.availableSpaceIndicator.doubleValue = level
+                self?.availableSpaceIndicator.doubleValue = level * 100
                 self?.availableSpaceLabel.stringValue = String(format: "%.1f GB of %.1f GB free", aviable, total)
             }
         }
