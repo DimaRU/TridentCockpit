@@ -270,7 +270,6 @@
 		0A82781123A641750039A774 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
 		0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemIdentifier.swift; sourceTree = "<group>"; };
 		0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNotifications.swift; sourceTree = "<group>"; };
-		0A95B39623C345EE00468DAF /* ToolbarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarDelegate.swift; sourceTree = "<group>"; };
 		0A98306223C22FCA00BD234B /* AuxCameraControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuxCameraControlView.xib; sourceTree = "<group>"; };
 		0A98306C23C22FCA00BD234B /* AuxCameraControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuxCameraControlView.swift; sourceTree = "<group>"; };
 		0A98306F23C22FFD00BD234B /* AuxPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuxPlayerViewController.swift; sourceTree = "<group>"; };
@@ -513,7 +512,6 @@
 				0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */,
 				0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */,
 				0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */,
-				0A95B39623C345EE00468DAF /* ToolbarDelegate.swift */,
 			);
 			path = DashboardViewController;
 			sourceTree = "<group>";
