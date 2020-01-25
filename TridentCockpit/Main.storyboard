@@ -468,7 +468,7 @@
                     </connections>
                 </viewController>
                 <customObject id="IFr-xP-tTH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <toolbar implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="Vrq-Ni-Fy9">
+                <toolbar implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" displayMode="iconAndLabel" sizeMode="regular" id="Vrq-Ni-Fy9">
                     <allowedToolbarItems>
                         <toolbarItem implicitItemIdentifier="45AAC07D-F73A-432F-B05C-A3421F955A2D" explicitItemIdentifier="GoDive" label="Pilot" paletteLabel="Pilot" toolTip="Pilot Trident" image="underwater" sizingBehavior="auto" id="q4g-f6-iFT">
                             <button key="view" verticalHuggingPriority="750" id="uwk-ZN-6tB">
@@ -770,7 +770,7 @@
                     </connections>
                 </viewController>
                 <customObject id="Xob-EL-jEy" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <toolbar implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="YVA-qq-qdb">
+                <toolbar implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" displayMode="iconAndLabel" sizeMode="regular" id="YVA-qq-qdb">
                     <allowedToolbarItems>
                         <toolbarItem implicitItemIdentifier="CB6232D2-8226-418B-BB3B-659DBAB8F2C2" label="Back" paletteLabel="Back" image="NSGoBackTemplate" sizingBehavior="auto" id="B3c-fJ-KPF">
                             <nil key="toolTip"/>
