@@ -7,7 +7,7 @@ import Cocoa
 import SceneKit
 import FastRTPSBridge
 
-class DiveViewController: NSViewController, NSWindowDelegate {
+class DiveViewController: NSViewController {
     @IBOutlet weak var videoView: VideoView!
     @IBOutlet weak var depthLabel: NSTextField!
     @IBOutlet weak var tempLabel: NSTextField!
