@@ -483,26 +483,26 @@
                                 <action selector="goDiveScreen:" target="eM0-Cy-sgR" id="qak-H2-F8B"/>
                             </connections>
                         </toolbarItem>
-                        <toolbarItem implicitItemIdentifier="23808989-3A90-41CF-A132-510A2CF19CC0" explicitItemIdentifier="GoMaintenance" label="Maintenance" paletteLabel="Maintenance" toolTip="Trident maintenance data" image="NSActionTemplate" sizingBehavior="auto" id="cZB-VG-vJf">
+                        <toolbarItem implicitItemIdentifier="23808989-3A90-41CF-A132-510A2CF19CC0" explicitItemIdentifier="GoMaintenance" label="Maintenance" paletteLabel="Maintenance" toolTip="Trident maintenance data" sizingBehavior="auto" id="cZB-VG-vJf">
                             <button key="view" verticalHuggingPriority="750" id="IVI-CD-iOp">
-                                <rect key="frame" x="13" y="14" width="50" height="25"/>
+                                <rect key="frame" x="12" y="14" width="51" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSActionTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ioc-vH-bMS">
+                                <buttonCell key="cell" type="roundTextured" title="􀅴" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ioc-vH-bMS">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="14"/>
                                 </buttonCell>
                             </button>
                             <connections>
                                 <action selector="goMaintenanceScreen:" target="eM0-Cy-sgR" id="AiA-M2-jIh"/>
                             </connections>
                         </toolbarItem>
-                        <toolbarItem implicitItemIdentifier="6394BEF7-961A-4DF5-B0E7-30DE65CE57B6" explicitItemIdentifier="GoPastDives" label="Past Dives" paletteLabel="Past Dives" toolTip="View Past Dives" image="NSQuickLookTemplate" sizingBehavior="auto" id="rpp-SR-O89">
+                        <toolbarItem implicitItemIdentifier="6394BEF7-961A-4DF5-B0E7-30DE65CE57B6" explicitItemIdentifier="GoPastDives" label="Past Dives" paletteLabel="Past Dives" toolTip="View Past Dives" sizingBehavior="auto" id="rpp-SR-O89">
                             <button key="view" verticalHuggingPriority="750" id="Dg9-nP-CCN">
-                                <rect key="frame" x="6" y="14" width="50" height="25"/>
+                                <rect key="frame" x="6" y="14" width="51" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSQuickLookTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EuO-d8-Ep6">
+                                <buttonCell key="cell" type="roundTextured" title="􀎶" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EuO-d8-Ep6">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="14"/>
                                 </buttonCell>
                             </button>
                             <connections>
@@ -523,13 +523,13 @@
                                 <action selector="connectWifiButtonPress:" target="eM0-Cy-sgR" id="iG5-ce-OWB"/>
                             </connections>
                         </toolbarItem>
-                        <toolbarItem implicitItemIdentifier="DAC9F79E-983E-4AE8-A1AE-A7D2FDB2D9D1" explicitItemIdentifier="ConnectCamera" label="Payload" paletteLabel="Payload" toolTip="Connect camera payload" image="camera.fill" sizingBehavior="auto" id="H56-px-saI">
+                        <toolbarItem implicitItemIdentifier="DAC9F79E-983E-4AE8-A1AE-A7D2FDB2D9D1" explicitItemIdentifier="ConnectCamera" label="Payload" paletteLabel="Payload" toolTip="Connect camera payload" sizingBehavior="auto" id="H56-px-saI">
                             <button key="view" verticalHuggingPriority="750" id="Iqe-tL-s1s">
-                                <rect key="frame" x="0.0" y="14" width="50" height="25"/>
+                                <rect key="frame" x="0.0" y="14" width="51" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="camera.fill" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bkq-YH-z2C">
+                                <buttonCell key="cell" type="roundTextured" title="􀌟" bezelStyle="texturedRounded" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bkq-YH-z2C">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="menu" size="14"/>
                                 </buttonCell>
                             </button>
                             <connections>
@@ -1008,7 +1008,7 @@
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="knk-ef-7Td">
                                         <rect key="frame" x="2" y="4" width="106" height="30"/>
                                         <textFieldCell key="cell" alignment="center" title="Remaining time: 2h left" id="BJn-kc-g4o">
-                                            <font key="font" metaFont="label" size="12"/>
+                                            <font key="font" metaFont="controlContent"/>
                                             <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -1086,7 +1086,7 @@
                                             <tableColumns>
                                                 <tableColumn width="195" minWidth="100" maxWidth="400" id="Az8-Gr-xRE">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                        <font key="font" metaFont="message" size="11"/>
+                                                        <font key="font" metaFont="menu" size="11"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                         <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                     </tableHeaderCell>
@@ -1311,24 +1311,24 @@
                                 <action selector="deselectAllButtonPress:" target="BO7-PJ-CFC" id="cpM-IS-vce"/>
                             </connections>
                         </toolbarItem>
-                        <toolbarItem implicitItemIdentifier="88871647-E854-4874-8153-1EFEC9B40428" label="Download" paletteLabel="Download" toolTip="Download selected" image="NSTouchBarDownloadTemplate" sizingBehavior="auto" id="RKE-KV-H9p">
+                        <toolbarItem implicitItemIdentifier="88871647-E854-4874-8153-1EFEC9B40428" label="Download" paletteLabel="Download" toolTip="Download selected" sizingBehavior="auto" id="RKE-KV-H9p">
                             <button key="view" verticalHuggingPriority="750" id="QH8-WI-zGQ">
-                                <rect key="frame" x="5" y="14" width="50" height="25"/>
+                                <rect key="frame" x="4" y="14" width="51" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarDownloadTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dsn-cp-yjY">
+                                <buttonCell key="cell" type="roundTextured" title="􀈄" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="dsn-cp-yjY">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
+                                    <font key="font" metaFont="system" size="14"/>
                                 </buttonCell>
                             </button>
                             <connections>
                                 <action selector="downloadButtonPress:" target="BO7-PJ-CFC" id="cXW-aZ-glF"/>
                             </connections>
                         </toolbarItem>
-                        <toolbarItem implicitItemIdentifier="49B411E2-F14B-4724-85D6-5EA65AB05C5D" label="Delete" paletteLabel="Delete" toolTip="Delete selected" image="NSTouchBarDeleteTemplate" sizingBehavior="auto" id="Yz4-ii-7ON">
+                        <toolbarItem implicitItemIdentifier="49B411E2-F14B-4724-85D6-5EA65AB05C5D" label="Delete" paletteLabel="Delete" toolTip="Delete selected" sizingBehavior="auto" id="Yz4-ii-7ON">
                             <button key="view" verticalHuggingPriority="750" id="sbq-55-9Ev">
-                                <rect key="frame" x="0.0" y="14" width="50" height="25"/>
+                                <rect key="frame" x="0.0" y="14" width="52" height="24"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="roundTextured" bezelStyle="texturedRounded" image="NSTouchBarDeleteTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kT9-q7-ite">
+                                <buttonCell key="cell" type="roundTextured" title="􀈑" bezelStyle="texturedRounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kT9-q7-ite">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
@@ -1374,13 +1374,9 @@
         <image name="NSActionTemplate" width="14" height="14"/>
         <image name="NSAddTemplate" width="11" height="11"/>
         <image name="NSGoBackTemplate" width="9" height="12"/>
-        <image name="NSQuickLookTemplate" width="19" height="12"/>
         <image name="NSRefreshTemplate" width="11" height="15"/>
         <image name="NSRemoveTemplate" width="11" height="11"/>
-        <image name="NSTouchBarDeleteTemplate" width="15" height="30"/>
-        <image name="NSTouchBarDownloadTemplate" width="18" height="30"/>
         <image name="Prop 1" width="35" height="35"/>
-        <image name="camera.fill" width="12" height="12"/>
         <image name="underwater" width="18" height="18"/>
         <namedColor name="stopActive">
             <color white="0.10199999809265137" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
