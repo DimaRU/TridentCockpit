@@ -2,7 +2,7 @@
 <img src="https://github.com/DimaRU/TridentCockpit/raw/master/TridentCockpit/Assets.xcassets/AppIcon.appiconset/icon_256x256.png" />
 </p>
 
-<p align="center">TridentCockpit is an unofficial macOS control app for the <a href="https://www.sofarocean.com/products/trident">Sofar Trident Underwater Drone</a>.</p>
+<p align="center">TridentCockpit is an unofficial macOS control app for the <a href="https://www.sofarocean.com/products/trident?aff=30">Sofar Trident Underwater Drone</a>.</p>
 
 <p align=center>
  ·
