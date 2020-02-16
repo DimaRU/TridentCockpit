@@ -19,6 +19,67 @@
 		0A1A5B8623CE4B550038EABE /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A1A5B8423CE4B550038EABE /* HeaderView.xib */; };
 		0A1A5B8823CE4B760038EABE /* RecordingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B8723CE4B760038EABE /* RecordingsModel.swift */; };
 		0A1A5BA023CE57890038EABE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1A5B9F23CE57890038EABE /* Kingfisher */; };
+		0A1D09F823F93FD6006D9AFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D09F723F93FD6006D9AFD /* AppDelegate.swift */; };
+		0A1D09FA23F93FD6006D9AFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D09F923F93FD6006D9AFD /* SceneDelegate.swift */; };
+		0A1D09FC23F93FD6006D9AFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D09FB23F93FD6006D9AFD /* ViewController.swift */; };
+		0A1D09FF23F93FD6006D9AFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A1D09FD23F93FD6006D9AFD /* Main.storyboard */; };
+		0A1D0A0123F93FD7006D9AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A1D0A0023F93FD7006D9AFD /* Assets.xcassets */; };
+		0A1D0A0423F93FD7006D9AFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A1D0A0223F93FD7006D9AFD /* LaunchScreen.storyboard */; };
+		0A1D0A1523F940E2006D9AFD /* FastRTPSBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790D23958380006F10FF /* FastRTPSBridge.framework */; };
+		0A1D0A1623F940E2006D9AFD /* FastRTPSBridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790D23958380006F10FF /* FastRTPSBridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0A1D0A1823F940E8006D9AFD /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69DFE23A600FA0037DBDD /* SwiftSH.framework */; };
+		0A1D0A1923F940E8006D9AFD /* SwiftSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69DFE23A600FA0037DBDD /* SwiftSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0A1D0A1B23F941AA006D9AFD /* PayloadProvision.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0ADA653723B119880090D757 /* PayloadProvision.sh */; };
+		0A1D0A1C23F941AA006D9AFD /* PayloadCleanup.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0AA4290123C38D3B003476CB /* PayloadCleanup.sh */; };
+		0A1D0A1D23F941B2006D9AFD /* RecordingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B8723CE4B760038EABE /* RecordingsModel.swift */; };
+		0A1D0A1E23F941B2006D9AFD /* GoproStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5E3FBE23BFA10E00EAC519 /* GoproStatus.swift */; };
+		0A1D0A1F23F941B2006D9AFD /* APIVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F823A9723E00FE9918 /* APIVersion.swift */; };
+		0A1D0A2023F941B2006D9AFD /* DeviceState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FA23A9726200FE9918 /* DeviceState.swift */; };
+		0A1D0A2123F941B2006D9AFD /* SSIDInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FC23A9729800FE9918 /* SSIDInfo.swift */; };
+		0A1D0A2223F941B2006D9AFD /* ConnectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FE23A972B900FE9918 /* ConnectionInfo.swift */; };
+		0A1D0A2323F941B2006D9AFD /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20023A9735300FE9918 /* AppInfo.swift */; };
+		0A1D0A2423F941BD006D9AFD /* RovTopic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E123636B0200817593 /* RovTopic.swift */; };
+		0A1D0A2523F941BD006D9AFD /* RovBarometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E223636B0200817593 /* RovBarometer.swift */; };
+		0A1D0A2623F941BD006D9AFD /* I2CStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E323636B0200817593 /* I2CStats.swift */; };
+		0A1D0A2723F941BD006D9AFD /* BatteryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E423636B0200817593 /* BatteryState.swift */; };
+		0A1D0A2823F941BD006D9AFD /* RovCameraObjectTrack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E523636B0200817593 /* RovCameraObjectTrack.swift */; };
+		0A1D0A2923F941BD006D9AFD /* RovSafetyState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E623636B0200817593 /* RovSafetyState.swift */; };
+		0A1D0A2A23F941BD006D9AFD /* RovVector3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E723636B0200817593 /* RovVector3.swift */; };
+		0A1D0A2B23F941BD006D9AFD /* RovControlDescriptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E823636B0200817593 /* RovControlDescriptor.swift */; };
+		0A1D0A2C23F941BD006D9AFD /* RovBeacon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130E923636B0200817593 /* RovBeacon.swift */; };
+		0A1D0A2D23F941BD006D9AFD /* RovQuaternion+extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130EA23636B0200817593 /* RovQuaternion+extensions.swift */; };
+		0A1D0A2E23F941BD006D9AFD /* RovFuelgauge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130EB23636B0200817593 /* RovFuelgauge.swift */; };
+		0A1D0A2F23F941BD006D9AFD /* RovFirmware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130EC23636B0200817593 /* RovFirmware.swift */; };
+		0A1D0A3023F941BD006D9AFD /* RovAttitude.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130ED23636B0200817593 /* RovAttitude.swift */; };
+		0A1D0A3123F941BD006D9AFD /* RovCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130EE23636B0200817593 /* RovCommon.swift */; };
+		0A1D0A3223F941BD006D9AFD /* RovTridentControlTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130EF23636B0200817593 /* RovTridentControlTarget.swift */; };
+		0A1D0A3323F941BD006D9AFD /* RovPoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F023636B0200817593 /* RovPoint.swift */; };
+		0A1D0A3423F941BD006D9AFD /* RovTridentMotorCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F123636B0200817593 /* RovTridentMotorCommand.swift */; };
+		0A1D0A3523F941BD006D9AFD /* RovTemperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F223636B0200817593 /* RovTemperature.swift */; };
+		0A1D0A3623F941BD006D9AFD /* RovDepth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F323636B0200817593 /* RovDepth.swift */; };
+		0A1D0A3723F941BD006D9AFD /* RovQuaternion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F423636B0200817593 /* RovQuaternion.swift */; };
+		0A1D0A3823F941BD006D9AFD /* RovControllerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F523636B0200817593 /* RovControllerStatus.swift */; };
+		0A1D0A3923F941BD006D9AFD /* DDSTypeString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F623636B0200817593 /* DDSTypeString.swift */; };
+		0A1D0A3A23F941BD006D9AFD /* RovRecording.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F723636B0200817593 /* RovRecording.swift */; };
+		0A1D0A3B23F941BD006D9AFD /* RovVideoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F823636B0200817593 /* RovVideoData.swift */; };
+		0A1D0A3C23F941BD006D9AFD /* RovSubsystemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130F923636B0200817593 /* RovSubsystemStatus.swift */; };
+		0A1D0A3D23F941BD006D9AFD /* RovChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130FA23636B0200817593 /* RovChannel.swift */; };
+		0A1D0A3E23F941BD006D9AFD /* RovCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130FB23636B0200817593 /* RovCamera.swift */; };
+		0A1D0A3F23F941BD006D9AFD /* RovLightPower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130FC23636B0200817593 /* RovLightPower.swift */; };
+		0A1D0A4023F941BD006D9AFD /* RovIMUCalibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */; };
+		0A1D0A4123F941C4006D9AFD /* DDSDiscoveryListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFE9C3723B3ED7700C13162 /* DDSDiscoveryListener.swift */; };
+		0A1D0A4223F941C4006D9AFD /* RestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20223A97A3500FE9918 /* RestProvider.swift */; };
+		0A1D0A4323F941C4006D9AFD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5107DA23AA807D00C19289 /* NetworkError.swift */; };
+		0A1D0A4423F941C4006D9AFD /* WifiServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F323A94A5B00FE9918 /* WifiServiceAPI.swift */; };
+		0A1D0A4523F941C4006D9AFD /* ResinAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F123A9443E00FE9918 /* ResinAPI.swift */; };
+		0A1D0A4623F941C4006D9AFD /* RecordingsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F523A94FAC00FE9918 /* RecordingsAPI.swift */; };
+		0A1D0A4723F941C4006D9AFD /* Gopro3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A457D8D23B78A7C0042C250 /* Gopro3API.swift */; };
+		0A1D0A4823F941C4006D9AFD /* FastRTPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71313A23637F0700817593 /* FastRTPS.swift */; };
+		0A1D0A5723F948F3006D9AFD /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D0A5623F948F3006D9AFD /* Moya */; };
+		0A1D0A5923F948F9006D9AFD /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D0A5823F948F9006D9AFD /* PromiseKit */; };
+		0A1D0A5B23F948FF006D9AFD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D0A5A23F948FF006D9AFD /* Kingfisher */; };
+		0A1D0A5D23F94942006D9AFD /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7E23CE4B2F0038EABE /* Date+Extensions.swift */; };
+		0A1D0A5E23F94942006D9AFD /* iso8601date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7F23CE4B2F0038EABE /* iso8601date.swift */; };
 		0A2E1DAE23B0CAD9009048A5 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */; };
 		0A2E42BC236B0EE900B5C569 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E42BB236B0EE900B5C569 /* VideoView.swift */; };
 		0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
@@ -111,6 +172,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0A1D0A4923F9421D006D9AFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 180BD1FE1B4C622D000DB241;
+			remoteInfo = "SwiftSH-iOS";
+		};
+		0A1D0A4B23F94222006D9AFD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A8A37DA2366DB1B008E8DC1;
+			remoteInfo = "FastRTPSBridge iOS";
+		};
 		0A59790A23958380006F10FF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */;
@@ -149,6 +224,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		0A1D0A1723F940E2006D9AFD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				0A1D0A1623F940E2006D9AFD /* FastRTPSBridge.framework in Embed Frameworks */,
+				0A1D0A1923F940E8006D9AFD /* SwiftSH.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0A5CBCAD23675F740055131A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -193,6 +280,15 @@
 		0A1A5B8323CE4B550038EABE /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		0A1A5B8423CE4B550038EABE /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		0A1A5B8723CE4B760038EABE /* RecordingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsModel.swift; sourceTree = "<group>"; };
+		0A1D09F523F93FD6006D9AFD /* TridentCockpitiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TridentCockpitiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A1D09F723F93FD6006D9AFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0A1D09F923F93FD6006D9AFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		0A1D09FB23F93FD6006D9AFD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0A1D09FE23F93FD6006D9AFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0A1D0A0023F93FD7006D9AFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0A1D0A0323F93FD7006D9AFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0A1D0A0523F93FD7006D9AFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0A1D0A1223F93FF0006D9AFD /* TridentCockpitiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TridentCockpitiOS.entitlements; sourceTree = "<group>"; };
 		0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		0A2E42BB236B0EE900B5C569 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		0A2FF3112363A0BD008FD68B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -283,6 +379,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0A1D09F223F93FD6006D9AFD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A1D0A1523F940E2006D9AFD /* FastRTPSBridge.framework in Frameworks */,
+				0A1D0A5923F948F9006D9AFD /* PromiseKit in Frameworks */,
+				0A1D0A1823F940E8006D9AFD /* SwiftSH.framework in Frameworks */,
+				0A1D0A5723F948F3006D9AFD /* Moya in Frameworks */,
+				0A1D0A5B23F948FF006D9AFD /* Kingfisher in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0A7130B1236369EA00817593 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -318,6 +426,41 @@
 			isa = PBXGroup;
 			children = (
 				0A7130CA23636AF100817593 /* Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0A1D09F623F93FD6006D9AFD /* TridentCockpitiOS */ = {
+			isa = PBXGroup;
+			children = (
+				0A1D0A1223F93FF0006D9AFD /* TridentCockpitiOS.entitlements */,
+				0A1D09F723F93FD6006D9AFD /* AppDelegate.swift */,
+				0A1D09F923F93FD6006D9AFD /* SceneDelegate.swift */,
+				0A1D09FB23F93FD6006D9AFD /* ViewController.swift */,
+				0A1D09FD23F93FD6006D9AFD /* Main.storyboard */,
+				0A1D0A0023F93FD7006D9AFD /* Assets.xcassets */,
+				0A1D0A0223F93FD7006D9AFD /* LaunchScreen.storyboard */,
+				0A1D0A0523F93FD7006D9AFD /* Info.plist */,
+			);
+			path = TridentCockpitiOS;
+			sourceTree = "<group>";
+		};
+		0A1D0A1A23F94136006D9AFD /* Common code */ = {
+			isa = PBXGroup;
+			children = (
+				0A1D0A5C23F9492E006D9AFD /* Extensions */,
+				0ADA653723B119880090D757 /* PayloadProvision.sh */,
+				0AA4290123C38D3B003476CB /* PayloadCleanup.sh */,
+				0A3FD1F723A9720200FE9918 /* APIModel */,
+				0A7130E023636B0200817593 /* DDSModel */,
+				0A3FD1F023A9439100FE9918 /* Networking */,
+			);
+			path = "Common code";
+			sourceTree = "<group>";
+		};
+		0A1D0A5C23F9492E006D9AFD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
 				0A1A5B7E23CE4B2F0038EABE /* Date+Extensions.swift */,
 				0A1A5B7F23CE4B2F0038EABE /* iso8601date.swift */,
 			);
@@ -398,6 +541,8 @@
 			children = (
 				0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */,
 				0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */,
+				0A1D09F623F93FD6006D9AFD /* TridentCockpitiOS */,
+				0A1D0A1A23F94136006D9AFD /* Common code */,
 				0A7130B6236369EA00817593 /* TridentCockpit */,
 				0A5CBC9A23675F410055131A /* Fonts */,
 				0A7130B5236369EA00817593 /* Products */,
@@ -409,6 +554,7 @@
 			isa = PBXGroup;
 			children = (
 				0A7130B4236369EA00817593 /* TridentCockpit.app */,
+				0A1D09F523F93FD6006D9AFD /* TridentCockpitiOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -429,16 +575,11 @@
 				0A9E55BE23BC0AFA008F8A9A /* Average.swift */,
 				0A7130CD23636AF100817593 /* AppDelegate.swift */,
 				0A1A5B8223CE4B3B0038EABE /* Extensions */,
-				0A3FD1F023A9439100FE9918 /* Networking */,
-				0A3FD1F723A9720200FE9918 /* APIModel */,
-				0A7130E023636B0200817593 /* DDSModel */,
 				0A5CBC992367507F0055131A /* ThirdParty */,
 				0A71311B23636B5C00817593 /* TridentCockpit.scnassets */,
 				0A2FF3112363A0BD008FD68B /* Assets.xcassets */,
 				0A7130C0236369EC00817593 /* Info.plist */,
 				0A56D0BE23D7119900D9495A /* InfoPlist.strings */,
-				0ADA653723B119880090D757 /* PayloadProvision.sh */,
-				0AA4290123C38D3B003476CB /* PayloadCleanup.sh */,
 				0A71311923636B1700817593 /* Main.storyboard */,
 				0A2FF3122363A13B008FD68B /* TridentCockpit.entitlements */,
 			);
@@ -529,6 +670,31 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0A1D09F423F93FD6006D9AFD /* TridentCockpitiOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0A1D0A1123F93FD7006D9AFD /* Build configuration list for PBXNativeTarget "TridentCockpitiOS" */;
+			buildPhases = (
+				0A1D09F123F93FD6006D9AFD /* Sources */,
+				0A1D09F223F93FD6006D9AFD /* Frameworks */,
+				0A1D09F323F93FD6006D9AFD /* Resources */,
+				0A1D0A1723F940E2006D9AFD /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0A1D0A4C23F94222006D9AFD /* PBXTargetDependency */,
+				0A1D0A4A23F9421D006D9AFD /* PBXTargetDependency */,
+			);
+			name = TridentCockpitiOS;
+			packageProductDependencies = (
+				0A1D0A5623F948F3006D9AFD /* Moya */,
+				0A1D0A5823F948F9006D9AFD /* PromiseKit */,
+				0A1D0A5A23F948FF006D9AFD /* Kingfisher */,
+			);
+			productName = TridentCockpitiOS;
+			productReference = 0A1D09F523F93FD6006D9AFD /* TridentCockpitiOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 		0A7130B3236369EA00817593 /* TridentCockpit */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0A7130C4236369EC00817593 /* Build configuration list for PBXNativeTarget "TridentCockpit" */;
@@ -560,10 +726,13 @@
 		0A7130AC236369EA00817593 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1110;
+				LastSwiftUpdateCheck = 1140;
 				LastUpgradeCheck = 1120;
 				ORGANIZATIONNAME = "Dmitriy Borovikov";
 				TargetAttributes = {
+					0A1D09F423F93FD6006D9AFD = {
+						CreatedOnToolsVersion = 11.4;
+					};
 					0A7130B3236369EA00817593 = {
 						CreatedOnToolsVersion = 11.1;
 						LastSwiftMigration = 1110;
@@ -600,6 +769,7 @@
 			projectRoot = "";
 			targets = (
 				0A7130B3236369EA00817593 /* TridentCockpit */,
+				0A1D09F423F93FD6006D9AFD /* TridentCockpitiOS */,
 			);
 		};
 /* End PBXProject section */
@@ -643,6 +813,18 @@
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0A1D09F323F93FD6006D9AFD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A1D0A0423F93FD7006D9AFD /* LaunchScreen.storyboard in Resources */,
+				0A1D0A0123F93FD7006D9AFD /* Assets.xcassets in Resources */,
+				0A1D09FF23F93FD6006D9AFD /* Main.storyboard in Resources */,
+				0A1D0A1C23F941AA006D9AFD /* PayloadCleanup.sh in Resources */,
+				0A1D0A1B23F941AA006D9AFD /* PayloadProvision.sh in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0A7130B2236369EA00817593 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -664,6 +846,62 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0A1D09F123F93FD6006D9AFD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0A1D0A2623F941BD006D9AFD /* I2CStats.swift in Sources */,
+				0A1D0A5E23F94942006D9AFD /* iso8601date.swift in Sources */,
+				0A1D0A2123F941B2006D9AFD /* SSIDInfo.swift in Sources */,
+				0A1D0A4823F941C4006D9AFD /* FastRTPS.swift in Sources */,
+				0A1D0A3E23F941BD006D9AFD /* RovCamera.swift in Sources */,
+				0A1D0A3923F941BD006D9AFD /* DDSTypeString.swift in Sources */,
+				0A1D0A2323F941B2006D9AFD /* AppInfo.swift in Sources */,
+				0A1D0A2E23F941BD006D9AFD /* RovFuelgauge.swift in Sources */,
+				0A1D0A4123F941C4006D9AFD /* DDSDiscoveryListener.swift in Sources */,
+				0A1D0A3323F941BD006D9AFD /* RovPoint.swift in Sources */,
+				0A1D0A3723F941BD006D9AFD /* RovQuaternion.swift in Sources */,
+				0A1D0A2923F941BD006D9AFD /* RovSafetyState.swift in Sources */,
+				0A1D0A2B23F941BD006D9AFD /* RovControlDescriptor.swift in Sources */,
+				0A1D0A4023F941BD006D9AFD /* RovIMUCalibration.swift in Sources */,
+				0A1D0A3C23F941BD006D9AFD /* RovSubsystemStatus.swift in Sources */,
+				0A1D0A2D23F941BD006D9AFD /* RovQuaternion+extensions.swift in Sources */,
+				0A1D0A3A23F941BD006D9AFD /* RovRecording.swift in Sources */,
+				0A1D0A4323F941C4006D9AFD /* NetworkError.swift in Sources */,
+				0A1D0A3623F941BD006D9AFD /* RovDepth.swift in Sources */,
+				0A1D0A1E23F941B2006D9AFD /* GoproStatus.swift in Sources */,
+				0A1D0A2823F941BD006D9AFD /* RovCameraObjectTrack.swift in Sources */,
+				0A1D0A4623F941C4006D9AFD /* RecordingsAPI.swift in Sources */,
+				0A1D0A3D23F941BD006D9AFD /* RovChannel.swift in Sources */,
+				0A1D09FC23F93FD6006D9AFD /* ViewController.swift in Sources */,
+				0A1D0A2423F941BD006D9AFD /* RovTopic.swift in Sources */,
+				0A1D0A3523F941BD006D9AFD /* RovTemperature.swift in Sources */,
+				0A1D0A3823F941BD006D9AFD /* RovControllerStatus.swift in Sources */,
+				0A1D0A3023F941BD006D9AFD /* RovAttitude.swift in Sources */,
+				0A1D0A4223F941C4006D9AFD /* RestProvider.swift in Sources */,
+				0A1D0A3B23F941BD006D9AFD /* RovVideoData.swift in Sources */,
+				0A1D0A2223F941B2006D9AFD /* ConnectionInfo.swift in Sources */,
+				0A1D0A4523F941C4006D9AFD /* ResinAPI.swift in Sources */,
+				0A1D0A4723F941C4006D9AFD /* Gopro3API.swift in Sources */,
+				0A1D0A3423F941BD006D9AFD /* RovTridentMotorCommand.swift in Sources */,
+				0A1D0A2F23F941BD006D9AFD /* RovFirmware.swift in Sources */,
+				0A1D0A2A23F941BD006D9AFD /* RovVector3.swift in Sources */,
+				0A1D0A2C23F941BD006D9AFD /* RovBeacon.swift in Sources */,
+				0A1D0A1D23F941B2006D9AFD /* RecordingsModel.swift in Sources */,
+				0A1D0A1F23F941B2006D9AFD /* APIVersion.swift in Sources */,
+				0A1D0A3123F941BD006D9AFD /* RovCommon.swift in Sources */,
+				0A1D0A2723F941BD006D9AFD /* BatteryState.swift in Sources */,
+				0A1D0A2023F941B2006D9AFD /* DeviceState.swift in Sources */,
+				0A1D0A5D23F94942006D9AFD /* Date+Extensions.swift in Sources */,
+				0A1D0A3223F941BD006D9AFD /* RovTridentControlTarget.swift in Sources */,
+				0A1D0A3F23F941BD006D9AFD /* RovLightPower.swift in Sources */,
+				0A1D0A4423F941C4006D9AFD /* WifiServiceAPI.swift in Sources */,
+				0A1D0A2523F941BD006D9AFD /* RovBarometer.swift in Sources */,
+				0A1D09F823F93FD6006D9AFD /* AppDelegate.swift in Sources */,
+				0A1D09FA23F93FD6006D9AFD /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0A7130B0236369EA00817593 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -746,7 +984,36 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		0A1D0A4A23F9421D006D9AFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "SwiftSH-iOS";
+			targetProxy = 0A1D0A4923F9421D006D9AFD /* PBXContainerItemProxy */;
+		};
+		0A1D0A4C23F94222006D9AFD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "FastRTPSBridge iOS";
+			targetProxy = 0A1D0A4B23F94222006D9AFD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
+		0A1D09FD23F93FD6006D9AFD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A1D09FE23F93FD6006D9AFD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0A1D0A0223F93FD7006D9AFD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A1D0A0323F93FD7006D9AFD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		0A56D0BE23D7119900D9495A /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -758,6 +1025,51 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0A1D0A0623F93FD7006D9AFD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TridentCockpitiOS/TridentCockpitiOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9BEQ8V4XH9;
+				INFOPLIST_FILE = TridentCockpitiOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = in.ioshack.TridentCockpitiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0A1D0A0723F93FD7006D9AFD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TridentCockpitiOS/TridentCockpitiOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9BEQ8V4XH9;
+				INFOPLIST_FILE = TridentCockpitiOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = in.ioshack.TridentCockpitiOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTS_MACCATALYST = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		0A7130C2236369EC00817593 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -935,6 +1247,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0A1D0A1123F93FD7006D9AFD /* Build configuration list for PBXNativeTarget "TridentCockpitiOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A1D0A0623F93FD7006D9AFD /* Debug */,
+				0A1D0A0723F93FD7006D9AFD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0A7130AF236369EA00817593 /* Build configuration list for PBXProject "TridentCockpit" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -992,6 +1313,21 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		0A1A5B9F23CE57890038EABE /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A1A5B9E23CE57890038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+		0A1D0A5623F948F3006D9AFD /* Moya */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A66C52A23AED706001BA93D /* XCRemoteSwiftPackageReference "Moya" */;
+			productName = Moya;
+		};
+		0A1D0A5823F948F9006D9AFD /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
+		};
+		0A1D0A5A23F948FF006D9AFD /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0A1A5B9E23CE57890038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
