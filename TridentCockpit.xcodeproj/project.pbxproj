@@ -80,6 +80,7 @@
 		0A1D0A5B23F948FF006D9AFD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D0A5A23F948FF006D9AFD /* Kingfisher */; };
 		0A1D0A5D23F94942006D9AFD /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7E23CE4B2F0038EABE /* Date+Extensions.swift */; };
 		0A1D0A5E23F94942006D9AFD /* iso8601date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7F23CE4B2F0038EABE /* iso8601date.swift */; };
+		0A1D0A5F23F94C12006D9AFD /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E55BE23BC0AFA008F8A9A /* Average.swift */; };
 		0A2E1DAE23B0CAD9009048A5 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */; };
 		0A2E42BC236B0EE900B5C569 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E42BB236B0EE900B5C569 /* VideoView.swift */; };
 		0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
@@ -543,6 +544,7 @@
 				0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */,
 				0A1D09F623F93FD6006D9AFD /* TridentCockpitiOS */,
 				0A1D0A1A23F94136006D9AFD /* Common code */,
+				0A9E55BE23BC0AFA008F8A9A /* Average.swift */,
 				0A7130B6236369EA00817593 /* TridentCockpit */,
 				0A5CBC9A23675F410055131A /* Fonts */,
 				0A7130B5236369EA00817593 /* Products */,
@@ -572,7 +574,6 @@
 				0A7130CB23636AF100817593 /* DisplayManager.swift */,
 				0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */,
 				0A7130CF23636AF100817593 /* Preferences.swift */,
-				0A9E55BE23BC0AFA008F8A9A /* Average.swift */,
 				0A7130CD23636AF100817593 /* AppDelegate.swift */,
 				0A1A5B8223CE4B3B0038EABE /* Extensions */,
 				0A5CBC992367507F0055131A /* ThirdParty */,
@@ -887,6 +888,7 @@
 				0A1D0A2F23F941BD006D9AFD /* RovFirmware.swift in Sources */,
 				0A1D0A2A23F941BD006D9AFD /* RovVector3.swift in Sources */,
 				0A1D0A2C23F941BD006D9AFD /* RovBeacon.swift in Sources */,
+				0A1D0A5F23F94C12006D9AFD /* Average.swift in Sources */,
 				0A1D0A1D23F941B2006D9AFD /* RecordingsModel.swift in Sources */,
 				0A1D0A1F23F941B2006D9AFD /* APIVersion.swift in Sources */,
 				0A1D0A3123F941BD006D9AFD /* RovCommon.swift in Sources */,
