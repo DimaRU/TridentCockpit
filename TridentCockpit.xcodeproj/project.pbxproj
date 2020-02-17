@@ -21,7 +21,6 @@
 		0A1A5BA023CE57890038EABE /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1A5B9F23CE57890038EABE /* Kingfisher */; };
 		0A1D09F823F93FD6006D9AFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D09F723F93FD6006D9AFD /* AppDelegate.swift */; };
 		0A1D09FA23F93FD6006D9AFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D09F923F93FD6006D9AFD /* SceneDelegate.swift */; };
-		0A1D09FC23F93FD6006D9AFD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D09FB23F93FD6006D9AFD /* ViewController.swift */; };
 		0A1D09FF23F93FD6006D9AFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A1D09FD23F93FD6006D9AFD /* Main.storyboard */; };
 		0A1D0A0123F93FD7006D9AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A1D0A0023F93FD7006D9AFD /* Assets.xcassets */; };
 		0A1D0A0423F93FD7006D9AFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A1D0A0223F93FD7006D9AFD /* LaunchScreen.storyboard */; };
@@ -158,12 +157,21 @@
 		0A82780C23A63B2D0039A774 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780B23A63B2D0039A774 /* WindowController.swift */; };
 		0A82781223A641750039A774 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781123A641750039A774 /* MaintenanceViewController.swift */; };
 		0A84F9CE237B37BF009BBAD4 /* SetupNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */; };
+		0A95068123F9B975004E5546 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068023F9B975004E5546 /* DashboardViewController.swift */; };
+		0A95068223F9BB20004E5546 /* SetupNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */; };
+		0A95068423F9BD62004E5546 /* DiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068323F9BD62004E5546 /* DiveViewController.swift */; };
+		0A95068623F9BD8D004E5546 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068523F9BD8D004E5546 /* MaintenanceViewController.swift */; };
+		0A95068823F9BDB0004E5546 /* PastDivesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068723F9BDB0004E5546 /* PastDivesViewController.swift */; };
+		0A95068B23F9D7F7004E5546 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068A23F9D7F7004E5546 /* SwiftSpinner.swift */; };
+		0A95068E23F9DD8D004E5546 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068D23F9DD8D004E5546 /* UIViewControllerExtensions.swift */; };
+		0A95069123F9DF95004E5546 /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95069023F9DF95004E5546 /* StoryboardInstantiable.swift */; };
+		0A95069223F9E5B8004E5546 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */; };
+		0A95069423F9E647004E5546 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95069323F9E647004E5546 /* WiFiPopupViewController.swift */; };
 		0A95B3A123C375FC00468DAF /* ToolbarItemIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */; };
 		0A98306D23C22FCA00BD234B /* AuxCameraControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A98306223C22FCA00BD234B /* AuxCameraControlView.xib */; };
 		0A98306E23C22FCA00BD234B /* AuxCameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98306C23C22FCA00BD234B /* AuxCameraControlView.swift */; };
 		0A98307023C22FFD00BD234B /* AuxPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98306F23C22FFD00BD234B /* AuxPlayerViewController.swift */; };
 		0A98307423C2355700BD234B /* AuxPlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A98307323C2355700BD234B /* AuxPlayerViewController.storyboard */; };
-		0A9E55BF23BC0AFA008F8A9A /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E55BE23BC0AFA008F8A9A /* Average.swift */; };
 		0AA4290223C38D3B003476CB /* PayloadCleanup.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0AA4290123C38D3B003476CB /* PayloadCleanup.sh */; };
 		0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */; };
 		0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0ADA653723B119880090D757 /* PayloadProvision.sh */; };
@@ -284,7 +292,6 @@
 		0A1D09F523F93FD6006D9AFD /* TridentCockpitiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TridentCockpitiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A1D09F723F93FD6006D9AFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A1D09F923F93FD6006D9AFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0A1D09FB23F93FD6006D9AFD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		0A1D09FE23F93FD6006D9AFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0A1D0A0023F93FD7006D9AFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A1D0A0323F93FD7006D9AFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -367,6 +374,14 @@
 		0A82781123A641750039A774 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
 		0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemIdentifier.swift; sourceTree = "<group>"; };
 		0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNotifications.swift; sourceTree = "<group>"; };
+		0A95068023F9B975004E5546 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
+		0A95068323F9BD62004E5546 /* DiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveViewController.swift; sourceTree = "<group>"; };
+		0A95068523F9BD8D004E5546 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
+		0A95068723F9BDB0004E5546 /* PastDivesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastDivesViewController.swift; sourceTree = "<group>"; };
+		0A95068A23F9D7F7004E5546 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
+		0A95068D23F9DD8D004E5546 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		0A95069023F9DF95004E5546 /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
+		0A95069323F9E647004E5546 /* WiFiPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WiFiPopupViewController.swift; sourceTree = "<group>"; };
 		0A98306223C22FCA00BD234B /* AuxCameraControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AuxCameraControlView.xib; sourceTree = "<group>"; };
 		0A98306C23C22FCA00BD234B /* AuxCameraControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuxCameraControlView.swift; sourceTree = "<group>"; };
 		0A98306F23C22FFD00BD234B /* AuxPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuxPlayerViewController.swift; sourceTree = "<group>"; };
@@ -434,13 +449,20 @@
 		0A1D09F623F93FD6006D9AFD /* TridentCockpitiOS */ = {
 			isa = PBXGroup;
 			children = (
-				0A1D0A1223F93FF0006D9AFD /* TridentCockpitiOS.entitlements */,
+				0A95068023F9B975004E5546 /* DashboardViewController.swift */,
+				0A95069323F9E647004E5546 /* WiFiPopupViewController.swift */,
+				0A95068323F9BD62004E5546 /* DiveViewController.swift */,
+				0A95068523F9BD8D004E5546 /* MaintenanceViewController.swift */,
+				0A95068723F9BDB0004E5546 /* PastDivesViewController.swift */,
 				0A1D09F723F93FD6006D9AFD /* AppDelegate.swift */,
 				0A1D09F923F93FD6006D9AFD /* SceneDelegate.swift */,
-				0A1D09FB23F93FD6006D9AFD /* ViewController.swift */,
+				0A95068F23F9DF61004E5546 /* Protocols */,
+				0A95068C23F9DD73004E5546 /* Extensions */,
+				0A95068923F9D7E7004E5546 /* ThirdParty */,
 				0A1D09FD23F93FD6006D9AFD /* Main.storyboard */,
 				0A1D0A0023F93FD7006D9AFD /* Assets.xcassets */,
 				0A1D0A0223F93FD7006D9AFD /* LaunchScreen.storyboard */,
+				0A1D0A1223F93FF0006D9AFD /* TridentCockpitiOS.entitlements */,
 				0A1D0A0523F93FD7006D9AFD /* Info.plist */,
 			);
 			path = TridentCockpitiOS;
@@ -449,6 +471,9 @@
 		0A1D0A1A23F94136006D9AFD /* Common code */ = {
 			isa = PBXGroup;
 			children = (
+				0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */,
+				0A9E55BE23BC0AFA008F8A9A /* Average.swift */,
+				0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */,
 				0A1D0A5C23F9492E006D9AFD /* Extensions */,
 				0ADA653723B119880090D757 /* PayloadProvision.sh */,
 				0AA4290123C38D3B003476CB /* PayloadCleanup.sh */,
@@ -544,7 +569,6 @@
 				0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */,
 				0A1D09F623F93FD6006D9AFD /* TridentCockpitiOS */,
 				0A1D0A1A23F94136006D9AFD /* Common code */,
-				0A9E55BE23BC0AFA008F8A9A /* Average.swift */,
 				0A7130B6236369EA00817593 /* TridentCockpit */,
 				0A5CBC9A23675F410055131A /* Fonts */,
 				0A7130B5236369EA00817593 /* Products */,
@@ -572,7 +596,6 @@
 				0A82780B23A63B2D0039A774 /* WindowController.swift */,
 				0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */,
 				0A7130CB23636AF100817593 /* DisplayManager.swift */,
-				0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */,
 				0A7130CF23636AF100817593 /* Preferences.swift */,
 				0A7130CD23636AF100817593 /* AppDelegate.swift */,
 				0A1A5B8223CE4B3B0038EABE /* Extensions */,
@@ -623,6 +646,30 @@
 			path = DDSModel;
 			sourceTree = "<group>";
 		};
+		0A95068923F9D7E7004E5546 /* ThirdParty */ = {
+			isa = PBXGroup;
+			children = (
+				0A95068A23F9D7F7004E5546 /* SwiftSpinner.swift */,
+			);
+			path = ThirdParty;
+			sourceTree = "<group>";
+		};
+		0A95068C23F9DD73004E5546 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0A95068D23F9DD8D004E5546 /* UIViewControllerExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0A95068F23F9DF61004E5546 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				0A95069023F9DF95004E5546 /* StoryboardInstantiable.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		0A98307523C23EFD00BD234B /* AuxCamera */ = {
 			isa = PBXGroup;
 			children = (
@@ -652,7 +699,6 @@
 			children = (
 				0A82780023A63B220039A774 /* DashboardViewController.swift */,
 				0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */,
-				0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */,
 				0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */,
 			);
 			path = DashboardViewController;
@@ -861,6 +907,7 @@
 				0A1D0A2E23F941BD006D9AFD /* RovFuelgauge.swift in Sources */,
 				0A1D0A4123F941C4006D9AFD /* DDSDiscoveryListener.swift in Sources */,
 				0A1D0A3323F941BD006D9AFD /* RovPoint.swift in Sources */,
+				0A95068623F9BD8D004E5546 /* MaintenanceViewController.swift in Sources */,
 				0A1D0A3723F941BD006D9AFD /* RovQuaternion.swift in Sources */,
 				0A1D0A2923F941BD006D9AFD /* RovSafetyState.swift in Sources */,
 				0A1D0A2B23F941BD006D9AFD /* RovControlDescriptor.swift in Sources */,
@@ -868,14 +915,17 @@
 				0A1D0A3C23F941BD006D9AFD /* RovSubsystemStatus.swift in Sources */,
 				0A1D0A2D23F941BD006D9AFD /* RovQuaternion+extensions.swift in Sources */,
 				0A1D0A3A23F941BD006D9AFD /* RovRecording.swift in Sources */,
+				0A95068123F9B975004E5546 /* DashboardViewController.swift in Sources */,
 				0A1D0A4323F941C4006D9AFD /* NetworkError.swift in Sources */,
 				0A1D0A3623F941BD006D9AFD /* RovDepth.swift in Sources */,
 				0A1D0A1E23F941B2006D9AFD /* GoproStatus.swift in Sources */,
 				0A1D0A2823F941BD006D9AFD /* RovCameraObjectTrack.swift in Sources */,
 				0A1D0A4623F941C4006D9AFD /* RecordingsAPI.swift in Sources */,
 				0A1D0A3D23F941BD006D9AFD /* RovChannel.swift in Sources */,
-				0A1D09FC23F93FD6006D9AFD /* ViewController.swift in Sources */,
 				0A1D0A2423F941BD006D9AFD /* RovTopic.swift in Sources */,
+				0A95068223F9BB20004E5546 /* SetupNotifications.swift in Sources */,
+				0A95068423F9BD62004E5546 /* DiveViewController.swift in Sources */,
+				0A95068823F9BDB0004E5546 /* PastDivesViewController.swift in Sources */,
 				0A1D0A3523F941BD006D9AFD /* RovTemperature.swift in Sources */,
 				0A1D0A3823F941BD006D9AFD /* RovControllerStatus.swift in Sources */,
 				0A1D0A3023F941BD006D9AFD /* RovAttitude.swift in Sources */,
@@ -884,6 +934,7 @@
 				0A1D0A2223F941B2006D9AFD /* ConnectionInfo.swift in Sources */,
 				0A1D0A4523F941C4006D9AFD /* ResinAPI.swift in Sources */,
 				0A1D0A4723F941C4006D9AFD /* Gopro3API.swift in Sources */,
+				0A95069223F9E5B8004E5546 /* KeychainService.swift in Sources */,
 				0A1D0A3423F941BD006D9AFD /* RovTridentMotorCommand.swift in Sources */,
 				0A1D0A2F23F941BD006D9AFD /* RovFirmware.swift in Sources */,
 				0A1D0A2A23F941BD006D9AFD /* RovVector3.swift in Sources */,
@@ -893,10 +944,14 @@
 				0A1D0A1F23F941B2006D9AFD /* APIVersion.swift in Sources */,
 				0A1D0A3123F941BD006D9AFD /* RovCommon.swift in Sources */,
 				0A1D0A2723F941BD006D9AFD /* BatteryState.swift in Sources */,
+				0A95069123F9DF95004E5546 /* StoryboardInstantiable.swift in Sources */,
 				0A1D0A2023F941B2006D9AFD /* DeviceState.swift in Sources */,
 				0A1D0A5D23F94942006D9AFD /* Date+Extensions.swift in Sources */,
+				0A95068E23F9DD8D004E5546 /* UIViewControllerExtensions.swift in Sources */,
+				0A95069423F9E647004E5546 /* WiFiPopupViewController.swift in Sources */,
 				0A1D0A3223F941BD006D9AFD /* RovTridentControlTarget.swift in Sources */,
 				0A1D0A3F23F941BD006D9AFD /* RovLightPower.swift in Sources */,
+				0A95068B23F9D7F7004E5546 /* SwiftSpinner.swift in Sources */,
 				0A1D0A4423F941C4006D9AFD /* WifiServiceAPI.swift in Sources */,
 				0A1D0A2523F941BD006D9AFD /* RovBarometer.swift in Sources */,
 				0A1D09F823F93FD6006D9AFD /* AppDelegate.swift in Sources */,
@@ -932,7 +987,6 @@
 				0A98306E23C22FCA00BD234B /* AuxCameraControlView.swift in Sources */,
 				0A7130DA23636AF200817593 /* FloatingViewProtocol.swift in Sources */,
 				0A1A5B8023CE4B2F0038EABE /* Date+Extensions.swift in Sources */,
-				0A9E55BF23BC0AFA008F8A9A /* Average.swift in Sources */,
 				0A3FD1F923A9723E00FE9918 /* APIVersion.swift in Sources */,
 				0A82780A23A63B220039A774 /* DashboardViewController.swift in Sources */,
 				0A3FD1FF23A972BA00FE9918 /* ConnectionInfo.swift in Sources */,
