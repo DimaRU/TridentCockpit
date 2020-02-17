@@ -22,7 +22,6 @@
 		0A1D09F823F93FD6006D9AFD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D09F723F93FD6006D9AFD /* AppDelegate.swift */; };
 		0A1D09FA23F93FD6006D9AFD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1D09F923F93FD6006D9AFD /* SceneDelegate.swift */; };
 		0A1D09FF23F93FD6006D9AFD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A1D09FD23F93FD6006D9AFD /* Main.storyboard */; };
-		0A1D0A0123F93FD7006D9AFD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A1D0A0023F93FD7006D9AFD /* Assets.xcassets */; };
 		0A1D0A0423F93FD7006D9AFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A1D0A0223F93FD7006D9AFD /* LaunchScreen.storyboard */; };
 		0A1D0A1523F940E2006D9AFD /* FastRTPSBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790D23958380006F10FF /* FastRTPSBridge.framework */; };
 		0A1D0A1623F940E2006D9AFD /* FastRTPSBridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790D23958380006F10FF /* FastRTPSBridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -175,6 +174,7 @@
 		0AA4290223C38D3B003476CB /* PayloadCleanup.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0AA4290123C38D3B003476CB /* PayloadCleanup.sh */; };
 		0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */; };
 		0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0ADA653723B119880090D757 /* PayloadProvision.sh */; };
+		0AF06EA123FAF637000FF36A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
 		0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; };
 		0AF69E0423A601220037DBDD /* SwiftSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0AFE9C4123B3ED7700C13162 /* DDSDiscoveryListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFE9C3723B3ED7700C13162 /* DDSDiscoveryListener.swift */; };
@@ -293,7 +293,6 @@
 		0A1D09F723F93FD6006D9AFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A1D09F923F93FD6006D9AFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0A1D09FE23F93FD6006D9AFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0A1D0A0023F93FD7006D9AFD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A1D0A0323F93FD7006D9AFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A1D0A0523F93FD7006D9AFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A1D0A1223F93FF0006D9AFD /* TridentCockpitiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TridentCockpitiOS.entitlements; sourceTree = "<group>"; };
@@ -460,7 +459,6 @@
 				0A95068C23F9DD73004E5546 /* Extensions */,
 				0A95068923F9D7E7004E5546 /* ThirdParty */,
 				0A1D09FD23F93FD6006D9AFD /* Main.storyboard */,
-				0A1D0A0023F93FD7006D9AFD /* Assets.xcassets */,
 				0A1D0A0223F93FD7006D9AFD /* LaunchScreen.storyboard */,
 				0A1D0A1223F93FF0006D9AFD /* TridentCockpitiOS.entitlements */,
 				0A1D0A0523F93FD7006D9AFD /* Info.plist */,
@@ -865,10 +863,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A1D0A0423F93FD7006D9AFD /* LaunchScreen.storyboard in Resources */,
-				0A1D0A0123F93FD7006D9AFD /* Assets.xcassets in Resources */,
 				0A1D09FF23F93FD6006D9AFD /* Main.storyboard in Resources */,
 				0A1D0A1C23F941AA006D9AFD /* PayloadCleanup.sh in Resources */,
 				0A1D0A1B23F941AA006D9AFD /* PayloadProvision.sh in Resources */,
+				0AF06EA123FAF637000FF36A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
