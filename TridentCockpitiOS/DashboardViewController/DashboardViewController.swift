@@ -31,11 +31,11 @@ class DashboardViewController: UIViewController {
                 if addrs.count >= 2 {
                     tridentNetworkAddressLabel.text = String(addrs.first{ $0.contains("10.1.1.") } ?? "n/a")
                     payloadAddress.text = String(addrs.first{ !$0.contains("10.1.1.") } ?? "n/a")
-//                    toolbar.getItem(for: .connectCamera)?.isEnabled = true
+                    toolbar.getItem(for: .connectCamera)?.isEnabled = true
                 } else {
                     tridentNetworkAddressLabel.text = connectedSSID != nil ? "n/a" : String(addrs[0])
                     payloadAddress.text = connectedSSID != nil ? String(addrs[0]) : "n/a"
-//                    toolbar.getItem(for: .connectCamera)?.isEnabled = false
+                    toolbar.getItem(for: .connectCamera)?.isEnabled = false
                 }
             
         }
@@ -43,14 +43,12 @@ class DashboardViewController: UIViewController {
     var connectedSSID: String? = "\nnot existed\n" {
         didSet {
             guard connectedSSID != oldValue else { return }
-//            guard let wifiItem = toolbar.getItem(for: .connectWiFi),
-//                let button = wifiItem.view as? NSButton else { return }
+            guard let wifiItem = toolbar.getItem(for: .connectWiFi) else { return }
             if connectedSSID != nil {
                 ssidLabel.text = self.connectedSSID!
-//                toolbar.getItem(for: .connectCamera)?.isEnabled = true
-                
-//                wifiItem.label = NSLocalizedString("Disconnect", comment: "")
-//                button.image = UIImage(named: "wifi.slash")!
+                toolbar.getItem(for: .connectCamera)?.isEnabled = true
+
+                wifiItem.image = UIImage(systemName: "wifi.slash")
                 if payloadAddress.text == "n/a" {
                     payloadAddress.text = "waiting..."
                 }
@@ -60,10 +58,9 @@ class DashboardViewController: UIViewController {
                 cameraFirmwareLabel.text = "n/a"
                 payloadAddress.text = "n/a"
                 Gopro3API.cameraPassword = nil
-//                toolbar.getItem(for: .connectCamera)?.isEnabled = false
+                toolbar.getItem(for: .connectCamera)?.isEnabled = false
 
-//                wifiItem.label = NSLocalizedString("Connect", comment: "")
-//                button.image = UIImage(named: "wifi")!
+                wifiItem.image = UIImage(systemName: "wifi")
                 Gopro3API.cameraPassword = nil
             }
         }
@@ -72,7 +69,6 @@ class DashboardViewController: UIViewController {
     
     // MARK: Outlets
     @IBOutlet weak var toolbar: UIToolbar!
-    @IBOutlet weak var gridView: UIStackView!
     @IBOutlet weak var tridentIdLabel: UILabel!
     @IBOutlet weak var connectionAddress: UILabel!
     @IBOutlet weak var tridentNetworkAddressLabel: UILabel!
@@ -81,16 +77,16 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var payloadAddress: UILabel!
     @IBOutlet weak var cameraModelLabel: UILabel!
     @IBOutlet weak var cameraFirmwareLabel: UILabel!
-    @IBOutlet weak var infoView: UIView!
     
     
     // MARK: Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        gridView.isHidden = true
         view.layer.contents = UIImage(named: "Trident")?.cgImage
-        addCircularProgressView(to: infoView)
+        view.layer.contentsGravity = .resizeAspectFill
+        view.subviews.forEach{ $0.isHidden = true }
+        addCircularProgressView(to: view)
         setupNotifications()
         ddsDiscoveryStart()
     }
@@ -145,6 +141,7 @@ class DashboardViewController: UIViewController {
 
     // MARK: Private func
     private func addCircularProgressView(to view: UIView) {
+        view.subviews.forEach{ $0.isHidden = true }
         SwiftSpinner.showBlurBackground = false
         SwiftSpinner.useContainerView(view)
         SwiftSpinner.shared.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
@@ -345,19 +342,15 @@ class DashboardViewController: UIViewController {
             
         }
         FastRTPS.deleteParticipant()
-//        toolbar.items.forEach{ $0.isEnabled = false }
+        toolbar.items?.forEach{ $0.isEnabled = false }
         connectedSSID = nil
-        gridView.isHidden = true
-        view.layer.backgroundColor = nil
-        addCircularProgressView(to: infoView)
+        addCircularProgressView(to: view)
         ddsDiscoveryStart()
     }
     
     func setConnectedState() {
         SwiftSpinner.hide()
-        
-        view.layer.backgroundColor = UIColor(named: "splashColor")!.cgColor
-        gridView.isHidden = false
+        view.subviews.forEach{ $0.isHidden = false }
         
         tridentIdLabel.text = tridentID
         localAddressLabel.text = FastRTPS.localAddress
@@ -374,10 +367,7 @@ class DashboardViewController: UIViewController {
         }.catch {
             self.alert(error: $0)
         }
-//            toolbar.getItem(for: .goDive)?.isEnabled = true
-//            toolbar.getItem(for: .goMaintenance)?.isEnabled = true
-//            toolbar.getItem(for: .goPastDives)?.isEnabled = true
-//            toolbar.getItem(for: .connectWiFi)?.isEnabled = true
+        toolbar.getItem(for: .connectWiFi)?.isEnabled = true
         FastRTPS.setPartition(name: tridentID)
     }
 }

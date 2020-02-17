@@ -177,6 +177,7 @@
 		0AF06EA123FAF637000FF36A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
 		0AF06EAC23FB0555000FF36A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF06EA423FB0555000FF36A /* UIViewExtensions.swift */; };
 		0AF06EB023FB209A000FF36A /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */; };
+		0AF06ECE23FB5730000FF36A /* UIToolbar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */; };
 		0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; };
 		0AF69E0423A601220037DBDD /* SwiftSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0AFE9C4123B3ED7700C13162 /* DDSDiscoveryListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFE9C3723B3ED7700C13162 /* DDSDiscoveryListener.swift */; };
@@ -393,6 +394,7 @@
 		0ADA653723B119880090D757 /* PayloadProvision.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PayloadProvision.sh; sourceTree = "<group>"; };
 		0AF06EA423FB0555000FF36A /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
+		0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIToolbar+Extensions.swift"; sourceTree = "<group>"; };
 		0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftSH.xcodeproj; path = SwiftSH/SwiftSH.xcodeproj; sourceTree = "<group>"; };
 		0AFE9C3723B3ED7700C13162 /* DDSDiscoveryListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSDiscoveryListener.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -452,8 +454,7 @@
 		0A1D09F623F93FD6006D9AFD /* TridentCockpitiOS */ = {
 			isa = PBXGroup;
 			children = (
-				0A95068023F9B975004E5546 /* DashboardViewController.swift */,
-				0A95069323F9E647004E5546 /* WiFiPopupViewController.swift */,
+				0AF06EC523FB56F5000FF36A /* DashboardViewController */,
 				0A95068323F9BD62004E5546 /* DiveViewController.swift */,
 				0A95068523F9BD8D004E5546 /* MaintenanceViewController.swift */,
 				0A95068723F9BDB0004E5546 /* PastDivesViewController.swift */,
@@ -662,6 +663,7 @@
 				0AF06EA423FB0555000FF36A /* UIViewExtensions.swift */,
 				0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */,
 				0A95068D23F9DD8D004E5546 /* UIViewControllerExtensions.swift */,
+				0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -704,6 +706,15 @@
 				0A82780023A63B220039A774 /* DashboardViewController.swift */,
 				0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */,
 				0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */,
+			);
+			path = DashboardViewController;
+			sourceTree = "<group>";
+		};
+		0AF06EC523FB56F5000FF36A /* DashboardViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A95068023F9B975004E5546 /* DashboardViewController.swift */,
+				0A95069323F9E647004E5546 /* WiFiPopupViewController.swift */,
 			);
 			path = DashboardViewController;
 			sourceTree = "<group>";
@@ -928,6 +939,7 @@
 				0A1D0A3D23F941BD006D9AFD /* RovChannel.swift in Sources */,
 				0A1D0A2423F941BD006D9AFD /* RovTopic.swift in Sources */,
 				0A95068223F9BB20004E5546 /* SetupNotifications.swift in Sources */,
+				0AF06ECE23FB5730000FF36A /* UIToolbar+Extensions.swift in Sources */,
 				0A95068423F9BD62004E5546 /* DiveViewController.swift in Sources */,
 				0A95068823F9BDB0004E5546 /* PastDivesViewController.swift in Sources */,
 				0A1D0A3523F941BD006D9AFD /* RovTemperature.swift in Sources */,
