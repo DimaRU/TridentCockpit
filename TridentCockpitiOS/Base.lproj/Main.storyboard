@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16085" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad11_0rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16078.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +10,190 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lhc-qe-yzA">
+                                <rect key="frame" x="0.0" y="777" width="1194" height="57"/>
+                                <items>
+                                    <barButtonItem image="wifi" catalog="system" width="50" id="7XO-rw-lZX"/>
+                                    <barButtonItem image="camera.fill" catalog="system" width="50" id="m2y-o2-9l5"/>
+                                </items>
+                            </toolbar>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="khM-qz-rFw">
+                                <rect key="frame" x="905" y="0.0" width="289" height="777"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4e-ZH-d8Q" userLabel="PilotView">
+                                        <rect key="frame" x="0.0" y="0.0" width="289" height="259"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pilot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ko9-6q-8Zm">
+                                                <rect key="frame" x="20" y="20" width="49" height="29"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                                <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="underwater" translatesAutoresizingMaskIntoConstraints="NO" id="XiX-cX-wYf">
+                                                <rect key="frame" x="94.5" y="79.5" width="100" height="100"/>
+                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="100" id="AQl-6K-d4L"/>
+                                                    <constraint firstAttribute="width" constant="100" id="hEs-FT-8Fe"/>
+                                                </constraints>
+                                            </imageView>
+                                        </subviews>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="ko9-6q-8Zm" firstAttribute="top" secondItem="l4e-ZH-d8Q" secondAttribute="top" constant="20" symbolic="YES" id="I74-ls-0sx"/>
+                                            <constraint firstItem="XiX-cX-wYf" firstAttribute="centerX" secondItem="l4e-ZH-d8Q" secondAttribute="centerX" id="SBg-L1-4sA"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ko9-6q-8Zm" secondAttribute="trailing" constant="20" symbolic="YES" id="abK-ne-9GK"/>
+                                            <constraint firstItem="ko9-6q-8Zm" firstAttribute="leading" secondItem="l4e-ZH-d8Q" secondAttribute="leading" constant="20" symbolic="YES" id="jtQ-gl-csx"/>
+                                            <constraint firstItem="XiX-cX-wYf" firstAttribute="centerY" secondItem="l4e-ZH-d8Q" secondAttribute="centerY" id="rHa-1E-bBp"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="iQD-BB-ohb" userLabel="PastDivesView">
+                                        <rect key="frame" x="0.0" y="259" width="289" height="259"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Past Dives" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wQB-E1-pCi">
+                                                <rect key="frame" x="20" y="20" width="113.5" height="29"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                                <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="film.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="JTX-Zk-oCh">
+                                                <rect key="frame" x="94.5" y="80.5" width="100" height="97.5"/>
+                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="MOs-8i-YRO"/>
+                                                    <constraint firstAttribute="height" constant="100" id="XD3-ge-RRz"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="JTX-Zk-oCh" firstAttribute="centerY" secondItem="iQD-BB-ohb" secondAttribute="centerY" id="1qF-3b-44k"/>
+                                            <constraint firstItem="sj3-qo-TDg" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="wQB-E1-pCi" secondAttribute="trailing" symbolic="YES" id="JQj-Gq-ccD"/>
+                                            <constraint firstItem="JTX-Zk-oCh" firstAttribute="centerX" secondItem="iQD-BB-ohb" secondAttribute="centerX" id="ORF-YB-z0J"/>
+                                            <constraint firstItem="wQB-E1-pCi" firstAttribute="top" secondItem="iQD-BB-ohb" secondAttribute="top" constant="20" symbolic="YES" id="Q4O-hh-rV9"/>
+                                            <constraint firstItem="wQB-E1-pCi" firstAttribute="leading" secondItem="iQD-BB-ohb" secondAttribute="leading" constant="20" symbolic="YES" id="et5-fG-yyY"/>
+                                        </constraints>
+                                        <viewLayoutGuide key="safeArea" id="sj3-qo-TDg"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <view contentMode="scaleToFill" id="7b7-8Y-Y5l" userLabel="MaintView">
+                                        <rect key="frame" x="0.0" y="518" width="289" height="259"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maintenance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dvB-KW-2DC">
+                                                <rect key="frame" x="20" y="20" width="142" height="29"/>
+                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
+                                                <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="ZOM-3q-cgQ">
+                                                <rect key="frame" x="94.5" y="80" width="100" height="99"/>
+                                                <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="100" id="Ieg-qi-Oi3"/>
+                                                    <constraint firstAttribute="height" constant="100" id="j1A-5U-YD3"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                        <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                        <real key="value" value="4"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                            </imageView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstItem="dvB-KW-2DC" firstAttribute="top" secondItem="7b7-8Y-Y5l" secondAttribute="top" constant="20" symbolic="YES" id="AIi-dn-1CS"/>
+                                            <constraint firstItem="dvB-KW-2DC" firstAttribute="leading" secondItem="7b7-8Y-Y5l" secondAttribute="leading" constant="20" symbolic="YES" id="ANV-C5-c5U"/>
+                                            <constraint firstItem="ZOM-3q-cgQ" firstAttribute="centerX" secondItem="7b7-8Y-Y5l" secondAttribute="centerX" id="B2G-qV-DMP"/>
+                                            <constraint firstItem="hzY-z3-blJ" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dvB-KW-2DC" secondAttribute="trailing" symbolic="YES" id="bE9-J2-f9a"/>
+                                            <constraint firstItem="ZOM-3q-cgQ" firstAttribute="centerY" secondItem="7b7-8Y-Y5l" secondAttribute="centerY" id="pqa-oj-qbT"/>
+                                        </constraints>
+                                        <viewLayoutGuide key="safeArea" id="hzY-z3-blJ"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="4"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7X-Wz-rUE" userLabel="InfoView">
+                                <rect key="frame" x="0.0" y="0.0" width="905" height="777"/>
+                                <color key="backgroundColor" systemColor="opaqueSeparatorColor" red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="a7X-Wz-rUE" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="0.757956" id="425-Dz-9J1"/>
+                            <constraint firstItem="a7X-Wz-rUE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9f3-UN-Ggx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Lhc-qe-yzA" secondAttribute="trailing" id="Gpo-Ap-A66"/>
+                            <constraint firstItem="Lhc-qe-yzA" firstAttribute="top" secondItem="khM-qz-rFw" secondAttribute="bottom" id="OlG-Bd-zRh"/>
+                            <constraint firstItem="khM-qz-rFw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UoX-AY-9D7"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="khM-qz-rFw" secondAttribute="trailing" id="cls-KK-gAE"/>
+                            <constraint firstItem="Lhc-qe-yzA" firstAttribute="top" secondItem="a7X-Wz-rUE" secondAttribute="bottom" id="fLe-7p-s0g"/>
+                            <constraint firstItem="a7X-Wz-rUE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="kgI-1U-fsd"/>
+                            <constraint firstItem="Lhc-qe-yzA" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qR4-xZ-f8g"/>
+                            <constraint firstAttribute="bottom" secondItem="Lhc-qe-yzA" secondAttribute="bottom" id="wdG-R5-nxh"/>
+                            <constraint firstItem="khM-qz-rFw" firstAttribute="leading" secondItem="a7X-Wz-rUE" secondAttribute="trailing" id="zOn-pb-0c4"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="138.69346733668343" y="135.97122302158274"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera.fill" catalog="system" width="128" height="96"/>
+        <image name="film.fill" catalog="system" width="128" height="93"/>
+        <image name="info.circle" catalog="system" width="128" height="121"/>
+        <image name="underwater" width="18" height="18"/>
+        <image name="wifi" catalog="system" width="128" height="92"/>
+    </resources>
 </document>

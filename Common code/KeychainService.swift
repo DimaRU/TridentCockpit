@@ -29,7 +29,7 @@ enum KeychainService {
         query[kSecReturnAttributes as String] = kCFBooleanTrue
         
         var queryResult: AnyObject?
-        let status = SecItemCopyMatching(query as CFDictionary, UnsafeMutablePointer(&queryResult))
+        let status = SecItemCopyMatching(query as CFDictionary, &queryResult)
         guard status == noErr else { return nil }
         
         guard let item = queryResult as? [String : AnyObject],

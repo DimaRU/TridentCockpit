@@ -1,19 +1,33 @@
 {
   "images" : [
     {
-      "idiom" : "mac",
-      "filename" : "Underwater.png",
+      "filename" : "Underwater-1.png",
+      "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "Underwater@2-1.png",
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    },
+    {
+      "filename" : "Underwater.png",
       "idiom" : "mac",
+      "scale" : "1x"
+    },
+    {
       "filename" : "Underwater@2.png",
+      "idiom" : "mac",
       "scale" : "2x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   },
   "properties" : {
     "template-rendering-intent" : "template"

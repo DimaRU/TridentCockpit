@@ -17,7 +17,6 @@ class DashboardViewController: UIViewController {
     var discovered: [String: String] = [:]
     var connectionInfo: [ConnectionInfo] = []
     var ddsListener: DDSDiscoveryListener!
-    var toolbar: UIToolbar!
     private var sshCommand: SSHCommand!
     private var timer: Timer? {
         willSet { timer?.invalidate() }
@@ -74,6 +73,7 @@ class DashboardViewController: UIViewController {
 
     
     // MARK: Outlets
+    @IBOutlet weak var toolbar: UIToolbar!
     @IBOutlet weak var gridView: UIStackView!
     @IBOutlet weak var tridentIdLabel: UILabel!
     @IBOutlet weak var connectionAddress: UILabel!
@@ -129,20 +129,19 @@ class DashboardViewController: UIViewController {
 //        transition(to: pastDivesViewController, options: .slideLeft)
     }
 
-    @IBAction func connectWifiButtonPress(_ sender: Any?) {
-//        guard let button = sender as? NSButton else { return }
-//        if connectedSSID == nil {
-//            connectWiFi(view: button.superview!)
-//        } else {
-//            disconnectWiFi()
-//        }
+    @IBAction func connectWifiButtonPress(_ sender: UIBarButtonItem) {
+        if connectedSSID == nil {
+            connectWiFi(view: sender.view!)
+        } else {
+            disconnectWiFi()
+        }
     }
 
-    @IBAction func connectCameraButtonPress(_ sender: Any?) {
-//        guard let ipAddress = deviceState?.ipAddress, ipAddress.split(separator: " ").count == 2 else { return }
-//        executeScript(name: "PayloadProvision") {
-//            self.connectGopro3()
-//        }
+    @IBAction func connectCameraButtonPress(_ sender: UIBarButtonItem) {
+        guard let ipAddress = deviceState?.ipAddress, ipAddress.split(separator: " ").count == 2 else { return }
+        executeScript(name: "PayloadProvision") {
+            self.connectGopro3()
+        }
     }
 
     // MARK: Private func

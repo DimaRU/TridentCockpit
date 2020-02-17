@@ -175,6 +175,8 @@
 		0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */; };
 		0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0ADA653723B119880090D757 /* PayloadProvision.sh */; };
 		0AF06EA123FAF637000FF36A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
+		0AF06EAC23FB0555000FF36A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF06EA423FB0555000FF36A /* UIViewExtensions.swift */; };
+		0AF06EB023FB209A000FF36A /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */; };
 		0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; };
 		0AF69E0423A601220037DBDD /* SwiftSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0AFE9C4123B3ED7700C13162 /* DDSDiscoveryListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFE9C3723B3ED7700C13162 /* DDSDiscoveryListener.swift */; };
@@ -389,6 +391,8 @@
 		0AA4290123C38D3B003476CB /* PayloadCleanup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PayloadCleanup.sh; sourceTree = "<group>"; };
 		0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiPopupViewController.swift; sourceTree = "<group>"; };
 		0ADA653723B119880090D757 /* PayloadProvision.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PayloadProvision.sh; sourceTree = "<group>"; };
+		0AF06EA423FB0555000FF36A /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftSH.xcodeproj; path = SwiftSH/SwiftSH.xcodeproj; sourceTree = "<group>"; };
 		0AFE9C3723B3ED7700C13162 /* DDSDiscoveryListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSDiscoveryListener.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -655,6 +659,8 @@
 		0A95068C23F9DD73004E5546 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				0AF06EA423FB0555000FF36A /* UIViewExtensions.swift */,
+				0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */,
 				0A95068D23F9DD8D004E5546 /* UIViewControllerExtensions.swift */,
 			);
 			path = Extensions;
@@ -926,6 +932,7 @@
 				0A95068823F9BDB0004E5546 /* PastDivesViewController.swift in Sources */,
 				0A1D0A3523F941BD006D9AFD /* RovTemperature.swift in Sources */,
 				0A1D0A3823F941BD006D9AFD /* RovControllerStatus.swift in Sources */,
+				0AF06EB023FB209A000FF36A /* UIBarButtonItem+Extension.swift in Sources */,
 				0A1D0A3023F941BD006D9AFD /* RovAttitude.swift in Sources */,
 				0A1D0A4223F941C4006D9AFD /* RestProvider.swift in Sources */,
 				0A1D0A3B23F941BD006D9AFD /* RovVideoData.swift in Sources */,
@@ -941,6 +948,7 @@
 				0A1D0A1D23F941B2006D9AFD /* RecordingsModel.swift in Sources */,
 				0A1D0A1F23F941B2006D9AFD /* APIVersion.swift in Sources */,
 				0A1D0A3123F941BD006D9AFD /* RovCommon.swift in Sources */,
+				0AF06EAC23FB0555000FF36A /* UIViewExtensions.swift in Sources */,
 				0A1D0A2723F941BD006D9AFD /* BatteryState.swift in Sources */,
 				0A95069123F9DF95004E5546 /* StoryboardInstantiable.swift in Sources */,
 				0A1D0A2023F941B2006D9AFD /* DeviceState.swift in Sources */,
