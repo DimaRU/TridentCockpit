@@ -17,6 +17,7 @@ class WiFiPopupViewController: UITableViewController, StoryboardInstantiable {
     weak var delegate: WiFiPopupProtocol?
     var ssids: [SSIDInfo] = []
 
+    private var contentSizeObserver: NSKeyValueObservation?
     private let reuseIdentifier = "WiFiCell"
     private var tableWidth: CGFloat = 100
     private var timer: Timer?
@@ -42,10 +43,22 @@ class WiFiPopupViewController: UITableViewController, StoryboardInstantiable {
        }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        contentSizeObserver = tableView.observe(\.contentSize) { [weak self] tableView, _ in
+            guard let self = self else { return }
+            self.preferredContentSize = CGSize(width: tableView.contentSize.width, height: tableView.contentSize.height)
+        }
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
         timer?.invalidate()
         timer = nil
+        contentSizeObserver?.invalidate()
+        contentSizeObserver = nil
     }
     
     func alertGetPassword(ssid: String) {
@@ -101,7 +114,7 @@ class WiFiPopupViewController: UITableViewController, StoryboardInstantiable {
         }
         cell.imageView?.image = UIImage(named: "wifi-\(level)")
         cell.textLabel?.text = ssids[indexPath.row].ssid
-//        let size = cell.sizeThatFits(<#T##size: CGSize##CGSize#>)
+//        let size = cell.sizeThatFits(T##size: CGSize##CGSize)
 //        tableWidth = max(tableWidth, size.width)
 
         return cell
