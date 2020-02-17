@@ -50,7 +50,6 @@ class DashboardViewController: UIViewController {
 //                toolbar.getItem(for: .connectCamera)?.isEnabled = true
                 
 //                wifiItem.label = NSLocalizedString("Disconnect", comment: "")
-//                wifiItem.toolTip = NSLocalizedString("Disconnect Trident WiFi", comment: "")
 //                button.image = UIImage(named: "wifi.slash")!
                 if payloadAddress.text == "n/a" {
                     payloadAddress.text = "waiting..."
@@ -64,7 +63,6 @@ class DashboardViewController: UIViewController {
 //                toolbar.getItem(for: .connectCamera)?.isEnabled = false
 
 //                wifiItem.label = NSLocalizedString("Connect", comment: "")
-//                wifiItem.toolTip = NSLocalizedString("Connect Trident WiFi", comment: "")
 //                button.image = UIImage(named: "wifi")!
                 Gopro3API.cameraPassword = nil
             }
@@ -83,6 +81,7 @@ class DashboardViewController: UIViewController {
     @IBOutlet weak var payloadAddress: UILabel!
     @IBOutlet weak var cameraModelLabel: UILabel!
     @IBOutlet weak var cameraFirmwareLabel: UILabel!
+    @IBOutlet weak var infoView: UIView!
     
     
     // MARK: Overrides
@@ -90,8 +89,8 @@ class DashboardViewController: UIViewController {
         super.viewDidLoad()
         
         gridView.isHidden = true
-        view.layer.contents = UIImage(named: "Trident")
-        addCircularProgressView(to: view)
+        view.layer.contents = UIImage(named: "Trident")?.cgImage
+        addCircularProgressView(to: infoView)
         setupNotifications()
         ddsDiscoveryStart()
     }
@@ -102,7 +101,7 @@ class DashboardViewController: UIViewController {
         if FastRTPS.remoteAddress != "" {
             startRefreshDeviceState()
         } else {
-//            toolbar.items.forEach{ $0.isEnabled = false }
+            toolbar.items?.forEach{ $0.isEnabled = false }
         }
     }
     
@@ -350,7 +349,7 @@ class DashboardViewController: UIViewController {
         connectedSSID = nil
         gridView.isHidden = true
         view.layer.backgroundColor = nil
-        addCircularProgressView(to: view)
+        addCircularProgressView(to: infoView)
         ddsDiscoveryStart()
     }
     
@@ -375,12 +374,10 @@ class DashboardViewController: UIViewController {
         }.catch {
             self.alert(error: $0)
         }
-//        if let toolbar = view.window?.toolbar {
 //            toolbar.getItem(for: .goDive)?.isEnabled = true
 //            toolbar.getItem(for: .goMaintenance)?.isEnabled = true
 //            toolbar.getItem(for: .goPastDives)?.isEnabled = true
 //            toolbar.getItem(for: .connectWiFi)?.isEnabled = true
-//        }
         FastRTPS.setPartition(name: tridentID)
     }
 }
