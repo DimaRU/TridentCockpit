@@ -109,8 +109,6 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         videoDecoder = VideoDecoder(sampleBufferLayer: videoView.sampleBufferLayer)
         self.view.backgroundColor = UIColor.black
 
-        cameraControlView.addConstraints(defX: view.frame.minX + cameraControlView.frame.midX,
-                                         defY: view.frame.midY)
         tridentView.addConstraints(defX: view.frame.maxX - tridentView.frame.midX,
                                    defY: view.frame.minY + tridentView.frame.midY)
         if Gopro3API.isConnected {
