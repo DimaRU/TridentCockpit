@@ -3,8 +3,10 @@
 ///   Copyright © 2019 Dmitriy Borovikov. All rights reserved.
 //
 
+#if os(macOS)
 import Cocoa
 import Carbon.HIToolbox
+#endif
 import GameController
 
 protocol TridentControlDelegate: NSObject {
@@ -81,6 +83,7 @@ final class TridentControl {
         delegate?.control(pitch: pitch, yaw: yaw, thrust: thrust, lift: 0)
     }
     
+#if os(macOS)
     func processKeyEvent(event: NSEvent) -> Bool {
         var lever: Float = 0.1
         if NSEvent.modifierFlags.contains(.option) { lever = 0.25 }
@@ -138,7 +141,8 @@ final class TridentControl {
         }
         return true
     }
-
+#endif
+    
     func ObserveForGameControllers() {
         connectObserver = NotificationCenter.default.addObserver(forName: .GCControllerDidConnect, object: nil, queue: nil) { _ in
             self.connectGameController()

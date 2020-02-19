@@ -179,6 +179,10 @@
 		0AE05CDD23FD335A00C7CA08 /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE05CDC23FD335A00C7CA08 /* UserDefaultsWrapper.swift */; };
 		0AE05CDE23FD337400C7CA08 /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE05CDC23FD335A00C7CA08 /* UserDefaultsWrapper.swift */; };
 		0AE05CE023FD349D00C7CA08 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE05CDF23FD349D00C7CA08 /* Preferences.swift */; };
+		0AE05CE523FD38A200C7CA08 /* VideoDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CC23636AF100817593 /* VideoDecoder.swift */; };
+		0AE05CE623FD3B9800C7CA08 /* TridentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130D123636AF100817593 /* TridentControl.swift */; };
+		0AE05CE923FD3D9000C7CA08 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE05CE823FD3D9000C7CA08 /* VideoView.swift */; };
+		0AE05CED23FD41E200C7CA08 /* DiveViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AE05CEC23FD41E200C7CA08 /* DiveViewController.storyboard */; };
 		0AF06EA123FAF637000FF36A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
 		0AF06EAC23FB0555000FF36A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF06EA423FB0555000FF36A /* UIViewExtensions.swift */; };
 		0AF06EB023FB209A000FF36A /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */; };
@@ -401,6 +405,8 @@
 		0AE05CDA23FD32FB00C7CA08 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0AE05CDC23FD335A00C7CA08 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		0AE05CDF23FD349D00C7CA08 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		0AE05CE823FD3D9000C7CA08 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
+		0AE05CEC23FD41E200C7CA08 /* DiveViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiveViewController.storyboard; sourceTree = "<group>"; };
 		0AF06EA423FB0555000FF36A /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIToolbar+Extensions.swift"; sourceTree = "<group>"; };
@@ -464,7 +470,7 @@
 			isa = PBXGroup;
 			children = (
 				0AF06EC523FB56F5000FF36A /* DashboardViewController */,
-				0A95068323F9BD62004E5546 /* DiveViewController.swift */,
+				0AE05CEE23FD41FC00C7CA08 /* DiveViewController */,
 				0A95068523F9BD8D004E5546 /* MaintenanceViewController.swift */,
 				0A95068723F9BDB0004E5546 /* PastDivesViewController.swift */,
 				0A1D09F723F93FD6006D9AFD /* AppDelegate.swift */,
@@ -723,6 +729,16 @@
 			path = DashboardViewController;
 			sourceTree = "<group>";
 		};
+		0AE05CEE23FD41FC00C7CA08 /* DiveViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0AE05CEC23FD41E200C7CA08 /* DiveViewController.storyboard */,
+				0A95068323F9BD62004E5546 /* DiveViewController.swift */,
+				0AE05CE823FD3D9000C7CA08 /* VideoView.swift */,
+			);
+			path = DiveViewController;
+			sourceTree = "<group>";
+		};
 		0AF06EC523FB56F5000FF36A /* DashboardViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -897,6 +913,7 @@
 				0A1D0A1C23F941AA006D9AFD /* PayloadCleanup.sh in Resources */,
 				0A1D0A1B23F941AA006D9AFD /* PayloadProvision.sh in Resources */,
 				0AF06EA123FAF637000FF36A /* Assets.xcassets in Resources */,
+				0AE05CED23FD41E200C7CA08 /* DiveViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -926,9 +943,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A1D0A2623F941BD006D9AFD /* I2CStats.swift in Sources */,
+				0AE05CE523FD38A200C7CA08 /* VideoDecoder.swift in Sources */,
+				0AE05CE623FD3B9800C7CA08 /* TridentControl.swift in Sources */,
 				0A1D0A5E23F94942006D9AFD /* iso8601date.swift in Sources */,
 				0A1D0A2123F941B2006D9AFD /* SSIDInfo.swift in Sources */,
 				0A1D0A4823F941C4006D9AFD /* FastRTPS.swift in Sources */,
+				0AE05CE923FD3D9000C7CA08 /* VideoView.swift in Sources */,
 				0A1D0A3E23F941BD006D9AFD /* RovCamera.swift in Sources */,
 				0A1D0A3923F941BD006D9AFD /* DDSTypeString.swift in Sources */,
 				0A1D0A2323F941B2006D9AFD /* AppInfo.swift in Sources */,

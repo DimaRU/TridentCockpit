@@ -3,7 +3,7 @@
 ///   Copyright © 2019 Dmitriy Borovikov. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 import AVFoundation
 import VideoToolbox
 
