@@ -10,8 +10,6 @@ class FloatingView: UIView {
     let alignConst: CGFloat = 10
     private var viewCenter: CGPoint!
     private var isAlignFeedbackSent = false
-    private var cpv: CGFloat = 0
-    private var cph: CGFloat = 0
 
     override func didMoveToSuperview() {
         super.didMoveToSuperview()
@@ -20,14 +18,8 @@ class FloatingView: UIView {
         self.addGestureRecognizer(recognizer)
         borderColor = .gray
 
-        let (defcph, defcpv) = loadPosition()
-        if defcph != nil, defcpv != nil {
-            cph = defcph!
-            cpv = defcpv!
-        } else {
-            (cph, cpv) = loadDefaults()
-        }
-        center = CGPoint(x: cph * superview!.frame.width, y: cpv * superview!.frame.height)
+        let cp = loadPosition() ?? loadDefaults()
+        center = CGPoint(x: cp.x * superview!.frame.width, y: cp.y * superview!.frame.height)
     }
 
     @objc func panGestureHandler(recognizer: UIPanGestureRecognizer) {
@@ -66,22 +58,21 @@ class FloatingView: UIView {
         case .ended, .cancelled:
             viewCenter = view.center
             view.borderWidth = 0
-            cph = viewCenter.x / superview!.frame.width
-            cpv = viewCenter.y / superview!.frame.height
-            savePosition(cph: cph, cpv: cpv)
+            let cph = viewCenter.x / superview!.frame.width
+            let cpv = viewCenter.y / superview!.frame.height
+            savePosition(cp: CGPoint(x: cph, y: cpv))
         default:
             break
         }
     }
    
-    func loadDefaults() -> (cph: CGFloat, cpv: CGFloat) {
-        return (0, 0)
+    func loadDefaults() -> CGPoint {
+        CGPoint(x: 0, y: 0)
     }
 
-    func savePosition(cph: CGFloat, cpv: CGFloat) {
-    }
+    func savePosition(cp: CGPoint) {}
     
-    func loadPosition() -> (cph: CGFloat?, cpv: CGFloat?) {
-        return (0, 0)
+    func loadPosition() -> CGPoint? {
+        nil
     }
 }

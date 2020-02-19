@@ -20,7 +20,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var cameraControlView: CameraControlView!
     @IBOutlet weak var propellerButton: UIButton!
     @IBOutlet weak var lightButton: UIButton!
-    @IBOutlet weak var recordingButton: UIButton!
+    @IBOutlet weak var recordingButton: CameraButton!
     @IBOutlet weak var tridentView: RovModelView!
 
     private var auxCameraView: AuxCameraControlView?
@@ -303,16 +303,14 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
                     let hour = videoSession.totalDurationS / 3600
                     self.recordingTimeLabel.text = String(format: "%2.2d:%2.2d:%2.2d", hour, min, sec)
                     
-//                    self.recordingButton.activeButtonColor = UIColor(named: "recordActive")!
-//                    self.recordingButton.buttonColor = UIColor(named: "recordNActive")!
+                    self.recordingButton.isSelected = true
                     self.cameraTimeLabel.textColor = .white
 
                 case .stopped:
                     self.videoSessionId = nil
                     self.recordingTimeLabel.text = ""
                     self.cameraTimeLabel.textColor = .systemGray
-//                    self.recordingButton.activeButtonColor = UIColor(named: "stopActive")!
-//                    self.recordingButton.buttonColor = UIColor(named: "stopNActive")!
+                    self.recordingButton.isSelected = false
                 }
             }
         }
