@@ -1,9 +1,9 @@
 /////
 ////  Preferences.swift
-///   Copyright © 2019 Dmitriy Borovikov. All rights reserved.
+///   Copyright © 2020 Dmitriy Borovikov. All rights reserved.
 //
 
-import Cocoa
+import UIKit
 
 struct Preference {
     @UserPreference("CameraControlViewCPV")
