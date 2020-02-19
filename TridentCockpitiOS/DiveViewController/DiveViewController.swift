@@ -109,42 +109,50 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         videoDecoder = VideoDecoder(sampleBufferLayer: videoView.sampleBufferLayer)
         self.view.backgroundColor = UIColor.black
 
-        tridentView.addConstraints(defX: view.frame.maxX - tridentView.frame.midX,
-                                   defY: view.frame.minY + tridentView.frame.midY)
         if Gopro3API.isConnected {
             auxCameraView = AuxCameraControlView.instantiate(superView: view)
+            auxCameraView?.delegate = self
         }
-//        view.postsFrameChangedNotifications = true
-//        NotificationCenter.default.addObserver(forName: UIView.frameDidChangeNotification, object: nil, queue: nil) { [weak self] _ in
-//            self?.cameraControlView.superViewDidResize()
-//            self?.tridentView.superViewDidResize()
-//            self?.auxCameraView?.superViewDidResize()
-//        }
         
         startRTPS()
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        cameraControlView.superViewDidResize(to: size)
+        tridentView.superViewDidResize(to: size)
+        auxCameraView?.superViewDidResize(to: size)
     }
 
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-//        DisplayManager.disableSleep()
+        UIApplication.shared.isIdleTimerDisabled = true
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        UIApplication.shared.isIdleTimerDisabled = false
     }
     
     @IBAction func closeButtonPress(_ sender: Any) {
-//        let alert = NSAlert()
-//        alert.addButton(withTitle: "OK")
-//        alert.addButton(withTitle: "Cancel")
-//        alert.messageText = NSLocalizedString("Leave Pilot Mode?", comment: "")
-//        alert.informativeText = NSLocalizedString("Are you sure you want to leave?", comment: "")
-//        alert.beginSheetModal(for: view.window!) { responce in
-//            guard responce == .alertFirstButtonReturn else { return }
-//            self.tridentControl.disable()
-//            FastRTPS.resignAll()
-//            self.videoDecoder.cleanup()
-//            DisplayManager.enableSleep()
-//
-//            self.transitionBack(options: .slideDown)
-//        }
+        let alert = UIAlertController(title: NSLocalizedString("Leave Pilot Mode?", comment: ""),
+                                      message: NSLocalizedString("Are you sure you want to leave?", comment: ""),
+                                      preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            self.tridentControl.disable()
+            FastRTPS.resignAll()
+            self.videoDecoder.cleanup()
+            self.dismiss(options: .fromBottom)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addAction(cancelAction)
+        alert.addAction(okAction)
+        present(alert, animated: true)
     }
     
     @IBAction func recordingButtonPress(_ sender: Any) {
@@ -192,18 +200,6 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     @IBAction func telemetryOverlayAction(_ sender: Any) {
         FastRTPS.send(topic: .rovVideoOverlayModeCommand, ddsData: !Preference.videoOverlayMode ? "on" : "off")
     }
-    
-//    override func keyUp(with event: NSEvent) {
-//        if !tridentControl.processKeyEvent(event: event) {
-//            super.keyUp(with: event)
-//        }
-//    }
-//
-//    override func keyDown(with event: NSEvent) {
-//        if !tridentControl.processKeyEvent(event: event) {
-//            super.keyDown(with: event)
-//        }
-//    }
     
     private func setTelemetryOverlay(mode: String) {
         switch mode {
@@ -327,16 +323,10 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
                     self.videoSessionId = nil
                 case .rejectedSessionInProgress:
                     self.videoSessionId = nil
-//                    let alert = NSAlert()
-//                    alert.messageText = "Recording"
-//                    alert.informativeText = "Already in progress"
-//                    alert.runModal()
+                    self.alert(message: "Recording", informative: "Already in progress")
                 case .rejectedNoSpace:
                     self.videoSessionId = nil
-//                    let alert = NSAlert()
-//                    alert.messageText = "Recording"
-//                    alert.informativeText = "No space left"
-//                    alert.runModal()
+                    self.alert(message: "Recording", informative: "No space left")
                 }
             }
         }

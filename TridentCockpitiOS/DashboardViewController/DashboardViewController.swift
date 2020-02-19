@@ -108,10 +108,9 @@ class DashboardViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func goDiveScreen(_ sender: Any?) {
-//        let diveViewController: DiveViewController = DiveViewController.instantiate()
-//        diveViewController.vehicleId = tridentID
-//        transition(to: diveViewController, options: .slideUp) {
-//        }
+        let diveViewController: DiveViewController = DiveViewController.instantiate()
+        diveViewController.modalPresentationStyle = .fullScreen
+        present(diveViewController, options: .fromTop)
     }
 
     @IBAction func goMaintenanceScreen(_ sender: Any?) {

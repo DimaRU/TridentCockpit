@@ -7,7 +7,7 @@ import UIKit
 
 class FloatingView: UIView {
 
-    let alignConst: CGFloat = 10
+    var alignConst: CGFloat { 10 }
     private var viewCenter: CGPoint!
     private var isAlignFeedbackSent = false
 
@@ -65,6 +65,17 @@ class FloatingView: UIView {
             break
         }
     }
+    
+    func superViewDidResize(to size: CGSize) {
+        assert(superview != nil)
+
+        let cph = center.x / superview!.frame.width
+        let cpv = center.y / superview!.frame.height
+
+        center = CGPoint(x: cph * size.width, y: cpv * size.height)
+        savePosition(cp: CGPoint(x: cph, y: cpv))
+    }
+
    
     func loadDefaults() -> CGPoint {
         CGPoint(x: 0, y: 0)
