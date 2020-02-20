@@ -110,6 +110,7 @@ class DashboardViewController: UIViewController {
     @IBAction func goDiveScreen(_ sender: Any?) {
         let diveViewController: DiveViewController = DiveViewController.instantiate()
         diveViewController.modalPresentationStyle = .fullScreen
+        diveViewController.vehicleId = tridentID
         present(diveViewController, options: .fromTop)
     }
 

@@ -9,7 +9,7 @@ extension UIViewController {
     func showAlert(error: Error, completion: (() -> Void)? = nil) {
         let alertController = UIAlertController(title: error.localizedDescription,
                                                 message: nil,
-                                                preferredStyle: .actionSheet)
+                                                preferredStyle: .alert)
         let action = UIAlertAction(title: "Dismiss", style: .default) { _ in
             completion?()
         }
@@ -20,7 +20,7 @@ extension UIViewController {
     func alert(message: String, informative: String, delay: Int = 5) {
         let alertController = UIAlertController(title: message,
                                                 message: informative,
-                                                preferredStyle: .actionSheet)
+                                                preferredStyle: .alert)
         let action = UIAlertAction(title: "Dismiss", style: .default)
         alertController.addAction(action)
         present(alertController, animated: true)
@@ -34,7 +34,7 @@ extension UIViewController {
     func alert(error: Error, delay: Int = 4) {
         let alertController = UIAlertController(title: error.localizedDescription,
                                                 message: nil,
-                                                preferredStyle: .actionSheet)
+                                                preferredStyle: .alert)
         if let error = error as? NetworkError {
             alertController.message = error.message()
         }
