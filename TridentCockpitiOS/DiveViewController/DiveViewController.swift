@@ -178,16 +178,10 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         let o = node.orientation
         let q = RovQuaternion(x: Double(-o.x), y: Double(-o.z), z: Double(-o.y), w: Double(o.w))
         tridentView.setCameraPos(yaw: Float(-q.yaw))
-
-//        NSApplication.shared.mainMenu?.recursiveSearch(tag: 11)!.state = .on
-//        NSApplication.shared.mainMenu?.recursiveSearch(tag: 12)!.state = .off
     }
     
     @IBAction func absoluteYawAction(_ sender: Any) {
         tridentView.setCameraPos(yaw: .pi)
-        
-//        NSApplication.shared.mainMenu?.recursiveSearch(tag: 11)!.state = .off
-//        NSApplication.shared.mainMenu?.recursiveSearch(tag: 12)!.state = .on
     }
     
     @IBAction func stabilizeAction(_ sender: Any) {

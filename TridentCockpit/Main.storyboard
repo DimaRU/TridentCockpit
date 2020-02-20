@@ -247,7 +247,7 @@
                 </viewController>
                 <customObject id="TOo-29-Q1x" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="662" y="228"/>
+            <point key="canvasLocation" x="661.5" y="227.5"/>
         </scene>
         <!--Dashboard View Controller-->
         <scene sceneID="lQm-bc-DVh">
@@ -1072,13 +1072,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <scrollView autohidesScrollers="YES" horizontalLineScroll="25" horizontalPageScroll="10" verticalLineScroll="25" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnH-L6-Zpz">
-                                <rect key="frame" x="0.0" y="0.0" width="200" height="244"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="242"/>
                                 <clipView key="contentView" translatesAutoresizingMaskIntoConstraints="NO" id="vrj-0q-2hM">
-                                    <rect key="frame" x="1" y="1" width="198" height="242"/>
+                                    <rect key="frame" x="1" y="1" width="198" height="240"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" viewBased="YES" id="nAL-NW-z6n">
-                                            <rect key="frame" x="0.0" y="0.0" width="198" height="242"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="198" height="240"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <size key="intercellSpacing" width="3" height="8"/>
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>

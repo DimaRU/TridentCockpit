@@ -59,6 +59,9 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="F83-3f-v1N" appends="YES" id="m0h-vu-yig"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" id="iQD-BB-ohb" userLabel="PastDivesView">
                                         <rect key="frame" x="0.0" y="259" width="289" height="259"/>
@@ -96,6 +99,9 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="bX5-Be-rYz" appends="YES" id="2fs-Cm-9O2"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" id="7b7-8Y-Y5l" userLabel="MaintView">
                                         <rect key="frame" x="0.0" y="518" width="289" height="259"/>
@@ -133,6 +139,9 @@
                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="CDF-sa-lRQ" appends="YES" id="hvX-Tb-77s"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -304,6 +313,21 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="F83-3f-v1N">
+                    <connections>
+                        <action selector="goDiveScreen:" destination="BYZ-38-t0r" id="o1V-S1-TTu"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="bX5-Be-rYz">
+                    <connections>
+                        <action selector="goPastDivesScreen:" destination="BYZ-38-t0r" id="NLp-iO-Ed8"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="CDF-sa-lRQ">
+                    <connections>
+                        <action selector="goMaintenanceScreen:" destination="BYZ-38-t0r" id="kXE-lI-Lhr"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="138.69346733668343" y="135.97122302158274"/>
         </scene>

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0C1C8523FE015100D09F77 /* TridentCockpit.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A71311B23636B5C00817593 /* TridentCockpit.scnassets */; };
 		0A1A5B7823CE4B150038EABE /* DiveCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7223CE4B150038EABE /* DiveCollectionItem.swift */; };
 		0A1A5B7923CE4B150038EABE /* PreviewVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7323CE4B150038EABE /* PreviewVideoViewController.swift */; };
 		0A1A5B7A23CE4B150038EABE /* DiveCollectionItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7423CE4B150038EABE /* DiveCollectionItem.xib */; };
@@ -930,6 +931,7 @@
 			files = (
 				0A1D0A0423F93FD7006D9AFD /* LaunchScreen.storyboard in Resources */,
 				0A1D09FF23F93FD6006D9AFD /* Main.storyboard in Resources */,
+				0A0C1C8523FE015100D09F77 /* TridentCockpit.scnassets in Resources */,
 				0A1D0A1C23F941AA006D9AFD /* PayloadCleanup.sh in Resources */,
 				0A1D0A1B23F941AA006D9AFD /* PayloadProvision.sh in Resources */,
 				0AF06EA123FAF637000FF36A /* Assets.xcassets in Resources */,
