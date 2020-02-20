@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16085" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16092.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="ipad11_0rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16078.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16082.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,14 +16,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lhc-qe-yzA">
-                                <rect key="frame" x="0.0" y="777" width="1192" height="57"/>
+                                <rect key="frame" x="0.0" y="777" width="491" height="57"/>
                                 <items>
-                                    <barButtonItem image="wifi" catalog="system" width="50" id="7XO-rw-lZX"/>
-                                    <barButtonItem image="camera.fill" catalog="system" width="50" id="m2y-o2-9l5"/>
+                                    <barButtonItem tag="1" image="wifi" catalog="system" width="50" id="7XO-rw-lZX">
+                                        <connections>
+                                            <action selector="connectWifiButtonPress:" destination="BYZ-38-t0r" id="tpT-sp-Qco"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem tag="2" image="camera.fill" catalog="system" width="50" id="m2y-o2-9l5">
+                                        <connections>
+                                            <action selector="connectCameraButtonPress:" destination="BYZ-38-t0r" id="07s-Sy-kou"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
-                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="khM-qz-rFw">
-                                <rect key="frame" x="903.5" y="0.0" width="289" height="777"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="khM-qz-rFw" userLabel="Buttons Stack View">
+                                <rect key="frame" x="372" y="0.0" width="289" height="777"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l4e-ZH-d8Q" userLabel="PilotView">
                                         <rect key="frame" x="0.0" y="0.0" width="289" height="259"/>
@@ -146,10 +154,10 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7X-Wz-rUE" userLabel="InfoView">
-                                <rect key="frame" x="0.0" y="0.0" width="903.5" height="777"/>
+                                <rect key="frame" x="0.0" y="0.0" width="372" height="777"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Ig7-ys-iqg">
-                                        <rect key="frame" x="297" y="278.5" width="309.5" height="220"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Ig7-ys-iqg">
+                                        <rect key="frame" x="0.0" y="278.5" width="372" height="220"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8ci-D0-jX5">
                                                 <rect key="frame" x="0.0" y="0.0" width="178" height="220"/>
@@ -205,7 +213,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5M2-AC-KWC">
-                                                <rect key="frame" x="194" y="0.0" width="115.5" height="220"/>
+                                                <rect key="frame" x="194" y="0.0" width="178" height="220"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="id" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxy-9N-c2L">
                                                         <rect key="frame" x="0.0" y="0.0" width="15" height="20.5"/>
@@ -231,7 +239,7 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="not connected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8I-Ki-Oop">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="not connected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8I-Ki-Oop">
                                                         <rect key="frame" x="0.0" y="114" width="115.5" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -260,7 +268,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connection info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZD-8Y-UDh">
-                                        <rect key="frame" x="379" y="246.5" width="145.5" height="24"/>
+                                        <rect key="frame" x="113.5" y="246.5" width="145.5" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -270,7 +278,7 @@
                                 <constraints>
                                     <constraint firstItem="WZD-8Y-UDh" firstAttribute="centerX" secondItem="Ig7-ys-iqg" secondAttribute="centerX" id="DeZ-Ti-jts"/>
                                     <constraint firstItem="Ig7-ys-iqg" firstAttribute="centerY" secondItem="a7X-Wz-rUE" secondAttribute="centerY" id="jVc-Iy-0mn"/>
-                                    <constraint firstItem="Ig7-ys-iqg" firstAttribute="width" secondItem="a7X-Wz-rUE" secondAttribute="width" multiplier="0.342541" id="ocE-aO-4Hp"/>
+                                    <constraint firstItem="Ig7-ys-iqg" firstAttribute="width" secondItem="a7X-Wz-rUE" secondAttribute="width" id="ocE-aO-4Hp"/>
                                     <constraint firstItem="Ig7-ys-iqg" firstAttribute="centerX" secondItem="a7X-Wz-rUE" secondAttribute="centerX" id="ovh-tt-pLh"/>
                                     <constraint firstItem="Ig7-ys-iqg" firstAttribute="top" secondItem="WZD-8Y-UDh" secondAttribute="bottom" constant="8" id="wwP-gT-Hs7"/>
                                 </constraints>
