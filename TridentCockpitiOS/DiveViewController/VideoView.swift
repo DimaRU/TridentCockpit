@@ -39,4 +39,11 @@ class VideoView: UIView {
 
         layer.addSublayer(sampleBufferLayer)
     }
+    
+    override func layoutSublayers(of layer: CALayer) {
+        layer.sublayers?.forEach {
+            $0.frame = layer.bounds
+        }
+    }
+
 }
