@@ -418,16 +418,13 @@ extension DiveViewController: TridentControlDelegate {
     func updatePropellerButtonState() {
         switch tridentControl.motorSpeed {
         case .first?:
-            propellerButton.isHidden = false
             propellerButton.setImage(UIImage(named: "Prop 1"), for: .normal)
         case .second?:
-            propellerButton.isHidden = false
             propellerButton.setImage(UIImage(named: "Prop 2"), for: .normal)
         case .third?:
-            propellerButton.isHidden = false
             propellerButton.setImage(UIImage(named: "Prop 3"), for: .normal)
         case nil:
-            propellerButton.isHidden = true
+            break
         }
     }
     

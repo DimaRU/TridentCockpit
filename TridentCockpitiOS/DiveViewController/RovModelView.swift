@@ -8,13 +8,12 @@ import SceneKit
 
 class RovModelView: FloatingView {
 
-    private let sceneView = SCNView()
+    private var sceneView: SCNView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.cornerRadius = 6
-        sceneView.frame = frame
-        self.addSubview(sceneView)
+        sceneView = (subviews.first! as! SCNView)
         initScene()
     }
 

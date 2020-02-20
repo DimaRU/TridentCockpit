@@ -41,7 +41,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="1194" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="sYF-Iw-wu2">
-                                        <rect key="frame" x="20" y="0.0" width="341" height="50"/>
+                                        <rect key="frame" x="20" y="0.0" width="336" height="50"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kfk-v4-euc">
                                                 <rect key="frame" x="0.0" y="13" width="24" height="24"/>
@@ -77,7 +77,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="m   􀇬" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qtL-p5-Lef">
-                                                <rect key="frame" x="132" y="15" width="48.5" height="20"/>
+                                                <rect key="frame" x="132" y="15" width="38" height="20.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="33" id="6ll-pj-6oy"/>
                                                 </constraints>
@@ -86,7 +86,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rb5-so-JjJ">
-                                                <rect key="frame" x="180.5" y="15" width="41" height="20"/>
+                                                <rect key="frame" x="170" y="15" width="41" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="41" id="9mV-nb-u6P"/>
                                                 </constraints>
@@ -95,13 +95,13 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="℃    􀛨" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="85d-l3-6Bf">
-                                                <rect key="frame" x="221.5" y="15" width="57.5" height="20"/>
+                                                <rect key="frame" x="211" y="15" width="63" height="20.5"/>
                                                 <fontDescription key="fontDescription" name="SFProDisplay-Regular" family="SF Pro Display" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10h25m" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Txq-rp-0D2">
-                                                <rect key="frame" x="279" y="15" width="62" height="20.5"/>
+                                                <rect key="frame" x="274" y="15" width="62" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
@@ -128,10 +128,19 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GfV-LQ-YW5" customClass="RovModelView" customModule="TridentCockpitiOS" customModuleProvider="target">
                                 <rect key="frame" x="1044" y="684" width="150" height="150"/>
-                                <color key="backgroundColor" name="cameraControlBackground"/>
+                                <subviews>
+                                    <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gD1-Lf-Ie7">
+                                        <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
+                                        <color key="backgroundColor" name="cameraControlBackground"/>
+                                    </sceneKitView>
+                                </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="WQT-KI-wTZ"/>
+                                    <constraint firstItem="gD1-Lf-Ie7" firstAttribute="top" secondItem="GfV-LQ-YW5" secondAttribute="top" id="cNQ-DT-KMK"/>
+                                    <constraint firstAttribute="bottom" secondItem="gD1-Lf-Ie7" secondAttribute="bottom" id="dtN-Y3-jdX"/>
                                     <constraint firstAttribute="width" constant="150" id="gWG-sc-VfL"/>
+                                    <constraint firstAttribute="trailing" secondItem="gD1-Lf-Ie7" secondAttribute="trailing" id="kAf-Kr-8Is"/>
+                                    <constraint firstItem="gD1-Lf-Ie7" firstAttribute="leading" secondItem="GfV-LQ-YW5" secondAttribute="leading" id="tKN-sZ-81W"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KWl-aA-Uaq">
