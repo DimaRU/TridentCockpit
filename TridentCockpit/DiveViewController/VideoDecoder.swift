@@ -19,8 +19,8 @@ final class VideoDecoder {
     
     func decodeVideo(data: Data, timestamp: UInt64) {
         let time = CMTime(value: Int64(timestamp), timescale: timescale)
-        var fullsps: [UInt8]?
-        var fullpps: [UInt8]?
+        var sequenceParameterSet: [UInt8]?
+        var pictureParameterSet: [UInt8]?
         var blockBuffer: CMBlockBuffer?
 
         var startIndex = data.startIndex
@@ -68,13 +68,13 @@ final class VideoDecoder {
             let nal = [UInt8](data.subdata(in: startIndex+4 ..< endIndex))
             switch naltype {
             case 7:
-                fullsps = nal
+                sequenceParameterSet = nal
             case 8:
-                fullpps = nal
+                pictureParameterSet = nal
             default:
                 break;
             }
-            if let sps = fullsps, let pps = fullpps {
+            if let sps = sequenceParameterSet, let pps = pictureParameterSet {
                 createFormatDescription(sps: sps, pps: pps)
                 if let controlTimebase = sampleBufferLayer.controlTimebase {
                     CMTimebaseSetTime(controlTimebase, time: time)
@@ -99,10 +99,8 @@ final class VideoDecoder {
                                                sampleSizeEntryCount: 1,
                                                sampleSizeArray: sampleSizeArray,
                                                sampleBufferOut: &sampleBuffer)
-        if status != noErr {
-            print("Nal decode error CMSampleBufferCreateReady")
-        }
-        
+        assert(status == noErr)
+
         guard let buffer = sampleBuffer, CMSampleBufferGetNumSamples(buffer) > 0 else {
             return
         }
@@ -117,20 +115,21 @@ final class VideoDecoder {
     }
     
     private func createFormatDescription(sps: [UInt8], pps: [UInt8]) {
-        // create a new format description with the SPS and PPS records
         formatDescription = nil
-        let parameters = [UnsafePointer<UInt8>(pps), UnsafePointer<UInt8>(sps)]
         let sizes = [pps.count, sps.count]
-        let status = CMVideoFormatDescriptionCreateFromH264ParameterSets(allocator: kCFAllocatorDefault,
-                                                                         parameterSetCount: 2,
-                                                                         parameterSetPointers: UnsafePointer(parameters),
-                                                                         parameterSetSizes: sizes,
-                                                                         nalUnitHeaderLength: 4,
-                                                                         formatDescriptionOut: &formatDescription)
-        
-        if status != noErr {
-            print("Error create formatDescription")
+        pps.withUnsafeBufferPointer { upps in
+            sps.withUnsafeBufferPointer { usps in
+                let parameters = [upps.baseAddress!, usps.baseAddress!]
+                let status = CMVideoFormatDescriptionCreateFromH264ParameterSets(allocator: kCFAllocatorDefault,
+                                                                                 parameterSetCount: 2,
+                                                                                 parameterSetPointers: parameters,
+                                                                                 parameterSetSizes: sizes,
+                                                                                 nalUnitHeaderLength: 4,
+                                                                                 formatDescriptionOut: &formatDescription)
+                assert(status == noErr)
+            }
         }
+        
 //        let dimensions = CMVideoFormatDescriptionGetDimensions(formatDescription!)
 //        print("Dimensions:", dimensions)
         
