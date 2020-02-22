@@ -10,17 +10,22 @@ import FastRTPSBridge
 
 class DiveViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var videoView: VideoView!
+
+    @IBOutlet weak var indicatorsView: UIView!
     @IBOutlet weak var depthLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var batteryTimeLabel: UILabel!
+    @IBOutlet weak var batterySymbol: UIImageView!
+    @IBOutlet weak var propellerButton: UIButton!
+    @IBOutlet weak var stabilizeSwitch: PWSwitch!
+    @IBOutlet weak var stabilizeLabel: UILabel!
+    
+    @IBOutlet weak var cameraControlView: CameraControlView!
+    @IBOutlet weak var recordingButton: CameraButton!
     @IBOutlet weak var cameraTimeLabel: UILabel!
     @IBOutlet weak var recordingTimeLabel: UILabel!
 
-    @IBOutlet weak var indicatorsView: UIView!
-    @IBOutlet weak var cameraControlView: CameraControlView!
-    @IBOutlet weak var propellerButton: UIButton!
     @IBOutlet weak var lightButton: UIButton!
-    @IBOutlet weak var recordingButton: CameraButton!
     @IBOutlet weak var tridentView: RovModelView!
 
     private var auxCameraView: AuxCameraControlView?
@@ -212,9 +217,12 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     private func setController(status: RovControllerStatus) {
         guard status.controllerId == .trident else { return }
         Preference.tridentStabilize = (status.state == .enabled)
-        
-//        let menuItem = NSApplication.shared.mainMenu?.recursiveSearch(tag: 3)
-//        menuItem!.state = Preference.tridentStabilize ? .on:.off
+        stabilizeSwitch.setOn((status.state == .enabled) , animated: true)
+        if status.state == .enabled {
+            stabilizeLabel.text = "Stabilize: enabled"
+        } else {
+            stabilizeLabel.text = "Stabilize: disabled"
+        }
     }
        
     private func startRTPS() {

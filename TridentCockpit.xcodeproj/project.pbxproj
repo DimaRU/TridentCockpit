@@ -157,6 +157,8 @@
 		0A82780C23A63B2D0039A774 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780B23A63B2D0039A774 /* WindowController.swift */; };
 		0A82781223A641750039A774 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781123A641750039A774 /* MaintenanceViewController.swift */; };
 		0A84F9CE237B37BF009BBAD4 /* SetupNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */; };
+		0A8B266E2401645A00ACC72F /* PWSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8B26662401645A00ACC72F /* PWSwitch.swift */; };
+		0A8B26702401653100ACC72F /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8B266F2401653100ACC72F /* UIViewExtensions.swift */; };
 		0A95068123F9B975004E5546 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068023F9B975004E5546 /* DashboardViewController.swift */; };
 		0A95068223F9BB20004E5546 /* SetupNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */; };
 		0A95068423F9BD62004E5546 /* DiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068323F9BD62004E5546 /* DiveViewController.swift */; };
@@ -189,7 +191,6 @@
 		0AE05CE923FD3D9000C7CA08 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE05CE823FD3D9000C7CA08 /* VideoView.swift */; };
 		0AE05CED23FD41E200C7CA08 /* DiveViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AE05CEC23FD41E200C7CA08 /* DiveViewController.storyboard */; };
 		0AF06EA123FAF637000FF36A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
-		0AF06EAC23FB0555000FF36A /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF06EA423FB0555000FF36A /* UIViewExtensions.swift */; };
 		0AF06EB023FB209A000FF36A /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */; };
 		0AF06ECE23FB5730000FF36A /* UIToolbar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */; };
 		0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; };
@@ -390,6 +391,8 @@
 		0A82781123A641750039A774 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
 		0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemIdentifier.swift; sourceTree = "<group>"; };
 		0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetupNotifications.swift; sourceTree = "<group>"; };
+		0A8B26662401645A00ACC72F /* PWSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWSwitch.swift; sourceTree = "<group>"; };
+		0A8B266F2401653100ACC72F /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		0A95068023F9B975004E5546 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		0A95068323F9BD62004E5546 /* DiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveViewController.swift; sourceTree = "<group>"; };
 		0A95068523F9BD8D004E5546 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
@@ -416,7 +419,6 @@
 		0AE05CDF23FD349D00C7CA08 /* Preferences.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		0AE05CE823FD3D9000C7CA08 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		0AE05CEC23FD41E200C7CA08 /* DiveViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiveViewController.storyboard; sourceTree = "<group>"; };
-		0AF06EA423FB0555000FF36A /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIToolbar+Extensions.swift"; sourceTree = "<group>"; };
 		0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftSH.xcodeproj; path = SwiftSH/SwiftSH.xcodeproj; sourceTree = "<group>"; };
@@ -680,6 +682,7 @@
 		0A95068923F9D7E7004E5546 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				0A8B26662401645A00ACC72F /* PWSwitch.swift */,
 				0ACCDE6A23FDABD100381207 /* CameraButton.swift */,
 				0A95068A23F9D7F7004E5546 /* SwiftSpinner.swift */,
 			);
@@ -690,7 +693,7 @@
 			isa = PBXGroup;
 			children = (
 				0AE05CDA23FD32FB00C7CA08 /* Extensions.swift */,
-				0AF06EA423FB0555000FF36A /* UIViewExtensions.swift */,
+				0A8B266F2401653100ACC72F /* UIViewExtensions.swift */,
 				0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */,
 				0A95068D23F9DD8D004E5546 /* UIViewController+Extensions.swift */,
 				0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */,
@@ -968,6 +971,7 @@
 				0AE05CE523FD38A200C7CA08 /* VideoDecoder.swift in Sources */,
 				0ACCDE7523FDB29D00381207 /* AuxCameraControlView.swift in Sources */,
 				0AE05CE623FD3B9800C7CA08 /* TridentControl.swift in Sources */,
+				0A8B26702401653100ACC72F /* UIViewExtensions.swift in Sources */,
 				0A1D0A5E23F94942006D9AFD /* iso8601date.swift in Sources */,
 				0A1D0A2123F941B2006D9AFD /* SSIDInfo.swift in Sources */,
 				0A1D0A4823F941C4006D9AFD /* FastRTPS.swift in Sources */,
@@ -978,6 +982,7 @@
 				0A1D0A2E23F941BD006D9AFD /* RovFuelgauge.swift in Sources */,
 				0A1D0A4123F941C4006D9AFD /* DDSDiscoveryListener.swift in Sources */,
 				0A1D0A3323F941BD006D9AFD /* RovPoint.swift in Sources */,
+				0A8B266E2401645A00ACC72F /* PWSwitch.swift in Sources */,
 				0A95068623F9BD8D004E5546 /* MaintenanceViewController.swift in Sources */,
 				0AE05CDD23FD335A00C7CA08 /* UserDefaultsWrapper.swift in Sources */,
 				0A1D0A3723F941BD006D9AFD /* RovQuaternion.swift in Sources */,
@@ -1020,7 +1025,6 @@
 				0A1D0A1D23F941B2006D9AFD /* RecordingsModel.swift in Sources */,
 				0A1D0A1F23F941B2006D9AFD /* APIVersion.swift in Sources */,
 				0A1D0A3123F941BD006D9AFD /* RovCommon.swift in Sources */,
-				0AF06EAC23FB0555000FF36A /* UIViewExtensions.swift in Sources */,
 				0A1D0A2723F941BD006D9AFD /* BatteryState.swift in Sources */,
 				0A95069123F9DF95004E5546 /* StoryboardInstantiable.swift in Sources */,
 				0A1D0A2023F941B2006D9AFD /* DeviceState.swift in Sources */,
