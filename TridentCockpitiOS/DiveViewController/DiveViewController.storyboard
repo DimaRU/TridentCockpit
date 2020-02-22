@@ -21,14 +21,19 @@
                                 <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNr-t8-WZ4">
-                                <rect key="frame" x="609" y="90" width="42" height="30"/>
+                                <rect key="frame" x="621" y="75" width="28" height="41"/>
                                 <color key="backgroundColor" name="cameraControlBackground"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="42" id="HMZ-uU-1na"/>
-                                    <constraint firstAttribute="height" constant="30" id="taw-Vm-c3Y"/>
+                                    <constraint firstAttribute="height" constant="41" id="Wb5-34-RWY"/>
+                                    <constraint firstAttribute="width" constant="28" id="iKB-Eh-gRT"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <state key="normal" image="Light Off"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="flashlight.off.fill" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                    </preferredSymbolConfiguration>
+                                </state>
                                 <state key="selected" image="Light On"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -262,7 +267,7 @@
                             </view>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="ude-Pc-hbE" firstAttribute="trailing" secondItem="eNr-t8-WZ4" secondAttribute="trailing" constant="16" id="1rv-UK-f4v"/>
+                            <constraint firstItem="ude-Pc-hbE" firstAttribute="trailing" secondItem="eNr-t8-WZ4" secondAttribute="trailing" constant="18" id="1rv-UK-f4v"/>
                             <constraint firstItem="KWl-aA-Uaq" firstAttribute="leading" secondItem="ude-Pc-hbE" secondAttribute="leading" placeholder="YES" id="5ZH-oW-lVI"/>
                             <constraint firstItem="CVJ-4V-eBR" firstAttribute="top" secondItem="ude-Pc-hbE" secondAttribute="top" id="9A7-IV-73j"/>
                             <constraint firstAttribute="bottom" secondItem="kvl-QW-fil" secondAttribute="bottom" id="HTr-02-YSj"/>
@@ -271,7 +276,7 @@
                             <constraint firstItem="KWl-aA-Uaq" firstAttribute="centerY" secondItem="5RH-GY-zce" secondAttribute="centerY" placeholder="YES" id="TOd-Ot-HvJ"/>
                             <constraint firstItem="kvl-QW-fil" firstAttribute="trailing" secondItem="ude-Pc-hbE" secondAttribute="trailing" id="TuQ-xU-myx"/>
                             <constraint firstItem="ude-Pc-hbE" firstAttribute="trailing" secondItem="GfV-LQ-YW5" secondAttribute="trailing" placeholder="YES" id="ZX1-Ol-70v"/>
-                            <constraint firstItem="eNr-t8-WZ4" firstAttribute="top" secondItem="CVJ-4V-eBR" secondAttribute="bottom" constant="40" id="hae-Am-7rk"/>
+                            <constraint firstItem="eNr-t8-WZ4" firstAttribute="top" secondItem="CVJ-4V-eBR" secondAttribute="bottom" constant="25" id="hae-Am-7rk"/>
                             <constraint firstItem="kvl-QW-fil" firstAttribute="top" secondItem="5RH-GY-zce" secondAttribute="top" id="oVb-sG-IYY"/>
                             <constraint firstAttribute="bottom" secondItem="GfV-LQ-YW5" secondAttribute="bottom" placeholder="YES" id="tON-gu-eHP"/>
                             <constraint firstItem="CVJ-4V-eBR" firstAttribute="leading" secondItem="ude-Pc-hbE" secondAttribute="leading" id="xHW-WF-qIQ"/>
@@ -302,10 +307,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Light Off" width="24" height="24"/>
         <image name="Light On" width="24" height="24"/>
         <image name="Prop 1" width="35" height="35"/>
         <image name="battery.100" catalog="system" width="128" height="65"/>
+        <image name="flashlight.off.fill" catalog="system" width="73" height="128"/>
         <image name="thermometer" catalog="system" width="87" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="cameraControlBackground">

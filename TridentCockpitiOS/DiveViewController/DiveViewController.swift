@@ -101,11 +101,14 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         cameraTimeLabel.text = ""
         recordingTimeLabel.text = ""
         cameraTimeLabel.textColor = .systemGray
+        depthLabel.font = UIFont.monospacedSystemFont(ofSize: 17, weight: .regular)
+        tempLabel.font = UIFont.monospacedSystemFont(ofSize: 17, weight: .regular)
+
         setupAverage()
         
         indicatorsView.backgroundColor = UIColor(named: "cameraControlBackground")!
         lightButton.layer.cornerRadius = 5
-        lightButton.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+        lightButton.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         
         let node = tridentView.modelNode()
         node.orientation = RovQuaternion(x: -0.119873046875, y: 0.99249267578125, z: 0.01611328125, w: 0.01910400390625).scnQuaternion()
@@ -339,13 +342,15 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
                 if lightPower.power > 0 {
                     // Light On
                     self.lightOn = true
-                    self.lightButton.setImage(UIImage(named: "Light On"), for: .normal)
-                    self.lightButton.backgroundColor = UIColor.black.withAlphaComponent(0.1)
+                    self.lightButton.setImage(UIImage(systemName: "flashlight.off.fill"), for: .normal)
+                    self.lightButton.tintColor = .white
+                    self.lightButton.backgroundColor = UIColor.black.withAlphaComponent(0.2)
                 } else {
                     // Light Off
                     self.lightOn = false
-                    self.lightButton.setImage(UIImage(named: "Light Off"), for: .normal)
-                    self.lightButton.backgroundColor = UIColor.white.withAlphaComponent(0.1)
+                    self.lightButton.setImage(UIImage(systemName: "flashlight.on.fill"), for: .normal)
+                    self.lightButton.tintColor = .black
+                    self.lightButton.backgroundColor = UIColor.white.withAlphaComponent(0.2)
                 }
             }
         }
