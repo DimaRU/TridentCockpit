@@ -666,15 +666,15 @@ open class PWSwitch: UIControl {
             
             if (animated) {
                 if (on) {
-                    let bgBorderAnimation = CABasicAnimation(keyPath: "borderWidth")
-                    bgBorderAnimation.timingFunction = CAMediaTimingFunction(controlPoints: 0.55, 0.055, 0.675, 0.19)
-                    bgBorderAnimation.fromValue = 1
-                    bgBorderAnimation.toValue = frame.height / 2
-                    bgBorderAnimation.fillMode = CAMediaTimingFillMode.forwards
-                    bgBorderAnimation.duration = 0.25
-                    bgBorderAnimation.isRemovedOnCompletion = false
-
-                    backLayer.add(bgBorderAnimation, forKey: "bgAnimation")
+//                    let bgBorderAnimation = CABasicAnimation(keyPath: "borderWidth")
+//                    bgBorderAnimation.timingFunction = CAMediaTimingFunction(controlPoints: 0.55, 0.055, 0.675, 0.19)
+//                    bgBorderAnimation.fromValue = 1
+//                    bgBorderAnimation.toValue = frame.height / 2
+//                    bgBorderAnimation.fillMode = CAMediaTimingFillMode.forwards
+//                    bgBorderAnimation.duration = 0.25
+//                    bgBorderAnimation.isRemovedOnCompletion = false
+//
+//                    backLayer.add(bgBorderAnimation, forKey: "bgAnimation")
 
                     offToOnAnim()
                 } else {
