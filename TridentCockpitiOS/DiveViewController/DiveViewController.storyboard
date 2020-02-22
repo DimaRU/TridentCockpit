@@ -21,7 +21,7 @@
                                 <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNr-t8-WZ4">
-                                <rect key="frame" x="609" y="100" width="42" height="30"/>
+                                <rect key="frame" x="609" y="90" width="42" height="30"/>
                                 <color key="backgroundColor" name="cameraControlBackground"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="42" id="HMZ-uU-1na"/>
@@ -32,7 +32,7 @@
                                 <state key="selected" image="Light On"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="3"/>
+                                        <real key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -40,10 +40,10 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CVJ-4V-eBR">
-                                <rect key="frame" x="0.0" y="0.0" width="667" height="60"/>
+                                <rect key="frame" x="0.0" y="0.0" width="667" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MHY-G0-mbk">
-                                        <rect key="frame" x="20" y="15" width="560.5" height="30"/>
+                                        <rect key="frame" x="16" y="10" width="560.5" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBP-qr-A2o">
                                                 <rect key="frame" x="0.0" y="0.0" width="25" height="30"/>
@@ -140,7 +140,7 @@
                                                         </constraints>
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="thumbDiameter">
-                                                                <real key="value" value="24"/>
+                                                                <real key="value" value="23"/>
                                                             </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="color" keyPath="trackOffBorderColor">
                                                                 <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -167,6 +167,9 @@
                                                             <userDefinedRuntimeAttribute type="color" keyPath="thumbOnBorderColor">
                                                                 <color key="value" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="15"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                         <connections>
                                                             <action selector="stabilizeAction:" destination="mek-Xn-fig" eventType="valueChanged" id="Hyh-zT-Ii5"/>
@@ -184,7 +187,7 @@
                                         <variation key="heightClass=compact" spacing="10"/>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vip-KF-QKX">
-                                        <rect key="frame" x="612" y="12.5" width="35" height="35"/>
+                                        <rect key="frame" x="616" y="7.5" width="35" height="35"/>
                                         <state key="normal" image="Prop 1"/>
                                         <connections>
                                             <action selector="propellerButtonPress:" destination="mek-Xn-fig" eventType="touchUpInside" id="VTK-fR-OMv"/>
@@ -193,11 +196,11 @@
                                 </subviews>
                                 <color key="backgroundColor" name="cameraControlBackground"/>
                                 <constraints>
-                                    <constraint firstItem="MHY-G0-mbk" firstAttribute="leading" secondItem="CVJ-4V-eBR" secondAttribute="leading" constant="20" symbolic="YES" id="5Rj-Rt-vb8"/>
+                                    <constraint firstItem="MHY-G0-mbk" firstAttribute="leading" secondItem="CVJ-4V-eBR" secondAttribute="leading" constant="16" id="5Rj-Rt-vb8"/>
                                     <constraint firstItem="MHY-G0-mbk" firstAttribute="centerY" secondItem="CVJ-4V-eBR" secondAttribute="centerY" id="HWQ-sh-h2A"/>
-                                    <constraint firstAttribute="height" constant="60" id="Y2k-TQ-mjp"/>
+                                    <constraint firstAttribute="height" constant="50" id="Y2k-TQ-mjp"/>
                                     <constraint firstItem="vip-KF-QKX" firstAttribute="centerY" secondItem="CVJ-4V-eBR" secondAttribute="centerY" id="lgV-Cl-Rmv"/>
-                                    <constraint firstAttribute="trailing" secondItem="vip-KF-QKX" secondAttribute="trailing" constant="20" symbolic="YES" id="qcR-ld-MuP"/>
+                                    <constraint firstAttribute="trailing" secondItem="vip-KF-QKX" secondAttribute="trailing" constant="16" id="qcR-ld-MuP"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GfV-LQ-YW5" customClass="RovModelView" customModule="TridentCockpitiOS" customModuleProvider="target">
