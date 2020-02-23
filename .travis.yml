@@ -11,6 +11,5 @@ cache:
 before_install:
 
 script:
-  - xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpit CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
-  - xcodebuild clean build --project TridentCockpit.xcodeproj -scheme TridentCockpitiOS -destination "platform=iOS Simulator,name=iPhone 8,OS=11.3" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
-  
+  - xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpit -destination " platform=macOS"  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
+  - xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpitiOS -destination "platform=iOS Simulator,name=iPhone 8,OS=11.3" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
