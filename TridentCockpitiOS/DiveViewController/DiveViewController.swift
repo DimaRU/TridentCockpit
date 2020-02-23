@@ -222,7 +222,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         Preference.tridentStabilize = (status.state == .enabled)
         stabilizeSwitch.setOn((status.state == .enabled) , animated: true)
         if status.state == .enabled {
-            stabilizeLabel.text = "Stabilize: enabled"
+            stabilizeLabel.text = "Stabilize: stabilized"
         } else {
             stabilizeLabel.text = "Stabilize: disabled"
         }
@@ -269,10 +269,16 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         }
         
         FastRTPS.registerReader(topic: .rovFuelgaugeStatus) { [weak self] (status: RovFuelgaugeStatus) in
-            guard self?.batteryTime == 65535 else { return }
+            guard let self = self else { return }
+            guard self.batteryTime == 65535 else { return }
         
             DispatchQueue.main.async {
-                self?.batteryTimeLabel.text = String(format: "charge: %.0f%%", status.state.percentage * 100)
+                self.batteryTimeLabel.text = String(format: "charge: %.0f%%", status.state.percentage * 100)
+                switch status.state.percentage {
+                case ..<0.10:     self.batterySymbol.image = UIImage(systemName: "battery.0")
+                case 0.10..<0.30: self.batterySymbol.image = UIImage(systemName: "battery.25")
+                default:          self.batterySymbol.image = UIImage(systemName: "battery.100")
+                }
             }
         }
 

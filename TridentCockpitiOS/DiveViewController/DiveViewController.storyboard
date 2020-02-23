@@ -48,7 +48,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MHY-G0-mbk">
-                                        <rect key="frame" x="16" y="10" width="560.5" height="30"/>
+                                        <rect key="frame" x="16" y="10" width="571.5" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBP-qr-A2o">
                                                 <rect key="frame" x="0.0" y="0.0" width="25" height="30"/>
@@ -135,7 +135,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="teU-Gb-3vI">
-                                                <rect key="frame" x="357" y="0.0" width="203.5" height="30"/>
+                                                <rect key="frame" x="357" y="0.0" width="214.5" height="30"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDU-8F-CvB" customClass="PWSwitch" customModule="TridentCockpitiOS" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
@@ -180,8 +180,8 @@
                                                             <action selector="stabilizeAction:" destination="mek-Xn-fig" eventType="valueChanged" id="Hyh-zT-Ii5"/>
                                                         </connections>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stabilize: Enabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ep-xM-frV">
-                                                        <rect key="frame" x="68" y="0.0" width="135.5" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stabilize: stabilized" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ep-xM-frV">
+                                                        <rect key="frame" x="68" y="0.0" width="146.5" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -193,6 +193,7 @@
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vip-KF-QKX">
                                         <rect key="frame" x="616" y="7.5" width="35" height="35"/>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" image="Prop 1"/>
                                         <connections>
                                             <action selector="propellerButtonPress:" destination="mek-Xn-fig" eventType="touchUpInside" id="VTK-fR-OMv"/>
