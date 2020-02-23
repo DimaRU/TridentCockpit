@@ -9,8 +9,10 @@ cache:
   directories:
 
 before_install:
-
+ - mkdir -p  $HOME/Developer/tools || true
+ - git clone --quiet --depth 1 https://github.com/ruslo/polly.git $HOME/Developer/tools/polly
+ 
 script:
-  - xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpit -destination "platform=macOS"  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
   - xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpitiOS -destination "platform=iOS Simulator,name=iPhone 8,OS=13.3" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
-  - xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpitiOS -destination "platform=macOS,arch=x86_64,variant=Mac Catalyst" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
+ - xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpit -destination "platform=macOS"  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO -quiet
+ 
