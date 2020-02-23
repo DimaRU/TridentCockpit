@@ -115,7 +115,6 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         
         tridentControl.setup(delegate: self)
         videoDecoder = VideoDecoder(sampleBufferLayer: videoView.sampleBufferLayer)
-        self.view.backgroundColor = UIColor.black
 
         if Gopro3API.isConnected {
             auxCameraView = AuxCameraControlView.instantiate(superView: view)
