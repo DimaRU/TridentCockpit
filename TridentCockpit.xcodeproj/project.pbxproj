@@ -83,6 +83,7 @@
 		0A2E1DAE23B0CAD9009048A5 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */; };
 		0A2E42BC236B0EE900B5C569 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E42BB236B0EE900B5C569 /* VideoView.swift */; };
 		0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
+		0A3D747A2402B87200EE78F7 /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E55BE23BC0AFA008F8A9A /* Average.swift */; };
 		0A3FD1EF23A8D50000FE9918 /* CircularProgress in Frameworks */ = {isa = PBXBuildFile; productRef = 0A3FD1EE23A8D50000FE9918 /* CircularProgress */; };
 		0A3FD1F223A9443E00FE9918 /* ResinAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F123A9443E00FE9918 /* ResinAPI.swift */; };
 		0A3FD1F423A94A5B00FE9918 /* WifiServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F323A94A5B00FE9918 /* WifiServiceAPI.swift */; };
@@ -1095,6 +1096,7 @@
 				0A55F6D323B969C500B108B0 /* RovIMUCalibration.swift in Sources */,
 				0A71310F23636B0200817593 /* RovDepth.swift in Sources */,
 				0A82780C23A63B2D0039A774 /* WindowController.swift in Sources */,
+				0A3D747A2402B87200EE78F7 /* Average.swift in Sources */,
 				0A1A5B7C23CE4B150038EABE /* PastDivesWorker.swift in Sources */,
 				0A1A5B8123CE4B2F0038EABE /* iso8601date.swift in Sources */,
 				0A3FD20123A9735300FE9918 /* AppInfo.swift in Sources */,
