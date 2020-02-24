@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16092.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16092.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="QEN-ug-fc8">
     <device id="retina6_5" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16082.1"/>
@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Dashboard View Controller-->
+        <!--Dashboard-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="DashboardViewController" customModule="TridentCockpitiOS" customModuleProvider="target" sceneMemberID="viewController">
@@ -15,26 +15,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lhc-qe-yzA">
-                                <rect key="frame" x="0.0" y="365" width="896" height="49"/>
-                                <items>
-                                    <barButtonItem tag="1" image="wifi" catalog="system" width="50" id="7XO-rw-lZX">
-                                        <connections>
-                                            <action selector="connectWifiButtonPress:" destination="BYZ-38-t0r" id="tpT-sp-Qco"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem tag="2" image="camera.fill" catalog="system" width="50" id="m2y-o2-9l5">
-                                        <connections>
-                                            <action selector="connectCameraButtonPress:" destination="BYZ-38-t0r" id="07s-Sy-kou"/>
-                                        </connections>
-                                    </barButtonItem>
-                                </items>
-                            </toolbar>
                             <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="khM-qz-rFw" userLabel="Buttons Stack View">
-                                <rect key="frame" x="672" y="0.0" width="224" height="365"/>
+                                <rect key="frame" x="672" y="44" width="224" height="370"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="l4e-ZH-d8Q" userLabel="PilotView">
-                                        <rect key="frame" x="0.0" y="0.0" width="224" height="121.66666666666667"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="224" height="123.33333333333333"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pilot" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ko9-6q-8Zm">
                                                 <rect key="frame" x="20" y="12.000000000000002" width="38" height="21.666666666666671"/>
@@ -46,7 +31,7 @@
                                                 </variation>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="underwater" translatesAutoresizingMaskIntoConstraints="NO" id="XiX-cX-wYf">
-                                                <rect key="frame" x="82" y="57.666666666666657" width="60" height="60"/>
+                                                <rect key="frame" x="82" y="59.333333333333329" width="60" height="60"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="AQl-6K-d4L">
                                                         <variation key="heightClass=compact" constant="60"/>
@@ -99,10 +84,10 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="j1y-zx-ZJ2" userLabel="PastDivesView">
-                                        <rect key="frame" x="0.0" y="121.66666666666666" width="224" height="121.66666666666666"/>
+                                        <rect key="frame" x="0.0" y="123.33333333333334" width="224" height="123.33333333333334"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Past Dives" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPD-SG-rdY">
-                                                <rect key="frame" x="20" y="11.999999999999988" width="88" height="21.666666666666671"/>
+                                                <rect key="frame" x="20" y="12.000000000000002" width="88" height="21.666666666666671"/>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                                                 <color key="textColor" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -111,7 +96,7 @@
                                                 </variation>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="film.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="aHC-UC-R69">
-                                                <rect key="frame" x="82" y="59.333333333333343" width="60" height="57.000000000000007"/>
+                                                <rect key="frame" x="82" y="60.999999999999972" width="60" height="57.000000000000007"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="Pzu-uq-5cp">
                                                         <variation key="heightClass=compact" constant="60"/>
@@ -164,7 +149,7 @@
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="47T-4p-W8H" userLabel="MaintView">
-                                        <rect key="frame" x="0.0" y="243.33333333333334" width="224" height="121.66666666666666"/>
+                                        <rect key="frame" x="0.0" y="246.66666666666671" width="224" height="123.33333333333334"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Maintenance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P7e-xe-Zel">
                                                 <rect key="frame" x="20" y="12.000000000000002" width="109" height="21.666666666666671"/>
@@ -176,7 +161,7 @@
                                                 </variation>
                                             </label>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Vrf-9P-veL">
-                                                <rect key="frame" x="82" y="58.666666666666664" width="60" height="58.666666666666664"/>
+                                                <rect key="frame" x="82" y="60.333333333333321" width="60" height="58.666666666666664"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="100" id="Rpc-an-ePb">
                                                         <variation key="heightClass=compact" constant="60"/>
@@ -231,10 +216,10 @@
                                 </subviews>
                             </stackView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="a7X-Wz-rUE" userLabel="InfoView">
-                                <rect key="frame" x="0.0" y="0.0" width="672" height="365"/>
+                                <rect key="frame" x="0.0" y="44" width="672" height="370"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="Ig7-ys-iqg">
-                                        <rect key="frame" x="0.0" y="85.333333333333329" width="672" height="218.66666666666669"/>
+                                        <rect key="frame" x="0.0" y="87.666666666666671" width="672" height="218.66666666666663"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="8ci-D0-jX5">
                                                 <rect key="frame" x="0.0" y="0.0" width="328" height="218.66666666666666"/>
@@ -252,37 +237,37 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Network address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fw-a9-z5B">
-                                                        <rect key="frame" x="193.33333333333337" y="56.666666666666679" width="134.66666666666663" height="20.333333333333336"/>
+                                                        <rect key="frame" x="193.33333333333337" y="56.666666666666693" width="134.66666666666663" height="20.333333333333336"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Local address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vuQ-iZ-3M3">
-                                                        <rect key="frame" x="217" y="85.000000000000014" width="111" height="20.333333333333329"/>
+                                                        <rect key="frame" x="217" y="85" width="111" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Onboard WiFi SSID:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QiJ-FN-3Jo">
-                                                        <rect key="frame" x="177.66666666666663" y="113.33333333333333" width="150.33333333333337" height="20.333333333333329"/>
+                                                        <rect key="frame" x="177.66666666666663" y="113.33333333333334" width="150.33333333333337" height="20.333333333333343"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Onboard WiFi address:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T00-kh-0iz">
-                                                        <rect key="frame" x="153.33333333333337" y="141.66666666666669" width="174.66666666666663" height="20.333333333333343"/>
+                                                        <rect key="frame" x="153.33333333333337" y="141.66666666666666" width="174.66666666666663" height="20.333333333333343"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Payload camera model:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NFP-bx-ccA">
-                                                        <rect key="frame" x="150" y="170" width="178" height="20.333333333333343"/>
+                                                        <rect key="frame" x="150" y="170.00000000000003" width="178" height="20.333333333333343"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="Payload firmware:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQm-6P-Cpc">
-                                                        <rect key="frame" x="192" y="198.33333333333337" width="136" height="20.333333333333343"/>
+                                                        <rect key="frame" x="192" y="198.33333333333334" width="136" height="20.333333333333343"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -305,37 +290,37 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.1.1.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bki-0U-9FA">
-                                                        <rect key="frame" x="0.0" y="56.666666666666679" width="44.333333333333336" height="20.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="56.666666666666693" width="44.333333333333336" height="20.333333333333336"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.1.1.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ON4-Gt-4Je">
-                                                        <rect key="frame" x="0.0" y="85.000000000000014" width="44.333333333333336" height="20.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="85" width="44.333333333333336" height="20.333333333333329"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="not connected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8I-Ki-Oop">
-                                                        <rect key="frame" x="0.0" y="113.33333333333333" width="115.33333333333333" height="20.333333333333329"/>
+                                                        <rect key="frame" x="0.0" y="113.33333333333334" width="115.33333333333333" height="20.333333333333343"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="n/a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dx2-4s-KpZ">
-                                                        <rect key="frame" x="0.0" y="141.66666666666669" width="25.333333333333332" height="20.333333333333343"/>
+                                                        <rect key="frame" x="0.0" y="141.66666666666666" width="25.333333333333332" height="20.333333333333343"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="n/a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Kw-C8-dW2">
-                                                        <rect key="frame" x="0.0" y="170" width="25.333333333333332" height="20.333333333333343"/>
+                                                        <rect key="frame" x="0.0" y="170.00000000000003" width="25.333333333333332" height="20.333333333333343"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="n/a" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mky-gI-oP4">
-                                                        <rect key="frame" x="0.0" y="198.33333333333337" width="25.333333333333332" height="20.333333333333343"/>
+                                                        <rect key="frame" x="0.0" y="198.33333333333334" width="25.333333333333332" height="20.333333333333343"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -345,7 +330,7 @@
                                         </subviews>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connection info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WZD-8Y-UDh">
-                                        <rect key="frame" x="263.33333333333331" y="53.333333333333343" width="145.33333333333331" height="24"/>
+                                        <rect key="frame" x="263.33333333333331" y="55.666666666666671" width="145.33333333333331" height="24"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -372,19 +357,30 @@
                         <color key="backgroundColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="a7X-Wz-rUE" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="425-Dz-9J1"/>
-                            <constraint firstItem="a7X-Wz-rUE" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="9f3-UN-Ggx"/>
-                            <constraint firstAttribute="trailing" secondItem="Lhc-qe-yzA" secondAttribute="trailing" id="Gpo-Ap-A66"/>
-                            <constraint firstItem="Lhc-qe-yzA" firstAttribute="top" secondItem="khM-qz-rFw" secondAttribute="bottom" id="OlG-Bd-zRh"/>
-                            <constraint firstItem="khM-qz-rFw" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="UoX-AY-9D7"/>
+                            <constraint firstItem="a7X-Wz-rUE" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="9f3-UN-Ggx"/>
+                            <constraint firstItem="khM-qz-rFw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="UoX-AY-9D7"/>
                             <constraint firstAttribute="trailing" secondItem="khM-qz-rFw" secondAttribute="trailing" id="cls-KK-gAE"/>
-                            <constraint firstItem="Lhc-qe-yzA" firstAttribute="top" secondItem="a7X-Wz-rUE" secondAttribute="bottom" id="fLe-7p-s0g"/>
                             <constraint firstItem="a7X-Wz-rUE" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="kgI-1U-fsd"/>
-                            <constraint firstItem="Lhc-qe-yzA" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="qR4-xZ-f8g"/>
-                            <constraint firstAttribute="bottom" secondItem="Lhc-qe-yzA" secondAttribute="bottom" id="wdG-R5-nxh"/>
+                            <constraint firstAttribute="bottom" secondItem="a7X-Wz-rUE" secondAttribute="bottom" id="wdr-Fv-rxr"/>
+                            <constraint firstAttribute="bottom" secondItem="khM-qz-rFw" secondAttribute="bottom" id="yqp-ra-T9w"/>
                             <constraint firstItem="khM-qz-rFw" firstAttribute="leading" secondItem="a7X-Wz-rUE" secondAttribute="trailing" id="zOn-pb-0c4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Dashboard" id="Nfv-z7-uCU">
+                        <leftBarButtonItems>
+                            <barButtonItem tag="1" image="wifi" catalog="system" width="50" id="7XO-rw-lZX">
+                                <connections>
+                                    <action selector="connectWifiButtonPress:" destination="BYZ-38-t0r" id="tpT-sp-Qco"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem tag="2" image="camera.fill" catalog="system" width="50" id="m2y-o2-9l5">
+                                <connections>
+                                    <action selector="connectCameraButtonPress:" destination="BYZ-38-t0r" id="07s-Sy-kou"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
+                    </navigationItem>
                     <connections>
                         <outlet property="cameraFirmwareLabel" destination="mky-gI-oP4" id="mYf-iq-S1R"/>
                         <outlet property="cameraModelLabel" destination="7Kw-C8-dW2" id="Wxs-U8-4n1"/>
@@ -392,7 +388,6 @@
                         <outlet property="localAddressLabel" destination="ON4-Gt-4Je" id="MV8-sR-Cey"/>
                         <outlet property="payloadAddress" destination="Dx2-4s-KpZ" id="0M3-qo-u3e"/>
                         <outlet property="ssidLabel" destination="H8I-Ki-Oop" id="FLe-FU-yE4"/>
-                        <outlet property="toolbar" destination="Lhc-qe-yzA" id="T3N-OX-0xG"/>
                         <outlet property="tridentIdLabel" destination="hxy-9N-c2L" id="ch8-ha-uGi"/>
                         <outlet property="tridentNetworkAddressLabel" destination="bki-0U-9FA" id="zYt-Fa-Nv7"/>
                     </connections>
@@ -414,7 +409,25 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="138.69346733668343" y="135.97122302158274"/>
+            <point key="canvasLocation" x="881.91964285714278" y="134.78260869565219"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qIS-Ik-Lxn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="QEN-ug-fc8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="9WF-GN-E2A">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Ivd-IB-fNW"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="taj-W6-rIY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138.61607142857142" y="134.78260869565219"/>
         </scene>
     </scenes>
     <resources>
