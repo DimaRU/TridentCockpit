@@ -115,8 +115,9 @@ class DashboardViewController: UIViewController {
     }
 
     @IBAction func goMaintenanceScreen(_ sender: Any?) {
-//        let maintenanceViewController: MaintenanceViewController = MaintenanceViewController.instantiate()
-//        transition(to: maintenanceViewController, options: .slideLeft)
+        let maintenanceViewController = MaintenanceViewController.instantiate()
+        maintenanceViewController.modalPresentationStyle = .fullScreen
+        present(maintenanceViewController, animated: true)
     }
 
     @IBAction func goPastDivesScreen(_ sender: Any?) {

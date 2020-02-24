@@ -159,6 +159,9 @@
                                                 <include reference="PnG-hB-pXD"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="wSi-ag-1z2" appends="YES" id="AvB-Q6-av7"/>
+                                        </connections>
                                     </view>
                                     <view contentMode="scaleToFill" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="47T-4p-W8H" userLabel="MaintView">
                                         <rect key="frame" x="0.0" y="243.33333333333334" width="224" height="121.66666666666666"/>
@@ -221,6 +224,9 @@
                                                 <include reference="NXX-Eb-0Js"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="zaN-ic-Zn5" appends="YES" id="hdz-Xl-2jq"/>
+                                        </connections>
                                     </view>
                                 </subviews>
                             </stackView>
@@ -397,14 +403,14 @@
                         <action selector="goDiveScreen:" destination="BYZ-38-t0r" id="o1V-S1-TTu"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="bX5-Be-rYz">
+                <tapGestureRecognizer id="wSi-ag-1z2">
                     <connections>
-                        <action selector="goPastDivesScreen:" destination="BYZ-38-t0r" id="NLp-iO-Ed8"/>
+                        <action selector="goPastDivesScreen:" destination="BYZ-38-t0r" id="ZCD-Fa-x1B"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="CDF-sa-lRQ">
+                <tapGestureRecognizer id="zaN-ic-Zn5">
                     <connections>
-                        <action selector="goMaintenanceScreen:" destination="BYZ-38-t0r" id="kXE-lI-Lhr"/>
+                        <action selector="goMaintenanceScreen:" destination="BYZ-38-t0r" id="m1Y-cG-f9c"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
