@@ -112,16 +112,16 @@ class DashboardViewController: UIViewController {
         present(diveViewController, options: .fromTop)
     }
 
-    @IBAction func goMaintenanceScreen(_ sender: Any?) {
-        let maintenanceViewController = MaintenanceViewController.instantiate()
-        maintenanceViewController.modalPresentationStyle = .fullScreen
-        present(maintenanceViewController, animated: true)
-    }
+//    @IBAction func goMaintenanceScreen(_ sender: Any?) {
+//        let maintenanceViewController = MaintenanceViewController.instantiate()
+//        maintenanceViewController.modalPresentationStyle = .fullScreen
+//        present(maintenanceViewController, animated: true)
+//    }
 
-    @IBAction func goPastDivesScreen(_ sender: Any?) {
+//    @IBAction func goPastDivesScreen(_ sender: Any?) {
 //        let pastDivesViewController: PastDivesViewController = PastDivesViewController.instantiate()
 //        transition(to: pastDivesViewController, options: .slideLeft)
-    }
+//    }
 
     @IBAction func connectWifiButtonPress(_ sender: UIBarButtonItem) {
         if connectedSSID == nil {

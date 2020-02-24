@@ -52,6 +52,11 @@ class MaintenanceViewController: UIViewController, StoryboardInstantiable {
         registerReaders()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        FastRTPS.resignAll()
+    }
+    
     @IBAction func closeButtonPress(_ sender: Any) {
         FastRTPS.resignAll()
         dismiss(animated: true)
