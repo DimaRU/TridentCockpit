@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/DimaRU/TridentCockpit/raw/master/TridentCockpit/Common code/Assets.xcassets/AppIcon.appiconset/icon_256x256.png" />
+<img src="https://github.com/DimaRU/TridentCockpit/raw/master/Common%20code/Assets.xcassets/AppIcon.appiconset/icon_256x256.png" />
 </p>
 
 <p align="center">Trident Cockpit is an alternative macOS control app for the <a href="https://www.sofarocean.com/products/trident?aff=30">Sofar Trident Underwater Drone</a>.</p>
