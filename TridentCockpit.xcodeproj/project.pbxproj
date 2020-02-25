@@ -516,6 +516,8 @@
 				0A3FD1F723A9720200FE9918 /* APIModel */,
 				0A7130E023636B0200817593 /* DDSModel */,
 				0A3FD1F023A9439100FE9918 /* Networking */,
+				0A2FF3112363A0BD008FD68B /* Assets.xcassets */,
+				0A71311B23636B5C00817593 /* TridentCockpit.scnassets */,
 			);
 			path = "Common code";
 			sourceTree = "<group>";
@@ -652,8 +654,6 @@
 				0A7130CD23636AF100817593 /* AppDelegate.swift */,
 				0A1A5B8223CE4B3B0038EABE /* Extensions */,
 				0A5CBC992367507F0055131A /* ThirdParty */,
-				0A71311B23636B5C00817593 /* TridentCockpit.scnassets */,
-				0A2FF3112363A0BD008FD68B /* Assets.xcassets */,
 				0A7130C0236369EC00817593 /* Info.plist */,
 				0A56D0BE23D7119900D9495A /* InfoPlist.strings */,
 				0A71311923636B1700817593 /* Main.storyboard */,
