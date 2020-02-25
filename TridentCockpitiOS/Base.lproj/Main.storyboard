@@ -395,12 +395,12 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="F83-3f-v1N">
                     <connections>
-                        <action selector="goDiveScreen:" destination="BYZ-38-t0r" id="o1V-S1-TTu"/>
+                        <segue destination="Pxb-v3-CIo" kind="presentation" destinationCreationSelector="goDiveScreenWithCoder:" modalPresentationStyle="fullScreen" id="P8p-Oe-4Mr"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="wSi-ag-1z2">
                     <connections>
-                        <action selector="goPastDivesScreen:" destination="BYZ-38-t0r" id="ZCD-Fa-x1B"/>
+                        <segue destination="4Us-GD-hhJ" kind="show" id="yrs-h2-Cq6"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="zaN-ic-Zn5">
@@ -410,6 +410,24 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="881.91964285714278" y="134.78260869565219"/>
+        </scene>
+        <!--DiveViewController-->
+        <scene sceneID="JrH-Uz-gDx">
+            <objects>
+                <viewControllerPlaceholder storyboardName="DiveViewController" id="Pxb-v3-CIo" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5G4-ki-cjR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="834" y="672"/>
+        </scene>
+        <!--PastDivesViewController-->
+        <scene sceneID="pYy-zx-o8r">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PastDivesViewController" id="4Us-GD-hhJ" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Vtr-Sl-YFU"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4z6-cP-xu2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1077" y="673"/>
         </scene>
         <!--Maintenance View Controller-->
         <scene sceneID="H9i-V0-Lyb">

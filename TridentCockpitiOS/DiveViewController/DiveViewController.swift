@@ -34,7 +34,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     
     private var lightOn = false
     private var videoSessionId: UUID?
-    var vehicleId: String = ""
+    let vehicleId: String
     private var rovBeacon: RovBeacon?
     
     @Average(5) private var depth: Float
@@ -86,6 +86,16 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
             }
         }
     }
+    
+    init?(coder: NSCoder, vehicleId: String) {
+      self.vehicleId = vehicleId
+      super.init(coder: coder)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 
     #if DEBUG
     deinit {
@@ -152,7 +162,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
             self.tridentControl.disable()
             FastRTPS.resignAll()
             self.videoDecoder.cleanup()
-            self.dismiss(options: .fromBottom)
+            self.dismiss(animated: true)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)

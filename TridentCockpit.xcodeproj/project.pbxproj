@@ -177,6 +177,7 @@
 		0A98307023C22FFD00BD234B /* AuxPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98306F23C22FFD00BD234B /* AuxPlayerViewController.swift */; };
 		0A98307423C2355700BD234B /* AuxPlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A98307323C2355700BD234B /* AuxPlayerViewController.storyboard */; };
 		0AA4290223C38D3B003476CB /* PayloadCleanup.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0AA4290123C38D3B003476CB /* PayloadCleanup.sh */; };
+		0AA5675A240549AB00378635 /* PastDivesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA56759240549AB00378635 /* PastDivesViewController.storyboard */; };
 		0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */; };
 		0ACCDE6B23FDABD100381207 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCDE6A23FDABD100381207 /* CameraButton.swift */; };
 		0ACCDE6D23FDAD4E00381207 /* CameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCDE6C23FDAD4E00381207 /* CameraControlView.swift */; };
@@ -410,6 +411,7 @@
 		0A98307323C2355700BD234B /* AuxPlayerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AuxPlayerViewController.storyboard; sourceTree = "<group>"; };
 		0A9E55BE23BC0AFA008F8A9A /* Average.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Average.swift; sourceTree = "<group>"; };
 		0AA4290123C38D3B003476CB /* PayloadCleanup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PayloadCleanup.sh; sourceTree = "<group>"; };
+		0AA56759240549AB00378635 /* PastDivesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PastDivesViewController.storyboard; sourceTree = "<group>"; };
 		0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiPopupViewController.swift; sourceTree = "<group>"; };
 		0ACCDE6A23FDABD100381207 /* CameraButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		0ACCDE6C23FDAD4E00381207 /* CameraControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraControlView.swift; sourceTree = "<group>"; };
@@ -564,6 +566,7 @@
 			isa = PBXGroup;
 			children = (
 				0A95068723F9BDB0004E5546 /* PastDivesViewController.swift */,
+				0AA56759240549AB00378635 /* PastDivesViewController.storyboard */,
 			);
 			path = PastDivesViewController;
 			sourceTree = "<group>";
@@ -959,6 +962,7 @@
 				0A1D0A1B23F941AA006D9AFD /* PayloadProvision.sh in Resources */,
 				0AF06EA123FAF637000FF36A /* Assets.xcassets in Resources */,
 				0AE05CED23FD41E200C7CA08 /* DiveViewController.storyboard in Resources */,
+				0AA5675A240549AB00378635 /* PastDivesViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -105,24 +105,11 @@ class DashboardViewController: UIViewController {
     }
     
     // MARK: Actions
-    @IBAction func goDiveScreen(_ sender: Any?) {
-        let diveViewController: DiveViewController = DiveViewController.instantiate()
-        diveViewController.modalPresentationStyle = .fullScreen
-        diveViewController.vehicleId = tridentID
-        present(diveViewController, options: .fromTop)
+    @IBSegueAction
+    private func goDiveScreen(coder: NSCoder) -> DiveViewController? {
+        return DiveViewController(coder: coder, vehicleId: tridentID)
     }
-
-//    @IBAction func goMaintenanceScreen(_ sender: Any?) {
-//        let maintenanceViewController = MaintenanceViewController.instantiate()
-//        maintenanceViewController.modalPresentationStyle = .fullScreen
-//        present(maintenanceViewController, animated: true)
-//    }
-
-//    @IBAction func goPastDivesScreen(_ sender: Any?) {
-//        let pastDivesViewController: PastDivesViewController = PastDivesViewController.instantiate()
-//        transition(to: pastDivesViewController, options: .slideLeft)
-//    }
-
+    
     @IBAction func connectWifiButtonPress(_ sender: UIBarButtonItem) {
         if connectedSSID == nil {
             connectWiFi(view: sender.view!)
