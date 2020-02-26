@@ -272,11 +272,13 @@ class DashboardViewController: UIViewController {
         } catch {
             fatalError(error.localizedDescription)
         }
-        timer = Timer.scheduledTimer(withTimeInterval: 6, repeats: true) { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             guard self.discovered.count != 0 else { return }
-            self.ddsListener.stop()
             self.timer = nil
-            self.startRTPS()
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+                self.ddsListener.stop()
+                self.startRTPS()
+            }
         }
     }
 
