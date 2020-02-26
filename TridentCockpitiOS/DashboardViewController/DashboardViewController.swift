@@ -24,7 +24,7 @@ class DashboardViewController: UIViewController {
 
     var deviceState: DeviceState? {
         didSet {
-            guard oldValue != deviceState else { return }
+            guard oldValue != deviceState, deviceState != nil else { return }
             connectedSSID = connectionInfo.first(where: {$0.kind == "802-11-wireless" && $0.state == "Activated"})?.ssid
             guard let ipAddress = deviceState?.ipAddress else { return }
                 let addrs = ipAddress.split(separator: " ")
@@ -139,27 +139,33 @@ class DashboardViewController: UIViewController {
     }
 
     private func startRefreshDeviceState() {
-        timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { [weak self] timer in
+        timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { [weak self] timer in
             guard let self = self else {
                 timer.invalidate()
                 return
             }
-            RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
+            self.refreshDeviceState()
+        }
+    }
+    
+    private func refreshDeviceState() {
+        RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
             .done { (connectionInfo: [ConnectionInfo]) in
-                    self.connectionInfo = connectionInfo
-            }.then {
-                RestProvider.request(MultiTarget(ResinAPI.deviceState))
-            }.done { (deviceState: DeviceState) in
-                self.deviceState = deviceState
-            }.catch { error in
-                switch error {
-                case NetworkError.unaviable(let message):
-                    self.timer = nil
-                    self.alert(message: "Trident connection lost", informative: message, delay: 4)
-                default:
-                    self.alert(error: error, delay: 5)
-                }
+                self.connectionInfo = connectionInfo
+        }.then {
+            RestProvider.request(MultiTarget(ResinAPI.deviceState))
+        }.done { (deviceState: DeviceState) in
+            self.deviceState = deviceState
+            self.startRefreshDeviceState()
+        }.catch { error in
+            switch error {
+            case NetworkError.unaviable(let message):
+                self.timer = nil
+                self.alert(message: "Trident connection lost", informative: message, delay: 5)
+            default:
+                self.alert(error: error, delay: 5)
             }
+            
         }
     }
     
@@ -298,6 +304,8 @@ class DashboardViewController: UIViewController {
         FastRTPS.setPartition(name: self.tridentID!)
     }
         
+    #warning("TODO: Dismiss")
+    // TODO: Dismiss presented view controller
     // MARK: Internal func
     func setDisconnectedState() {
         timer = nil
@@ -333,6 +341,7 @@ class DashboardViewController: UIViewController {
         FastRTPS.deleteParticipant()
         navigationItem.leftBarButtonItems?.forEach{ $0.isEnabled = false }
         connectedSSID = nil
+        deviceState = nil
         addCircularProgressView(to: view)
         ddsDiscoveryStart()
     }
