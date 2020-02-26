@@ -6,6 +6,7 @@
 
 import UIKit
 import SceneKit
+import CoreLocation
 import FastRTPSBridge
 
 class DiveViewController: UIViewController, StoryboardInstantiable {
@@ -28,6 +29,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var lightButton: UIButton!
     @IBOutlet weak var tridentView: RovModelView!
 
+    private let locationManager = CLLocationManager()
     private var auxCameraView: AuxCameraControlView?
     private var videoDecoder: VideoDecoder!
     private let tridentControl = TridentControl()
@@ -132,6 +134,12 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         }
         
         startRTPS()
+        
+        if CLLocationManager.headingAvailable() {
+            print("Heading aviable")
+            locationManager.delegate = self
+            locationManager.startUpdatingHeading()
+        }
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -188,17 +196,6 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
             tridentControl.motorSpeed = .first
         }
         updatePropellerButtonState()
-    }
-    
-    @IBAction func relativeYawAction(_ sender: Any) {
-        let node = tridentView.modelNode()
-        let o = node.orientation
-        let q = RovQuaternion(x: Double(-o.x), y: Double(-o.z), z: Double(-o.y), w: Double(o.w))
-        tridentView.setCameraPos(yaw: Float(-q.yaw))
-    }
-    
-    @IBAction func absoluteYawAction(_ sender: Any) {
-        tridentView.setCameraPos(yaw: .pi)
     }
     
     @IBAction func stabilizeAction(_ sender: Any) {
@@ -469,4 +466,13 @@ extension DiveViewController: TridentControlDelegate {
         }
     }
     
+}
+
+extension DiveViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
+        let heading = newHeading.magneticHeading
+        let cameraHeading = heading + (heading > 180 ? -180 : 180)
+        let yaw = Float(cameraHeading / 180 * .pi)
+        tridentView.setCameraPos(yaw: yaw)
+    }
 }
