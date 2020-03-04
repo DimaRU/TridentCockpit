@@ -28,6 +28,8 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
 
     @IBOutlet weak var lightButton: UIButton!
     @IBOutlet weak var tridentView: RovModelView!
+    @IBOutlet weak var throttleJoystickView: TouchJoystickView!
+    @IBOutlet weak var yawPitchJoystickView: TouchJoystickView!
 
     private let locationManager = CLLocationManager()
     private var auxCameraView: AuxCameraControlView?
@@ -115,6 +117,8 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         cameraTimeLabel.textColor = .systemGray
         depthLabel.font = UIFont.monospacedSystemFont(ofSize: 17, weight: .regular)
         tempLabel.font = UIFont.monospacedSystemFont(ofSize: 17, weight: .regular)
+        throttleJoystickView.delegate = tridentControl
+        yawPitchJoystickView.delegate = tridentControl
 
         setupAverage()
         
@@ -151,6 +155,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     }
 
 
+    // MARK: Overrides
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.shared.isIdleTimerDisabled = true
@@ -159,6 +164,38 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            let location = touch.location(in: view)
+            if location.x < view.bounds.midX {
+                throttleJoystickView.touchBegan(touch: touch)
+            } else {
+                yawPitchJoystickView.touchBegan(touch: touch)
+            }
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            throttleJoystickView.touchMoved(touch: touch)
+            yawPitchJoystickView.touchMoved(touch: touch)
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            throttleJoystickView.touchEnded(touch: touch)
+            yawPitchJoystickView.touchEnded(touch: touch)
+        }
+    }
+
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            throttleJoystickView.touchEnded(touch: touch)
+            yawPitchJoystickView.touchEnded(touch: touch)
+        }
     }
     
     @IBAction func closeButtonPress(_ sender: Any) {
@@ -218,9 +255,6 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         default:
             print("illegal mode:", mode)
         }
-        
-//        let menuItem = NSApplication.shared.mainMenu?.recursiveSearch(tag: 4)
-//        menuItem!.state = Preference.videoOverlayMode ? .on:.off
     }
     
     private func setController(status: RovControllerStatus) {

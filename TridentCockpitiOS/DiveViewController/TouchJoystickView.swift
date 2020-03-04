@@ -6,8 +6,8 @@
 import UIKit
 
 protocol TouchJoystickViewDelegate: class {
-    func joystickDidMove(_ joystickView: TouchJoystickView, to x: Float, y: Float)
-    func joystickEndMoving(_ joystickView: TouchJoystickView)
+    func joystickDidMove(id: String, to x: Float, y: Float)
+    func joystickEndMoving(id: String)
 }
 
 @IBDesignable
@@ -26,6 +26,8 @@ class TouchJoystickView: UIView {
     @IBInspectable var shadowBlur: CGFloat = 12
     @IBInspectable var shadowOffset: CGSize = CGSize(width: 7, height: 7)
     @IBInspectable var joystickSize: CGSize = .zero
+    @IBInspectable var compactJoystickSize: CGSize = .zero
+    @IBInspectable var joystickId: String = "id"
 
     weak var delegate: TouchJoystickViewDelegate?
     private weak var startTouch: UITouch?
@@ -39,34 +41,21 @@ class TouchJoystickView: UIView {
     private var deadzone: CGFloat = 4
     private var joystickBounds: CGRect = .zero
 
-    // MARK: Setup
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        setup()
-    }
-    
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
-    #if TARGET_INTERFACE_BUILDER
-    override func prepareForInterfaceBuilder() {
-        setup()
-    }
-    #endif
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setup()
-    }
-    
     func setup(joystick size: CGSize) {
         joystickSize = size
+        compactJoystickSize = size
         setup()
     }
 
     private func setup() {
-        let size = joystickSize != .zero ? joystickSize : bounds.size
+        var size = joystickSize
+        if UIScreen.main.traitCollection.horizontalSizeClass == .compact ||
+            UIScreen.main.traitCollection.verticalSizeClass == .compact {
+            size = compactJoystickSize
+        }
+        if size == .zero {
+            size = bounds.size
+        }
         joystickBounds = CGRect(origin: CGPoint(x: bounds.midX - size.width/2, y: bounds.midY - size.height/2), size: size)
         if size.height == size.width {
             joystickType = .dualAxis
@@ -78,6 +67,11 @@ class TouchJoystickView: UIView {
         stickPosition = CGPoint(x: joystickBounds.midX, y: joystickBounds.midY)
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        setup()
+    }
+
     // MARK: draw
     override func draw(_ rect: CGRect) {
         if joystickType ~= .dualAxis {
@@ -162,7 +156,7 @@ class TouchJoystickView: UIView {
         startTouch = touch
         stickPosition = touch.location(in: self)
         setNeedsDisplay()
-        delegate?.joystickDidMove(self, to: 0, y: 0)
+        delegate?.joystickDidMove(id: joystickId, to: 0, y: 0)
         feedbackGenerator = .init(style: .light)
         feedbackGenerator?.prepare()
         lowXMark = true
@@ -282,7 +276,7 @@ class TouchJoystickView: UIView {
         
         if lastPosition != stickPosition {
             setNeedsDisplay()
-            delegate?.joystickDidMove(self, to: Float(xValue), y: Float(yValue))
+            delegate?.joystickDidMove(id: joystickId, to: Float(xValue), y: Float(yValue))
         }
     }
     
@@ -290,7 +284,7 @@ class TouchJoystickView: UIView {
         guard touch == startTouch else { return }
         isHidden = true
         feedbackGenerator = nil
-        delegate?.joystickEndMoving(self)
+        delegate?.joystickEndMoving(id: joystickId)
     }
     
 }

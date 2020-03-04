@@ -12,7 +12,7 @@
         <scene sceneID="Mhz-FE-E6H">
             <objects>
                 <viewController id="mek-Xn-fig" customClass="DiveViewController" customModule="TridentCockpitiOS" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5RH-GY-zce">
+                    <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="5RH-GY-zce">
                         <rect key="frame" x="0.0" y="0.0" width="1194" height="834"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -277,22 +277,160 @@
                                     <constraint firstItem="H8Z-Uw-Iej" firstAttribute="top" secondItem="iHk-rF-5Ww" secondAttribute="bottom" constant="4" id="yCG-YZ-SJm"/>
                                 </constraints>
                             </view>
+                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="7rM-la-8bR" customClass="TouchJoystickView" customModule="TridentCockpitiOS" customModuleProvider="target">
+                                <rect key="frame" x="200" y="474" width="60" height="320"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forward" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mfv-Gs-vSD">
+                                        <rect key="frame" x="5.5" y="2" width="49.5" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Back" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMT-w0-syN">
+                                        <rect key="frame" x="15" y="302" width="30" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="BVf-3a-J9Q">
+                                        <variation key="heightClass=compact" constant="50"/>
+                                    </constraint>
+                                    <constraint firstItem="QMT-w0-syN" firstAttribute="centerX" secondItem="7rM-la-8bR" secondAttribute="centerX" id="F7o-gZ-7z0"/>
+                                    <constraint firstItem="Mfv-Gs-vSD" firstAttribute="centerX" secondItem="7rM-la-8bR" secondAttribute="centerX" id="Tm7-7z-9OC"/>
+                                    <constraint firstItem="Mfv-Gs-vSD" firstAttribute="centerY" secondItem="7rM-la-8bR" secondAttribute="centerY" constant="-150" id="Wwf-jZ-iP0">
+                                        <variation key="heightClass=compact" constant="-130"/>
+                                    </constraint>
+                                    <constraint firstAttribute="height" constant="320" id="bEu-Ws-Fvz">
+                                        <variation key="heightClass=compact" constant="290"/>
+                                    </constraint>
+                                    <constraint firstItem="QMT-w0-syN" firstAttribute="centerY" secondItem="7rM-la-8bR" secondAttribute="centerY" constant="150" id="hZr-pQ-bmw">
+                                        <variation key="heightClass=compact" constant="130"/>
+                                    </constraint>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="0.75"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="stickFraction">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="stickColor">
+                                        <color key="value" white="1" alpha="0.89624357880000005" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="joystickSize">
+                                        <size key="value" width="60" height="250"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="compactJoystickSize">
+                                        <size key="value" width="50" height="200"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="joystickId" value="throttle"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="87Y-el-STp" customClass="TouchJoystickView" customModule="TridentCockpitiOS" customModuleProvider="target">
+                                <rect key="frame" x="684" y="474" width="320" height="320"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tilt Down" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgg-KM-qas">
+                                        <rect key="frame" x="131.5" y="2" width="57" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tilt up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zMc-Ui-pnn">
+                                        <rect key="frame" x="141" y="302" width="38.5" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIw-Gi-99s">
+                                        <rect key="frame" x="-2" y="152" width="24" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Right" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wjj-b2-De6">
+                                        <rect key="frame" x="294" y="152" width="32" height="16"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="320" id="9Yi-j3-Mig">
+                                        <variation key="heightClass=compact" constant="290"/>
+                                    </constraint>
+                                    <constraint firstItem="Wjj-b2-De6" firstAttribute="centerY" secondItem="87Y-el-STp" secondAttribute="centerY" id="I15-ER-5tz"/>
+                                    <constraint firstItem="lIw-Gi-99s" firstAttribute="centerY" secondItem="87Y-el-STp" secondAttribute="centerY" id="gWA-Mt-zIG"/>
+                                    <constraint firstItem="zMc-Ui-pnn" firstAttribute="centerX" secondItem="87Y-el-STp" secondAttribute="centerX" id="h4o-r7-box"/>
+                                    <constraint firstAttribute="width" secondItem="87Y-el-STp" secondAttribute="height" multiplier="1:1" id="iN6-5s-Jud"/>
+                                    <constraint firstItem="lIw-Gi-99s" firstAttribute="centerX" secondItem="87Y-el-STp" secondAttribute="centerX" constant="-150" id="jU8-4t-Kgp">
+                                        <variation key="heightClass=compact" constant="-130"/>
+                                    </constraint>
+                                    <constraint firstItem="xgg-KM-qas" firstAttribute="centerY" secondItem="87Y-el-STp" secondAttribute="centerY" constant="-150" id="lcy-dk-cN4">
+                                        <variation key="heightClass=compact" constant="-130"/>
+                                    </constraint>
+                                    <constraint firstItem="zMc-Ui-pnn" firstAttribute="centerY" secondItem="87Y-el-STp" secondAttribute="centerY" constant="150" id="sGS-Jp-0So">
+                                        <variation key="heightClass=compact" constant="130"/>
+                                    </constraint>
+                                    <constraint firstItem="xgg-KM-qas" firstAttribute="centerX" secondItem="87Y-el-STp" secondAttribute="centerX" id="wJe-gW-znf"/>
+                                    <constraint firstItem="Wjj-b2-De6" firstAttribute="centerX" secondItem="87Y-el-STp" secondAttribute="centerX" constant="150" id="z4m-8Q-k5X">
+                                        <variation key="heightClass=compact" constant="130"/>
+                                    </constraint>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                        <real key="value" value="0.75"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="stickFraction">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="stickColor">
+                                        <color key="value" white="1" alpha="0.90151434080000004" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowBlur">
+                                        <real key="value" value="7"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="0.0" height="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="joystickSize">
+                                        <size key="value" width="250" height="250"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="compactJoystickSize">
+                                        <size key="value" width="200" height="200"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="joystickId" value="yawPitch"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="eNr-t8-WZ4" secondAttribute="trailing" constant="20" id="1rv-UK-f4v"/>
                             <constraint firstItem="KWl-aA-Uaq" firstAttribute="leading" secondItem="5RH-GY-zce" secondAttribute="leading" constant="44" placeholder="YES" id="5ZH-oW-lVI"/>
+                            <constraint firstAttribute="trailing" secondItem="87Y-el-STp" secondAttribute="trailing" constant="190" placeholder="YES" id="6P2-Zo-2Y2"/>
                             <constraint firstItem="CVJ-4V-eBR" firstAttribute="top" secondItem="ude-Pc-hbE" secondAttribute="top" id="9A7-IV-73j"/>
                             <constraint firstAttribute="bottom" secondItem="kvl-QW-fil" secondAttribute="bottom" priority="999" id="HTr-02-YSj"/>
                             <constraint firstItem="kvl-QW-fil" firstAttribute="leading" secondItem="5RH-GY-zce" secondAttribute="leading" priority="999" id="LOm-PM-LzK"/>
+                            <constraint firstAttribute="bottom" secondItem="87Y-el-STp" secondAttribute="bottom" constant="40" placeholder="YES" id="OTV-8d-tbk"/>
                             <constraint firstItem="CVJ-4V-eBR" firstAttribute="trailing" secondItem="5RH-GY-zce" secondAttribute="trailing" id="SVr-nG-Xac"/>
                             <constraint firstItem="KWl-aA-Uaq" firstAttribute="centerY" secondItem="5RH-GY-zce" secondAttribute="centerY" placeholder="YES" id="TOd-Ot-HvJ"/>
                             <constraint firstItem="kvl-QW-fil" firstAttribute="trailing" secondItem="5RH-GY-zce" secondAttribute="trailing" id="TuQ-xU-myx"/>
                             <constraint firstAttribute="trailing" secondItem="GfV-LQ-YW5" secondAttribute="trailing" placeholder="YES" id="ZX1-Ol-70v"/>
+                            <constraint firstItem="7rM-la-8bR" firstAttribute="leading" secondItem="5RH-GY-zce" secondAttribute="leading" constant="200" placeholder="YES" id="eSG-lM-TKI"/>
                             <constraint firstItem="eNr-t8-WZ4" firstAttribute="top" secondItem="CVJ-4V-eBR" secondAttribute="bottom" constant="20" id="hae-Am-7rk"/>
                             <constraint firstItem="kvl-QW-fil" firstAttribute="top" secondItem="5RH-GY-zce" secondAttribute="top" id="oVb-sG-IYY"/>
                             <constraint firstAttribute="bottom" secondItem="GfV-LQ-YW5" secondAttribute="bottom" placeholder="YES" id="tON-gu-eHP"/>
                             <constraint firstItem="CVJ-4V-eBR" firstAttribute="leading" secondItem="5RH-GY-zce" secondAttribute="leading" id="xHW-WF-qIQ"/>
+                            <constraint firstAttribute="bottom" secondItem="7rM-la-8bR" secondAttribute="bottom" constant="40" placeholder="YES" id="yPY-3O-vxE"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ude-Pc-hbE"/>
                     </view>
@@ -310,8 +448,10 @@
                         <outlet property="stabilizeLabel" destination="2Ep-xM-frV" id="j5d-6r-vcl"/>
                         <outlet property="stabilizeSwitch" destination="hDU-8F-CvB" id="5qQ-eQ-Aj9"/>
                         <outlet property="tempLabel" destination="Fgy-Cs-lUp" id="F2P-8o-bSg"/>
+                        <outlet property="throttleJoystickView" destination="7rM-la-8bR" id="kDO-Hh-gdP"/>
                         <outlet property="tridentView" destination="GfV-LQ-YW5" id="aw0-iS-IXp"/>
                         <outlet property="videoView" destination="kvl-QW-fil" id="hWy-SM-MRR"/>
+                        <outlet property="yawPitchJoystickView" destination="87Y-el-STp" id="hzR-eo-6qc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ul-BC-E8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
