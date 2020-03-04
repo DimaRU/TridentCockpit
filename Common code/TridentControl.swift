@@ -39,10 +39,13 @@ final class TridentControl {
     private var zeroCount = 0
     private var connectObserver: NSObjectProtocol?
     private var disconnectObserver: NSObjectProtocol?
-
     
     private weak var delegate: TridentControlDelegate?
+    #if os(macOS)
     var motorSpeed: MotorSpeed?
+    #else
+    var motorSpeed: MotorSpeed? = .first
+    #endif
 
     func setup(delegate: TridentControlDelegate) {
         self.delegate = delegate
@@ -149,8 +152,10 @@ final class TridentControl {
         }
         
         disconnectObserver = NotificationCenter.default.addObserver(forName: .GCControllerDidDisconnect, object: nil, queue: nil) { _ in
+            #if os(macOS)
             self.motorSpeed = nil
             self.delegate?.updatePropellerButtonState()
+            #endif
         }
     }
     
@@ -218,11 +223,11 @@ extension TridentControl: TouchJoystickViewDelegate {
         print(id, x, y)
         switch id {
         case "throttle":
-            forwardLever = y
+            forwardLever = y * motorSpeed!.rate
             backwardLever = 0
         case "yawPitch":
-            rightLever = x
-            downLever = y
+            rightLever = x * motorSpeed!.rate
+            downLever = y * motorSpeed!.rate
             upLever = 0
             leftLever = 0
         default: fatalError()

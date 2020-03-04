@@ -228,10 +228,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     @IBAction func propellerButtonPress(_ sender: Any) {
         guard tridentControl.motorSpeed != nil else { return }
         let newSpeed = tridentControl.motorSpeed!.rawValue + 1
-        tridentControl.motorSpeed = TridentControl.MotorSpeed(rawValue: newSpeed)
-        if tridentControl.motorSpeed == nil {
-            tridentControl.motorSpeed = .first
-        }
+        tridentControl.motorSpeed = TridentControl.MotorSpeed(rawValue: newSpeed) ?? .first
         updatePropellerButtonState()
     }
     
