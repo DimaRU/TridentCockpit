@@ -184,6 +184,7 @@
 		0ACCDE6F23FDAE7000381207 /* RovModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCDE6E23FDAE7000381207 /* RovModelView.swift */; };
 		0ACCDE7523FDB29D00381207 /* AuxCameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCDE7323FDB25E00381207 /* AuxCameraControlView.swift */; };
 		0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0ADA653723B119880090D757 /* PayloadProvision.sh */; };
+		0ADD42B9240EBBCD008ECFCC /* TouchJoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD42B1240EBBCD008ECFCC /* TouchJoystickView.swift */; };
 		0AE05CD923FD329E00C7CA08 /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE05CD123FD329E00C7CA08 /* FloatingView.swift */; };
 		0AE05CDB23FD32FB00C7CA08 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE05CDA23FD32FB00C7CA08 /* Extensions.swift */; };
 		0AE05CDD23FD335A00C7CA08 /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE05CDC23FD335A00C7CA08 /* UserDefaultsWrapper.swift */; };
@@ -418,6 +419,7 @@
 		0ACCDE6E23FDAE7000381207 /* RovModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RovModelView.swift; sourceTree = "<group>"; };
 		0ACCDE7323FDB25E00381207 /* AuxCameraControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuxCameraControlView.swift; sourceTree = "<group>"; };
 		0ADA653723B119880090D757 /* PayloadProvision.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PayloadProvision.sh; sourceTree = "<group>"; };
+		0ADD42B1240EBBCD008ECFCC /* TouchJoystickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchJoystickView.swift; sourceTree = "<group>"; };
 		0AE05CD123FD329E00C7CA08 /* FloatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingView.swift; sourceTree = "<group>"; };
 		0AE05CDA23FD32FB00C7CA08 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0AE05CDC23FD335A00C7CA08 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
@@ -508,6 +510,7 @@
 		0A1D0A1A23F94136006D9AFD /* Common code */ = {
 			isa = PBXGroup;
 			children = (
+				0A7130D123636AF100817593 /* TridentControl.swift */,
 				0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */,
 				0A9E55BE23BC0AFA008F8A9A /* Average.swift */,
 				0AE05CDC23FD335A00C7CA08 /* UserDefaultsWrapper.swift */,
@@ -750,7 +753,6 @@
 				0A7130D023636AF100817593 /* RovModelView.swift */,
 				0A7130D223636AF200817593 /* CameraControlView.swift */,
 				0A7130CC23636AF100817593 /* VideoDecoder.swift */,
-				0A7130D123636AF100817593 /* TridentControl.swift */,
 				0A2E42BB236B0EE900B5C569 /* VideoView.swift */,
 			);
 			path = DiveViewController;
@@ -782,6 +784,7 @@
 				0ACCDE6C23FDAD4E00381207 /* CameraControlView.swift */,
 				0ACCDE6E23FDAE7000381207 /* RovModelView.swift */,
 				0AE05CE823FD3D9000C7CA08 /* VideoView.swift */,
+				0ADD42B1240EBBCD008ECFCC /* TouchJoystickView.swift */,
 			);
 			path = DiveViewController;
 			sourceTree = "<group>";
@@ -1031,6 +1034,7 @@
 				0AF06ECE23FB5730000FF36A /* UIToolbar+Extensions.swift in Sources */,
 				0A95068423F9BD62004E5546 /* DiveViewController.swift in Sources */,
 				0A95068823F9BDB0004E5546 /* PastDivesViewController.swift in Sources */,
+				0ADD42B9240EBBCD008ECFCC /* TouchJoystickView.swift in Sources */,
 				0A1D0A3523F941BD006D9AFD /* RovTemperature.swift in Sources */,
 				0A1D0A3823F941BD006D9AFD /* RovControllerStatus.swift in Sources */,
 				0AF06EB023FB209A000FF36A /* UIBarButtonItem+Extension.swift in Sources */,

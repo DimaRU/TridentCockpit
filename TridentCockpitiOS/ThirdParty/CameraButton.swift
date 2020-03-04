@@ -11,10 +11,10 @@ import UIKit
 @IBDesignable
 class CameraButton: UIButton {
     
-    private let buttonColor = UIColor(red: 0.89, green: 0.067, blue: 0, alpha: 1)
-    private let ringColor = UIColor.white
-    private let disabledColor = UIColor(named: "stopNActive")!
-    private let disabledRingColor = UIColor(white: 0.8, alpha: 1)
+    @IBInspectable var buttonColor: UIColor = UIColor.red
+    @IBInspectable var ringColor: UIColor = UIColor.white
+    @IBInspectable var disabledColor: UIColor = UIColor.black
+    @IBInspectable var disabledRingColor: UIColor = UIColor(white: 0.8, alpha: 1)
 
     private let outerRingLineWidth: CGFloat = 4
     private let outerInsets: CGFloat = 3
