@@ -178,6 +178,7 @@
 		0A98307423C2355700BD234B /* AuxPlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A98307323C2355700BD234B /* AuxPlayerViewController.storyboard */; };
 		0AA4290223C38D3B003476CB /* PayloadCleanup.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0AA4290123C38D3B003476CB /* PayloadCleanup.sh */; };
 		0AA5675A240549AB00378635 /* PastDivesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA56759240549AB00378635 /* PastDivesViewController.storyboard */; };
+		0AC07D43240FE227001A85BE /* SaveCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC07D42240FE227001A85BE /* SaveCenter.swift */; };
 		0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */; };
 		0ACCDE6B23FDABD100381207 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCDE6A23FDABD100381207 /* CameraButton.swift */; };
 		0ACCDE6D23FDAD4E00381207 /* CameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCDE6C23FDAD4E00381207 /* CameraControlView.swift */; };
@@ -413,6 +414,7 @@
 		0A9E55BE23BC0AFA008F8A9A /* Average.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Average.swift; sourceTree = "<group>"; };
 		0AA4290123C38D3B003476CB /* PayloadCleanup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PayloadCleanup.sh; sourceTree = "<group>"; };
 		0AA56759240549AB00378635 /* PastDivesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PastDivesViewController.storyboard; sourceTree = "<group>"; };
+		0AC07D42240FE227001A85BE /* SaveCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCenter.swift; sourceTree = "<group>"; };
 		0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiPopupViewController.swift; sourceTree = "<group>"; };
 		0ACCDE6A23FDABD100381207 /* CameraButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
 		0ACCDE6C23FDAD4E00381207 /* CameraControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraControlView.swift; sourceTree = "<group>"; };
@@ -496,6 +498,7 @@
 				0A95068C23F9DD73004E5546 /* Extensions */,
 				0A95068923F9D7E7004E5546 /* ThirdParty */,
 				0AE05CD123FD329E00C7CA08 /* FloatingView.swift */,
+				0AC07D42240FE227001A85BE /* SaveCenter.swift */,
 				0AE05CDF23FD349D00C7CA08 /* Preferences.swift */,
 				0A1D09F923F93FD6006D9AFD /* SceneDelegate.swift */,
 				0A1D09F723F93FD6006D9AFD /* AppDelegate.swift */,
@@ -1041,6 +1044,7 @@
 				0A1D0A3023F941BD006D9AFD /* RovAttitude.swift in Sources */,
 				0A1D0A4223F941C4006D9AFD /* RestProvider.swift in Sources */,
 				0A1D0A3B23F941BD006D9AFD /* RovVideoData.swift in Sources */,
+				0AC07D43240FE227001A85BE /* SaveCenter.swift in Sources */,
 				0A1D0A2223F941B2006D9AFD /* ConnectionInfo.swift in Sources */,
 				0A1D0A4523F941C4006D9AFD /* ResinAPI.swift in Sources */,
 				0A1D0A4723F941C4006D9AFD /* Gopro3API.swift in Sources */,

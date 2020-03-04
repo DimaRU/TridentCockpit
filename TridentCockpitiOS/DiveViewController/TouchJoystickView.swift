@@ -11,7 +11,7 @@ protocol TouchJoystickViewDelegate: class {
 }
 
 @IBDesignable
-class TouchJoystickView: UIView {
+class TouchJoystickView: UIView, SaveCenter {
     enum JoystickType {
         case horizontal
         case vertical

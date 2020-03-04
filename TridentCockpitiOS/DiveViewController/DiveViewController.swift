@@ -35,7 +35,8 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     private var auxCameraView: AuxCameraControlView?
     private var videoDecoder: VideoDecoder!
     private let tridentControl = TridentControl()
-    
+    private var savedCenter: [UIView: CGPoint] = [:]
+
     private var lightOn = false
     private var videoSessionId: UUID?
     let vehicleId: String
@@ -107,6 +108,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     }
     #endif
 
+    // MARK: Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         depthLabel.text = "n/a"
@@ -155,7 +157,6 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     }
 
 
-    // MARK: Overrides
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.shared.isIdleTimerDisabled = true
@@ -166,8 +167,24 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         UIApplication.shared.isIdleTimerDisabled = false
     }
     
+    override func viewWillLayoutSubviews() {
+        for view in view.subviews where view is SaveCenter {
+            savedCenter[view] = view.center
+        }
+        super.viewWillLayoutSubviews()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        for (view, center) in savedCenter {
+            view.center = center
+        }
+        savedCenter = [:]
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
+            guard touch.view == view || touch.view is TouchJoystickView else { continue }
             let location = touch.location(in: view)
             if location.x < view.bounds.midX {
                 throttleJoystickView.touchBegan(touch: touch)
