@@ -220,7 +220,6 @@ final class TridentControl {
 #if os(iOS)
 extension TridentControl: TouchJoystickViewDelegate {
     func joystickDidMove(id: String, to x: Float, y: Float) {
-        print(id, x, y)
         switch id {
         case "throttle":
             forwardLever = y * motorSpeed!.rate
@@ -235,7 +234,6 @@ extension TridentControl: TouchJoystickViewDelegate {
     }
     
     func joystickEndMoving(id: String) {
-        print("Stop:", id)
         switch id {
         case "throttle":
             forwardLever = 0
