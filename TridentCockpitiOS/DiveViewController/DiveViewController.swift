@@ -125,7 +125,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         setupAverage()
         
         indicatorsView.backgroundColor = UIColor(named: "cameraControlBackground")!
-        lightButton.layer.cornerRadius = 5
+        lightButton.cornerRadius = 5
         lightButton.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         
         let node = tridentView.modelNode()

@@ -12,7 +12,7 @@ class RovModelView: FloatingView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        layer.cornerRadius = 6
+        self.cornerRadius = 10
         sceneView = (subviews.first! as! SCNView)
         initScene()
     }

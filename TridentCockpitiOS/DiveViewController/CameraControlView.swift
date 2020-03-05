@@ -9,7 +9,7 @@ class CameraControlView: FloatingView {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        layer.cornerRadius = 6
+        cornerRadius = 6
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = UIColor(named: "cameraControlBackground")!
     }

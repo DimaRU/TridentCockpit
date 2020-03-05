@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16092.1" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mek-Xn-fig">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16095" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mek-Xn-fig">
     <device id="ipad11_0rounded" orientation="landscape" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16082.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16084.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -221,10 +221,14 @@
                                     </sceneKitView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="WQT-KI-wTZ"/>
+                                    <constraint firstAttribute="height" constant="150" id="WQT-KI-wTZ">
+                                        <variation key="heightClass=compact" constant="100"/>
+                                    </constraint>
                                     <constraint firstItem="gD1-Lf-Ie7" firstAttribute="top" secondItem="GfV-LQ-YW5" secondAttribute="top" id="cNQ-DT-KMK"/>
                                     <constraint firstAttribute="bottom" secondItem="gD1-Lf-Ie7" secondAttribute="bottom" id="dtN-Y3-jdX"/>
-                                    <constraint firstAttribute="width" constant="150" id="gWG-sc-VfL"/>
+                                    <constraint firstAttribute="width" constant="150" id="gWG-sc-VfL">
+                                        <variation key="heightClass=compact" constant="100"/>
+                                    </constraint>
                                     <constraint firstAttribute="trailing" secondItem="gD1-Lf-Ie7" secondAttribute="trailing" id="kAf-Kr-8Is"/>
                                     <constraint firstItem="gD1-Lf-Ie7" firstAttribute="leading" secondItem="GfV-LQ-YW5" secondAttribute="leading" id="tKN-sZ-81W"/>
                                 </constraints>
@@ -336,7 +340,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="87Y-el-STp" customClass="TouchJoystickView" customModule="TridentCockpitiOS" customModuleProvider="target">
-                                <rect key="frame" x="684" y="474" width="320" height="320"/>
+                                <rect key="frame" x="714" y="474" width="320" height="320"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tilt Down" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgg-KM-qas">
                                         <rect key="frame" x="131.5" y="2" width="57" height="16"/>
@@ -416,7 +420,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="eNr-t8-WZ4" secondAttribute="trailing" constant="20" id="1rv-UK-f4v"/>
                             <constraint firstItem="KWl-aA-Uaq" firstAttribute="leading" secondItem="5RH-GY-zce" secondAttribute="leading" constant="44" placeholder="YES" id="5ZH-oW-lVI"/>
-                            <constraint firstAttribute="trailing" secondItem="87Y-el-STp" secondAttribute="trailing" constant="190" placeholder="YES" id="6P2-Zo-2Y2"/>
+                            <constraint firstAttribute="trailing" secondItem="87Y-el-STp" secondAttribute="trailing" constant="160" placeholder="YES" id="6P2-Zo-2Y2"/>
                             <constraint firstItem="CVJ-4V-eBR" firstAttribute="top" secondItem="ude-Pc-hbE" secondAttribute="top" id="9A7-IV-73j"/>
                             <constraint firstAttribute="bottom" secondItem="kvl-QW-fil" secondAttribute="bottom" priority="999" id="HTr-02-YSj"/>
                             <constraint firstItem="kvl-QW-fil" firstAttribute="leading" secondItem="5RH-GY-zce" secondAttribute="leading" priority="999" id="LOm-PM-LzK"/>
