@@ -82,11 +82,15 @@ class DashboardViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.layer.contents = UIImage(named: "Trident")?.cgImage
         view.layer.contentsGravity = .resizeAspectFill
         addCircularProgressView(to: view)
         setupNotifications()
         ddsDiscoveryStart()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        view.layer.contents = UIImage(named: "Trident")?.cgImage
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -102,6 +106,11 @@ class DashboardViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         timer = nil
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        view.layer.contents = nil       // save memory
     }
     
     // MARK: Actions
@@ -304,14 +313,13 @@ class DashboardViewController: UIViewController {
         FastRTPS.setPartition(name: self.tridentID!)
     }
         
-    #warning("TODO: Dismiss")
-    // TODO: Dismiss presented view controller
     // MARK: Internal func
     func setDisconnectedState() {
         timer = nil
-        
         let message = "Trident disconnected"
-        if let otherViewController = self.children.first {
+        print(message)
+        if let otherViewController = presentedViewController ?? navigationController?.topViewController {
+            print(otherViewController)
             let info: String
             switch otherViewController {
             case is DiveViewController:
@@ -325,15 +333,23 @@ class DashboardViewController: UIViewController {
             }
             let alert = UIAlertController(title: message, message: info, preferredStyle: .alert)
             let action = UIAlertAction(title: "Dismiss", style: .cancel) { _ in
-//                otherViewController.transitionBack(options: .crossfade)
+                if self.presentedViewController != nil {
+                    otherViewController.dismiss(animated: true)
+                } else {
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
             alert.addAction(action)
 
-            present(alert, animated: true)
+            otherViewController.present(alert, animated: true)
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) { [weak alert] in
                 guard let alert = alert else { return }
                 alert.dismiss(animated: true) {
-//                otherViewController.transitionBack(options: .crossfade)
+                    if self.presentedViewController != nil {
+                        otherViewController.dismiss(animated: true)
+                    } else {
+                        self.navigationController?.popViewController(animated: true)
+                    }
                 }
             }
             
