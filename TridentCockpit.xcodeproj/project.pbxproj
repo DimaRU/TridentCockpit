@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A0230A3241117E900A4E532 /* AuxCameraControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A0230A2241117E900A4E532 /* AuxCameraControlView.xib */; };
 		0A0C1C8523FE015100D09F77 /* TridentCockpit.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A71311B23636B5C00817593 /* TridentCockpit.scnassets */; };
 		0A1A5B7823CE4B150038EABE /* DiveCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7223CE4B150038EABE /* DiveCollectionItem.swift */; };
 		0A1A5B7923CE4B150038EABE /* PreviewVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7323CE4B150038EABE /* PreviewVideoViewController.swift */; };
@@ -301,6 +302,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0A0230A2241117E900A4E532 /* AuxCameraControlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuxCameraControlView.xib; sourceTree = "<group>"; };
 		0A1A5B7223CE4B150038EABE /* DiveCollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiveCollectionItem.swift; sourceTree = "<group>"; };
 		0A1A5B7323CE4B150038EABE /* PreviewVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewVideoViewController.swift; sourceTree = "<group>"; };
 		0A1A5B7423CE4B150038EABE /* DiveCollectionItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiveCollectionItem.xib; sourceTree = "<group>"; };
@@ -775,6 +777,7 @@
 			isa = PBXGroup;
 			children = (
 				0ACCDE7323FDB25E00381207 /* AuxCameraControlView.swift */,
+				0A0230A2241117E900A4E532 /* AuxCameraControlView.xib */,
 			);
 			path = AuxCamera;
 			sourceTree = "<group>";
@@ -967,6 +970,7 @@
 				0A1D0A1C23F941AA006D9AFD /* PayloadCleanup.sh in Resources */,
 				0A1D0A1B23F941AA006D9AFD /* PayloadProvision.sh in Resources */,
 				0AF06EA123FAF637000FF36A /* Assets.xcassets in Resources */,
+				0A0230A3241117E900A4E532 /* AuxCameraControlView.xib in Resources */,
 				0AE05CED23FD41E200C7CA08 /* DiveViewController.storyboard in Resources */,
 				0AA5675A240549AB00378635 /* PastDivesViewController.storyboard in Resources */,
 			);

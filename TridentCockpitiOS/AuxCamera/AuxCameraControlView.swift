@@ -7,14 +7,14 @@ import UIKit
 import PromiseKit
 
 class AuxCameraControlView: FloatingView {
-    @IBOutlet var contentView: UIView!
     @IBOutlet weak var recordingButton: CameraButton!
     @IBOutlet weak var powerButton: UIButton!
     @IBOutlet weak var recordingTimeLabel: UILabel!
     @IBOutlet weak var cameraTimeLabel: UILabel!
     @IBOutlet weak var batteryStatusLabel: UILabel!
     @IBOutlet weak var liveVideoButton: UIButton!
-//    private var liveViewWindowController: UIViewController!
+    @IBOutlet weak var batteryImageView: UIImageView!
+    //    private var liveViewWindowController: UIViewController!
     
     
     weak var delegate: UIViewController?
@@ -72,15 +72,14 @@ class AuxCameraControlView: FloatingView {
         return CGPoint(x: cph, y: cpv)
     }
 
-   
-//    override func viewWillMove(toWindow newWindow: NSWindow?) {
-//        super.viewWillMove(toWindow: newWindow)
-//        guard newWindow == nil else { return }
-//        timer?.invalidate()
-//        timer = nil
+    override func willMove(toWindow newWindow: UIWindow?) {
+        super.willMove(toWindow: newWindow)
+        guard newWindow == nil else { return }
+        timer?.invalidate()
+        timer = nil
 //        liveViewWindowController?.close()
 //        liveViewWindowController = nil
-//    }
+    }
     
     #if DEBUG
     deinit {
@@ -89,18 +88,10 @@ class AuxCameraControlView: FloatingView {
     #endif
     
     // MARK: Instaniate
-    static func instantiate(superView: UIView) -> AuxCameraControlView {
-        let view = AuxCameraControlView()
+    static func instantiate() -> AuxCameraControlView {
         let nib = UINib(nibName: "AuxCameraControlView", bundle: nil)
-        nib.instantiate(withOwner: view, options: nil)
-        view.addSubview(view.contentView)
-        NSLayoutConstraint.activate([
-            view.leadingAnchor.constraint(equalTo: view.contentView.leadingAnchor),
-            view.trailingAnchor.constraint(equalTo: view.contentView.trailingAnchor),
-            view.topAnchor.constraint(equalTo: view.contentView.topAnchor),
-            view.bottomAnchor.constraint(equalTo: view.contentView.bottomAnchor)
-        ])
-        superView.addSubview(view)
+        let views = nib.instantiate(withOwner: AuxCameraControlView(), options: nil)
+        let view = views.first as! AuxCameraControlView
         
         view.recordingTimeLabel.text = ""
         view.batteryStatusLabel.text = "n/a"
@@ -117,7 +108,7 @@ class AuxCameraControlView: FloatingView {
         case .off:
 //            liveViewWindowController?.close()
 //            liveViewWindowController = nil
-            powerButton.isSelected = false
+            powerButton.tintColor = .systemGray
             liveVideoButton.isHidden = true
             recordingTimeLabel.text = ""
             batteryStatusLabel.text = "n/a"
@@ -126,7 +117,7 @@ class AuxCameraControlView: FloatingView {
             recordingButton.isEnabled = false
             recordingButton.isSelected = false
         case .on:
-            powerButton.isSelected = true
+            powerButton.tintColor = .white
             powerButton.isHidden = false
             liveVideoButton.isHidden = false
             recordingTimeLabel.text = ""
@@ -172,13 +163,6 @@ class AuxCameraControlView: FloatingView {
             recordingTimeLabel.text = String(format: "%2.2d:%2.2d:%2.2d", hour, min, sec)
         }
     }
-    
-//    @objc private func windowWillClose(notification: Notification) {
-//        guard let object = notification.object as? NSWindow else { return }
-//        NotificationCenter.default.removeObserver(self, name: NSWindow.willCloseNotification, object: object)
-//        liveViewWindowController = nil
-//        liveVideoButton.isEnabled = true
-//    }
     
     private func setRefreshTimer(timeInterval: TimeInterval) {
         timer?.invalidate()
@@ -252,4 +236,14 @@ class AuxCameraControlView: FloatingView {
 //        NotificationCenter.default.addObserver(self, selector: #selector(windowWillClose(notification:)), name: NSWindow.willCloseNotification, object: windowControler.window)
 //        liveVideoButton.isEnabled = false
     }
+    
+    
+    //    @objc private func windowWillClose(notification: Notification) {
+    //        guard let object = notification.object as? NSWindow else { return }
+    //        NotificationCenter.default.removeObserver(self, name: NSWindow.willCloseNotification, object: object)
+    //        liveViewWindowController = nil
+    //        liveVideoButton.isEnabled = true
+    //    }
+        
+
 }

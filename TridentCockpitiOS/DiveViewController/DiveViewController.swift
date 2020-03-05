@@ -135,7 +135,8 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         videoDecoder = VideoDecoder(sampleBufferLayer: videoView.sampleBufferLayer)
 
         if Gopro3API.isConnected {
-            auxCameraView = AuxCameraControlView.instantiate(superView: view)
+            auxCameraView = AuxCameraControlView.instantiate()
+            view.addSubview(auxCameraView!)
             auxCameraView?.delegate = self
         }
         
