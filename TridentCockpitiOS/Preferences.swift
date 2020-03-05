@@ -24,6 +24,12 @@ struct Preference {
     @UserPreference("AuxCameraControlViewCPH")
     static var auxCameraControlViewCPH: CGFloat?
 
+    @UserPreference("AuxCameraPlayerViewCPV")
+    static var auxCameraPlayerViewCPV: CGFloat?
+
+    @UserPreference("AuxCameraPlayerViewCPH")
+    static var auxCameraPlayerViewCPH: CGFloat?
+
     @UserPreferenceWithDefault("TridentStabilize", defaultValue: true)
     static var tridentStabilize: Bool
     

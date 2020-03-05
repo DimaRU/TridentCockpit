@@ -8,6 +8,7 @@ import UIKit
 import SceneKit
 import CoreLocation
 import FastRTPSBridge
+import AVKit
 
 class DiveViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var videoView: VideoView!
@@ -30,6 +31,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var tridentView: RovModelView!
     @IBOutlet weak var throttleJoystickView: TouchJoystickView!
     @IBOutlet weak var yawPitchJoystickView: TouchJoystickView!
+    @IBOutlet weak var liveViewContainer: AuxCameraPlayerView!
 
     private let locationManager = CLLocationManager()
     private var auxCameraView: AuxCameraControlView?
@@ -134,8 +136,11 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         tridentControl.setup(delegate: self)
         videoDecoder = VideoDecoder(sampleBufferLayer: videoView.sampleBufferLayer)
 
+        liveViewContainer.isHidden = true
         if Gopro3API.isConnected {
-            auxCameraView = AuxCameraControlView.instantiate()
+            guard let liveViewController = children.first(where: { $0 is AVPlayerViewController}) as? AVPlayerViewController else { return }
+            auxCameraView = AuxCameraControlView.instantiate(liveViewContainer: liveViewContainer,
+                                                             liveViewController: liveViewController)
             view.addSubview(auxCameraView!)
             auxCameraView?.delegate = self
         }
@@ -155,6 +160,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         cameraControlView.superViewDidResize(to: size)
         tridentView.superViewDidResize(to: size)
         auxCameraView?.superViewDidResize(to: size)
+        liveViewContainer?.superViewDidResize(to: size)
     }
 
 
@@ -225,6 +231,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
             self.tridentControl.disable()
             FastRTPS.resignAll()
             self.videoDecoder.cleanup()
+            self.auxCameraView?.cleanup()
             self.dismiss(animated: true)
         }
         

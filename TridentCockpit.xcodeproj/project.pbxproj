@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A0230A3241117E900A4E532 /* AuxCameraControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A0230A2241117E900A4E532 /* AuxCameraControlView.xib */; };
+		0A0230A72411868F00A4E532 /* AuxCameraPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0230A62411868F00A4E532 /* AuxCameraPlayerView.swift */; };
 		0A0C1C8523FE015100D09F77 /* TridentCockpit.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A71311B23636B5C00817593 /* TridentCockpit.scnassets */; };
 		0A1A5B7823CE4B150038EABE /* DiveCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7223CE4B150038EABE /* DiveCollectionItem.swift */; };
 		0A1A5B7923CE4B150038EABE /* PreviewVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7323CE4B150038EABE /* PreviewVideoViewController.swift */; };
@@ -303,6 +304,7 @@
 
 /* Begin PBXFileReference section */
 		0A0230A2241117E900A4E532 /* AuxCameraControlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuxCameraControlView.xib; sourceTree = "<group>"; };
+		0A0230A62411868F00A4E532 /* AuxCameraPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuxCameraPlayerView.swift; sourceTree = "<group>"; };
 		0A1A5B7223CE4B150038EABE /* DiveCollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiveCollectionItem.swift; sourceTree = "<group>"; };
 		0A1A5B7323CE4B150038EABE /* PreviewVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewVideoViewController.swift; sourceTree = "<group>"; };
 		0A1A5B7423CE4B150038EABE /* DiveCollectionItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiveCollectionItem.xib; sourceTree = "<group>"; };
@@ -515,7 +517,7 @@
 		0A1D0A1A23F94136006D9AFD /* Common code */ = {
 			isa = PBXGroup;
 			children = (
-				0A7130D123636AF100817593 /* TridentControl.swift */,
+				0A7BB6072411987500978D41 /* DiveViewController */,
 				0A84F9CD237B37BF009BBAD4 /* SetupNotifications.swift */,
 				0A9E55BE23BC0AFA008F8A9A /* Average.swift */,
 				0AE05CDC23FD335A00C7CA08 /* UserDefaultsWrapper.swift */,
@@ -709,6 +711,15 @@
 			path = DDSModel;
 			sourceTree = "<group>";
 		};
+		0A7BB6072411987500978D41 /* DiveViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A7130CC23636AF100817593 /* VideoDecoder.swift */,
+				0A7130D123636AF100817593 /* TridentControl.swift */,
+			);
+			path = DiveViewController;
+			sourceTree = "<group>";
+		};
 		0A95068923F9D7E7004E5546 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
@@ -757,7 +768,6 @@
 				0A7130D323636AF200817593 /* DiveViewController.swift */,
 				0A7130D023636AF100817593 /* RovModelView.swift */,
 				0A7130D223636AF200817593 /* CameraControlView.swift */,
-				0A7130CC23636AF100817593 /* VideoDecoder.swift */,
 				0A2E42BB236B0EE900B5C569 /* VideoView.swift */,
 			);
 			path = DiveViewController;
@@ -778,6 +788,7 @@
 			children = (
 				0ACCDE7323FDB25E00381207 /* AuxCameraControlView.swift */,
 				0A0230A2241117E900A4E532 /* AuxCameraControlView.xib */,
+				0A0230A62411868F00A4E532 /* AuxCameraPlayerView.swift */,
 			);
 			path = AuxCamera;
 			sourceTree = "<group>";
@@ -1030,6 +1041,7 @@
 				0A1D0A3A23F941BD006D9AFD /* RovRecording.swift in Sources */,
 				0A95068123F9B975004E5546 /* DashboardViewController.swift in Sources */,
 				0A1D0A4323F941C4006D9AFD /* NetworkError.swift in Sources */,
+				0A0230A72411868F00A4E532 /* AuxCameraPlayerView.swift in Sources */,
 				0A1D0A3623F941BD006D9AFD /* RovDepth.swift in Sources */,
 				0A1D0A1E23F941B2006D9AFD /* GoproStatus.swift in Sources */,
 				0A1D0A2823F941BD006D9AFD /* RovCameraObjectTrack.swift in Sources */,

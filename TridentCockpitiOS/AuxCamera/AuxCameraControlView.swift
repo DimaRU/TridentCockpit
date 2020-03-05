@@ -4,6 +4,7 @@
 //
 
 import UIKit
+import AVKit
 import PromiseKit
 
 class AuxCameraControlView: FloatingView {
@@ -14,7 +15,8 @@ class AuxCameraControlView: FloatingView {
     @IBOutlet weak var batteryStatusLabel: UILabel!
     @IBOutlet weak var liveVideoButton: UIButton!
     @IBOutlet weak var batteryImageView: UIImageView!
-    //    private var liveViewWindowController: UIViewController!
+    weak var liveViewController: AVPlayerViewController!
+    weak var liveViewContainer: FloatingView!
     
     
     weak var delegate: UIViewController?
@@ -72,13 +74,11 @@ class AuxCameraControlView: FloatingView {
         return CGPoint(x: cph, y: cpv)
     }
 
-    override func willMove(toWindow newWindow: UIWindow?) {
-        super.willMove(toWindow: newWindow)
-        guard newWindow == nil else { return }
+    func cleanup() {
         timer?.invalidate()
         timer = nil
-//        liveViewWindowController?.close()
-//        liveViewWindowController = nil
+
+        stopLiveView()
     }
     
     #if DEBUG
@@ -88,7 +88,7 @@ class AuxCameraControlView: FloatingView {
     #endif
     
     // MARK: Instaniate
-    static func instantiate() -> AuxCameraControlView {
+    static func instantiate(liveViewContainer: FloatingView, liveViewController: AVPlayerViewController) -> AuxCameraControlView {
         let nib = UINib(nibName: "AuxCameraControlView", bundle: nil)
         let views = nib.instantiate(withOwner: AuxCameraControlView(), options: nil)
         let view = views.first as! AuxCameraControlView
@@ -96,18 +96,35 @@ class AuxCameraControlView: FloatingView {
         view.recordingTimeLabel.text = ""
         view.batteryStatusLabel.text = "n/a"
         view.cameraTimeLabel.text = ""
+        view.liveViewContainer = liveViewContainer
+        view.liveViewController = liveViewController
+        liveViewContainer.isHidden = true
 
         view.setup(state: .on)
         view.setRefreshTimer(timeInterval: 2)
         return view
     }
     
+    private func playliveView() {
+        let player = AVPlayer(url: Gopro3API.liveStreamURL)
+        player.rate = 1
+        player.isMuted = true
+        liveViewController.player = player
+        liveViewContainer.isHidden = false
+        liveVideoButton.tintColor = .gray
+    }
+    
+    private func stopLiveView() {
+        liveViewController.player?.pause()
+        liveViewController.player = nil
+        liveViewContainer.isHidden = true
+        liveVideoButton.tintColor = .white
+    }
     
     private func setup(state: CameraControlViewState) {
         switch state {
         case .off:
-//            liveViewWindowController?.close()
-//            liveViewWindowController = nil
+            stopLiveView()
             powerButton.tintColor = .systemGray
             liveVideoButton.isHidden = true
             recordingTimeLabel.text = ""
@@ -222,28 +239,10 @@ class AuxCameraControlView: FloatingView {
     }
     
     @IBAction func liveVideoButtonPress(_ sender: Any) {
-//        guard liveViewWindowController == nil else { return }
-//        let storyboard = NSStoryboard(name: .init("AuxPlayerViewController"), bundle: nil)
-//        guard let windowControler = storyboard.instantiateInitialController() as? NSWindowController else { return }
-//        let panel = windowControler.window! as! NSPanel
-//        panel.isFloatingPanel = true
-//        windowControler.window!.contentAspectRatio = NSSize(width: 16, height: 9)
-//        if let auxPlayerViewController = windowControler.contentViewController as? AuxPlayerViewController {
-//            auxPlayerViewController.videoURL = Gopro3API.liveStreamURL
-//        }
-//        windowControler.showWindow(nil)
-//        liveViewWindowController = windowControler
-//        NotificationCenter.default.addObserver(self, selector: #selector(windowWillClose(notification:)), name: NSWindow.willCloseNotification, object: windowControler.window)
-//        liveVideoButton.isEnabled = false
+        if liveViewController.player == nil {
+            playliveView()
+        } else {
+            stopLiveView()
+        }
     }
-    
-    
-    //    @objc private func windowWillClose(notification: Notification) {
-    //        guard let object = notification.object as? NSWindow else { return }
-    //        NotificationCenter.default.removeObserver(self, name: NSWindow.willCloseNotification, object: object)
-    //        liveViewWindowController = nil
-    //        liveVideoButton.isEnabled = true
-    //    }
-        
-
 }

@@ -318,7 +318,8 @@ class DashboardViewController: UIViewController {
         timer = nil
         let message = "Trident disconnected"
         print(message)
-        if let otherViewController = presentedViewController ?? navigationController?.topViewController {
+        if let otherViewController = presentedViewController ?? navigationController?.topViewController,
+            !(otherViewController is UIAlertController) {
             print(otherViewController)
             let info: String
             switch otherViewController {
@@ -328,11 +329,14 @@ class DashboardViewController: UIViewController {
                 info = "Connection to Trident lost. Exiting Maintenance Mode."
             case is PastDivesViewController:
                 info = "Connection to Trident lost. Exiting Past Dives Mode."
+            case self:
+                info = "Connection to Trident lost."
             default:
                 fatalError()
             }
             let alert = UIAlertController(title: message, message: info, preferredStyle: .alert)
             let action = UIAlertAction(title: "Dismiss", style: .cancel) { _ in
+                guard otherViewController != self else { return }
                 if self.presentedViewController != nil {
                     otherViewController.dismiss(animated: true)
                 } else {
@@ -345,6 +349,7 @@ class DashboardViewController: UIViewController {
             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) { [weak alert] in
                 guard let alert = alert else { return }
                 alert.dismiss(animated: true) {
+                    guard otherViewController != self else { return }
                     if self.presentedViewController != nil {
                         otherViewController.dismiss(animated: true)
                     } else {
