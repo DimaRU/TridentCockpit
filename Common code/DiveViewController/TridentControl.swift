@@ -219,31 +219,33 @@ final class TridentControl {
 
 #if os(iOS)
 extension TridentControl: TouchJoystickViewDelegate {
-    func joystickDidMove(id: String, to x: Float, y: Float) {
-        switch id {
-        case "throttle":
+    func joystickDidMove(_ joystickType: TouchJoystickView.JoystickType, to x: Float, y: Float) {
+        switch joystickType {
+        case .vertical:
             forwardLever = y * motorSpeed!.rate
             backwardLever = 0
-        case "yawPitch":
+        case .dualAxis:
             rightLever = x * motorSpeed!.rate
             downLever = y * motorSpeed!.rate
             upLever = 0
             leftLever = 0
-        default: fatalError()
+        case .horizontal:
+            fatalError()
         }
     }
     
-    func joystickEndMoving(id: String) {
-        switch id {
-        case "throttle":
+    func joystickEndMoving(_ joystickType: TouchJoystickView.JoystickType) {
+        switch joystickType {
+        case .vertical:
             forwardLever = 0
             backwardLever = 0
-        case "yawPitch":
+        case .dualAxis:
             rightLever = 0
             leftLever = 0
             upLever = 0
             downLever = 0
-        default: fatalError()
+        case .horizontal:
+            fatalError()
         }
     }
     

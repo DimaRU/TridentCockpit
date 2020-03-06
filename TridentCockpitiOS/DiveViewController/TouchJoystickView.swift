@@ -6,18 +6,18 @@
 import UIKit
 
 protocol TouchJoystickViewDelegate: class {
-    func joystickDidMove(id: String, to x: Float, y: Float)
-    func joystickEndMoving(id: String)
+    func joystickDidMove(_ joystickType: TouchJoystickView.JoystickType, to x: Float, y: Float)
+    func joystickEndMoving(_ joystickType: TouchJoystickView.JoystickType)
 }
 
 @IBDesignable
 class TouchJoystickView: UIView, SaveCenter {
-    enum JoystickType {
+    enum JoystickType: String {
         case horizontal
         case vertical
         case dualAxis
     }
-    
+
     @IBInspectable var lineWidth: CGFloat = 2
     @IBInspectable var stickFraction: CGFloat = 0.2
     @IBInspectable var circleColor: UIColor = UIColor.white.withAlphaComponent(0.25)
@@ -62,11 +62,11 @@ class TouchJoystickView: UIView, SaveCenter {
         } else {
             joystickType = size.height > size.width ? .vertical : .horizontal
         }
-        
+
         stickRadius = max(joystickBounds.width, joystickBounds.height) * stickFraction / 2
         stickPosition = CGPoint(x: joystickBounds.midX, y: joystickBounds.midY)
     }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
         setup()
@@ -74,13 +74,13 @@ class TouchJoystickView: UIView, SaveCenter {
 
     // MARK: draw
     override func draw(_ rect: CGRect) {
-        if joystickType ~= .dualAxis {
+        if joystickType == .dualAxis {
             drawDualAxis(rect)
         } else {
             drawSingleAxis(rect)
         }
     }
-    
+
     private func drawDualAxis(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()!
         let path = UIBezierPath(ovalIn: joystickBounds)
@@ -107,13 +107,13 @@ class TouchJoystickView: UIView, SaveCenter {
 
     private func drawSingleAxis(_ rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()!
-        
+
         let roundedSide = min(joystickBounds.width, joystickBounds.height) / 2
         let path = UIBezierPath(roundedRect: joystickBounds, cornerRadius: roundedSide)
         path.close()
         circleColor.setFill()
         path.fill()
-        
+
         let path1: UIBezierPath
         let path2: UIBezierPath
         let pathAxis = UIBezierPath()
@@ -131,7 +131,7 @@ class TouchJoystickView: UIView, SaveCenter {
         case .dualAxis:
             fatalError()
         }
-        
+
         path1.close(); path2.close()
         UIColor.white.setFill()
         path1.fill(); path2.fill()
@@ -147,7 +147,7 @@ class TouchJoystickView: UIView, SaveCenter {
         stickColor.setFill()
         stickPath.fill()
     }
-    
+
     // MARK: Control
     func touchBegan(touch: UITouch) {
         guard let superview = superview else { return }
@@ -156,28 +156,28 @@ class TouchJoystickView: UIView, SaveCenter {
         startTouch = touch
         stickPosition = touch.location(in: self)
         setNeedsDisplay()
-        delegate?.joystickDidMove(id: joystickId, to: 0, y: 0)
+        delegate?.joystickDidMove(joystickType, to: 0, y: 0)
         feedbackGenerator = .init(style: .light)
         feedbackGenerator?.prepare()
         lowXMark = true
         lowYMark = true
         highMark = false
     }
-    
+
     private func highLevelFeedback() {
         guard !highMark else { return }
         let generator = UINotificationFeedbackGenerator()
         generator.notificationOccurred(.error)
         highMark = true
     }
-    
+
     func touchMoved(touch: UITouch) {
         guard touch == startTouch else { return }
         var location = touch.location(in: self)
         var xValue: CGFloat = 0
         var yValue: CGFloat = 0
         let lastPosition = stickPosition
-        
+
         switch joystickType {
         case .vertical:
             let radius = joystickBounds.height / 2 - stickRadius
@@ -217,7 +217,7 @@ class TouchJoystickView: UIView, SaveCenter {
                 lowXMark = false
                 xValue = (location.x - stickRadius) / radius - 1.0
             }
-            
+
             if abs(xValue) >= 1 {
                 xValue = xValue > 0 ? 1 : -1
                 location.x = (xValue + 1) * radius + stickRadius
@@ -243,7 +243,7 @@ class TouchJoystickView: UIView, SaveCenter {
                 lowXMark = false
                 xValue = (location.x - stickRadius) / radius - 1.0
             }
-            
+
             if abs(location.y - joystickBounds.height / 2) < deadzone {
                 yValue = 0
                 if !lowYMark {
@@ -255,12 +255,12 @@ class TouchJoystickView: UIView, SaveCenter {
                 lowYMark = false
                 yValue = 1.0 - (location.y - stickRadius) / radius
             }
-            
+
             let r = sqrt(xValue * xValue + yValue * yValue) * radius
             if r >= radius {
                 xValue = radius * (xValue / r)
                 yValue = radius * (yValue / r)
-                
+
                 location.x = (xValue + 1) * radius + stickRadius
                 location.y = (-yValue + 1) * radius + stickRadius
 
@@ -273,18 +273,18 @@ class TouchJoystickView: UIView, SaveCenter {
 
             stickPosition = location
         }
-        
+
         if lastPosition != stickPosition {
             setNeedsDisplay()
-            delegate?.joystickDidMove(id: joystickId, to: Float(xValue), y: Float(yValue))
+            delegate?.joystickDidMove(joystickType, to: Float(xValue), y: Float(yValue))
         }
     }
-    
+
     func touchEnded(touch: UITouch) {
         guard touch == startTouch else { return }
         isHidden = true
         feedbackGenerator = nil
-        delegate?.joystickEndMoving(id: joystickId)
+        delegate?.joystickEndMoving(joystickType)
     }
-    
+
 }

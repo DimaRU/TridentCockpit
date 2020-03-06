@@ -336,7 +336,6 @@
                                     <userDefinedRuntimeAttribute type="size" keyPath="compactJoystickSize">
                                         <size key="value" width="50" height="200"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="joystickId" value="throttle"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="87Y-el-STp" customClass="TouchJoystickView" customModule="TridentCockpitiOS" customModuleProvider="target">
@@ -412,7 +411,6 @@
                                     <userDefinedRuntimeAttribute type="size" keyPath="compactJoystickSize">
                                         <size key="value" width="200" height="200"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="joystickId" value="yawPitch"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M3a-Wg-BFZ" customClass="AuxCameraPlayerView" customModule="TridentCockpitiOS" customModuleProvider="target">
