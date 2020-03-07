@@ -40,6 +40,14 @@ class VideoView: UIView {
         layer.addSublayer(sampleBufferLayer)
     }
     
+    func setGravity(fill: Bool) {
+        let sampleBufferLayer = AVSampleBufferDisplayLayer()
+        sampleBufferLayer.videoGravity = fill ? .resizeAspectFill : .resizeAspect
+        sampleBufferLayer.controlTimebase = self.sampleBufferLayer.controlTimebase
+        self.sampleBufferLayer.removeFromSuperlayer()
+        layer.addSublayer(sampleBufferLayer)
+    }
+    
     override func layoutSublayers(of layer: CALayer) {
         layer.sublayers?.forEach {
             $0.frame = layer.bounds

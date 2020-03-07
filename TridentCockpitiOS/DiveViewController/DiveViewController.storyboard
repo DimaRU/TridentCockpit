@@ -19,9 +19,6 @@
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kvl-QW-fil" customClass="VideoView" customModule="TridentCockpitiOS" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                                 <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="kvl-QW-fil" secondAttribute="height" multiplier="16:9" id="1nh-o5-DzI"/>
-                                </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNr-t8-WZ4">
                                 <rect key="frame" x="619" y="70" width="28" height="41"/>
@@ -51,7 +48,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="667" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="MHY-G0-mbk">
-                                        <rect key="frame" x="16" y="10" width="571.5" height="30"/>
+                                        <rect key="frame" x="16" y="10" width="500" height="30"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qBP-qr-A2o">
                                                 <rect key="frame" x="0.0" y="0.0" width="25" height="30"/>
@@ -64,6 +61,20 @@
                                                 </state>
                                                 <connections>
                                                     <action selector="closeButtonPress:" destination="mek-Xn-fig" eventType="touchUpInside" id="G36-Ue-wPo"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Sm-zI-nHs">
+                                                <rect key="frame" x="30" y="0.0" width="0.0" height="30"/>
+                                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <state key="normal" image="arrow.up.arrow.down.square" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="23"/>
+                                                </state>
+                                                <state key="selected" image="square" catalog="system">
+                                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="23"/>
+                                                </state>
+                                                <variation key="heightClass=compact" hidden="YES"/>
+                                                <connections>
+                                                    <action selector="videoSizingButtonTap:" destination="mek-Xn-fig" eventType="touchUpInside" id="Ra5-GG-SGS"/>
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wgN-8w-BmO">
@@ -138,7 +149,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="teU-Gb-3vI">
-                                                <rect key="frame" x="357" y="0.0" width="214.5" height="30"/>
+                                                <rect key="frame" x="357" y="0.0" width="143" height="30"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hDU-8F-CvB" customClass="PWSwitch" customModule="TridentCockpitiOS" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="60" height="30"/>
@@ -183,8 +194,8 @@
                                                             <action selector="stabilizeAction:" destination="mek-Xn-fig" eventType="valueChanged" id="Hyh-zT-Ii5"/>
                                                         </connections>
                                                     </view>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stabilize: stabilized" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ep-xM-frV">
-                                                        <rect key="frame" x="68" y="0.0" width="146.5" height="30"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stabilized" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Ep-xM-frV">
+                                                        <rect key="frame" x="68" y="0.0" width="75" height="30"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -433,7 +444,7 @@
                             <constraint firstAttribute="trailing" secondItem="87Y-el-STp" secondAttribute="trailing" constant="160" placeholder="YES" id="6P2-Zo-2Y2"/>
                             <constraint firstAttribute="bottom" secondItem="M3a-Wg-BFZ" secondAttribute="bottom" id="7hQ-d3-h8b"/>
                             <constraint firstItem="CVJ-4V-eBR" firstAttribute="top" secondItem="ude-Pc-hbE" secondAttribute="top" id="9A7-IV-73j"/>
-                            <constraint firstAttribute="bottom" secondItem="kvl-QW-fil" secondAttribute="bottom" priority="999" id="HTr-02-YSj"/>
+                            <constraint firstAttribute="bottom" secondItem="kvl-QW-fil" secondAttribute="bottom" id="HTr-02-YSj"/>
                             <constraint firstItem="kvl-QW-fil" firstAttribute="leading" secondItem="5RH-GY-zce" secondAttribute="leading" priority="999" id="LOm-PM-LzK"/>
                             <constraint firstAttribute="bottom" secondItem="87Y-el-STp" secondAttribute="bottom" constant="40" placeholder="YES" id="OTV-8d-tbk"/>
                             <constraint firstItem="CVJ-4V-eBR" firstAttribute="trailing" secondItem="5RH-GY-zce" secondAttribute="trailing" id="SVr-nG-Xac"/>
@@ -467,6 +478,7 @@
                         <outlet property="tempLabel" destination="Fgy-Cs-lUp" id="F2P-8o-bSg"/>
                         <outlet property="throttleJoystickView" destination="7rM-la-8bR" id="kDO-Hh-gdP"/>
                         <outlet property="tridentView" destination="GfV-LQ-YW5" id="aw0-iS-IXp"/>
+                        <outlet property="videoSizingButton" destination="0Sm-zI-nHs" id="NJL-gu-hYS"/>
                         <outlet property="videoView" destination="kvl-QW-fil" id="hWy-SM-MRR"/>
                         <outlet property="yawPitchJoystickView" destination="87Y-el-STp" id="hzR-eo-6qc"/>
                     </connections>
@@ -494,8 +506,10 @@
     <resources>
         <image name="Light On" width="24" height="24"/>
         <image name="Prop 1" width="35" height="35"/>
+        <image name="arrow.up.arrow.down.square" catalog="system" width="128" height="114"/>
         <image name="battery.100" catalog="system" width="128" height="65"/>
         <image name="flashlight.off.fill" catalog="system" width="73" height="128"/>
+        <image name="square" catalog="system" width="128" height="114"/>
         <image name="thermometer" catalog="system" width="87" height="128"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="cameraControlBackground">

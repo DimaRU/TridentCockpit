@@ -14,6 +14,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var videoView: VideoView!
 
     @IBOutlet weak var indicatorsView: UIView!
+    @IBOutlet weak var videoSizingButton: UIButton!
     @IBOutlet weak var depthLabel: UILabel!
     @IBOutlet weak var tempLabel: UILabel!
     @IBOutlet weak var batteryTimeLabel: UILabel!
@@ -135,6 +136,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         
         tridentControl.setup(delegate: self)
         videoDecoder = VideoDecoder(sampleBufferLayer: videoView.sampleBufferLayer)
+        setVideoSizing(fill: Preference.videoSizingFill)
 
         liveViewContainer.isHidden = true
         if Gopro3API.isConnected {
@@ -268,6 +270,10 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         FastRTPS.send(topic: .rovVideoOverlayModeCommand, ddsData: !Preference.videoOverlayMode ? "on" : "off")
     }
     
+    @IBAction func videoSizingButtonTap(_ sender: UIButton) {
+        setVideoSizing(fill: !Preference.videoSizingFill)
+    }
+    
     private func setTelemetryOverlay(mode: String) {
         switch mode {
         case "on":
@@ -279,14 +285,21 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         }
     }
     
+    private func setVideoSizing(fill: Bool) {
+        Preference.videoSizingFill = fill
+        videoSizingButton.isSelected = fill
+        videoView.setGravity(fill: fill)
+        videoDecoder.sampleBufferLayer = videoView.sampleBufferLayer
+    }
+    
     private func setController(status: RovControllerStatus) {
         guard status.controllerId == .trident else { return }
         Preference.tridentStabilize = (status.state == .enabled)
         stabilizeSwitch.setOn((status.state == .enabled) , animated: true)
         if status.state == .enabled {
-            stabilizeLabel.text = "Stabilize: stabilized"
+            stabilizeLabel.text = "Stabilized"
         } else {
-            stabilizeLabel.text = "Stabilize: disabled"
+            stabilizeLabel.text = "Stabilize disabled"
         }
     }
        

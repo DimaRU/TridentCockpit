@@ -8,7 +8,7 @@ import AVFoundation
 import VideoToolbox
 
 final class VideoDecoder {
-    private var sampleBufferLayer: AVSampleBufferDisplayLayer
+    var sampleBufferLayer: AVSampleBufferDisplayLayer
     private let NalStart = Data([0, 0, 0, 1])
     private var formatDescription: CMVideoFormatDescription?
     let timescale: Int32 = 1000000000
