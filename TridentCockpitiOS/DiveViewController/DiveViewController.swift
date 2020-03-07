@@ -289,7 +289,6 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         Preference.videoSizingFill = fill
         videoSizingButton.isSelected = fill
         videoView.setGravity(fill: fill)
-        videoDecoder.sampleBufferLayer = videoView.sampleBufferLayer
     }
     
     private func setController(status: RovControllerStatus) {

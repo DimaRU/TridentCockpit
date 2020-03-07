@@ -41,11 +41,10 @@ class VideoView: UIView {
     }
     
     func setGravity(fill: Bool) {
-        let sampleBufferLayer = AVSampleBufferDisplayLayer()
         sampleBufferLayer.videoGravity = fill ? .resizeAspectFill : .resizeAspect
-        sampleBufferLayer.controlTimebase = self.sampleBufferLayer.controlTimebase
-        self.sampleBufferLayer.removeFromSuperlayer()
-        layer.addSublayer(sampleBufferLayer)
+        // Hack: reset frame for videoGravity effect
+        sampleBufferLayer.frame = .zero
+        sampleBufferLayer.frame = layer.bounds
     }
     
     override func layoutSublayers(of layer: CALayer) {
