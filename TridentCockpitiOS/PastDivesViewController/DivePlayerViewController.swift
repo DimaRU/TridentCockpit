@@ -26,6 +26,23 @@ final class DivePlayerViewController: AVPlayerViewController {
         removeFromParent()
         DivePlayerViewController.shared = nil
     }
+    
+    // Thanks to https://stackoverflow.com/a/36853320/7666732
+    func enterFullscreen() {
+        let name: String
+        
+        if #available(iOS 11.3, *) {
+            name = "_transitionToFullScreenAnimated:interactive:completionHandler:"
+        } else {
+            name = "_transitionToFullScreenViewControllerAnimated:completionHandler:"
+        }
+        
+        let selectorToForceFullScreenMode = NSSelectorFromString(name)
+        if responds(to: selectorToForceFullScreenMode) {
+            perform(selectorToForceFullScreenMode, with: true, with: nil)
+        }
+    }
+
 
     class func add(to view: UIView, parentViewController: UIViewController) -> DivePlayerViewController {
         let viewController = DivePlayerViewController()
