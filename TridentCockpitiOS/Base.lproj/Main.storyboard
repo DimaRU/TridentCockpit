@@ -634,7 +634,7 @@
         <!--Past dives-->
         <scene sceneID="R4Q-OT-fu3">
             <objects>
-                <viewController id="WOV-Jn-Zbv" customClass="PastDivesViewController" customModule="PostDives" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WOV-Jn-Zbv" customClass="PastDivesViewController" customModule="TridentCockpitiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kER-8T-iDK">
                         <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -697,7 +697,7 @@
                                     <inset key="sectionInset" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DiveCollectionViewCell" id="10h-a6-cat" customClass="DiveCollectionViewCell" customModule="PostDives" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DiveCollectionViewCell" id="10h-a6-cat" customClass="DiveCollectionViewCell" customModule="TridentCockpitiOS" customModuleProvider="target">
                                         <rect key="frame" x="4" y="35" width="255" height="138"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="bo5-fn-DbD">
@@ -753,7 +753,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="DiveCollectionReusableView" id="uSV-7b-1Jm" customClass="DiveCollectionReusableView" customModule="PostDives" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="DiveCollectionReusableView" id="uSV-7b-1Jm" customClass="DiveCollectionReusableView" customModule="TridentCockpitiOS" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="568" height="35"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
