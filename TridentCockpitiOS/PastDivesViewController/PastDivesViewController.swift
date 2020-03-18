@@ -13,6 +13,7 @@ class PastDivesViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var availableSpaceBar: LinearProgressBar!
     @IBOutlet weak var availableSpaceLabel: UILabel!
+    @IBOutlet weak var deleteAfterSwitch: PWSwitch!
     
     var sectionDates: [Date] = []
     var recordingBySection: [Date: [Recording]] = [:]
@@ -130,7 +131,8 @@ class PastDivesViewController: UIViewController {
     @IBAction func downloadButtonTap(_ sender: Any) {
         guard let selected = collectionView.indexPathsForSelectedItems, !selected.isEmpty else { return }
         let recordings = selected.map { getRecording(by: $0) }
-        pastDivesWorker.download(recordings: recordings, deleteAfter: false)
+        let deleteAfter = deleteAfterSwitch.on
+        pastDivesWorker.download(recordings: recordings, deleteAfter: deleteAfter)
     }
     
     @IBAction func deleteButtonTap(_ sender: Any) {
