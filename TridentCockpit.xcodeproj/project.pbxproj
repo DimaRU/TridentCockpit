@@ -96,7 +96,15 @@
 		0A3FD1FD23A9729800FE9918 /* SSIDInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FC23A9729800FE9918 /* SSIDInfo.swift */; };
 		0A3FD1FF23A972BA00FE9918 /* ConnectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FE23A972B900FE9918 /* ConnectionInfo.swift */; };
 		0A3FD20123A9735300FE9918 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20023A9735300FE9918 /* AppInfo.swift */; };
+		0A42E39224226C40000BCB24 /* DivePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A42E38A24226C40000BCB24 /* DivePlayerViewController.swift */; };
 		0A457D9723B78A7C0042C250 /* Gopro3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A457D8D23B78A7C0042C250 /* Gopro3API.swift */; };
+		0A488E652413AA2800EBEF19 /* DiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A488E642413AA2800EBEF19 /* DiveCollectionViewCell.swift */; };
+		0A488E672413AB5C00EBEF19 /* DiveCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A488E662413AB5C00EBEF19 /* DiveCollectionReusableView.swift */; };
+		0A488E692413AE8400EBEF19 /* LinearProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A488E682413AE8400EBEF19 /* LinearProgressBar.swift */; };
+		0A4999B92422281400E3FA14 /* PastDivesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4999B12422281400E3FA14 /* PastDivesWorker.swift */; };
+		0A4999BC2422282200E3FA14 /* ProgressSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A4999BA2422282200E3FA14 /* ProgressSheetController.xib */; };
+		0A4999BD2422282200E3FA14 /* ProgressSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4999BB2422282200E3FA14 /* ProgressSheetController.swift */; };
+		0A4999BF242230DF00E3FA14 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4999BE242230DF00E3FA14 /* UICollectionView+Extensions.swift */; };
 		0A5107DB23AA807D00C19289 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5107DA23AA807D00C19289 /* NetworkError.swift */; };
 		0A5107DC23AA85B000C19289 /* RestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20223A97A3500FE9918 /* RestProvider.swift */; };
 		0A55F6D323B969C500B108B0 /* RovIMUCalibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */; };
@@ -179,7 +187,6 @@
 		0A98307023C22FFD00BD234B /* AuxPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98306F23C22FFD00BD234B /* AuxPlayerViewController.swift */; };
 		0A98307423C2355700BD234B /* AuxPlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A98307323C2355700BD234B /* AuxPlayerViewController.storyboard */; };
 		0AA4290223C38D3B003476CB /* PayloadCleanup.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0AA4290123C38D3B003476CB /* PayloadCleanup.sh */; };
-		0AA5675A240549AB00378635 /* PastDivesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AA56759240549AB00378635 /* PastDivesViewController.storyboard */; };
 		0AC07D43240FE227001A85BE /* SaveCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC07D42240FE227001A85BE /* SaveCenter.swift */; };
 		0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */; };
 		0ACCDE6B23FDABD100381207 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCDE6A23FDABD100381207 /* CameraButton.swift */; };
@@ -337,7 +344,15 @@
 		0A3FD1FE23A972B900FE9918 /* ConnectionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionInfo.swift; sourceTree = "<group>"; };
 		0A3FD20023A9735300FE9918 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		0A3FD20223A97A3500FE9918 /* RestProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestProvider.swift; sourceTree = "<group>"; };
+		0A42E38A24226C40000BCB24 /* DivePlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DivePlayerViewController.swift; sourceTree = "<group>"; };
 		0A457D8D23B78A7C0042C250 /* Gopro3API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gopro3API.swift; sourceTree = "<group>"; };
+		0A488E642413AA2800EBEF19 /* DiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveCollectionViewCell.swift; sourceTree = "<group>"; };
+		0A488E662413AB5C00EBEF19 /* DiveCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveCollectionReusableView.swift; sourceTree = "<group>"; };
+		0A488E682413AE8400EBEF19 /* LinearProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearProgressBar.swift; sourceTree = "<group>"; };
+		0A4999B12422281400E3FA14 /* PastDivesWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastDivesWorker.swift; sourceTree = "<group>"; };
+		0A4999BA2422282200E3FA14 /* ProgressSheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressSheetController.xib; sourceTree = "<group>"; };
+		0A4999BB2422282200E3FA14 /* ProgressSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressSheetController.swift; sourceTree = "<group>"; };
+		0A4999BE242230DF00E3FA14 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		0A5107DA23AA807D00C19289 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RovIMUCalibration.swift; sourceTree = "<group>"; };
 		0A56D0BF23D7119900D9495A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -417,7 +432,6 @@
 		0A98307323C2355700BD234B /* AuxPlayerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AuxPlayerViewController.storyboard; sourceTree = "<group>"; };
 		0A9E55BE23BC0AFA008F8A9A /* Average.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Average.swift; sourceTree = "<group>"; };
 		0AA4290123C38D3B003476CB /* PayloadCleanup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PayloadCleanup.sh; sourceTree = "<group>"; };
-		0AA56759240549AB00378635 /* PastDivesViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PastDivesViewController.storyboard; sourceTree = "<group>"; };
 		0AC07D42240FE227001A85BE /* SaveCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCenter.swift; sourceTree = "<group>"; };
 		0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiPopupViewController.swift; sourceTree = "<group>"; };
 		0ACCDE6A23FDABD100381207 /* CameraButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
@@ -576,7 +590,12 @@
 			isa = PBXGroup;
 			children = (
 				0A95068723F9BDB0004E5546 /* PastDivesViewController.swift */,
-				0AA56759240549AB00378635 /* PastDivesViewController.storyboard */,
+				0A488E642413AA2800EBEF19 /* DiveCollectionViewCell.swift */,
+				0A488E662413AB5C00EBEF19 /* DiveCollectionReusableView.swift */,
+				0A4999B12422281400E3FA14 /* PastDivesWorker.swift */,
+				0A4999BB2422282200E3FA14 /* ProgressSheetController.swift */,
+				0A4999BA2422282200E3FA14 /* ProgressSheetController.xib */,
+				0A42E38A24226C40000BCB24 /* DivePlayerViewController.swift */,
 			);
 			path = PastDivesViewController;
 			sourceTree = "<group>";
@@ -723,6 +742,7 @@
 		0A95068923F9D7E7004E5546 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				0A488E682413AE8400EBEF19 /* LinearProgressBar.swift */,
 				0A8B26662401645A00ACC72F /* PWSwitch.swift */,
 				0ACCDE6A23FDABD100381207 /* CameraButton.swift */,
 				0A95068A23F9D7F7004E5546 /* SwiftSpinner.swift */,
@@ -739,6 +759,7 @@
 				0A95068D23F9DD8D004E5546 /* UIViewController+Extensions.swift */,
 				0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */,
 				0A3532DC24041485000F572D /* UINavigationItem+Extensions.swift */,
+				0A4999BE242230DF00E3FA14 /* UICollectionView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -982,8 +1003,8 @@
 				0A1D0A1B23F941AA006D9AFD /* PayloadProvision.sh in Resources */,
 				0AF06EA123FAF637000FF36A /* Assets.xcassets in Resources */,
 				0A0230A3241117E900A4E532 /* AuxCameraControlView.xib in Resources */,
+				0A4999BC2422282200E3FA14 /* ProgressSheetController.xib in Resources */,
 				0AE05CED23FD41E200C7CA08 /* DiveViewController.storyboard in Resources */,
-				0AA5675A240549AB00378635 /* PastDivesViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1013,12 +1034,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A1D0A2623F941BD006D9AFD /* I2CStats.swift in Sources */,
+				0A488E652413AA2800EBEF19 /* DiveCollectionViewCell.swift in Sources */,
 				0AE05CE523FD38A200C7CA08 /* VideoDecoder.swift in Sources */,
 				0ACCDE7523FDB29D00381207 /* AuxCameraControlView.swift in Sources */,
+				0A42E39224226C40000BCB24 /* DivePlayerViewController.swift in Sources */,
 				0A3532DD24041485000F572D /* UINavigationItem+Extensions.swift in Sources */,
 				0AE05CE623FD3B9800C7CA08 /* TridentControl.swift in Sources */,
 				0A8B26702401653100ACC72F /* UIViewExtensions.swift in Sources */,
 				0A1D0A5E23F94942006D9AFD /* iso8601date.swift in Sources */,
+				0A4999BD2422282200E3FA14 /* ProgressSheetController.swift in Sources */,
 				0A1D0A2123F941B2006D9AFD /* SSIDInfo.swift in Sources */,
 				0A1D0A4823F941C4006D9AFD /* FastRTPS.swift in Sources */,
 				0AE05CE923FD3D9000C7CA08 /* VideoView.swift in Sources */,
@@ -1034,6 +1058,7 @@
 				0A1D0A3723F941BD006D9AFD /* RovQuaternion.swift in Sources */,
 				0A1D0A2923F941BD006D9AFD /* RovSafetyState.swift in Sources */,
 				0A1D0A2B23F941BD006D9AFD /* RovControlDescriptor.swift in Sources */,
+				0A488E692413AE8400EBEF19 /* LinearProgressBar.swift in Sources */,
 				0A1D0A4023F941BD006D9AFD /* RovIMUCalibration.swift in Sources */,
 				0A1D0A3C23F941BD006D9AFD /* RovSubsystemStatus.swift in Sources */,
 				0AE05CD923FD329E00C7CA08 /* FloatingView.swift in Sources */,
@@ -1045,6 +1070,7 @@
 				0A1D0A3623F941BD006D9AFD /* RovDepth.swift in Sources */,
 				0A1D0A1E23F941B2006D9AFD /* GoproStatus.swift in Sources */,
 				0A1D0A2823F941BD006D9AFD /* RovCameraObjectTrack.swift in Sources */,
+				0A4999B92422281400E3FA14 /* PastDivesWorker.swift in Sources */,
 				0A1D0A4623F941C4006D9AFD /* RecordingsAPI.swift in Sources */,
 				0A1D0A3D23F941BD006D9AFD /* RovChannel.swift in Sources */,
 				0A1D0A2423F941BD006D9AFD /* RovTopic.swift in Sources */,
@@ -1064,6 +1090,7 @@
 				0A1D0A2223F941B2006D9AFD /* ConnectionInfo.swift in Sources */,
 				0A1D0A4523F941C4006D9AFD /* ResinAPI.swift in Sources */,
 				0A1D0A4723F941C4006D9AFD /* Gopro3API.swift in Sources */,
+				0A4999BF242230DF00E3FA14 /* UICollectionView+Extensions.swift in Sources */,
 				0A95069223F9E5B8004E5546 /* KeychainService.swift in Sources */,
 				0A1D0A3423F941BD006D9AFD /* RovTridentMotorCommand.swift in Sources */,
 				0ACCDE6D23FDAD4E00381207 /* CameraControlView.swift in Sources */,
@@ -1085,6 +1112,7 @@
 				0ACCDE6F23FDAE7000381207 /* RovModelView.swift in Sources */,
 				0A1D0A3F23F941BD006D9AFD /* RovLightPower.swift in Sources */,
 				0A95068B23F9D7F7004E5546 /* SwiftSpinner.swift in Sources */,
+				0A488E672413AB5C00EBEF19 /* DiveCollectionReusableView.swift in Sources */,
 				0A1D0A4423F941C4006D9AFD /* WifiServiceAPI.swift in Sources */,
 				0AE05CE023FD349D00C7CA08 /* Preferences.swift in Sources */,
 				0A1D0A2523F941BD006D9AFD /* RovBarometer.swift in Sources */,

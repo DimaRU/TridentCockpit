@@ -4,7 +4,7 @@
 //
 
 
-import Cocoa
+import UIKit
 import Alamofire
 
 extension Recording {
@@ -12,8 +12,13 @@ extension Recording {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM-dd-hhmmss"
         let fileDateLabel = dateFormatter.string(from: self.startTimestamp)
+#if os(iOS)
+        let moviesURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let fileURL = moviesURL.appendingPathComponent("Trident-\(fileDateLabel)-HQ.mp4")
+#else
         let moviesURL = FileManager.default.urls(for: .moviesDirectory, in: .allDomainsMask).first!
-        let fileURL = moviesURL.appendingPathComponent("/Trident/Trident-\(fileDateLabel)-HQ.mp4")
+        let fileURL = moviesURL.appendingPathComponent("Trident/Trident-\(fileDateLabel)-HQ.mp4")
+#endif
         return fileURL
     }
 }
@@ -21,41 +26,54 @@ extension Recording {
 protocol PastDivesProtocol: class {
     func deleteItem(for recording: Recording)
     func markItemDownloaded(for recording: Recording)
+    func presentProgess(sheet: UIViewController)
 }
 
 
 final class PastDivesWorker {
     let backgroudQueue = DispatchQueue(label: "Trident.background.worker", qos: .background, attributes: [])
     var semaphore: DispatchSemaphore!
-    var infoWindow: NSAlert!
+    let progressSheet = ProgressSheetController()
     var isCancelled = false
     var downloadRequest: DownloadRequest?
     weak var delegate: PastDivesProtocol?
+    var count = 0
+    var totalSize = 0
+    var currentSize = 0
 
     public func download(recordings: [Recording], deleteAfter: Bool) {
-        let progressIndicator = createProgressAlert(message: "Download dive video:")
-        infoWindow.beginSheetModal(for: NSApp.mainWindow!) { responce in
-            if responce == .alertFirstButtonReturn {
-                // cancel
-                self.downloadRequest?.cancel()
-                self.isCancelled = true
-            }
+        progressSheet.delegate = {
+            self.downloadRequest?.cancel()
+            self.isCancelled = true
         }
         
+        progressSheet.headerLabel.text = "Download dive video"
+        progressSheet.totalProgressView.progressValue = 0
+        totalSize = recordings.reduce(0, { $0 + $1.segments[0].size })
+        delegate?.presentProgess(sheet: progressSheet)
+
+        count = 0
+        currentSize = 0
         isCancelled = false
         downloadRequest = nil
         
         backgroudWorker(recordings: recordings) { recording in
             let fileURL = recording.fileURL()
+            self.currentSize += recording.segments[0].size
             DispatchQueue.main.sync {
-                progressIndicator.minValue = 0
-                progressIndicator.maxValue = 1
-                progressIndicator.doubleValue = 0
-                self.infoWindow.informativeText = fileURL.lastPathComponent
+                self.progressSheet.fileNameLabel.text = fileURL.lastPathComponent
+                self.progressSheet.fileProgressView.progressValue = 0
+                self.progressSheet.fileCountLabel.text = "Files downloaded \(self.count)/\(recordings.count)"
+                self.count += 1
             }
             self.downloadRequest = RecordingsAPI.download(recording: recording,
-                                                    fileURL: fileURL,
-                                                    progress: { progressIndicator.doubleValue = $0.fractionCompleted })
+                                                          fileURL: fileURL,
+                                                          progress: {
+                                                            self.progressSheet.fileProgressView.progressValue = CGFloat($0.fractionCompleted * 100)
+                                                            var progress = Double(self.currentSize - recording.segments[0].size) / Double(self.totalSize)
+                                                            progress += Double(recording.segments[0].size) / Double(self.totalSize) * $0.fractionCompleted
+                                                            self.progressSheet.totalProgressView.progressValue = CGFloat(progress * 100)
+            })
             { error in
                 if let error = error {
                     self.show(error: error)
@@ -79,23 +97,25 @@ final class PastDivesWorker {
     }
     
     public func delete(recordings: [Recording]) {
-        let progressIndicator = createProgressAlert(message: "Delete video")
-        infoWindow.beginSheetModal(for: NSApp.mainWindow!) { responce in
-            if responce == .alertFirstButtonReturn {
-                // cancel
-                self.isCancelled = true
-            }
+        progressSheet.delegate = {
+            self.isCancelled = true
         }
         
+        progressSheet.headerLabel.text = "Delete dive video"
+        progressSheet.totalProgressView.progressValue = 100
+        delegate?.presentProgess(sheet: progressSheet)
+
+        count = 0
         isCancelled = false
 
         backgroudWorker(recordings: recordings) { recording in
             let fileURL = recording.fileURL()
             DispatchQueue.main.sync {
-                progressIndicator.minValue = 0
-                progressIndicator.maxValue = Double(recordings.count)
-                progressIndicator.doubleValue = 0
-                self.infoWindow.informativeText = fileURL.lastPathComponent
+                self.progressSheet.fileNameLabel.text = fileURL.lastPathComponent
+                self.progressSheet.fileProgressView.progressValue = 0
+                self.progressSheet.fileCountLabel.text = "Deleted files \(self.count)/\(recordings.count)"
+                self.progressSheet.totalProgressView.progressValue = CGFloat(self.count) / CGFloat(recordings.count) * 100
+                self.count += 1
             }
             RecordingsAPI.deleteRecording(with: recording.sessionId)
             { error in
@@ -103,30 +123,19 @@ final class PastDivesWorker {
                     self.show(error: error)
                     return
                 }
-                progressIndicator.increment(by: 1)
                 self.delegate?.deleteItem(for: recording)
                 self.semaphore.signal()
             }
         }
     }
 
-    private func createProgressAlert(message: String) -> NSProgressIndicator {
-        infoWindow = NSAlert()
-        infoWindow.addButton(withTitle: "Cancel")
-        infoWindow.messageText = message
-        let progressIndicator = NSProgressIndicator(frame: .init(x: 0, y: 0, width: 300, height: 10))
-        progressIndicator.isIndeterminate = false
-        infoWindow.accessoryView = progressIndicator
-        return progressIndicator
-    }
-    
     private func show(error: AFError) {
         self.isCancelled = true
         self.semaphore.signal()
         if case .explicitlyCancelled = error { return }
 
-        let alert = NSAlert(error: error)
-        alert.beginSheetModal(for: NSApp.mainWindow!)
+//        let alert = NSAlert(error: error)
+//        alert.beginSheetModal(for: NSApp.mainWindow!)
     }
     
     private func backgroudWorker(recordings: [Recording], block: @escaping (Recording) -> Void) {
@@ -137,10 +146,10 @@ final class PastDivesWorker {
                 block(recording)
                 self.semaphore.wait()
             }
-            guard let infoWindow = self.infoWindow else { return }
             DispatchQueue.main.sync {
-                NSApp.mainWindow?.endSheet(infoWindow.window)
-                self.infoWindow = nil
+                if self.progressSheet.presentingViewController != nil {
+                    self.progressSheet.dismiss(animated: true)
+                }
             }
         }
     }

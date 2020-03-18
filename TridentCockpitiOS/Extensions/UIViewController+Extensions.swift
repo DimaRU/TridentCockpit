@@ -71,3 +71,13 @@ extension UIViewController {
         dismiss(animated: false)
     }
 }
+
+extension UIViewController {
+    func getInterfaceOrientation() -> UIInterfaceOrientation? {
+        if #available(iOS 13, *) {
+            return view.window?.windowScene?.interfaceOrientation
+        } else {
+            return UIApplication.shared.statusBarOrientation
+        }
+    }
+}

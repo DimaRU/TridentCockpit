@@ -44,6 +44,7 @@ class PastDivesViewController: NSViewController {
         sectionFormatter.dateFormat = "MMMM dd"
         diveLabelFormatter.dateFormat = "MMM dd hh:mm:ss"
         availableSpaceLabel.stringValue = ""
+        availableSpaceIndicator.wantsLayer = true
         
         pastDivesWorker.delegate = self
         
@@ -63,13 +64,21 @@ class PastDivesViewController: NSViewController {
         super.viewWillAppear()
         
         FastRTPS.registerReader(topic: .rovRecordingStats) { [weak self] (recordingStats: RovRecordingStats) in
+            guard let self = self else { return }
             DispatchQueue.main.async {
                 let level = Double(recordingStats.diskSpaceTotalBytes - recordingStats.diskSpaceUsedBytes) / Double(recordingStats.diskSpaceTotalBytes)
                 let gigabyte: Double = 1000 * 1000 * 1000
                 let total = Double(recordingStats.diskSpaceTotalBytes) / gigabyte
-                let aviable = Double(recordingStats.diskSpaceTotalBytes - recordingStats.diskSpaceUsedBytes) / gigabyte
-                self?.availableSpaceIndicator.doubleValue = level * 100
-                self?.availableSpaceLabel.stringValue = String(format: "%.1f GB of %.1f GB free", aviable, total)
+                let available = Double(recordingStats.diskSpaceTotalBytes - recordingStats.diskSpaceUsedBytes) / gigabyte
+                self.availableSpaceIndicator.doubleValue = level * 100
+                self.availableSpaceLabel.stringValue = String(format: "%.1f GB of %.1f GB free", available, total)
+                let midX = self.availableSpaceIndicator.bounds.midX
+                let midY = self.availableSpaceIndicator.bounds.midY
+                let transform = CGAffineTransform(translationX: midX, y: midY)
+                .rotated(by: .pi)
+                .translatedBy(x: -midX, y: -midY)
+
+                self.availableSpaceIndicator.layer?.setAffineTransform(transform)
             }
         }
     }
