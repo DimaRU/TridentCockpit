@@ -45,8 +45,6 @@ open class LinearProgressBar: UIView {
         }
     }
     
-    @IBInspectable public var reverse: Bool = false
-    
     open var barColorForValue: ((Float)->UIColor)?
     
     fileprivate var trackHeight: CGFloat {
@@ -100,51 +98,29 @@ open class LinearProgressBar: UIView {
             x: barPadding + trackOffset,
             y: frame.size.height / 2
         )
+        
+        // Progress Bar Track
+        drawOn(
+            context: context,
+            lineWidth: barThickness + trackPadding,
+            begin: beginPoint,
+            end: CGPoint(x: frame.size.width - barPadding - trackOffset, y: frame.size.height / 2),
+            lineCap: CGLineCap(rawValue: capType) ?? .round,
+            strokeColor: trackColor
+        )
+        
+        // Progress bar
         let colorForBar = barColorForValue?(Float(progressValue)) ?? barColor
         let barLineWidth = calculatePercentage() > 0 ? barThickness : 0
         
-        if !reverse {
-            // Progress Bar Track
-            drawOn(
-                context: context,
-                lineWidth: barThickness + trackPadding,
-                begin: beginPoint,
-                end: CGPoint(x: frame.size.width - barPadding - trackOffset, y: frame.size.height / 2),
-                lineCap: CGLineCap(rawValue: capType) ?? .round,
-                strokeColor: trackColor
-            )
-            
-            // Progress bar
-            drawOn(
-                context: context,
-                lineWidth: barLineWidth,
-                begin: beginPoint,
-                end: CGPoint(x: barPadding + trackOffset + calculatePercentage(), y: frame.size.height / 2),
-                lineCap: CGLineCap(rawValue: capType) ?? .round,
-                strokeColor: colorForBar
-            )
-        } else {
-            // Reverse
-            // Progress bar
-            drawOn(
-                context: context,
-                lineWidth: barLineWidth,
-                begin: beginPoint,
-                end: CGPoint(x: frame.size.width - barPadding - trackOffset, y: frame.size.height / 2),
-                lineCap: CGLineCap(rawValue: capType) ?? .round,
-                strokeColor: colorForBar
-            )
-            
-            // Progress Bar Track
-            drawOn(
-                context: context,
-                lineWidth: barThickness + trackPadding,
-                begin: beginPoint,
-                end: CGPoint(x: barPadding + trackOffset + calculatePercentage(), y: frame.size.height / 2),
-                lineCap: CGLineCap(rawValue: capType) ?? .round,
-                strokeColor: trackColor
-            )
-        }
+        drawOn(
+            context: context,
+            lineWidth: barLineWidth,
+            begin: beginPoint,
+            end: CGPoint(x: barPadding + trackOffset + calculatePercentage(), y: frame.size.height / 2),
+            lineCap: CGLineCap(rawValue: capType) ?? .round,
+            strokeColor: colorForBar
+        )
     }
     
     /// Clear graphics context and redraw on bounds change
