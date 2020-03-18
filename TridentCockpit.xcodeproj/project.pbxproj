@@ -96,6 +96,7 @@
 		0A3FD1FD23A9729800FE9918 /* SSIDInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FC23A9729800FE9918 /* SSIDInfo.swift */; };
 		0A3FD1FF23A972BA00FE9918 /* ConnectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FE23A972B900FE9918 /* ConnectionInfo.swift */; };
 		0A3FD20123A9735300FE9918 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20023A9735300FE9918 /* AppInfo.swift */; };
+		0A42E39224226C40000BCB24 /* DivePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A42E38A24226C40000BCB24 /* DivePlayerViewController.swift */; };
 		0A457D9723B78A7C0042C250 /* Gopro3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A457D8D23B78A7C0042C250 /* Gopro3API.swift */; };
 		0A488E652413AA2800EBEF19 /* DiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A488E642413AA2800EBEF19 /* DiveCollectionViewCell.swift */; };
 		0A488E672413AB5C00EBEF19 /* DiveCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A488E662413AB5C00EBEF19 /* DiveCollectionReusableView.swift */; };
@@ -343,6 +344,7 @@
 		0A3FD1FE23A972B900FE9918 /* ConnectionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionInfo.swift; sourceTree = "<group>"; };
 		0A3FD20023A9735300FE9918 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		0A3FD20223A97A3500FE9918 /* RestProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestProvider.swift; sourceTree = "<group>"; };
+		0A42E38A24226C40000BCB24 /* DivePlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DivePlayerViewController.swift; sourceTree = "<group>"; };
 		0A457D8D23B78A7C0042C250 /* Gopro3API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gopro3API.swift; sourceTree = "<group>"; };
 		0A488E642413AA2800EBEF19 /* DiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveCollectionViewCell.swift; sourceTree = "<group>"; };
 		0A488E662413AB5C00EBEF19 /* DiveCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveCollectionReusableView.swift; sourceTree = "<group>"; };
@@ -593,6 +595,7 @@
 				0A4999B12422281400E3FA14 /* PastDivesWorker.swift */,
 				0A4999BB2422282200E3FA14 /* ProgressSheetController.swift */,
 				0A4999BA2422282200E3FA14 /* ProgressSheetController.xib */,
+				0A42E38A24226C40000BCB24 /* DivePlayerViewController.swift */,
 			);
 			path = PastDivesViewController;
 			sourceTree = "<group>";
@@ -1034,6 +1037,7 @@
 				0A488E652413AA2800EBEF19 /* DiveCollectionViewCell.swift in Sources */,
 				0AE05CE523FD38A200C7CA08 /* VideoDecoder.swift in Sources */,
 				0ACCDE7523FDB29D00381207 /* AuxCameraControlView.swift in Sources */,
+				0A42E39224226C40000BCB24 /* DivePlayerViewController.swift in Sources */,
 				0A3532DD24041485000F572D /* UINavigationItem+Extensions.swift in Sources */,
 				0AE05CE623FD3B9800C7CA08 /* TridentControl.swift in Sources */,
 				0A8B26702401653100ACC72F /* UIViewExtensions.swift in Sources */,

@@ -19,7 +19,6 @@ class PastDivesViewController: UIViewController {
     
     let sectionFormatter = DateFormatter()
     let diveLabelFormatter = DateFormatter()
-    weak var playerViewController: AVPlayerViewController?
     let pastDivesWorker = PastDivesWorker()
 
 
@@ -51,10 +50,9 @@ class PastDivesViewController: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name:UIDevice.orientationDidChangeNotification, object: nil)
         
-        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { [weak self] _ in
-            guard let playerViewController = self?.playerViewController else { return }
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: nil, queue: nil) { _ in
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-                self?.removePlayerViewController(playerViewController)
+                DivePlayerViewController.shared?.removeFromContainer()
             }
         }
 
@@ -239,14 +237,9 @@ class PastDivesViewController: UIViewController {
 #endif
     
     private func previewVideo(recording: Recording, in cell: DiveCollectionViewCell) {
-        if let playerViewController = playerViewController {
-            playerViewController.player?.pause()
-            playerViewController.player = nil
-            removePlayerViewController(playerViewController)
-        }
-        
-        let playerViewController = addPlayerViewController(to: cell.subviews[0])
-        self.playerViewController = playerViewController
+        DivePlayerViewController.shared?.removeFromContainer()
+
+        let playerViewController = DivePlayerViewController.add(to: cell.subviews[0], parentViewController: self)
         playerViewController.entersFullScreenWhenPlaybackBegins = true
         playerViewController.exitsFullScreenWhenPlaybackEnds = true
         let url = RecordingsAPI.videoURL(recording: recording)
@@ -255,22 +248,6 @@ class PastDivesViewController: UIViewController {
         enterFullscreen(playerViewController)
     }
     
-    private func addPlayerViewController(to view: UIView) -> AVPlayerViewController {
-        let viewController = AVPlayerViewController()
-        addChild(viewController)
-        viewController.view.frame = view.bounds
-        viewController.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        view.insertSubview(viewController.view, at: view.subviews.count - 1)
-        viewController.didMove(toParent: self)
-        return viewController
-    }
-    
-    private func removePlayerViewController(_ viewController: AVPlayerViewController) {
-        guard viewController.parent != nil else { return }
-        viewController.willMove(toParent: nil)
-        viewController.view.removeFromSuperview()
-        viewController.removeFromParent()
-    }
     
     // Thanks to https://stackoverflow.com/a/36853320/7666732
     private func enterFullscreen(_ playerViewController: AVPlayerViewController) {

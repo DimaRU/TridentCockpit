@@ -26,6 +26,7 @@ class DiveCollectionViewCell: UICollectionViewCell {
     }
     
     override func prepareForReuse() {
+        DivePlayerViewController.shared?.removeFromContainer()
         selectionImage.isHidden = true
         layer.borderWidth = 0
         previewLabel.text = nil
