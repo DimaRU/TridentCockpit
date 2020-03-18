@@ -138,7 +138,7 @@ class PastDivesViewController: UIViewController {
         let count = selected.count
         let sheet = UIAlertController(title: "This will permanently delete \(count) video files on Trident",
             message: "Delete dive?",
-            preferredStyle: .actionSheet)
+            preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             let recordings = selected.map { self.getRecording(by: $0) }
             self.pastDivesWorker.delete(recordings: recordings)
@@ -147,6 +147,7 @@ class PastDivesViewController: UIViewController {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         sheet.addAction(okAction)
         sheet.addAction(cancelAction)
+        present(sheet, animated: true)
     }
     
     
