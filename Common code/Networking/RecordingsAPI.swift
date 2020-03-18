@@ -23,7 +23,7 @@ final class RecordingsAPI {
         }
     }
 
-    class func deleteRecording(sessionId: String, completion: @escaping (AFError?) -> Void) {
+    class func deleteRecording(with sessionId: String, completion: @escaping (AFError?) -> Void) {
         AF.request(baseURL + sessionId, method: .delete)
             .validate(statusCode: 200..<300)
             .response(queue: DispatchQueue.main) { responce in
@@ -36,7 +36,7 @@ final class RecordingsAPI {
         }
     }
     
-    class func downloadRecording(recording: Recording,
+    class func download(recording: Recording,
                            fileURL: URL,
                            progress: @escaping (Progress) -> Void,
                            completion: @escaping (AFError?) -> Void) -> DownloadRequest {

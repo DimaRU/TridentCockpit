@@ -9,4 +9,5 @@ import UIKit
 class DiveCollectionReusableView: UICollectionReusableView {
         
     @IBOutlet weak var headerLabel: UILabel!
+    
 }
