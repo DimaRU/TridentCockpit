@@ -315,10 +315,8 @@ class DashboardViewController: UIViewController {
     func setDisconnectedState() {
         timer = nil
         let message = "Trident disconnected"
-        print(message)
         if let otherViewController = presentedViewController ?? navigationController?.topViewController,
             !(otherViewController is UIAlertController) {
-            print(otherViewController)
             let info: String
             switch otherViewController {
             case is DiveViewController:

@@ -133,9 +133,7 @@ final class PastDivesWorker {
         self.isCancelled = true
         self.semaphore.signal()
         if case .explicitlyCancelled = error { return }
-
-//        let alert = NSAlert(error: error)
-//        alert.beginSheetModal(for: NSApp.mainWindow!)
+        error.alert(delay: 100)
     }
     
     private func backgroudWorker(recordings: [Recording], block: @escaping (Recording) -> Void) {

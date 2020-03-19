@@ -110,7 +110,6 @@ final class VideoDecoder {
         }
         if sampleBufferLayer.status == .failed {
             sampleBufferLayer.flush()
-            print("sampleBufferLayer.status == .failed")
         }
     }
     
@@ -141,4 +140,3 @@ final class VideoDecoder {
     }
     
 }
-

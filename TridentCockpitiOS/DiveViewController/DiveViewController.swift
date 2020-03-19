@@ -150,7 +150,6 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         startRTPS()
         
         if CLLocationManager.headingAvailable() {
-            print("Heading aviable")
             locationManager.delegate = self
             locationManager.startUpdatingHeading()
         }
@@ -281,7 +280,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         case "off":
             Preference.videoOverlayMode = false
         default:
-            print("illegal mode:", mode)
+            assertionFailure("illegal mode: \(mode)")
         }
     }
     

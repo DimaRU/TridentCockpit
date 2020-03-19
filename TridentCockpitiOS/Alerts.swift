@@ -36,17 +36,6 @@ func alert(message: String, informative: String, delay: Int = 5) {
 }
 
 extension Error {
-    func showAlert(completion: (() -> Void)? = nil) {
-        let alertController = UIAlertController(title: self.localizedDescription,
-                                                message: nil,
-                                                preferredStyle: .alert)
-        let action = UIAlertAction(title: "Dismiss", style: .default) { _ in
-            completion?()
-        }
-        alertController.addAction(action)
-        alertController.presentOntop()
-    }
-
     func alert(delay: Int = 4) {
         let alertController = UIAlertController(title: self.localizedDescription,
                                                 message: nil,
