@@ -36,7 +36,7 @@ class WiFiPopupViewController: UITableViewController, StoryboardInstantiable {
                 self.ssids = ssids.filter{!$0.ssid.contains("Trident-")}
                 self.tableView.reloadData()
             }.catch {
-                self.alert(error: $0)
+                $0.alert()
             }
         }
     }

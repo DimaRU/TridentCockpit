@@ -161,11 +161,11 @@ class AuxCameraControlView: FloatingView {
                 self.timer?.invalidate()
                 self.timer = nil
             case NetworkError.unaviable(let message):
-                self.delegate?.alert(message: "Payload camera connection lost", informative: message, delay: 3)
+                alert(message: "Payload camera connection lost", informative: message, delay: 3)
                 self.timer?.invalidate()
                 self.timer = nil
             default:
-                self.delegate?.alert(error: error)
+                error.alert()
             }
         }
     }
@@ -217,7 +217,7 @@ class AuxCameraControlView: FloatingView {
             }
             self.cameraState = powerOn ? .on : .off
         }.catch {
-            self.delegate?.alert(error: $0)
+            $0.alert()
         }
     }
     
@@ -234,7 +234,7 @@ class AuxCameraControlView: FloatingView {
             self.cameraState = shotOn ? .recording : .on
             self.setRefreshTimer(timeInterval: shotOn ? 1 : 2)
         }.catch {
-            self.delegate?.alert(error: $0)
+            $0.alert()
         }
     }
     

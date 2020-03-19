@@ -62,7 +62,7 @@ class PastDivesViewController: UIViewController {
             case .success(let data):
                 self.sortRecordings(data.recordings)
             case .failure(let error):
-                self.alert(error: error, delay: 100)
+                error.alert(delay: 100)
                 self.sortRecordings([])
             }
         }

@@ -170,9 +170,9 @@ class DashboardViewController: UIViewController {
             switch error {
             case NetworkError.unaviable(let message):
                 self.timer = nil
-                self.alert(message: "Trident connection lost", informative: message, delay: 5)
+                alert(message: "Trident connection lost", informative: message, delay: 5)
             default:
-                self.alert(error: error, delay: 5)
+                error.alert(delay: 5)
             }
             
         }
@@ -186,7 +186,7 @@ class DashboardViewController: UIViewController {
             self.connectedSSID = nil
             self.executeScript(name: "PayloadCleanup") {}
         }.catch {
-            self.alert(error: $0)
+            $0.alert()
         }
     }
 
@@ -197,7 +197,7 @@ class DashboardViewController: UIViewController {
         }.done { (ssids: [SSIDInfo]) -> Void in
             self.showPopup(with: ssids.filter{!$0.ssid.contains("Trident-")}, view: view)
         }.catch {
-            self.alert(error: $0)
+            $0.alert()
         }
     }
 
@@ -240,16 +240,14 @@ class DashboardViewController: UIViewController {
                     let logStrings = log.split(separator: "\n")
                     if logStrings.last != "OK-SCRIPT" {
                         let fileredLog = logStrings.filter{ !$0.contains("sudo: unable to resolve host") && !$0.contains("START-SCRIPT") }.reduce("") { $0 + $1 + "\n"}
-                        self.alert(message: "Error while execute \(name)", informative: fileredLog, delay: 100)
+                        alert(message: "Error while execute \(name)", informative: fileredLog, delay: 100)
                         print(fileredLog)
                     } else {
                         print("Script \(name) ok")
                         completion()
                     }
                 } else {
-                    if let error = error {
-                        self.alert(error: error)
-                    }
+                    error?.alert()
                 }
                 self.sshCommand.disconnect {}
         }
@@ -272,7 +270,7 @@ class DashboardViewController: UIViewController {
             self.cameraModelLabel.text = model[1]
             self.cameraFirmwareLabel.text = model[0]
         }.catch {
-            self.alert(error: $0)
+            $0.alert()
         }
     }
 
@@ -385,7 +383,7 @@ class DashboardViewController: UIViewController {
                 self.connectedSSID = nil
             }
         }.catch {
-            self.alert(error: $0)
+            $0.alert()
         }
         navigationItem.getItem(for: .connectWiFi)?.isEnabled = true
         FastRTPS.setPartition(name: tridentID)
@@ -410,7 +408,7 @@ extension DashboardViewController: WiFiPopupProtocol {
             self.connectionInfo = connectionInfo
             self.startRefreshDeviceState()
         }.catch {
-            self.alert(error: $0)
+            $0.alert()
         }
     }
 }

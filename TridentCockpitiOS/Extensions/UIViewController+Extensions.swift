@@ -4,51 +4,8 @@
 //
 
 import UIKit
+import Alamofire
 
-extension UIViewController {
-    func showAlert(error: Error, completion: (() -> Void)? = nil) {
-        let alertController = UIAlertController(title: error.localizedDescription,
-                                                message: nil,
-                                                preferredStyle: .alert)
-        let action = UIAlertAction(title: "Dismiss", style: .default) { _ in
-            completion?()
-        }
-        alertController.addAction(action)
-        self.present(alertController, animated: true)
-    }
-
-    func alert(message: String, informative: String, delay: Int = 5) {
-        let alertController = UIAlertController(title: message,
-                                                message: informative,
-                                                preferredStyle: .alert)
-        let action = UIAlertAction(title: "Dismiss", style: .default)
-        alertController.addAction(action)
-        present(alertController, animated: true)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) { [weak alertController] in
-            guard let alertController = alertController else { return }
-            alertController.dismiss(animated: true)
-        }
-    }
-    
-    func alert(error: Error, delay: Int = 4) {
-        let alertController = UIAlertController(title: error.localizedDescription,
-                                                message: nil,
-                                                preferredStyle: .alert)
-        if let error = error as? NetworkError {
-            alertController.message = error.message()
-        }
-        let action = UIAlertAction(title: "Dismiss", style: .default)
-        alertController.addAction(action)
-        present(alertController, animated: true)
-
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) { [weak alertController] in
-            guard let alertController = alertController else { return }
-            alertController.dismiss(animated: true)
-        }
-    }
-
-}
 
 extension UIViewController {
     func present(_ viewControllerToPresent: UIViewController, options: CATransitionSubtype) {

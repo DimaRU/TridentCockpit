@@ -408,10 +408,10 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
                     self.videoSessionId = nil
                 case .rejectedSessionInProgress:
                     self.videoSessionId = nil
-                    self.alert(message: "Recording", informative: "Already in progress")
+                    alert(message: "Recording", informative: "Already in progress")
                 case .rejectedNoSpace:
                     self.videoSessionId = nil
-                    self.alert(message: "Recording", informative: "No space left")
+                    alert(message: "Recording", informative: "No space left")
                 }
             }
         }
