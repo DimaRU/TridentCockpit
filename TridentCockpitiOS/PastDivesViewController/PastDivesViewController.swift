@@ -83,12 +83,14 @@ class PastDivesViewController: UIViewController {
         FastRTPS.registerReader(topic: .rovRecordingStats) { [weak self] (recordingStats: RovRecordingStats) in
             guard let self = self else { return }
             DispatchQueue.main.async {
-                let level = Double(recordingStats.diskSpaceTotalBytes - recordingStats.diskSpaceUsedBytes) / Double(recordingStats.diskSpaceTotalBytes)
+                let availableBytes = recordingStats.diskSpaceTotalBytes < recordingStats.diskSpaceUsedBytes ? 0 : recordingStats.diskSpaceTotalBytes - recordingStats.diskSpaceUsedBytes
+                let level = Double(availableBytes) / Double(recordingStats.diskSpaceTotalBytes)
                 let gigabyte: Double = 1000 * 1000 * 1000
                 let total = Double(recordingStats.diskSpaceTotalBytes) / gigabyte
-                let available = Double(recordingStats.diskSpaceTotalBytes - recordingStats.diskSpaceUsedBytes) / gigabyte
+                let availableGB = Double(availableBytes) / gigabyte
+                
                 self.availableSpaceBar.progressValue = CGFloat(level) * 100
-                self.availableSpaceLabel.text = String(format: "%.1f GB of %.1f GB free", available, total)
+                self.availableSpaceLabel.text = String(format: "%.1f GB of %.1f GB free", availableGB, total)
                 self.availableSpaceBar.transform = CGAffineTransform(rotationAngle: .pi)
             }
         }
