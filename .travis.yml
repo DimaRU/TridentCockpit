@@ -15,14 +15,15 @@ before_install:
 jobs:
   include:
   - name: "Mac Catalyst"
-    xcode_project: TridentCockpit.xcodeproj
-    xcode_destination: platform=macOS,variant=Mac Catalyst
-    xcode_scheme: TridentCockpitiOS
+    env: 
+    - XCODE_DEST="platform=macOS,variant=Mac Catalyst"
+    - XCODE_SCHEME=TridentCockpitiOS
   - name: "iOS Simulator"
-    xcode_project: TridentCockpit.xcodeproj
-    xcode_destination: platform=iOS Simulator,name=iPhone 8,OS=13.3
-    xcode_scheme: TridentCockpitiOS
+    env: 
+    - XCODE_DEST="platform=iOS Simulator,name=iPhone 8,OS=13.3"
+    - XCODE_SCHEME=TridentCockpitiOS
   - name: "macOS"
-    xcode_project: TridentCockpit.xcodeproj
-    xcode_destination: platform=macOS
-    xcode_scheme: TridentCockpit
+    env: 
+    - XCODE_DEST="platform=macOS"
+    - XCODE_SCHEME=TridentCockpit
+script: set -o pipefail && xcodebuild -project TridentCockpit.xcodeproj -scheme $XCODE_SCHEME -destination "$XCODE_DEST" build  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
