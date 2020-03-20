@@ -23,4 +23,4 @@ jobs:
   - name: "macOS"
     env: XCODE_DEST="platform=macOS"
     env: XCODE_SCHEME=TridentCockpit
-script: xcodebuild clean build -project TridentCockpit.xcodeproj -scheme $XCODE_SCHEME -destination "$XCODE_DEST"  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty && exit ${PIPESTATUS[0]}
+script: xcodebuild clean build -project TridentCockpit.xcodeproj -scheme $XCODE_SCHEME -destination $XCODE_DEST  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty && exit ${PIPESTATUS[0]}
