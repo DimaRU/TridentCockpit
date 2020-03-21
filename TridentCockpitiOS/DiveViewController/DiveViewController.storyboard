@@ -21,18 +21,16 @@
                                 <color key="backgroundColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eNr-t8-WZ4">
-                                <rect key="frame" x="619" y="70" width="28" height="41"/>
+                                <rect key="frame" x="614" y="70" width="40" height="60"/>
                                 <color key="backgroundColor" name="cameraControlBackground"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="41" id="Wb5-34-RWY"/>
-                                    <constraint firstAttribute="width" constant="28" id="iKB-Eh-gRT"/>
+                                    <constraint firstAttribute="height" constant="60" id="Wb5-34-RWY"/>
+                                    <constraint firstAttribute="width" constant="40" id="iKB-Eh-gRT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" image="flashlight.off.fill" catalog="system">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="font">
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                    </preferredSymbolConfiguration>
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="23" scale="large"/>
                                 </state>
                                 <state key="selected" image="Light On"/>
                                 <userDefinedRuntimeAttributes>
@@ -350,7 +348,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="87Y-el-STp" customClass="TouchJoystickView" customModule="TridentCockpitiOS" customModuleProvider="target">
-                                <rect key="frame" x="217" y="45" width="290" height="290"/>
+                                <rect key="frame" x="271" y="45" width="290" height="290"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tilt Down" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xgg-KM-qas">
                                         <rect key="frame" x="116.5" y="7" width="57" height="16"/>
@@ -439,9 +437,9 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="eNr-t8-WZ4" secondAttribute="trailing" constant="20" id="1rv-UK-f4v"/>
+                            <constraint firstAttribute="trailing" secondItem="eNr-t8-WZ4" secondAttribute="trailing" constant="13" id="1rv-UK-f4v"/>
                             <constraint firstItem="KWl-aA-Uaq" firstAttribute="leading" secondItem="5RH-GY-zce" secondAttribute="leading" constant="44" placeholder="YES" id="5ZH-oW-lVI"/>
-                            <constraint firstAttribute="trailing" secondItem="87Y-el-STp" secondAttribute="trailing" constant="160" placeholder="YES" id="6P2-Zo-2Y2"/>
+                            <constraint firstAttribute="trailing" secondItem="87Y-el-STp" secondAttribute="trailing" constant="106" placeholder="YES" id="6P2-Zo-2Y2"/>
                             <constraint firstAttribute="bottom" secondItem="M3a-Wg-BFZ" secondAttribute="bottom" placeholder="YES" id="7hQ-d3-h8b"/>
                             <constraint firstItem="CVJ-4V-eBR" firstAttribute="top" secondItem="ude-Pc-hbE" secondAttribute="top" id="9A7-IV-73j"/>
                             <constraint firstAttribute="bottom" secondItem="kvl-QW-fil" secondAttribute="bottom" id="HTr-02-YSj"/>
