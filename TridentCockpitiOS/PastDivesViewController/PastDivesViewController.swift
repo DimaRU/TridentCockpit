@@ -88,9 +88,9 @@ class PastDivesViewController: UIViewController {
                 let gigabyte: Double = 1000 * 1000 * 1000
                 let total = Double(recordingStats.diskSpaceTotalBytes) / gigabyte
                 let availableGB = Double(availableBytes) / gigabyte
+                self.availableSpaceLabel.text = String(format: "%.1f GB of %.1f GB free", availableGB, total)
                 
                 self.availableSpaceBar.progressValue = CGFloat(level) * 100
-                self.availableSpaceLabel.text = String(format: "%.1f GB of %.1f GB free", availableGB, total)
                 self.availableSpaceBar.transform = CGAffineTransform(rotationAngle: .pi)
             }
         }

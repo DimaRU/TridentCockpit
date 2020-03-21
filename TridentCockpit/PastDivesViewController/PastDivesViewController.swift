@@ -71,9 +71,9 @@ class PastDivesViewController: NSViewController {
                 let gigabyte: Double = 1000 * 1000 * 1000
                 let total = Double(recordingStats.diskSpaceTotalBytes) / gigabyte
                 let availableGB = Double(availableBytes) / gigabyte
+                self.availableSpaceLabel.stringValue = String(format: "%.1f GB of %.1f GB free", availableGB, total)
 
                 self.availableSpaceIndicator.doubleValue = level * 100
-                self.availableSpaceLabel.stringValue = String(format: "%.1f GB of %.1f GB free", available, total)
                 let midX = self.availableSpaceIndicator.bounds.midX
                 let midY = self.availableSpaceIndicator.bounds.midY
                 let transform = CGAffineTransform(translationX: midX, y: midY)
