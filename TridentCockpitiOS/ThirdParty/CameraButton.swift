@@ -47,7 +47,7 @@ class CameraButton: UIButton {
         self.pathLayer.strokeColor = nil
         
         //set the color for the inner shape
-        self.pathLayer.fillColor = buttonColor.cgColor
+        self.pathLayer.fillColor = isEnabled ? buttonColor.cgColor : disabledColor.cgColor
         
         //add the path layer to the control layer so it gets drawn
         self.layer.addSublayer(self.pathLayer)
@@ -90,6 +90,7 @@ class CameraButton: UIButton {
     
     override var isEnabled: Bool {
         didSet {
+            guard oldValue != isEnabled else { return }
             //Create the animation to restore the color of the button
             let colorChange = CABasicAnimation(keyPath: "fillColor")
             colorChange.duration = animationDuration;

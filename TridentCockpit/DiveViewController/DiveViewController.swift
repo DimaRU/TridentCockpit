@@ -72,9 +72,7 @@ class DiveViewController: NSViewController {
             if cameraTime / 60 != 0 {
                 time += String(cameraTime / 60) + "h "
             }
-            if cameraTime % 60 != 0 {
-                time += String(cameraTime % 60) + "m"
-            }
+            time += String(cameraTime % 60) + "m"
             DispatchQueue.main.async {
                 self.cameraTimeLabel.stringValue = time
             }
@@ -214,7 +212,7 @@ class DiveViewController: NSViewController {
         case "off":
             Preference.videoOverlayMode = false
         default:
-            print("illegal mode:", mode)
+            assertionFailure("illegal mode: \(mode)")
         }
         
         let menuItem = NSApplication.shared.mainMenu?.recursiveSearch(tag: 4)
@@ -278,7 +276,14 @@ class DiveViewController: NSViewController {
         }
 
         FastRTPS.registerReader(topic: .rovRecordingStats) { [weak self] (recordingStats: RovRecordingStats) in
-            self?.cameraTime = recordingStats.estRemainingRecTimeS / 60
+            guard let self = self else { return }
+            self.cameraTime = recordingStats.estRemainingRecTimeS / 60
+            guard self.cameraTime == 0 else { return }
+            DispatchQueue.main.async {
+                if self.recordingButton.activeButtonColor != NSColor(named: "recordActive")! {
+                    self.recordingButton.isEnabled = false
+                }
+            }
         }
         
         FastRTPS.registerReader(topic: .rovAttitude) { [weak self] (attitude: RovAttitude) in
@@ -309,6 +314,28 @@ class DiveViewController: NSViewController {
 
                 case .stopped:
                     self.videoSessionId = nil
+                    switch videoSession.stopReason {
+                    case .maxSessionSizeReached:
+                        self.startRecordingSession(id: UUID())
+                        return
+                    case .clientRequest,
+                         .clientNotAlive,
+                         .videoSourceNotAlive:
+                        break
+                    case .unknown:
+                         break
+                    case .filesystemNospace:
+                        let alert = NSAlert()
+                        alert.messageText = "Stop recording"
+                        alert.informativeText = "No space left"
+                        alert.runModal()
+                    case .recordingError:
+                        let alert = NSAlert()
+                        alert.messageText = "Stop recording"
+                        alert.informativeText = "Recording error"
+                        alert.runModal()
+                        break
+                    }
                     self.recordingTimeLabel.stringValue = ""
                     self.cameraTimeLabel.textColor = .systemGray
                     self.recordingButton.activeButtonColor = NSColor(named: "stopActive")!

@@ -86,9 +86,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
             if cameraTime / 60 != 0 {
                 time += String(cameraTime / 60) + "h "
             }
-            if cameraTime % 60 != 0 {
-                time += String(cameraTime % 60) + "m"
-            }
+            time += String(cameraTime % 60) + "m"
             DispatchQueue.main.async {
                 self.cameraTimeLabel.text = time
             }
@@ -356,7 +354,14 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         }
 
         FastRTPS.registerReader(topic: .rovRecordingStats) { [weak self] (recordingStats: RovRecordingStats) in
-            self?.cameraTime = recordingStats.estRemainingRecTimeS / 60
+            guard let self = self else { return }
+            self.cameraTime = recordingStats.estRemainingRecTimeS / 60
+            guard self.cameraTime == 0 else { return }
+            DispatchQueue.main.async {
+                if !self.recordingButton.isSelected {
+                    self.recordingButton.isEnabled = false
+                }
+            }
         }
         
         FastRTPS.registerReader(topic: .rovAttitude) { [weak self] (attitude: RovAttitude) in
@@ -386,6 +391,23 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
 
                 case .stopped:
                     self.videoSessionId = nil
+                    switch videoSession.stopReason {
+                    case .maxSessionSizeReached:
+                        self.startRecordingSession(id: UUID())
+                        return
+                    case .clientRequest,
+                         .clientNotAlive,
+                         .videoSourceNotAlive:
+                        break
+                    case .unknown:
+                        break
+                    case .filesystemNospace:
+                        alert(message: "Stop recording", informative: "No space left", delay: 6)
+                        break
+                    case .recordingError:
+                        alert(message: "Stop recording", informative: "Recording error", delay: 6)
+                        break
+                    }
                     self.recordingTimeLabel.text = ""
                     self.cameraTimeLabel.textColor = .systemGray
                     self.recordingButton.isSelected = false
@@ -473,7 +495,6 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         let isoDate = formatter.string(from: Date())
         let metadata = #"{"start_ts":"\#(isoDate)"}"#
-
         let videoSessionCommand = RovVideoSessionCommand(sessionID: id.uuidString.lowercased(),
                                                          metadata: metadata,
                                                          request: .recording,
