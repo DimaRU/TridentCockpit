@@ -122,6 +122,19 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         tempLabel.font = UIFont.monospacedSystemFont(ofSize: 17, weight: .regular)
         throttleJoystickView.delegate = tridentControl
         yawPitchJoystickView.delegate = tridentControl
+        if let window: UIWindow = {
+            if #available(iOS 13, *) {
+                return UIApplication.shared.windows.first{ $0.isKeyWindow }
+            } else {
+                return UIApplication.shared.keyWindow
+            }
+            }() {
+            let bounds = window.bounds
+            let offset: CGFloat = UITraitCollection.current.verticalSizeClass == .compact ? 185 : 250
+            throttleJoystickView.center = CGPoint(x: bounds.minX + offset, y: bounds.maxY - offset)
+            yawPitchJoystickView.center = CGPoint(x: bounds.maxX - offset, y: bounds.maxY - offset)
+        }
+
 
         setupAverage()
         
