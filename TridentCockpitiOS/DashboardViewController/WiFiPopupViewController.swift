@@ -75,7 +75,15 @@ class WiFiPopupViewController: UITableViewController, StoryboardInstantiable {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alert.addAction(joinAction)
         alert.addAction(cancelAction)
-        let presenter = presentingViewController
+        var presenter = presentingViewController
+        if let navController = presenter as? UINavigationController {
+            presenter = navController.viewControllers.first
+        }
+        if let popoverController = alert.popoverPresentationController, let view = presenter?.view {
+            popoverController.sourceView = view
+            popoverController.sourceRect = CGRect(x: view.bounds.midX, y: view.bounds.midY, width: 0, height: 0)
+            popoverController.permittedArrowDirections = []
+        }
         dismiss(animated: true) {
             presenter?.present(alert, animated: true)
         }
