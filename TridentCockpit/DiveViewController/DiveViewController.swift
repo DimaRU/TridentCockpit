@@ -240,10 +240,6 @@ class DiveViewController: NSViewController {
         let timeMs = UInt(Date().timeIntervalSince1970 * 1000)
         FastRTPS.send(topic: .rovDatetime, ddsData: String(timeMs))
         FastRTPS.send(topic: .rovVideoOverlayModeCommand, ddsData: Preference.videoOverlayMode ? "on" : "off")
-        let videoReq = RovVideoSessionCommand(sessionID: "", metadata: "", request: .stopped, response: .unknown, reason: "")
-        FastRTPS.send(topic: .rovVidSessionReq, ddsData: videoReq)
-        let lightPower = RovLightPower(id: "fwd", power: 0)
-        FastRTPS.send(topic: .rovLightPowerRequested, ddsData: lightPower)
         let controllerStatus = RovControllerStatus(vehicleId: vehicleId,
                                                    controllerId: .trident,
                                                    state: Preference.tridentStabilize ? .enabled : .disabled)
