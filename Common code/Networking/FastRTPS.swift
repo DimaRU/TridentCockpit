@@ -49,6 +49,8 @@ final class FastRTPS {
         FastRTPS.shared.fastRTPSBridge?.registerReader(withTopicName: topic.rawValue,
                                                       typeName: T.ddsTypeName,
                                                       keyed: T.isKeyed,
+                                                      transientLocal: topic.transientLocal,
+                                                      reliable: topic.reliable,
                                                       payloadDecoder: payloadDecoder)
     }
     
@@ -59,7 +61,8 @@ final class FastRTPS {
     class func registerWriter(topic: RovWriterTopic, ddsType: DDSType.Type) {
         FastRTPS.shared.fastRTPSBridge?.registerWriter(withTopicName: topic.rawValue,
                                                       typeName: ddsType.ddsTypeName,
-                                                      keyed: ddsType.isKeyed)
+                                                      keyed: ddsType.isKeyed,
+                                                      transientLocal: topic.transientLocal)
     }
     class func removeWriter(topic: RovWriterTopic) {
         FastRTPS.shared.fastRTPSBridge?.removeWriter(withTopicName: topic.rawValue)

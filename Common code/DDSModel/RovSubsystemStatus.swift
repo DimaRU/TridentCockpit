@@ -26,9 +26,13 @@ struct RovSubsystemStatus: DDSKeyed {
         case imu              = "main_imu"
         case depth            = "depth"
         case barometer        = "barometer"
+        case gps              = "gps"
         
         // Processes
         case batteryFlasher   = "batt_flasher"
+        
+        // ASV
+        case asv              = "asv"
     }
     
     enum ESubsystemType: Int32, Codable {
@@ -66,4 +70,19 @@ struct RovSubsystemStatus: DDSKeyed {
     
     var key: Data { subsystemId.rawValue.data(using: .utf8)! }
     static var ddsTypeName: String { "orov::msg::system::SubsystemStatus" }
+}
+
+extension RovSubsystemStatus.ESubsystemState: CustomStringConvertible {
+    var description: String {
+        switch self {
+        case .unknown: return "unknown"
+        case .initialized: return "initialized"
+        case .posting: return "posting"
+        case .active: return "active"
+        case .standby: return "standby"
+        case .recovery: return "recovery"
+        case .disabled: return "disabled"
+        }
+    }
+    
 }

@@ -27,3 +27,23 @@ struct RovTridentMotorCommand: DDSKeyed {
     var key: Data { id.data(using: .utf8)! }
     static var ddsTypeName: String { "orov::msg::control::TridentMotorCommand" }
 }
+
+// Request motor configuration
+struct TridentMotorConfigRequest: DDSUnkeyed {
+    let id: String // Not used at present
+
+    static var ddsTypeName: String { "orov::msg::control::TridentMotorConfigRequest" }
+}
+
+struct TridentMotorConfig: DDSKeyed {
+    // MCU ID
+    let id: String //@key
+
+    // Motor values
+    let minSpeed: Float // Minimum speed error
+    let maxSpeed: Float // Maximum speed error
+    let timeout: UInt32   // Timeout in milliseconds
+    
+    var key: Data { id.data(using: .utf8)! }
+    static var ddsTypeName: String { "orov::msg::control::TridentMotorConfig" }
+}

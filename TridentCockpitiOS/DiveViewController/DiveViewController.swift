@@ -497,10 +497,8 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         FastRTPS.registerWriter(topic: .rovDatetime, ddsType: String.self)
         FastRTPS.registerWriter(topic: .rovVideoOverlayModeCommand, ddsType: String.self)
         FastRTPS.registerWriter(topic: .rovVidSessionReq, ddsType: RovVideoSessionCommand.self)
-        FastRTPS.registerWriter(topic: .rovDepthConfigRequested, ddsType: RovDepthConfig.self)
         FastRTPS.registerWriter(topic: .rovControlTarget, ddsType: RovTridentControlTarget.self)
         FastRTPS.registerWriter(topic: .rovControllerStateRequested, ddsType: RovControllerStatus.self)
-        FastRTPS.registerWriter(topic: .rovFirmwareCommandReq, ddsType: RovFirmwareCommand.self)
     }
     
     private func startRecordingSession(id: UUID) {
