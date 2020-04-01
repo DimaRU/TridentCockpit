@@ -352,7 +352,7 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
         FastRTPS.localAddress = localAddress
         print("Local address:", localAddress)
         let network = FastRTPS.remoteAddress + "/32"
-        FastRTPS.createParticipant(interfaceIPv4: localAddress, networkAddress: network)
+        FastRTPS.createParticipant(name: "TridentCockpitOSX", interfaceIPv4: localAddress, networkAddress: network)
         FastRTPS.setPartition(name: self.tridentID!)
     }
         

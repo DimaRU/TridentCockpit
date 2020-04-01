@@ -28,8 +28,8 @@ final class FastRTPS {
         set { FastRTPS.shared.remoteIPAddress = newValue }
     }
 
-    class func createParticipant(interfaceIPv4: String? = nil, networkAddress: String? = nil) {
-        FastRTPS.shared.fastRTPSBridge?.createRTPSParticipant(withName: "TridentCockpitOSX",
+    class func createParticipant(name: String, interfaceIPv4: String? = nil, networkAddress: String? = nil) {
+        FastRTPS.shared.fastRTPSBridge?.createRTPSParticipant(withName: name,
                                                               interfaceIPv4: interfaceIPv4,
                                                               networkAddress: networkAddress)
     }
