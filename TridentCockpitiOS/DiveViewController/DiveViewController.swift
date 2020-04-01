@@ -173,12 +173,21 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         tridentView.superViewDidResize(to: size)
         auxCameraView?.superViewDidResize(to: size)
         liveViewContainer?.superViewDidResize(to: size)
+
+        guard let before = self.view.window?.windowScene?.interfaceOrientation else { return }
+        coordinator.animate(alongsideTransition: nil) { _ in
+            guard let after = self.view.window?.windowScene?.interfaceOrientation else { return }
+            if before != after {
+                self.setHeadingOrienation()
+            }
+        }
     }
 
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.shared.isIdleTimerDisabled = true
+        setHeadingOrienation()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -284,6 +293,18 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         setVideoSizing(fill: !Preference.videoSizingFill)
     }
     
+    private func setHeadingOrienation() {
+        guard let orientation = self.view.window?.windowScene?.interfaceOrientation else { return }
+        switch orientation{
+        case .portrait           : locationManager.headingOrientation = .portrait
+        case .portraitUpsideDown : locationManager.headingOrientation = .portraitUpsideDown
+        case .landscapeLeft      : locationManager.headingOrientation = .landscapeLeft
+        case .landscapeRight     : locationManager.headingOrientation = .landscapeRight
+        default:
+            break
+        }
+    }
+   
     private func setTelemetryOverlay(mode: String) {
         switch mode {
         case "on":
@@ -566,7 +587,7 @@ extension DiveViewController: TridentControlDelegate {
 extension DiveViewController: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         let heading = newHeading.magneticHeading
-        let cameraHeading = heading + (heading > 180 ? -180 : 180)
+        let cameraHeading = heading + (heading > 180 ? -90 : 90)
         let yaw = Float(cameraHeading / 180 * .pi)
         tridentView.setCameraPos(yaw: yaw)
     }

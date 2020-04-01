@@ -221,6 +221,8 @@
 		0AF06EA123FAF637000FF36A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
 		0AF06EB023FB209A000FF36A /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */; };
 		0AF06ECE23FB5730000FF36A /* UIToolbar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */; };
+		0AF0E07C243517E2009E9806 /* CustomStringConvertible+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF0E07B243517E2009E9806 /* CustomStringConvertible+Extensions.swift */; };
+		0AF0E07D2435181C009E9806 /* CustomStringConvertible+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF0E07B243517E2009E9806 /* CustomStringConvertible+Extensions.swift */; };
 		0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; };
 		0AF69E0423A601220037DBDD /* SwiftSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0AFE9C4123B3ED7700C13162 /* DDSDiscoveryListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFE9C3723B3ED7700C13162 /* DDSDiscoveryListener.swift */; };
@@ -470,6 +472,7 @@
 		0AE206A324239E870017934B /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIToolbar+Extensions.swift"; sourceTree = "<group>"; };
+		0AF0E07B243517E2009E9806 /* CustomStringConvertible+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomStringConvertible+Extensions.swift"; sourceTree = "<group>"; };
 		0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftSH.xcodeproj; path = SwiftSH/SwiftSH.xcodeproj; sourceTree = "<group>"; };
 		0AFE9C3723B3ED7700C13162 /* DDSDiscoveryListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSDiscoveryListener.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -578,6 +581,7 @@
 			children = (
 				0A1A5B7E23CE4B2F0038EABE /* Date+Extensions.swift */,
 				0A1A5B7F23CE4B2F0038EABE /* iso8601date.swift */,
+				0AF0E07B243517E2009E9806 /* CustomStringConvertible+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1086,6 +1090,7 @@
 				0A1D0A2E23F941BD006D9AFD /* RovFuelgauge.swift in Sources */,
 				0A1D0A4123F941C4006D9AFD /* DDSDiscoveryListener.swift in Sources */,
 				0A1D0A3323F941BD006D9AFD /* RovPoint.swift in Sources */,
+				0AF0E07D2435181C009E9806 /* CustomStringConvertible+Extensions.swift in Sources */,
 				0A8B266E2401645A00ACC72F /* PWSwitch.swift in Sources */,
 				0A95068623F9BD8D004E5546 /* MaintenanceViewController.swift in Sources */,
 				0AE05CDD23FD335A00C7CA08 /* UserDefaultsWrapper.swift in Sources */,
@@ -1228,6 +1233,7 @@
 				0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */,
 				0A5107DC23AA85B000C19289 /* RestProvider.swift in Sources */,
 				0A71310423636B0200817593 /* RovControlDescriptor.swift in Sources */,
+				0AF0E07C243517E2009E9806 /* CustomStringConvertible+Extensions.swift in Sources */,
 				0A71311123636B0200817593 /* RovControllerStatus.swift in Sources */,
 				0A72A80324347BF600AE9B2E /* GlobalParams.swift in Sources */,
 				0A71311823636B0200817593 /* RovLightPower.swift in Sources */,
