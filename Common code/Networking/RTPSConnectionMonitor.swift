@@ -1,14 +1,26 @@
 /////
-////  SetupNotifications.swift
-///   Copyright © 2019 Dmitriy Borovikov. All rights reserved.
+////  RTPSConnectionMonitor.swift
+///   Copyright © 2020 Dmitriy Borovikov. All rights reserved.
 //
-
 
 import Foundation
 import FastRTPSBridge
 
-extension DashboardViewController {
-    func setupNotifications() {
+protocol RTPSConnectionMonitorProtocol: AnyObject {
+    func rtpsConnectedState()
+    func rtpsDisconnectedState()
+}
+
+final class RTPSConnectionMonitor {
+    let stdParticipantList: Set<String> = ["geoserve", "trident-core", "trident-control", "trident-update", "trident-record"]
+    var tridentParticipants: Set<String> = []
+    weak var delegate: RTPSConnectionMonitorProtocol?
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    func startNotifications() {
         NotificationCenter.default.addObserver(forName: .RTPSParticipantNotification, object: nil, queue: nil) { notification in
             guard let userInfo = notification.userInfo as? Dictionary<Int, Any>,
                 let rawType = userInfo[RTPSNotificationUserInfo.reason.rawValue] as? Int,
@@ -17,10 +29,10 @@ extension DashboardViewController {
             switch reason {
             case .discoveredParticipant:
                 let participantName = userInfo[RTPSNotificationUserInfo.participant.rawValue] as! String
-                let properties = userInfo[RTPSNotificationUserInfo.properties.rawValue] as! Dictionary<String, String>
                 let locators = userInfo[RTPSNotificationUserInfo.locators.rawValue] as! Set<String>
-                let metaLocators = userInfo[RTPSNotificationUserInfo.metaLocators.rawValue] as! Set<String>
-                print("Discovered Participant:", participantName, properties, locators, metaLocators)
+//                let metaLocators = userInfo[RTPSNotificationUserInfo.metaLocators.rawValue] as! Set<String>
+//                let properties = userInfo[RTPSNotificationUserInfo.properties.rawValue] as! Dictionary<String, String>
+                print("Discovered Participant:", participantName, locators)
                 
                 if self.tridentParticipants.contains(participantName) {
                     print("Rediscovered Participant:", participantName)
@@ -35,7 +47,7 @@ extension DashboardViewController {
                     // All connected
                     print("All needed participant discovered, start connection")
                     DispatchQueue.main.async {
-                        self.setConnectedState()
+                        self.delegate?.rtpsConnectedState()
                     }
                 }
             case .removedParticipant:
@@ -45,9 +57,9 @@ extension DashboardViewController {
                 let participantName = userInfo[RTPSNotificationUserInfo.participant.rawValue] as! String
                 print("Dropped Participant:", participantName)
                 self.tridentParticipants.remove(participantName)
-                if self.tridentParticipants.count == self.stdParticipantList.count - 1 {
+                if self.tridentParticipants.count <= self.stdParticipantList.count - 1 {
                     DispatchQueue.main.async {
-                        self.setDisconnectedState()
+                        self.delegate?.rtpsDisconnectedState()
                     }
                 }
                 #if DEBUG
@@ -77,7 +89,7 @@ extension DashboardViewController {
             guard let userInfo = notification.userInfo as? Dictionary<Int, Any>,
                 let rawType = userInfo[RTPSNotificationUserInfo.reason.rawValue] as? Int,
                 let reason = RTPSReaderWriterNotificationReason(rawValue: rawType)
-               else { return }
+                else { return }
             switch reason {
             case .readerMatchedMatching:
                 let topicName = userInfo[RTPSNotificationUserInfo.topic.rawValue] as! String
@@ -101,4 +113,5 @@ extension DashboardViewController {
         }
         #endif
     }
+
 }

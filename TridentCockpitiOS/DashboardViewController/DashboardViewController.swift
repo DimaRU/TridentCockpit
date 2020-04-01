@@ -10,13 +10,12 @@ import Moya
 import PromiseKit
 import SwiftSH
 
-class DashboardViewController: UIViewController {
-    let stdParticipantList: Set<String> = ["geoserve", "trident-core", "trident-control", "trident-update", "trident-record"]
-    var tridentParticipants: Set<String> = []
+class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     var tridentID: String!
     var discovered: [String: String] = [:]
     var connectionInfo: [ConnectionInfo] = []
     var ddsListener: DDSDiscoveryListener!
+    private var connectionMonitor = RTPSConnectionMonitor()
     private var sshCommand: SSHCommand!
     private var timer: Timer? {
         willSet { timer?.invalidate() }
@@ -84,7 +83,8 @@ class DashboardViewController: UIViewController {
         
         view.layer.contentsGravity = .resizeAspectFill
         addCircularProgressView(to: view)
-        setupNotifications()
+        connectionMonitor.delegate = self
+        connectionMonitor.startNotifications()
         ddsDiscoveryStart()
     }
     
@@ -312,7 +312,7 @@ class DashboardViewController: UIViewController {
     }
         
     // MARK: Internal func
-    func setDisconnectedState() {
+    func rtpsDisconnectedState() {
         timer = nil
         let message = "Trident disconnected"
         if let otherViewController = presentedViewController ?? navigationController?.topViewController,
@@ -363,7 +363,7 @@ class DashboardViewController: UIViewController {
         ddsDiscoveryStart()
     }
     
-    func setConnectedState() {
+    func rtpsConnectedState() {
         SwiftSpinner.hide()
         navigationController?.navigationBar.isHidden = false
         view.subviews.forEach{ $0.isHidden = false }

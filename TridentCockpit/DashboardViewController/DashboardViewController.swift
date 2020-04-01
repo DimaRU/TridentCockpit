@@ -10,13 +10,12 @@ import Moya
 import PromiseKit
 import SwiftSH
 
-class DashboardViewController: NSViewController {
-    let stdParticipantList: Set<String> = ["geoserve", "trident-core", "trident-control", "trident-update", "trident-record"]
-    var tridentParticipants: Set<String> = []
+class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
     var tridentID: String!
     var discovered: [String: String] = [:]
     var connectionInfo: [ConnectionInfo] = []
     var ddsListener: DDSDiscoveryListener!
+    private var connectionMonitor = RTPSConnectionMonitor()
     private var sshCommand: SSHCommand!
     private var spinner: CircularProgress?
     private var timer: Timer? {
@@ -94,7 +93,8 @@ class DashboardViewController: NSViewController {
         parent?.view.wantsLayer = true
         parent?.view.layer?.contents = NSImage(named: "Trident")
         spinner = addCircularProgressView(to: view)
-        setupNotifications()
+        connectionMonitor.delegate = self
+        connectionMonitor.startNotifications()
         ddsDiscoveryStart()
     }
     
@@ -246,10 +246,10 @@ class DashboardViewController: NSViewController {
         guard let url = Bundle.main.url(forResource: name, withExtension: "sh") else { return }
         guard let scriptBody = try? String(contentsOf: url) else { return }
         
-        let basePort = Bundle.main.infoDictionary!["BasePort"]! as! String
+        let basePort = GlobalParams.basePort
         let redirectPorts = Gopro3API.redirectPorts
-        let login = Bundle.main.infoDictionary!["RovLogin"]! as! String
-        let passwordBase64 = Bundle.main.infoDictionary!["RovPassword"]! as! String
+        let login = GlobalParams.rovLogin
+        let passwordBase64 = GlobalParams.rovPassword
         let password = String(data: Data(base64Encoded: passwordBase64)!, encoding: .utf8)!
         
         var header = "#/bin/bash\n"
@@ -261,7 +261,6 @@ class DashboardViewController: NSViewController {
         sshCommand = try! SSHCommand(host: FastRTPS.remoteAddress)
         sshCommand.log.level = .error
         sshCommand.timeout = 10000
-
         sshCommand.connect()
             .authenticate(.byPassword(username: login, password: password))
             .execute(header+scriptBody) { [weak self] (command, log: String?, error) in
@@ -344,7 +343,7 @@ class DashboardViewController: NSViewController {
     }
         
     // MARK: Internal func
-    func setDisconnectedState() {
+    func rtpsDisconnectedState() {
         timer = nil
         
         let message = "Trident disconnected"
@@ -383,7 +382,7 @@ class DashboardViewController: NSViewController {
         ddsDiscoveryStart()
     }
     
-    func setConnectedState() {
+    func rtpsConnectedState() {
         if let spinner = spinner {
             spinner.isIndeterminate = false
             spinner.removeFromSuperview()
