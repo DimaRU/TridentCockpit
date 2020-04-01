@@ -326,7 +326,21 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
         }
     }
 
-    
+    private func checkTridentFirmwareVersion() {
+        RestProvider.request(MultiTarget(ResinAPI.imageVersion))
+            .done { (imageVersion: [String:String]) in
+                let firmwareVersion = GlobalParams.firmwareVersion
+                let currentFirmwareVersion = imageVersion["version"] ?? "0.0.0"
+                if currentFirmwareVersion != firmwareVersion {
+                    let message = "Incompatible Trident firmware version. Some functions may not work."
+                    let informative = "Version " + currentFirmwareVersion + ", expected " + firmwareVersion
+                    self.alert(message: message, informative: informative, delay: 10)
+                }
+        }.catch {
+            self.alert(error: $0, delay: 20)
+        }
+    }
+
     private func startRTPS() {
         let interfaceAddresses = FastRTPS.getIP4Address()
         print(discovered, interfaceAddresses)
@@ -394,6 +408,8 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
         tridentIdLabel.stringValue = tridentID
         localAddressLabel.stringValue = FastRTPS.localAddress
         connectionAddress.stringValue = FastRTPS.remoteAddress
+        
+        checkTridentFirmwareVersion()
         
         startRefreshDeviceState()
         RestProvider.request(MultiTarget(WiFiServiceAPI.connection))

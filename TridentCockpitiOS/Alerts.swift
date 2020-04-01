@@ -12,7 +12,7 @@ extension UIAlertController {
         let window = UIApplication.shared.windows.first{ $0.isKeyWindow }
         var controller = window?.rootViewController
         if let navController = controller as? UINavigationController {
-            controller = navController.presentedViewController
+            controller = navController.presentedViewController ?? navController.viewControllers.first
         }
         
         if let popoverController = self.popoverPresentationController, let view = controller?.view {

@@ -28,7 +28,7 @@ fileprivate func getPlist(withName name: String) -> [String: Any]
 }
 
 class GlobalParams {
-    static let plist = getPlist(withName: "params")
+    static let plist = getPlist(withName: "GlobalParams")
 
     @Param("BasePort")
     static var basePort: Int
@@ -38,4 +38,7 @@ class GlobalParams {
     
     @Param("RovPassword")
     static var rovPassword: String
+    
+    @Param("FirmwareVersion")
+    static var firmwareVersion: String
 }

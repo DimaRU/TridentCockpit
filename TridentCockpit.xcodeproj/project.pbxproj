@@ -174,7 +174,7 @@
 		0A72A7FC2433C91400AE9B2E /* ASVSubsystemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72A7F52433C91300AE9B2E /* ASVSubsystemStatus.swift */; };
 		0A72A7FD2433C91400AE9B2E /* ASVSubsystemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72A7F52433C91300AE9B2E /* ASVSubsystemStatus.swift */; };
 		0A72A80324347BF600AE9B2E /* GlobalParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72A80224347BF600AE9B2E /* GlobalParams.swift */; };
-		0A72A80C24347C5900AE9B2E /* params.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A72A80B24347C5900AE9B2E /* params.plist */; };
+		0A72A80C24347C5900AE9B2E /* GlobalParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A72A80B24347C5900AE9B2E /* GlobalParams.plist */; };
 		0A72A80D24347C9400AE9B2E /* GlobalParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72A80224347BF600AE9B2E /* GlobalParams.swift */; };
 		0A72A80F24347FE300AE9B2E /* RTPSConnectionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72A80E24347FE300AE9B2E /* RTPSConnectionMonitor.swift */; };
 		0A82780A23A63B220039A774 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780023A63B220039A774 /* DashboardViewController.swift */; };
@@ -198,6 +198,7 @@
 		0A98307423C2355700BD234B /* AuxPlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A98307323C2355700BD234B /* AuxPlayerViewController.storyboard */; };
 		0A9DF95C243487960029DDDB /* RTPSConnectionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72A80E24347FE300AE9B2E /* RTPSConnectionMonitor.swift */; };
 		0A9DF9652434AEA70029DDDB /* NSViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9DF9642434AEA70029DDDB /* NSViewController+Alert.swift */; };
+		0A9DF9662434BF5C0029DDDB /* GlobalParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A72A80B24347C5900AE9B2E /* GlobalParams.plist */; };
 		0AA4290223C38D3B003476CB /* PayloadCleanup.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0AA4290123C38D3B003476CB /* PayloadCleanup.sh */; };
 		0AC07D43240FE227001A85BE /* SaveCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC07D42240FE227001A85BE /* SaveCenter.swift */; };
 		0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */; };
@@ -429,7 +430,7 @@
 		0A72A7F42433C91300AE9B2E /* RovAttitudeEuler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovAttitudeEuler.swift; sourceTree = "<group>"; };
 		0A72A7F52433C91300AE9B2E /* ASVSubsystemStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASVSubsystemStatus.swift; sourceTree = "<group>"; };
 		0A72A80224347BF600AE9B2E /* GlobalParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalParams.swift; sourceTree = "<group>"; };
-		0A72A80B24347C5900AE9B2E /* params.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = params.plist; sourceTree = "<group>"; };
+		0A72A80B24347C5900AE9B2E /* GlobalParams.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GlobalParams.plist; sourceTree = "<group>"; };
 		0A72A80E24347FE300AE9B2E /* RTPSConnectionMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTPSConnectionMonitor.swift; sourceTree = "<group>"; };
 		0A82780023A63B220039A774 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		0A82780B23A63B2D0039A774 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
@@ -562,7 +563,7 @@
 				0A1D0A5C23F9492E006D9AFD /* Extensions */,
 				0ADA653723B119880090D757 /* PayloadProvision.sh */,
 				0AA4290123C38D3B003476CB /* PayloadCleanup.sh */,
-				0A72A80B24347C5900AE9B2E /* params.plist */,
+				0A72A80B24347C5900AE9B2E /* GlobalParams.plist */,
 				0A3FD1F723A9720200FE9918 /* APIModel */,
 				0A7130E023636B0200817593 /* DDSModel */,
 				0A3FD1F023A9439100FE9918 /* Networking */,
@@ -1032,6 +1033,7 @@
 				0A1D0A1B23F941AA006D9AFD /* PayloadProvision.sh in Resources */,
 				0AF06EA123FAF637000FF36A /* Assets.xcassets in Resources */,
 				0A0230A3241117E900A4E532 /* AuxCameraControlView.xib in Resources */,
+				0A9DF9662434BF5C0029DDDB /* GlobalParams.plist in Resources */,
 				0A4999BC2422282200E3FA14 /* ProgressSheetController.xib in Resources */,
 				0AE05CED23FD41E200C7CA08 /* DiveViewController.storyboard in Resources */,
 			);
@@ -1047,7 +1049,7 @@
 				0A1A5B7A23CE4B150038EABE /* DiveCollectionItem.xib in Resources */,
 				0A98307423C2355700BD234B /* AuxPlayerViewController.storyboard in Resources */,
 				0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */,
-				0A72A80C24347C5900AE9B2E /* params.plist in Resources */,
+				0A72A80C24347C5900AE9B2E /* GlobalParams.plist in Resources */,
 				0A71311C23636B5C00817593 /* TridentCockpit.scnassets in Resources */,
 				0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */,
 				0A98306D23C22FCA00BD234B /* AuxCameraControlView.xib in Resources */,

@@ -12,7 +12,7 @@ protocol RTPSConnectionMonitorProtocol: AnyObject {
 }
 
 final class RTPSConnectionMonitor {
-    let stdParticipantList: Set<String> = ["geoserve", "trident-core", "trident-control", "trident-update", "trident-record"]
+    let stdParticipantList: Set<String> = ["geoserve", "trident-core", "trident-control", "trident-update", "trident-record", "trident-remote-control"]
     var tridentParticipants: Set<String> = []
     weak var delegate: RTPSConnectionMonitorProtocol?
     
@@ -30,18 +30,19 @@ final class RTPSConnectionMonitor {
             case .discoveredParticipant:
                 let participantName = userInfo[RTPSNotificationUserInfo.participant.rawValue] as! String
                 let locators = userInfo[RTPSNotificationUserInfo.locators.rawValue] as! Set<String>
-//                let metaLocators = userInfo[RTPSNotificationUserInfo.metaLocators.rawValue] as! Set<String>
-//                let properties = userInfo[RTPSNotificationUserInfo.properties.rawValue] as! Dictionary<String, String>
-                print("Discovered Participant:", participantName, locators)
+                let metaLocators = userInfo[RTPSNotificationUserInfo.metaLocators.rawValue] as! Set<String>
+                let properties = userInfo[RTPSNotificationUserInfo.properties.rawValue] as! Dictionary<String, String>
                 
                 if self.tridentParticipants.contains(participantName) {
-                    print("Rediscovered Participant:", participantName)
+                    print("Rediscovered Participant:", participantName, locators)
                     break
                 }
                 if self.stdParticipantList.contains(participantName) {
+                    print("Discovered Participant:", participantName, locators)
                     self.tridentParticipants.insert(participantName)
                 } else {
-                    print("Unknown participant:", participantName)
+                    print("Unknown participant:", participantName, properties, locators, metaLocators)
+                    return
                 }
                 if self.tridentParticipants.count == self.stdParticipantList.count {
                     // All connected
