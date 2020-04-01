@@ -3,7 +3,6 @@
 ///   Copyright © 2019 Dmitriy Borovikov. All rights reserved.
 //
 
-
 import Cocoa
 import Moya
 import PromiseKit
@@ -32,7 +31,7 @@ class WiFiPopupViewController: NSViewController {
                 self.ssids = ssids.filter{!$0.ssid.contains("Trident-")}
                 self.tableView.reloadData()
             }.catch {
-                self.view.window?.alert(error: $0)
+                self.alert(error: $0)
             }
         }
     }
@@ -114,4 +113,3 @@ extension WiFiPopupViewController: NSTableViewDataSource {
         return cellView
     }
 }
-

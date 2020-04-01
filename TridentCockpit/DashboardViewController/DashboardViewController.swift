@@ -205,9 +205,9 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
             switch error {
             case NetworkError.unaviable(let message):
                 self.timer = nil
-                self.view.window?.alert(message: "Trident connection lost", informative: message, delay: 5)
+                self.alert(message: "Trident connection lost", informative: message, delay: 5)
             default:
-                self.view.window?.alert(error: error, delay: 5)
+                self.alert(error: error, delay: 5)
             }
         }
     }
@@ -220,7 +220,7 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
             self.connectedSSID = nil
             self.executeScript(name: "PayloadCleanup") {}
         }.catch {
-            self.view.window?.alert(error: $0)
+            self.alert(error: $0)
         }
     }
 
@@ -231,7 +231,7 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
         }.done { (ssids: [SSIDInfo]) -> Void in
             self.showPopup(with: ssids.filter{!$0.ssid.contains("Trident-")}, view: view)
         }.catch {
-            self.view.window?.alert(error: $0)
+            self.alert(error: $0)
         }
     }
 
@@ -269,7 +269,7 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
                     let logStrings = log.split(separator: "\n")
                     if logStrings.last != "OK-SCRIPT" {
                         let fileredLog = logStrings.filter{ !$0.contains("sudo: unable to resolve host") && !$0.contains("START-SCRIPT") }.reduce("") { $0 + $1 + "\n"}
-                        self.view.window?.alert(message: "Error while execute \(name)", informative: fileredLog, delay: 100)
+                        self.alert(message: "Error while execute \(name)", informative: fileredLog, delay: 100)
                         print(fileredLog)
                     } else {
                         print("Script \(name) ok")
@@ -277,7 +277,7 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
                     }
                 } else {
                     if let error = error {
-                        self.view.window?.alert(error: error)
+                        self.alert(error: error)
                     }
                 }
                 self.sshCommand.disconnect {}
@@ -301,7 +301,7 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
             self.cameraModelLabel.stringValue = model[1]
             self.cameraFirmwareLabel.stringValue = model[0]
         }.catch {
-            self.view.window?.alert(error: $0)
+            self.alert(error: $0)
         }
     }
 
@@ -404,7 +404,7 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
                 self.connectedSSID = nil
             }
         }.catch {
-            self.view.window?.alert(error: $0)
+            self.alert(error: $0)
         }
         if let toolbar = view.window?.toolbar {
             toolbar.getItem(for: .goDive)?.isEnabled = true
@@ -434,7 +434,7 @@ extension DashboardViewController: WiFiPopupProtocol {
             self.connectionInfo = connectionInfo
             self.startRefreshDeviceState()
         }.catch {
-            self.view.window?.alert(error: $0)
+            self.alert(error: $0)
         }
     }
 }
