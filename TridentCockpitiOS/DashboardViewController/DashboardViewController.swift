@@ -216,10 +216,10 @@ class DashboardViewController: UIViewController {
         guard let url = Bundle.main.url(forResource: name, withExtension: "sh") else { return }
         guard let scriptBody = try? String(contentsOf: url) else { return }
         
-        let basePort = Bundle.main.infoDictionary!["BasePort"]! as! String
+        let basePort = GlobalParams.basePort
         let redirectPorts = Gopro3API.redirectPorts
-        let login = Bundle.main.infoDictionary!["RovLogin"]! as! String
-        let passwordBase64 = Bundle.main.infoDictionary!["RovPassword"]! as! String
+        let login = GlobalParams.rovLogin
+        let passwordBase64 = GlobalParams.rovPassword
         let password = String(data: Data(base64Encoded: passwordBase64)!, encoding: .utf8)!
         
         var header = "#/bin/bash\n"

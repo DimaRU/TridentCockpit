@@ -4,8 +4,6 @@
 <dict>
 	<key>ATSApplicationFontsPath</key>
 	<string>Fonts/</string>
-	<key>BasePort</key>
-	<string>9700</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -45,9 +43,5 @@
 	<true/>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
-	<key>RovLogin</key>
-	<string>rov</string>
-	<key>RovPassword</key>
-	<string>T3BlblJPVg==</string>
 </dict>
 </plist>

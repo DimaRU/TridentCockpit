@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>BasePort</key>
+	<integer>9700</integer>
+	<key>RovLogin</key>
+	<string>rov</string>
+	<key>RovPassword</key>
+	<string>T3BlblJPVg==</string>
+</dict>
+</plist>

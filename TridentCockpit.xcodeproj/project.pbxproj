@@ -173,6 +173,9 @@
 		0A72A7FB2433C91400AE9B2E /* RovAttitudeEuler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72A7F42433C91300AE9B2E /* RovAttitudeEuler.swift */; };
 		0A72A7FC2433C91400AE9B2E /* ASVSubsystemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72A7F52433C91300AE9B2E /* ASVSubsystemStatus.swift */; };
 		0A72A7FD2433C91400AE9B2E /* ASVSubsystemStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72A7F52433C91300AE9B2E /* ASVSubsystemStatus.swift */; };
+		0A72A80324347BF600AE9B2E /* GlobalParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72A80224347BF600AE9B2E /* GlobalParams.swift */; };
+		0A72A80C24347C5900AE9B2E /* params.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A72A80B24347C5900AE9B2E /* params.plist */; };
+		0A72A80D24347C9400AE9B2E /* GlobalParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72A80224347BF600AE9B2E /* GlobalParams.swift */; };
 		0A82780A23A63B220039A774 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780023A63B220039A774 /* DashboardViewController.swift */; };
 		0A82780C23A63B2D0039A774 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780B23A63B2D0039A774 /* WindowController.swift */; };
 		0A82781223A641750039A774 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781123A641750039A774 /* MaintenanceViewController.swift */; };
@@ -424,6 +427,8 @@
 		0A72A7F32433C91300AE9B2E /* RovWaypoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovWaypoint.swift; sourceTree = "<group>"; };
 		0A72A7F42433C91300AE9B2E /* RovAttitudeEuler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovAttitudeEuler.swift; sourceTree = "<group>"; };
 		0A72A7F52433C91300AE9B2E /* ASVSubsystemStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASVSubsystemStatus.swift; sourceTree = "<group>"; };
+		0A72A80224347BF600AE9B2E /* GlobalParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalParams.swift; sourceTree = "<group>"; };
+		0A72A80B24347C5900AE9B2E /* params.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = params.plist; sourceTree = "<group>"; };
 		0A82780023A63B220039A774 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		0A82780B23A63B2D0039A774 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		0A82781123A641750039A774 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
@@ -551,9 +556,11 @@
 				0A9E55BE23BC0AFA008F8A9A /* Average.swift */,
 				0AE05CDC23FD335A00C7CA08 /* UserDefaultsWrapper.swift */,
 				0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */,
+				0A72A80224347BF600AE9B2E /* GlobalParams.swift */,
 				0A1D0A5C23F9492E006D9AFD /* Extensions */,
 				0ADA653723B119880090D757 /* PayloadProvision.sh */,
 				0AA4290123C38D3B003476CB /* PayloadCleanup.sh */,
+				0A72A80B24347C5900AE9B2E /* params.plist */,
 				0A3FD1F723A9720200FE9918 /* APIModel */,
 				0A7130E023636B0200817593 /* DDSModel */,
 				0A3FD1F023A9439100FE9918 /* Networking */,
@@ -1037,6 +1044,7 @@
 				0A1A5B7A23CE4B150038EABE /* DiveCollectionItem.xib in Resources */,
 				0A98307423C2355700BD234B /* AuxPlayerViewController.storyboard in Resources */,
 				0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */,
+				0A72A80C24347C5900AE9B2E /* params.plist in Resources */,
 				0A71311C23636B5C00817593 /* TridentCockpit.scnassets in Resources */,
 				0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */,
 				0A98306D23C22FCA00BD234B /* AuxCameraControlView.xib in Resources */,
@@ -1067,6 +1075,7 @@
 				0A1D0A4823F941C4006D9AFD /* FastRTPS.swift in Sources */,
 				0AE05CE923FD3D9000C7CA08 /* VideoView.swift in Sources */,
 				0A1D0A3E23F941BD006D9AFD /* RovCamera.swift in Sources */,
+				0A72A80D24347C9400AE9B2E /* GlobalParams.swift in Sources */,
 				0A1D0A3923F941BD006D9AFD /* DDSTypeString.swift in Sources */,
 				0A1D0A2323F941B2006D9AFD /* AppInfo.swift in Sources */,
 				0A1D0A2E23F941BD006D9AFD /* RovFuelgauge.swift in Sources */,
@@ -1214,6 +1223,7 @@
 				0A5107DC23AA85B000C19289 /* RestProvider.swift in Sources */,
 				0A71310423636B0200817593 /* RovControlDescriptor.swift in Sources */,
 				0A71311123636B0200817593 /* RovControllerStatus.swift in Sources */,
+				0A72A80324347BF600AE9B2E /* GlobalParams.swift in Sources */,
 				0A71311823636B0200817593 /* RovLightPower.swift in Sources */,
 				0A2E42BC236B0EE900B5C569 /* VideoView.swift in Sources */,
 				0A7130DB23636AF200817593 /* Preferences.swift in Sources */,
