@@ -1,17 +1,21 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
-      "filename" : "trident.png",
-      "scale" : "1x"
+      "filename" : "trident-iphone.png",
+      "idiom" : "iphone"
     },
     {
-      "idiom" : "universal",
-      "scale" : "2x"
+      "filename" : "trident-ipad.png",
+      "idiom" : "ipad"
     },
     {
-      "idiom" : "universal",
-      "scale" : "3x"
+      "filename" : "trident-catalyst.png",
+      "idiom" : "ipad",
+      "subtype" : "mac-catalyst"
+    },
+    {
+      "filename" : "trident-mac.png",
+      "idiom" : "mac"
     }
   ],
   "info" : {
