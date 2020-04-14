@@ -167,7 +167,7 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
         spinner.color = NSColor.systemTeal
         spinner.translatesAutoresizingMaskIntoConstraints = false
 
-        let textLabel = NSTextField(labelWithString: "Searching for\nTrident")
+        let textLabel = NSTextField(labelWithString: "Searching\nfor Trident")
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         textLabel.font = NSFont.systemFont(ofSize: 17)
         textLabel.alignment = .center
