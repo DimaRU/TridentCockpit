@@ -1,14 +1,14 @@
+
+<h2 align="center">Trident Cockpit is an alternative iOS/iPadOS/macOS control app for the <a href="https://www.sofarocean.com/products/trident?aff=30">Sofar Trident Underwater Drone.</a></h2>
+
+<h3 align="center"> ·
+<a href="https://github.com/DimaRU/TridentCockpit/releases">macOS releases</a> ·
+</h3>
+
 <p align="center">
-<img src="https://github.com/DimaRU/TridentCockpit/raw/master/Common%20code/Assets.xcassets/AppIcon.appiconset/icon_256x256.png" />
+<img src="https://github.com/DimaRU/TridentCockpit/raw/master/Screenshots/iPhone%2011%20Pro%20Max.png" />
 </p>
 
-<p align="center">Trident Cockpit is an alternative macOS control app for the <a href="https://www.sofarocean.com/products/trident?aff=30">Sofar Trident Underwater Drone</a>.</p>
-
-<p align=center>
- ·
-<a href="https://github.com/DimaRU/TridentCockpit/releases">Releases</a> ·
-
-</p>
 
 ---
 
@@ -47,30 +47,32 @@ These are all signed and notarized to run out of the box on macOS 10.14+.
 
 ### Moton control
 
-| Shortcut | Description |
+ Shortcut | Description
 |:-:|:-:|
-| <kbd>Up Arrow</kbd> | Forward |
-| <kbd>Down Arrow</kbd> | Backward |
-| <kbd>Left Arrow</kbd> | Turn Left (rotate counterclockwise) |
-| <kbd>Right Arrow</kbd> | Turn Right (rotate clockwise) |
-| <kbd>W</kbd> | Tilt Down |
-| <kbd>E</kbd> | Tilt Up |
+ <kbd>Up Arrow</kbd> | Forward
+ <kbd>Down Arrow</kbd> | Backward
+ <kbd>Left Arrow</kbd> | Turn Left (rotate counterclockwise)
+ <kbd>Right Arrow</kbd> | Turn Right (rotate clockwise)
+ <kbd>W</kbd> | Tilt Down
+ <kbd>E</kbd> | Tilt Up
 
 ### Motor speed modifiers
-| Shortcut | Description |
+
+ Shortcut | Description 
 |:-:|:-:|
-| without modifiers | 10% of motor speed |
-|&#8997;<kbd>Option</kbd> + (<kbd>&uarr;</kbd> &#124; <kbd>&darr;</kbd> &#124; <kbd>&larr;</kbd> &#124; <kbd>&rarr;</kbd> &#124; <kbd>W</kbd> &#124; <kbd>E</kbd>)| 25% of motor speed |
-|&#8963;<kbd>Control</kbd> + (<kbd>&uarr;</kbd> &#124; <kbd>&darr;</kbd> &#124; <kbd>&larr;</kbd> &#124; <kbd>&rarr;</kbd> &#124; <kbd>W</kbd> &#124; <kbd>E</kbd>)| 50% of motor speed |
-|&#8679;<kbd>Shift</kbd> + (<kbd>&uarr;</kbd> &#124; <kbd>&darr;</kbd> &#124; <kbd>&larr;</kbd> &#124; <kbd>&rarr;</kbd> &#124; <kbd>W</kbd> &#124; <kbd>E</kbd>)| 100% of motor speed |
+without modifiers | 10% of motor speed
+&#8997;<kbd>Option</kbd> + (<kbd>&uarr;</kbd> &#65372; <kbd>&darr;</kbd> &#65372; <kbd>&larr;</kbd> &#65372; <kbd>&rarr;</kbd> &#65372; <kbd>W</kbd> &#65372; <kbd>E</kbd>) | 25% of motor speed
+&#8963;<kbd>Control</kbd> + (<kbd>&uarr;</kbd> &#65372; <kbd>&darr;</kbd> &#65372; <kbd>&larr;</kbd> &#65372; <kbd>&rarr;</kbd> &#65372; <kbd>W</kbd> &#65372; <kbd>E</kbd>) | 50% of motor speed
+&#8679;<kbd>Shift</kbd> + (<kbd>&uarr;</kbd> &#65372; <kbd>&darr;</kbd> &#65372; <kbd>&larr;</kbd> &#65372; <kbd>&rarr;</kbd> &#65372; <kbd>W</kbd> &#65372; <kbd>E</kbd>) | 100% of motor speed
 
 ### Other shortcuts
-| Shortcut | Description |
+
+ Shortcut | Description
 |:-:|:-:|
-| <kbd>L</kbd> | Light control |
-| <kbd>R</kbd> | Camera control |
-| <kbd>Y</kbd> | Drone view relative yaw |
-| <kbd>A</kbd> | Drone view absolute yaw |
+ <kbd>L</kbd> | Light control
+ <kbd>R</kbd> | Camera control
+ <kbd>Y</kbd> | Drone view relative yaw
+ <kbd>A</kbd> | Drone view absolute yaw
 
 ## Building from Source
 
@@ -82,7 +84,6 @@ These instructions will get you a copy of the project up and running on your loc
 
 1. Install Xcode from App Store
 2. Install build tools by running `brew install cmake`
-
 
 ### Build
 
@@ -134,7 +135,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Credits
 
-* Thanks to Jim N. for "Software Exploration - DDS and the Trident" series of posts on [Openrov forum](https://forum.openrov.com/t/software-exploration-dds-and-the-trident-5-fastrtps/7277)
+Thanks to Jim N. for "Software Exploration - DDS and the Trident" series of posts on [Openrov forum](https://forum.openrov.com/t/software-exploration-dds-and-the-trident-5-fastrtps/7277)
 
 ## Disclaimer
 
