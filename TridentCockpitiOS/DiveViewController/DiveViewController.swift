@@ -164,8 +164,21 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
             locationManager.delegate = self
             locationManager.startUpdatingHeading()
         }
+        #if DEBUG
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(batterySymbolTap(sender:)))
+        gestureRecognizer.numberOfTapsRequired = 2
+        batterySymbol.addGestureRecognizer(gestureRecognizer)
+        batterySymbol.isUserInteractionEnabled = true
+        #endif
     }
 
+    #if DEBUG
+    @objc func batterySymbolTap(sender: UITapGestureRecognizer) {
+        playDemoVideo()
+    }
+    #endif
+    
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         

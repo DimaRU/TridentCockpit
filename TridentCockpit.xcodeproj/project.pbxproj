@@ -200,6 +200,8 @@
 		0A9DF9652434AEA70029DDDB /* NSViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9DF9642434AEA70029DDDB /* NSViewController+Alert.swift */; };
 		0A9DF9662434BF5C0029DDDB /* GlobalParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A72A80B24347C5900AE9B2E /* GlobalParams.plist */; };
 		0AA4290223C38D3B003476CB /* PayloadCleanup.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0AA4290123C38D3B003476CB /* PayloadCleanup.sh */; };
+		0AAD2D612447368600B6152C /* PlayDemoVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD2D592447368500B6152C /* PlayDemoVideo.swift */; };
+		0AAD2D632447369300B6152C /* PlayDemoVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD2D622447369300B6152C /* PlayDemoVideo.swift */; };
 		0AC07D43240FE227001A85BE /* SaveCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC07D42240FE227001A85BE /* SaveCenter.swift */; };
 		0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */; };
 		0ACCDE6B23FDABD100381207 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCDE6A23FDABD100381207 /* CameraButton.swift */; };
@@ -455,6 +457,8 @@
 		0A9DF9642434AEA70029DDDB /* NSViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Alert.swift"; sourceTree = "<group>"; };
 		0A9E55BE23BC0AFA008F8A9A /* Average.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Average.swift; sourceTree = "<group>"; };
 		0AA4290123C38D3B003476CB /* PayloadCleanup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PayloadCleanup.sh; sourceTree = "<group>"; };
+		0AAD2D592447368500B6152C /* PlayDemoVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayDemoVideo.swift; sourceTree = "<group>"; };
+		0AAD2D622447369300B6152C /* PlayDemoVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayDemoVideo.swift; sourceTree = "<group>"; };
 		0AC07D42240FE227001A85BE /* SaveCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCenter.swift; sourceTree = "<group>"; };
 		0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiPopupViewController.swift; sourceTree = "<group>"; };
 		0ACCDE6A23FDABD100381207 /* CameraButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
@@ -824,6 +828,7 @@
 				0A7130D023636AF100817593 /* RovModelView.swift */,
 				0A7130D223636AF200817593 /* CameraControlView.swift */,
 				0A2E42BB236B0EE900B5C569 /* VideoView.swift */,
+				0AAD2D622447369300B6152C /* PlayDemoVideo.swift */,
 			);
 			path = DiveViewController;
 			sourceTree = "<group>";
@@ -857,6 +862,7 @@
 				0ACCDE6E23FDAE7000381207 /* RovModelView.swift */,
 				0AE05CE823FD3D9000C7CA08 /* VideoView.swift */,
 				0ADD42B1240EBBCD008ECFCC /* TouchJoystickView.swift */,
+				0AAD2D592447368500B6152C /* PlayDemoVideo.swift */,
 			);
 			path = DiveViewController;
 			sourceTree = "<group>";
@@ -1083,6 +1089,7 @@
 				0A1D0A2123F941B2006D9AFD /* SSIDInfo.swift in Sources */,
 				0A1D0A4823F941C4006D9AFD /* FastRTPS.swift in Sources */,
 				0AE05CE923FD3D9000C7CA08 /* VideoView.swift in Sources */,
+				0AAD2D612447368600B6152C /* PlayDemoVideo.swift in Sources */,
 				0A1D0A3E23F941BD006D9AFD /* RovCamera.swift in Sources */,
 				0A72A80D24347C9400AE9B2E /* GlobalParams.swift in Sources */,
 				0A1D0A3923F941BD006D9AFD /* DDSTypeString.swift in Sources */,
@@ -1228,6 +1235,7 @@
 				0A71310D23636B0200817593 /* RovTridentMotorCommand.swift in Sources */,
 				0A7130D823636AF200817593 /* VideoDecoder.swift in Sources */,
 				0A3FD1F223A9443E00FE9918 /* ResinAPI.swift in Sources */,
+				0AAD2D632447369300B6152C /* PlayDemoVideo.swift in Sources */,
 				0A71310323636B0200817593 /* RovVector3.swift in Sources */,
 				0A1A5B8523CE4B550038EABE /* HeaderView.swift in Sources */,
 				0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */,

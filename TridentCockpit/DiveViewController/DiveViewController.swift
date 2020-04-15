@@ -28,9 +28,9 @@ class DiveViewController: NSViewController {
     
     private var lightOn = false
     private var videoSessionId: UUID?
-    var vehicleId: String = ""
     private var rovBeacon: RovBeacon?
-    
+    var vehicleId: String = ""
+    var debugData: Any?
     @Average(5) private var depth: Float
     @Average(10) private var temperature: Double
 
@@ -123,6 +123,11 @@ class DiveViewController: NSViewController {
         }
         
         startRTPS()
+    #if DEBUG
+        let gestureRecognizer = NSClickGestureRecognizer(target: self, action: #selector(videoPlayAction(_:)))
+        gestureRecognizer.numberOfClicksRequired = 2
+        batteryTimeLabel.addGestureRecognizer(gestureRecognizer)
+    #endif
     }
 
     override func viewDidAppear() {
@@ -192,6 +197,12 @@ class DiveViewController: NSViewController {
     @IBAction func telemetryOverlayAction(_ sender: Any) {
         FastRTPS.send(topic: .rovVideoOverlayModeCommand, ddsData: !Preference.videoOverlayMode ? "on" : "off")
     }
+    
+    #if DEBUG
+    @objc func videoPlayAction(_ sender: NSGestureRecognizer) {
+        playDemoVideo()
+    }
+    #endif
     
     override func keyUp(with event: NSEvent) {
         if !tridentControl.processKeyEvent(event: event) {
