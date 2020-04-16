@@ -23,11 +23,17 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
 
     var deviceState: DeviceState? {
         didSet {
+            if deviceState == nil {
+                connectedSSID = nil
+                tridentNetworkAddressLabel.text = "n/a"
+                payloadAddress.text = "n/a"
+                navigationItem.getItem(for: .connectCamera)?.isEnabled = false
+            }
             guard oldValue != deviceState, deviceState != nil else { return }
             connectedSSID = connectionInfo.first(where: {$0.kind == "802-11-wireless" && $0.state == "Activated"})?.ssid
             guard let ipAddress = deviceState?.ipAddress else { return }
                 let addrs = ipAddress.split(separator: " ")
-                if addrs.count >= 2 {
+                if addrs.count > 1 {
                     tridentNetworkAddressLabel.text = String(addrs.first{ $0.contains("10.1.1.") } ?? "n/a")
                     payloadAddress.text = String(addrs.first{ !$0.contains("10.1.1.") } ?? "n/a")
                     navigationItem.getItem(for: .connectCamera)?.isEnabled = true
@@ -41,26 +47,24 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     }
     var connectedSSID: String? = "\nnot existed\n" {
         didSet {
-            guard connectedSSID != oldValue else { return }
             guard let wifiItem = navigationItem.getItem(for: .connectWiFi) else { return }
-            if connectedSSID != nil {
-                ssidLabel.text = self.connectedSSID!
-                navigationItem.getItem(for: .connectCamera)?.isEnabled = true
-
-                wifiItem.image = UIImage(systemName: "wifi.slash")
-                if payloadAddress.text == "n/a" {
-                    payloadAddress.text = "waiting..."
-                }
-            } else {
+            if connectedSSID == nil {
                 ssidLabel.text = "not connected"
                 cameraModelLabel.text = "n/a"
                 cameraFirmwareLabel.text = "n/a"
                 payloadAddress.text = "n/a"
                 Gopro3API.cameraPassword = nil
-                navigationItem.getItem(for: .connectCamera)?.isEnabled = false
 
                 wifiItem.image = UIImage(systemName: "wifi")
                 Gopro3API.cameraPassword = nil
+                return
+            }
+            guard connectedSSID != oldValue else { return }
+            ssidLabel.text = self.connectedSSID!
+            
+            wifiItem.image = UIImage(systemName: "wifi.slash")
+            if payloadAddress.text == "n/a" {
+                payloadAddress.text = "waiting..."
             }
         }
     }
@@ -142,6 +146,9 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         SwiftSpinner.useContainerView(view)
         SwiftSpinner.shared.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
         SwiftSpinner.shared.titleLabel.textColor = .black
+        let fontSize: CGFloat = traitCollection.horizontalSizeClass == .compact ? 18 : 22
+        let font = UIFont.systemFont(ofSize: fontSize)
+        SwiftSpinner.setTitleFont(font)
         SwiftSpinner.shared.outerColor = .systemTeal
         SwiftSpinner.shared.innerColor = .lightGray
         SwiftSpinner.show("Searching for Trident")
@@ -230,7 +237,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         header += "REDIRECTPORTS=(\(redirectPorts))\n"
         sshCommand = try! SSHCommand(host: FastRTPS.remoteAddress)
         sshCommand.log.level = .error
-        sshCommand.timeout = 10000
+        sshCommand.timeout = 10
 
         sshCommand.connect()
             .authenticate(.byPassword(username: login, password: password))
