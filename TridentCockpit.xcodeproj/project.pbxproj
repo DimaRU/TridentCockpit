@@ -220,6 +220,7 @@
 		0AE05CE923FD3D9000C7CA08 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE05CE823FD3D9000C7CA08 /* VideoView.swift */; };
 		0AE05CED23FD41E200C7CA08 /* DiveViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AE05CEC23FD41E200C7CA08 /* DiveViewController.storyboard */; };
 		0AE206AC2423AADB0017934B /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE206A324239E870017934B /* Alerts.swift */; };
+		0AE490702448524800C669D0 /* UILabelRotatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4906F2448524800C669D0 /* UILabelRotatable.swift */; };
 		0AF06EA123FAF637000FF36A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
 		0AF06EB023FB209A000FF36A /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */; };
 		0AF06ECE23FB5730000FF36A /* UIToolbar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */; };
@@ -474,6 +475,7 @@
 		0AE05CE823FD3D9000C7CA08 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		0AE05CEC23FD41E200C7CA08 /* DiveViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiveViewController.storyboard; sourceTree = "<group>"; };
 		0AE206A324239E870017934B /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
+		0AE4906F2448524800C669D0 /* UILabelRotatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelRotatable.swift; sourceTree = "<group>"; };
 		0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIToolbar+Extensions.swift"; sourceTree = "<group>"; };
 		0AF0E07B243517E2009E9806 /* CustomStringConvertible+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomStringConvertible+Extensions.swift"; sourceTree = "<group>"; };
@@ -546,6 +548,7 @@
 				0A95068C23F9DD73004E5546 /* Extensions */,
 				0A95068923F9D7E7004E5546 /* ThirdParty */,
 				0AE05CD123FD329E00C7CA08 /* FloatingView.swift */,
+				0AE4906F2448524800C669D0 /* UILabelRotatable.swift */,
 				0AC07D42240FE227001A85BE /* SaveCenter.swift */,
 				0AE206A324239E870017934B /* Alerts.swift */,
 				0AE05CDF23FD349D00C7CA08 /* Preferences.swift */,
@@ -1122,6 +1125,7 @@
 				0A1D0A4623F941C4006D9AFD /* RecordingsAPI.swift in Sources */,
 				0A1D0A3D23F941BD006D9AFD /* RovChannel.swift in Sources */,
 				0A1D0A2423F941BD006D9AFD /* RovTopic.swift in Sources */,
+				0AE490702448524800C669D0 /* UILabelRotatable.swift in Sources */,
 				0AE05CDB23FD32FB00C7CA08 /* Extensions.swift in Sources */,
 				0AF06ECE23FB5730000FF36A /* UIToolbar+Extensions.swift in Sources */,
 				0A95068423F9BD62004E5546 /* DiveViewController.swift in Sources */,
