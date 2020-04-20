@@ -48,6 +48,7 @@ final class RTPSConnectionMonitor {
                 if self.tridentParticipants.count == self.stdParticipantList.count {
                     // All connected
                     print("All needed participant discovered, start connection")
+                    guard !self.isConnected else { break }
                     self.isConnected = true
                     DispatchQueue.main.async {
                         self.delegate?.rtpsConnectedState()
@@ -61,12 +62,14 @@ final class RTPSConnectionMonitor {
                 print("Dropped Participant:", participantName)
                 self.tridentParticipants.remove(participantName)
                 if self.tridentParticipants.count <= self.stdParticipantList.count - 1 {
+                    print("Trident disconnected")
+                    guard self.isConnected else { break }
                     self.isConnected = false
                     DispatchQueue.main.async {
                         self.delegate?.rtpsDisconnectedState()
                     }
                 }
-                #if DEBUG
+        #if DEBUG
             case .discoveredReader:
                 let topicName = userInfo[RTPSNotificationUserInfo.topic.rawValue] as! String
                 let typeName = userInfo[RTPSNotificationUserInfo.typeName.rawValue] as! String
@@ -83,7 +86,7 @@ final class RTPSConnectionMonitor {
             case .removedWriter:
                 let topicName = userInfo[RTPSNotificationUserInfo.topic.rawValue] as! String
                 print("Removed writer:", topicName)
-                #endif
+        #endif
             default:
                 break
             }

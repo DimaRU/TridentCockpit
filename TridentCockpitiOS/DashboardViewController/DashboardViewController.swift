@@ -379,10 +379,15 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
             alert.addAction(action)
 
             otherViewController.present(alert, animated: true)
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) { [weak alert] in
-                guard let alert = alert else { return }
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) { //[weak alert] in
+//                guard let alert = alert else { return }
                 alert.dismiss(animated: true) {
-                    guard otherViewController != self else { return }
+                    guard otherViewController != self else {
+                        self.hideInterface()
+                        self.addCircularProgressView(to: self.view)
+                        self.ddsDiscoveryStart()
+                        return
+                    }
                     if self.presentedViewController != nil {
                         otherViewController.dismiss(animated: true)
                     } else {
@@ -390,13 +395,9 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
                     }
                 }
             }
-            
         }
         FastRTPS.deleteParticipant()
         
-        hideInterface()
-        addCircularProgressView(to: view)
-        ddsDiscoveryStart()
     }
     
     func rtpsConnectedState() {
