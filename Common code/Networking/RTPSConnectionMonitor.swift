@@ -14,6 +14,7 @@ protocol RTPSConnectionMonitorProtocol: AnyObject {
 final class RTPSConnectionMonitor {
     let stdParticipantList: Set<String> = ["geoserve", "trident-core", "trident-control", "trident-update", "trident-record", "trident-remote-control"]
     var tridentParticipants: Set<String> = []
+    var isConnected = false
     weak var delegate: RTPSConnectionMonitorProtocol?
     
     deinit {
@@ -47,6 +48,7 @@ final class RTPSConnectionMonitor {
                 if self.tridentParticipants.count == self.stdParticipantList.count {
                     // All connected
                     print("All needed participant discovered, start connection")
+                    self.isConnected = true
                     DispatchQueue.main.async {
                         self.delegate?.rtpsConnectedState()
                     }
@@ -59,6 +61,7 @@ final class RTPSConnectionMonitor {
                 print("Dropped Participant:", participantName)
                 self.tridentParticipants.remove(participantName)
                 if self.tridentParticipants.count <= self.stdParticipantList.count - 1 {
+                    self.isConnected = false
                     DispatchQueue.main.async {
                         self.delegate?.rtpsDisconnectedState()
                     }

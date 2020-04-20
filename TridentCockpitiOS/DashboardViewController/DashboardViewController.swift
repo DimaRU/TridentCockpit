@@ -15,6 +15,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     var discovered: [String: String] = [:]
     var connectionInfo: [ConnectionInfo] = []
     var ddsListener: DDSDiscoveryListener!
+    private var spinner: SwiftSpinner?
     private var connectionMonitor = RTPSConnectionMonitor()
     private var sshCommand: SSHCommand!
     private var timer: Timer? {
@@ -86,25 +87,29 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         super.viewDidLoad()
         
         view.layer.contentsGravity = .resizeAspectFill
-        addCircularProgressView(to: view)
         connectionMonitor.delegate = self
         connectionMonitor.startNotifications()
-        ddsDiscoveryStart()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.layer.contents = UIImage(named: "Trident")?.cgImage
+
+        if FastRTPS.remoteAddress != "", connectionMonitor.isConnected {
+            startRefreshDeviceState()
+        } else {
+            hideInterface()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if FastRTPS.remoteAddress != "" {
-            startRefreshDeviceState()
-        } else {
-            navigationController?.navigationItem.leftBarButtonItems?.forEach{ $0.isEnabled = false }
+        if FastRTPS.remoteAddress == "" || !connectionMonitor.isConnected {
+            addCircularProgressView(to: view)
+            ddsDiscoveryStart()
         }
+
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -139,20 +144,31 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     }
 
     // MARK: Private func
-    private func addCircularProgressView(to view: UIView) {
+    private func hideInterface() {
+        navigationItem.leftBarButtonItems?.forEach{ $0.isEnabled = false }
+        connectedSSID = nil
+        deviceState = nil
         navigationController?.navigationBar.isHidden = true
         view.subviews.forEach{ $0.isHidden = true }
-        SwiftSpinner.showBlurBackground = false
-        SwiftSpinner.useContainerView(view)
-        SwiftSpinner.shared.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
-        SwiftSpinner.shared.titleLabel.textColor = .black
-        let fontSize: CGFloat = traitCollection.horizontalSizeClass == .compact ? 18 : 22
-        let font = UIFont.systemFont(ofSize: fontSize)
-        SwiftSpinner.setTitleFont(font)
-        SwiftSpinner.shared.outerColor = .systemTeal
-        SwiftSpinner.shared.innerColor = .lightGray
-        SwiftSpinner.show("Searching for Trident")
     }
+    
+    private func showInterface() {
+        navigationController?.navigationBar.isHidden = false
+        view.subviews.forEach{ $0.isHidden = false }
+    }
+    
+    private func addCircularProgressView(to view: UIView) {
+        let width = traitCollection.verticalSizeClass == .compact ? 170 : 200
+        spinner = SwiftSpinner(frame: CGRect(x: 0, y: 0, width: width, height: width))
+        spinner?.showBlurBackground = false
+        spinner?.titleLabel.textColor = .black
+        let fontSize: CGFloat = traitCollection.verticalSizeClass == .compact ? 17 : 22
+        let font = UIFont.systemFont(ofSize: fontSize)
+        spinner?.setTitleFont(font)
+        spinner?.outerColor = .systemTeal
+        spinner?.innerColor = .lightGray
+        spinner?.show(in: view, title: "Searching\nfor Trident")
+     }
 
     private func startRefreshDeviceState() {
         timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { [weak self] timer in
@@ -276,8 +292,8 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
             let model = Gopro3API.getString(from: data.advanced(by: 3))
             self.cameraModelLabel.text = model[1]
             self.cameraFirmwareLabel.text = model[0]
-        }.catch {
-            $0.alert()
+        }.catch { error in
+            error.alert()
         }
     }
 
@@ -377,17 +393,17 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
             
         }
         FastRTPS.deleteParticipant()
-        navigationItem.leftBarButtonItems?.forEach{ $0.isEnabled = false }
-        connectedSSID = nil
-        deviceState = nil
+        
+        hideInterface()
         addCircularProgressView(to: view)
         ddsDiscoveryStart()
     }
     
     func rtpsConnectedState() {
-        SwiftSpinner.hide()
-        navigationController?.navigationBar.isHidden = false
-        view.subviews.forEach{ $0.isHidden = false }
+        spinner?.hide {
+            self.spinner = nil
+        }
+        showInterface()
         
         tridentIdLabel.text = tridentID
         localAddressLabel.text = FastRTPS.localAddress
