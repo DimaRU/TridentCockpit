@@ -86,7 +86,27 @@ final class FastRTPS {
         FastRTPS.shared.fastRTPSBridge?.resignAll()
     }
 
-    class func getIP4Address() -> Set<String> {
-        return FastRTPS.shared.fastRTPSBridge?.getIP4Address() as! Set<String>
+    class func getIP4Address() -> [String: String] {
+        var localIP: [String: String] = [:]
+
+        var ifaddr: UnsafeMutablePointer<ifaddrs>? = nil
+        guard getifaddrs(&ifaddr) == 0 else { return localIP }
+        var ptr = ifaddr
+        while ptr != nil {
+            defer { ptr = ptr?.pointee.ifa_next }
+            
+            let interface = ptr?.pointee
+            let addrFamily = interface?.ifa_addr.pointee.sa_family
+            if addrFamily == UInt8(AF_INET) {
+                let name: String = String(cString: (interface!.ifa_name))
+                var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
+                getnameinfo(interface?.ifa_addr, socklen_t((interface?.ifa_addr.pointee.sa_len)!), &hostname, socklen_t(hostname.count), nil, socklen_t(0), NI_NUMERICHOST)
+                let address = String(cString: hostname)
+                localIP[name] = address
+            }
+        }
+        freeifaddrs(ifaddr)
+        
+        return localIP
     }
 }

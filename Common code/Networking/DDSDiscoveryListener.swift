@@ -8,12 +8,12 @@ import Network
 
 class DDSDiscoveryListener {
     private let queueName = Bundle.main.bundleIdentifier! + ".ddsDiscovery"
-    var delegate: ((String, String)->Void)?
+    var delegate: ((String, String, String, Bool) -> Void)?
     var port: String
     private var listener: NWListener?
     private var connection: NWConnection?
     
-    init(port: String, delegate: @escaping ((String, String)->Void)) {
+    init(port: String, delegate: @escaping ((String, String, String, Bool) -> Void)) {
         self.delegate = delegate
         self.port = port
     }
@@ -45,10 +45,12 @@ class DDSDiscoveryListener {
         connection.receiveMessage { [weak self] (data, contentContext, isComplete, error) in
             if let data = data,
                 case NWEndpoint.hostPort(let host, _) = connection.endpoint,
-                case NWEndpoint.Host.ipv4(let address) = host {
+                case NWEndpoint.Host.ipv4(let address) = host,
+                let interface = connection.currentPath?.availableInterfaces.first,
+                let uuidString = String(data: data, encoding: .ascii) {
                 let r = address.rawValue
                 let ipv4 = "\(r[0]).\(r[1]).\(r[2]).\(r[3])"
-                self?.delegate?(String(data: data, encoding: .ascii) ?? "", ipv4)
+                self?.delegate?(uuidString, ipv4, interface.name, interface.type == .wifi)
             }
             if let error = error {
                 print("NWConnection error:", error)

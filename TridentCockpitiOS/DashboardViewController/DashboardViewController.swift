@@ -12,7 +12,7 @@ import SwiftSH
 
 class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     var tridentID: String!
-    var discovered: [String: String] = [:]
+    var discovered: [String: (uuid: String, interface: String, isWiFi: Bool)] = [:]
     var connectionInfo: [ConnectionInfo] = []
     var ddsListener: DDSDiscoveryListener!
     private var spinner: SwiftSpinner?
@@ -299,9 +299,9 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
 
     private func ddsDiscoveryStart() {
         discovered = [:]
-        ddsListener = DDSDiscoveryListener(port: "8088") { [weak self] (uuidString: String, ipv4: String) in
+        ddsListener = DDSDiscoveryListener(port: "8088") { [weak self] (uuidString: String, ipv4: String, interface: String, isWiFi: Bool) in
             guard let uuid = uuidString.split(separator: ":").last else { return }
-            self?.discovered[ipv4] = String(uuid)
+            self?.discovered[ipv4] = (uuid: String(uuid), interface: interface, isWiFi: isWiFi)
         }
         do  {
             try ddsListener.start()
@@ -336,11 +336,10 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     private func startRTPS() {
         let interfaceAddresses = FastRTPS.getIP4Address()
         print(discovered, interfaceAddresses)
-        let remote = discovered.first { $0.key.starts(with: "10.1.1.") } ?? discovered.first!
+        let remote = discovered.first { $0.value.isWiFi } ?? discovered.first!
         FastRTPS.remoteAddress = remote.key
-        tridentID = remote.value
-        let remoteStripped = remote.key.split(separator: ".").dropLast()
-        let localAddress = interfaceAddresses.first { $0.split(separator: ".").dropLast() == remoteStripped } ?? interfaceAddresses.first!
+        tridentID = remote.value.uuid
+        let localAddress = interfaceAddresses[remote.value.interface]!
         FastRTPS.localAddress = localAddress
         print("Local address:", localAddress)
         let network = FastRTPS.remoteAddress + "/32"
