@@ -1,3 +1,7 @@
+#
+# PayloadPovision.sh
+# Copyright (c) 2020 Dmitriy Borovikov. All rights reserved.
+#
 set -e
 # Setup vars
 GATEWAYIF=wlan0

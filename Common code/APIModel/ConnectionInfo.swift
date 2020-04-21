@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct ConnectionInfo: Codable {
+struct ConnectionInfo: Codable, Equatable {
     let kind: String
     let id: String
     let uuid: String

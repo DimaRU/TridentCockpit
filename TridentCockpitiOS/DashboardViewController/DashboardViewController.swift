@@ -13,7 +13,6 @@ import SwiftSH
 class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     var tridentID: String!
     var discovered: [String: (uuid: String, interface: String, isWiFi: Bool)] = [:]
-    var connectionInfo: [ConnectionInfo] = []
     var ddsListener: DDSDiscoveryListener!
     private var spinner: SwiftSpinner?
     private var connectionMonitor = RTPSConnectionMonitor()
@@ -21,51 +20,67 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     private var timer: Timer? {
         willSet { timer?.invalidate() }
     }
-
-    var deviceState: DeviceState? {
+    
+    private var connectedThruBuoy: Bool? = nil {
         didSet {
-            if deviceState == nil {
-                connectedSSID = nil
-                tridentNetworkAddressLabel.text = "n/a"
-                payloadAddress.text = "n/a"
-                navigationItem.getItem(for: .connectCamera)?.isEnabled = false
-            }
-            guard oldValue != deviceState, deviceState != nil else { return }
-            connectedSSID = connectionInfo.first(where: {$0.kind == "802-11-wireless" && $0.state == "Activated"})?.ssid
-            guard let ipAddress = deviceState?.ipAddress else { return }
-                let addrs = ipAddress.split(separator: " ")
-                if addrs.count > 1 {
-                    tridentNetworkAddressLabel.text = String(addrs.first{ $0.contains("10.1.1.") } ?? "n/a")
-                    payloadAddress.text = String(addrs.first{ !$0.contains("10.1.1.") } ?? "n/a")
-                    navigationItem.getItem(for: .connectCamera)?.isEnabled = true
-                } else {
-                    tridentNetworkAddressLabel.text = connectedSSID != nil ? "n/a" : String(addrs[0])
-                    payloadAddress.text = connectedSSID != nil ? String(addrs[0]) : "n/a"
-                    navigationItem.getItem(for: .connectCamera)?.isEnabled = false
-                }
-            
-        }
-    }
-    var connectedSSID: String? = "\nnot existed\n" {
-        didSet {
-            guard let wifiItem = navigationItem.getItem(for: .connectWiFi) else { return }
-            if connectedSSID == nil {
-                ssidLabel.text = "not connected"
-                cameraModelLabel.text = "n/a"
-                cameraFirmwareLabel.text = "n/a"
-                payloadAddress.text = "n/a"
-                Gopro3API.cameraPassword = nil
-
-                wifiItem.image = UIImage(systemName: "wifi")
-                Gopro3API.cameraPassword = nil
+            guard connectedThruBuoy != nil else {
+                connectedThru.text = "n/a"
                 return
             }
-            guard connectedSSID != oldValue else { return }
-            ssidLabel.text = self.connectedSSID!
-            
-            wifiItem.image = UIImage(systemName: "wifi.slash")
-            if payloadAddress.text == "n/a" {
-                payloadAddress.text = "waiting..."
+            connectedThru.text = connectedThruBuoy! ? "topside buoy" : "onboard WiFi"
+        }
+    }
+    private var wifiConnected = false
+
+    var connectionInfo: [ConnectionInfo] = [] {
+        didSet {
+            let connectionCount = connectionInfo.filter{ $0.state == "Activated" }.count
+            guard connectionCount != 0 else {
+                connectedThruBuoy = nil
+                wifiConnected = false
+                ssidLabel.text = "not connected"
+                wifiMode.text = "n/a"
+                cameraModelLabel.text = "n/a"
+                cameraFirmwareLabel.text = "n/a"
+                return
+            }
+            guard connectionInfo != oldValue else { return }
+            guard let wifiItem = navigationItem.getItem(for: .connectWiFi) else { return }
+
+            if let wifiConnection = connectionInfo.first(where: {$0.kind == "802-11-wireless" && $0.state == "Activated"}) {
+                wifiConnected = true
+                ssidLabel.text = wifiConnection.ssid
+                wifiMode.text = wifiConnection.mode
+                wifiItem.image = UIImage(systemName: "wifi.slash")
+
+                if connectionCount == 1 {
+                    connectedThruBuoy = false
+                    navigationItem.getItem(for: .connectCamera)?.isEnabled = false
+                    cameraModelLabel.text = "n/a"
+                    cameraFirmwareLabel.text = "n/a"
+                } else {
+                    if FastRTPS.remoteAddress.contains("10.1.1.") {
+                        connectedThruBuoy = true
+                        navigationItem.getItem(for: .connectCamera)?.isEnabled = true
+                    } else {
+                        connectedThruBuoy = false
+                        navigationItem.getItem(for: .connectCamera)?.isEnabled = false
+                        cameraModelLabel.text = "n/a"
+                        cameraFirmwareLabel.text = "n/a"
+                    }
+                }
+                
+            } else {
+                // No wifi conn
+                wifiConnected = false
+                connectedThruBuoy = true
+                ssidLabel.text = "not connected"
+                wifiMode.text = "n/a"
+                wifiItem.image = UIImage(systemName: "wifi")
+                Gopro3API.cameraPassword = nil
+                navigationItem.getItem(for: .connectCamera)?.isEnabled = false
+                cameraModelLabel.text = "n/a"
+                cameraFirmwareLabel.text = "n/a"
             }
         }
     }
@@ -74,10 +89,10 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     // MARK: Outlets
     @IBOutlet weak var tridentIdLabel: UILabel!
     @IBOutlet weak var connectionAddress: UILabel!
-    @IBOutlet weak var tridentNetworkAddressLabel: UILabel!
     @IBOutlet weak var localAddressLabel: UILabel!
+    @IBOutlet weak var connectedThru: UILabel!
     @IBOutlet weak var ssidLabel: UILabel!
-    @IBOutlet weak var payloadAddress: UILabel!
+    @IBOutlet weak var wifiMode: UILabel!
     @IBOutlet weak var cameraModelLabel: UILabel!
     @IBOutlet weak var cameraFirmwareLabel: UILabel!
     
@@ -129,7 +144,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     }
     
     @IBAction func connectWifiButtonPress(_ sender: UIBarButtonItem) {
-        if connectedSSID == nil {
+        if !wifiConnected {
             connectWiFi(view: sender.view!)
         } else {
             disconnectWiFi()
@@ -137,7 +152,6 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     }
 
     @IBAction func connectCameraButtonPress(_ sender: UIBarButtonItem) {
-        guard let ipAddress = deviceState?.ipAddress, ipAddress.split(separator: " ").count == 2 else { return }
         executeScript(name: "PayloadProvision") {
             self.connectGopro3()
         }
@@ -146,8 +160,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     // MARK: Private func
     private func hideInterface() {
         navigationItem.leftBarButtonItems?.forEach{ $0.isEnabled = false }
-        connectedSSID = nil
-        deviceState = nil
+        connectionInfo = []
         navigationController?.navigationBar.isHidden = true
         view.subviews.forEach{ $0.isHidden = true }
     }
@@ -182,12 +195,8 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     
     private func refreshDeviceState() {
         RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
-            .done { (connectionInfo: [ConnectionInfo]) in
-                self.connectionInfo = connectionInfo
-        }.then {
-            RestProvider.request(MultiTarget(ResinAPI.deviceState))
-        }.done { (deviceState: DeviceState) in
-            self.deviceState = deviceState
+        .done { (connectionInfo: [ConnectionInfo]) in
+            self.connectionInfo = connectionInfo
             self.startRefreshDeviceState()
         }.catch { error in
             switch error {
@@ -206,7 +215,6 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         .then {
             RestProvider.request(MultiTarget(WiFiServiceAPI.clear))
         }.done {
-            self.connectedSSID = nil
             self.executeScript(name: "PayloadCleanup") {}
         }.catch {
             $0.alert()
@@ -413,12 +421,8 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         
         startRefreshDeviceState()
         RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
-            .done { (connectionInfo: [ConnectionInfo]) in
-            if let ssid = connectionInfo.first(where: {$0.kind == "802-11-wireless" && $0.state == "Activated"})?.ssid {
-                self.connectedSSID = ssid
-            } else {
-                self.connectedSSID = nil
-            }
+        .done { (connectionInfo: [ConnectionInfo]) in
+            self.connectionInfo = connectionInfo
         }.catch {
             $0.alert()
         }
@@ -433,13 +437,12 @@ extension DashboardViewController: WiFiPopupProtocol {
         timer = nil
         RestProvider.request(MultiTarget(WiFiServiceAPI.connect(ssid: ssid, passphrase: password)))
         .then { _ in
-            after(.seconds(2))
+            after(.seconds(1))
         }.then {
             RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
         }.done { (connectionInfo: [ConnectionInfo]) in
             if let ssidConnected = connectionInfo.first(where: {$0.kind == "802-11-wireless" && $0.state == "Activated"})?.ssid,
                 ssidConnected == ssid {
-                self.connectedSSID = ssid
                 KeychainService.set(password, key: ssid)
             }
             self.connectionInfo = connectionInfo

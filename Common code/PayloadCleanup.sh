@@ -1,3 +1,7 @@
+#
+# PayloadCleanup.sh
+# Copyright (c) 2020 Dmitriy Borovikov. All rights reserved.
+#
 set -e
 # Cleanup
 sudo iptables-legacy -t nat -N trident_cockpit_pre || true
