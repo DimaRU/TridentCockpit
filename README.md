@@ -2,13 +2,15 @@
 <h2 align="center">Trident Cockpit is an alternative iOS/iPadOS/macOS control app for the <a href="https://www.sofarocean.com/products/trident?aff=30">Sofar Trident Underwater Drone.</a></h2>
 
 <h3 align="center"> ·
-<a href="https://github.com/DimaRU/TridentCockpit/releases">macOS releases</a> ·
+<a href="https://testflight.apple.com/join/O5vAtGkA">Join beta testing</a> ·
 </h3>
 
 <p align="center">
 <img src="https://github.com/DimaRU/TridentCockpit/raw/master/Screenshots/iPhone%2011%20Pro%20Max.png" />
 </p>
-
+<h3 align="center"> ·
+<a href="https://github.com/DimaRU/TridentCockpit/releases">macOS releases</a> ·
+</h3>
 
 ---
 
@@ -38,9 +40,20 @@
 * DualShock 4
 * Any MFi certified gamepad
 
+## Support the project
+<a href="https://www.patreon.com/DimaRU" data-patreon-widget-type="become-patron-button"><img src="https://img.shields.io/endpoint?style=for-the-badge&url=https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2FDimaRU"></a>
+
+If you’re benefiting from my project, or simply like what I do, you can help me by donating some amount onetime or each month. Supporting me on [Patreon](https://www.patreon.com/DimaRU) will help pay for hardware needed for further development.
+The money received will go towards:
+
+* Buy a GoPro Max 560 for support latest GoPro models in the app.
+* Buy an iPad to speed up iPad version testing.
+
+With Patreon, you can send me a small monthly amount of money, or make a one-time donation by canceling the monthly subscription after the first payment.
+
 ## Installation
 
-To install `Trident Cockpit`, download the release from the [releases page](https://github.com/DimaRU/TridentCockpit/releases).
+To install `Trident Cockpit` on macOS, download the release from the [releases page](https://github.com/DimaRU/TridentCockpit/releases).
 These are all signed and notarized to run out of the box on macOS 10.14+.
 
 ## Keyboard Shortcuts
@@ -115,16 +128,6 @@ cd TridentCockpit
 * [Kingfisher](https://github.com/onevcat/Kingfisher) - A lightweight, pure-Swift library for downloading and caching images from the web.
 
 
-## Support the project
-<a href="https://www.patreon.com/DimaRU" data-patreon-widget-type="become-patron-button"><img src="https://img.shields.io/endpoint?style=for-the-badge&url=https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2FDimaRU"></a>
-
-If you’re benefiting from my project, or simply like what I do, you can help me by donating some amount onetime or each month. Supporting me on Patreon will help pay for hardware needed for further development.
-The money received will go towards:
-
-* Buy a GoPro Hero8 for support GoPro 5-8 models in the app.
-* Buy an iPad to speed up iPad version development.
-
-With Patreon, you can send me a small monthly amount of money, or make a one-time donation by canceling the monthly subscription after the first payment.
 ## Author
 
 * **Dmitriy Borovikov** - [DimaRU](https://github.com/DimaRU), AOWD diver, iOS developer, Openrov Trident Kickstarter backer #1284
