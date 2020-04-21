@@ -16,6 +16,7 @@ enum WiFiServiceAPI {
     case disconnect
     case clear
     case scan
+    case setupAP(ssid: String, passphrase: String)
 }
 
 extension WiFiServiceAPI: TargetType {
@@ -33,6 +34,7 @@ extension WiFiServiceAPI: TargetType {
         case .disconnect     : return "/disconnect"
         case .clear          : return "/clear"
         case .scan           : return "/scan"
+        case .setupAP        : return "/setup-ap"
         }
     }
     
@@ -46,7 +48,8 @@ extension WiFiServiceAPI: TargetType {
         case .connect,
              .disconnect,
              .clear,
-             .scan:
+             .scan,
+             .setupAP:
             return .post
         }
     }
@@ -60,6 +63,9 @@ extension WiFiServiceAPI: TargetType {
         case .connect(let ssid, let passphrase):
             let params: [String: Any] = ["ssid" : ssid, "passphrase" : passphrase]
             return .requestParameters(parameters: params, encoding: JSONEncoding.default)
+        case .setupAP(let ssid, let passphrase):
+            let params: [String: Any] = ["ssid" : ssid, "passphrase" : passphrase]
+            return .requestParameters(parameters: params, encoding: JSONEncoding.default)
         default:
             return .requestPlain
         }
@@ -67,7 +73,8 @@ extension WiFiServiceAPI: TargetType {
     
     var headers: [String : String]? {
         switch self {
-        case .connect:
+        case .connect,
+             .setupAP:
             return ["Content-Type": "application/json"]
         default:
             return nil
