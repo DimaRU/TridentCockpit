@@ -89,6 +89,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     
     // MARK: Outlets
     @IBOutlet weak var tridentIdLabel: UILabel!
+    @IBOutlet weak var imageVersionLabel: UILabel!
     @IBOutlet weak var connectionAddress: UILabel!
     @IBOutlet weak var localAddressLabel: UILabel!
     @IBOutlet weak var connectedThru: UILabel!
@@ -391,12 +392,13 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
             .done { (imageVersion: [String:String]) in
                 let firmwareVersion = GlobalParams.firmwareVersion
                 let currentFirmwareVersion = imageVersion["version"] ?? "0.0.0"
+                self.imageVersionLabel.text = currentFirmwareVersion
                 let message: String
                 switch currentFirmwareVersion.compare(firmwareVersion, options: .numeric) {
                 case .orderedAscending:
-                    message = "New Trident firmware version. Some functions may not work. Please update Trident Cockpit app."
+                    message = "New Trident image version. Some functions may not work. Please update Trident Cockpit app."
                 case .orderedDescending:
-                    message = "Old Trident firmware version. Some functions may not work. Please update Trident."
+                    message = "Old Trident image version. Some functions may not work. Please update Trident."
                 case .orderedSame:
                     return
                 }
