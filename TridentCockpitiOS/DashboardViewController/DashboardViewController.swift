@@ -391,11 +391,17 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
             .done { (imageVersion: [String:String]) in
                 let firmwareVersion = GlobalParams.firmwareVersion
                 let currentFirmwareVersion = imageVersion["version"] ?? "0.0.0"
-                if currentFirmwareVersion != firmwareVersion {
-                    let message = "Incompatible Trident firmware version. Some functions may not work."
-                    let informative = "Version " + currentFirmwareVersion + ", expected " + firmwareVersion
-                    alert(message: message, informative: informative, delay: 20)
+                let message: String
+                switch currentFirmwareVersion.compare(firmwareVersion, options: .numeric) {
+                case .orderedAscending:
+                    message = "New Trident firmware version. Some functions may not work. Please update Trident Cockpit app."
+                case .orderedDescending:
+                    message = "Old Trident firmware version. Some functions may not work. Please update Trident."
+                case .orderedSame:
+                    return
                 }
+                let informative = "Version " + currentFirmwareVersion + ", expected " + firmwareVersion
+                alert(message: message, informative: informative, delay: 20)
         }.catch {
             $0.alert(delay: 20)
         }
