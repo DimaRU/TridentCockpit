@@ -82,6 +82,7 @@
 		0A1D0A5D23F94942006D9AFD /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7E23CE4B2F0038EABE /* Date+Extensions.swift */; };
 		0A1D0A5E23F94942006D9AFD /* iso8601date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7F23CE4B2F0038EABE /* iso8601date.swift */; };
 		0A1D0A5F23F94C12006D9AFD /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E55BE23BC0AFA008F8A9A /* Average.swift */; };
+		0A248A0124518F4C0031720B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A2489F824518F4C0031720B /* InfoPlist.strings */; };
 		0A2E1DAE23B0CAD9009048A5 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */; };
 		0A2E42BC236B0EE900B5C569 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E42BB236B0EE900B5C569 /* VideoView.swift */; };
 		0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
@@ -350,6 +351,7 @@
 		0A1D0A0323F93FD7006D9AFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A1D0A0523F93FD7006D9AFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A1D0A1223F93FF0006D9AFD /* TridentCockpitiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TridentCockpitiOS.entitlements; sourceTree = "<group>"; };
+		0A2489F924518F4C0031720B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		0A2E42BB236B0EE900B5C569 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		0A2FF3112363A0BD008FD68B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -560,6 +562,7 @@
 				0A1D0A0223F93FD7006D9AFD /* LaunchScreen.storyboard */,
 				0A1D0A1223F93FF0006D9AFD /* TridentCockpitiOS.entitlements */,
 				0A1D0A0523F93FD7006D9AFD /* Info.plist */,
+				0A2489F824518F4C0031720B /* InfoPlist.strings */,
 			);
 			path = TridentCockpitiOS;
 			sourceTree = "<group>";
@@ -1051,6 +1054,7 @@
 				0A0230A3241117E900A4E532 /* AuxCameraControlView.xib in Resources */,
 				0A9DF9662434BF5C0029DDDB /* GlobalParams.plist in Resources */,
 				0A4999BC2422282200E3FA14 /* ProgressSheetController.xib in Resources */,
+				0A248A0124518F4C0031720B /* InfoPlist.strings in Resources */,
 				0AE05CED23FD41E200C7CA08 /* DiveViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1298,6 +1302,14 @@
 				0A1D0A0323F93FD7006D9AFD /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		0A2489F824518F4C0031720B /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A2489F924518F4C0031720B /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		0A56D0BE23D7119900D9495A /* InfoPlist.strings */ = {
