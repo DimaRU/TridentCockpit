@@ -331,13 +331,20 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
     private func checkTridentFirmwareVersion() {
         RestProvider.request(MultiTarget(ResinAPI.imageVersion))
             .done { (imageVersion: [String:String]) in
-                let firmwareVersion = GlobalParams.firmwareVersion
-                let currentFirmwareVersion = imageVersion["version"] ?? "0.0.0"
-                if currentFirmwareVersion != firmwareVersion {
-                    let message = "Incompatible Trident firmware version. Some functions may not work."
-                    let informative = "Version " + currentFirmwareVersion + ", expected " + firmwareVersion
-                    self.alert(message: message, informative: informative, delay: 10)
+                let targetImageVersion = GlobalParams.targetImageVersion
+                let currentImageVersion = imageVersion["version"] ?? "11.11.11"
+//                self.imageVersionLabel.text = currentImageVersion
+                let message: String
+                switch targetImageVersion.compare(currentImageVersion, options: .numeric) {
+                case .orderedAscending:
+                    message = "New Trident image version. Some functions may not work. Please update Trident Cockpit app."
+                case .orderedDescending:
+                    message = "Old Trident image version. Some functions may not work. Please update Trident."
+                case .orderedSame:
+                    return
                 }
+                let informative = "Version " + currentImageVersion + ", expected " + targetImageVersion
+                self.alert(message: message, informative: informative, delay: 20)
         }.catch {
             self.alert(error: $0, delay: 20)
         }

@@ -39,6 +39,6 @@ class GlobalParams {
     @Param("RovPassword")
     static var rovPassword: String
     
-    @Param("FirmwareVersion")
-    static var firmwareVersion: String
+    @Param("ImageVersion")
+    static var targetImageVersion: String
 }
