@@ -107,6 +107,7 @@
 		0A4999BF242230DF00E3FA14 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4999BE242230DF00E3FA14 /* UICollectionView+Extensions.swift */; };
 		0A5107DB23AA807D00C19289 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5107DA23AA807D00C19289 /* NetworkError.swift */; };
 		0A5107DC23AA85B000C19289 /* RestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20223A97A3500FE9918 /* RestProvider.swift */; };
+		0A5530F2245025C5000ADEBB /* SSHCommand+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5530F1245025C4000ADEBB /* SSHCommand+Extensions.swift */; };
 		0A55F6D323B969C500B108B0 /* RovIMUCalibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */; };
 		0A56D0C023D7119900D9495A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A56D0BE23D7119900D9495A /* InfoPlist.strings */; };
 		0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790B23958380006F10FF /* FastRTPSBridge.framework */; };
@@ -373,6 +374,7 @@
 		0A4999BB2422282200E3FA14 /* ProgressSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressSheetController.swift; sourceTree = "<group>"; };
 		0A4999BE242230DF00E3FA14 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		0A5107DA23AA807D00C19289 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		0A5530F1245025C4000ADEBB /* SSHCommand+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SSHCommand+Extensions.swift"; sourceTree = "<group>"; };
 		0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RovIMUCalibration.swift; sourceTree = "<group>"; };
 		0A56D0BF23D7119900D9495A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FastRTPSBridge.xcodeproj; path = FastRTPSBridge/FastRTPSBridge.xcodeproj; sourceTree = "<group>"; };
@@ -801,6 +803,7 @@
 				0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */,
 				0A3532DC24041485000F572D /* UINavigationItem+Extensions.swift */,
 				0A4999BE242230DF00E3FA14 /* UICollectionView+Extensions.swift */,
+				0A5530F1245025C4000ADEBB /* SSHCommand+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1081,6 +1084,7 @@
 				0A72A7FD2433C91400AE9B2E /* ASVSubsystemStatus.swift in Sources */,
 				0A1D0A2623F941BD006D9AFD /* I2CStats.swift in Sources */,
 				0A488E652413AA2800EBEF19 /* DiveCollectionViewCell.swift in Sources */,
+				0A5530F2245025C5000ADEBB /* SSHCommand+Extensions.swift in Sources */,
 				0AE05CE523FD38A200C7CA08 /* VideoDecoder.swift in Sources */,
 				0ACCDE7523FDB29D00381207 /* AuxCameraControlView.swift in Sources */,
 				0A42E39224226C40000BCB24 /* DivePlayerViewController.swift in Sources */,

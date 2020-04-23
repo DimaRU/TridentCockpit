@@ -16,7 +16,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     var ddsListener: DDSDiscoveryListener!
     private var spinner: SwiftSpinner?
     private var connectionMonitor = RTPSConnectionMonitor()
-    private var sshCommand: SSHCommand!
+    private var sshCommand: SSHCommand?
     private var timer: Timer? {
         willSet { timer?.invalidate() }
     }
@@ -40,6 +40,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
                 wifiConnected = false
                 ssidLabel.text = "not connected"
                 wifiMode.text = "n/a"
+                navigationItem.getItem(for: .connectCamera)?.isEnabled = false
                 cameraModelLabel.text = "n/a"
                 cameraFirmwareLabel.text = "n/a"
                 return
@@ -152,12 +153,11 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     }
 
     @IBAction func connectCameraButtonPress(_ sender: UIBarButtonItem) {
-        executeScript(name: "PayloadProvision") {
-            self.connectGopro3()
-        }
+        connectGopro3()
     }
 
     // MARK: Private func
+    // MARK: Interface
     private func hideInterface() {
         navigationItem.leftBarButtonItems?.forEach{ $0.isEnabled = false }
         connectionInfo = []
@@ -183,6 +183,18 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         spinner?.show(in: view, title: "Searching\nfor Trident")
      }
 
+    private func showPopup(with ssids: [SSIDInfo], view: UIView) {
+        let controller: WiFiPopupViewController = WiFiPopupViewController()
+        controller.delegate = self
+        controller.ssids = ssids
+        controller.modalPresentationStyle = .popover
+        let popover = controller.popoverPresentationController
+        popover?.sourceView = view
+        popover?.sourceRect = view.frame
+        present(controller, animated: true)
+    }
+
+    // MARK: Network
     private func startRefreshDeviceState() {
         timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { [weak self] timer in
             guard let self = self else {
@@ -211,11 +223,14 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     }
     
     private func disconnectWiFi() {
+        self.sshCommand = try! SSHCommand(host: FastRTPS.remoteAddress)
         RestProvider.request(MultiTarget(WiFiServiceAPI.disconnect))
         .then {
             RestProvider.request(MultiTarget(WiFiServiceAPI.clear))
-        }.done {
-            self.executeScript(name: "PayloadCleanup") {}
+        }.then {
+            return self.sshCommand!.executeScript(name: "PayloadCleanup")
+        }.ensure {
+            self.sshCommand = nil
         }.catch {
             $0.alert()
         }
@@ -232,60 +247,9 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         }
     }
 
-    private func showPopup(with ssids: [SSIDInfo], view: UIView) {
-        let controller: WiFiPopupViewController = WiFiPopupViewController()
-        controller.delegate = self
-        controller.ssids = ssids
-        controller.modalPresentationStyle = .popover
-        let popover = controller.popoverPresentationController
-        popover?.sourceView = view
-        popover?.sourceRect = view.frame
-        present(controller, animated: true)
-    }
-
-    private func executeScript(name: String, completion: @escaping (() -> Void)) {
-        guard let url = Bundle.main.url(forResource: name, withExtension: "sh") else { return }
-        guard let scriptBody = try? String(contentsOf: url) else { return }
-        
-        let basePort = GlobalParams.basePort
-        let redirectPorts = Gopro3API.redirectPorts
-        let login = GlobalParams.rovLogin
-        let passwordBase64 = GlobalParams.rovPassword
-        let password = String(data: Data(base64Encoded: passwordBase64)!, encoding: .utf8)!
-        
-        var header = "#/bin/bash\n"
-        header += "echo \(password) | sudo -S echo START-SCRIPT\n"
-        header += "exec 2>&1\n"
-        header += "SOURCEIP=\(FastRTPS.localAddress)\n"
-        header += "BASEPORT=\(basePort)\n"
-        header += "REDIRECTPORTS=(\(redirectPorts))\n"
-        sshCommand = try! SSHCommand(host: FastRTPS.remoteAddress)
-        sshCommand.log.level = .error
-        sshCommand.timeout = 10
-
-        sshCommand.connect()
-            .authenticate(.byPassword(username: login, password: password))
-            .execute(header+scriptBody) { [weak self] (command, log: String?, error) in
-                guard let self = self else { return }
-                if let log = log {
-                    let logStrings = log.split(separator: "\n")
-                    if logStrings.last != "OK-SCRIPT" {
-                        let fileredLog = logStrings.filter{ !$0.contains("sudo: unable to resolve host") && !$0.contains("START-SCRIPT") }.reduce("") { $0 + $1 + "\n"}
-                        alert(message: "Error while execute \(name)", informative: fileredLog, delay: 100)
-                        print(fileredLog)
-                    } else {
-                        print("Script \(name) ok")
-                        completion()
-                    }
-                } else {
-                    error?.alert()
-                }
-                self.sshCommand.disconnect {}
-        }
-    }
-    
     private func connectGopro3() {
-        after(.seconds(1))
+        sshCommand = try! SSHCommand(host: FastRTPS.remoteAddress)
+        sshCommand!.executeScript(name: "PayloadProvision")
         .then {
             Gopro3API.requestData(.getPassword)
         }.then { (passwordData: Data) -> Promise<Void> in
@@ -300,6 +264,8 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
             let model = Gopro3API.getString(from: data.advanced(by: 3))
             self.cameraModelLabel.text = model[1]
             self.cameraFirmwareLabel.text = model[0]
+        }.ensure {
+            self.sshCommand = nil
         }.catch { error in
             error.alert()
         }
@@ -323,21 +289,6 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
                 self.ddsListener.stop()
                 self.startRTPS()
             }
-        }
-    }
-
-    private func checkTridentFirmwareVersion() {
-        RestProvider.request(MultiTarget(ResinAPI.imageVersion))
-            .done { (imageVersion: [String:String]) in
-                let firmwareVersion = GlobalParams.firmwareVersion
-                let currentFirmwareVersion = imageVersion["version"] ?? "0.0.0"
-                if currentFirmwareVersion != firmwareVersion {
-                    let message = "Incompatible Trident firmware version. Some functions may not work."
-                    let informative = "Version " + currentFirmwareVersion + ", expected " + firmwareVersion
-                    alert(message: message, informative: informative, delay: 20)
-                }
-        }.catch {
-            $0.alert(delay: 20)
         }
     }
 
@@ -418,16 +369,52 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         connectionAddress.text = FastRTPS.remoteAddress
         
         checkTridentFirmwareVersion()
+        checkWifiServiceVersion()
         
         startRefreshDeviceState()
         RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
         .done { (connectionInfo: [ConnectionInfo]) in
             self.connectionInfo = connectionInfo
+        }.then {
+            RestProvider.request(MultiTarget(ResinAPI.deviceState))
+        }.done { (deviceState: DeviceState) in
+            print(deviceState)
         }.catch {
             $0.alert()
         }
         navigationItem.getItem(for: .connectWiFi)?.isEnabled = true
         FastRTPS.setPartition(name: tridentID)
+    }
+    
+    private func checkTridentFirmwareVersion() {
+        RestProvider.request(MultiTarget(ResinAPI.imageVersion))
+            .done { (imageVersion: [String:String]) in
+                let firmwareVersion = GlobalParams.firmwareVersion
+                let currentFirmwareVersion = imageVersion["version"] ?? "0.0.0"
+                if currentFirmwareVersion != firmwareVersion {
+                    let message = "Incompatible Trident firmware version. Some functions may not work."
+                    let informative = "Version " + currentFirmwareVersion + ", expected " + firmwareVersion
+                    alert(message: message, informative: informative, delay: 20)
+                }
+        }.catch {
+            $0.alert(delay: 20)
+        }
+    }
+
+    private func checkWifiServiceVersion() {
+        sshCommand = try! SSHCommand(host: FastRTPS.remoteAddress)
+        sshCommand!.executeCommand("dpkg-query -s nm-wifi-service|grep Version")
+        .done { log in
+            let version = log.first!.split(separator: " ").last!
+            print(version)
+            if version.compare("1.0.5-1", options: .numeric) == .orderedDescending {
+                print("nm-wifi-service version ok, enable set ap")
+            }
+        }.ensure {
+            self.sshCommand = nil
+        }.catch { error in
+            error.alert(delay: 20)
+        }
     }
 }
 
