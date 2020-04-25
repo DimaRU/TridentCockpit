@@ -28,8 +28,6 @@
 		0A1D0A0423F93FD7006D9AFD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A1D0A0223F93FD7006D9AFD /* LaunchScreen.storyboard */; };
 		0A1D0A1523F940E2006D9AFD /* FastRTPSBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790D23958380006F10FF /* FastRTPSBridge.framework */; };
 		0A1D0A1623F940E2006D9AFD /* FastRTPSBridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790D23958380006F10FF /* FastRTPSBridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0A1D0A1823F940E8006D9AFD /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69DFE23A600FA0037DBDD /* SwiftSH.framework */; };
-		0A1D0A1923F940E8006D9AFD /* SwiftSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69DFE23A600FA0037DBDD /* SwiftSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0A1D0A1B23F941AA006D9AFD /* PayloadProvision.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0ADA653723B119880090D757 /* PayloadProvision.sh */; };
 		0A1D0A1C23F941AA006D9AFD /* PayloadCleanup.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0AA4290123C38D3B003476CB /* PayloadCleanup.sh */; };
 		0A1D0A1D23F941B2006D9AFD /* RecordingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B8723CE4B760038EABE /* RecordingsModel.swift */; };
@@ -228,19 +226,10 @@
 		0AF06ECE23FB5730000FF36A /* UIToolbar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */; };
 		0AF0E07C243517E2009E9806 /* CustomStringConvertible+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF0E07B243517E2009E9806 /* CustomStringConvertible+Extensions.swift */; };
 		0AF0E07D2435181C009E9806 /* CustomStringConvertible+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF0E07B243517E2009E9806 /* CustomStringConvertible+Extensions.swift */; };
-		0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; };
-		0AF69E0423A601220037DBDD /* SwiftSH.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AF69E0023A600FA0037DBDD /* SwiftSH.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0AFE9C4123B3ED7700C13162 /* DDSDiscoveryListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFE9C3723B3ED7700C13162 /* DDSDiscoveryListener.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		0A1D0A4923F9421D006D9AFD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 180BD1FE1B4C622D000DB241;
-			remoteInfo = "SwiftSH-iOS";
-		};
 		0A1D0A4B23F94222006D9AFD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */;
@@ -262,27 +251,6 @@
 			remoteGlobalIDString = 0A8A37DB2366DB1B008E8DC1;
 			remoteInfo = "FastRTPSBridge iOS";
 		};
-		0AF69DFD23A600FA0037DBDD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 180BD1FF1B4C622D000DB241;
-			remoteInfo = "SwiftSH-iOS";
-		};
-		0AF69DFF23A600FA0037DBDD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0A479FDA239E9F8F00699CE1;
-			remoteInfo = "SwiftSH-macOS";
-		};
-		0AF69E0123A600FA0037DBDD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 7D148CFA21225961009C1CCC;
-			remoteInfo = "SwiftSH Integration Tests";
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -293,7 +261,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				0A1D0A1623F940E2006D9AFD /* FastRTPSBridge.framework in Embed Frameworks */,
-				0A1D0A1923F940E8006D9AFD /* SwiftSH.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,7 +290,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				0A597910239583AB006F10FF /* FastRTPSBridge.framework in Embed Frameworks */,
-				0AF69E0423A601220037DBDD /* SwiftSH.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -483,7 +449,6 @@
 		0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIToolbar+Extensions.swift"; sourceTree = "<group>"; };
 		0AF0E07B243517E2009E9806 /* CustomStringConvertible+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomStringConvertible+Extensions.swift"; sourceTree = "<group>"; };
-		0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SwiftSH.xcodeproj; path = SwiftSH/SwiftSH.xcodeproj; sourceTree = "<group>"; };
 		0AFE9C3723B3ED7700C13162 /* DDSDiscoveryListener.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDSDiscoveryListener.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -494,7 +459,6 @@
 			files = (
 				0A1D0A1523F940E2006D9AFD /* FastRTPSBridge.framework in Frameworks */,
 				0A1D0A5923F948F9006D9AFD /* PromiseKit in Frameworks */,
-				0A1D0A1823F940E8006D9AFD /* SwiftSH.framework in Frameworks */,
 				0A1D0A5723F948F3006D9AFD /* Moya in Frameworks */,
 				0A1D0A5B23F948FF006D9AFD /* Kingfisher in Frameworks */,
 			);
@@ -509,7 +473,6 @@
 				0A3FD1EF23A8D50000FE9918 /* CircularProgress in Frameworks */,
 				0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */,
 				0A66C52C23AED706001BA93D /* Moya in Frameworks */,
-				0AF69E0323A601220037DBDD /* SwiftSH.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -693,7 +656,6 @@
 		0A7130AB236369EA00817593 = {
 			isa = PBXGroup;
 			children = (
-				0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */,
 				0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */,
 				0A1D09F623F93FD6006D9AFD /* TridentCockpitiOS */,
 				0A1D0A1A23F94136006D9AFD /* Common code */,
@@ -885,16 +847,6 @@
 			path = DashboardViewController;
 			sourceTree = "<group>";
 		};
-		0AF69DF223A600FA0037DBDD /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0AF69DFE23A600FA0037DBDD /* SwiftSH.framework */,
-				0AF69E0023A600FA0037DBDD /* SwiftSH.framework */,
-				0AF69E0223A600FA0037DBDD /* SwiftSH Integration Tests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -911,7 +863,6 @@
 			);
 			dependencies = (
 				0A1D0A4C23F94222006D9AFD /* PBXTargetDependency */,
-				0A1D0A4A23F9421D006D9AFD /* PBXTargetDependency */,
 			);
 			name = TridentCockpitiOS;
 			packageProductDependencies = (
@@ -989,10 +940,6 @@
 					ProductGroup = 0A59790423958380006F10FF /* Products */;
 					ProjectRef = 0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */;
 				},
-				{
-					ProductGroup = 0AF69DF223A600FA0037DBDD /* Products */;
-					ProjectRef = 0AF69DF123A600FA0037DBDD /* SwiftSH.xcodeproj */;
-				},
 			);
 			projectRoot = "";
 			targets = (
@@ -1015,27 +962,6 @@
 			fileType = wrapper.framework;
 			path = FastRTPSBridge.framework;
 			remoteRef = 0A59790C23958380006F10FF /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0AF69DFE23A600FA0037DBDD /* SwiftSH.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftSH.framework;
-			remoteRef = 0AF69DFD23A600FA0037DBDD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0AF69E0023A600FA0037DBDD /* SwiftSH.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwiftSH.framework;
-			remoteRef = 0AF69DFF23A600FA0037DBDD /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0AF69E0223A600FA0037DBDD /* SwiftSH Integration Tests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = "SwiftSH Integration Tests.xctest";
-			remoteRef = 0AF69E0123A600FA0037DBDD /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -1275,11 +1201,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0A1D0A4A23F9421D006D9AFD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "SwiftSH-iOS";
-			targetProxy = 0A1D0A4923F9421D006D9AFD /* PBXContainerItemProxy */;
-		};
 		0A1D0A4C23F94222006D9AFD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "FastRTPSBridge iOS";
