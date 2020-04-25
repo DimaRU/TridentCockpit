@@ -8,7 +8,7 @@ import FastRTPSBridge
 import CircularProgress
 import Moya
 import PromiseKit
-import SwiftSH
+import Shout
 
 class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
     var tridentID: String!
@@ -16,7 +16,6 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
     var connectionInfo: [ConnectionInfo] = []
     var ddsListener: DDSDiscoveryListener!
     private var connectionMonitor = RTPSConnectionMonitor()
-    private var sshCommand: SSHCommand!
     private var spinner: CircularProgress?
     private var timer: Timer? {
         willSet { timer?.invalidate() }
@@ -153,10 +152,7 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
     }
 
     @IBAction func connectCameraButtonPress(_ sender: Any?) {
-        guard let ipAddress = deviceState?.ipAddress, ipAddress.split(separator: " ").count == 2 else { return }
-        executeScript(name: "PayloadProvision") {
-            self.connectGopro3()
-        }
+        connectGopro3()
     }
 
     // MARK: Private func
@@ -215,12 +211,13 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
     }
     
     private func disconnectWiFi() {
-        RestProvider.request(MultiTarget(WiFiServiceAPI.disconnect))
+        SSH.executeScript(name: "PayloadCleanup")
         .then {
+            RestProvider.request(MultiTarget(WiFiServiceAPI.disconnect))
+        }.then {
             RestProvider.request(MultiTarget(WiFiServiceAPI.clear))
         }.done {
             self.connectedSSID = nil
-            self.executeScript(name: "PayloadCleanup") {}
         }.catch {
             self.alert(error: $0)
         }
@@ -244,50 +241,8 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
         present(controller, asPopoverRelativeTo: .zero, of: view, preferredEdge: .minY, behavior: .transient)
     }
 
-    private func executeScript(name: String, completion: @escaping (() -> Void)) {
-        guard let url = Bundle.main.url(forResource: name, withExtension: "sh") else { return }
-        guard let scriptBody = try? String(contentsOf: url) else { return }
-        
-        let basePort = GlobalParams.basePort
-        let redirectPorts = Gopro3API.redirectPorts
-        let login = GlobalParams.rovLogin
-        let passwordBase64 = GlobalParams.rovPassword
-        let password = String(data: Data(base64Encoded: passwordBase64)!, encoding: .utf8)!
-        
-        var header = "#/bin/bash\n"
-        header += "echo \(password) | sudo -S echo START-SCRIPT\n"
-        header += "exec 2>&1\n"
-        header += "SOURCEIP=\(FastRTPS.localAddress)\n"
-        header += "BASEPORT=\(basePort)\n"
-        header += "REDIRECTPORTS=(\(redirectPorts))\n"
-        sshCommand = try! SSHCommand(host: FastRTPS.remoteAddress)
-        sshCommand.log.level = .error
-        sshCommand.timeout = 10000
-        sshCommand.connect()
-            .authenticate(.byPassword(username: login, password: password))
-            .execute(header+scriptBody) { [weak self] (command, log: String?, error) in
-                guard let self = self else { return }
-                if let log = log {
-                    let logStrings = log.split(separator: "\n")
-                    if logStrings.last != "OK-SCRIPT" {
-                        let fileredLog = logStrings.filter{ !$0.contains("sudo: unable to resolve host") && !$0.contains("START-SCRIPT") }.reduce("") { $0 + $1 + "\n"}
-                        self.alert(message: "Error while execute \(name)", informative: fileredLog, delay: 100)
-                        print(fileredLog)
-                    } else {
-                        print("Script \(name) ok")
-                        completion()
-                    }
-                } else {
-                    if let error = error {
-                        self.alert(error: error)
-                    }
-                }
-                self.sshCommand.disconnect {}
-        }
-    }
-    
     private func connectGopro3() {
-        after(.seconds(1))
+        SSH.executeScript(name: "PayloadProvision")
         .then {
             Gopro3API.requestData(.getPassword)
         }.then { (passwordData: Data) -> Promise<Void> in

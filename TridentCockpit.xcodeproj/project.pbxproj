@@ -84,6 +84,8 @@
 		0A20B18A2454C6B900FB4961 /* Shout+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A20B1882454C6B900FB4961 /* Shout+Promise.swift */; };
 		0A20B18B2454C8BC00FB4961 /* Shout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A20B1822454C5EF00FB4961 /* Shout.framework */; };
 		0A20B18C2454C8BC00FB4961 /* Shout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A20B1822454C5EF00FB4961 /* Shout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0A20B1932454D1AA00FB4961 /* Shout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A20B1842454C5EF00FB4961 /* Shout.framework */; };
+		0A20B1942454D1AA00FB4961 /* Shout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A20B1842454C5EF00FB4961 /* Shout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0A248A0124518F4C0031720B /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A2489F824518F4C0031720B /* InfoPlist.strings */; };
 		0A2E1DAE23B0CAD9009048A5 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */; };
 		0A2E42BC236B0EE900B5C569 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E42BB236B0EE900B5C569 /* VideoView.swift */; };
@@ -268,6 +270,20 @@
 			remoteGlobalIDString = 0A203A1C245215F800E8F6B0;
 			remoteInfo = "Shout-iOS";
 		};
+		0A20B18F2454D19500FB4961 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A20B1762454C5EF00FB4961 /* Shout.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A203ADC24521F6E00E8F6B0;
+			remoteInfo = "Shout-macOS";
+		};
+		0A20B1912454D19D00FB4961 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 0A7130742363503500817593;
+			remoteInfo = "FastRTPSBridge macOS";
+		};
 		0A59790A23958380006F10FF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */;
@@ -321,6 +337,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				0A20B1942454D1AA00FB4961 /* Shout.framework in Embed Frameworks */,
 				0A597910239583AB006F10FF /* FastRTPSBridge.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -502,6 +519,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A20B1932454D1AA00FB4961 /* Shout.framework in Frameworks */,
 				0A1A5BA023CE57890038EABE /* Kingfisher in Frameworks */,
 				0A66C52F23AED776001BA93D /* PromiseKit in Frameworks */,
 				0A3FD1EF23A8D50000FE9918 /* CircularProgress in Frameworks */,
@@ -933,6 +951,8 @@
 			buildRules = (
 			);
 			dependencies = (
+				0A20B1922454D19D00FB4961 /* PBXTargetDependency */,
+				0A20B1902454D19500FB4961 /* PBXTargetDependency */,
 			);
 			name = TridentCockpit;
 			packageProductDependencies = (
@@ -1282,6 +1302,16 @@
 			isa = PBXTargetDependency;
 			name = "Shout-iOS";
 			targetProxy = 0A20B18D2454C8D800FB4961 /* PBXContainerItemProxy */;
+		};
+		0A20B1902454D19500FB4961 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Shout-macOS";
+			targetProxy = 0A20B18F2454D19500FB4961 /* PBXContainerItemProxy */;
+		};
+		0A20B1922454D19D00FB4961 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "FastRTPSBridge macOS";
+			targetProxy = 0A20B1912454D19D00FB4961 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
