@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "Socket",
+        "repositoryURL": "https://github.com/DimaRU/BlueSocket.git",
+        "state": {
+          "branch": "master",
+          "revision": "e7c9d055739b5a72056ce3a38591ed32606b6843",
+          "version": null
+        }
+      },
+      {
         "package": "CDRCodable",
         "repositoryURL": "https://github.com/DimaRU/CDRCodable.git",
         "state": {

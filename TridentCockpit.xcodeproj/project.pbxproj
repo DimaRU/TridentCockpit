@@ -237,6 +237,27 @@
 			remoteGlobalIDString = 0A8A37DA2366DB1B008E8DC1;
 			remoteInfo = "FastRTPSBridge iOS";
 		};
+		0A20B1812454C5EF00FB4961 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A20B1762454C5EF00FB4961 /* Shout.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A203A1D245215F800E8F6B0;
+			remoteInfo = "Shout-iOS";
+		};
+		0A20B1832454C5EF00FB4961 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A20B1762454C5EF00FB4961 /* Shout.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A203ADD24521F6E00E8F6B0;
+			remoteInfo = "Shout-macOS";
+		};
+		0A20B1852454C5EF00FB4961 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A20B1762454C5EF00FB4961 /* Shout.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A203A26245215F800E8F6B0;
+			remoteInfo = ShoutTests;
+		};
 		0A59790A23958380006F10FF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */;
@@ -317,6 +338,7 @@
 		0A1D0A0323F93FD7006D9AFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A1D0A0523F93FD7006D9AFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A1D0A1223F93FF0006D9AFD /* TridentCockpitiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TridentCockpitiOS.entitlements; sourceTree = "<group>"; };
+		0A20B1762454C5EF00FB4961 /* Shout.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Shout.xcodeproj; path = Shout/Shout.xcodeproj; sourceTree = "<group>"; };
 		0A2489F924518F4C0031720B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		0A2E42BB236B0EE900B5C569 /* VideoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
@@ -561,6 +583,16 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		0A20B1772454C5EF00FB4961 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0A20B1822454C5EF00FB4961 /* Shout.framework */,
+				0A20B1842454C5EF00FB4961 /* Shout.framework */,
+				0A20B1862454C5EF00FB4961 /* ShoutTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		0A3FD1F023A9439100FE9918 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -656,6 +688,7 @@
 		0A7130AB236369EA00817593 = {
 			isa = PBXGroup;
 			children = (
+				0A20B1762454C5EF00FB4961 /* Shout.xcodeproj */,
 				0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */,
 				0A1D09F623F93FD6006D9AFD /* TridentCockpitiOS */,
 				0A1D0A1A23F94136006D9AFD /* Common code */,
@@ -940,6 +973,10 @@
 					ProductGroup = 0A59790423958380006F10FF /* Products */;
 					ProjectRef = 0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */;
 				},
+				{
+					ProductGroup = 0A20B1772454C5EF00FB4961 /* Products */;
+					ProjectRef = 0A20B1762454C5EF00FB4961 /* Shout.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -950,6 +987,27 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		0A20B1822454C5EF00FB4961 /* Shout.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Shout.framework;
+			remoteRef = 0A20B1812454C5EF00FB4961 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A20B1842454C5EF00FB4961 /* Shout.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Shout.framework;
+			remoteRef = 0A20B1832454C5EF00FB4961 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0A20B1862454C5EF00FB4961 /* ShoutTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ShoutTests.xctest;
+			remoteRef = 0A20B1852454C5EF00FB4961 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		0A59790B23958380006F10FF /* FastRTPSBridge.framework */ = {
 			isa = PBXReferenceProxy;
 			fileType = wrapper.framework;
