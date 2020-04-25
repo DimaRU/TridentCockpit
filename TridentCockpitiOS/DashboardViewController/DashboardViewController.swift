@@ -8,7 +8,7 @@ import UIKit
 import FastRTPSBridge
 import Moya
 import PromiseKit
-import SwiftSH
+import Shout
 
 class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     var tridentID: String!
@@ -16,7 +16,6 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     var ddsListener: DDSDiscoveryListener!
     private var spinner: SwiftSpinner?
     private var connectionMonitor = RTPSConnectionMonitor()
-    private var sshCommand: SSHCommand?
     private var timer: Timer? {
         willSet { timer?.invalidate() }
     }
@@ -224,14 +223,11 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     }
     
     private func disconnectWiFi() {
-        self.sshCommand = try! SSHCommand(host: FastRTPS.remoteAddress)
         RestProvider.request(MultiTarget(WiFiServiceAPI.disconnect))
         .then {
             RestProvider.request(MultiTarget(WiFiServiceAPI.clear))
         }.then {
-            return self.sshCommand!.executeScript(name: "PayloadCleanup")
-        }.ensure {
-            self.sshCommand = nil
+            SSH.executeScript(name: "PayloadCleanup")
         }.catch {
             $0.alert()
         }
@@ -249,8 +245,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     }
 
     private func connectGopro3() {
-        sshCommand = try! SSHCommand(host: FastRTPS.remoteAddress)
-        sshCommand!.executeScript(name: "PayloadProvision")
+        SSH.executeScript(name: "PayloadProvision")
         .then {
             Gopro3API.requestData(.getPassword)
         }.then { (passwordData: Data) -> Promise<Void> in
@@ -265,8 +260,6 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
             let model = Gopro3API.getString(from: data.advanced(by: 3))
             self.cameraModelLabel.text = model[1]
             self.cameraFirmwareLabel.text = model[0]
-        }.ensure {
-            self.sshCommand = nil
         }.catch { error in
             error.alert()
         }
@@ -410,16 +403,13 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     }
 
     private func checkWifiServiceVersion() {
-        sshCommand = try! SSHCommand(host: FastRTPS.remoteAddress)
-        sshCommand!.executeCommand("dpkg-query -s nm-wifi-service|grep Version")
+        SSH.executeCommand("dpkg-query -s nm-wifi-service|grep Version")
         .done { log in
             let version = log.first!.split(separator: " ").last!
             print(version)
             if version.compare("1.0.5-1", options: .numeric) == .orderedDescending {
                 print("nm-wifi-service version ok, enable set ap")
             }
-        }.ensure {
-            self.sshCommand = nil
         }.catch { error in
             error.alert(delay: 20)
         }
