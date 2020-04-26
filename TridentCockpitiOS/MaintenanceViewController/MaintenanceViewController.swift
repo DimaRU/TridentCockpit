@@ -5,6 +5,8 @@
 
 
 import UIKit
+import PromiseKit
+import Moya
 
 class MaintenanceViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var batteryChargeLabel: UILabel!
@@ -13,7 +15,10 @@ class MaintenanceViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var internalTemperatureLabel: UILabel!
     @IBOutlet weak var pressureLabel: UILabel!
     @IBOutlet weak var temperatureLabel: UILabel!
-    
+    @IBOutlet weak var connectionAddress: UILabel!
+    @IBOutlet weak var localAddressLabel: UILabel!
+    @IBOutlet weak var networkAddressLabel: UILabel!
+
     @Average(10) private var pressure: Double
     @Average(10) private var temperature: Double
 
@@ -47,10 +52,41 @@ class MaintenanceViewController: UIViewController, StoryboardInstantiable {
         internalTemperatureLabel.font = UIFont.monospacedSystemFont(ofSize: 17, weight: .semibold)
         pressureLabel.font = UIFont.monospacedSystemFont(ofSize: 17, weight: .semibold)
         temperatureLabel.font = UIFont.monospacedSystemFont(ofSize: 17, weight: .semibold)
-
+        
+        batteryChargeLabel.text = ""
+        batteryCycleLabel.text = ""
+        internalPressureLabel.text = ""
+        internalTemperatureLabel.text = ""
+        pressureLabel.text = ""
+        temperatureLabel.text = ""
+        networkAddressLabel.text = ""
+        
         configurAverage()
         registerReaders()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        connectionAddress.text = FastRTPS.remoteAddress
+        localAddressLabel.text = FastRTPS.localAddress
+        
+        RestProvider.request(MultiTarget(ResinAPI.deviceState))
+        .done { (deviceState: DeviceState) in
+            self.networkAddressLabel.text = (deviceState.ipAddress ?? "n/a").replacingOccurrences(of: " ", with: ", ")
+        }.catch { _ in
+        }
+    }
+    
+//    RestProvider.request(MultiTarget(WiFiServiceAPI.scan))
+//    .then {
+//        RestProvider.request(MultiTarget(WiFiServiceAPI.ssids))
+//    }.done { (ssids: [SSIDInfo]) -> Void in
+//        self.showPopup(with: ssids.filter{!$0.ssid.contains("Trident-")}, view: view)
+//    }.catch {
+//        self.alertNetwork(error: $0)
+//    }
+
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)

@@ -89,8 +89,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     // MARK: Outlets
     @IBOutlet weak var tridentIdLabel: UILabel!
     @IBOutlet weak var imageVersionLabel: UILabel!
-    @IBOutlet weak var connectionAddress: UILabel!
-    @IBOutlet weak var localAddressLabel: UILabel!
+    @IBOutlet weak var appVersionLabel: UILabel!
     @IBOutlet weak var connectedThru: UILabel!
     @IBOutlet weak var ssidLabel: UILabel!
     @IBOutlet weak var wifiMode: UILabel!
@@ -105,6 +104,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         view.layer.contentsGravity = .resizeAspectFill
         connectionMonitor.delegate = self
         connectionMonitor.startNotifications()
+        appVersionLabel.text = "\(Bundle.main.versionNumber ?? "") (\(Bundle.main.buildNumber ?? ""))"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -369,33 +369,36 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         showInterface()
         
         tridentIdLabel.text = tridentID
-        localAddressLabel.text = FastRTPS.localAddress
-        connectionAddress.text = FastRTPS.remoteAddress
-        
-        checkTridentFirmwareVersion()
-        checkWifiServiceVersion()
-        
-        startRefreshDeviceState()
-        RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
-        .done { (connectionInfo: [ConnectionInfo]) in
+        FastRTPS.setPartition(name: tridentID)
+
+        firstly {
+            self.checkTridentFirmwareVersion()
+        }.then {
+            RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
+        }.done { (connectionInfo: [ConnectionInfo]) in
             self.connectionInfo = connectionInfo
         }.then {
-            RestProvider.request(MultiTarget(ResinAPI.deviceState))
-        }.done { (deviceState: DeviceState) in
-            print(deviceState)
+            self.checkWifiServiceVersion()
         }.catch {
             self.alertNetwork(error: $0)
         }
+        
+        startRefreshDeviceState()
         navigationItem.getItem(for: .connectWiFi)?.isEnabled = true
-        FastRTPS.setPartition(name: tridentID)
     }
     
-    private func checkTridentFirmwareVersion() {
-        RestProvider.request(MultiTarget(ResinAPI.imageVersion))
-            .done { (imageVersion: [String:String]) in
-                let targetImageVersion = GlobalParams.targetImageVersion
+    private func checkTridentFirmwareVersion() -> Promise<Void> {
+        return RestProvider.request(MultiTarget(ResinAPI.latestRelease))
+            .then { (latestRelease: [String:String]) in
+                RestProvider.request(MultiTarget(ResinAPI.imageVersion)).map { ($0, latestRelease) }
+            }.done { (imageVersion: [String:String], latestRelease: [String:String]) in
                 let currentImageVersion = imageVersion["version"] ?? "11.11.11"
-                self.imageVersionLabel.text = currentImageVersion
+                if let commit = latestRelease["commit"]?.prefix(6) {
+                    self.imageVersionLabel.text = currentImageVersion + " (\(commit))"
+                } else {
+                    self.imageVersionLabel.text = currentImageVersion
+                }
+                let targetImageVersion = GlobalParams.targetImageVersion
                 let message: String
                 switch targetImageVersion.compare(currentImageVersion, options: .numeric) {
                 case .orderedAscending:
@@ -407,21 +410,17 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
                 }
                 let informative = "Version " + currentImageVersion + ", expected " + targetImageVersion
                 alert(message: message, informative: informative, delay: 20)
-        }.catch {
-            self.alertNetwork(error: $0)
         }
     }
 
-    private func checkWifiServiceVersion() {
-        SSH.executeCommand("dpkg-query -s nm-wifi-service|grep Version")
+    private func checkWifiServiceVersion() -> Promise<Void> {
+        return SSH.executeCommand("dpkg-query -s nm-wifi-service|grep Version")
         .done { log in
             let version = log.first!.split(separator: " ").last!
             print(version)
             if version.compare("1.0.5-1", options: .numeric) == .orderedDescending {
                 print("nm-wifi-service version ok, enable set ap")
             }
-        }.catch {
-            self.alertNetwork(error: $0)
         }
     }
 }

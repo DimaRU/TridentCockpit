@@ -187,6 +187,8 @@
 		0A82781223A641750039A774 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781123A641750039A774 /* MaintenanceViewController.swift */; };
 		0A8B266E2401645A00ACC72F /* PWSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8B26662401645A00ACC72F /* PWSwitch.swift */; };
 		0A8B26702401653100ACC72F /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8B266F2401653100ACC72F /* UIViewExtensions.swift */; };
+		0A8E8C6B2455B56600E06610 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8E8C6A2455B56600E06610 /* Bundle+Extensions.swift */; };
+		0A8E8C712455B59F00E06610 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8E8C6A2455B56600E06610 /* Bundle+Extensions.swift */; };
 		0A95068123F9B975004E5546 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068023F9B975004E5546 /* DashboardViewController.swift */; };
 		0A95068423F9BD62004E5546 /* DiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068323F9BD62004E5546 /* DiveViewController.swift */; };
 		0A95068623F9BD8D004E5546 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068523F9BD8D004E5546 /* MaintenanceViewController.swift */; };
@@ -463,6 +465,7 @@
 		0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemIdentifier.swift; sourceTree = "<group>"; };
 		0A8B26662401645A00ACC72F /* PWSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWSwitch.swift; sourceTree = "<group>"; };
 		0A8B266F2401653100ACC72F /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		0A8E8C6A2455B56600E06610 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		0A95068023F9B975004E5546 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		0A95068323F9BD62004E5546 /* DiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveViewController.swift; sourceTree = "<group>"; };
 		0A95068523F9BD8D004E5546 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
@@ -610,6 +613,7 @@
 				0A1A5B7E23CE4B2F0038EABE /* Date+Extensions.swift */,
 				0A1A5B7F23CE4B2F0038EABE /* iso8601date.swift */,
 				0AF0E07B243517E2009E9806 /* CustomStringConvertible+Extensions.swift */,
+				0A8E8C6A2455B56600E06610 /* Bundle+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1141,6 +1145,7 @@
 				0A95068123F9B975004E5546 /* DashboardViewController.swift in Sources */,
 				0A72A7F72433C91400AE9B2E /* RovGPS.swift in Sources */,
 				0AE206AC2423AADB0017934B /* Alerts.swift in Sources */,
+				0A8E8C712455B59F00E06610 /* Bundle+Extensions.swift in Sources */,
 				0A1D0A4323F941C4006D9AFD /* NetworkError.swift in Sources */,
 				0A0230A72411868F00A4E532 /* AuxCameraPlayerView.swift in Sources */,
 				0A1D0A3623F941BD006D9AFD /* RovDepth.swift in Sources */,
@@ -1231,6 +1236,7 @@
 				0A1A5B8023CE4B2F0038EABE /* Date+Extensions.swift in Sources */,
 				0A3FD1F923A9723E00FE9918 /* APIVersion.swift in Sources */,
 				0A82780A23A63B220039A774 /* DashboardViewController.swift in Sources */,
+				0A8E8C6B2455B56600E06610 /* Bundle+Extensions.swift in Sources */,
 				0A3FD1FF23A972BA00FE9918 /* ConnectionInfo.swift in Sources */,
 				0A71310023636B0200817593 /* BatteryState.swift in Sources */,
 				0A72A7FA2433C91400AE9B2E /* RovAttitudeEuler.swift in Sources */,
@@ -1357,6 +1363,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TridentCockpitiOS/TridentCockpitiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 9BEQ8V4XH9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = TridentCockpitiOS/Info.plist;
@@ -1365,6 +1372,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = in.ioshack.TridentCockpitiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
@@ -1380,6 +1388,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TridentCockpitiOS/TridentCockpitiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = 9BEQ8V4XH9;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = TridentCockpitiOS/Info.plist;
@@ -1388,6 +1397,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = in.ioshack.TridentCockpitiOS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
