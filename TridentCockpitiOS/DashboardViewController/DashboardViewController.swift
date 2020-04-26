@@ -226,7 +226,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         SSH.executeScript(name: "PayloadCleanup")
         .then {
             RestProvider.request(MultiTarget(WiFiServiceAPI.disconnect))
-        .then {
+        }.then {
             RestProvider.request(MultiTarget(WiFiServiceAPI.clear))
         }.catch {
             $0.alert()
