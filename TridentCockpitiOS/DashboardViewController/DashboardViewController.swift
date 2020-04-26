@@ -388,16 +388,13 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     }
     
     private func checkTridentFirmwareVersion() -> Promise<Void> {
-        return RestProvider.request(MultiTarget(ResinAPI.latestRelease))
-            .then { (latestRelease: [String:String]) in
-                RestProvider.request(MultiTarget(ResinAPI.imageVersion)).map { ($0, latestRelease) }
-            }.done { (imageVersion: [String:String], latestRelease: [String:String]) in
+        return RestProvider.request(MultiTarget(ResinAPI.deviceState))
+            .then { (deviceState: DeviceState) in
+                RestProvider.request(MultiTarget(ResinAPI.imageVersion)).map { ($0, deviceState) }
+            }.done { (imageVersion: [String:String], deviceState: DeviceState) in
                 let currentImageVersion = imageVersion["version"] ?? "11.11.11"
-                if let commit = latestRelease["commit"]?.prefix(6) {
-                    self.imageVersionLabel.text = currentImageVersion + " (\(commit))"
-                } else {
-                    self.imageVersionLabel.text = currentImageVersion
-                }
+                let commit = deviceState.commit.prefix(6)
+                self.imageVersionLabel.text = currentImageVersion + " (\(commit))"
                 let targetImageVersion = GlobalParams.targetImageVersion
                 let message: String
                 switch targetImageVersion.compare(currentImageVersion, options: .numeric) {
