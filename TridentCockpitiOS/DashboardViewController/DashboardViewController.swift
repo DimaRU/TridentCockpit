@@ -193,6 +193,19 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         popover?.sourceRect = view.frame
         present(controller, animated: true)
     }
+    
+    private func alertNetwork(error: Error, delay: Int = 5) {
+        if !connectionMonitor.isConnected {
+            // Drop timeout errors
+            switch error {
+            case NetworkError.unaviable:
+                return
+            default:
+                print(#function, error)
+            }
+        }
+        error.alert(delay: delay)
+    }
 
     // MARK: Network
     private func startRefreshDeviceState() {
@@ -210,15 +223,8 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         .done { (connectionInfo: [ConnectionInfo]) in
             self.connectionInfo = connectionInfo
             self.startRefreshDeviceState()
-        }.catch { error in
-            switch error {
-            case NetworkError.unaviable(let message):
-                self.timer = nil
-                alert(message: "Trident connection lost", informative: message, delay: 5)
-            default:
-                error.alert(delay: 5)
-            }
-            
+        }.catch {
+            self.alertNetwork(error: $0)
         }
     }
     
@@ -229,7 +235,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         }.then {
             RestProvider.request(MultiTarget(WiFiServiceAPI.clear))
         }.catch {
-            $0.alert()
+            self.alertNetwork(error: $0)
         }
     }
 
@@ -240,7 +246,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         }.done { (ssids: [SSIDInfo]) -> Void in
             self.showPopup(with: ssids.filter{!$0.ssid.contains("Trident-")}, view: view)
         }.catch {
-            $0.alert()
+            self.alertNetwork(error: $0)
         }
     }
 
@@ -260,8 +266,8 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
             let model = Gopro3API.getString(from: data.advanced(by: 3))
             self.cameraModelLabel.text = model[1]
             self.cameraFirmwareLabel.text = model[0]
-        }.catch { error in
-            error.alert()
+        }.catch {
+            self.alertNetwork(error: $0)
         }
     }
 
@@ -304,10 +310,27 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     func rtpsDisconnectedState() {
         timer = nil
         let message = "Trident disconnected"
-        if let otherViewController = presentedViewController ?? navigationController?.topViewController,
-            !(otherViewController is UIAlertController) {
+        
+        if let currentViewController = presentedViewController ?? navigationController?.topViewController,
+            !(currentViewController is UIAlertController) {
+            
+            func disconnectProc() {
+                print(#function, currentViewController)
+                guard currentViewController != self else {
+                    self.hideInterface()
+                    self.addCircularProgressView(to: self.view)
+                    self.ddsDiscoveryStart()
+                    return
+                }
+                if self.presentedViewController != nil {
+                    currentViewController.dismiss(animated: true)
+                } else {
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+            
             let info: String
-            switch otherViewController {
+            switch currentViewController {
             case is DiveViewController:
                 info = "Connection to Trident lost. Exiting Pilot Mode."
             case is MaintenanceViewController:
@@ -319,37 +342,24 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
             default:
                 fatalError()
             }
+            
             let alert = UIAlertController(title: message, message: info, preferredStyle: .alert)
             let action = UIAlertAction(title: "Dismiss", style: .cancel) { _ in
-                guard otherViewController != self else { return }
-                if self.presentedViewController != nil {
-                    otherViewController.dismiss(animated: true)
-                } else {
-                    self.navigationController?.popViewController(animated: true)
-                }
+                disconnectProc()
             }
             alert.addAction(action)
-
-            otherViewController.present(alert, animated: true)
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) { //[weak alert] in
-//                guard let alert = alert else { return }
-                alert.dismiss(animated: true) {
-                    guard otherViewController != self else {
-                        self.hideInterface()
-                        self.addCircularProgressView(to: self.view)
-                        self.ddsDiscoveryStart()
-                        return
-                    }
-                    if self.presentedViewController != nil {
-                        otherViewController.dismiss(animated: true)
-                    } else {
-                        self.navigationController?.popViewController(animated: true)
-                    }
+            currentViewController.present(alert, animated: true)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) { [weak alert] in
+                alert?.dismiss(animated: true) {
+                    disconnectProc()
                 }
             }
+        } else {
+            assertionFailure("Disconnect wrong controller")
         }
-        FastRTPS.deleteParticipant()
         
+        FastRTPS.deleteParticipant()
     }
     
     func rtpsConnectedState() {
@@ -374,7 +384,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         }.done { (deviceState: DeviceState) in
             print(deviceState)
         }.catch {
-            $0.alert()
+            self.alertNetwork(error: $0)
         }
         navigationItem.getItem(for: .connectWiFi)?.isEnabled = true
         FastRTPS.setPartition(name: tridentID)
@@ -398,7 +408,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
                 let informative = "Version " + currentImageVersion + ", expected " + targetImageVersion
                 alert(message: message, informative: informative, delay: 20)
         }.catch {
-            $0.alert(delay: 20)
+            self.alertNetwork(error: $0)
         }
     }
 
@@ -410,8 +420,8 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
             if version.compare("1.0.5-1", options: .numeric) == .orderedDescending {
                 print("nm-wifi-service version ok, enable set ap")
             }
-        }.catch { error in
-            error.alert(delay: 20)
+        }.catch {
+            self.alertNetwork(error: $0)
         }
     }
 }
@@ -433,7 +443,7 @@ extension DashboardViewController: WiFiPopupProtocol {
             self.connectionInfo = connectionInfo
             self.startRefreshDeviceState()
         }.catch {
-            $0.alert()
+            self.alertNetwork(error: $0)
         }
     }
 }

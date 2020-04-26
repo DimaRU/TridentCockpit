@@ -12,7 +12,7 @@ protocol RTPSConnectionMonitorProtocol: AnyObject {
 }
 
 final class RTPSConnectionMonitor {
-    let stdParticipantList: Set<String> = ["geoserve", "trident-core", "trident-control", "trident-update", "trident-record", "trident-remote-control"]
+    let stdParticipantList: Set<String> = ["geoserve", "trident-core", "trident-control", "trident-update", "trident-record"]
     var tridentParticipants: Set<String> = []
     var isConnected = false
     weak var delegate: RTPSConnectionMonitorProtocol?
@@ -41,6 +41,9 @@ final class RTPSConnectionMonitor {
                 if self.stdParticipantList.contains(participantName) {
                     print("Discovered Participant:", participantName, locators)
                     self.tridentParticipants.insert(participantName)
+                } else if participantName == "trident-remote-control" {
+                    print("Discovered Participant:", participantName, locators)
+                    // Skip for comparability with prev. versions
                 } else {
                     print("Unknown participant:", participantName, properties, locators, metaLocators)
                     return
@@ -61,15 +64,15 @@ final class RTPSConnectionMonitor {
                 let participantName = userInfo[RTPSNotificationUserInfo.participant.rawValue] as! String
                 print("Dropped Participant:", participantName)
                 self.tridentParticipants.remove(participantName)
-                if self.tridentParticipants.count <= self.stdParticipantList.count - 1 {
-                    print("Trident disconnected")
+                if self.tridentParticipants.count < self.stdParticipantList.count {
                     guard self.isConnected else { break }
+                    print("Trident disconnected")
                     self.isConnected = false
                     DispatchQueue.main.async {
                         self.delegate?.rtpsDisconnectedState()
                     }
                 }
-        #if DEBUG
+        #if RTPSDEBUG
             case .discoveredReader:
                 let topicName = userInfo[RTPSNotificationUserInfo.topic.rawValue] as! String
                 let typeName = userInfo[RTPSNotificationUserInfo.typeName.rawValue] as! String
@@ -91,7 +94,7 @@ final class RTPSConnectionMonitor {
                 break
             }
         }
-        #if DEBUG
+        #if RTPSDEBUG
         NotificationCenter.default.addObserver(forName: .RTPSReaderWriterNotification, object: nil, queue: nil) { notification in
             guard let userInfo = notification.userInfo as? Dictionary<Int, Any>,
                 let rawType = userInfo[RTPSNotificationUserInfo.reason.rawValue] as? Int,

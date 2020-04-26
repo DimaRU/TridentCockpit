@@ -12,7 +12,7 @@ final class FastRTPS {
     var remoteIPAddress: String = ""
     
     private static let shared = FastRTPS()
-#if DEBUG
+#if RTPSDEBUG
     lazy var fastRTPSBridge: FastRTPSBridge? = FastRTPSBridge.init(logLevel: .warning)
 #else
     lazy var fastRTPSBridge: FastRTPSBridge? = FastRTPSBridge.init(logLevel: .error)
