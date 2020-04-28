@@ -144,6 +144,11 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         return DiveViewController(coder: coder, vehicleId: tridentID)
     }
     
+    @IBSegueAction
+    private func goGetWifiAPTableViewController(coder: NSCoder) -> GetWifiAPTableViewController? {
+        return GetWifiAPTableViewController(coder: coder, delegate: self)
+    }
+    
     @IBAction func connectWifiButtonPress(_ sender: UIBarButtonItem) {
         if !wifiConnected {
             connectWiFi(view: sender.view!)
@@ -155,8 +160,13 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     @IBAction func connectCameraButtonPress(_ sender: UIBarButtonItem) {
         connectGopro3()
     }
+    
+    @IBAction func setupApButtonPress(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "GetWifiAPTableViewController", sender: sender)
+    }
 
     // MARK: Private func
+    
     // MARK: Interface
     private func hideInterface() {
         navigationItem.leftBarButtonItems?.forEach{ $0.isEnabled = false }
@@ -411,12 +421,20 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     }
 
     private func checkWifiServiceVersion() -> Promise<Void> {
+        if let item = navigationItem.getItem(for: .setupAP) {
+            item.isEnabled = true
+            return Promise.value(())
+        }
         return SSH.executeCommand("dpkg-query -s nm-wifi-service|grep Version")
         .done { log in
             let version = log.first!.split(separator: " ").last!
-            print(version)
             if version.compare("1.0.5-1", options: .numeric) == .orderedDescending {
-                print("nm-wifi-service version ok, enable set ap")
+                let setupAPButton = UIBarButtonItem(image: UIImage(named: "wifi-ap"),
+                                                    style: .plain,
+                                                    target: self,
+                                                    action: #selector(self.setupApButtonPress(_:)))
+                setupAPButton.tag = UINavigationItem.Identifier.setupAP.rawValue
+                self.navigationItem.leftBarButtonItems?.insert(setupAPButton, at: 1)
             }
         }
     }
@@ -436,6 +454,23 @@ extension DashboardViewController: WiFiPopupProtocol {
                 ssidConnected == ssid {
                 KeychainService.set(password, key: ssid)
             }
+            self.connectionInfo = connectionInfo
+            self.startRefreshDeviceState()
+        }.catch {
+            self.alertNetwork(error: $0)
+        }
+    }
+}
+
+extension DashboardViewController: GetWifiAPProtocol {
+    func wifiAP(ssid: String, password: String) {
+        timer = nil
+        RestProvider.request(MultiTarget(WiFiServiceAPI.setupAP(ssid: ssid, passphrase: password)))
+        .then { _ in
+            after(.seconds(1))
+        }.then {
+            RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
+        }.done { (connectionInfo: [ConnectionInfo]) in
             self.connectionInfo = connectionInfo
             self.startRefreshDeviceState()
         }.catch {

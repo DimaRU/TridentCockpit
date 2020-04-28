@@ -415,6 +415,7 @@
                         <outlet property="ssidLabel" destination="H8I-Ki-Oop" id="FLe-FU-yE4"/>
                         <outlet property="tridentIdLabel" destination="hxy-9N-c2L" id="ch8-ha-uGi"/>
                         <outlet property="wifiMode" destination="Dx2-4s-KpZ" id="0M3-qo-u3e"/>
+                        <segue destination="F53-ad-OZZ" kind="presentation" identifier="GetWifiAPTableViewController" modalPresentationStyle="formSheet" id="Oit-h9-b1O"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -443,6 +444,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5G4-ki-cjR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="821" y="-450"/>
+        </scene>
+        <!--GetWifiAPTableViewController-->
+        <scene sceneID="1PM-Nq-r6N">
+            <objects>
+                <viewControllerPlaceholder storyboardName="GetWifiAPTableViewController" id="F53-ad-OZZ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bSz-wZ-8wg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1198" y="-446"/>
         </scene>
         <!--Maintenance View Controller-->
         <scene sceneID="H9i-V0-Lyb">
@@ -678,7 +687,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="667" height="375"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="CoD-p8-7G7" customClass="PWSwitch" customModule="TridentCockpitiOS" customModuleProvider="target">
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CoD-p8-7G7" customClass="PWSwitch" customModule="TridentCockpitiOS" customModuleProvider="target">
                                 <rect key="frame" x="8" y="36" width="50" height="26"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="trackOffBorderColor">
@@ -714,7 +723,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="shouldFillOnPush" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Delete after download" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7v-vZ-NzD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" ambiguous="YES" text="Delete after download" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y7v-vZ-NzD">
                                 <rect key="frame" x="66" y="40" width="151" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>

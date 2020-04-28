@@ -39,4 +39,9 @@ struct Preference {
     @UserPreferenceWithDefault("VideoSizingFill", defaultValue: true)
     static var videoSizingFill: Bool
 
+    @UserPreference("SSIDName")
+    static var ssidName: String?
+    
+    @UserPreference("SSIDPassword")
+    static var ssidPassword: String?
 }

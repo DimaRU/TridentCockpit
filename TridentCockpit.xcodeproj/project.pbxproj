@@ -215,6 +215,8 @@
 		0ACCDE6D23FDAD4E00381207 /* CameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCDE6C23FDAD4E00381207 /* CameraControlView.swift */; };
 		0ACCDE6F23FDAE7000381207 /* RovModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCDE6E23FDAE7000381207 /* RovModelView.swift */; };
 		0ACCDE7523FDB29D00381207 /* AuxCameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCDE7323FDB25E00381207 /* AuxCameraControlView.swift */; };
+		0AD8C5D12458400B009E0A9E /* GetWifiAPTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD8C5D02458400B009E0A9E /* GetWifiAPTableViewController.swift */; };
+		0AD8C5D32458402A009E0A9E /* GetWifiAPTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AD8C5D22458402A009E0A9E /* GetWifiAPTableViewController.storyboard */; };
 		0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0ADA653723B119880090D757 /* PayloadProvision.sh */; };
 		0ADD42B9240EBBCD008ECFCC /* TouchJoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD42B1240EBBCD008ECFCC /* TouchJoystickView.swift */; };
 		0AE05CD923FD329E00C7CA08 /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE05CD123FD329E00C7CA08 /* FloatingView.swift */; };
@@ -489,6 +491,8 @@
 		0ACCDE6C23FDAD4E00381207 /* CameraControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraControlView.swift; sourceTree = "<group>"; };
 		0ACCDE6E23FDAE7000381207 /* RovModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RovModelView.swift; sourceTree = "<group>"; };
 		0ACCDE7323FDB25E00381207 /* AuxCameraControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuxCameraControlView.swift; sourceTree = "<group>"; };
+		0AD8C5D02458400B009E0A9E /* GetWifiAPTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWifiAPTableViewController.swift; sourceTree = "<group>"; };
+		0AD8C5D22458402A009E0A9E /* GetWifiAPTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetWifiAPTableViewController.storyboard; sourceTree = "<group>"; };
 		0ADA653723B119880090D757 /* PayloadProvision.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PayloadProvision.sh; sourceTree = "<group>"; };
 		0ADD42B1240EBBCD008ECFCC /* TouchJoystickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchJoystickView.swift; sourceTree = "<group>"; };
 		0AE05CD123FD329E00C7CA08 /* FloatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingView.swift; sourceTree = "<group>"; };
@@ -910,6 +914,8 @@
 			children = (
 				0A95068023F9B975004E5546 /* DashboardViewController.swift */,
 				0A95069323F9E647004E5546 /* WiFiPopupViewController.swift */,
+				0AD8C5D02458400B009E0A9E /* GetWifiAPTableViewController.swift */,
+				0AD8C5D22458402A009E0A9E /* GetWifiAPTableViewController.storyboard */,
 			);
 			path = DashboardViewController;
 			sourceTree = "<group>";
@@ -1067,6 +1073,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A1D0A0423F93FD7006D9AFD /* LaunchScreen.storyboard in Resources */,
+				0AD8C5D32458402A009E0A9E /* GetWifiAPTableViewController.storyboard in Resources */,
 				0A1D09FF23F93FD6006D9AFD /* Main.storyboard in Resources */,
 				0A0C1C8523FE015100D09F77 /* TridentCockpit.scnassets in Resources */,
 				0A1D0A1C23F941AA006D9AFD /* PayloadCleanup.sh in Resources */,
@@ -1129,6 +1136,7 @@
 				0A1D0A2E23F941BD006D9AFD /* RovFuelgauge.swift in Sources */,
 				0A1D0A4123F941C4006D9AFD /* DDSDiscoveryListener.swift in Sources */,
 				0A1D0A3323F941BD006D9AFD /* RovPoint.swift in Sources */,
+				0AD8C5D12458400B009E0A9E /* GetWifiAPTableViewController.swift in Sources */,
 				0AF0E07D2435181C009E9806 /* CustomStringConvertible+Extensions.swift in Sources */,
 				0A8B266E2401645A00ACC72F /* PWSwitch.swift in Sources */,
 				0A95068623F9BD8D004E5546 /* MaintenanceViewController.swift in Sources */,

@@ -10,6 +10,7 @@ extension UINavigationItem {
     enum Identifier: Int {
         case connectWiFi = 1
         case connectCamera = 2
+        case setupAP = 3
     }
 
     func getLeftItem(for identifier: UINavigationItem.Identifier) -> UIBarButtonItem? {
