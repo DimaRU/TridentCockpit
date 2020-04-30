@@ -17,12 +17,18 @@ class RestProvider {
         let configuration = URLSessionConfiguration.ephemeral
         configuration.timeoutIntervalForRequest = 15
         configuration.timeoutIntervalForResource = 15
+        configuration.waitsForConnectivity = false
+        configuration.allowsCellularAccess = false
         return Session(configuration: configuration)
     }()
     
     fileprivate static let restProvider = MoyaProvider<MultiTarget>(session: manager)
     
     // MARK: - Public
+    class func setSession(timeout: TimeInterval) {
+        restProvider.session.sessionConfiguration.timeoutIntervalForResource = timeout
+    }
+    
     class func request(_ target: MultiTarget) -> Promise<Void> {
         let (promise, seal) = Promise<Void>.pending()
         RestProvider.sendRequest((target,
