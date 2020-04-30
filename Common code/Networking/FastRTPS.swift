@@ -8,8 +8,9 @@ import CDRCodable
 import FastRTPSBridge
 
 final class FastRTPS {
-    var localIPAddress: String = ""
-    var remoteIPAddress: String = ""
+    static var localAddress: String = ""
+    static var localInterface: String = ""
+    static var remoteAddress: String = ""
     
     private static let shared = FastRTPS()
 #if RTPSDEBUG
@@ -18,16 +19,6 @@ final class FastRTPS {
     lazy var fastRTPSBridge: FastRTPSBridge? = FastRTPSBridge.init(logLevel: .error)
 #endif
     
-    class var localAddress: String {
-        get { FastRTPS.shared.localIPAddress }
-        set { FastRTPS.shared.localIPAddress = newValue }
-    }
-
-    class var remoteAddress: String {
-        get { FastRTPS.shared.remoteIPAddress }
-        set { FastRTPS.shared.remoteIPAddress = newValue }
-    }
-
     class func createParticipant(name: String, interfaceIPv4: String? = nil, networkAddress: String? = nil) {
         FastRTPS.shared.fastRTPSBridge?.createRTPSParticipant(withName: name,
                                                               interfaceIPv4: interfaceIPv4,
@@ -40,8 +31,6 @@ final class FastRTPS {
 
     class func deleteParticipant() {
         FastRTPS.shared.fastRTPSBridge?.deleteParticipant()
-        FastRTPS.shared.localIPAddress = ""
-        FastRTPS.shared.remoteIPAddress = ""
     }
 
     class func registerReader<T: DDSType>(topic: RovReaderTopic, completion: @escaping (T)->Void) {

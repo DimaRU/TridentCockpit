@@ -11,15 +11,24 @@ import PromiseKit
 import Shout
 
 class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
-    var tridentID: String!
-    var discovered: [String: (uuid: String, interface: String, isWiFi: Bool)] = [:]
-    var ddsListener: DDSDiscoveryListener!
+    private var tridentID: String!
+    private var discovered: [String: (uuid: String, interface: String, isWiFi: Bool)] = [:]
+    private var ddsListener: DDSDiscoveryListener!
     private var spinner: SwiftSpinner?
     private var connectionMonitor = RTPSConnectionMonitor()
     private var timer: Timer? {
         willSet { timer?.invalidate() }
     }
     
+    private enum AppState {
+        case firstAppear
+        case disconnected
+        case afterBackground
+    }
+    private var appState = AppState.firstAppear
+    
+    // MARK: Trace connection state vars
+    private var wifiConnected = false
     private var connectedThruBuoy: Bool? = nil {
         didSet {
             guard connectedThruBuoy != nil else {
@@ -29,7 +38,6 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
             connectedThru.text = connectedThruBuoy! ? "topside buoy" : "onboard WiFi"
         }
     }
-    private var wifiConnected = false
 
     var connectionInfo: [ConnectionInfo] = [] {
         didSet {
@@ -102,16 +110,25 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         super.viewDidLoad()
         
         view.layer.contentsGravity = .resizeAspectFill
+        appVersionLabel.text = "\(Bundle.main.versionNumber ?? "") (\(Bundle.main.buildNumber ?? ""))"
         connectionMonitor.delegate = self
         connectionMonitor.startNotifications()
-        appVersionLabel.text = "\(Bundle.main.versionNumber ?? "") (\(Bundle.main.buildNumber ?? ""))"
+        
+        NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification,
+                                               object: nil,
+                                               queue: nil,
+                                               using: willEnterForeground(_:))
+        NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification,
+                                               object: nil,
+                                               queue: nil,
+                                               using: didEnterBackground(_:))
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.layer.contents = UIImage(named: "Trident")?.cgImage
 
-        if FastRTPS.remoteAddress != "", connectionMonitor.isConnected {
+        if !FastRTPS.remoteAddress.isEmpty, connectionMonitor.isConnected {
             startRefreshDeviceState()
         } else {
             hideInterface()
@@ -121,7 +138,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if FastRTPS.remoteAddress == "" || !connectionMonitor.isConnected {
+        if FastRTPS.remoteAddress.isEmpty || !connectionMonitor.isConnected {
             addCircularProgressView(to: view)
             ddsDiscoveryStart()
         }
@@ -309,8 +326,9 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         FastRTPS.remoteAddress = remote.key
         tridentID = remote.value.uuid
         let localAddress = interfaceAddresses[remote.value.interface]!
+        FastRTPS.localInterface = remote.value.interface
         FastRTPS.localAddress = localAddress
-        print("Local address:", localAddress)
+        print("Local address \(FastRTPS.localInterface):\(localAddress)")
         let network = FastRTPS.remoteAddress + "/32"
         FastRTPS.createParticipant(name: "TridentCockpitiOS", interfaceIPv4: localAddress, networkAddress: network)
         FastRTPS.setPartition(name: self.tridentID!)
@@ -325,7 +343,6 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
             !(currentViewController is UIAlertController) {
             
             func disconnectProc() {
-                print(#function, currentViewController)
                 guard currentViewController != self else {
                     self.hideInterface()
                     self.addCircularProgressView(to: self.view)
@@ -395,6 +412,14 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         
         startRefreshDeviceState()
         navigationItem.getItem(for: .connectWiFi)?.isEnabled = true
+    }
+    
+    private func didEnterBackground(_ notification: Notification) {
+        
+    }
+    
+    private func willEnterForeground(_ notification: Notification) {
+        
     }
     
     private func checkTridentFirmwareVersion() -> Promise<Void> {
