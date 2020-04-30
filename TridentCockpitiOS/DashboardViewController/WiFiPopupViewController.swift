@@ -12,7 +12,7 @@ protocol WiFiPopupProtocol: NSObject {
     func enteredPassword(ssid: String, password: String)
 }
 
-class WiFiPopupViewController: UITableViewController, StoryboardInstantiable {
+class WiFiPopupViewController: UITableViewController {
 
     weak var delegate: WiFiPopupProtocol?
     var ssids: [SSIDInfo] = []
