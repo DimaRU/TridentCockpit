@@ -93,7 +93,7 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
         parent?.view.layer?.contents = NSImage(named: "Trident")
         spinner = addCircularProgressView(to: view)
         connectionMonitor.delegate = self
-        connectionMonitor.startNotifications()
+        connectionMonitor.startObserveNotifications()
         ddsDiscoveryStart()
     }
     
