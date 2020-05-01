@@ -10,10 +10,10 @@ import Moya
 import PromiseKit
 import Shout
 
-class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
+class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, BackgroundWatchProtocol {
     private var tridentID: String!
     private var discovered: [String: (uuid: String, interface: String, isWiFi: Bool)] = [:]
-    private var ddsListener: DDSDiscoveryListener!
+    private var ddsListener: DDSDiscoveryListener?
     private var spinner: SwiftSpinner?
     private var connectionMonitor = RTPSConnectionMonitor()
     private var timer: Timer? {
@@ -25,6 +25,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         case connected
     }
     private var appState = AppState.undiscovered
+    private var backgroundWatch: BackgroundWatch?
     
     // MARK: Trace connection state vars
     private var wifiConnected = false
@@ -114,6 +115,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         connectionMonitor.startObserveNotifications()
         
         hideInterface()
+        backgroundWatch = BackgroundWatch(delegate: self)
         addCircularProgressView(to: view)
         ddsDiscoveryStart()
     }
@@ -125,14 +127,6 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         if connectionMonitor.isConnected {
             startRefreshDeviceState()
         }
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -230,7 +224,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
             case NetworkError.unaviable:
                 return
             default:
-                print(#function, error)
+                break
             }
         }
         error.alert(delay: delay)
@@ -306,8 +300,8 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
             guard let uuid = uuidString.split(separator: ":").last else { return }
             self?.discovered[ipv4] = (uuid: String(uuid), interface: interface, isWiFi: isWiFi)
         }
-        do  {
-            try ddsListener.start()
+        do {
+            try ddsListener!.start()
         } catch {
             fatalError(error.localizedDescription)
         }
@@ -315,7 +309,8 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
             guard self.discovered.count != 0 else { return }
             self.timer = nil
             Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
-                self.ddsListener.stop()
+                self.ddsListener?.stop()
+                self.ddsListener = nil
                 self.startRTPS()
             }
         }
@@ -337,6 +332,25 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         FastRTPS.setPartition(name: self.tridentID!)
     }
         
+    func didEnterBackground() {
+        print(#function)
+        self.ddsListener?.stop()
+        self.ddsListener = nil
+        spinner?.hide()
+        spinner = nil
+        view.layer.contents = nil       // save memory
+        if connectionMonitor.isConnected {
+            rtpsDisconnectedState()
+        }
+    }
+    
+    func willEnterForeground() {
+        print(#function)
+        view.layer.contents = UIImage(named: "Trident")?.cgImage
+        addCircularProgressView(to: view)
+        ddsDiscoveryStart()
+    }
+    
     // MARK: Internal func
     func rtpsDisconnectedState() {
         timer = nil
@@ -359,28 +373,6 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         } else {
             showDisconnectAlert(message: "Connection to Trident lost.")
         }
-    }
-    
-    private func showDisconnectAlert(message: String) {
-        func disconnectProc() {
-            addCircularProgressView(to: self.view)
-            ddsDiscoveryStart()
-        }
-
-        hideInterface()
-        let alert = UIAlertController(title: "Trident disconnected", message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Dismiss", style: .cancel) { _ in
-            disconnectProc()
-        }
-        alert.addAction(action)
-        present(alert, animated: true)
-        
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) { [weak alert] in
-            alert?.dismiss(animated: true) {
-                disconnectProc()
-            }
-        }
-        
     }
     
     func rtpsConnectedState() {
@@ -406,6 +398,28 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         
         startRefreshDeviceState()
         navigationItem.getItem(for: .connectWiFi)?.isEnabled = true
+    }
+    
+    private func showDisconnectAlert(message: String) {
+        func disconnectProc() {
+            addCircularProgressView(to: self.view)
+            ddsDiscoveryStart()
+        }
+        hideInterface()
+        guard UIApplication.shared.applicationState == .active else { return }
+        
+        let alert = UIAlertController(title: "Trident disconnected", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Dismiss", style: .cancel) { _ in
+            disconnectProc()
+        }
+        alert.addAction(action)
+        present(alert, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) { [weak alert] in
+            alert?.dismiss(animated: true) {
+                disconnectProc()
+            }
+        }
     }
     
     private func checkTridentFirmwareVersion() -> Promise<Void> {

@@ -15,7 +15,14 @@ final class RTPSConnectionMonitor {
     let stdParticipantList: Set<String> = ["geoserve", "trident-core", "trident-control", "trident-update", "trident-record"]
     var tridentParticipants: Set<String> = []
     var isConnected = false
-    weak var delegate: RTPSConnectionMonitorProtocol?
+    weak var delegate: RTPSConnectionMonitorProtocol? {
+        didSet {
+            if delegate == nil {
+                tridentParticipants = []
+                isConnected = false
+            }
+        }
+    }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
@@ -51,8 +58,8 @@ final class RTPSConnectionMonitor {
                 }
                 if self.tridentParticipants.count == self.stdParticipantList.count {
                     // All connected
-                    guard !self.isConnected else { break }
                     print("All needed participant discovered, start connection")
+                    guard !self.isConnected else { break }
                     self.isConnected = true
                     DispatchQueue.main.async {
                         self.delegate?.rtpsConnectedState()
