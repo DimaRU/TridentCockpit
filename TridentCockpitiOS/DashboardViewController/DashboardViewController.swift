@@ -156,6 +156,10 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     }
     
     // MARK: Actions
+    @IBAction func unwindToDashboard(unwindSegue: UIStoryboardSegue) {
+        print(#function)
+    }
+
     @IBSegueAction
     private func goDiveScreen(coder: NSCoder) -> DiveViewController? {
         return DiveViewController(coder: coder, vehicleId: tridentID)

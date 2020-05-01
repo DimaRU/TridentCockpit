@@ -495,9 +495,11 @@
                         <outlet property="videoSizingButton" destination="0Sm-zI-nHs" id="NJL-gu-hYS"/>
                         <outlet property="videoView" destination="kvl-QW-fil" id="hWy-SM-MRR"/>
                         <outlet property="yawPitchJoystickView" destination="87Y-el-STp" id="hzR-eo-6qc"/>
+                        <segue destination="WEJ-pg-hgT" kind="unwind" identifier="unwindToDashboardSegue" unwindAction="unwindToDashboardWithUnwindSegue:" id="ZLb-8q-MdX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Ul-BC-E8d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="WEJ-pg-hgT" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-80.402010050251263" y="10.791366906474821"/>
         </scene>
