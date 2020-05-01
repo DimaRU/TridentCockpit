@@ -655,7 +655,7 @@
                         <outlet property="networkAddressLabel" destination="5wJ-u4-UOu" id="8u8-oX-LIN"/>
                         <outlet property="pressureLabel" destination="MYJ-Fk-BGM" id="xhi-cO-p40"/>
                         <outlet property="temperatureLabel" destination="QdO-FM-bYC" id="360-n4-I9O"/>
-                        <segue destination="wy4-nb-0Mb" kind="unwind" identifier="unwindToDashboardSegue" unwindAction="unwindToDashboardWithUnwindSegue:" id="jU4-KR-evu"/>
+                        <segue destination="wy4-nb-0Mb" kind="unwind" identifier="unwindToDashboardSegue" customClass="UIStoryboardSegueWithCompletion" customModule="TridentCockpitiOS" customModuleProvider="target" unwindAction="unwindToDashboardWithUnwindSegue:" id="jU4-KR-evu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Waa-GE-weJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -921,7 +921,7 @@
                         <outlet property="availableSpaceLabel" destination="T41-zp-FlQ" id="o8P-58-DXR"/>
                         <outlet property="collectionView" destination="3ca-VW-SNk" id="dx5-Qj-NhV"/>
                         <outlet property="deleteAfterSwitch" destination="CoD-p8-7G7" id="4Kg-Oa-ThG"/>
-                        <segue destination="s79-BS-6lj" kind="unwind" identifier="unwindToDashboardSegue" unwindAction="unwindToDashboardWithUnwindSegue:" id="190-Wk-r4t"/>
+                        <segue destination="s79-BS-6lj" kind="unwind" identifier="unwindToDashboardSegue" customClass="UIStoryboardSegueWithCompletion" customModule="TridentCockpitiOS" customModuleProvider="target" unwindAction="unwindToDashboardWithUnwindSegue:" id="190-Wk-r4t"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndU-jS-f7D" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -21,11 +21,11 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     }
     
     private enum AppState {
-        case firstAppear
-        case disconnected
-        case afterBackground
+        case undiscovered
+        case discovered
+        case connected
     }
-    private var appState = AppState.firstAppear
+    private var appState = AppState.undiscovered
     
     // MARK: Trace connection state vars
     private var wifiConnected = false
@@ -112,7 +112,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         view.layer.contentsGravity = .resizeAspectFill
         appVersionLabel.text = "\(Bundle.main.versionNumber ?? "") (\(Bundle.main.buildNumber ?? ""))"
         connectionMonitor.delegate = self
-        connectionMonitor.startNotifications()
+        connectionMonitor.startObserveNotifications()
         
         NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification,
                                                object: nil,
@@ -122,42 +122,50 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
                                                object: nil,
                                                queue: nil,
                                                using: didEnterBackground(_:))
+        
+        hideInterface()
+        addCircularProgressView(to: view)
+        ddsDiscoveryStart()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.layer.contents = UIImage(named: "Trident")?.cgImage
 
-        if !FastRTPS.remoteAddress.isEmpty, connectionMonitor.isConnected {
+        if connectionMonitor.isConnected {
             startRefreshDeviceState()
-        } else {
-            hideInterface()
         }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-
-        if FastRTPS.remoteAddress.isEmpty || !connectionMonitor.isConnected {
-            addCircularProgressView(to: view)
-            ddsDiscoveryStart()
-        }
-
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        timer = nil
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
+        timer = nil
         view.layer.contents = nil       // save memory
     }
     
     // MARK: Actions
     @IBAction func unwindToDashboard(unwindSegue: UIStoryboardSegue) {
-        print(#function)
+        guard let seque = unwindSegue as? UIStoryboardSegueWithCompletion else { return }
+        seque.completion = {
+            switch unwindSegue.source {
+            case is DiveViewController:
+                self.showDisconnectAlert(message: "Connection to Trident lost. Exiting Pilot Mode.")
+            case is MaintenanceViewController:
+                self.showDisconnectAlert(message: "Connection to Trident lost. Exiting Maintenance Mode.")
+            case is PastDivesViewController:
+                self.showDisconnectAlert(message: "Connection to Trident lost. Exiting Past Dives Mode.")
+            default:
+                fatalError()
+            }
+        }
     }
 
     @IBSegueAction
@@ -334,6 +342,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         FastRTPS.localAddress = localAddress
         print("Local address \(FastRTPS.localInterface):\(localAddress)")
         let network = FastRTPS.remoteAddress + "/32"
+        connectionMonitor.delegate = self
         FastRTPS.createParticipant(name: "TridentCockpitiOS", interfaceIPv4: localAddress, networkAddress: network)
         FastRTPS.setPartition(name: self.tridentID!)
     }
@@ -341,56 +350,47 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     // MARK: Internal func
     func rtpsDisconnectedState() {
         timer = nil
-        let message = "Trident disconnected"
+        connectionMonitor.delegate = nil
+        FastRTPS.deleteParticipant()
         
-        if let currentViewController = presentedViewController ?? navigationController?.topViewController,
-            !(currentViewController is UIAlertController) {
-            
-            func disconnectProc() {
-                guard currentViewController != self else {
-                    self.hideInterface()
-                    self.addCircularProgressView(to: self.view)
-                    self.ddsDiscoveryStart()
+        var currentViewController = navigationController!.topViewController!
+        if currentViewController == self, self.presentingViewController != nil {
+            currentViewController = self.presentedViewController!
+            if !(currentViewController is DiveViewController) {
+                currentViewController.dismiss(animated: false) {
+                    self.rtpsConnectedState()
                     return
                 }
-                if self.presentedViewController != nil {
-                    currentViewController.dismiss(animated: true)
-                } else {
-                    self.navigationController?.popViewController(animated: true)
-                }
             }
-            
-            let info: String
-            switch currentViewController {
-            case is DiveViewController:
-                info = "Connection to Trident lost. Exiting Pilot Mode."
-            case is MaintenanceViewController:
-                info = "Connection to Trident lost. Exiting Maintenance Mode."
-            case is PastDivesViewController:
-                info = "Connection to Trident lost. Exiting Past Dives Mode."
-            case self:
-                info = "Connection to Trident lost."
-            default:
-                fatalError()
-            }
-            
-            let alert = UIAlertController(title: message, message: info, preferredStyle: .alert)
-            let action = UIAlertAction(title: "Dismiss", style: .cancel) { _ in
-                disconnectProc()
-            }
-            alert.addAction(action)
-            currentViewController.present(alert, animated: true)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) { [weak alert] in
-                alert?.dismiss(animated: true) {
-                    disconnectProc()
-                }
-            }
-        } else {
-            assertionFailure("Disconnect wrong controller")
         }
         
-        FastRTPS.deleteParticipant()
+        if currentViewController != self {
+            currentViewController.performSegue(withIdentifier: "unwindToDashboardSegue", sender: nil)
+        } else {
+            showDisconnectAlert(message: "Connection to Trident lost.")
+        }
+    }
+    
+    private func showDisconnectAlert(message: String) {
+        func disconnectProc() {
+            addCircularProgressView(to: self.view)
+            ddsDiscoveryStart()
+        }
+
+        hideInterface()
+        let alert = UIAlertController(title: "Trident disconnected", message: message, preferredStyle: .alert)
+        let action = UIAlertAction(title: "Dismiss", style: .cancel) { _ in
+            disconnectProc()
+        }
+        alert.addAction(action)
+        present(alert, animated: true)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(10)) { [weak alert] in
+            alert?.dismiss(animated: true) {
+                disconnectProc()
+            }
+        }
+        
     }
     
     func rtpsConnectedState() {

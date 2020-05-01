@@ -21,7 +21,7 @@ final class RTPSConnectionMonitor {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func startNotifications() {
+    func startObserveNotifications() {
         NotificationCenter.default.addObserver(forName: .RTPSParticipantNotification, object: nil, queue: nil) { notification in
             guard let userInfo = notification.userInfo as? Dictionary<Int, Any>,
                 let rawType = userInfo[RTPSNotificationUserInfo.reason.rawValue] as? Int,
@@ -50,8 +50,8 @@ final class RTPSConnectionMonitor {
                 }
                 if self.tridentParticipants.count == self.stdParticipantList.count {
                     // All connected
-                    print("All needed participant discovered, start connection")
                     guard !self.isConnected else { break }
+                    print("All needed participant discovered, start connection")
                     self.isConnected = true
                     DispatchQueue.main.async {
                         self.delegate?.rtpsConnectedState()

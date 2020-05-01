@@ -182,6 +182,7 @@
 		0A72A80C24347C5900AE9B2E /* GlobalParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A72A80B24347C5900AE9B2E /* GlobalParams.plist */; };
 		0A72A80D24347C9400AE9B2E /* GlobalParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72A80224347BF600AE9B2E /* GlobalParams.swift */; };
 		0A72A80F24347FE300AE9B2E /* RTPSConnectionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72A80E24347FE300AE9B2E /* RTPSConnectionMonitor.swift */; };
+		0A7C3B7D245C372F00330F63 /* UIStoryboardSegue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C3B7C245C372F00330F63 /* UIStoryboardSegue+Extensions.swift */; };
 		0A82780A23A63B220039A774 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780023A63B220039A774 /* DashboardViewController.swift */; };
 		0A82780C23A63B2D0039A774 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780B23A63B2D0039A774 /* WindowController.swift */; };
 		0A82781223A641750039A774 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781123A641750039A774 /* MaintenanceViewController.swift */; };
@@ -461,6 +462,7 @@
 		0A72A80224347BF600AE9B2E /* GlobalParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalParams.swift; sourceTree = "<group>"; };
 		0A72A80B24347C5900AE9B2E /* GlobalParams.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GlobalParams.plist; sourceTree = "<group>"; };
 		0A72A80E24347FE300AE9B2E /* RTPSConnectionMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTPSConnectionMonitor.swift; sourceTree = "<group>"; };
+		0A7C3B7C245C372F00330F63 /* UIStoryboardSegue+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboardSegue+Extensions.swift"; sourceTree = "<group>"; };
 		0A82780023A63B220039A774 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		0A82780B23A63B2D0039A774 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		0A82781123A641750039A774 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
@@ -840,6 +842,7 @@
 				0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */,
 				0A3532DC24041485000F572D /* UINavigationItem+Extensions.swift */,
 				0A4999BE242230DF00E3FA14 /* UICollectionView+Extensions.swift */,
+				0A7C3B7C245C372F00330F63 /* UIStoryboardSegue+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1151,6 +1154,7 @@
 				0A1D0A2D23F941BD006D9AFD /* RovQuaternion+extensions.swift in Sources */,
 				0A1D0A3A23F941BD006D9AFD /* RovRecording.swift in Sources */,
 				0A95068123F9B975004E5546 /* DashboardViewController.swift in Sources */,
+				0A7C3B7D245C372F00330F63 /* UIStoryboardSegue+Extensions.swift in Sources */,
 				0A72A7F72433C91400AE9B2E /* RovGPS.swift in Sources */,
 				0AE206AC2423AADB0017934B /* Alerts.swift in Sources */,
 				0A8E8C712455B59F00E06610 /* Bundle+Extensions.swift in Sources */,
