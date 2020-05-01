@@ -19,7 +19,6 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
     private var timer: Timer? {
         willSet { timer?.invalidate() }
     }
-    
     private enum AppState {
         case undiscovered
         case discovered
@@ -113,15 +112,6 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         appVersionLabel.text = "\(Bundle.main.versionNumber ?? "") (\(Bundle.main.buildNumber ?? ""))"
         connectionMonitor.delegate = self
         connectionMonitor.startObserveNotifications()
-        
-        NotificationCenter.default.addObserver(forName: UIApplication.willEnterForegroundNotification,
-                                               object: nil,
-                                               queue: nil,
-                                               using: willEnterForeground(_:))
-        NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification,
-                                               object: nil,
-                                               queue: nil,
-                                               using: didEnterBackground(_:))
         
         hideInterface()
         addCircularProgressView(to: view)
@@ -354,11 +344,11 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         FastRTPS.deleteParticipant()
         
         var currentViewController = navigationController!.topViewController!
-        if currentViewController == self, self.presentingViewController != nil {
+        if currentViewController == self, self.presentedViewController != nil {
             currentViewController = self.presentedViewController!
             if !(currentViewController is DiveViewController) {
                 currentViewController.dismiss(animated: false) {
-                    self.rtpsConnectedState()
+                    self.rtpsDisconnectedState()
                     return
                 }
             }
@@ -416,14 +406,6 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol {
         
         startRefreshDeviceState()
         navigationItem.getItem(for: .connectWiFi)?.isEnabled = true
-    }
-    
-    private func didEnterBackground(_ notification: Notification) {
-        
-    }
-    
-    private func willEnterForeground(_ notification: Notification) {
-        
     }
     
     private func checkTridentFirmwareVersion() -> Promise<Void> {

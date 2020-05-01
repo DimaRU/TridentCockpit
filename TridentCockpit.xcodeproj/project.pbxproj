@@ -183,6 +183,7 @@
 		0A72A80D24347C9400AE9B2E /* GlobalParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72A80224347BF600AE9B2E /* GlobalParams.swift */; };
 		0A72A80F24347FE300AE9B2E /* RTPSConnectionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72A80E24347FE300AE9B2E /* RTPSConnectionMonitor.swift */; };
 		0A7C3B7D245C372F00330F63 /* UIStoryboardSegue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C3B7C245C372F00330F63 /* UIStoryboardSegue+Extensions.swift */; };
+		0A7C3B86245C67A100330F63 /* BackgroundWatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7C3B85245C67A100330F63 /* BackgroundWatch.swift */; };
 		0A82780A23A63B220039A774 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780023A63B220039A774 /* DashboardViewController.swift */; };
 		0A82780C23A63B2D0039A774 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82780B23A63B2D0039A774 /* WindowController.swift */; };
 		0A82781223A641750039A774 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781123A641750039A774 /* MaintenanceViewController.swift */; };
@@ -463,6 +464,7 @@
 		0A72A80B24347C5900AE9B2E /* GlobalParams.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = GlobalParams.plist; sourceTree = "<group>"; };
 		0A72A80E24347FE300AE9B2E /* RTPSConnectionMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RTPSConnectionMonitor.swift; sourceTree = "<group>"; };
 		0A7C3B7C245C372F00330F63 /* UIStoryboardSegue+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStoryboardSegue+Extensions.swift"; sourceTree = "<group>"; };
+		0A7C3B85245C67A100330F63 /* BackgroundWatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundWatch.swift; sourceTree = "<group>"; };
 		0A82780023A63B220039A774 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		0A82780B23A63B2D0039A774 /* WindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowController.swift; sourceTree = "<group>"; };
 		0A82781123A641750039A774 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
@@ -916,6 +918,7 @@
 			isa = PBXGroup;
 			children = (
 				0A95068023F9B975004E5546 /* DashboardViewController.swift */,
+				0A7C3B85245C67A100330F63 /* BackgroundWatch.swift */,
 				0A95069323F9E647004E5546 /* WiFiPopupViewController.swift */,
 				0AD8C5D02458400B009E0A9E /* GetWifiAPTableViewController.swift */,
 				0AD8C5D22458402A009E0A9E /* GetWifiAPTableViewController.storyboard */,
@@ -1201,6 +1204,7 @@
 				0A1D0A2023F941B2006D9AFD /* DeviceState.swift in Sources */,
 				0A1D0A5D23F94942006D9AFD /* Date+Extensions.swift in Sources */,
 				0A95068E23F9DD8D004E5546 /* UIViewController+Extensions.swift in Sources */,
+				0A7C3B86245C67A100330F63 /* BackgroundWatch.swift in Sources */,
 				0A95069423F9E647004E5546 /* WiFiPopupViewController.swift in Sources */,
 				0A1D0A3223F941BD006D9AFD /* RovTridentControlTarget.swift in Sources */,
 				0ACCDE6B23FDABD100381207 /* CameraButton.swift in Sources */,

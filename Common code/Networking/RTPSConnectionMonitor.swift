@@ -44,6 +44,7 @@ final class RTPSConnectionMonitor {
                 } else if participantName == "trident-remote-control" {
                     print("Discovered Participant:", participantName, locators)
                     // Skip for comparability with prev. versions
+                    return
                 } else {
                     print("Unknown participant:", participantName, properties, locators, metaLocators)
                     return
