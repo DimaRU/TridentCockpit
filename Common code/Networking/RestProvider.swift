@@ -25,8 +25,11 @@ class RestProvider {
     fileprivate static let restProvider = MoyaProvider<MultiTarget>(session: manager)
     
     // MARK: - Public
-    class func setSession(timeout: TimeInterval) {
-        restProvider.session.sessionConfiguration.timeoutIntervalForResource = timeout
+    class func setLowTimeout() {
+        restProvider.session.sessionConfiguration.timeoutIntervalForResource = 0.5
+    }
+    class func setDefaultTimeout() {
+        restProvider.session.sessionConfiguration.timeoutIntervalForResource = 15
     }
     
     class func request(_ target: MultiTarget) -> Promise<Void> {

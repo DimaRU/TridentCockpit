@@ -117,7 +117,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         hideInterface()
         backgroundWatch = BackgroundWatch(delegate: self)
         addCircularProgressView(to: view)
-        ddsDiscoveryStart()
+        connectTrident()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -294,6 +294,35 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         }
     }
 
+    private func connectTrident() {
+        guard !FastRTPS.localAddress.isEmpty else {
+            ddsDiscoveryStart()
+            return
+        }
+        let interfaceAddresses = FastRTPS.getIP4Address()
+        guard let localAddress = interfaceAddresses[FastRTPS.localInterface],
+            localAddress == FastRTPS.localAddress else {
+                ddsDiscoveryStart()
+                return
+        }
+        
+        // Try fast connect
+        RestProvider.setLowTimeout()
+        firstly {
+            RestProvider.request(MultiTarget(ResinAPI.version))
+        }.done { (reply: [String: String]) in
+            print("Fast connect!")
+            let network = FastRTPS.remoteAddress + "/32"
+            self.connectionMonitor.delegate = self
+            FastRTPS.createParticipant(name: "TridentCockpitiOS", interfaceIPv4: FastRTPS.localAddress, networkAddress: network)
+            FastRTPS.setPartition(name: self.tridentID!)
+        }.ensure {
+            RestProvider.setDefaultTimeout()
+        }.catch { _ in
+            self.ddsDiscoveryStart()
+        }
+    }
+    
     private func ddsDiscoveryStart() {
         discovered = [:]
         ddsListener = DDSDiscoveryListener(port: "8088") { [weak self] (uuidString: String, ipv4: String, interface: String, isWiFi: Bool) in
@@ -326,6 +355,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         FastRTPS.localInterface = remote.value.interface
         FastRTPS.localAddress = localAddress
         print("Local address \(FastRTPS.localInterface):\(localAddress)")
+        
         let network = FastRTPS.remoteAddress + "/32"
         connectionMonitor.delegate = self
         FastRTPS.createParticipant(name: "TridentCockpitiOS", interfaceIPv4: localAddress, networkAddress: network)
@@ -348,7 +378,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         print(#function)
         view.layer.contents = UIImage(named: "Trident")?.cgImage
         addCircularProgressView(to: view)
-        ddsDiscoveryStart()
+        connectTrident()
     }
     
     // MARK: Internal func
@@ -401,13 +431,13 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
     }
     
     private func showDisconnectAlert(message: String) {
-        func disconnectProc() {
-            addCircularProgressView(to: self.view)
-            ddsDiscoveryStart()
-        }
         hideInterface()
         guard UIApplication.shared.applicationState == .active else { return }
         
+        let disconnectProc = {
+            self.addCircularProgressView(to: self.view)
+            self.connectTrident()
+        }
         let alert = UIAlertController(title: "Trident disconnected", message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "Dismiss", style: .cancel) { _ in
             disconnectProc()
