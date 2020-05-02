@@ -22,6 +22,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var propellerButton: UIButton!
     @IBOutlet weak var stabilizeSwitch: PWSwitch!
     @IBOutlet weak var stabilizeLabel: UILabel!
+    @IBOutlet weak var telemetryOverlayLabel: UILabel!
     
     @IBOutlet weak var cameraControlView: CameraControlView!
     @IBOutlet weak var recordingButton: CameraButton!
@@ -298,8 +299,9 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         FastRTPS.send(topic: .rovControllerStateRequested, ddsData: controllerStatus)
     }
     
-    @IBAction func telemetryOverlayAction(_ sender: Any) {
-        FastRTPS.send(topic: .rovVideoOverlayModeCommand, ddsData: !Preference.videoOverlayMode ? "on" : "off")
+    @IBAction func toggleTelemetryOverlayAction(_ sender: Any) {
+        Preference.videoOverlayMode.toggle()
+        FastRTPS.send(topic: .rovVideoOverlayModeCommand, ddsData: Preference.videoOverlayMode ? "on" : "off")
     }
     
     @IBAction func videoSizingButtonTap(_ sender: UIButton) {
@@ -321,9 +323,9 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     private func setTelemetryOverlay(mode: String) {
         switch mode {
         case "on":
-            Preference.videoOverlayMode = true
+            telemetryOverlayLabel.text = "Telemetry:ON"
         case "off":
-            Preference.videoOverlayMode = false
+            telemetryOverlayLabel.text = "Telemetry:OFF"
         default:
             assertionFailure("illegal mode: \(mode)")
         }
