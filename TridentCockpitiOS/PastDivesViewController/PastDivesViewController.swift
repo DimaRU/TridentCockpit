@@ -249,6 +249,7 @@ class PastDivesViewController: UIViewController {
         playerViewController.exitsFullScreenWhenPlaybackEnds = true
         let url = RecordingsAPI.videoURL(recording: recording)
         playerViewController.player = AVPlayer(url: url)
+        playerViewController.player?.preventsDisplaySleepDuringVideoPlayback = true
         playerViewController.player?.rate = 1
         playerViewController.enterFullscreen()
     }
