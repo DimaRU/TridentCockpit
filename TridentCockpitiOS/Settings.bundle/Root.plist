@@ -16,16 +16,6 @@
 			<key>Type</key>
 			<string>PSToggleSwitchSpecifier</string>
 			<key>Title</key>
-			<string>Record Trident HQ Video</string>
-			<key>Key</key>
-			<string>OnboardVideoHQ</string>
-			<key>DefaultValue</key>
-			<true/>
-		</dict>
-		<dict>
-			<key>Type</key>
-			<string>PSToggleSwitchSpecifier</string>
-			<key>Title</key>
 			<string>Enable telemetry data overlay in recorded video</string>
 			<key>Key</key>
 			<string>VideoOverlayMode</string>
