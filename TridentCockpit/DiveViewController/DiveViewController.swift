@@ -16,6 +16,8 @@ class DiveViewController: NSViewController {
     @IBOutlet weak var recordingTimeLabel: NSTextField!
 
     @IBOutlet weak var indicatorsView: NSView!
+    @IBOutlet weak var telemetryOverlayLabel: NSTextField!
+    @IBOutlet weak var stabilizeLabel: NSTextField!
     @IBOutlet weak var cameraControlView: CameraControlView!
     @IBOutlet weak var propellerButton: NSButton!
     @IBOutlet weak var lightButton: NSButton!
@@ -29,6 +31,7 @@ class DiveViewController: NSViewController {
     private var lightOn = false
     private var videoSessionId: UUID?
     private var rovBeacon: RovBeacon?
+    private var rovSafetyState: RovSafetyState?
     var vehicleId: String = ""
     var debugData: Any?
     @Average(5) private var depth: Float
@@ -188,14 +191,17 @@ class DiveViewController: NSViewController {
     }
     
     @IBAction func stabilizeAction(_ sender: Any) {
+        Preference.tridentStabilize.toggle()
+        let state = Preference.tridentStabilize
         let controllerStatus = RovControllerStatus(vehicleId: vehicleId,
                                                    controllerId: .trident,
-                                                   state: !Preference.tridentStabilize ? .enabled : .disabled)
+                                                   state: state ? .enabled : .disabled)
         FastRTPS.send(topic: .rovControllerStateRequested, ddsData: controllerStatus)
     }
     
     @IBAction func telemetryOverlayAction(_ sender: Any) {
-        FastRTPS.send(topic: .rovVideoOverlayModeCommand, ddsData: !Preference.videoOverlayMode ? "on" : "off")
+        Preference.videoOverlayMode.toggle()
+        FastRTPS.send(topic: .rovVideoOverlayModeCommand, ddsData: Preference.videoOverlayMode ? "on" : "off")
     }
     
     #if DEBUG
@@ -219,9 +225,9 @@ class DiveViewController: NSViewController {
     private func setTelemetryOverlay(mode: String) {
         switch mode {
         case "on":
-            Preference.videoOverlayMode = true
+            telemetryOverlayLabel.stringValue = "Telemetry:ON"
         case "off":
-            Preference.videoOverlayMode = false
+            telemetryOverlayLabel.stringValue = "Telemetry:OFF"
         default:
             assertionFailure("illegal mode: \(mode)")
         }
@@ -230,12 +236,18 @@ class DiveViewController: NSViewController {
         menuItem!.state = Preference.videoOverlayMode ? .on:.off
     }
     
-    private func setController(status: RovControllerStatus) {
-        guard status.controllerId == .trident else { return }
-        Preference.tridentStabilize = (status.state == .enabled)
-        
-        let menuItem = NSApplication.shared.mainMenu?.recursiveSearch(tag: 3)
-        menuItem!.state = Preference.tridentStabilize ? .on:.off
+    private func setStabilize(status: Bool) {
+        NSApplication.shared.mainMenu?.recursiveSearch(tag: 3)!.state = status ? .on:.off
+        if status {
+            if rovSafetyState?.state == .on {
+                stabilizeLabel.stringValue = "Stabilized-paused"
+            } else {
+                stabilizeLabel.stringValue = "Stabilized"
+            }
+        } else {
+            stabilizeLabel.stringValue = "Stabilize disabled"
+        }
+
     }
        
     private func startRTPS() {
@@ -403,9 +415,20 @@ class DiveViewController: NSViewController {
         }
 
         FastRTPS.registerReader(topic: .rovControllerStateCurrent) { [weak self] (controllerStatus: RovControllerStatus) in
+            guard controllerStatus.controllerId == .trident else { return }
             DispatchQueue.main.async {
-                self?.setController(status: controllerStatus)
+                self?.setStabilize(status: controllerStatus.state == .enabled)
             }
+        }
+
+        FastRTPS.registerReader(topic: .rovSafety) { [weak self] (rovSafetyState: RovSafetyState) in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.rovSafetyState = rovSafetyState
+                let status = NSApplication.shared.mainMenu?.recursiveSearch(tag: 3)!.state == .on
+                self.setStabilize(status: status)
+            }
+            
         }
 
         FastRTPS.registerReader(topic: .rovBeacon) { [weak self] (rovBeacon: RovBeacon) in
@@ -433,7 +456,6 @@ class DiveViewController: NSViewController {
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         let isoDate = formatter.string(from: Date())
         let metadata = #"{"start_ts":"\#(isoDate)"}"#
-
         let videoSessionCommand = RovVideoSessionCommand(sessionID: id.uuidString.lowercased(),
                                                          metadata: metadata,
                                                          request: .recording,

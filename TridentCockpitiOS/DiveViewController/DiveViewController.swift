@@ -294,7 +294,9 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     }
     
     @IBAction func stabilizeAction(_ sender: Any) {
-        let state = stabilizeSwitch.on
+        let state = !(NSApplication.shared.mainMenu?.recursiveSearch(tag: 3)!.state == .on)
+        NSApplication.shared.mainMenu?.recursiveSearch(tag: 3)!.state = state ? .on : .off
+
         Preference.tridentStabilize = state
         let controllerStatus = RovControllerStatus(vehicleId: vehicleId,
                                                    controllerId: .trident,
