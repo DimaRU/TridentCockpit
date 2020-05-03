@@ -45,6 +45,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     private var videoSessionId: UUID?
     let vehicleId: String
     private var rovBeacon: RovBeacon?
+    private var rovSafetyState: RovSafetyState?
     
     @Average(5) private var depth: Float
     @Average(10) private var temperature: Double
@@ -293,9 +294,11 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     }
     
     @IBAction func stabilizeAction(_ sender: Any) {
+        let state = stabilizeSwitch.on
+        Preference.tridentStabilize = state
         let controllerStatus = RovControllerStatus(vehicleId: vehicleId,
                                                    controllerId: .trident,
-                                                   state: !Preference.tridentStabilize ? .enabled : .disabled)
+                                                   state: state ? .enabled : .disabled)
         FastRTPS.send(topic: .rovControllerStateRequested, ddsData: controllerStatus)
     }
     
@@ -337,15 +340,18 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         videoView.setGravity(fill: fill)
     }
     
-    private func setController(status: RovControllerStatus) {
-        guard status.controllerId == .trident else { return }
-        Preference.tridentStabilize = (status.state == .enabled)
-        stabilizeSwitch.setOn((status.state == .enabled) , animated: true)
-        if status.state == .enabled {
-            stabilizeLabel.text = "Stabilized"
+    private func setStabilize(status: Bool) {
+        stabilizeSwitch.setOn(status , animated: true)
+        if status {
+            if rovSafetyState?.state == .on {
+                stabilizeLabel.text = "Stabilized-paused"
+            } else {
+                stabilizeLabel.text = "Stabilized"
+            }
         } else {
             stabilizeLabel.text = "Stabilize disabled"
         }
+
     }
        
     private func startRTPS() {
@@ -508,9 +514,19 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         }
 
         FastRTPS.registerReader(topic: .rovControllerStateCurrent) { [weak self] (controllerStatus: RovControllerStatus) in
+            guard controllerStatus.controllerId == .trident else { return }
             DispatchQueue.main.async {
-                self?.setController(status: controllerStatus)
+                self?.setStabilize(status: controllerStatus.state == .enabled)
             }
+        }
+
+        FastRTPS.registerReader(topic: .rovSafety) { [weak self] (rovSafetyState: RovSafetyState) in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                self.rovSafetyState = rovSafetyState
+                self.setStabilize(status: self.stabilizeSwitch.on)
+            }
+            
         }
 
         FastRTPS.registerReader(topic: .rovBeacon) { [weak self] (rovBeacon: RovBeacon) in
