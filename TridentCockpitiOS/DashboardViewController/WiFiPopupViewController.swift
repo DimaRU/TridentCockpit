@@ -26,7 +26,13 @@ class WiFiPopupViewController: UITableViewController {
         
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
         self.preferredContentSize = CGSize(width: 300, height: 50)
-        tableView.separatorStyle = .none
+        navigationItem.title = "WiFi networks"
+        if UIDevice.current.userInterfaceIdiom != .pad {
+            // Add cancell button
+            let barButton = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(cancelButtonTap(_:)))
+            navigationItem.rightBarButtonItem = barButton
+            tableView.separatorStyle = .none
+        }
 
         timer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true) { _ in
             RestProvider.request(MultiTarget(WiFiServiceAPI.scan))
@@ -40,7 +46,11 @@ class WiFiPopupViewController: UITableViewController {
             }
         }
     }
-    
+
+    @objc func cancelButtonTap(_ sender: Any) {
+        dismiss(animated: true)
+    }
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 

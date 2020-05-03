@@ -210,11 +210,12 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         let controller: WiFiPopupViewController = WiFiPopupViewController()
         controller.delegate = self
         controller.ssids = ssids
-        controller.modalPresentationStyle = .popover
-        let popover = controller.popoverPresentationController
+        let navigationController = UINavigationController(rootViewController: controller)
+        navigationController.modalPresentationStyle = .popover
+        let popover = navigationController.popoverPresentationController
         popover?.sourceView = view
         popover?.sourceRect = view.frame
-        present(controller, animated: true)
+        present(navigationController, animated: true)
     }
     
     private func alertNetwork(error: Error, delay: Int = 5) {
