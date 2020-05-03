@@ -29,15 +29,6 @@
         }
       },
       {
-        "package": "CircularProgress",
-        "repositoryURL": "https://github.com/sindresorhus/CircularProgress.git",
-        "state": {
-          "branch": null,
-          "revision": "ebc770d707784d9dffdf55c3f8e5236750a8fe07",
-          "version": "2.0.1"
-        }
-      },
-      {
         "package": "Kingfisher",
         "repositoryURL": "https://github.com/onevcat/Kingfisher",
         "state": {

@@ -92,7 +92,6 @@
 		0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
 		0A3532DD24041485000F572D /* UINavigationItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3532DC24041485000F572D /* UINavigationItem+Extensions.swift */; };
 		0A3D747A2402B87200EE78F7 /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E55BE23BC0AFA008F8A9A /* Average.swift */; };
-		0A3FD1EF23A8D50000FE9918 /* CircularProgress in Frameworks */ = {isa = PBXBuildFile; productRef = 0A3FD1EE23A8D50000FE9918 /* CircularProgress */; };
 		0A3FD1F223A9443E00FE9918 /* ResinAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F123A9443E00FE9918 /* ResinAPI.swift */; };
 		0A3FD1F423A94A5B00FE9918 /* WifiServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F323A94A5B00FE9918 /* WifiServiceAPI.swift */; };
 		0A3FD1F623A94FAC00FE9918 /* RecordingsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F523A94FAC00FE9918 /* RecordingsAPI.swift */; };
@@ -233,6 +232,11 @@
 		0AE05CED23FD41E200C7CA08 /* DiveViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AE05CEC23FD41E200C7CA08 /* DiveViewController.storyboard */; };
 		0AE206AC2423AADB0017934B /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE206A324239E870017934B /* Alerts.swift */; };
 		0AE490702448524800C669D0 /* UILabelRotatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4906F2448524800C669D0 /* UILabelRotatable.swift */; };
+		0AF029D1245F6D36007ADE09 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF029C6245F6D36007ADE09 /* CheckmarkView.swift */; };
+		0AF029D2245F6D36007ADE09 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF029C7245F6D36007ADE09 /* util.swift */; };
+		0AF029D3245F6D36007ADE09 /* CircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF029C8245F6D36007ADE09 /* CircularProgress.swift */; };
+		0AF029D4245F6D36007ADE09 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF029CA245F6D36007ADE09 /* CustomButton.swift */; };
+		0AF029D5245F6D36007ADE09 /* CustomButton+Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF029CB245F6D36007ADE09 /* CustomButton+Util.swift */; };
 		0AF06EA123FAF637000FF36A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
 		0AF06EB023FB209A000FF36A /* UIBarButtonItem+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */; };
 		0AF06ECE23FB5730000FF36A /* UIToolbar+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */; };
@@ -509,6 +513,11 @@
 		0AE05CEC23FD41E200C7CA08 /* DiveViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiveViewController.storyboard; sourceTree = "<group>"; };
 		0AE206A324239E870017934B /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		0AE4906F2448524800C669D0 /* UILabelRotatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelRotatable.swift; sourceTree = "<group>"; };
+		0AF029C6245F6D36007ADE09 /* CheckmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
+		0AF029C7245F6D36007ADE09 /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
+		0AF029C8245F6D36007ADE09 /* CircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgress.swift; sourceTree = "<group>"; };
+		0AF029CA245F6D36007ADE09 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		0AF029CB245F6D36007ADE09 /* CustomButton+Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CustomButton+Util.swift"; sourceTree = "<group>"; };
 		0AF06EAF23FB209A000FF36A /* UIBarButtonItem+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Extension.swift"; sourceTree = "<group>"; };
 		0AF06ECD23FB5730000FF36A /* UIToolbar+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIToolbar+Extensions.swift"; sourceTree = "<group>"; };
 		0AF0E07B243517E2009E9806 /* CustomStringConvertible+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomStringConvertible+Extensions.swift"; sourceTree = "<group>"; };
@@ -535,7 +544,6 @@
 				0A20B1932454D1AA00FB4961 /* Shout.framework in Frameworks */,
 				0A1A5BA023CE57890038EABE /* Kingfisher in Frameworks */,
 				0A66C52F23AED776001BA93D /* PromiseKit in Frameworks */,
-				0A3FD1EF23A8D50000FE9918 /* CircularProgress in Frameworks */,
 				0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */,
 				0A66C52C23AED706001BA93D /* Moya in Frameworks */,
 			);
@@ -710,6 +718,7 @@
 		0A5CBC992367507F0055131A /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				0AF029C5245F6D36007ADE09 /* CircularProgress */,
 				0A7130C823636AF100817593 /* FlatButton.swift */,
 			);
 			path = ThirdParty;
@@ -917,6 +926,26 @@
 			path = DiveViewController;
 			sourceTree = "<group>";
 		};
+		0AF029C5245F6D36007ADE09 /* CircularProgress */ = {
+			isa = PBXGroup;
+			children = (
+				0AF029C6245F6D36007ADE09 /* CheckmarkView.swift */,
+				0AF029C7245F6D36007ADE09 /* util.swift */,
+				0AF029C8245F6D36007ADE09 /* CircularProgress.swift */,
+				0AF029C9245F6D36007ADE09 /* Vendored */,
+			);
+			path = CircularProgress;
+			sourceTree = "<group>";
+		};
+		0AF029C9245F6D36007ADE09 /* Vendored */ = {
+			isa = PBXGroup;
+			children = (
+				0AF029CA245F6D36007ADE09 /* CustomButton.swift */,
+				0AF029CB245F6D36007ADE09 /* CustomButton+Util.swift */,
+			);
+			path = Vendored;
+			sourceTree = "<group>";
+		};
 		0AF06EC523FB56F5000FF36A /* DashboardViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -975,7 +1004,6 @@
 			);
 			name = TridentCockpit;
 			packageProductDependencies = (
-				0A3FD1EE23A8D50000FE9918 /* CircularProgress */,
 				0A66C52B23AED706001BA93D /* Moya */,
 				0A66C52E23AED776001BA93D /* PromiseKit */,
 				0A1A5B9F23CE57890038EABE /* Kingfisher */,
@@ -1013,7 +1041,6 @@
 			);
 			mainGroup = 0A7130AB236369EA00817593;
 			packageReferences = (
-				0A3FD1ED23A8D50000FE9918 /* XCRemoteSwiftPackageReference "CircularProgress" */,
 				0A66C52A23AED706001BA93D /* XCRemoteSwiftPackageReference "Moya" */,
 				0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */,
 				0A1A5B9E23CE57890038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */,
@@ -1256,6 +1283,7 @@
 				0A1A5B8023CE4B2F0038EABE /* Date+Extensions.swift in Sources */,
 				0A3FD1F923A9723E00FE9918 /* APIVersion.swift in Sources */,
 				0A82780A23A63B220039A774 /* DashboardViewController.swift in Sources */,
+				0AF029D2245F6D36007ADE09 /* util.swift in Sources */,
 				0A8E8C6B2455B56600E06610 /* Bundle+Extensions.swift in Sources */,
 				0A3FD1FF23A972BA00FE9918 /* ConnectionInfo.swift in Sources */,
 				0A71310023636B0200817593 /* BatteryState.swift in Sources */,
@@ -1265,6 +1293,7 @@
 				0A7130D623636AF200817593 /* Extensions.swift in Sources */,
 				0AE05CDE23FD337400C7CA08 /* UserDefaultsWrapper.swift in Sources */,
 				0A7130DE23636AF200817593 /* CameraControlView.swift in Sources */,
+				0AF029D5245F6D36007ADE09 /* CustomButton+Util.swift in Sources */,
 				0A71310123636B0200817593 /* RovCameraObjectTrack.swift in Sources */,
 				0A71310223636B0200817593 /* RovSafetyState.swift in Sources */,
 				0A2E1DAE23B0CAD9009048A5 /* KeychainService.swift in Sources */,
@@ -1292,6 +1321,8 @@
 				0A3FD1F223A9443E00FE9918 /* ResinAPI.swift in Sources */,
 				0AAD2D632447369300B6152C /* PlayDemoVideo.swift in Sources */,
 				0A71310323636B0200817593 /* RovVector3.swift in Sources */,
+				0AF029D3245F6D36007ADE09 /* CircularProgress.swift in Sources */,
+				0AF029D1245F6D36007ADE09 /* CheckmarkView.swift in Sources */,
 				0A1A5B8523CE4B550038EABE /* HeaderView.swift in Sources */,
 				0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */,
 				0A5107DC23AA85B000C19289 /* RestProvider.swift in Sources */,
@@ -1310,6 +1341,7 @@
 				0A7130FE23636B0200817593 /* RovBarometer.swift in Sources */,
 				0A5107DB23AA807D00C19289 /* NetworkError.swift in Sources */,
 				0A20B1892454C6B900FB4961 /* Shout+Promise.swift in Sources */,
+				0AF029D4245F6D36007ADE09 /* CustomButton.swift in Sources */,
 				0A5E3FC823BFA10E00EAC519 /* GoproStatus.swift in Sources */,
 				0A457D9723B78A7C0042C250 /* Gopro3API.swift in Sources */,
 				0A71310B23636B0200817593 /* RovTridentControlTarget.swift in Sources */,
@@ -1645,14 +1677,6 @@
 				minimumVersion = 5.12.0;
 			};
 		};
-		0A3FD1ED23A8D50000FE9918 /* XCRemoteSwiftPackageReference "CircularProgress" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sindresorhus/CircularProgress.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
 		0A66C52A23AED706001BA93D /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya.git";
@@ -1691,11 +1715,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A1A5B9E23CE57890038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		0A3FD1EE23A8D50000FE9918 /* CircularProgress */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A3FD1ED23A8D50000FE9918 /* XCRemoteSwiftPackageReference "CircularProgress" */;
-			productName = CircularProgress;
 		};
 		0A66C52B23AED706001BA93D /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;

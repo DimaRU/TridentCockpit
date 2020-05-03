@@ -5,7 +5,6 @@
 
 import Cocoa
 import FastRTPSBridge
-import CircularProgress
 import Moya
 import PromiseKit
 import Shout
