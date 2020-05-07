@@ -17,18 +17,20 @@ class PastDivesViewController: UIViewController {
     
     var sectionDates: [Date] = []
     var recordingBySection: [Date: [Recording]] = [:]
+    var downloadState: [String: NFDownloadButtonState] = [:]
     
     let sectionFormatter = DateFormatter()
     let diveLabelFormatter = DateFormatter()
-    let pastDivesWorker = PastDivesWorker()
-
+    weak var recordingsAPI: RecordingsAPI! = RecordingsAPI.shared
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        KingfisherManager.shared.cache.clearMemoryCache()
-        KingfisherManager.shared.cache.clearDiskCache()
+//        KingfisherManager.shared.cache.clearMemoryCache()
+//        KingfisherManager.shared.cache.clearDiskCache()
         KingfisherManager.shared.downloader.sessionConfiguration.httpMaximumConnectionsPerHost = 1
         KingfisherManager.shared.downloader.sessionConfiguration.waitsForConnectivity = false
+        
+        recordingsAPI?.setup(remoteAddress: FastRTPS.remoteAddress, delegate: self)
         
         collectionView.allowsMultipleSelection = true
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -47,7 +49,6 @@ class PastDivesViewController: UIViewController {
         
         sectionFormatter.dateFormat = "MMMM dd"
         diveLabelFormatter.dateFormat = "MMM dd hh:mm:ss"
-        pastDivesWorker.delegate = self
 
         NotificationCenter.default.addObserver(self, selector: #selector(deviceRotated), name:UIDevice.orientationDidChangeNotification, object: nil)
         
@@ -56,17 +57,19 @@ class PastDivesViewController: UIViewController {
                 DivePlayerViewController.shared?.removeFromContainer()
             }
         }
-
-        RecordingsAPI.requestRecordings {
-            switch $0 {
-            case .success(let data):
-                self.sortRecordings(data.recordings)
-            case .failure(let error):
-                error.alert(delay: 100)
-                self.sortRecordings([])
+        NotificationCenter.default.addObserver(forName: .AVPlayerItemFailedToPlayToEndTime, object: nil, queue: nil) { _ in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                DivePlayerViewController.shared?.removeFromContainer()
             }
         }
+
         
+        
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshRecordings), for: .valueChanged)
+        collectionView.refreshControl = refreshControl
+        
+        refreshRecordings()
     }
     
     deinit {
@@ -78,8 +81,24 @@ class PastDivesViewController: UIViewController {
         collectionView.setNeedsLayout()
     }
     
+    @objc func refreshRecordings() {
+        recordingsAPI.requestRecordings { result in
+            switch result {
+            case .success(let recordings):
+                self.collectionView.refreshControl?.endRefreshing()
+                self.sortRecordings(recordings)
+            case .failure(let error):
+                self.collectionView.refreshControl?.endRefreshing()
+                error.alert(delay: 100)
+                self.sortRecordings([])
+            }
+        }
+    }
+    
+    //MARK: Overrides
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        /*
         FastRTPS.registerReader(topic: .rovRecordingStats) { [weak self] (recordingStats: RovRecordingStats) in
             guard let self = self else { return }
             DispatchQueue.main.async {
@@ -94,11 +113,12 @@ class PastDivesViewController: UIViewController {
                 self.availableSpaceBar.transform = CGAffineTransform(rotationAngle: .pi)
             }
         }
+ */
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        FastRTPS.removeReader(topic: .rovRecordingStats)
+//        FastRTPS.removeReader(topic: .rovRecordingStats)
     }
 
     override func viewDidLayoutSubviews() {
@@ -113,6 +133,7 @@ class PastDivesViewController: UIViewController {
         layout.invalidateLayout()
     }
 
+    // MARK: Action
     @IBAction func selectAllButtonTap(_ sender: Any) {
         for section in sectionDates.indices {
             for item in recordingBySection[sectionDates[section]]!.indices {
@@ -132,9 +153,17 @@ class PastDivesViewController: UIViewController {
     
     @IBAction func downloadButtonTap(_ sender: Any) {
         guard let selected = collectionView.indexPathsForSelectedItems, !selected.isEmpty else { return }
-        let recordings = selected.map { getRecording(by: $0) }
-        let deleteAfter = deleteAfterSwitch.on
-        pastDivesWorker.download(recordings: recordings, deleteAfter: deleteAfter)
+        let recordings = selected.map { getRecording(by: $0) }.filter{ downloadState[$0.sessionId]! == .toDownload }
+        for recording in recordings {
+            downloadState[recording.sessionId] = .willDownload
+            if let indexPath = getIndexPath(by: recording),
+                let item = collectionView.cellForItem(at: indexPath) as? DiveCollectionViewCell {
+                item.downloadButton.downloadState = .willDownload
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            recordings.forEach{ self.recordingsAPI.download(recording: $0) }
+        }
     }
     
     @IBAction func deleteButtonTap(_ sender: Any) {
@@ -145,7 +174,7 @@ class PastDivesViewController: UIViewController {
             preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default) { _ in
             let recordings = selected.map { self.getRecording(by: $0) }
-            self.pastDivesWorker.delete(recordings: recordings)
+            self.delete(recordins: recordings)
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -154,17 +183,80 @@ class PastDivesViewController: UIViewController {
         present(sheet, animated: true)
     }
     
+    @IBAction func cancelButtonTap(_ sender: Any) {
+        let count = downloadState.values.filter{ $0 == .willDownload || $0 == .downloading}.count
+        guard count != 0 else { return }
+        let sheet = UIAlertController(title: "Cancel \(count) downloads?",
+            message: "Are you sure?",
+            preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            self.recordingsAPI.cancelDownloads()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        sheet.addAction(okAction)
+        sheet.addAction(cancelAction)
+        present(sheet, animated: true)
+    }
     
     // MARK: Private functions
+
+    private func delete(recordins: [Recording]) {
+        for recording in recordins {
+            recordingsAPI.deleteRecording(with: recording.sessionId) { error in
+                if let error = error {
+                    error.alert(delay: 10)
+                    return
+                }
+                self.deleteItem(for: recording)
+            }
+        }
+    }
+    
+    private func deleteItem(for recording: Recording) {
+        let indexPath = getIndexPath(by: recording)!
+        let date = sectionDates[indexPath.section]
+        recordingBySection[date]!.remove(at: indexPath.item)
+        collectionView.deleteItems(at: [indexPath])
+        if recordingBySection[date]!.isEmpty {
+            sectionDates.remove(at: indexPath.section)
+            collectionView.deleteSections([indexPath.section])
+            if sectionDates.isEmpty {
+                collectionView.reloadData()
+            }
+        }
+    }
+    
+    private func markItemDownloaded(for recording: Recording) {
+        let indexPath = getIndexPath(by: recording)!
+        collectionView.deselectItem(at: indexPath, animated: false)
+        if let item = collectionView.cellForItem(at: indexPath) as? DiveCollectionViewCell {
+            item.downloadButton.downloadState = .downloaded
+        }
+    }
+
     private func getRecording(by indexPath: IndexPath) -> Recording {
         let sectionDate = sectionDates[indexPath.section]
         return recordingBySection[sectionDate]![indexPath.item]
     }
-    
+
+    private func getRecording(by sessionId: String) -> Recording? {
+        for (_, recordings) in recordingBySection {
+            if let recording = recordings.first(where: {$0.sessionId == sessionId}) {
+                return recording
+            }
+        }
+        return nil
+    }
+
     private func sortRecordings(_ recordings: [Recording]) {
         recordingBySection = [:]
         sectionDates = []
+        downloadState = [:]
         for recording in recordings {
+            downloadState[recording.sessionId] = .toDownload
+            if recordingsAPI.isDownloaded(recording: recording) {
+                downloadState[recording.sessionId] = .downloaded
+            }
             let date = recording.startTimestamp.clearedTime
             recordingBySection[date, default: []].append(recording)
         }
@@ -173,10 +265,13 @@ class PastDivesViewController: UIViewController {
         for key in sectionDates {
             recordingBySection[key] = recordingBySection[key]!.sorted(by: {$0.startTimestamp < $1.startTimestamp})
         }
-        collectionView.reloadData()
+        recordingsAPI.getDownloads { sessions in
+            sessions.forEach{ self.downloadState[$0] = .downloading }
+            self.collectionView.reloadData()
+        }
     }
     
-    func getIndexPath(by recording: Recording) -> IndexPath? {
+    private func getIndexPath(by recording: Recording) -> IndexPath? {
         let date = recording.startTimestamp.clearedTime
         guard let section = sectionDates.firstIndex(of: date) else { return nil }
         guard let item = recordingBySection[date]!.firstIndex(where: { $0.startTimestamp == recording.startTimestamp }) else {
@@ -247,7 +342,7 @@ class PastDivesViewController: UIViewController {
         let playerViewController = DivePlayerViewController.add(to: cell.subviews[0], parentViewController: self)
         playerViewController.entersFullScreenWhenPlaybackBegins = true
         playerViewController.exitsFullScreenWhenPlaybackEnds = true
-        let url = RecordingsAPI.videoURL(recording: recording)
+        let url = recordingsAPI.videoURL(recording: recording)
         playerViewController.player = AVPlayer(url: url)
         playerViewController.player?.preventsDisplaySleepDuringVideoPlayback = true
         playerViewController.player?.rate = 1
@@ -271,15 +366,21 @@ extension PastDivesViewController: UICollectionViewDataSource  {
         let cell = collectionView.dequeueCell(of: DiveCollectionViewCell.self, for: indexPath)
         
         let recording = getRecording(by: indexPath)
-        let imageURL = RecordingsAPI.previewURL(recording: recording)
+        let imageURL = recordingsAPI.previewURL(recording: recording)
         cell.previewLabel.text = diveLabelFormatter.string(from: recording.startTimestamp)
         cell.previewImage?.kf.indicatorType = .activity
         cell.previewImage?.kf.setImage(with: imageURL)
+        cell.downloadButton.downloadState = downloadState[recording.sessionId]!
         
-        cell.actionHandler = { [weak self] in
+        cell.playButtonAction = { [weak self] in
             guard let self = self else { return }
             let recording = self.getRecording(by: indexPath)
             self.previewVideo(recording: recording, in: cell)
+        }
+        
+        cell.downloadButtonAction = { [weak self] in
+            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
+            self?.downloadButtonTap(cell)
         }
 
         return cell
@@ -294,28 +395,41 @@ extension PastDivesViewController: UICollectionViewDataSource  {
     }
 }
 
-extension PastDivesViewController: PastDivesProtocol {
-    func presentProgess(sheet: UIViewController) {
-        present(sheet, animated: true)
+
+extension PastDivesViewController: RecordingsAPIProtocol {
+    func downloadError(sessionId: String, error: Error) {
+        if let recording = getRecording(by: sessionId),
+           let indexPath = getIndexPath(by: recording),
+           let item = collectionView.cellForItem(at: indexPath) as? DiveCollectionViewCell {
+            item.downloadButton.downloadState = .toDownload
+        }
+        downloadState[sessionId] = .toDownload
+        let nserror = error as NSError
+        if nserror.domain == NSURLErrorDomain,
+           nserror.code == NSURLErrorCancelled {
+            return
+        }
+        error.alert(delay: 10)
     }
     
-    func deleteItem(for recording: Recording) {
-        let indexPath = getIndexPath(by: recording)!
-        let date = sectionDates[indexPath.section]
-        recordingBySection[date]!.remove(at: indexPath.item)
-        collectionView.deleteItems(at: [indexPath])
-        if recordingBySection[date]!.isEmpty {
-            sectionDates.remove(at: indexPath.section)
-            collectionView.deleteSections([indexPath.section])
-            if sectionDates.isEmpty {
-                collectionView.reloadData()
-            }
+    func downloadEnd(sessionId: String) {
+        guard let recording = getRecording(by: sessionId) else { return }
+        downloadState[recording.sessionId] = .downloaded
+        let deleteAfter = deleteAfterSwitch.on
+        if deleteAfter {
+            self.delete(recordins: [recording])
+        } else {
+            self.markItemDownloaded(for: recording)
         }
     }
-
-    func markItemDownloaded(for recording: Recording) {
-        let indexPath = getIndexPath(by: recording)!
-        collectionView.deselectItem(at: indexPath, animated: false)
+    
+    func progress(sessionId: String, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
+        guard
+            let recording = getRecording(by: sessionId),
+            let indexPath = getIndexPath(by: recording),
+            let item = collectionView.cellForItem(at: indexPath) as? DiveCollectionViewCell else { return
+        }
+        let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+        item.downloadButton.progress = progress
     }
 }
-

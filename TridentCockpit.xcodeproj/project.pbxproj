@@ -10,6 +10,7 @@
 		0A0230A3241117E900A4E532 /* AuxCameraControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A0230A2241117E900A4E532 /* AuxCameraControlView.xib */; };
 		0A0230A72411868F00A4E532 /* AuxCameraPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0230A62411868F00A4E532 /* AuxCameraPlayerView.swift */; };
 		0A0C1C8523FE015100D09F77 /* TridentCockpit.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A71311B23636B5C00817593 /* TridentCockpit.scnassets */; };
+		0A134F422464191800FBD929 /* PastDivesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A134F412464191800FBD929 /* PastDivesViewController.storyboard */; };
 		0A1A5B7823CE4B150038EABE /* DiveCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7223CE4B150038EABE /* DiveCollectionItem.swift */; };
 		0A1A5B7923CE4B150038EABE /* PreviewVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7323CE4B150038EABE /* PreviewVideoViewController.swift */; };
 		0A1A5B7A23CE4B150038EABE /* DiveCollectionItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7423CE4B150038EABE /* DiveCollectionItem.xib */; };
@@ -71,7 +72,6 @@
 		0A1D0A4323F941C4006D9AFD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5107DA23AA807D00C19289 /* NetworkError.swift */; };
 		0A1D0A4423F941C4006D9AFD /* WifiServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F323A94A5B00FE9918 /* WifiServiceAPI.swift */; };
 		0A1D0A4523F941C4006D9AFD /* ResinAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F123A9443E00FE9918 /* ResinAPI.swift */; };
-		0A1D0A4623F941C4006D9AFD /* RecordingsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F523A94FAC00FE9918 /* RecordingsAPI.swift */; };
 		0A1D0A4723F941C4006D9AFD /* Gopro3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A457D8D23B78A7C0042C250 /* Gopro3API.swift */; };
 		0A1D0A4823F941C4006D9AFD /* FastRTPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71313A23637F0700817593 /* FastRTPS.swift */; };
 		0A1D0A5723F948F3006D9AFD /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D0A5623F948F3006D9AFD /* Moya */; };
@@ -91,6 +91,12 @@
 		0A2E42BC236B0EE900B5C569 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2E42BB236B0EE900B5C569 /* VideoView.swift */; };
 		0A2FF3162363A1DB008FD68B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A2FF3112363A0BD008FD68B /* Assets.xcassets */; };
 		0A3532DD24041485000F572D /* UINavigationItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3532DC24041485000F572D /* UINavigationItem+Extensions.swift */; };
+		0A3CB02E246414D7009F827B /* DiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CB029246414D6009F827B /* DiveCollectionViewCell.swift */; };
+		0A3CB02F246414D7009F827B /* DivePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CB02A246414D6009F827B /* DivePlayerViewController.swift */; };
+		0A3CB030246414D7009F827B /* DiveCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CB02B246414D6009F827B /* DiveCollectionReusableView.swift */; };
+		0A3CB031246414D7009F827B /* PastDivesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CB02C246414D6009F827B /* PastDivesViewController.swift */; };
+		0A3CB03324641572009F827B /* RecordingsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CB03224641572009F827B /* RecordingsAPI.swift */; };
+		0A3CB03524641581009F827B /* NFDownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CB03424641581009F827B /* NFDownloadButton.swift */; };
 		0A3D747A2402B87200EE78F7 /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E55BE23BC0AFA008F8A9A /* Average.swift */; };
 		0A3FD1F223A9443E00FE9918 /* ResinAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F123A9443E00FE9918 /* ResinAPI.swift */; };
 		0A3FD1F423A94A5B00FE9918 /* WifiServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F323A94A5B00FE9918 /* WifiServiceAPI.swift */; };
@@ -100,14 +106,8 @@
 		0A3FD1FD23A9729800FE9918 /* SSIDInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FC23A9729800FE9918 /* SSIDInfo.swift */; };
 		0A3FD1FF23A972BA00FE9918 /* ConnectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FE23A972B900FE9918 /* ConnectionInfo.swift */; };
 		0A3FD20123A9735300FE9918 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20023A9735300FE9918 /* AppInfo.swift */; };
-		0A42E39224226C40000BCB24 /* DivePlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A42E38A24226C40000BCB24 /* DivePlayerViewController.swift */; };
 		0A457D9723B78A7C0042C250 /* Gopro3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A457D8D23B78A7C0042C250 /* Gopro3API.swift */; };
-		0A488E652413AA2800EBEF19 /* DiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A488E642413AA2800EBEF19 /* DiveCollectionViewCell.swift */; };
-		0A488E672413AB5C00EBEF19 /* DiveCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A488E662413AB5C00EBEF19 /* DiveCollectionReusableView.swift */; };
 		0A488E692413AE8400EBEF19 /* LinearProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A488E682413AE8400EBEF19 /* LinearProgressBar.swift */; };
-		0A4999B92422281400E3FA14 /* PastDivesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4999B12422281400E3FA14 /* PastDivesWorker.swift */; };
-		0A4999BC2422282200E3FA14 /* ProgressSheetController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A4999BA2422282200E3FA14 /* ProgressSheetController.xib */; };
-		0A4999BD2422282200E3FA14 /* ProgressSheetController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4999BB2422282200E3FA14 /* ProgressSheetController.swift */; };
 		0A4999BF242230DF00E3FA14 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4999BE242230DF00E3FA14 /* UICollectionView+Extensions.swift */; };
 		0A5107DB23AA807D00C19289 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5107DA23AA807D00C19289 /* NetworkError.swift */; };
 		0A5107DC23AA85B000C19289 /* RestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20223A97A3500FE9918 /* RestProvider.swift */; };
@@ -193,7 +193,6 @@
 		0A95068123F9B975004E5546 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068023F9B975004E5546 /* DashboardViewController.swift */; };
 		0A95068423F9BD62004E5546 /* DiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068323F9BD62004E5546 /* DiveViewController.swift */; };
 		0A95068623F9BD8D004E5546 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068523F9BD8D004E5546 /* MaintenanceViewController.swift */; };
-		0A95068823F9BDB0004E5546 /* PastDivesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068723F9BDB0004E5546 /* PastDivesViewController.swift */; };
 		0A95068B23F9D7F7004E5546 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068A23F9D7F7004E5546 /* SwiftSpinner.swift */; };
 		0A95068E23F9DD8D004E5546 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068D23F9DD8D004E5546 /* UIViewController+Extensions.swift */; };
 		0A95069123F9DF95004E5546 /* StoryboardInstantiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95069023F9DF95004E5546 /* StoryboardInstantiable.swift */; };
@@ -359,6 +358,7 @@
 /* Begin PBXFileReference section */
 		0A0230A2241117E900A4E532 /* AuxCameraControlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuxCameraControlView.xib; sourceTree = "<group>"; };
 		0A0230A62411868F00A4E532 /* AuxCameraPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuxCameraPlayerView.swift; sourceTree = "<group>"; };
+		0A134F412464191800FBD929 /* PastDivesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PastDivesViewController.storyboard; sourceTree = "<group>"; };
 		0A1A5B7223CE4B150038EABE /* DiveCollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiveCollectionItem.swift; sourceTree = "<group>"; };
 		0A1A5B7323CE4B150038EABE /* PreviewVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewVideoViewController.swift; sourceTree = "<group>"; };
 		0A1A5B7423CE4B150038EABE /* DiveCollectionItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiveCollectionItem.xib; sourceTree = "<group>"; };
@@ -385,6 +385,12 @@
 		0A2FF3112363A0BD008FD68B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A2FF3122363A13B008FD68B /* TridentCockpit.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TridentCockpit.entitlements; sourceTree = "<group>"; };
 		0A3532DC24041485000F572D /* UINavigationItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationItem+Extensions.swift"; sourceTree = "<group>"; };
+		0A3CB029246414D6009F827B /* DiveCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiveCollectionViewCell.swift; sourceTree = "<group>"; };
+		0A3CB02A246414D6009F827B /* DivePlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DivePlayerViewController.swift; sourceTree = "<group>"; };
+		0A3CB02B246414D6009F827B /* DiveCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiveCollectionReusableView.swift; sourceTree = "<group>"; };
+		0A3CB02C246414D6009F827B /* PastDivesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastDivesViewController.swift; sourceTree = "<group>"; };
+		0A3CB03224641572009F827B /* RecordingsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsAPI.swift; sourceTree = "<group>"; };
+		0A3CB03424641581009F827B /* NFDownloadButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NFDownloadButton.swift; sourceTree = "<group>"; };
 		0A3FD1F123A9443E00FE9918 /* ResinAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinAPI.swift; sourceTree = "<group>"; };
 		0A3FD1F323A94A5B00FE9918 /* WifiServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiServiceAPI.swift; sourceTree = "<group>"; };
 		0A3FD1F523A94FAC00FE9918 /* RecordingsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsAPI.swift; sourceTree = "<group>"; };
@@ -394,14 +400,8 @@
 		0A3FD1FE23A972B900FE9918 /* ConnectionInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionInfo.swift; sourceTree = "<group>"; };
 		0A3FD20023A9735300FE9918 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		0A3FD20223A97A3500FE9918 /* RestProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestProvider.swift; sourceTree = "<group>"; };
-		0A42E38A24226C40000BCB24 /* DivePlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DivePlayerViewController.swift; sourceTree = "<group>"; };
 		0A457D8D23B78A7C0042C250 /* Gopro3API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gopro3API.swift; sourceTree = "<group>"; };
-		0A488E642413AA2800EBEF19 /* DiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveCollectionViewCell.swift; sourceTree = "<group>"; };
-		0A488E662413AB5C00EBEF19 /* DiveCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveCollectionReusableView.swift; sourceTree = "<group>"; };
 		0A488E682413AE8400EBEF19 /* LinearProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearProgressBar.swift; sourceTree = "<group>"; };
-		0A4999B12422281400E3FA14 /* PastDivesWorker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastDivesWorker.swift; sourceTree = "<group>"; };
-		0A4999BA2422282200E3FA14 /* ProgressSheetController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProgressSheetController.xib; sourceTree = "<group>"; };
-		0A4999BB2422282200E3FA14 /* ProgressSheetController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressSheetController.swift; sourceTree = "<group>"; };
 		0A4999BE242230DF00E3FA14 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		0A5107DA23AA807D00C19289 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RovIMUCalibration.swift; sourceTree = "<group>"; };
@@ -480,7 +480,6 @@
 		0A95068023F9B975004E5546 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		0A95068323F9BD62004E5546 /* DiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveViewController.swift; sourceTree = "<group>"; };
 		0A95068523F9BD8D004E5546 /* MaintenanceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaintenanceViewController.swift; sourceTree = "<group>"; };
-		0A95068723F9BDB0004E5546 /* PastDivesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastDivesViewController.swift; sourceTree = "<group>"; };
 		0A95068A23F9D7F7004E5546 /* SwiftSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 		0A95068D23F9DD8D004E5546 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		0A95069023F9DF95004E5546 /* StoryboardInstantiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardInstantiable.swift; sourceTree = "<group>"; };
@@ -555,6 +554,7 @@
 		0A1A5B6823CE4AEF0038EABE /* PastDivesViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0A3FD1F523A94FAC00FE9918 /* RecordingsAPI.swift */,
 				0A1A5B7523CE4B150038EABE /* PastDivesViewController.swift */,
 				0A1A5B7623CE4B150038EABE /* PastDivesWorker.swift */,
 				0A1A5B7223CE4B150038EABE /* DiveCollectionItem.swift */,
@@ -581,9 +581,9 @@
 			children = (
 				0AF06EC523FB56F5000FF36A /* DashboardViewController */,
 				0AE05CEE23FD41FC00C7CA08 /* DiveViewController */,
+				0A3CB025246414D6009F827B /* PastDivesViewController */,
 				0ACCDE7023FDB25E00381207 /* AuxCamera */,
 				0A4D9CD32403E8F600BA6189 /* MaintenanceViewController */,
-				0A4D9CC92403E87D00BA6189 /* PastDivesViewController */,
 				0A95068F23F9DF61004E5546 /* Protocols */,
 				0A95068C23F9DD73004E5546 /* Extensions */,
 				0A95068923F9D7E7004E5546 /* ThirdParty */,
@@ -647,6 +647,19 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		0A3CB025246414D6009F827B /* PastDivesViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A134F412464191800FBD929 /* PastDivesViewController.storyboard */,
+				0A3CB029246414D6009F827B /* DiveCollectionViewCell.swift */,
+				0A3CB02A246414D6009F827B /* DivePlayerViewController.swift */,
+				0A3CB02B246414D6009F827B /* DiveCollectionReusableView.swift */,
+				0A3CB02C246414D6009F827B /* PastDivesViewController.swift */,
+				0A3CB03224641572009F827B /* RecordingsAPI.swift */,
+			);
+			path = PastDivesViewController;
+			sourceTree = "<group>";
+		};
 		0A3FD1F023A9439100FE9918 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -655,7 +668,6 @@
 				0A5107DA23AA807D00C19289 /* NetworkError.swift */,
 				0A3FD1F323A94A5B00FE9918 /* WifiServiceAPI.swift */,
 				0A3FD1F123A9443E00FE9918 /* ResinAPI.swift */,
-				0A3FD1F523A94FAC00FE9918 /* RecordingsAPI.swift */,
 				0A457D8D23B78A7C0042C250 /* Gopro3API.swift */,
 				0A71313A23637F0700817593 /* FastRTPS.swift */,
 				0A72A80E24347FE300AE9B2E /* RTPSConnectionMonitor.swift */,
@@ -675,20 +687,6 @@
 				0A3FD20023A9735300FE9918 /* AppInfo.swift */,
 			);
 			path = APIModel;
-			sourceTree = "<group>";
-		};
-		0A4D9CC92403E87D00BA6189 /* PastDivesViewController */ = {
-			isa = PBXGroup;
-			children = (
-				0A95068723F9BDB0004E5546 /* PastDivesViewController.swift */,
-				0A488E642413AA2800EBEF19 /* DiveCollectionViewCell.swift */,
-				0A488E662413AB5C00EBEF19 /* DiveCollectionReusableView.swift */,
-				0A4999B12422281400E3FA14 /* PastDivesWorker.swift */,
-				0A4999BB2422282200E3FA14 /* ProgressSheetController.swift */,
-				0A4999BA2422282200E3FA14 /* ProgressSheetController.xib */,
-				0A42E38A24226C40000BCB24 /* DivePlayerViewController.swift */,
-			);
-			path = PastDivesViewController;
 			sourceTree = "<group>";
 		};
 		0A4D9CD32403E8F600BA6189 /* MaintenanceViewController */ = {
@@ -842,6 +840,7 @@
 				0A8B26662401645A00ACC72F /* PWSwitch.swift */,
 				0ACCDE6A23FDABD100381207 /* CameraButton.swift */,
 				0A95068A23F9D7F7004E5546 /* SwiftSpinner.swift */,
+				0A3CB03424641581009F827B /* NFDownloadButton.swift */,
 			);
 			path = ThirdParty;
 			sourceTree = "<group>";
@@ -1116,9 +1115,9 @@
 				0A1D0A1C23F941AA006D9AFD /* PayloadCleanup.sh in Resources */,
 				0A1D0A1B23F941AA006D9AFD /* PayloadProvision.sh in Resources */,
 				0AF06EA123FAF637000FF36A /* Assets.xcassets in Resources */,
+				0A134F422464191800FBD929 /* PastDivesViewController.storyboard in Resources */,
 				0A0230A3241117E900A4E532 /* AuxCameraControlView.xib in Resources */,
 				0A9DF9662434BF5C0029DDDB /* GlobalParams.plist in Resources */,
-				0A4999BC2422282200E3FA14 /* ProgressSheetController.xib in Resources */,
 				0A248A0124518F4C0031720B /* InfoPlist.strings in Resources */,
 				0AE05CED23FD41E200C7CA08 /* DiveViewController.storyboard in Resources */,
 			);
@@ -1152,16 +1151,13 @@
 			files = (
 				0A72A7FD2433C91400AE9B2E /* ASVSubsystemStatus.swift in Sources */,
 				0A1D0A2623F941BD006D9AFD /* I2CStats.swift in Sources */,
-				0A488E652413AA2800EBEF19 /* DiveCollectionViewCell.swift in Sources */,
 				0AE05CE523FD38A200C7CA08 /* VideoDecoder.swift in Sources */,
 				0ACCDE7523FDB29D00381207 /* AuxCameraControlView.swift in Sources */,
-				0A42E39224226C40000BCB24 /* DivePlayerViewController.swift in Sources */,
 				0A3532DD24041485000F572D /* UINavigationItem+Extensions.swift in Sources */,
 				0AE05CE623FD3B9800C7CA08 /* TridentControl.swift in Sources */,
 				0A8B26702401653100ACC72F /* UIViewExtensions.swift in Sources */,
 				0A1D0A5E23F94942006D9AFD /* iso8601date.swift in Sources */,
 				0A20B18A2454C6B900FB4961 /* Shout+Promise.swift in Sources */,
-				0A4999BD2422282200E3FA14 /* ProgressSheetController.swift in Sources */,
 				0A1D0A2123F941B2006D9AFD /* SSIDInfo.swift in Sources */,
 				0A1D0A4823F941C4006D9AFD /* FastRTPS.swift in Sources */,
 				0AE05CE923FD3D9000C7CA08 /* VideoView.swift in Sources */,
@@ -1171,6 +1167,7 @@
 				0A1D0A3923F941BD006D9AFD /* DDSTypeString.swift in Sources */,
 				0A1D0A2323F941B2006D9AFD /* AppInfo.swift in Sources */,
 				0A1D0A2E23F941BD006D9AFD /* RovFuelgauge.swift in Sources */,
+				0A3CB02E246414D7009F827B /* DiveCollectionViewCell.swift in Sources */,
 				0A1D0A4123F941C4006D9AFD /* DDSDiscoveryListener.swift in Sources */,
 				0A1D0A3323F941BD006D9AFD /* RovPoint.swift in Sources */,
 				0AD8C5D12458400B009E0A9E /* GetWifiAPTableViewController.swift in Sources */,
@@ -1178,12 +1175,14 @@
 				0A8B266E2401645A00ACC72F /* PWSwitch.swift in Sources */,
 				0A95068623F9BD8D004E5546 /* MaintenanceViewController.swift in Sources */,
 				0AE05CDD23FD335A00C7CA08 /* UserDefaultsWrapper.swift in Sources */,
+				0A3CB030246414D7009F827B /* DiveCollectionReusableView.swift in Sources */,
 				0A1D0A3723F941BD006D9AFD /* RovQuaternion.swift in Sources */,
 				0A1D0A2923F941BD006D9AFD /* RovSafetyState.swift in Sources */,
 				0A1D0A2B23F941BD006D9AFD /* RovControlDescriptor.swift in Sources */,
 				0A488E692413AE8400EBEF19 /* LinearProgressBar.swift in Sources */,
 				0A1D0A4023F941BD006D9AFD /* RovIMUCalibration.swift in Sources */,
 				0A1D0A3C23F941BD006D9AFD /* RovSubsystemStatus.swift in Sources */,
+				0A3CB031246414D7009F827B /* PastDivesViewController.swift in Sources */,
 				0AE05CD923FD329E00C7CA08 /* FloatingView.swift in Sources */,
 				0A1D0A2D23F941BD006D9AFD /* RovQuaternion+extensions.swift in Sources */,
 				0A1D0A3A23F941BD006D9AFD /* RovRecording.swift in Sources */,
@@ -1196,21 +1195,20 @@
 				0A0230A72411868F00A4E532 /* AuxCameraPlayerView.swift in Sources */,
 				0A1D0A3623F941BD006D9AFD /* RovDepth.swift in Sources */,
 				0A1D0A1E23F941B2006D9AFD /* GoproStatus.swift in Sources */,
+				0A3CB02F246414D7009F827B /* DivePlayerViewController.swift in Sources */,
 				0A1D0A2823F941BD006D9AFD /* RovCameraObjectTrack.swift in Sources */,
-				0A4999B92422281400E3FA14 /* PastDivesWorker.swift in Sources */,
-				0A1D0A4623F941C4006D9AFD /* RecordingsAPI.swift in Sources */,
 				0A1D0A3D23F941BD006D9AFD /* RovChannel.swift in Sources */,
 				0A1D0A2423F941BD006D9AFD /* RovTopic.swift in Sources */,
 				0AE490702448524800C669D0 /* UILabelRotatable.swift in Sources */,
 				0AE05CDB23FD32FB00C7CA08 /* Extensions.swift in Sources */,
 				0AF06ECE23FB5730000FF36A /* UIToolbar+Extensions.swift in Sources */,
 				0A95068423F9BD62004E5546 /* DiveViewController.swift in Sources */,
-				0A95068823F9BDB0004E5546 /* PastDivesViewController.swift in Sources */,
 				0ADD42B9240EBBCD008ECFCC /* TouchJoystickView.swift in Sources */,
 				0A1D0A3523F941BD006D9AFD /* RovTemperature.swift in Sources */,
 				0A1D0A3823F941BD006D9AFD /* RovControllerStatus.swift in Sources */,
 				0AF06EB023FB209A000FF36A /* UIBarButtonItem+Extension.swift in Sources */,
 				0A1D0A3023F941BD006D9AFD /* RovAttitude.swift in Sources */,
+				0A3CB03524641581009F827B /* NFDownloadButton.swift in Sources */,
 				0A9DF95C243487960029DDDB /* RTPSConnectionMonitor.swift in Sources */,
 				0A1D0A4223F941C4006D9AFD /* RestProvider.swift in Sources */,
 				0A1D0A3B23F941BD006D9AFD /* RovVideoData.swift in Sources */,
@@ -1232,6 +1230,7 @@
 				0A1D0A3123F941BD006D9AFD /* RovCommon.swift in Sources */,
 				0A1D0A2723F941BD006D9AFD /* BatteryState.swift in Sources */,
 				0A95069123F9DF95004E5546 /* StoryboardInstantiable.swift in Sources */,
+				0A3CB03324641572009F827B /* RecordingsAPI.swift in Sources */,
 				0A1D0A2023F941B2006D9AFD /* DeviceState.swift in Sources */,
 				0A1D0A5D23F94942006D9AFD /* Date+Extensions.swift in Sources */,
 				0A95068E23F9DD8D004E5546 /* UIViewController+Extensions.swift in Sources */,
@@ -1243,7 +1242,6 @@
 				0ACCDE6F23FDAE7000381207 /* RovModelView.swift in Sources */,
 				0A1D0A3F23F941BD006D9AFD /* RovLightPower.swift in Sources */,
 				0A95068B23F9D7F7004E5546 /* SwiftSpinner.swift in Sources */,
-				0A488E672413AB5C00EBEF19 /* DiveCollectionReusableView.swift in Sources */,
 				0A1D0A4423F941C4006D9AFD /* WifiServiceAPI.swift in Sources */,
 				0AE05CE023FD349D00C7CA08 /* Preferences.swift in Sources */,
 				0A1D0A2523F941BD006D9AFD /* RovBarometer.swift in Sources */,

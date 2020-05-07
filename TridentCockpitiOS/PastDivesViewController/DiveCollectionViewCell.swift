@@ -12,24 +12,34 @@ class DiveCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var previewLabel: UILabel!
     @IBOutlet weak var selectionImage: UIImageView!
     @IBOutlet weak var playButton: UIButton!
+    @IBOutlet weak var downloadButton: NFDownloadButton!
     
-    var actionHandler: (() -> Void)?
-
+    var playButtonAction: (() -> Void)?
+    var downloadButtonAction: (() -> Void)?
     @IBAction func playButtonTap(_ sender: Any) {
-        actionHandler?()
+        playButtonAction?()
+    }
+    
+    @IBAction func downloadButtonTap(_ sender: NFDownloadButton) {
+        if sender.downloadState == .toDownload {
+            downloadButtonAction?()
+        }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.borderColor = UIColor.label.cgColor
         layer.borderWidth = 0
+        selectionImage.isHidden = true
     }
     
     override func prepareForReuse() {
         DivePlayerViewController.shared?.removeFromContainer()
+        downloadButton.downloadState = .toDownload
         selectionImage.isHidden = true
         layer.borderWidth = 0
         previewLabel.text = nil
+        isSelected = false
     }
     
     override var isSelected: Bool {
