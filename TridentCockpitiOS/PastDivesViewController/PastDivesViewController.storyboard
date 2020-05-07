@@ -279,9 +279,11 @@
                         <outlet property="availableSpaceLabel" destination="2nc-Id-sFA" id="ppE-kL-UPV"/>
                         <outlet property="collectionView" destination="ZkK-Jc-iMs" id="CZR-rC-9gp"/>
                         <outlet property="deleteAfterSwitch" destination="hqG-Et-RxJ" id="pIE-bt-5ML"/>
+                        <segue destination="HDv-J0-a42" kind="unwind" identifier="unwindToDashboardSegue" customClass="UIStoryboardSegueWithCompletion" customModule="TridentCockpitiOS" customModuleProvider="target" unwindAction="unwindToDashboardWithUnwindSegue:" id="mQf-8d-tTZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdN-zT-O1V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="HDv-J0-a42" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1702.8169014084508" y="997.5"/>
         </scene>
