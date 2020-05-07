@@ -98,7 +98,7 @@ class PastDivesViewController: UIViewController {
     //MARK: Overrides
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        /*
+        
         FastRTPS.registerReader(topic: .rovRecordingStats) { [weak self] (recordingStats: RovRecordingStats) in
             guard let self = self else { return }
             DispatchQueue.main.async {
@@ -113,12 +113,12 @@ class PastDivesViewController: UIViewController {
                 self.availableSpaceBar.transform = CGAffineTransform(rotationAngle: .pi)
             }
         }
- */
+ 
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        FastRTPS.removeReader(topic: .rovRecordingStats)
+        FastRTPS.removeReader(topic: .rovRecordingStats)
     }
 
     override func viewDidLayoutSubviews() {
