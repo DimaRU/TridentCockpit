@@ -27,7 +27,7 @@ final class RecordingsAPI: NSObject {
         config.sessionSendsLaunchEvents = true
         config.allowsCellularAccess = false
         config.waitsForConnectivity = false
-        config.httpMaximumConnectionsPerHost = 2
+        config.httpMaximumConnectionsPerHost = 1
         let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
         return session
     }()
