@@ -484,7 +484,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         return SSH.executeCommand("dpkg-query -s nm-wifi-service|grep Version")
         .done { log in
             let version = log.first!.split(separator: " ").last!
-            if version.compare("1.0.5-1", options: .numeric) == .orderedDescending {
+            if version.compare("1.1.0", options: .numeric) != .orderedDescending {
                 let setupAPButton = UIBarButtonItem(image: UIImage(named: "wifi-ap"),
                                                     style: .plain,
                                                     target: self,
