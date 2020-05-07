@@ -46,7 +46,7 @@
 If you’re benefiting from my project, or simply like what I do, you can help me by donating some amount onetime or each month. Supporting me on [Patreon](https://www.patreon.com/DimaRU) will help pay for hardware needed for further development.
 The money received will go towards:
 
-* Buy a GoPro Max 560 for support latest GoPro models in the app.
+* Buy a GoPro Max 360 for support latest GoPro models in the app.
 * Buy an iPad to speed up iPad version testing.
 
 With Patreon, you can send me a small monthly amount of money, or make a one-time donation by canceling the monthly subscription after the first payment.
@@ -115,17 +115,21 @@ cd TridentCockpit
 
 ## Dependencies
 
-* [Eprosima Fast RTPS](https://github.com/eProsima/Fast-RTPS) - implementation of the OMG RTPS protocol.
-* [Foonathan memory](https://github.com/foonathan/memory) - Fast RTPS dependency
+* [Eprosima Fast RTPS](https://github.com/DimaRU/Fast-RTPS) - implementation of the OMG RTPS protocol. Modified version based on Eprosima Fast RTPS.
+* [Foonathan memory](https://github.com/DimaRU/memory) - Memory allocator for Fast RTPS. Modified version for iOS comparability.
 * [FastRTPSBridge](https://github.com/DimaRU/FastRTPSBridge) - A Swift wrapper for FastRTPS library
-* [CDRCodable](https://github.com/DimaRU/CDRCodable) - Zero code serialization/deserialization framework for Common Data Representation (CDR) binary format
-* [FlatButton](https://github.com/OskarGroth/FlatButton) - Layer based NSButton with Interface Builder styling options
-* [CircularProgress](https://github.com/sindresorhus/CircularProgress) - Circular progress indicator for your macOS app
+* [CDRCodable](https://github.com/DimaRU/CDRCodable) - Swift Codable serialization/deserialization framework for Common Data Representation (CDR) binary format.
+* [Shout](https://github.com/DimaRU/Shout) - A Swift SSH framework that wraps libssh2. Modified version.
+* [BlueSocket](https://github.com/DimaRU/BlueSocket) - Socket framework for Swift using the Swift Package Manager. Modified version based on IBM BlueSocket.
 * [Moya](https://github.com/Moya/Moya) - Network abstraction layer written in Swift.
 * [PromiseKit](https://github.com/mxcl/PromiseKit) - Promises for Swift & ObjC.
-* [Alamofire](https://github.com/Alamofire/Alamofire) - Elegant HTTP Networking in Swift.
-* [SwiftSH](https://github.com/Frugghi/SwiftSH) - A Swift SSH framework that wraps libssh2.
 * [Kingfisher](https://github.com/onevcat/Kingfisher) - A lightweight, pure-Swift library for downloading and caching images from the web.
+* [PWSwitch](https://github.com/Shaninnik/PWSwitch) - Highly customizable UISwitch built with CALayers and CAAnimations. Modified version.
+* [LinearProgressBar](https://github.com/gordoneliel/LinearProgressBar) - Simple progress bar for iOS.
+* [CameraButton](https://github.com/otusweb/iOS-camera-button) - A button that behave the same way as the video camera button in the iOS camera. Modified version.
+* [SwiftSpinner](https://github.com/icanzilb/SwiftSpinner) - A beautiful activity indicator. Modified version.
+* [FlatButton](https://github.com/OskarGroth/FlatButton) - Layer based NSButton with Interface Builder styling options
+* [CircularProgress](https://github.com/sindresorhus/CircularProgress) - Circular progress indicator for your macOS app
 
 
 ## Author
