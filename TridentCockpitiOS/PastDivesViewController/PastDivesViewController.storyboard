@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WCY-zm-DOs">
-    <device id="retina4_7" orientation="landscape" appearance="light"/>
+    <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="WCY-zm-DOs" customClass="PastDivesViewController" customModule="TridentCockpitiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pFh-ng-NSQ">
-                        <rect key="frame" x="0.0" y="0.0" width="667" height="343"/>
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="370"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hqG-Et-RxJ" customClass="PWSwitch" customModule="TridentCockpitiOS" customModuleProvider="target">
-                                <rect key="frame" x="8" y="4" width="0.0" height="26"/>
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="hqG-Et-RxJ" customClass="PWSwitch" customModule="TridentCockpitiOS" customModuleProvider="target">
+                                <rect key="frame" x="52" y="4" width="50" height="26"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="trackOffBorderColor">
                                         <color key="value" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -52,14 +52,14 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="shouldFillOnPush" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" ambiguous="YES" text="Delete after download" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVX-MN-1fX">
-                                <rect key="frame" x="16" y="8" width="107.5" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Delete after download" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVX-MN-1fX">
+                                <rect key="frame" x="110" y="8" width="151" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="KUj-Wp-enn">
-                                <rect key="frame" x="287.5" y="8" width="371.5" height="18"/>
+                                <rect key="frame" x="503.5" y="8" width="384.5" height="18"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="747" text="Available space:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Eh-JG-Vxj">
                                         <rect key="frame" x="0.0" y="0.0" width="110" height="18"/>
@@ -68,7 +68,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYu-ry-A7E" customClass="LinearProgressBar" customModule="TridentCockpitiOS" customModuleProvider="target">
-                                        <rect key="frame" x="118" y="2" width="87" height="14"/>
+                                        <rect key="frame" x="118" y="2" width="100" height="14"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="O26-P8-zQd">
@@ -101,7 +101,7 @@
                                         </userDefinedRuntimeAttributes>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10.1 GB of 20.0 GB free" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2nc-Id-sFA">
-                                        <rect key="frame" x="213" y="0.0" width="158.5" height="18"/>
+                                        <rect key="frame" x="226" y="0.0" width="158.5" height="18"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -109,7 +109,7 @@
                                 </subviews>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ZkK-Jc-iMs">
-                                <rect key="frame" x="0.0" y="34" width="667" height="309"/>
+                                <rect key="frame" x="0.0" y="34" width="896" height="336"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="4" minimumInteritemSpacing="4" sectionInsetReference="safeArea" id="cxs-Es-AXu">
                                     <size key="itemSize" width="255" height="138"/>
@@ -119,7 +119,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DiveCollectionViewCell" id="l1J-Yv-qX5" customClass="DiveCollectionViewCell" customModule="TridentCockpitiOS" customModuleProvider="target">
-                                        <rect key="frame" x="4" y="35" width="255" height="138"/>
+                                        <rect key="frame" x="48" y="35" width="255" height="138"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BBa-Ao-xwb">
                                             <rect key="frame" x="0.0" y="0.0" width="255" height="138"/>
@@ -147,52 +147,55 @@
                                                         <action selector="playButtonTap:" destination="l1J-Yv-qX5" eventType="touchUpInside" id="eIF-PF-xCK"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XOV-np-MAL" customClass="NFDownloadButton" customModule="TridentCockpitiOS" customModuleProvider="target">
-                                                    <rect key="frame" x="92.5" y="53" width="70" height="70"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="70" id="WY3-xa-Tuj"/>
-                                                        <constraint firstAttribute="width" constant="70" id="uxZ-PC-uJP"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="buttonBackgroundColor">
-                                                            <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="downloadColor">
-                                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="deviceColor">
-                                                            <color key="value" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="downloadButtonTap:" destination="l1J-Yv-qX5" eventType="touchUpInside" id="Rp5-8L-gnd"/>
-                                                    </connections>
-                                                </button>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark.circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="5gw-Uz-sgh">
                                                     <rect key="frame" x="205" y="16" width="35" height="34"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6d-6F-Yru" customClass="SmartDownloadButton" customModule="TridentCockpitiOS" customModuleProvider="target">
+                                                    <rect key="frame" x="102.5" y="63" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="5rn-JY-3lZ"/>
+                                                        <constraint firstAttribute="width" constant="50" id="Foa-6N-SFE"/>
+                                                    </constraints>
+                                                    <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <state key="normal" image="square.and.arrow.down" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="50" scale="default" weight="light"/>
+                                                    </state>
+                                                    <state key="selected" image="checkmark" catalog="system">
+                                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30" scale="default" weight="light"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="trackCircleColor">
+                                                            <color key="value" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="lineWidth">
+                                                            <real key="value" value="4"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="downloadButtonTap:" destination="l1J-Yv-qX5" eventType="touchUpInside" id="BC6-dE-dg5"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="orw-LQ-2Co" secondAttribute="bottom" constant="4" id="0bH-U3-8Yn"/>
                                                 <constraint firstAttribute="trailing" secondItem="orw-LQ-2Co" secondAttribute="trailing" constant="4" id="2Ne-ir-ez1"/>
                                                 <constraint firstItem="IrV-hf-KAr" firstAttribute="top" secondItem="BBa-Ao-xwb" secondAttribute="topMargin" id="3wl-PW-7jf"/>
+                                                <constraint firstItem="V6d-6F-Yru" firstAttribute="centerX" secondItem="BBa-Ao-xwb" secondAttribute="centerX" id="QOb-87-m1x"/>
                                                 <constraint firstAttribute="trailing" secondItem="5gw-Uz-sgh" secondAttribute="trailing" constant="15" id="kjd-hn-Zqe"/>
                                                 <constraint firstItem="Z5U-H8-4Gc" firstAttribute="centerX" secondItem="BBa-Ao-xwb" secondAttribute="centerX" id="nW2-zc-8Uy"/>
-                                                <constraint firstAttribute="bottom" secondItem="XOV-np-MAL" secondAttribute="bottom" constant="15" id="oUk-fc-yI0"/>
                                                 <constraint firstItem="orw-LQ-2Co" firstAttribute="leading" secondItem="BBa-Ao-xwb" secondAttribute="leading" constant="4" id="pGx-iu-82M"/>
                                                 <constraint firstItem="5gw-Uz-sgh" firstAttribute="top" secondItem="BBa-Ao-xwb" secondAttribute="top" constant="15" id="q4k-87-iUK"/>
                                                 <constraint firstItem="Z5U-H8-4Gc" firstAttribute="centerY" secondItem="BBa-Ao-xwb" secondAttribute="centerY" multiplier="0.9" id="r1j-eP-ICl"/>
+                                                <constraint firstAttribute="bottom" secondItem="V6d-6F-Yru" secondAttribute="bottom" constant="25" id="t3L-F8-aGL"/>
                                                 <constraint firstItem="IrV-hf-KAr" firstAttribute="centerX" secondItem="BBa-Ao-xwb" secondAttribute="centerX" id="y0R-LR-ka5"/>
-                                                <constraint firstItem="XOV-np-MAL" firstAttribute="centerX" secondItem="BBa-Ao-xwb" secondAttribute="centerX" id="yb1-2G-eyi"/>
                                                 <constraint firstItem="orw-LQ-2Co" firstAttribute="top" secondItem="BBa-Ao-xwb" secondAttribute="top" constant="4" id="zHl-WN-cnf"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <size key="customSize" width="255" height="138"/>
                                         <connections>
-                                            <outlet property="downloadButton" destination="XOV-np-MAL" id="cbF-IB-UnJ"/>
+                                            <outlet property="downloadButton" destination="V6d-6F-Yru" id="czG-lq-bqI"/>
                                             <outlet property="playButton" destination="Z5U-H8-4Gc" id="e0f-eE-guP"/>
                                             <outlet property="previewImage" destination="orw-LQ-2Co" id="RIU-26-jzH"/>
                                             <outlet property="previewLabel" destination="IrV-hf-KAr" id="T7l-BT-t5y"/>
@@ -201,7 +204,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="DiveCollectionReusableView" id="MCQ-48-LmJ" customClass="DiveCollectionReusableView" customModule="TridentCockpitiOS" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="667" height="35"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="896" height="35"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Dn-xR-HQA">
@@ -289,6 +292,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="checkmark.circle" catalog="system" width="128" height="121"/>
         <image name="minus" catalog="system" width="128" height="24"/>
         <image name="play.fill" catalog="system" width="116" height="128"/>

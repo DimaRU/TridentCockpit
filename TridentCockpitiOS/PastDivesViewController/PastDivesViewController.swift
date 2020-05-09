@@ -17,7 +17,7 @@ class PastDivesViewController: UIViewController {
     
     var sectionDates: [Date] = []
     var recordingBySection: [Date: [Recording]] = [:]
-    var downloadState: [String: NFDownloadButtonState] = [:]
+    var downloadState: [String: SmartDownloadButton.DownloadState] = [:]
     
     let sectionFormatter = DateFormatter()
     let diveLabelFormatter = DateFormatter()
@@ -153,12 +153,12 @@ class PastDivesViewController: UIViewController {
     
     @IBAction func downloadButtonTap(_ sender: Any) {
         guard let selected = collectionView.indexPathsForSelectedItems, !selected.isEmpty else { return }
-        let recordings = selected.map { getRecording(by: $0) }.filter{ downloadState[$0.sessionId]! == .toDownload }
+        let recordings = selected.map { getRecording(by: $0) }.filter{ downloadState[$0.sessionId]! == .start }
         for recording in recordings {
-            downloadState[recording.sessionId] = .willDownload
+            downloadState[recording.sessionId] = .wait
             if let indexPath = getIndexPath(by: recording),
                 let item = collectionView.cellForItem(at: indexPath) as? DiveCollectionViewCell {
-                item.downloadButton.downloadState = .willDownload
+                item.downloadButton.trasition(to: .wait)
             }
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -184,7 +184,7 @@ class PastDivesViewController: UIViewController {
     }
     
     @IBAction func cancelButtonTap(_ sender: Any) {
-        let count = downloadState.values.filter{ $0 == .willDownload || $0 == .downloading}.count
+        let count = downloadState.values.filter{ $0 == .wait || $0 == .run }.count
         guard count != 0 else { return }
         let sheet = UIAlertController(title: "Cancel \(count) downloads?",
             message: "Are you sure?",
@@ -230,7 +230,7 @@ class PastDivesViewController: UIViewController {
         let indexPath = getIndexPath(by: recording)!
         collectionView.deselectItem(at: indexPath, animated: false)
         if let item = collectionView.cellForItem(at: indexPath) as? DiveCollectionViewCell {
-            item.downloadButton.downloadState = .downloaded
+            item.downloadButton.trasition(to: .end)
         }
     }
 
@@ -253,9 +253,9 @@ class PastDivesViewController: UIViewController {
         sectionDates = []
         downloadState = [:]
         for recording in recordings {
-            downloadState[recording.sessionId] = .toDownload
+            downloadState[recording.sessionId] = .start
             if recordingsAPI.isDownloaded(recording: recording) {
-                downloadState[recording.sessionId] = .downloaded
+                downloadState[recording.sessionId] = .end
             }
             let date = recording.startTimestamp.clearedTime
             recordingBySection[date, default: []].append(recording)
@@ -265,9 +265,17 @@ class PastDivesViewController: UIViewController {
         for key in sectionDates {
             recordingBySection[key] = recordingBySection[key]!.sorted(by: {$0.startTimestamp < $1.startTimestamp})
         }
-        recordingsAPI.getDownloads { sessions in
-            sessions.forEach{ self.downloadState[$0] = .downloading }
-            self.collectionView.reloadData()
+        self.collectionView.reloadData()
+        recordingsAPI.getDownloads { progressList in
+            for (sessionId, progress) in progressList {
+                self.downloadState[sessionId] = progress.fractionCompleted == 0 ? .wait : .run
+                if let recording = self.getRecording(by: sessionId),
+                    let indexPath = self.getIndexPath(by: recording),
+                    let item = self.collectionView.cellForItem(at: indexPath) as? DiveCollectionViewCell {
+                    item.downloadButton.downloadState = self.downloadState[sessionId]!
+                    item.downloadButton.progress = Float(progress.fractionCompleted)
+                }
+            }
         }
     }
     
@@ -401,9 +409,9 @@ extension PastDivesViewController: RecordingsAPIProtocol {
         if let recording = getRecording(by: sessionId),
            let indexPath = getIndexPath(by: recording),
            let item = collectionView.cellForItem(at: indexPath) as? DiveCollectionViewCell {
-            item.downloadButton.downloadState = .toDownload
+            item.downloadButton.downloadState = .start
         }
-        downloadState[sessionId] = .toDownload
+        downloadState[sessionId] = .start
         let nserror = error as NSError
         if nserror.domain == NSURLErrorDomain,
            nserror.code == NSURLErrorCancelled {
@@ -414,7 +422,7 @@ extension PastDivesViewController: RecordingsAPIProtocol {
     
     func downloadEnd(sessionId: String) {
         guard let recording = getRecording(by: sessionId) else { return }
-        downloadState[recording.sessionId] = .downloaded
+        downloadState[recording.sessionId] = .end
         let deleteAfter = deleteAfterSwitch.on
         if deleteAfter {
             self.delete(recordins: [recording])
@@ -430,6 +438,7 @@ extension PastDivesViewController: RecordingsAPIProtocol {
             let item = collectionView.cellForItem(at: indexPath) as? DiveCollectionViewCell else { return
         }
         let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+        item.downloadButton.downloadState = .run
         item.downloadButton.progress = progress
     }
 }

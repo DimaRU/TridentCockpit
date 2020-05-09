@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0A0230A3241117E900A4E532 /* AuxCameraControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A0230A2241117E900A4E532 /* AuxCameraControlView.xib */; };
 		0A0230A72411868F00A4E532 /* AuxCameraPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0230A62411868F00A4E532 /* AuxCameraPlayerView.swift */; };
+		0A0469C32466DD4900D10073 /* SmartDownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0469C22466DD4900D10073 /* SmartDownloadButton.swift */; };
 		0A0C1C8523FE015100D09F77 /* TridentCockpit.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A71311B23636B5C00817593 /* TridentCockpit.scnassets */; };
 		0A134F422464191800FBD929 /* PastDivesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A134F412464191800FBD929 /* PastDivesViewController.storyboard */; };
 		0A1A5B7823CE4B150038EABE /* DiveCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7223CE4B150038EABE /* DiveCollectionItem.swift */; };
@@ -96,7 +97,6 @@
 		0A3CB030246414D7009F827B /* DiveCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CB02B246414D6009F827B /* DiveCollectionReusableView.swift */; };
 		0A3CB031246414D7009F827B /* PastDivesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CB02C246414D6009F827B /* PastDivesViewController.swift */; };
 		0A3CB03324641572009F827B /* RecordingsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CB03224641572009F827B /* RecordingsAPI.swift */; };
-		0A3CB03524641581009F827B /* NFDownloadButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3CB03424641581009F827B /* NFDownloadButton.swift */; };
 		0A3D747A2402B87200EE78F7 /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E55BE23BC0AFA008F8A9A /* Average.swift */; };
 		0A3FD1F223A9443E00FE9918 /* ResinAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F123A9443E00FE9918 /* ResinAPI.swift */; };
 		0A3FD1F423A94A5B00FE9918 /* WifiServiceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1F323A94A5B00FE9918 /* WifiServiceAPI.swift */; };
@@ -358,6 +358,7 @@
 /* Begin PBXFileReference section */
 		0A0230A2241117E900A4E532 /* AuxCameraControlView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuxCameraControlView.xib; sourceTree = "<group>"; };
 		0A0230A62411868F00A4E532 /* AuxCameraPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuxCameraPlayerView.swift; sourceTree = "<group>"; };
+		0A0469C22466DD4900D10073 /* SmartDownloadButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SmartDownloadButton.swift; sourceTree = "<group>"; };
 		0A134F412464191800FBD929 /* PastDivesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PastDivesViewController.storyboard; sourceTree = "<group>"; };
 		0A1A5B7223CE4B150038EABE /* DiveCollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiveCollectionItem.swift; sourceTree = "<group>"; };
 		0A1A5B7323CE4B150038EABE /* PreviewVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewVideoViewController.swift; sourceTree = "<group>"; };
@@ -390,7 +391,6 @@
 		0A3CB02B246414D6009F827B /* DiveCollectionReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiveCollectionReusableView.swift; sourceTree = "<group>"; };
 		0A3CB02C246414D6009F827B /* PastDivesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PastDivesViewController.swift; sourceTree = "<group>"; };
 		0A3CB03224641572009F827B /* RecordingsAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsAPI.swift; sourceTree = "<group>"; };
-		0A3CB03424641581009F827B /* NFDownloadButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NFDownloadButton.swift; sourceTree = "<group>"; };
 		0A3FD1F123A9443E00FE9918 /* ResinAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResinAPI.swift; sourceTree = "<group>"; };
 		0A3FD1F323A94A5B00FE9918 /* WifiServiceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WifiServiceAPI.swift; sourceTree = "<group>"; };
 		0A3FD1F523A94FAC00FE9918 /* RecordingsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingsAPI.swift; sourceTree = "<group>"; };
@@ -656,6 +656,7 @@
 				0A3CB02B246414D6009F827B /* DiveCollectionReusableView.swift */,
 				0A3CB02C246414D6009F827B /* PastDivesViewController.swift */,
 				0A3CB03224641572009F827B /* RecordingsAPI.swift */,
+				0A0469C22466DD4900D10073 /* SmartDownloadButton.swift */,
 			);
 			path = PastDivesViewController;
 			sourceTree = "<group>";
@@ -840,7 +841,6 @@
 				0A8B26662401645A00ACC72F /* PWSwitch.swift */,
 				0ACCDE6A23FDABD100381207 /* CameraButton.swift */,
 				0A95068A23F9D7F7004E5546 /* SwiftSpinner.swift */,
-				0A3CB03424641581009F827B /* NFDownloadButton.swift */,
 			);
 			path = ThirdParty;
 			sourceTree = "<group>";
@@ -1208,7 +1208,6 @@
 				0A1D0A3823F941BD006D9AFD /* RovControllerStatus.swift in Sources */,
 				0AF06EB023FB209A000FF36A /* UIBarButtonItem+Extension.swift in Sources */,
 				0A1D0A3023F941BD006D9AFD /* RovAttitude.swift in Sources */,
-				0A3CB03524641581009F827B /* NFDownloadButton.swift in Sources */,
 				0A9DF95C243487960029DDDB /* RTPSConnectionMonitor.swift in Sources */,
 				0A1D0A4223F941C4006D9AFD /* RestProvider.swift in Sources */,
 				0A1D0A3B23F941BD006D9AFD /* RovVideoData.swift in Sources */,
@@ -1217,6 +1216,7 @@
 				0A1D0A4523F941C4006D9AFD /* ResinAPI.swift in Sources */,
 				0A1D0A4723F941C4006D9AFD /* Gopro3API.swift in Sources */,
 				0A4999BF242230DF00E3FA14 /* UICollectionView+Extensions.swift in Sources */,
+				0A0469C32466DD4900D10073 /* SmartDownloadButton.swift in Sources */,
 				0A95069223F9E5B8004E5546 /* KeychainService.swift in Sources */,
 				0A1D0A3423F941BD006D9AFD /* RovTridentMotorCommand.swift in Sources */,
 				0ACCDE6D23FDAD4E00381207 /* CameraControlView.swift in Sources */,

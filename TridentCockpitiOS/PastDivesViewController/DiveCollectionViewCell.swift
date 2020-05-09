@@ -12,7 +12,7 @@ class DiveCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var previewLabel: UILabel!
     @IBOutlet weak var selectionImage: UIImageView!
     @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var downloadButton: NFDownloadButton!
+    @IBOutlet weak var downloadButton: SmartDownloadButton!
     
     var playButtonAction: (() -> Void)?
     var downloadButtonAction: (() -> Void)?
@@ -20,10 +20,8 @@ class DiveCollectionViewCell: UICollectionViewCell {
         playButtonAction?()
     }
     
-    @IBAction func downloadButtonTap(_ sender: NFDownloadButton) {
-        if sender.downloadState == .toDownload {
-            downloadButtonAction?()
-        }
+    @IBAction func downloadButtonTap(_ sender: Any) {
+        downloadButtonAction?()
     }
     
     override func awakeFromNib() {
@@ -35,7 +33,7 @@ class DiveCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         DivePlayerViewController.shared?.removeFromContainer()
-        downloadButton.downloadState = .toDownload
+        downloadButton.downloadState = .start
         selectionImage.isHidden = true
         layer.borderWidth = 0
         previewLabel.text = nil
