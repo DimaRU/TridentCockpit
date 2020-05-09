@@ -145,7 +145,7 @@ final class SmartDownloadButton: UIButton {
         }
     }
 
-    var progress: Float = 0 {
+    var progress: Double = 0 {
         didSet {
             guard downloadState == .run else {
                 if progress == 0 {
@@ -153,6 +153,7 @@ final class SmartDownloadButton: UIButton {
                 }
                 return
             }
+            guard progress != oldValue else { return }
             if progress > 1 {
                 progress = 1
             }

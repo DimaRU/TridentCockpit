@@ -18,6 +18,7 @@ class PastDivesViewController: UIViewController {
     var sectionDates: [Date] = []
     var recordingBySection: [Date: [Recording]] = [:]
     var downloadState: [String: SmartDownloadButton.DownloadState] = [:]
+    var progressState: [String: Double] = [:]
     
     let sectionFormatter = DateFormatter()
     let diveLabelFormatter = DateFormatter()
@@ -265,17 +266,18 @@ class PastDivesViewController: UIViewController {
         for key in sectionDates {
             recordingBySection[key] = recordingBySection[key]!.sorted(by: {$0.startTimestamp < $1.startTimestamp})
         }
-        self.collectionView.reloadData()
         recordingsAPI.getDownloads { progressList in
-            for (sessionId, progress) in progressList {
-                self.downloadState[sessionId] = progress.fractionCompleted == 0 ? .wait : .run
-                if let recording = self.getRecording(by: sessionId),
-                    let indexPath = self.getIndexPath(by: recording),
-                    let item = self.collectionView.cellForItem(at: indexPath) as? DiveCollectionViewCell {
-                    item.downloadButton.downloadState = self.downloadState[sessionId]!
-                    item.downloadButton.progress = Float(progress.fractionCompleted)
+            for (sessionId, (countOfBytesReceived, countOfBytesExpectedToReceive)) in progressList {
+                let progress: Double
+                if countOfBytesReceived == 0 || countOfBytesExpectedToReceive == 0 {
+                    progress = 0
+                } else {
+                    progress = Double(countOfBytesReceived) / Double(countOfBytesExpectedToReceive)
                 }
+                self.downloadState[sessionId] = progress == 0 ? .wait : .run
+                self.progressState[sessionId] = progress
             }
+            self.collectionView.reloadData()
         }
     }
     
@@ -379,6 +381,7 @@ extension PastDivesViewController: UICollectionViewDataSource  {
         cell.previewImage?.kf.indicatorType = .activity
         cell.previewImage?.kf.setImage(with: imageURL)
         cell.downloadButton.downloadState = downloadState[recording.sessionId]!
+        cell.downloadButton.progress = progressState[recording.sessionId] ?? 0
         
         cell.playButtonAction = { [weak self] in
             guard let self = self else { return }
@@ -412,6 +415,7 @@ extension PastDivesViewController: RecordingsAPIProtocol {
             item.downloadButton.downloadState = .start
         }
         downloadState[sessionId] = .start
+        progressState[sessionId] = 0
         let nserror = error as NSError
         if nserror.domain == NSURLErrorDomain,
            nserror.code == NSURLErrorCancelled {
@@ -437,8 +441,10 @@ extension PastDivesViewController: RecordingsAPIProtocol {
             let indexPath = getIndexPath(by: recording),
             let item = collectionView.cellForItem(at: indexPath) as? DiveCollectionViewCell else { return
         }
-        let progress = Float(totalBytesWritten) / Float(totalBytesExpectedToWrite)
+        let progress = Double(totalBytesWritten) / Double(totalBytesExpectedToWrite)
         item.downloadButton.downloadState = .run
         item.downloadButton.progress = progress
+        downloadState[sessionId] = .run
+        progressState[sessionId] = progress
     }
 }

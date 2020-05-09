@@ -156,13 +156,13 @@ final class RecordingsAPI: NSObject {
         return fileSize?.int64Value == Int64(recording.segments[0].size)
     }
     
-    func getDownloads(completion: @escaping ([String: Progress]) -> Void) {
+    func getDownloads(completion: @escaping ([String: (Int64, Int64)]) -> Void) {
         downloadSession.getAllTasks { tasks in
-            var progressList: [String: Progress] = [:]
+            var progressList: [String: (Int64, Int64)] = [:]
             for task in tasks {
                 task.resume()
                 if let sessionId = task.taskDescription?.split(separator: ":").compactMap({String($0)}).first {
-                    progressList[sessionId] = task.progress
+                    progressList[sessionId] = (task.countOfBytesReceived, task.countOfBytesExpectedToReceive)
                 }
             }
             DispatchQueue.main.async {
