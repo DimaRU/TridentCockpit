@@ -66,37 +66,42 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srO-Wm-A5x">
-                    <rect key="frame" x="2" y="120" width="30" height="30"/>
+                    <rect key="frame" x="70" y="114" width="40" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="MJs-dn-qon"/>
-                        <constraint firstAttribute="width" constant="30" id="bvr-KT-ZaK"/>
+                        <constraint firstAttribute="height" constant="40" id="MJs-dn-qon"/>
+                        <constraint firstAttribute="width" constant="40" id="bvr-KT-ZaK"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <state key="normal" image="play.rectangle" catalog="system">
-                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="19" scale="default" weight="medium"/>
+                    <inset key="imageEdgeInsets" minX="4" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" image="play.fill" catalog="system">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22" scale="default" weight="medium"/>
                     </state>
                     <connections>
                         <action selector="liveVideoButtonPress:" destination="-2" eventType="touchUpInside" id="py2-oY-cxs"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3X-ez-v6o">
-                    <rect key="frame" x="76" y="118" width="30" height="30"/>
+                    <rect key="frame" x="0.0" y="114" width="41" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="30" id="Q0V-TY-Wvi"/>
-                        <constraint firstAttribute="width" constant="30" id="eMw-vl-u8g"/>
+                        <constraint firstAttribute="height" constant="40" id="Q0V-TY-Wvi"/>
+                        <constraint firstAttribute="width" constant="41" id="eMw-vl-u8g"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="4" maxY="0.0"/>
                     <state key="normal" image="power" catalog="system">
-                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="20" scale="default" weight="medium"/>
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="21" scale="default" weight="medium"/>
                     </state>
                     <connections>
                         <action selector="powerButtonPress:" destination="-2" eventType="touchUpInside" id="dE5-oN-5do"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payload" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXB-a0-DBM" customClass="UILabelRotatable" customModule="TridentCockpitiOS" customModuleProvider="target">
-                    <rect key="frame" x="83.5" y="16" width="41.5" height="13.5"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payload" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXB-a0-DBM" customClass="UILabelRotatable" customModule="TridentCockpitiOS" customModuleProvider="target">
+                    <rect key="frame" x="95.25" y="3.25" width="13.5" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="pUk-92-K5y"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                     <nil key="highlightedColor"/>
@@ -110,18 +115,18 @@
             <color key="backgroundColor" name="cameraControlBackground"/>
             <constraints>
                 <constraint firstItem="a4h-U4-gej" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="0q6-Vw-YXZ"/>
-                <constraint firstItem="srO-Wm-A5x" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="5ED-yg-IK7"/>
+                <constraint firstAttribute="trailing" secondItem="srO-Wm-A5x" secondAttribute="trailing" id="5ED-yg-IK7"/>
                 <constraint firstItem="Kd9-YU-O80" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="6aF-Ed-loC"/>
                 <constraint firstAttribute="bottom" secondItem="maZ-Gq-HxG" secondAttribute="bottom" constant="4" id="CVw-UW-n2P"/>
                 <constraint firstItem="5ev-7W-oEM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Gg7-tO-J8d"/>
                 <constraint firstItem="a4h-U4-gej" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="HkL-fG-e6C"/>
                 <constraint firstAttribute="height" constant="154" id="Jl5-nw-Lxz"/>
-                <constraint firstAttribute="bottom" secondItem="srO-Wm-A5x" secondAttribute="bottom" constant="4" id="Le4-QW-FiH"/>
-                <constraint firstAttribute="bottom" secondItem="Y3X-ez-v6o" secondAttribute="bottom" constant="6" id="Q3W-5A-4Xf"/>
-                <constraint firstAttribute="trailing" secondItem="RXB-a0-DBM" secondAttribute="centerX" constant="6" id="Qnn-fe-bq9"/>
-                <constraint firstAttribute="trailing" secondItem="Y3X-ez-v6o" secondAttribute="trailing" constant="4" id="Qzg-XD-6vV"/>
+                <constraint firstAttribute="bottom" secondItem="srO-Wm-A5x" secondAttribute="bottom" id="Le4-QW-FiH"/>
+                <constraint firstAttribute="bottom" secondItem="Y3X-ez-v6o" secondAttribute="bottom" id="Q3W-5A-4Xf"/>
+                <constraint firstAttribute="trailing" secondItem="RXB-a0-DBM" secondAttribute="centerX" constant="8" id="Qnn-fe-bq9"/>
+                <constraint firstItem="Y3X-ez-v6o" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Qzg-XD-6vV"/>
                 <constraint firstItem="maZ-Gq-HxG" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="hId-FV-oUp"/>
-                <constraint firstItem="RXB-a0-DBM" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="16" id="iHP-Pt-N4L"/>
+                <constraint firstItem="RXB-a0-DBM" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="top" constant="28" id="iHP-Pt-N4L"/>
                 <constraint firstAttribute="trailing" secondItem="Kd9-YU-O80" secondAttribute="trailing" id="jBl-je-8qW"/>
                 <constraint firstAttribute="width" constant="110" id="jL2-5H-4Y7"/>
                 <constraint firstItem="maZ-Gq-HxG" firstAttribute="top" secondItem="Kd9-YU-O80" secondAttribute="bottom" id="n7p-lB-d8F"/>
@@ -141,7 +146,7 @@
     </objects>
     <resources>
         <image name="battery.100" catalog="system" width="128" height="65"/>
-        <image name="play.rectangle" catalog="system" width="128" height="93"/>
+        <image name="play.fill" catalog="system" width="116" height="128"/>
         <image name="power" catalog="system" width="128" height="124"/>
         <namedColor name="cameraControlBackground">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.20000000298023224" colorSpace="custom" customColorSpace="sRGB"/>

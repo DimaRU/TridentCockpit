@@ -194,6 +194,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
             guard let after = self.view.window?.windowScene?.interfaceOrientation else { return }
             if before != after {
                 self.setHeadingOrienation()
+                self.updateLightButtonContraint()
             }
         }
     }
@@ -203,6 +204,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         super.viewDidAppear(animated)
         UIApplication.shared.isIdleTimerDisabled = true
         setHeadingOrienation()
+        updateLightButtonContraint()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -309,6 +311,16 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     
     @IBAction func videoSizingButtonTap(_ sender: UIButton) {
         setVideoSizing(fill: !Preference.videoSizingFill)
+    }
+    
+    private func updateLightButtonContraint() {
+        guard
+            let orientation = self.view.window?.windowScene?.interfaceOrientation,
+            let constraint = view.constraints.first(where: { $0.identifier == "trailing" }) else { return }
+        switch orientation{
+        case .landscapeLeft: constraint.constant = view.safeAreaInsets.right - 6
+        default: constraint.constant = 13
+        }
     }
     
     private func setHeadingOrienation() {
