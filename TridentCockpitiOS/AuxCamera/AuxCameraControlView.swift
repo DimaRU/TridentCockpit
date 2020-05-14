@@ -111,14 +111,14 @@ class AuxCameraControlView: FloatingView {
         player.isMuted = true
         liveViewController.player = player
         liveViewContainer.isHidden = false
-        liveVideoButton.tintColor = .gray
+        liveVideoButton.setImage(UIImage(systemName: "stop"), for: .normal)
     }
     
     private func stopLiveView() {
         liveViewController.player?.pause()
         liveViewController.player = nil
         liveViewContainer.isHidden = true
-        liveVideoButton.tintColor = .white
+        liveVideoButton.setImage(UIImage(systemName: "play"), for: .normal)
     }
     
     private func setup(state: CameraControlViewState) {
@@ -126,7 +126,7 @@ class AuxCameraControlView: FloatingView {
         case .off:
             stopLiveView()
             powerButton.tintColor = .systemGray
-            liveVideoButton.isHidden = true
+            liveVideoButton.isEnabled = false
             recordingTimeLabel.text = ""
             batteryStatusLabel.text = "n/a"
             cameraTimeLabel.text = ""
@@ -136,7 +136,7 @@ class AuxCameraControlView: FloatingView {
         case .on:
             powerButton.tintColor = .white
             powerButton.isHidden = false
-            liveVideoButton.isHidden = false
+            liveVideoButton.isEnabled = true
             recordingTimeLabel.text = ""
             cameraTimeLabel.textColor = .systemGray
             recordingButton.isEnabled = true

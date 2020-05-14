@@ -317,9 +317,10 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         guard
             let orientation = self.view.window?.windowScene?.interfaceOrientation,
             let constraint = view.constraints.first(where: { $0.identifier == "trailing" }) else { return }
-        switch orientation{
-        case .landscapeLeft: constraint.constant = view.safeAreaInsets.right - 6
-        default: constraint.constant = 13
+        if orientation == .landscapeLeft, view.safeAreaInsets.right > 0 {
+            constraint.constant = view.safeAreaInsets.right - 6
+        } else {
+            constraint.constant = 13
         }
     }
     
