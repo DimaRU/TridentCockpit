@@ -155,16 +155,7 @@ class PastDivesViewController: UIViewController {
     @IBAction func downloadButtonTap(_ sender: Any) {
         guard let selected = collectionView.indexPathsForSelectedItems, !selected.isEmpty else { return }
         let recordings = selected.map { getRecording(by: $0) }.filter{ downloadState[$0.sessionId]! == .start }
-        for recording in recordings {
-            downloadState[recording.sessionId] = .wait
-            if let indexPath = getIndexPath(by: recording),
-                let item = collectionView.cellForItem(at: indexPath) as? DiveCollectionViewCell {
-                item.downloadButton.trasition(to: .wait)
-            }
-        }
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-            recordings.forEach{ self.recordingsAPI.download(recording: $0) }
-        }
+        download(recordings: recordings)
     }
     
     @IBAction func deleteButtonTap(_ sender: Any) {
@@ -200,6 +191,19 @@ class PastDivesViewController: UIViewController {
     }
     
     // MARK: Private functions
+
+    private func download(recordings: [Recording]) {
+        for recording in recordings {
+            downloadState[recording.sessionId] = .wait
+            if let indexPath = getIndexPath(by: recording),
+                let item = collectionView.cellForItem(at: indexPath) as? DiveCollectionViewCell {
+                item.downloadButton.trasition(to: .wait)
+            }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            recordings.forEach{ self.recordingsAPI.download(recording: $0) }
+        }
+    }
 
     private func delete(recordins: [Recording]) {
         for recording in recordins {
@@ -384,14 +388,17 @@ extension PastDivesViewController: UICollectionViewDataSource  {
         cell.downloadButton.progress = progressState[recording.sessionId] ?? 0
         
         cell.playButtonAction = { [weak self] in
-            guard let self = self else { return }
-            let recording = self.getRecording(by: indexPath)
+            guard let self = self,
+                let path = self.collectionView.indexPath(for: cell) else { return }
+            let recording = self.getRecording(by: path)
             self.previewVideo(recording: recording, in: cell)
         }
         
         cell.downloadButtonAction = { [weak self] in
-            collectionView.selectItem(at: indexPath, animated: true, scrollPosition: [])
-            self?.downloadButtonTap(cell)
+            guard let self = self,
+                let path = self.collectionView.indexPath(for: cell) else { return }
+            let recording = self.getRecording(by: path)
+            self.download(recordings: [recording])
         }
 
         return cell
