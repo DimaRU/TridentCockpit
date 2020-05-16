@@ -25,6 +25,7 @@ extension DiveViewController {
         FastRTPS.removeReader(topic: .rovCamFwdH2640Video)
         depthLabel.text = "12.4"
         tempLabel.text = "28.3"
+        stabilizeLabel.text = "Stabilized"
         
         let videoURL = URL(fileURLWithPath: filePath)
         let player = AVPlayer(url: videoURL)

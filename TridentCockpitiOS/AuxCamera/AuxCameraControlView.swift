@@ -111,14 +111,14 @@ class AuxCameraControlView: FloatingView {
         player.isMuted = true
         liveViewController.player = player
         liveViewContainer.isHidden = false
-        liveVideoButton.setImage(UIImage(systemName: "stop"), for: .normal)
+        liveVideoButton.setImage(UIImage(systemName: "stop.circle"), for: .normal)
     }
     
     private func stopLiveView() {
         liveViewController.player?.pause()
         liveViewController.player = nil
         liveViewContainer.isHidden = true
-        liveVideoButton.setImage(UIImage(systemName: "play"), for: .normal)
+        liveVideoButton.setImage(UIImage(systemName: "play.circle"), for: .normal)
     }
     
     private func setup(state: CameraControlViewState) {
