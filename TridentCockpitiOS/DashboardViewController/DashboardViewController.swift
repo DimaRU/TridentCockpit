@@ -394,8 +394,8 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
             if !(currentViewController is DiveViewController) {
                 currentViewController.dismiss(animated: false) {
                     self.rtpsDisconnectedState()
-                    return
                 }
+                return
             }
         }
         
