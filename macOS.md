@@ -1,14 +1,20 @@
 
-<h2 align="center">Trident Cockpit is an alternative iOS/iPadOS/macOS control app for the <a href="https://www.sofarocean.com/products/trident?aff=30">Sofar Trident Underwater Drone.</a></h2>
+<h2 align="center">Trident Cockpit is an alternative macOS control app for the <a href="https://www.sofarocean.com/products/trident?aff=30">Sofar Trident Underwater Drone.</a></h2>
+
+<h1 align="center">
+<a href="https://dimaru.github.com.tridentcockpit">iOS version here</a>
+</h1>
 
 <p align="center">
-<a href="https://apps.apple.com/us/app/trident-cockpit/id1501545121"><img src="images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="200" /></a>
+<img src="https://github.com/DimaRU/TridentCockpit/raw/master/Screenshots/MacBook Pro.png" />
 </p>
+<h3 align="center"> ·
+<a href="https://github.com/DimaRU/TridentCockpit/releases">macOS releases</a> ·
+</h3>
 
-![iPhone screenshot](Screenshots/iPhone%2011%20Pro%20Max.png)
-
-### [macOS page (development discontinued)](macOS.md)
 ---
+
+# Development of the macOS version has been discontinued.
 
 ## Features
 
@@ -22,7 +28,7 @@
 * Show maintenance data: internal pressure, internal temperature, battery cycle count
 * Support payload connection and control. (now GoPro HERO 3/3+)
 
-## Payload control:
+### Payload control:
 #### GoPro HERO 3/3+
 * Control camera power
 * Camera recording control
@@ -47,6 +53,41 @@ The money received will go towards:
 
 With Patreon, you can send me a small monthly amount of money, or make a one-time donation by canceling the monthly subscription after the first payment.
 
+## Installation
+
+To install `Trident Cockpit` on macOS, download the release from the [releases page](https://github.com/DimaRU/TridentCockpit/releases).
+These are all signed and notarized to run out of the box on macOS 10.14+.
+
+## Keyboard Shortcuts
+
+### Moton control
+
+ Shortcut | Description
+|:-:|:-:|
+ <kbd>Up Arrow</kbd> | Forward
+ <kbd>Down Arrow</kbd> | Backward
+ <kbd>Left Arrow</kbd> | Turn Left (rotate counterclockwise)
+ <kbd>Right Arrow</kbd> | Turn Right (rotate clockwise)
+ <kbd>W</kbd> | Tilt Down
+ <kbd>E</kbd> | Tilt Up
+
+### Motor speed modifiers
+
+ Shortcut | Description 
+|:-:|:-:|
+without modifiers | 10% of motor speed
+&#8997;<kbd>Option</kbd> + (<kbd>&uarr;</kbd> &#65372; <kbd>&darr;</kbd> &#65372; <kbd>&larr;</kbd> &#65372; <kbd>&rarr;</kbd> &#65372; <kbd>W</kbd> &#65372; <kbd>E</kbd>) | 25% of motor speed
+&#8963;<kbd>Control</kbd> + (<kbd>&uarr;</kbd> &#65372; <kbd>&darr;</kbd> &#65372; <kbd>&larr;</kbd> &#65372; <kbd>&rarr;</kbd> &#65372; <kbd>W</kbd> &#65372; <kbd>E</kbd>) | 50% of motor speed
+&#8679;<kbd>Shift</kbd> + (<kbd>&uarr;</kbd> &#65372; <kbd>&darr;</kbd> &#65372; <kbd>&larr;</kbd> &#65372; <kbd>&rarr;</kbd> &#65372; <kbd>W</kbd> &#65372; <kbd>E</kbd>) | 100% of motor speed
+
+### Other shortcuts
+
+ Shortcut | Description
+|:-:|:-:|
+ <kbd>L</kbd> | Light control
+ <kbd>R</kbd> | Camera control
+ <kbd>Y</kbd> | Drone view relative yaw
+ <kbd>A</kbd> | Drone view absolute yaw
 
 ## Building from Source
 
@@ -85,9 +126,8 @@ cd TridentCockpit
 * [Moya](https://github.com/Moya/Moya) - Network abstraction layer written in Swift.
 * [PromiseKit](https://github.com/mxcl/PromiseKit) - Promises for Swift & ObjC.
 * [Kingfisher](https://github.com/onevcat/Kingfisher) - A lightweight, pure-Swift library for downloading and caching images from the web.
-* [PWSwitch](https://github.com/Shaninnik/PWSwitch) - Highly customizable UISwitch built with CALayers and CAAnimations. Modified version.
-* [LinearProgressBar](https://github.com/gordoneliel/LinearProgressBar) - Simple progress bar for iOS.
-* [CameraButton](https://github.com/otusweb/iOS-camera-button) - A button that behave the same way as the video camera button in the iOS camera. Modified version.
+* [FlatButton](https://github.com/OskarGroth/FlatButton) - Layer based NSButton with Interface Builder styling options
+* [CircularProgress](https://github.com/sindresorhus/CircularProgress) - Circular progress indicator for your macOS app
 
 
 ## Author
@@ -105,5 +145,3 @@ Thanks to Jim N. for "Software Exploration - DDS and the Trident" series of post
 ## Disclaimer
 
 This project is unofficial (meaning not supported by or affiliated with Sofar Ocean). Use it at your own risk.
-
-## [Privacy policy](privacy_policy.md)

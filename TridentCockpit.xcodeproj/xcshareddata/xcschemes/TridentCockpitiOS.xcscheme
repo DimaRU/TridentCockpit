@@ -50,6 +50,13 @@
             ReferencedContainer = "container:TridentCockpit.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "demoVideo"
+            value = "/Volumes/Data/Underwater/GOPR0373-1.MP4"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

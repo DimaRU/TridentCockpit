@@ -1,14 +1,13 @@
-theme: minima
+theme: jekyll-theme-cayman
 plugins:
  - github-pages
- - jekyll-seo-tag
- - jekyll-relative-links
 header_pages:
   - privacy_policy.md
 
 title: Trident Cockpit
 color: "#20A1BD"
-description: "Trident Cockpit is an alternative iOS/iPadOS/macOS control app for the Sofar Trident Underwater Drone"
+description:  Trident Cockpit is an alternative iPhone/iPad control app for the <a href="https://www.sofarocean.com/products/trident?aff=30">Sofar Trident Underwater Drone.</a>
+appstore: https://apps.apple.com/us/app/trident-cockpit/id1501545121
 google_analytics: UA-158634251-2
 relative_links:
   enabled: true
@@ -16,3 +15,4 @@ relative_links:
 include:
   - README.md
   - privacy_policy.md
+  - macOS.md
