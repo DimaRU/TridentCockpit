@@ -1,0 +1,40 @@
+name: Build
+
+on: 
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+    build:
+        name: prepare
+        runs-on: macOS-latest
+        steps:
+        - name: Checkout
+          uses: actions/checkout@v2
+          with:
+            submodules: true
+        - name: Checkout tools repo
+          uses: actions/checkout@v2
+          with:
+            repository: DimaRU/polly
+            path: polly
+        - name: Add polly to path
+          run: echo "::add-path::`pwd`/polly/bin"
+        - name: Check XCode Version
+          run: xcodebuild -version
+
+        - name: iOS Simulator
+          run: |
+            set -o pipefail && xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpitiOS -destination "platform=iOS Simulator,name=iPhone 8,OS=13.4.1" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
+
+        - name: macOS
+          run: |
+            set -o pipefail && xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpit -destination "platform=macOS"  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
+
+        - name: Mac Catalyst
+          run: |
+            set -o pipefail && xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpitiOS -destination "platform=macOS,variant=Mac Catalyst" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
