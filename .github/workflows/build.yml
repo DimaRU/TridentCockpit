@@ -37,8 +37,3 @@ jobs:
         - name: macOS
           run: |
             set -o pipefail && xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpit -destination "platform=macOS"  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
-
-        - name: Mac Catalyst
-          run: |
-            xcodebuild -version
-            set -o pipefail && xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpitiOS -destination "platform=macOS,variant=Mac Catalyst" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO
