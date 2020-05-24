@@ -233,7 +233,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
 
     // MARK: Network
     private func startRefreshDeviceState() {
-        timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: false) { [weak self] timer in
+        timer = Timer.scheduledTimer(withTimeInterval: 4, repeats: true) { [weak self] timer in
             guard let self = self else {
                 timer.invalidate()
                 return
@@ -246,7 +246,6 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         RestProvider.request(MultiTarget(WiFiServiceAPI.connection))
         .done { (connectionInfo: [ConnectionInfo]) in
             self.connectionInfo = connectionInfo
-            self.startRefreshDeviceState()
         }.catch {
             self.alertNetwork(error: $0)
         }
