@@ -596,7 +596,7 @@ extension DiveViewController: TridentControlDelegate {
     }
     
     func control(pitch: Float, yaw: Float, thrust: Float, lift: Float) {
-        let tridentCommand = RovTridentControlTarget(id: "control", pitch: pitch, yaw: yaw, thrust: thrust, lift: lift)
+        let tridentCommand = RovTridentControlTarget(id: "", pitch: pitch, yaw: yaw, thrust: thrust, lift: lift)
         FastRTPS.send(topic: .rovControlTarget, ddsData: tridentCommand)
     }
     

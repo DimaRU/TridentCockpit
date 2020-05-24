@@ -61,8 +61,13 @@ final class FastRTPS {
         let encoder = CDREncoder()
         do {
             let data = try encoder.encode(ddsData)
-            if let key = (ddsData as? DDSKeyed)?.key {
-                FastRTPS.shared.fastRTPSBridge?.send(withTopicName: topic.rawValue, data: data, key: key)
+            if ddsData is DDSKeyed {
+                if let key = (ddsData as? DDSKeyed)?.key, !key.isEmpty {
+                    FastRTPS.shared.fastRTPSBridge?.send(withTopicName: topic.rawValue, data: data, key: key)
+                } else {
+                    let key = "default".data(using: .utf8)!
+                    FastRTPS.shared.fastRTPSBridge?.send(withTopicName: topic.rawValue, data: data, key: key)
+                }
             } else {
                 FastRTPS.shared.fastRTPSBridge?.send(withTopicName: topic.rawValue, data: data)
             }
