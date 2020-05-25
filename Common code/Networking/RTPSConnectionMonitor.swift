@@ -125,6 +125,12 @@ final class RTPSConnectionMonitor {
                 let topicName = userInfo[RTPSNotificationUserInfo.topic.rawValue] as! String
                 guard let topic = RovWriterTopic(rawValue: topicName) else { return }
                 print("Remove matched writer:", topic)
+            case .writerLivelinessLost:
+                let topicName = userInfo[RTPSNotificationUserInfo.topic.rawValue] as! String
+                print("Writer Liveliness Lost:", topicName)
+            case .readerLivelinessLost:
+                let topicName = userInfo[RTPSNotificationUserInfo.topic.rawValue] as! String
+                print("Reader Liveliness Lost:", topicName)
             default:
                 break
             }
