@@ -50,6 +50,15 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     @Average(5) private var depth: Float
     @Average(10) private var temperature: Double
 
+    struct MotorStatus {
+        var portMotor: UInt8 = 3
+        var vertMotor: UInt8 = 3
+        var starMotor: UInt8 = 3
+        
+        var isAllStopped: Bool { portMotor == 3 && vertMotor == 3 && starMotor == 3 }
+    }
+    var motorStatus = MotorStatus()
+    
     private func setupAverage() {
         _depth.configure { [weak self] avg in
             DispatchQueue.main.async {
@@ -548,6 +557,16 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
                 self?.rovBeacon = rovBeacon
                 self?.rovProvision()
                 FastRTPS.removeReader(topic: .rovBeacon)
+            }
+        }
+
+        FastRTPS.registerReader(topic: .rovSubsystemStatus) { (status: RovSubsystemStatus) in
+            switch status.subsystemId {
+            case .portMotor: self.motorStatus.portMotor = status.substate
+            case .vertMotor: self.motorStatus.vertMotor = status.substate
+            case .starMotor: self.motorStatus.starMotor = status.substate
+            default:
+                break
             }
         }
 
