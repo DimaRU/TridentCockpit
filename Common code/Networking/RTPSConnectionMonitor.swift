@@ -78,6 +78,7 @@ final class RTPSConnectionMonitor {
                     self.isConnected = false
                     DispatchQueue.main.async {
                         self.delegate?.rtpsDisconnectedState()
+                        self.tridentParticipants = []
                     }
                 }
         #if RTPSDEBUG

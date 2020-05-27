@@ -19,12 +19,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
     private var timer: Timer? {
         willSet { timer?.invalidate() }
     }
-    private enum AppState {
-        case undiscovered
-        case discovered
-        case connected
-    }
-    private var appState = AppState.undiscovered
+    private var ddsListenerTimer: Timer?
     private var backgroundWatch: BackgroundWatch?
     
     // MARK: Trace connection state vars
@@ -300,7 +295,8 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
             return
         }
         let interfaceAddresses = FastRTPS.getIP4Address()
-        guard let localAddress = interfaceAddresses[FastRTPS.localInterface],
+        guard
+            let localAddress = interfaceAddresses[FastRTPS.localInterface],
             localAddress == FastRTPS.localAddress else {
                 ddsDiscoveryStart()
                 return
@@ -334,10 +330,11 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         } catch {
             fatalError(error.localizedDescription)
         }
-        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+        ddsListenerTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             guard self.discovered.count != 0 else { return }
-            self.timer = nil
-            Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { _ in
+            self.ddsListenerTimer?.invalidate()
+            self.ddsListenerTimer = nil
+            Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
                 self.ddsListener?.stop()
                 self.ddsListener = nil
                 self.startRTPS()
@@ -364,6 +361,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         
     func didEnterBackground() {
         print(#function)
+        self.ddsListenerTimer?.invalidate()
         self.ddsListener?.stop()
         self.ddsListener = nil
         spinner?.hide()
@@ -383,6 +381,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
     
     // MARK: Internal func
     func rtpsDisconnectedState() {
+        print(#function)
         timer = nil
         connectionMonitor.delegate = nil
         FastRTPS.deleteParticipant()

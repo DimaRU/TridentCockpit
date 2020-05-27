@@ -78,7 +78,13 @@ extension RestProvider {
             #if DEBUG
             print(request.target, error)
             #endif
-            request.reject(NetworkError.unaviable(message: error.localizedDescription))
+            if case .underlying(let underlyingError, _) = error,
+                let afError = underlyingError as? AFError,
+                case AFError.sessionTaskFailed(let sourceError) = afError {
+                request.reject(NetworkError.unaviable(message: sourceError.localizedDescription))
+            } else {
+                request.reject(NetworkError.unaviable(message: error.localizedDescription))
+            }
             break
         }
     }
