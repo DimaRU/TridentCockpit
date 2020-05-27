@@ -54,7 +54,7 @@ final class TridentControl {
     }
     
     func enable() {
-        tridentCommandTimer = Timer.scheduledTimer(withTimeInterval: 0.25, repeats: true, block: controlTimerBlock)
+        tridentCommandTimer = Timer.scheduledTimer(withTimeInterval: 0.15, repeats: true, block: controlTimerBlock)
     }
     
     func disable() {
