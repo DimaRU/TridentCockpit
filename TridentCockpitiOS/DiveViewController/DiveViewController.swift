@@ -267,7 +267,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
 
     override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
         var didHandleEvent = false
-        if #available(macCatalyst 13.4, *) {
+        if #available(macCatalyst 13.4, iOS 13.4, *) {
             for press in presses {
                 guard let key = press.key else { continue }
                 didHandleEvent = didHandleEvent || tridentControl.process(key: key, began: true)
@@ -280,7 +280,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
 
     override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
         var didHandleEvent = false
-        if #available(macCatalyst 13.4, *) {
+        if #available(macCatalyst 13.4, iOS 13.4, *) {
             for press in presses {
                 guard let key = press.key else { continue }
                 didHandleEvent = didHandleEvent || tridentControl.process(key: key, began: false)

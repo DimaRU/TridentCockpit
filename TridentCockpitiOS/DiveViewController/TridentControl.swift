@@ -79,7 +79,7 @@ final class TridentControl {
         delegate?.control(pitch: pitch, yaw: yaw, thrust: thrust, lift: 0)
     }
     
-    @available(macCatalyst 13.4, *)
+    @available(macCatalyst 13.4, iOS 13.4, *)
     func process(key: UIKey, began: Bool) -> Bool {
         var lever: Float = 0.1
         if key.modifierFlags.contains(.alternate) { lever = 0.25 }
