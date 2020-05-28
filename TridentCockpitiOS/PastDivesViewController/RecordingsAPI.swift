@@ -31,11 +31,20 @@ final class RecordingsAPI: NSObject {
         let session = URLSession(configuration: config, delegate: self, delegateQueue: nil)
         return session
     }()
-    
-    #if os(iOS)
+
+    #if targetEnvironment(macCatalyst)
+    static var moviesURL: URL {
+        var url = FileManager.default.urls(for: .moviesDirectory, in: .allDomainsMask).first!
+        let lastcomponent = url.lastPathComponent
+        for _ in 1...5 {
+            url.deleteLastPathComponent()
+        }
+        url.appendPathComponent(lastcomponent)
+        url.appendPathComponent("Trident")
+        return url
+    }
+    #elseif os(iOS)
     static let moviesURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
-    #else
-    static let moviesURL = FileManager.default.urls(for: .moviesDirectory, in: .allDomainsMask).first!.appendingPathComponent("Trident")
     #endif
     
     override init() {
@@ -191,6 +200,7 @@ extension RecordingsAPI: URLSessionDownloadDelegate {
         let destination = RecordingsAPI.moviesURL.appendingPathComponent(fileName)
         let fileManager = FileManager.default
         do {
+            try fileManager.createDirectory(at: RecordingsAPI.moviesURL, withIntermediateDirectories: true, attributes: nil)
             try? fileManager.removeItem(at: destination)
             try fileManager.moveItem(at: location, to: destination)
         } catch {
