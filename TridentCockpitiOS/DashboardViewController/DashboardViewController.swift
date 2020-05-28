@@ -62,7 +62,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
                     cameraModelLabel.text = "n/a"
                     cameraFirmwareLabel.text = "n/a"
                 } else {
-                    if FastRTPS.remoteAddress.contains("10.1.1.") {
+                    if FastRTPS.remoteAddress.starts(with: "10.1.1.") {
                         connectedThruBuoy = true
                         navigationItem.getItem(for: .connectCamera)?.isEnabled = true
                     } else {
