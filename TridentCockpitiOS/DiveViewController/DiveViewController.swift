@@ -124,6 +124,10 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         tempLabel.font = UIFont.monospacedSystemFont(ofSize: 17, weight: .regular)
         throttleJoystickView.delegate = tridentControl
         yawPitchJoystickView.delegate = tridentControl
+        #if targetEnvironment(macCatalyst)
+        throttleJoystickView.isHidden = true
+        yawPitchJoystickView.isHidden = true
+        #else
         if let window: UIWindow = {
             if #available(iOS 13, *) {
                 return UIApplication.shared.windows.first{ $0.isKeyWindow }
@@ -137,6 +141,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
             yawPitchJoystickView.center = CGPoint(x: bounds.maxX - offset, y: bounds.maxY - offset)
         }
 
+        #endif
 
         setupAverage()
         
@@ -226,7 +231,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         }
         savedCenter = [:]
     }
-    
+
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             guard touch.view == view || touch.view is TouchJoystickView else { continue }
@@ -259,7 +264,33 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
             yawPitchJoystickView.touchEnded(touch: touch)
         }
     }
-    
+
+    override func pressesBegan(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        var didHandleEvent = false
+        if #available(macCatalyst 13.4, *) {
+            for press in presses {
+                guard let key = press.key else { continue }
+                didHandleEvent = didHandleEvent || tridentControl.process(key: key, began: true)
+            }
+        }
+        if didHandleEvent {
+            super.pressesBegan(presses, with: event)
+        }
+    }
+
+    override func pressesEnded(_ presses: Set<UIPress>, with event: UIPressesEvent?) {
+        var didHandleEvent = false
+        if #available(macCatalyst 13.4, *) {
+            for press in presses {
+                guard let key = press.key else { continue }
+                didHandleEvent = didHandleEvent || tridentControl.process(key: key, began: false)
+            }
+        }
+        if didHandleEvent {
+            super.pressesEnded(presses, with: event)
+        }
+    }
+
     @IBAction func closeButtonPress(_ sender: Any) {
         let alert = UIAlertController(title: NSLocalizedString("Leave Pilot Mode?", comment: ""),
                                       message: NSLocalizedString("Are you sure you want to leave?", comment: ""),
@@ -289,8 +320,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     }
     
     @IBAction func propellerButtonPress(_ sender: Any) {
-        guard tridentControl.motorSpeed != nil else { return }
-        let newSpeed = tridentControl.motorSpeed!.rawValue + 1
+        let newSpeed = tridentControl.motorSpeed.rawValue + 1
         tridentControl.motorSpeed = TridentControl.MotorSpeed(rawValue: newSpeed) ?? .first
         updatePropellerButtonState()
     }
@@ -602,14 +632,12 @@ extension DiveViewController: TridentControlDelegate {
     
     func updatePropellerButtonState() {
         switch tridentControl.motorSpeed {
-        case .first?:
+        case .first:
             propellerButton.setImage(UIImage(named: "Prop 1"), for: .normal)
-        case .second?:
+        case .second:
             propellerButton.setImage(UIImage(named: "Prop 2"), for: .normal)
-        case .third?:
+        case .third:
             propellerButton.setImage(UIImage(named: "Prop 3"), for: .normal)
-        case nil:
-            break
         }
     }
     

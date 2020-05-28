@@ -3,10 +3,8 @@
 ///   Copyright © 2019 Dmitriy Borovikov. All rights reserved.
 //
 
-#if os(macOS)
 import Cocoa
 import Carbon.HIToolbox
-#endif
 import GameController
 
 protocol TridentControlDelegate: NSObject {
@@ -86,7 +84,6 @@ final class TridentControl {
         delegate?.control(pitch: pitch, yaw: yaw, thrust: thrust, lift: 0)
     }
     
-#if os(macOS)
     func processKeyEvent(event: NSEvent) -> Bool {
         var lever: Float = 0.1
         if NSEvent.modifierFlags.contains(.option) { lever = 0.25 }
@@ -144,7 +141,6 @@ final class TridentControl {
         }
         return true
     }
-#endif
     
     func ObserveForGameControllers() {
         connectObserver = NotificationCenter.default.addObserver(forName: .GCControllerDidConnect, object: nil, queue: nil) { _ in
@@ -216,38 +212,3 @@ final class TridentControl {
         }
     }
 }
-
-#if os(iOS)
-extension TridentControl: TouchJoystickViewDelegate {
-    func joystickDidMove(_ joystickType: TouchJoystickView.JoystickType, to x: Float, y: Float) {
-        switch joystickType {
-        case .vertical:
-            forwardLever = y * motorSpeed!.rate
-            backwardLever = 0
-        case .dualAxis:
-            rightLever = x * motorSpeed!.rate
-            downLever = y * motorSpeed!.rate
-            upLever = 0
-            leftLever = 0
-        case .horizontal:
-            fatalError()
-        }
-    }
-    
-    func joystickEndMoving(_ joystickType: TouchJoystickView.JoystickType) {
-        switch joystickType {
-        case .vertical:
-            forwardLever = 0
-            backwardLever = 0
-        case .dualAxis:
-            rightLever = 0
-            leftLever = 0
-            upLever = 0
-            downLever = 0
-        case .horizontal:
-            fatalError()
-        }
-    }
-    
-}
-#endif
