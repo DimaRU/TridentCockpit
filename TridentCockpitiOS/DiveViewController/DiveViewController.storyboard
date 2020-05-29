@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mek-Xn-fig">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="mek-Xn-fig">
     <device id="retina6_5" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -235,23 +235,13 @@
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GfV-LQ-YW5" customClass="RovModelView" customModule="TridentCockpitiOS" customModuleProvider="target">
                                 <rect key="frame" x="796" y="314" width="100" height="100"/>
-                                <subviews>
-                                    <sceneKitView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gD1-Lf-Ie7">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
-                                        <color key="backgroundColor" name="cameraControlBackground"/>
-                                    </sceneKitView>
-                                </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="WQT-KI-wTZ">
                                         <variation key="heightClass=compact" constant="100"/>
                                     </constraint>
-                                    <constraint firstItem="gD1-Lf-Ie7" firstAttribute="top" secondItem="GfV-LQ-YW5" secondAttribute="top" id="cNQ-DT-KMK"/>
-                                    <constraint firstAttribute="bottom" secondItem="gD1-Lf-Ie7" secondAttribute="bottom" id="dtN-Y3-jdX"/>
                                     <constraint firstAttribute="width" constant="150" id="gWG-sc-VfL">
                                         <variation key="heightClass=compact" constant="100"/>
                                     </constraint>
-                                    <constraint firstAttribute="trailing" secondItem="gD1-Lf-Ie7" secondAttribute="trailing" id="kAf-Kr-8Is"/>
-                                    <constraint firstItem="gD1-Lf-Ie7" firstAttribute="leading" secondItem="GfV-LQ-YW5" secondAttribute="leading" id="tKN-sZ-81W"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KWl-aA-Uaq" customClass="CameraControlView" customModule="TridentCockpitiOS" customModuleProvider="target">
@@ -493,6 +483,7 @@
                         <outlet property="cameraControlView" destination="KWl-aA-Uaq" id="Twz-an-4qw"/>
                         <outlet property="cameraTimeLabel" destination="yXN-C8-oz8" id="iWc-lU-u1E"/>
                         <outlet property="depthLabel" destination="mjL-Dg-280" id="ZB9-jq-ayX"/>
+                        <outlet property="headingView" destination="GfV-LQ-YW5" id="aw0-iS-IXp"/>
                         <outlet property="indicatorsView" destination="CVJ-4V-eBR" id="01D-Xz-FLc"/>
                         <outlet property="lightButton" destination="eNr-t8-WZ4" id="crd-Sa-nkp"/>
                         <outlet property="liveViewContainer" destination="M3a-Wg-BFZ" id="hGV-eb-3IF"/>
@@ -504,7 +495,6 @@
                         <outlet property="telemetryOverlayLabel" destination="euq-B8-abF" id="zdy-Ya-J82"/>
                         <outlet property="tempLabel" destination="Fgy-Cs-lUp" id="F2P-8o-bSg"/>
                         <outlet property="throttleJoystickView" destination="7rM-la-8bR" id="kDO-Hh-gdP"/>
-                        <outlet property="tridentView" destination="GfV-LQ-YW5" id="aw0-iS-IXp"/>
                         <outlet property="videoSizingButton" destination="0Sm-zI-nHs" id="NJL-gu-hYS"/>
                         <outlet property="videoView" destination="kvl-QW-fil" id="hWy-SM-MRR"/>
                         <outlet property="yawPitchJoystickView" destination="87Y-el-STp" id="hzR-eo-6qc"/>

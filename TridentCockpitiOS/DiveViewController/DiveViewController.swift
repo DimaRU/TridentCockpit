@@ -10,7 +10,7 @@ import CoreLocation
 import FastRTPSBridge
 import AVKit
 
-class DiveViewController: UIViewController, StoryboardInstantiable {
+class DiveViewController: UIViewController {
     @IBOutlet weak var videoView: VideoView!
 
     @IBOutlet weak var indicatorsView: UIView!
@@ -30,7 +30,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
     @IBOutlet weak var recordingTimeLabel: UILabel!
 
     @IBOutlet weak var lightButton: UIButton!
-    @IBOutlet weak var tridentView: RovModelView!
+    @IBOutlet weak var headingView: RovModelView!
     @IBOutlet weak var throttleJoystickView: TouchJoystickView!
     @IBOutlet weak var yawPitchJoystickView: TouchJoystickView!
     @IBOutlet weak var liveViewContainer: AuxCameraPlayerView!
@@ -149,7 +149,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         lightButton.cornerRadius = 5
         lightButton.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         
-        let node = tridentView.modelNode()
+        let node = headingView.modelNode()
         node.orientation = RovQuaternion(x: -0.119873046875, y: 0.99249267578125, z: 0.01611328125, w: 0.01910400390625).scnQuaternion()
         
         tridentControl.setup(delegate: self)
@@ -190,7 +190,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         super.viewWillTransition(to: size, with: coordinator)
         
         cameraControlView.superViewDidResize(to: size)
-        tridentView.superViewDidResize(to: size)
+        headingView.superViewDidResize(to: size)
         auxCameraView?.superViewDidResize(to: size)
         liveViewContainer?.superViewDidResize(to: size)
 
@@ -459,7 +459,7 @@ class DiveViewController: UIViewController, StoryboardInstantiable {
         }
         
         FastRTPS.registerReader(topic: .rovAttitude) { [weak self] (attitude: RovAttitude) in
-            let node = self?.tridentView.modelNode()
+            let node = self?.headingView.modelNode()
             let orientation = attitude.orientation
             node?.orientation = orientation.scnQuaternion()
 //            print((1 + orientation.yaw / .pi) * 180)
@@ -661,6 +661,6 @@ extension DiveViewController: CLLocationManagerDelegate {
         let heading = newHeading.magneticHeading
         let cameraHeading = -heading
         let yaw = Float(cameraHeading / 180 * .pi)
-        tridentView.setCameraPos(yaw: yaw)
+        headingView.setCameraPos(yaw: yaw)
     }
 }

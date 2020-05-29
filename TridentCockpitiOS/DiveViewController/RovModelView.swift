@@ -8,12 +8,14 @@ import SceneKit
 
 class RovModelView: FloatingView {
 
-    private var sceneView: SCNView!
+    private let sceneView = SCNView()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.cornerRadius = 10
-        sceneView = (subviews.first! as! SCNView)
+        sceneView.frame = bounds
+        sceneView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        addSubview(sceneView)
         initScene()
     }
 
@@ -23,6 +25,7 @@ class RovModelView: FloatingView {
         guard let scene = SCNScene(named: "TridentCockpit.scnassets/trident.scn") else {
             fatalError("No scene file")
         }
+        sceneView.backgroundColor = UIColor(named: "cameraControlBackground")!
         sceneView.allowsCameraControl = false
         sceneView.autoenablesDefaultLighting = true
         sceneView.cameraControlConfiguration.allowsTranslation = false
