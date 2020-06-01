@@ -78,16 +78,6 @@ class MaintenanceViewController: UIViewController, StoryboardInstantiable {
         }
     }
     
-//    RestProvider.request(MultiTarget(WiFiServiceAPI.scan))
-//    .then {
-//        RestProvider.request(MultiTarget(WiFiServiceAPI.ssids))
-//    }.done { (ssids: [SSIDInfo]) -> Void in
-//        self.showPopup(with: ssids.filter{!$0.ssid.contains("Trident-")}, view: view)
-//    }.catch {
-//        self.alertNetwork(error: $0)
-//    }
-
-    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         FastRTPS.resignAll()
@@ -140,6 +130,22 @@ class MaintenanceViewController: UIViewController, StoryboardInstantiable {
             }
         }
 
+        FastRTPS.registerReader(topic: .rovCamFwd) { (channel: RovChannel) in
+            print(channel)
+        }
+        
+        FastRTPS.registerReader(topic: .rovCams) { (camera: RovCamera) in
+            print(camera)
+        }
+        
+        FastRTPS.registerReader(topic: .rovCamFwdH2640CtrlDesc) { (descriptor: RovControlDescriptor) in
+            print("H264_0", descriptor)
+        }
+        
+        FastRTPS.registerReader(topic: .rovCamFwdH2641CtrlDesc) { (descriptor: RovControlDescriptor) in
+            print("H264_1", descriptor)
+        }
+        
 //        FastRTPS.registerReader(topic: .rovSubsystemStatus) { (status: RovSubsystemStatus) in
 //            print("status:", status.subsystemId.rawValue, status.substate)
 //        }
