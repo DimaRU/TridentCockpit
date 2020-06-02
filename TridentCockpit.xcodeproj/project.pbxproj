@@ -114,6 +114,7 @@
 		0A5107DB23AA807D00C19289 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5107DA23AA807D00C19289 /* NetworkError.swift */; };
 		0A5107DC23AA85B000C19289 /* RestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20223A97A3500FE9918 /* RestProvider.swift */; };
 		0A55F6D323B969C500B108B0 /* RovIMUCalibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */; };
+		0A5612822486BE8400517C8D /* VideoDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5612812486BE8300517C8D /* VideoDecoder.swift */; };
 		0A56D0C023D7119900D9495A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A56D0BE23D7119900D9495A /* InfoPlist.strings */; };
 		0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790B23958380006F10FF /* FastRTPSBridge.framework */; };
 		0A597910239583AB006F10FF /* FastRTPSBridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790B23958380006F10FF /* FastRTPSBridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -132,7 +133,6 @@
 		0A7130D423636AF200817593 /* FlatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130C823636AF100817593 /* FlatButton.swift */; };
 		0A7130D623636AF200817593 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CA23636AF100817593 /* Extensions.swift */; };
 		0A7130D723636AF200817593 /* DisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CB23636AF100817593 /* DisplayManager.swift */; };
-		0A7130D823636AF200817593 /* VideoDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CC23636AF100817593 /* VideoDecoder.swift */; };
 		0A7130D923636AF200817593 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CD23636AF100817593 /* AppDelegate.swift */; };
 		0A7130DA23636AF200817593 /* FloatingViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CE23636AF100817593 /* FloatingViewProtocol.swift */; };
 		0A7130DB23636AF200817593 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CF23636AF100817593 /* Preferences.swift */; };
@@ -406,6 +406,7 @@
 		0A4999BE242230DF00E3FA14 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		0A5107DA23AA807D00C19289 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RovIMUCalibration.swift; sourceTree = "<group>"; };
+		0A5612812486BE8300517C8D /* VideoDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDecoder.swift; sourceTree = "<group>"; };
 		0A56D0BF23D7119900D9495A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FastRTPSBridge.xcodeproj; path = FastRTPSBridge/FastRTPSBridge.xcodeproj; sourceTree = "<group>"; };
 		0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
@@ -823,7 +824,6 @@
 		0A7BB6072411987500978D41 /* DiveViewController */ = {
 			isa = PBXGroup;
 			children = (
-				0A7130CC23636AF100817593 /* VideoDecoder.swift */,
 			);
 			path = DiveViewController;
 			sourceTree = "<group>";
@@ -894,6 +894,7 @@
 				0A7130D023636AF100817593 /* RovModelView.swift */,
 				0A7130D223636AF200817593 /* CameraControlView.swift */,
 				0A2E42BB236B0EE900B5C569 /* VideoView.swift */,
+				0A5612812486BE8300517C8D /* VideoDecoder.swift */,
 				0A08DED924801ACD002E4E63 /* TridentControl.swift */,
 				0AAD2D622447369300B6152C /* PlayDemoVideo.swift */,
 			);
@@ -930,6 +931,7 @@
 				0ACCDE6E23FDAE7000381207 /* RovModelView.swift */,
 				0AE05CE823FD3D9000C7CA08 /* VideoView.swift */,
 				0ADD42B1240EBBCD008ECFCC /* TouchJoystickView.swift */,
+				0A7130CC23636AF100817593 /* VideoDecoder.swift */,
 				0AAD2D592447368500B6152C /* PlayDemoVideo.swift */,
 			);
 			path = DiveViewController;
@@ -1324,7 +1326,6 @@
 				0A71311323636B0200817593 /* RovRecording.swift in Sources */,
 				0A72A80F24347FE300AE9B2E /* RTPSConnectionMonitor.swift in Sources */,
 				0A71310D23636B0200817593 /* RovTridentMotorCommand.swift in Sources */,
-				0A7130D823636AF200817593 /* VideoDecoder.swift in Sources */,
 				0A3FD1F223A9443E00FE9918 /* ResinAPI.swift in Sources */,
 				0AAD2D632447369300B6152C /* PlayDemoVideo.swift in Sources */,
 				0A71310323636B0200817593 /* RovVector3.swift in Sources */,
@@ -1347,6 +1348,7 @@
 				0A08DEDA24801ACD002E4E63 /* TridentControl.swift in Sources */,
 				0A7130D423636AF200817593 /* FlatButton.swift in Sources */,
 				0A7130FE23636B0200817593 /* RovBarometer.swift in Sources */,
+				0A5612822486BE8400517C8D /* VideoDecoder.swift in Sources */,
 				0A5107DB23AA807D00C19289 /* NetworkError.swift in Sources */,
 				0A20B1892454C6B900FB4961 /* Shout+Promise.swift in Sources */,
 				0AF029D4245F6D36007ADE09 /* CustomButton.swift in Sources */,
