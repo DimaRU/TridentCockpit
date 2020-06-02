@@ -37,7 +37,7 @@ struct Preference {
     static var videoOverlayMode: Bool
     
     @UserPreferenceWithDefault("RecordPilotVideo", defaultValue: false)
-    static var RecordPilotVideo: Bool
+    static var recordPilotVideo: Bool
     
     @UserPreferenceWithDefault("VideoSizingFill", defaultValue: true)
     static var videoSizingFill: Bool

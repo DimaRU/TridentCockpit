@@ -14,7 +14,9 @@ protocol RecordingsAPIProtocol: class {
 }
 
 final class RecordingsAPI: NSObject {
-
+    static let pilotPath = "Pilot"
+    static let downloadedPath = "Trident-1080p"
+    
     static var shared = RecordingsAPI()
     var backgroundSessionCompletionHandler: (() -> Void)?
 
@@ -51,6 +53,13 @@ final class RecordingsAPI: NSObject {
         super.init()
         // Instantiate session
         downloadSession.sessionDescription = Bundle.main.bundleIdentifier
+        
+        // Make Recordings directories
+        let fileManager = FileManager.default
+        let pilotURL = RecordingsAPI.moviesURL.appendingPathComponent(RecordingsAPI.pilotPath)
+        let downloadsURL = RecordingsAPI.moviesURL.appendingPathComponent(RecordingsAPI.downloadedPath)
+        try? fileManager.createDirectory(at: pilotURL, withIntermediateDirectories: true, attributes: nil)
+        try? fileManager.createDirectory(at: downloadsURL, withIntermediateDirectories: true, attributes: nil)
     }
 
     func setup(remoteAddress: String, delegate: RecordingsAPIProtocol) {
@@ -74,11 +83,18 @@ final class RecordingsAPI: NSObject {
         URL(string: baseURL!)!
     }
 
-    func fileName(recording: Recording) -> String {
+    class func fileName(recording: Recording) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM-dd-hhmmss"
         let fileDateLabel = dateFormatter.string(from: recording.startTimestamp)
-        return "Trident-\(fileDateLabel)-HQ.mp4"
+        return "\(downloadedPath)/Trident-\(fileDateLabel)-HQ.mp4"
+    }
+    
+    class func pilotFileName(startTimestamp: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM-dd-hhmmss"
+        let fileDateLabel = dateFormatter.string(from: startTimestamp)
+        return "\(pilotPath)/Trident-\(fileDateLabel).mp4"
     }
 
     func requestRecordings(completion: @escaping (Result<[Recording], NetworkError>) -> Void) {
@@ -153,12 +169,12 @@ final class RecordingsAPI: NSObject {
         let task = downloadSession.downloadTask(with: downloadURL)
         task.countOfBytesClientExpectsToSend = Int64(recording.segments[0].size/8)
         task.countOfBytesClientExpectsToReceive = Int64(recording.segments[0].size)
-        task.taskDescription = recording.sessionId + ":" + fileName(recording: recording)
+        task.taskDescription = recording.sessionId + ":" + RecordingsAPI.fileName(recording: recording)
         task.resume()
     }
     
     func isDownloaded(recording: Recording) -> Bool {
-        let file = fileName(recording: recording)
+        let file = RecordingsAPI.fileName(recording: recording)
         let destination = RecordingsAPI.moviesURL.appendingPathComponent(file)
         let attibutes = try? FileManager.default.attributesOfItem(atPath: destination.path)
         let fileSize = attibutes?[.size] as? NSNumber
@@ -200,7 +216,6 @@ extension RecordingsAPI: URLSessionDownloadDelegate {
         let destination = RecordingsAPI.moviesURL.appendingPathComponent(fileName)
         let fileManager = FileManager.default
         do {
-            try fileManager.createDirectory(at: RecordingsAPI.moviesURL, withIntermediateDirectories: true, attributes: nil)
             try? fileManager.removeItem(at: destination)
             try fileManager.moveItem(at: location, to: destination)
         } catch {

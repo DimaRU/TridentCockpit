@@ -36,6 +36,7 @@ class DiveViewController: UIViewController {
     @IBOutlet weak var liveViewContainer: AuxCameraPlayerView!
 
     private let locationManager = CLLocationManager()
+    private var currentLocation: CLLocation?
     private var auxCameraView: AuxCameraControlView?
     private var videoDecoder: VideoDecoder!
     private let tridentControl = TridentControl()
@@ -167,10 +168,13 @@ class DiveViewController: UIViewController {
         
         startRTPS()
         
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         if CLLocationManager.headingAvailable() {
-            locationManager.delegate = self
             locationManager.startUpdatingHeading()
         }
+        locationManager.requestLocation()
+        
         #if DEBUG
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(batterySymbolTap(sender:)))
         gestureRecognizer.numberOfTapsRequired = 2
@@ -603,6 +607,10 @@ class DiveViewController: UIViewController {
                                                          response: .unknown,
                                                          reason: "")
         FastRTPS.send(topic: .rovVidSessionReq, ddsData: videoSessionCommand)
+
+        guard Preference.recordPilotVideo else { return }
+        let videoWriter = try? VideoWriter(startDate: isoDate, location: currentLocation)
+        videoDecoder.videoWiriter = videoWriter
     }
     
     private func stopRecordingSession(id: UUID) {
@@ -612,6 +620,10 @@ class DiveViewController: UIViewController {
                                                          response: .unknown,
                                                          reason: "")
         FastRTPS.send(topic: .rovVidSessionReq, ddsData: videoSessionCommand)
+        
+        videoDecoder?.videoWiriter?.finishSession {
+            self.videoDecoder.videoWiriter = nil
+        }
     }
 
 }
@@ -662,5 +674,14 @@ extension DiveViewController: CLLocationManagerDelegate {
         let cameraHeading = -heading
         let yaw = Float(cameraHeading / 180 * .pi)
         headingView.setCameraPos(yaw: yaw)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        currentLocation = locations.first
+        print(locations)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error)
     }
 }
