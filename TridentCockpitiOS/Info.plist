@@ -76,5 +76,7 @@
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Used to add location tag to dive video</string>
 </dict>
 </plist>

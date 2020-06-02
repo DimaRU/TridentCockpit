@@ -9,6 +9,7 @@ import FastRTPSBridge
 import Moya
 import PromiseKit
 import Shout
+import CoreLocation
 
 class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, BackgroundWatchProtocol {
     private var tridentID: String!
@@ -21,6 +22,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
     }
     private var ddsListenerTimer: Timer?
     private var backgroundWatch: BackgroundWatch?
+    private var locationManager: CLLocationManager?
     
     // MARK: Trace connection state vars
     private var wifiConnected = false
@@ -113,6 +115,10 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         backgroundWatch = BackgroundWatch(delegate: self)
         addCircularProgressView(to: view)
         connectTrident()
+        if CLLocationManager.authorizationStatus() == .notDetermined {
+            locationManager = CLLocationManager()
+            locationManager?.requestWhenInUseAuthorization()
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

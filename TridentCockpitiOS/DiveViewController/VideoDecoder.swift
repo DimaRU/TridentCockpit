@@ -12,6 +12,7 @@ final class VideoDecoder {
     private let NalStart = Data([0, 0, 0, 1])
     private var formatDescription: CMVideoFormatDescription?
     let timescale: Int32 = 1000000000
+    var videoWiriter: VideoWriter?
     
     init(sampleBufferLayer: AVSampleBufferDisplayLayer) {
         self.sampleBufferLayer = sampleBufferLayer
@@ -55,6 +56,7 @@ final class VideoDecoder {
                 }
                 guard status == kCMBlockBufferNoErr else { return }
                 decodeNal(blockBuffer: blockBuffer, len: len, time: time)
+                
                 break;
             }
             
@@ -79,6 +81,7 @@ final class VideoDecoder {
                 if let controlTimebase = sampleBufferLayer.controlTimebase {
                     CMTimebaseSetTime(controlTimebase, time: time)
                 }
+                videoWiriter?.startSession(at: time, format: formatDescription!)
             }
 
             startIndex = endIndex
@@ -89,6 +92,7 @@ final class VideoDecoder {
         guard formatDescription != nil else { return }
         var sampleBuffer: CMSampleBuffer?
         let sampleSizeArray = [len]
+        
         var timing = CMSampleTimingInfo(duration: CMTime.invalid, presentationTimeStamp: time, decodeTimeStamp: CMTime.invalid)
         let status = CMSampleBufferCreateReady(allocator: kCFAllocatorDefault,
                                                dataBuffer: blockBuffer,
@@ -104,6 +108,8 @@ final class VideoDecoder {
         guard let buffer = sampleBuffer, CMSampleBufferGetNumSamples(buffer) > 0 else {
             return
         }
+        
+        videoWiriter?.addVideoData(sampleBuffer: buffer)
         
         if sampleBufferLayer.isReadyForMoreMediaData {
             sampleBufferLayer.enqueue(buffer)
@@ -137,6 +143,7 @@ final class VideoDecoder {
     func cleanup() {
         sampleBufferLayer.flush()
         formatDescription = nil
+        videoWiriter?.finishSession { self.videoWiriter = nil }
     }
     
 }

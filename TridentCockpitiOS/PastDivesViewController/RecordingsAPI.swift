@@ -33,7 +33,7 @@ final class RecordingsAPI: NSObject {
     }()
 
     #if targetEnvironment(macCatalyst)
-    static var moviesURL: URL {
+    static var moviesURL: URL = {
         var url = FileManager.default.urls(for: .moviesDirectory, in: .allDomainsMask).first!
         let lastcomponent = url.lastPathComponent
         for _ in 1...5 {
@@ -42,7 +42,7 @@ final class RecordingsAPI: NSObject {
         url.appendPathComponent(lastcomponent)
         url.appendPathComponent("Trident")
         return url
-    }
+    } ()
     #elseif os(iOS)
     static let moviesURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     #endif

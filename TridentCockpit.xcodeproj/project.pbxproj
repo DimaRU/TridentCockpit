@@ -115,6 +115,8 @@
 		0A5107DC23AA85B000C19289 /* RestProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20223A97A3500FE9918 /* RestProvider.swift */; };
 		0A55F6D323B969C500B108B0 /* RovIMUCalibration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */; };
 		0A5612822486BE8400517C8D /* VideoDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5612812486BE8300517C8D /* VideoDecoder.swift */; };
+		0A5612842486BFA200517C8D /* VideoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5612832486BFA200517C8D /* VideoWriter.swift */; };
+		0A5612862486C03700517C8D /* CLLocation+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5612852486C03700517C8D /* CLLocation+Extensions.swift */; };
 		0A56D0C023D7119900D9495A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0A56D0BE23D7119900D9495A /* InfoPlist.strings */; };
 		0A59790F239583AB006F10FF /* FastRTPSBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790B23958380006F10FF /* FastRTPSBridge.framework */; };
 		0A597910239583AB006F10FF /* FastRTPSBridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A59790B23958380006F10FF /* FastRTPSBridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -407,6 +409,8 @@
 		0A5107DA23AA807D00C19289 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RovIMUCalibration.swift; sourceTree = "<group>"; };
 		0A5612812486BE8300517C8D /* VideoDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDecoder.swift; sourceTree = "<group>"; };
+		0A5612832486BFA200517C8D /* VideoWriter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoWriter.swift; sourceTree = "<group>"; };
+		0A5612852486C03700517C8D /* CLLocation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extensions.swift"; sourceTree = "<group>"; };
 		0A56D0BF23D7119900D9495A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FastRTPSBridge.xcodeproj; path = FastRTPSBridge/FastRTPSBridge.xcodeproj; sourceTree = "<group>"; };
 		0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
@@ -864,6 +868,7 @@
 				0A3532DC24041485000F572D /* UINavigationItem+Extensions.swift */,
 				0A4999BE242230DF00E3FA14 /* UICollectionView+Extensions.swift */,
 				0A7C3B7C245C372F00330F63 /* UIStoryboardSegue+Extensions.swift */,
+				0A5612852486C03700517C8D /* CLLocation+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -930,8 +935,9 @@
 				0ACCDE6C23FDAD4E00381207 /* CameraControlView.swift */,
 				0ACCDE6E23FDAE7000381207 /* RovModelView.swift */,
 				0AE05CE823FD3D9000C7CA08 /* VideoView.swift */,
-				0ADD42B1240EBBCD008ECFCC /* TouchJoystickView.swift */,
 				0A7130CC23636AF100817593 /* VideoDecoder.swift */,
+				0A5612832486BFA200517C8D /* VideoWriter.swift */,
+				0ADD42B1240EBBCD008ECFCC /* TouchJoystickView.swift */,
 				0AAD2D592447368500B6152C /* PlayDemoVideo.swift */,
 			);
 			path = DiveViewController;
@@ -1168,6 +1174,7 @@
 				0A3532DD24041485000F572D /* UINavigationItem+Extensions.swift in Sources */,
 				0A8B26702401653100ACC72F /* UIViewExtensions.swift in Sources */,
 				0A1D0A5E23F94942006D9AFD /* iso8601date.swift in Sources */,
+				0A5612842486BFA200517C8D /* VideoWriter.swift in Sources */,
 				0A20B18A2454C6B900FB4961 /* Shout+Promise.swift in Sources */,
 				0A1D0A2123F941B2006D9AFD /* SSIDInfo.swift in Sources */,
 				0A1D0A4823F941C4006D9AFD /* FastRTPS.swift in Sources */,
@@ -1221,6 +1228,7 @@
 				0A1D0A3023F941BD006D9AFD /* RovAttitude.swift in Sources */,
 				0A9DF95C243487960029DDDB /* RTPSConnectionMonitor.swift in Sources */,
 				0A1D0A4223F941C4006D9AFD /* RestProvider.swift in Sources */,
+				0A5612862486C03700517C8D /* CLLocation+Extensions.swift in Sources */,
 				0A1D0A3B23F941BD006D9AFD /* RovVideoData.swift in Sources */,
 				0AC07D43240FE227001A85BE /* SaveCenter.swift in Sources */,
 				0A1D0A2223F941B2006D9AFD /* ConnectionInfo.swift in Sources */,
