@@ -33,6 +33,6 @@ Altitude can be added optionally.
  
 extension CLLocation  {
     var iso6709String: String {
-        String(format: "%+09.5f%+010.5f%+.0fCRSWGS_84", self.coordinate.latitude, self.coordinate.longitude, self.altitude)
+        String(format: "%+09.5f%+010.5f%+.0f/", self.coordinate.latitude, self.coordinate.longitude, self.altitude)
     }
 }

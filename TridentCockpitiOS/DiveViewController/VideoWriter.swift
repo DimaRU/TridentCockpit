@@ -23,11 +23,16 @@ class VideoWriter {
         let gpsMetadata = AVMutableMetadataItem()
         gpsMetadata.identifier = AVMetadataIdentifier.quickTimeMetadataLocationISO6709
         gpsMetadata.value = location.iso6709String as NSString
-        let dateMetadata = AVMutableMetadataItem()
-        dateMetadata.identifier = AVMetadataIdentifier.quickTimeMetadataLocationDate
-        dateMetadata.value = startDate as NSString
-        
-        writer.metadata = [gpsMetadata, dateMetadata]
+
+//        let gpsMetadata1 = AVMutableMetadataItem()
+//        gpsMetadata1.identifier = AVMetadataIdentifier.quickTimeUserDataLocationISO6709
+//        gpsMetadata1.value = location.iso6709String as NSString
+//
+//        let dateMetadata = AVMutableMetadataItem()
+//        dateMetadata.identifier = AVMetadataIdentifier.quickTimeMetadataLocationDate
+//        dateMetadata.value = startDate as NSString
+
+        writer.metadata = [gpsMetadata]
     }
         
     func startSession(at sourceTime: CMTime, format: CMFormatDescription) {
@@ -61,6 +66,7 @@ class VideoWriter {
     
     func finishSession(completion: @escaping () -> Void) {
         guard sessionStarted else { return }
+        sessionStarted = false
         writer.finishWriting(completionHandler: completion)
     }
 }
