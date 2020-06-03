@@ -39,7 +39,7 @@ struct Preference {
     @UserPreferenceWithDefault("RecordPilotVideo", defaultValue: false)
     static var recordPilotVideo: Bool
     
-    @UserPreferenceWithDefault("RecordOnboardVideo", defaultValue: false)
+    @UserPreferenceWithDefault("RecordOnboardVideo", defaultValue: true)
     static var recordOnboardVideo: Bool
     
     @UserPreferenceWithDefault("VideoSizingFill", defaultValue: true)
