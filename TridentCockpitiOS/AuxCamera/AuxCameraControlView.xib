@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -14,13 +14,13 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB" customClass="AuxCameraControlView" customModule="TridentCockpitiOS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="110" height="154"/>
+            <rect key="frame" x="0.0" y="0.0" width="110" height="160"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a4h-U4-gej" customClass="CameraButton" customModule="TridentCockpitiOS" customModuleProvider="target">
-                    <rect key="frame" x="25" y="4" width="60" height="60"/>
+                    <rect key="frame" x="20" y="4" width="70" height="70"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="FQo-ja-uhk"/>
-                        <constraint firstAttribute="width" constant="60" id="iRg-tS-wgn"/>
+                        <constraint firstAttribute="height" constant="70" id="FQo-ja-uhk"/>
+                        <constraint firstAttribute="width" constant="70" id="iRg-tS-wgn"/>
                     </constraints>
                     <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
                     <userDefinedRuntimeAttributes>
@@ -36,19 +36,19 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Remaining time: 2h left" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kd9-YU-O80">
-                    <rect key="frame" x="0.0" y="87" width="110" height="31.5"/>
+                    <rect key="frame" x="0.0" y="93" width="110" height="31.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ev-7W-oEM">
-                    <rect key="frame" x="19" y="68" width="72.5" height="17.5"/>
+                    <rect key="frame" x="19" y="76" width="72.5" height="17.5"/>
                     <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="maZ-Gq-HxG">
-                    <rect key="frame" x="38.5" y="118.5" width="33.5" height="31.5"/>
+                    <rect key="frame" x="38.5" y="124.5" width="33.5" height="31.5"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="battery.100" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="V5V-Wl-n2U">
                             <rect key="frame" x="0.0" y="1.5" width="33.5" height="12.5"/>
@@ -66,7 +66,7 @@
                     </subviews>
                 </stackView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="srO-Wm-A5x">
-                    <rect key="frame" x="70" y="114" width="40" height="40"/>
+                    <rect key="frame" x="70" y="120" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="MJs-dn-qon"/>
                         <constraint firstAttribute="width" constant="40" id="bvr-KT-ZaK"/>
@@ -82,7 +82,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y3X-ez-v6o">
-                    <rect key="frame" x="0.0" y="114" width="41" height="40"/>
+                    <rect key="frame" x="0.0" y="120" width="41" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="Q0V-TY-Wvi"/>
                         <constraint firstAttribute="width" constant="41" id="eMw-vl-u8g"/>
@@ -120,7 +120,7 @@
                 <constraint firstAttribute="bottom" secondItem="maZ-Gq-HxG" secondAttribute="bottom" constant="4" id="CVw-UW-n2P"/>
                 <constraint firstItem="5ev-7W-oEM" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Gg7-tO-J8d"/>
                 <constraint firstItem="a4h-U4-gej" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="HkL-fG-e6C"/>
-                <constraint firstAttribute="height" constant="154" id="Jl5-nw-Lxz"/>
+                <constraint firstAttribute="height" constant="160" id="Jl5-nw-Lxz"/>
                 <constraint firstAttribute="bottom" secondItem="srO-Wm-A5x" secondAttribute="bottom" id="Le4-QW-FiH"/>
                 <constraint firstAttribute="bottom" secondItem="Y3X-ez-v6o" secondAttribute="bottom" id="Q3W-5A-4Xf"/>
                 <constraint firstAttribute="trailing" secondItem="RXB-a0-DBM" secondAttribute="centerX" constant="8" id="Qnn-fe-bq9"/>
@@ -130,7 +130,7 @@
                 <constraint firstAttribute="trailing" secondItem="Kd9-YU-O80" secondAttribute="trailing" id="jBl-je-8qW"/>
                 <constraint firstAttribute="width" constant="110" id="jL2-5H-4Y7"/>
                 <constraint firstItem="maZ-Gq-HxG" firstAttribute="top" secondItem="Kd9-YU-O80" secondAttribute="bottom" id="n7p-lB-d8F"/>
-                <constraint firstItem="5ev-7W-oEM" firstAttribute="top" secondItem="a4h-U4-gej" secondAttribute="bottom" constant="4" id="reI-G9-TGk"/>
+                <constraint firstItem="5ev-7W-oEM" firstAttribute="top" secondItem="a4h-U4-gej" secondAttribute="bottom" constant="2" id="reI-G9-TGk"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
