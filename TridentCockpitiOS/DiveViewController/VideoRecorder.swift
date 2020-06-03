@@ -17,22 +17,18 @@ class VideoRecorder {
         let fileName = RecordingsAPI.pilotFileName(startTimestamp: startTimestamp)
         let url = RecordingsAPI.moviesURL.appendingPathComponent(fileName)
         try? FileManager.default.removeItem(at: url)
-        writer = try AVAssetWriter(outputURL: url, fileType: .mp4)
+        writer = try AVAssetWriter(outputURL: url, fileType: .mov)
         
         guard let location = location else { return }
         let gpsMetadata = AVMutableMetadataItem()
         gpsMetadata.identifier = AVMetadataIdentifier.quickTimeMetadataLocationISO6709
         gpsMetadata.value = location.iso6709String as NSString
 
-//        let gpsMetadata1 = AVMutableMetadataItem()
-//        gpsMetadata1.identifier = AVMetadataIdentifier.quickTimeUserDataLocationISO6709
-//        gpsMetadata1.value = location.iso6709String as NSString
-//
-//        let dateMetadata = AVMutableMetadataItem()
-//        dateMetadata.identifier = AVMetadataIdentifier.quickTimeMetadataLocationDate
-//        dateMetadata.value = startDate as NSString
+        let dateMetadata = AVMutableMetadataItem()
+        dateMetadata.identifier = AVMetadataIdentifier.quickTimeMetadataLocationDate
+        dateMetadata.value = location.timestamp.iso8601 as NSString
 
-        writer.metadata = [gpsMetadata]
+        writer.metadata = [gpsMetadata, dateMetadata]
     }
         
     func startSession(at sourceTime: CMTime, format: CMFormatDescription) {

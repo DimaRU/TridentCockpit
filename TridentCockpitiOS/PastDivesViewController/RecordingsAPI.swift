@@ -94,7 +94,7 @@ final class RecordingsAPI: NSObject {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM-dd-hhmmss"
         let fileDateLabel = dateFormatter.string(from: startTimestamp)
-        return "\(pilotPath)/Trident-\(fileDateLabel).mp4"
+        return "\(pilotPath)/Trident-\(fileDateLabel).mov"
     }
 
     func requestRecordings(completion: @escaping (Result<[Recording], NetworkError>) -> Void) {
