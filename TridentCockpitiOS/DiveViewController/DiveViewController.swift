@@ -609,8 +609,8 @@ class DiveViewController: UIViewController {
         FastRTPS.send(topic: .rovVidSessionReq, ddsData: videoSessionCommand)
 
         guard Preference.recordPilotVideo else { return }
-        let videoWriter = try? VideoWriter(startDate: isoDate, location: currentLocation)
-        videoDecoder.videoWiriter = videoWriter
+        let videoRecorder = try? VideoRecorder(startDate: isoDate, location: currentLocation)
+        videoDecoder.videoRecorder = videoRecorder
     }
     
     private func stopRecordingSession(id: UUID) {
@@ -621,8 +621,8 @@ class DiveViewController: UIViewController {
                                                          reason: "")
         FastRTPS.send(topic: .rovVidSessionReq, ddsData: videoSessionCommand)
         
-        videoDecoder?.videoWiriter?.finishSession {
-            self.videoDecoder.videoWiriter = nil
+        videoDecoder?.videoRecorder?.finishSession {
+            self.videoDecoder.videoRecorder = nil
         }
     }
 

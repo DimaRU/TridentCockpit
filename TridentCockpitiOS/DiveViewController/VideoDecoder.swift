@@ -12,7 +12,7 @@ final class VideoDecoder {
     private let NalStart = Data([0, 0, 0, 1])
     private var formatDescription: CMVideoFormatDescription?
     let timescale: Int32 = 1000000000
-    var videoWiriter: VideoWriter?
+    var videoRecorder: VideoRecorder?
     
     init(sampleBufferLayer: AVSampleBufferDisplayLayer) {
         self.sampleBufferLayer = sampleBufferLayer
@@ -81,7 +81,7 @@ final class VideoDecoder {
                 if let controlTimebase = sampleBufferLayer.controlTimebase {
                     CMTimebaseSetTime(controlTimebase, time: time)
                 }
-                videoWiriter?.startSession(at: time, format: formatDescription!)
+                videoRecorder?.startSession(at: time, format: formatDescription!)
             }
 
             startIndex = endIndex
@@ -109,7 +109,7 @@ final class VideoDecoder {
             return
         }
         
-        videoWiriter?.addVideoData(sampleBuffer: buffer)
+        videoRecorder?.addVideoData(sampleBuffer: buffer)
         
         if sampleBufferLayer.isReadyForMoreMediaData {
             sampleBufferLayer.enqueue(buffer)
@@ -143,7 +143,7 @@ final class VideoDecoder {
     func cleanup() {
         sampleBufferLayer.flush()
         formatDescription = nil
-        videoWiriter?.finishSession { self.videoWiriter = nil }
+        videoRecorder?.finishSession { self.videoRecorder = nil }
     }
     
 }

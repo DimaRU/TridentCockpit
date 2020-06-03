@@ -15,7 +15,7 @@ protocol RecordingsAPIProtocol: class {
 
 final class RecordingsAPI: NSObject {
     static let pilotPath = "Pilot"
-    static let downloadedPath = "Trident-1080p"
+    static let downloadsPath = "Trident-1080p"
     
     static var shared = RecordingsAPI()
     var backgroundSessionCompletionHandler: (() -> Void)?
@@ -57,7 +57,7 @@ final class RecordingsAPI: NSObject {
         // Make Recordings directories
         let fileManager = FileManager.default
         let pilotURL = RecordingsAPI.moviesURL.appendingPathComponent(RecordingsAPI.pilotPath)
-        let downloadsURL = RecordingsAPI.moviesURL.appendingPathComponent(RecordingsAPI.downloadedPath)
+        let downloadsURL = RecordingsAPI.moviesURL.appendingPathComponent(RecordingsAPI.downloadsPath)
         try? fileManager.createDirectory(at: pilotURL, withIntermediateDirectories: true, attributes: nil)
         try? fileManager.createDirectory(at: downloadsURL, withIntermediateDirectories: true, attributes: nil)
     }
@@ -87,7 +87,7 @@ final class RecordingsAPI: NSObject {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "MMM-dd-hhmmss"
         let fileDateLabel = dateFormatter.string(from: recording.startTimestamp)
-        return "\(downloadedPath)/Trident-\(fileDateLabel)-HQ.mp4"
+        return "\(downloadsPath)/Trident-\(fileDateLabel)-HQ.mp4"
     }
     
     class func pilotFileName(startTimestamp: Date) -> String {

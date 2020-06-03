@@ -1,5 +1,5 @@
 /////
-////  VideoWriter.swift
+////  VideoRecorder.swift
 ///   Copyright © 2020 Dmitriy Borovikov. All rights reserved.
 //
 
@@ -7,7 +7,7 @@ import Foundation
 import CoreLocation
 import AVFoundation
 
-class VideoWriter {
+class VideoRecorder {
     let writer: AVAssetWriter
     var videoInput: AVAssetWriterInput!
     var sessionStarted = false
