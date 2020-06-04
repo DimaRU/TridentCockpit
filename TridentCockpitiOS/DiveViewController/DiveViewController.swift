@@ -102,8 +102,6 @@ class DiveViewController: UIViewController {
         batteryTimeLabel.text = "n/a"
         depthLabel.font = UIFont.monospacedSystemFont(ofSize: 17, weight: .regular)
         tempLabel.font = UIFont.monospacedSystemFont(ofSize: 17, weight: .regular)
-        cameraControlView = CameraControlView.instantiate()
-        view.addSubview(cameraControlView)
         throttleJoystickView.delegate = tridentControl
         yawPitchJoystickView.delegate = tridentControl
         #if targetEnvironment(macCatalyst)
@@ -138,6 +136,9 @@ class DiveViewController: UIViewController {
         videoDecoder = VideoDecoder(sampleBufferLayer: videoView.sampleBufferLayer)
         setVideoSizing(fill: Preference.videoSizingFill)
 
+        cameraControlView = CameraControlView.instantiate(videoDecoder: videoDecoder)
+        view.addSubview(cameraControlView)
+        
         liveViewContainer.isHidden = true
         if Gopro3API.isConnected {
             guard let liveViewController = children.first(where: { $0 is AVPlayerViewController}) as? AVPlayerViewController else { return }

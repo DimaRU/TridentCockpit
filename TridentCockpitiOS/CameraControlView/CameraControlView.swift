@@ -10,8 +10,8 @@ import CoreLocation
 class CameraControlView: FloatingView {
     @IBOutlet weak var recordingButton: CameraButton!
     @IBOutlet weak var recordingTimeLabel: UILabel!
-    @IBOutlet weak var remainingOnboardTimeLabel: UILabel!
-    @IBOutlet weak var remainingiPhoneTimeLabel: UILabel!
+    @IBOutlet weak var remainingOnboardLabel: UILabel!
+    @IBOutlet weak var remainingLocalLabel: UILabel!
     @IBOutlet weak var onboardLabel: UILabelUnderlined!
     @IBOutlet weak var iPhoneLabel: UILabelUnderlined!
     
@@ -19,6 +19,22 @@ class CameraControlView: FloatingView {
     private var timer: Timer?
     private weak var videoDecoder: VideoDecoder?
     var currentLocation: CLLocation?
+    
+    private var recordingTime: Int? {
+        didSet {
+            guard let time = recordingTime else {
+                recordingTimeLabel.text = nil
+                return
+            }
+            let sec = time % 60
+            let min = time / 60
+            let hour = time / 3600
+            recordingTimeLabel.text = String(format: "%2.2d:%2.2d:%2.2d", hour, min, sec)
+            if sec == 0 {
+                refreshLocalRemainingTime()
+            }
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,19 +45,19 @@ class CameraControlView: FloatingView {
         iPhoneLabel.text = UIDevice.current.model + ":"
         if !Preference.recordOnboardVideo {
             onboardLabel.isHidden = true
-            remainingOnboardTimeLabel.isHidden = true
+            remainingOnboardLabel.isHidden = true
         }
-        if !Preference.recordPilotVideo && Preference.recordOnboardVideo {
+        if !Preference.recordPilotVideo {
             iPhoneLabel.isHidden = true
-            remainingiPhoneTimeLabel.isHidden = true
+            remainingLocalLabel.isHidden = true
         }
         
-        remainingOnboardTimeLabel.text = " "
-        remainingiPhoneTimeLabel.text = " "
+        remainingOnboardLabel.text = " "
+        remainingLocalLabel.text = " "
         onboardLabel.textColor = .systemGray
         iPhoneLabel.textColor = .systemGray
-        remainingOnboardTimeLabel.textColor = .systemGray
-        remainingiPhoneTimeLabel.textColor = .systemGray
+        remainingOnboardLabel.textColor = .systemGray
+        remainingLocalLabel.textColor = .systemGray
 
         recordingTimeLabel.text = ""
     }
@@ -77,13 +93,32 @@ class CameraControlView: FloatingView {
         return time
     }
     
+    private func setViewState(recording: Bool) {
+        if recording {
+            recordingTime = 0
+            recordingButton.isSelected = true
+            [remainingOnboardLabel,
+             remainingLocalLabel,
+             onboardLabel,
+             iPhoneLabel].forEach{ $0?.textColor = .white }
+
+        } else {
+            recordingTime = nil
+            recordingButton.isSelected = false
+            [remainingOnboardLabel,
+             remainingLocalLabel,
+             onboardLabel,
+             iPhoneLabel].forEach{ $0?.textColor = .lightGray }
+        }
+   }
+    
     private func registerReaders() {
         
         FastRTPS.registerReader(topic: .rovRecordingStats) { [weak self] (recordingStats: RovRecordingStats) in
             guard let self = self else { return }
             let minutes = Int(recordingStats.estRemainingRecTimeS) / 60
             DispatchQueue.main.async {
-                self.remainingOnboardTimeLabel.text = self.remainingTime(from: minutes)
+                self.remainingOnboardLabel.text = self.remainingTime(from: minutes)
                 guard minutes == 0 else { return }
                 if !self.recordingButton.isSelected {
                     self.recordingButton.isEnabled = false
@@ -101,13 +136,10 @@ class CameraControlView: FloatingView {
                     if self.videoSessionId == nil {
                         self.videoSessionId = UUID(uuidString: videoSession.sessionID)
                     }
-                    let sec = videoSession.totalDurationS % 60
-                    let min = (videoSession.totalDurationS / 60)
-                    let hour = videoSession.totalDurationS / 3600
-                    self.recordingTimeLabel.text = String(format: "%2.2d:%2.2d:%2.2d", hour, min, sec)
-                    
-                    self.recordingButton.isSelected = true
-                    self.remainingOnboardTimeLabel.textColor = .white
+                    if !self.recordingButton.isSelected {
+                        self.setViewState(recording: true)
+                    }
+                    self.recordingTime = Int(videoSession.totalDurationS)
 
                 case .stopped:
                     self.videoSessionId = nil
@@ -128,9 +160,7 @@ class CameraControlView: FloatingView {
                         alert(message: "Stop recording", informative: "Recording error", delay: 6)
                         break
                     }
-                    self.recordingTimeLabel.text = ""
-                    self.remainingOnboardTimeLabel.textColor = .systemGray
-                    self.recordingButton.isSelected = false
+                    self.setViewState(recording: false)
                 }
             }
         }
@@ -164,30 +194,46 @@ class CameraControlView: FloatingView {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         let isoDate = formatter.string(from: Date())
-        let metadata = #"{"start_ts":"\#(isoDate)"}"#
-        let videoSessionCommand = RovVideoSessionCommand(sessionID: id.uuidString.lowercased(),
-                                                         metadata: metadata,
-                                                         request: .recording,
-                                                         response: .unknown,
-                                                         reason: "")
-        FastRTPS.send(topic: .rovVidSessionReq, ddsData: videoSessionCommand)
+        
+        if Preference.recordOnboardVideo {
+            let metadata = #"{"start_ts":"\#(isoDate)"}"#
+            let videoSessionCommand = RovVideoSessionCommand(sessionID: id.uuidString.lowercased(),
+                                                             metadata: metadata,
+                                                             request: .recording,
+                                                             response: .unknown,
+                                                             reason: "")
+            FastRTPS.send(topic: .rovVidSessionReq, ddsData: videoSessionCommand)
+        }
 
         guard Preference.recordPilotVideo else { return }
         let videoRecorder = try? VideoRecorder(startDate: isoDate, location: currentLocation)
         videoDecoder?.videoRecorder = videoRecorder
+
+        guard !Preference.recordOnboardVideo else { return }
+        setViewState(recording: true)
+        timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+            self.recordingTime? += 1
+        }
     }
     
     private func stopRecordingSession(id: UUID) {
-        let videoSessionCommand = RovVideoSessionCommand(sessionID: id.uuidString.lowercased(),
-                                                         metadata: "",
-                                                         request: .stopped,
-                                                         response: .unknown,
-                                                         reason: "")
-        FastRTPS.send(topic: .rovVidSessionReq, ddsData: videoSessionCommand)
-        
+        if Preference.recordOnboardVideo {
+            let videoSessionCommand = RovVideoSessionCommand(sessionID: id.uuidString.lowercased(),
+                                                             metadata: "",
+                                                             request: .stopped,
+                                                             response: .unknown,
+                                                             reason: "")
+            FastRTPS.send(topic: .rovVidSessionReq, ddsData: videoSessionCommand)
+        }
+
+        guard Preference.recordPilotVideo else { return }
         videoDecoder?.videoRecorder?.finishSession {
             self.videoDecoder?.videoRecorder = nil
         }
+        guard !Preference.recordOnboardVideo else { return }
+        timer?.invalidate()
+        timer = nil
+        setViewState(recording: false)
     }
 
     func switchRecording() {
@@ -200,10 +246,18 @@ class CameraControlView: FloatingView {
     
     func start() {
         registerReaders()
-        timer = Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { _ in
-            // Refresh local remainingtime
-        }
+        refreshLocalRemainingTime()
     }
+    
+    private func refreshLocalRemainingTime() {
+        let path = RecordingsAPI.moviesURL.path
+        let systemAttributes = try? FileManager.default.attributesOfFileSystem(forPath: path)
+        let freeSpace = (systemAttributes?[FileAttributeKey.systemFreeSize] as? NSNumber)?.intValue ?? 0
+        let remainingSeconds = freeSpace / 230_000
+        let remainingMinutes = remainingSeconds / 60
+        remainingLocalLabel.text = remainingTime(from: remainingMinutes)
+    }
+    
     
     func cleanup() {
         timer?.invalidate()
@@ -211,10 +265,11 @@ class CameraControlView: FloatingView {
     }
 
     // MARK: Instaniate
-    static func instantiate() -> CameraControlView {
+    static func instantiate(videoDecoder: VideoDecoder) -> CameraControlView {
         let nib = UINib(nibName: "CameraControlView", bundle: nil)
         let views = nib.instantiate(withOwner: CameraControlView(), options: nil)
         let view = views.first as! CameraControlView
+        view.videoDecoder = videoDecoder
         return view
     }
 }
