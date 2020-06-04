@@ -136,7 +136,7 @@ class CameraControlView: FloatingView {
                     self.videoSessionId = nil
                     switch videoSession.stopReason {
                     case .maxSessionSizeReached:
-                        self.startRecordingSession(id: UUID())
+                        self.startRecordingSession()
                         return
                     case .clientRequest,
                          .clientNotAlive,
@@ -181,12 +181,13 @@ class CameraControlView: FloatingView {
 
     }
     
-    private func startRecordingSession(id: UUID) {
+    private func startRecordingSession() {
         let formatter = ISO8601DateFormatter()
         formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
         let isoDate = formatter.string(from: Date())
         
-        if Preference.recordOnboardVideo {
+        if Preference.recordOnboardVideo, videoSessionId == nil {
+            let id = UUID()
             let metadata = #"{"start_ts":"\#(isoDate)"}"#
             let videoSessionCommand = RovVideoSessionCommand(sessionID: id.uuidString.lowercased(),
                                                              metadata: metadata,
@@ -196,7 +197,7 @@ class CameraControlView: FloatingView {
             FastRTPS.send(topic: .rovVidSessionReq, ddsData: videoSessionCommand)
         }
 
-        guard Preference.recordPilotVideo else { return }
+        guard Preference.recordPilotVideo, videoDecoder?.videoRecorder == nil else { return }
         let videoRecorder = try? VideoRecorder(startDate: isoDate, location: currentLocation)
         videoDecoder?.videoRecorder = videoRecorder
 
@@ -207,9 +208,9 @@ class CameraControlView: FloatingView {
         }
     }
     
-    private func stopRecordingSession(id: UUID) {
-        if Preference.recordOnboardVideo {
-            let videoSessionCommand = RovVideoSessionCommand(sessionID: id.uuidString.lowercased(),
+    private func stopRecordingSession() {
+        if Preference.recordOnboardVideo, let videoSessionId = videoSessionId {
+            let videoSessionCommand = RovVideoSessionCommand(sessionID: videoSessionId.uuidString.lowercased(),
                                                              metadata: "",
                                                              request: .stopped,
                                                              response: .unknown,
@@ -228,10 +229,10 @@ class CameraControlView: FloatingView {
     }
 
     func switchRecording() {
-        if let videoSessionId = videoSessionId {
-            stopRecordingSession(id: videoSessionId)
+        if recordingButton.isSelected {
+            stopRecordingSession()
         } else {
-            startRecordingSession(id: UUID())
+            startRecordingSession()
         }
     }
     
