@@ -14,7 +14,7 @@ class CameraControlView: FloatingView {
     @IBOutlet weak var remainingLocalLabel: UILabel!
     @IBOutlet weak var onboardLabel: UILabelUnderlined!
     @IBOutlet weak var iPhoneLabel: UILabelUnderlined!
-    @IBOutlet weak var remainingStack: UIStackView!
+    @IBOutlet weak var remainingTimeLabel: UILabel!
     
     private var videoSessionId: UUID?
     private var timer: Timer?
@@ -91,15 +91,23 @@ class CameraControlView: FloatingView {
     }
     
     private func setViewState(recording: Bool) {
+        let labelList = [
+            remainingOnboardLabel,
+            remainingLocalLabel,
+            onboardLabel,
+            iPhoneLabel,
+            remainingTimeLabel,
+        ]
+
         if recording {
             recordingTime = 0
             recordingButton.isSelected = true
-            remainingStack.arrangedSubviews.forEach{ ($0 as? UILabel)?.textColor = .white }
+            labelList.forEach{ $0?.textColor = .white }
             
         } else {
             recordingTime = nil
             recordingButton.isSelected = false
-            remainingStack.arrangedSubviews.forEach{ ($0 as? UILabel)?.textColor = .lightGray }
+            labelList.forEach{ $0?.textColor = .lightGray }
         }
     }
     

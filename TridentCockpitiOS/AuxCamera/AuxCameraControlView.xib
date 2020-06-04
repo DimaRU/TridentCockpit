@@ -97,7 +97,7 @@
                         <action selector="powerButtonPress:" destination="-2" eventType="touchUpInside" id="dE5-oN-5do"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Payload" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXB-a0-DBM" customClass="UILabelRotatable" customModule="TridentCockpitiOS" customModuleProvider="target">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GoPro" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RXB-a0-DBM" customClass="UILabelRotatable" customModule="TridentCockpitiOS" customModuleProvider="target">
                     <rect key="frame" x="95.25" y="3.25" width="13.5" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="50" id="pUk-92-K5y"/>
