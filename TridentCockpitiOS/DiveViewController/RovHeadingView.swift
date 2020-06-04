@@ -6,7 +6,7 @@
 import UIKit
 import SceneKit
 
-class RovModelView: FloatingView {
+class RovHeadingView: FloatingView {
 
     private let sceneView = SCNView()
     

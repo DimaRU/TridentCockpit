@@ -26,7 +26,7 @@ class DiveViewController: UIViewController {
     
 
     @IBOutlet weak var lightButton: UIButton!
-    @IBOutlet weak var headingView: RovModelView!
+    @IBOutlet weak var headingView: RovHeadingView!
     @IBOutlet weak var throttleJoystickView: TouchJoystickView!
     @IBOutlet weak var yawPitchJoystickView: TouchJoystickView!
     @IBOutlet weak var liveViewContainer: AuxCameraPlayerView!

@@ -233,7 +233,7 @@
                                     <constraint firstAttribute="trailing" secondItem="vip-KF-QKX" secondAttribute="trailing" constant="16" id="qcR-ld-MuP"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GfV-LQ-YW5" customClass="RovModelView" customModule="TridentCockpitiOS" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GfV-LQ-YW5" customClass="RovHeadingView" customModule="TridentCockpitiOS" customModuleProvider="target">
                                 <rect key="frame" x="796" y="314" width="100" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="WQT-KI-wTZ">
