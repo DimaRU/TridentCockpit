@@ -135,9 +135,6 @@ final class VideoDecoder {
             }
         }
         
-//        let dimensions = CMVideoFormatDescriptionGetDimensions(formatDescription!)
-//        print("Dimensions:", dimensions)
-        
     }
     
     func cleanup() {

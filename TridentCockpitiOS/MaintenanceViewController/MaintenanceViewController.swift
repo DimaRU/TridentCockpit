@@ -130,55 +130,57 @@ class MaintenanceViewController: UIViewController, StoryboardInstantiable {
             }
         }
 
+        #if ROVDEBUG
         FastRTPS.registerReader(topic: .rovCamFwd) { (channel: RovChannel) in
             print(channel)
         }
-        
+
         FastRTPS.registerReader(topic: .rovCams) { (camera: RovCamera) in
             print(camera)
         }
-        
+
         FastRTPS.registerReader(topic: .rovCamFwdH2640CtrlDesc) { (descriptor: RovControlDescriptor) in
             print("H264_0", descriptor)
         }
-        
+
         FastRTPS.registerReader(topic: .rovCamFwdH2641CtrlDesc) { (descriptor: RovControlDescriptor) in
             print("H264_1", descriptor)
         }
-        
-//        FastRTPS.registerReader(topic: .rovSubsystemStatus) { (status: RovSubsystemStatus) in
-//            print("status:", status.subsystemId.rawValue, status.substate)
-//        }
-//        FastRTPS.registerReader(topic: .rovFirmwareStatus) { (firmwareStatus: RovFirmwareStatus) in
-//            print(firmwareStatus)
-//        }
-//        FastRTPS.registerReader(topic: .rovFirmwareServiceStatus) { (firmwareServiceStatus: RovFirmwareServiceStatus) in
-//            print(firmwareServiceStatus)
-//        }
-//        FastRTPS.registerReader(topic: .rovFirmwareCommandRep) { (command: RovFirmwareCommand) in
-//            print(command)
-//        }
-//        FastRTPS.registerReader(topic: .rovControlCurrent) { (control: RovTridentControlTarget) in
-//            print(control)
-//        }
-//        FastRTPS.registerReader(topic: .navTrackingCurrent) { (cameraObjectTrack: RovCameraObjectTrack) in
-//            print(cameraObjectTrack)
-//        }
-//        FastRTPS.registerReader(topic: .mcuI2cStats) { (stats: I2CStats) in
-//            print(stats)
-//        }
-//        FastRTPS.registerReader(topic: .rovSafety) { (state: RovSafetyState) in
-//            print(state)
-//        }
-//        FastRTPS.registerReader(topic: .rovImuCalibration) { (calibration: IMUCalibration) in
-//            print(calibration)
-//        }
-//        FastRTPS.registerReader(topic: .rovDepthConfigCurrent) { (config: RovDepthConfig) in
-//            print(config)
-//        }
-//        FastRTPS.registerReader(topic: .rovControllerStateCurrent) { (status: RovControllerStatus) in
-//            print(status)
-//        }
+
+        FastRTPS.registerReader(topic: .rovSubsystemStatus) { (status: RovSubsystemStatus) in
+            print("status:", status.subsystemId.rawValue, status.substate)
+        }
+        FastRTPS.registerReader(topic: .rovFirmwareStatus) { (firmwareStatus: RovFirmwareStatus) in
+            print(firmwareStatus)
+        }
+        FastRTPS.registerReader(topic: .rovFirmwareServiceStatus) { (firmwareServiceStatus: RovFirmwareServiceStatus) in
+            print(firmwareServiceStatus)
+        }
+        FastRTPS.registerReader(topic: .rovFirmwareCommandRep) { (command: RovFirmwareCommand) in
+            print(command)
+        }
+        FastRTPS.registerReader(topic: .rovControlCurrent) { (control: RovTridentControlTarget) in
+            print(control)
+        }
+        FastRTPS.registerReader(topic: .navTrackingCurrent) { (cameraObjectTrack: RovCameraObjectTrack) in
+            print(cameraObjectTrack)
+        }
+        FastRTPS.registerReader(topic: .mcuI2cStats) { (stats: I2CStats) in
+            print(stats)
+        }
+        FastRTPS.registerReader(topic: .rovSafety) { (state: RovSafetyState) in
+            print(state)
+        }
+        FastRTPS.registerReader(topic: .rovImuCalibration) { (calibration: IMUCalibration) in
+            print(calibration)
+        }
+        FastRTPS.registerReader(topic: .rovDepthConfigCurrent) { (config: RovDepthConfig) in
+            print(config)
+        }
+        FastRTPS.registerReader(topic: .rovControllerStateCurrent) { (status: RovControllerStatus) in
+            print(status)
+        }
+        #endif
 
     }
 }

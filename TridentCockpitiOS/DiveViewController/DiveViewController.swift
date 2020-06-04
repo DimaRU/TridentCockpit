@@ -553,7 +553,6 @@ extension DiveViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         cameraControlView?.currentLocation = locations.first
-        print(locations)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {

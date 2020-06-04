@@ -27,7 +27,6 @@ class GetWifiAPTableViewController: UITableViewController {
     }
     
     deinit {
-        print(#function, "GetWifiAPTableViewController")
         NotificationCenter.default.removeObserver(self)
     }
     
