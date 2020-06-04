@@ -24,10 +24,6 @@ class DiveViewController: UIViewController {
     @IBOutlet weak var stabilizeLabel: UILabel!
     @IBOutlet weak var telemetryOverlayLabel: UILabel!
     
-    @IBOutlet weak var cameraControlView: CameraControlView!
-    @IBOutlet weak var recordingButton: CameraButton!
-    @IBOutlet weak var cameraTimeLabel: UILabel!
-    @IBOutlet weak var recordingTimeLabel: UILabel!
 
     @IBOutlet weak var lightButton: UIButton!
     @IBOutlet weak var headingView: RovModelView!
@@ -36,14 +32,13 @@ class DiveViewController: UIViewController {
     @IBOutlet weak var liveViewContainer: AuxCameraPlayerView!
 
     private let locationManager = CLLocationManager()
-    private var currentLocation: CLLocation?
+    private var cameraControlView: CameraControlView!
     private var auxCameraView: AuxCameraControlView?
     private var videoDecoder: VideoDecoder!
     private let tridentControl = TridentControl()
     private var savedCenter: [UIView: CGPoint] = [:]
 
     private var lightOn = false
-    private var videoSessionId: UUID?
     let vehicleId: String
     private var rovBeacon: RovBeacon?
     private var rovSafetyState: RovSafetyState?
@@ -83,19 +78,6 @@ class DiveViewController: UIViewController {
         }
     }
 
-    private var cameraTime: UInt32 = 0 {
-        didSet {
-            var time = "Remaining time:\n"
-            if cameraTime / 60 != 0 {
-                time += String(cameraTime / 60) + "h "
-            }
-            time += String(cameraTime % 60) + "m"
-            DispatchQueue.main.async {
-                self.cameraTimeLabel.text = time
-            }
-        }
-    }
-    
     init?(coder: NSCoder, vehicleId: String) {
       self.vehicleId = vehicleId
       super.init(coder: coder)
@@ -118,11 +100,10 @@ class DiveViewController: UIViewController {
         depthLabel.text = "n/a"
         tempLabel.text = "n/a"
         batteryTimeLabel.text = "n/a"
-        cameraTimeLabel.text = ""
-        recordingTimeLabel.text = ""
-        cameraTimeLabel.textColor = .systemGray
         depthLabel.font = UIFont.monospacedSystemFont(ofSize: 17, weight: .regular)
         tempLabel.font = UIFont.monospacedSystemFont(ofSize: 17, weight: .regular)
+        cameraControlView = CameraControlView.instantiate()
+        view.addSubview(cameraControlView)
         throttleJoystickView.delegate = tridentControl
         yawPitchJoystickView.delegate = tridentControl
         #if targetEnvironment(macCatalyst)
@@ -301,11 +282,9 @@ class DiveViewController: UIViewController {
                                       preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
-            self.tridentControl.disable()
-            FastRTPS.resignAll()
-            self.videoDecoder.cleanup()
-            self.auxCameraView?.cleanup()
-            self.dismiss(animated: true)
+            self.dismiss(animated: true) {
+                self.cleanup()
+            }
         }
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -313,10 +292,6 @@ class DiveViewController: UIViewController {
         alert.addAction(cancelAction)
         alert.addAction(okAction)
         present(alert, animated: true)
-    }
-    
-    @IBAction func recordingButtonPress(_ sender: Any) {
-        switchRecording()
     }
     
     @IBAction func lightButtonPress(_ sender: Any) {
@@ -408,8 +383,17 @@ class DiveViewController: UIViewController {
 //        rovProvision()
     }
     
+    func cleanup() {
+        tridentControl.disable()
+        cameraControlView.cleanup()
+        FastRTPS.resignAll()
+        videoDecoder.cleanup()
+        auxCameraView?.cleanup()
+    }
+    
     private func rovProvision() {
         tridentControl.enable()
+        cameraControlView.start()
 
         let timeMs = UInt(Date().timeIntervalSince1970 * 1000)
         FastRTPS.send(topic: .rovDatetime, ddsData: String(timeMs))
@@ -451,88 +435,11 @@ class DiveViewController: UIViewController {
             }
         }
 
-        FastRTPS.registerReader(topic: .rovRecordingStats) { [weak self] (recordingStats: RovRecordingStats) in
-            guard let self = self else { return }
-            self.cameraTime = recordingStats.estRemainingRecTimeS / 60
-            guard self.cameraTime == 0 else { return }
-            DispatchQueue.main.async {
-                if !self.recordingButton.isSelected {
-                    self.recordingButton.isEnabled = false
-                }
-            }
-        }
-        
         FastRTPS.registerReader(topic: .rovAttitude) { [weak self] (attitude: RovAttitude) in
             let node = self?.headingView.modelNode()
             let orientation = attitude.orientation
             node?.orientation = orientation.scnQuaternion()
 //            print((1 + orientation.yaw / .pi) * 180)
-        }
-        
-        FastRTPS.registerReader(topic: .rovVidSessionCurrent) { [weak self] (videoSession: RovVideoSession) in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch videoSession.state {
-                case .unknown:
-                    break
-                case .recording:
-                    if self.videoSessionId == nil {
-                        self.videoSessionId = UUID(uuidString: videoSession.sessionID)
-                    }
-                    let sec = videoSession.totalDurationS % 60
-                    let min = (videoSession.totalDurationS / 60)
-                    let hour = videoSession.totalDurationS / 3600
-                    self.recordingTimeLabel.text = String(format: "%2.2d:%2.2d:%2.2d", hour, min, sec)
-                    
-                    self.recordingButton.isSelected = true
-                    self.cameraTimeLabel.textColor = .white
-
-                case .stopped:
-                    self.videoSessionId = nil
-                    switch videoSession.stopReason {
-                    case .maxSessionSizeReached:
-                        self.startRecordingSession(id: UUID())
-                        return
-                    case .clientRequest,
-                         .clientNotAlive,
-                         .videoSourceNotAlive:
-                        break
-                    case .unknown:
-                        break
-                    case .filesystemNospace:
-                        alert(message: "Stop recording", informative: "No space left", delay: 6)
-                        break
-                    case .recordingError:
-                        alert(message: "Stop recording", informative: "Recording error", delay: 6)
-                        break
-                    }
-                    self.recordingTimeLabel.text = ""
-                    self.cameraTimeLabel.textColor = .systemGray
-                    self.recordingButton.isSelected = false
-                }
-            }
-        }
-        
-        FastRTPS.registerReader(topic: .rovVidSessionRep) { [weak self] (videoSessionCommand: RovVideoSessionCommand) in
-            guard let self = self else { return }
-            DispatchQueue.main.async {
-                switch videoSessionCommand.response {
-                case .unknown:
-                    break
-                case .accepted:
-                    self.videoSessionId = UUID(uuidString: videoSessionCommand.sessionID)
-                case .rejectedGeneric:
-                    self.videoSessionId = nil
-                case .rejectedInvalidSession:
-                    self.videoSessionId = nil
-                case .rejectedSessionInProgress:
-                    self.videoSessionId = nil
-                    alert(message: "Recording", informative: "Already in progress")
-                case .rejectedNoSpace:
-                    self.videoSessionId = nil
-                    alert(message: "Recording", informative: "No space left")
-                }
-            }
         }
         
         FastRTPS.registerReader(topic: .rovLightPowerCurrent) { [weak self] (lightPower: RovLightPower) in
@@ -595,36 +502,6 @@ class DiveViewController: UIViewController {
         FastRTPS.registerWriter(topic: .rovControlTarget, ddsType: RovTridentControlTarget.self)
         FastRTPS.registerWriter(topic: .rovControllerStateRequested, ddsType: RovControllerStatus.self)
     }
-    
-    private func startRecordingSession(id: UUID) {
-        let formatter = ISO8601DateFormatter()
-        formatter.formatOptions = [.withInternetDateTime, .withFractionalSeconds]
-        let isoDate = formatter.string(from: Date())
-        let metadata = #"{"start_ts":"\#(isoDate)"}"#
-        let videoSessionCommand = RovVideoSessionCommand(sessionID: id.uuidString.lowercased(),
-                                                         metadata: metadata,
-                                                         request: .recording,
-                                                         response: .unknown,
-                                                         reason: "")
-        FastRTPS.send(topic: .rovVidSessionReq, ddsData: videoSessionCommand)
-
-        guard Preference.recordPilotVideo else { return }
-        let videoRecorder = try? VideoRecorder(startDate: isoDate, location: currentLocation)
-        videoDecoder.videoRecorder = videoRecorder
-    }
-    
-    private func stopRecordingSession(id: UUID) {
-        let videoSessionCommand = RovVideoSessionCommand(sessionID: id.uuidString.lowercased(),
-                                                         metadata: "",
-                                                         request: .stopped,
-                                                         response: .unknown,
-                                                         reason: "")
-        FastRTPS.send(topic: .rovVidSessionReq, ddsData: videoSessionCommand)
-        
-        videoDecoder?.videoRecorder?.finishSession {
-            self.videoDecoder.videoRecorder = nil
-        }
-    }
 
 }
 
@@ -659,11 +536,7 @@ extension DiveViewController: TridentControlDelegate {
     }
     
     func switchRecording() {
-        if let videoSessionId = videoSessionId {
-            stopRecordingSession(id: videoSessionId)
-        } else {
-            startRecordingSession(id: UUID())
-        }
+        cameraControlView.switchRecording()
     }
     
 }
@@ -677,7 +550,7 @@ extension DiveViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        currentLocation = locations.first
+        cameraControlView.currentLocation = locations.first
         print(locations)
     }
     

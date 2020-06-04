@@ -83,6 +83,9 @@
 		0A1D0A5D23F94942006D9AFD /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7E23CE4B2F0038EABE /* Date+Extensions.swift */; };
 		0A1D0A5E23F94942006D9AFD /* iso8601date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7F23CE4B2F0038EABE /* iso8601date.swift */; };
 		0A1D0A5F23F94C12006D9AFD /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E55BE23BC0AFA008F8A9A /* Average.swift */; };
+		0A1F3AAD24883EA100384EE1 /* CameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1F3AAB24883EA000384EE1 /* CameraControlView.swift */; };
+		0A1F3AAE24883EA100384EE1 /* CameraControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A1F3AAC24883EA000384EE1 /* CameraControlView.xib */; };
+		0A1F3AB024883EB400384EE1 /* UILabelUnderlined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1F3AAF24883EB400384EE1 /* UILabelUnderlined.swift */; };
 		0A20B1892454C6B900FB4961 /* Shout+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A20B1882454C6B900FB4961 /* Shout+Promise.swift */; };
 		0A20B18A2454C6B900FB4961 /* Shout+Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A20B1882454C6B900FB4961 /* Shout+Promise.swift */; };
 		0A20B18B2454C8BC00FB4961 /* Shout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A20B1822454C5EF00FB4961 /* Shout.framework */; };
@@ -216,7 +219,6 @@
 		0AC07D43240FE227001A85BE /* SaveCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC07D42240FE227001A85BE /* SaveCenter.swift */; };
 		0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */; };
 		0ACCDE6B23FDABD100381207 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCDE6A23FDABD100381207 /* CameraButton.swift */; };
-		0ACCDE6D23FDAD4E00381207 /* CameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCDE6C23FDAD4E00381207 /* CameraControlView.swift */; };
 		0ACCDE6F23FDAE7000381207 /* RovModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCDE6E23FDAE7000381207 /* RovModelView.swift */; };
 		0ACCDE7523FDB29D00381207 /* AuxCameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCDE7323FDB25E00381207 /* AuxCameraControlView.swift */; };
 		0AD8C5D12458400B009E0A9E /* GetWifiAPTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD8C5D02458400B009E0A9E /* GetWifiAPTableViewController.swift */; };
@@ -381,6 +383,9 @@
 		0A1D0A0323F93FD7006D9AFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A1D0A0523F93FD7006D9AFD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A1D0A1223F93FF0006D9AFD /* TridentCockpitiOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TridentCockpitiOS.entitlements; sourceTree = "<group>"; };
+		0A1F3AAB24883EA000384EE1 /* CameraControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraControlView.swift; sourceTree = "<group>"; };
+		0A1F3AAC24883EA000384EE1 /* CameraControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraControlView.xib; sourceTree = "<group>"; };
+		0A1F3AAF24883EB400384EE1 /* UILabelUnderlined.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelUnderlined.swift; sourceTree = "<group>"; };
 		0A20B1762454C5EF00FB4961 /* Shout.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Shout.xcodeproj; path = Shout/Shout.xcodeproj; sourceTree = "<group>"; };
 		0A20B1882454C6B900FB4961 /* Shout+Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shout+Promise.swift"; sourceTree = "<group>"; };
 		0A2489F924518F4C0031720B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -503,7 +508,6 @@
 		0AC07D42240FE227001A85BE /* SaveCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCenter.swift; sourceTree = "<group>"; };
 		0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiPopupViewController.swift; sourceTree = "<group>"; };
 		0ACCDE6A23FDABD100381207 /* CameraButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
-		0ACCDE6C23FDAD4E00381207 /* CameraControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraControlView.swift; sourceTree = "<group>"; };
 		0ACCDE6E23FDAE7000381207 /* RovModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RovModelView.swift; sourceTree = "<group>"; };
 		0ACCDE7323FDB25E00381207 /* AuxCameraControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuxCameraControlView.swift; sourceTree = "<group>"; };
 		0AD8C5D02458400B009E0A9E /* GetWifiAPTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetWifiAPTableViewController.swift; sourceTree = "<group>"; };
@@ -586,8 +590,9 @@
 			isa = PBXGroup;
 			children = (
 				0AF06EC523FB56F5000FF36A /* DashboardViewController */,
-				0AE05CEE23FD41FC00C7CA08 /* DiveViewController */,
 				0A3CB025246414D6009F827B /* PastDivesViewController */,
+				0AE05CEE23FD41FC00C7CA08 /* DiveViewController */,
+				0A1F3AAA24883E4400384EE1 /* CameraControlView */,
 				0ACCDE7023FDB25E00381207 /* AuxCamera */,
 				0A4D9CD32403E8F600BA6189 /* MaintenanceViewController */,
 				0A95068F23F9DF61004E5546 /* Protocols */,
@@ -635,6 +640,15 @@
 				0A8E8C6A2455B56600E06610 /* Bundle+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0A1F3AAA24883E4400384EE1 /* CameraControlView */ = {
+			isa = PBXGroup;
+			children = (
+				0A1F3AAB24883EA000384EE1 /* CameraControlView.swift */,
+				0A1F3AAC24883EA000384EE1 /* CameraControlView.xib */,
+			);
+			path = CameraControlView;
 			sourceTree = "<group>";
 		};
 		0A20B1772454C5EF00FB4961 /* Products */ = {
@@ -837,6 +851,7 @@
 			children = (
 				0AE05CD123FD329E00C7CA08 /* FloatingView.swift */,
 				0AE4906F2448524800C669D0 /* UILabelRotatable.swift */,
+				0A1F3AAF24883EB400384EE1 /* UILabelUnderlined.swift */,
 				0AC07D42240FE227001A85BE /* SaveCenter.swift */,
 				0AE206A324239E870017934B /* Alerts.swift */,
 				0AE05CDF23FD349D00C7CA08 /* Preferences.swift */,
@@ -932,7 +947,6 @@
 				0AE05CEC23FD41E200C7CA08 /* DiveViewController.storyboard */,
 				0A95068323F9BD62004E5546 /* DiveViewController.swift */,
 				0A7130D123636AF100817593 /* TridentControl.swift */,
-				0ACCDE6C23FDAD4E00381207 /* CameraControlView.swift */,
 				0ACCDE6E23FDAE7000381207 /* RovModelView.swift */,
 				0AE05CE823FD3D9000C7CA08 /* VideoView.swift */,
 				0A7130CC23636AF100817593 /* VideoDecoder.swift */,
@@ -1134,6 +1148,7 @@
 				0A1D0A1B23F941AA006D9AFD /* PayloadProvision.sh in Resources */,
 				0AF06EA123FAF637000FF36A /* Assets.xcassets in Resources */,
 				0A134F422464191800FBD929 /* PastDivesViewController.storyboard in Resources */,
+				0A1F3AAE24883EA100384EE1 /* CameraControlView.xib in Resources */,
 				0A0230A3241117E900A4E532 /* AuxCameraControlView.xib in Resources */,
 				0A9DF9662434BF5C0029DDDB /* GlobalParams.plist in Resources */,
 				0A248A0124518F4C0031720B /* InfoPlist.strings in Resources */,
@@ -1208,6 +1223,7 @@
 				0A7C3B7D245C372F00330F63 /* UIStoryboardSegue+Extensions.swift in Sources */,
 				0A72A7F72433C91400AE9B2E /* RovGPS.swift in Sources */,
 				0AE206AC2423AADB0017934B /* Alerts.swift in Sources */,
+				0A1F3AB024883EB400384EE1 /* UILabelUnderlined.swift in Sources */,
 				0A8E8C712455B59F00E06610 /* Bundle+Extensions.swift in Sources */,
 				0A1D0A4323F941C4006D9AFD /* NetworkError.swift in Sources */,
 				0A0230A72411868F00A4E532 /* AuxCameraPlayerView.swift in Sources */,
@@ -1230,6 +1246,7 @@
 				0A1D0A4223F941C4006D9AFD /* RestProvider.swift in Sources */,
 				0A5612862486C03700517C8D /* CLLocation+Extensions.swift in Sources */,
 				0A1D0A3B23F941BD006D9AFD /* RovVideoData.swift in Sources */,
+				0A1F3AAD24883EA100384EE1 /* CameraControlView.swift in Sources */,
 				0AC07D43240FE227001A85BE /* SaveCenter.swift in Sources */,
 				0A1D0A2223F941B2006D9AFD /* ConnectionInfo.swift in Sources */,
 				0A1D0A4523F941C4006D9AFD /* ResinAPI.swift in Sources */,
@@ -1238,7 +1255,6 @@
 				0A0469C32466DD4900D10073 /* SmartDownloadButton.swift in Sources */,
 				0A95069223F9E5B8004E5546 /* KeychainService.swift in Sources */,
 				0A1D0A3423F941BD006D9AFD /* RovTridentMotorCommand.swift in Sources */,
-				0ACCDE6D23FDAD4E00381207 /* CameraControlView.swift in Sources */,
 				0A1D0A2F23F941BD006D9AFD /* RovFirmware.swift in Sources */,
 				0A1D0A2A23F941BD006D9AFD /* RovVector3.swift in Sources */,
 				0A1D0A2C23F941BD006D9AFD /* RovBeacon.swift in Sources */,

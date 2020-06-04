@@ -244,70 +244,6 @@
                                     </constraint>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KWl-aA-Uaq" customClass="CameraControlView" customModule="TridentCockpitiOS" customModuleProvider="target">
-                                <rect key="frame" x="44" y="141" width="110" height="132"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iHk-rF-5Ww" customClass="CameraButton" customModule="TridentCockpitiOS" customModuleProvider="target">
-                                        <rect key="frame" x="25" y="8" width="60" height="60"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="60" id="473-DG-SWo"/>
-                                            <constraint firstAttribute="height" constant="60" id="B0w-WI-2ep"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="disabledColor">
-                                                <color key="value" name="stopNActive"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="buttonColor">
-                                                <color key="value" name="recordNActive"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="recordingButtonPress:" destination="mek-Xn-fig" eventType="touchUpInside" id="4nx-bn-rvc"/>
-                                        </connections>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="00:00:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8Z-Uw-Iej">
-                                        <rect key="frame" x="19" y="72" width="72.333333333333329" height="17.666666666666671"/>
-                                        <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="15"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Remaining time: 2h left" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yXN-C8-oz8">
-                                        <rect key="frame" x="4" y="96.666666666666657" width="102" height="31.333333333333329"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                        <color key="textColor" systemColor="systemGrayColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Onboard" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gu6-6J-qwQ" customClass="UILabelRotatable" customModule="TridentCockpitiOS" customModuleProvider="target">
-                                        <rect key="frame" x="77" y="21.333333333333343" width="50" height="13.333333333333336"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="50" id="3du-j9-IL6"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                        <color key="textColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                        <nil key="highlightedColor"/>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="rotation">
-                                                <integer key="value" value="90"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" name="cameraControlBackground"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="yXN-C8-oz8" secondAttribute="bottom" constant="4" id="DW0-qz-Quy"/>
-                                    <constraint firstItem="gu6-6J-qwQ" firstAttribute="centerY" secondItem="KWl-aA-Uaq" secondAttribute="top" constant="28" id="GsG-6f-rAC"/>
-                                    <constraint firstAttribute="height" constant="132" id="JFu-ud-aZd"/>
-                                    <constraint firstItem="iHk-rF-5Ww" firstAttribute="top" secondItem="KWl-aA-Uaq" secondAttribute="top" constant="8" id="KKV-Ea-s5z"/>
-                                    <constraint firstAttribute="trailing" secondItem="yXN-C8-oz8" secondAttribute="trailing" constant="4" id="PaU-Bm-E37"/>
-                                    <constraint firstAttribute="width" constant="110" id="hs6-YT-I6r"/>
-                                    <constraint firstItem="iHk-rF-5Ww" firstAttribute="centerX" secondItem="KWl-aA-Uaq" secondAttribute="centerX" id="qxf-R7-zNI"/>
-                                    <constraint firstItem="yXN-C8-oz8" firstAttribute="leading" secondItem="KWl-aA-Uaq" secondAttribute="leading" constant="4" id="tcQ-3a-tLx"/>
-                                    <constraint firstAttribute="trailing" secondItem="gu6-6J-qwQ" secondAttribute="centerX" constant="8" id="vdo-fz-Nha"/>
-                                    <constraint firstItem="H8Z-Uw-Iej" firstAttribute="centerX" secondItem="KWl-aA-Uaq" secondAttribute="centerX" id="xHm-Y8-8kj"/>
-                                    <constraint firstItem="H8Z-Uw-Iej" firstAttribute="top" secondItem="iHk-rF-5Ww" secondAttribute="bottom" constant="4" id="yCG-YZ-SJm"/>
-                                </constraints>
-                            </view>
                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="7rM-la-8bR" customClass="TouchJoystickView" customModule="TridentCockpitiOS" customModuleProvider="target">
                                 <rect key="frame" x="200" y="84" width="50" height="290"/>
                                 <subviews>
@@ -456,7 +392,6 @@
                         <color key="backgroundColor" systemColor="systemGray3Color" red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="eNr-t8-WZ4" secondAttribute="trailing" constant="13" identifier="trailing" id="1rv-UK-f4v"/>
-                            <constraint firstItem="KWl-aA-Uaq" firstAttribute="leading" secondItem="5RH-GY-zce" secondAttribute="leading" constant="44" placeholder="YES" id="5ZH-oW-lVI"/>
                             <constraint firstAttribute="trailing" secondItem="87Y-el-STp" secondAttribute="trailing" constant="106" placeholder="YES" id="6P2-Zo-2Y2"/>
                             <constraint firstAttribute="bottom" secondItem="M3a-Wg-BFZ" secondAttribute="bottom" placeholder="YES" id="7hQ-d3-h8b"/>
                             <constraint firstItem="CVJ-4V-eBR" firstAttribute="top" secondItem="ude-Pc-hbE" secondAttribute="top" id="9A7-IV-73j"/>
@@ -464,7 +399,6 @@
                             <constraint firstItem="kvl-QW-fil" firstAttribute="leading" secondItem="5RH-GY-zce" secondAttribute="leading" priority="999" id="LOm-PM-LzK"/>
                             <constraint firstAttribute="bottom" secondItem="87Y-el-STp" secondAttribute="bottom" constant="40" placeholder="YES" id="OTV-8d-tbk"/>
                             <constraint firstItem="CVJ-4V-eBR" firstAttribute="trailing" secondItem="5RH-GY-zce" secondAttribute="trailing" id="SVr-nG-Xac"/>
-                            <constraint firstItem="KWl-aA-Uaq" firstAttribute="centerY" secondItem="5RH-GY-zce" secondAttribute="centerY" placeholder="YES" id="TOd-Ot-HvJ"/>
                             <constraint firstItem="kvl-QW-fil" firstAttribute="trailing" secondItem="5RH-GY-zce" secondAttribute="trailing" id="TuQ-xU-myx"/>
                             <constraint firstAttribute="trailing" secondItem="GfV-LQ-YW5" secondAttribute="trailing" placeholder="YES" id="ZX1-Ol-70v"/>
                             <constraint firstItem="7rM-la-8bR" firstAttribute="leading" secondItem="5RH-GY-zce" secondAttribute="leading" constant="200" placeholder="YES" id="eSG-lM-TKI"/>
@@ -480,16 +414,12 @@
                     <connections>
                         <outlet property="batterySymbol" destination="nuU-9n-4Ej" id="eUs-MO-Fht"/>
                         <outlet property="batteryTimeLabel" destination="2wI-zq-Vxs" id="LiS-Nu-dvt"/>
-                        <outlet property="cameraControlView" destination="KWl-aA-Uaq" id="Twz-an-4qw"/>
-                        <outlet property="cameraTimeLabel" destination="yXN-C8-oz8" id="iWc-lU-u1E"/>
                         <outlet property="depthLabel" destination="mjL-Dg-280" id="ZB9-jq-ayX"/>
                         <outlet property="headingView" destination="GfV-LQ-YW5" id="aw0-iS-IXp"/>
                         <outlet property="indicatorsView" destination="CVJ-4V-eBR" id="01D-Xz-FLc"/>
                         <outlet property="lightButton" destination="eNr-t8-WZ4" id="crd-Sa-nkp"/>
                         <outlet property="liveViewContainer" destination="M3a-Wg-BFZ" id="hGV-eb-3IF"/>
                         <outlet property="propellerButton" destination="vip-KF-QKX" id="IpO-yk-yEL"/>
-                        <outlet property="recordingButton" destination="iHk-rF-5Ww" id="8d8-kd-19M"/>
-                        <outlet property="recordingTimeLabel" destination="H8Z-Uw-Iej" id="hWs-8V-qVq"/>
                         <outlet property="stabilizeLabel" destination="2Ep-xM-frV" id="j5d-6r-vcl"/>
                         <outlet property="stabilizeSwitch" destination="hDU-8F-CvB" id="5qQ-eQ-Aj9"/>
                         <outlet property="telemetryOverlayLabel" destination="euq-B8-abF" id="zdy-Ya-J82"/>
@@ -533,12 +463,6 @@
         <image name="xmark" catalog="system" width="128" height="113"/>
         <namedColor name="cameraControlBackground">
             <color red="0.0" green="0.0" blue="0.0" alpha="0.20000000298023224" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="recordNActive">
-            <color red="0.88999998569488525" green="0.067000001668930054" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-        <namedColor name="stopNActive">
-            <color white="0.13300000131130219" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </namedColor>
     </resources>
 </document>
