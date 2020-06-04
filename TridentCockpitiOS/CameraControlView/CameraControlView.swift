@@ -14,6 +14,7 @@ class CameraControlView: FloatingView {
     @IBOutlet weak var remainingLocalLabel: UILabel!
     @IBOutlet weak var onboardLabel: UILabelUnderlined!
     @IBOutlet weak var iPhoneLabel: UILabelUnderlined!
+    @IBOutlet weak var remainingStack: UIStackView!
     
     private var videoSessionId: UUID?
     private var timer: Timer?
@@ -54,12 +55,8 @@ class CameraControlView: FloatingView {
         
         remainingOnboardLabel.text = " "
         remainingLocalLabel.text = " "
-        onboardLabel.textColor = .systemGray
-        iPhoneLabel.textColor = .systemGray
-        remainingOnboardLabel.textColor = .systemGray
-        remainingLocalLabel.textColor = .systemGray
-
-        recordingTimeLabel.text = ""
+        
+        setViewState(recording: false)
     }
 
     override func loadDefaults() -> CGPoint {
@@ -97,20 +94,14 @@ class CameraControlView: FloatingView {
         if recording {
             recordingTime = 0
             recordingButton.isSelected = true
-            [remainingOnboardLabel,
-             remainingLocalLabel,
-             onboardLabel,
-             iPhoneLabel].forEach{ $0?.textColor = .white }
-
+            remainingStack.arrangedSubviews.forEach{ ($0 as? UILabel)?.textColor = .white }
+            
         } else {
             recordingTime = nil
             recordingButton.isSelected = false
-            [remainingOnboardLabel,
-             remainingLocalLabel,
-             onboardLabel,
-             iPhoneLabel].forEach{ $0?.textColor = .lightGray }
+            remainingStack.arrangedSubviews.forEach{ ($0 as? UILabel)?.textColor = .lightGray }
         }
-   }
+    }
     
     private func registerReaders() {
         

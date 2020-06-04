@@ -32,7 +32,7 @@ class DiveViewController: UIViewController {
     @IBOutlet weak var liveViewContainer: AuxCameraPlayerView!
 
     private let locationManager = CLLocationManager()
-    private var cameraControlView: CameraControlView!
+    private var cameraControlView: CameraControlView?
     private var auxCameraView: AuxCameraControlView?
     private var videoDecoder: VideoDecoder!
     private let tridentControl = TridentControl()
@@ -136,9 +136,10 @@ class DiveViewController: UIViewController {
         videoDecoder = VideoDecoder(sampleBufferLayer: videoView.sampleBufferLayer)
         setVideoSizing(fill: Preference.videoSizingFill)
 
-        cameraControlView = CameraControlView.instantiate(videoDecoder: videoDecoder)
-        view.addSubview(cameraControlView)
-        
+        if Preference.recordOnboardVideo || Preference.recordPilotVideo {
+            cameraControlView = CameraControlView.instantiate(videoDecoder: videoDecoder)
+            view.addSubview(cameraControlView!)
+        }
         liveViewContainer.isHidden = true
         if Gopro3API.isConnected {
             guard let liveViewController = children.first(where: { $0 is AVPlayerViewController}) as? AVPlayerViewController else { return }
@@ -175,7 +176,7 @@ class DiveViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         
-        cameraControlView.superViewDidResize(to: size)
+        cameraControlView?.superViewDidResize(to: size)
         headingView.superViewDidResize(to: size)
         auxCameraView?.superViewDidResize(to: size)
         liveViewContainer?.superViewDidResize(to: size)
@@ -386,7 +387,7 @@ class DiveViewController: UIViewController {
     
     func cleanup() {
         tridentControl.disable()
-        cameraControlView.cleanup()
+        cameraControlView?.cleanup()
         FastRTPS.resignAll()
         videoDecoder.cleanup()
         auxCameraView?.cleanup()
@@ -394,7 +395,7 @@ class DiveViewController: UIViewController {
     
     private func rovProvision() {
         tridentControl.enable()
-        cameraControlView.start()
+        cameraControlView?.start()
 
         let timeMs = UInt(Date().timeIntervalSince1970 * 1000)
         FastRTPS.send(topic: .rovDatetime, ddsData: String(timeMs))
@@ -537,7 +538,7 @@ extension DiveViewController: TridentControlDelegate {
     }
     
     func switchRecording() {
-        cameraControlView.switchRecording()
+        cameraControlView?.switchRecording()
     }
     
 }
@@ -551,7 +552,7 @@ extension DiveViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        cameraControlView.currentLocation = locations.first
+        cameraControlView?.currentLocation = locations.first
         print(locations)
     }
     
