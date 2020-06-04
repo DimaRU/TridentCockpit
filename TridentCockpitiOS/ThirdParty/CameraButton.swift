@@ -19,7 +19,6 @@ class CameraButton: UIButton {
     private let outerRingLineWidth: CGFloat = 4
     private let outerInsets: CGFloat = 3
     private let circleInsets: CGFloat = 6
-    private let rectInsets: CGFloat = 16
     
     //create a new layer to render the various circles
     var pathLayer: CAShapeLayer!
@@ -169,7 +168,8 @@ class CameraButton: UIButton {
     }
     
     func innerSquarePath() -> UIBezierPath {
-        let inset = rectInsets + outerInsets
-        return UIBezierPath(roundedRect: bounds.insetBy(dx: inset, dy: inset), cornerRadius: 4)
+        let outerbox = bounds.insetBy(dx: outerInsets, dy: outerInsets)
+        let rectbox = outerbox.insetBy(dx: outerbox.width * 0.3, dy: outerbox.height * 0.3)
+        return UIBezierPath(roundedRect: rectbox, cornerRadius: 3)
     }
 }
