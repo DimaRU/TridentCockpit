@@ -12,8 +12,8 @@ class CameraControlView: FloatingView {
     @IBOutlet weak var recordingTimeLabel: UILabel!
     @IBOutlet weak var remainingOnboardLabel: UILabel!
     @IBOutlet weak var remainingLocalLabel: UILabel!
-    @IBOutlet weak var onboardLabel: UILabelUnderlined!
-    @IBOutlet weak var iPhoneLabel: UILabelUnderlined!
+    @IBOutlet weak var onboardLabel: UILabel!
+    @IBOutlet weak var iPhoneLabel: UILabel!
     @IBOutlet weak var remainingTimeLabel: UILabel!
     
     private var videoSessionId: UUID?
