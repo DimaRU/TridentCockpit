@@ -84,7 +84,12 @@ class CameraControlView: FloatingView {
     private func remainingTime(from minutes: Int) -> String {
         var time = ""
         if minutes / 60 != 0 {
+            #if targetEnvironment(simulator)
+            let hours = (minutes / 60) % 100
+            time += String(hours) + "h "
+            #else
             time += String(minutes / 60) + "h "
+            #endif
         }
         time += String(minutes % 60) + "m"
         return time
