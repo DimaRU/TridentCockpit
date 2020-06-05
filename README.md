@@ -16,9 +16,11 @@
 ## Features
 
 * Controls the Trident Underwater Drone by Sofar Ocean
-* Watch video stream from the drone
-* Keyboard, mouse and gamepad control 
+* Watch live video stream from the drone
+* Gamepad control 
 * Controls camera, light, stabilization
+* Recording pilot video stream
+* GPS geotagging pilot video
 * Realtime drone orientation view
 * Show depth, temperature, camera and battery times
 * Past dives video from drone: watch, download and delete.
