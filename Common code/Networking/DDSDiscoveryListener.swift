@@ -27,17 +27,7 @@ class DDSDiscoveryListener {
     }
     
     private func listenerStateDidChange(to newState: NWListener.State) {
-        switch newState {
-        case .setup,
-             .waiting,
-             .ready,
-             .cancelled:
-            break
-        case .failed(let error):
-            print("NWListener fail", error)
-        @unknown default:
-            fatalError()
-        }
+        print(newState)
     }
 
     private func didAccept(connection: NWConnection) {

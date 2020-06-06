@@ -15,12 +15,13 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
     private var tridentID: String!
     private var discovered: [String: (uuid: String, interface: String, isWiFi: Bool)] = [:]
     private var ddsListener: DDSDiscoveryListener?
+    private var ddsListenerTimer: Timer?
+    private var ddsListenerCount: Int = 0
     private var spinner: SwiftSpinner?
     private var connectionMonitor = RTPSConnectionMonitor()
     private var timer: Timer? {
         willSet { timer?.invalidate() }
     }
-    private var ddsListenerTimer: Timer?
     private var backgroundWatch: BackgroundWatch?
     private var locationManager: CLLocationManager?
     
@@ -327,6 +328,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
     
     private func ddsDiscoveryStart() {
         discovered = [:]
+        ddsListenerCount = 0
         ddsListener = DDSDiscoveryListener(port: "8088") { [weak self] (uuidString: String, ipv4: String, interface: String, isWiFi: Bool) in
             guard let uuid = uuidString.split(separator: ":").last else { return }
             self?.discovered[ipv4] = (uuid: String(uuid), interface: interface, isWiFi: isWiFi)
@@ -337,7 +339,18 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
             fatalError(error.localizedDescription)
         }
         ddsListenerTimer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-            guard self.discovered.count != 0 else { return }
+            self.ddsListenerCount += 1
+            guard
+                self.discovered.count != 0 else {
+                    if self.ddsListenerCount > 6 {
+                        self.ddsListenerTimer?.invalidate()
+                        self.ddsListenerTimer = nil
+                        self.ddsListener?.stop()
+                        self.ddsListener = nil
+                        self.ddsDiscoveryStart()
+                    }
+                    return
+            }
             self.ddsListenerTimer?.invalidate()
             self.ddsListenerTimer = nil
             Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { _ in
