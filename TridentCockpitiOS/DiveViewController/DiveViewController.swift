@@ -191,12 +191,25 @@ class DiveViewController: UIViewController {
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if tridentControl.controllerName != nil {
+            throttleJoystickView.isHidden = true
+            yawPitchJoystickView.isHidden = true
+        }
+
+    }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         UIApplication.shared.isIdleTimerDisabled = true
         setHeadingOrienation()
         updateLightButtonContraint()
+        
+        if let controllerName = tridentControl.controllerName {
+            alertMessage(message: controllerName + " connected", delay: 3)
+        }
     }
 
     override func viewDidDisappear(_ animated: Bool) {

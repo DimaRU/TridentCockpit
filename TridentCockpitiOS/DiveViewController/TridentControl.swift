@@ -36,6 +36,7 @@ final class TridentControl {
     private var zeroCount = 0
     private var connectObserver: NSObjectProtocol?
     private var disconnectObserver: NSObjectProtocol?
+    var controllerName: String?
     
     private weak var delegate: TridentControlDelegate?
     var motorSpeed: MotorSpeed = .first
@@ -151,9 +152,7 @@ final class TridentControl {
         var indexNumber = 0
         for controller in GCController.controllers() {
             if controller.extendedGamepad != nil {
-                if #available(iOS 13.0, *) {
-                    print(controller.productCategory)
-                }
+                self.controllerName = controller.vendorName ?? controller.productCategory
                 controller.playerIndex = GCControllerPlayerIndex(rawValue: indexNumber)!
                 indexNumber += 1
                 controller.extendedGamepad!.valueChangedHandler = { [weak self] (gamepad: GCExtendedGamepad, element: GCControllerElement) in

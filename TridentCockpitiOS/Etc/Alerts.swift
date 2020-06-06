@@ -38,6 +38,18 @@ func alert(message: String, informative: String? = nil, delay: Int = 5) {
     }
 }
 
+func alertMessage(message: String, informative: String? = nil, delay: Int = 5) {
+    let alertController = UIAlertController(title: message,
+                                            message: informative,
+                                            preferredStyle: .actionSheet)
+    alertController.presentOntop()
+
+    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) { [weak alertController] in
+        guard let alertController = alertController else { return }
+        alertController.dismiss(animated: true)
+    }
+}
+
 extension Error {
     func alert(delay: Int = 4) {
         let alertController = UIAlertController(title: self.localizedDescription,
