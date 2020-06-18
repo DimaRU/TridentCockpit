@@ -1,9 +1,6 @@
-//
-//  MulticastDelegate.swift
-//  TestMP4Write
-//
-//  Created by Dmitriy Borovikov on 17.06.2020.
-//  Copyright © 2020 Dmitriy Borovikov. All rights reserved.
+/////
+////  MulticastDelegate.swift
+///   Copyright © 2020 Dmitriy Borovikov. All rights reserved.
 //
 
 import Foundation

@@ -1,9 +1,6 @@
-//
-//  VideoStreamer.swift
-//  TestMP4Write
-//
-//  Created by Dmitriy Borovikov on 14.06.2020.
-//  Copyright © 2020 Dmitriy Borovikov. All rights reserved.
+/////
+////  VideoStreamer.swift
+///   Copyright © 2020 Dmitriy Borovikov. All rights reserved.
 //
 
 import Foundation

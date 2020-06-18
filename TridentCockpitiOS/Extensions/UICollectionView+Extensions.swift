@@ -1,9 +1,6 @@
-//
-//  UICollectionView+Extensions.swift
-//  PostDives
-//
-//  Created by Dmitriy Borovikov on 08.03.2020.
-//  Copyright © 2020 Dmitriy Borovikov. All rights reserved.
+/////
+////  UICollectionView+Extensions.swift
+///   Copyright © 2020 Dmitriy Borovikov. All rights reserved.
 //
 
 import UIKit

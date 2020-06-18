@@ -1,9 +1,6 @@
-//
-//  KeychainService.swift
-//  
-//
-//  Created by Dmitriy Borovikov on 30/12/2018.
-//  Copyright © 2018 Dmitriy Borovikov. All rights reserved.
+/////
+////  KeychainService.swift
+///   Copyright © 2018 Dmitriy Borovikov. All rights reserved.
 //
 
 import Foundation

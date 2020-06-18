@@ -1,9 +1,6 @@
-//
-//  PlayDemoVideo.swift
-//  TridentCockpit
-//
-//  Created by Dmitriy Borovikov on 05.11.2019.
-//  Copyright © 2019 Dmitriy Borovikov. All rights reserved.
+/////
+////  PlayDemoVideo.swift
+///   Copyright © 2019 Dmitriy Borovikov. All rights reserved.
 //
 
 import Cocoa
