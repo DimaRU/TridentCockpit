@@ -38,6 +38,15 @@
         }
       },
       {
+        "package": "Logboard",
+        "repositoryURL": "https://github.com/shogo4405/Logboard.git",
+        "state": {
+          "branch": null,
+          "revision": "df5b601735890f21ce4886398f3fd138193c435c",
+          "version": "2.1.2"
+        }
+      },
+      {
         "package": "Moya",
         "repositoryURL": "https://github.com/Moya/Moya.git",
         "state": {

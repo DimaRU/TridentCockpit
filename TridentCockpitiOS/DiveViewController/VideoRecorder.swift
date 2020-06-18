@@ -7,7 +7,7 @@ import Foundation
 import CoreLocation
 import AVFoundation
 
-class VideoRecorder {
+class VideoRecorder: VideoProcessorDelegate {
     let writer: AVAssetWriter
     var videoInput: AVAssetWriterInput!
     var sessionStarted = false
@@ -31,7 +31,7 @@ class VideoRecorder {
         writer.metadata = [gpsMetadata, dateMetadata]
     }
         
-    func startSession(at sourceTime: CMTime, format: CMFormatDescription) {
+    func set(format: CMVideoFormatDescription, time: CMTime) {
         guard !sessionStarted else { return }
         videoInput = AVAssetWriterInput(mediaType: .video, outputSettings: nil, sourceFormatHint: format)
         videoInput.expectsMediaDataInRealTime = true
@@ -39,11 +39,11 @@ class VideoRecorder {
         
         writer.add(videoInput)
         writer.startWriting()
-        writer.startSession(atSourceTime: sourceTime)
+        writer.startSession(atSourceTime: time)
         sessionStarted = true
     }
     
-    func addVideoData(sampleBuffer: CMSampleBuffer) {
+    func processNal(sampleBuffer: CMSampleBuffer) {
         guard sessionStarted else { return }
         guard writer.status != .failed else {
             writer.cancelWriting()
@@ -58,6 +58,10 @@ class VideoRecorder {
             return
         }
         videoInput.append(sampleBuffer)
+    }
+    
+    func cleanup() {
+        finishSession {}
     }
     
     func finishSession(completion: @escaping () -> Void) {

@@ -18,7 +18,9 @@ class CameraControlView: FloatingView {
     
     private var videoSessionId: UUID?
     private var timer: Timer?
-    private weak var videoDecoder: VideoDecoder?
+    private var videoRecorder: VideoRecorder?
+    private var videoStreamer: VideoStreamer?
+    private weak var videoProcessorMulticastDelegate: VideoProcessorMulticastDelegate?
     var currentLocation: CLLocation?
     
     private var recordingTime: Int? {
@@ -210,9 +212,11 @@ class CameraControlView: FloatingView {
             FastRTPS.send(topic: .rovVidSessionReq, ddsData: videoSessionCommand)
         }
 
-        guard Preference.recordPilotVideo, videoDecoder?.videoRecorder == nil else { return }
-        let videoRecorder = try? VideoRecorder(startDate: isoDate, location: currentLocation)
-        videoDecoder?.videoRecorder = videoRecorder
+        guard Preference.recordPilotVideo, videoRecorder == nil else { return }
+        if let videoRecorder = try? VideoRecorder(startDate: isoDate, location: currentLocation) {
+            self.videoRecorder = videoRecorder
+            videoProcessorMulticastDelegate?.add(videoRecorder)
+        }
 
         guard !Preference.recordOnboardVideo else { return }
         setViewState(recording: true)
@@ -232,8 +236,9 @@ class CameraControlView: FloatingView {
         }
 
         guard Preference.recordPilotVideo else { return }
-        videoDecoder?.videoRecorder?.finishSession {
-            self.videoDecoder?.videoRecorder = nil
+        videoRecorder?.finishSession {
+            self.videoProcessorMulticastDelegate?.remove(self.videoRecorder!)
+            self.videoRecorder = nil
         }
         guard !Preference.recordOnboardVideo else { return }
         timer?.invalidate()
@@ -270,11 +275,11 @@ class CameraControlView: FloatingView {
     }
 
     // MARK: Instaniate
-    static func instantiate(videoDecoder: VideoDecoder) -> CameraControlView {
+    static func instantiate(_ videoProcessorMulticastDelegate: VideoProcessorMulticastDelegate) -> CameraControlView {
         let nib = UINib(nibName: "CameraControlView", bundle: nil)
         let views = nib.instantiate(withOwner: CameraControlView(), options: nil)
         let view = views.first as! CameraControlView
-        view.videoDecoder = videoDecoder
+        view.videoProcessorMulticastDelegate = videoProcessorMulticastDelegate
         return view
     }
 }

@@ -1,5 +1,5 @@
 /////
-////  VideoDecoder.swift
+////  VideoProcessor.swift
 ///   Copyright © 2019 Dmitriy Borovikov. All rights reserved.
 //
 
@@ -7,15 +7,20 @@ import Foundation
 import AVFoundation
 import VideoToolbox
 
-final class VideoDecoder {
-    private var sampleBufferLayer: AVSampleBufferDisplayLayer
+protocol VideoProcessorDelegate: class {
+    func processNal(sampleBuffer: CMSampleBuffer)
+    func set(format: CMVideoFormatDescription, time: CMTime)
+    func cleanup()
+}
+
+final class VideoProcessor {
     private let NalStart = Data([0, 0, 0, 1])
     private var formatDescription: CMVideoFormatDescription?
     let timescale: Int32 = 1000000000
-    var videoRecorder: VideoRecorder?
+    weak var delegate: VideoProcessorDelegate?
     
-    init(sampleBufferLayer: AVSampleBufferDisplayLayer) {
-        self.sampleBufferLayer = sampleBufferLayer
+    init(delegate: VideoProcessorDelegate) {
+        self.delegate = delegate
     }
     
     func decodeVideo(data: Data, timestamp: UInt64) {
@@ -55,7 +60,7 @@ final class VideoDecoder {
                                                            dataLength: len-4)
                 }
                 guard status == kCMBlockBufferNoErr else { return }
-                decodeNal(blockBuffer: blockBuffer, len: len, time: time)
+                decodeNal(blockBuffer: blockBuffer, len: len, time: time, isSync: naltype == 5)
                 
                 break;
             }
@@ -78,17 +83,15 @@ final class VideoDecoder {
             }
             if let sps = sequenceParameterSet, let pps = pictureParameterSet {
                 createFormatDescription(sps: sps, pps: pps)
-                if let controlTimebase = sampleBufferLayer.controlTimebase {
-                    CMTimebaseSetTime(controlTimebase, time: time)
-                }
-                videoRecorder?.startSession(at: time, format: formatDescription!)
+                
+                delegate?.set(format: formatDescription!, time: time)
             }
 
             startIndex = endIndex
         } while startIndex < data.endIndex
     }
     
-    private func decodeNal(blockBuffer: CMBlockBuffer, len: Int, time: CMTime) {
+    private func decodeNal(blockBuffer: CMBlockBuffer, len: Int, time: CMTime, isSync: Bool) {
         guard formatDescription != nil else { return }
         var sampleBuffer: CMSampleBuffer?
         let sampleSizeArray = [len]
@@ -109,14 +112,8 @@ final class VideoDecoder {
             return
         }
         
-        videoRecorder?.addVideoData(sampleBuffer: buffer)
-        
-        if sampleBufferLayer.isReadyForMoreMediaData {
-            sampleBufferLayer.enqueue(buffer)
-        }
-        if sampleBufferLayer.status == .failed {
-            sampleBufferLayer.flush()
-        }
+        buffer.isNotSync = !isSync
+        delegate?.processNal(sampleBuffer: buffer)
     }
     
     private func createFormatDescription(sps: [UInt8], pps: [UInt8]) {
@@ -134,13 +131,11 @@ final class VideoDecoder {
                 assert(status == noErr)
             }
         }
-        
     }
     
     func cleanup() {
-        sampleBufferLayer.flush()
         formatDescription = nil
-        videoRecorder?.finishSession { self.videoRecorder = nil }
+        delegate?.cleanup()
     }
     
 }

@@ -7,10 +7,7 @@ import UIKit
 import AVFoundation
 
 class VideoView: UIView {
-    var sampleBufferLayer: AVSampleBufferDisplayLayer {
-        layer.sublayers!.first as! AVSampleBufferDisplayLayer
-    }
-    
+    private let sampleBufferLayer = AVSampleBufferDisplayLayer()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -24,7 +21,6 @@ class VideoView: UIView {
     
     func setupVideoLayer() {
         var controlTimebase: CMTimebase?
-        let sampleBufferLayer = AVSampleBufferDisplayLayer()
         sampleBufferLayer.videoGravity = AVLayerVideoGravity.resizeAspect
         sampleBufferLayer.isOpaque = true
 
@@ -53,4 +49,25 @@ class VideoView: UIView {
         }
     }
 
+}
+
+extension VideoView: VideoProcessorDelegate {
+    func processNal(sampleBuffer: CMSampleBuffer) {
+        if sampleBufferLayer.isReadyForMoreMediaData {
+            sampleBufferLayer.enqueue(sampleBuffer)
+        }
+        if sampleBufferLayer.status == .failed {
+            sampleBufferLayer.flush()
+        }
+    }
+    
+    func set(format: CMVideoFormatDescription, time: CMTime) {
+        if let controlTimebase = sampleBufferLayer.controlTimebase {
+            CMTimebaseSetTime(controlTimebase, time: time)
+        }
+    }
+    
+    func cleanup() {
+        sampleBufferLayer.flush()
+    }
 }

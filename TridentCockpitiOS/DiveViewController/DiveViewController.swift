@@ -34,7 +34,8 @@ class DiveViewController: UIViewController {
     private let locationManager = CLLocationManager()
     private var cameraControlView: CameraControlView?
     private var auxCameraView: AuxCameraControlView?
-    private var videoDecoder: VideoDecoder!
+    private var videoProcessor: VideoProcessor!
+    private let videoProcessorMulticastDelegate = VideoProcessorMulticastDelegate([])
     private let tridentControl = TridentControl()
     private var savedCenter: [UIView: CGPoint] = [:]
 
@@ -133,11 +134,13 @@ class DiveViewController: UIViewController {
         node.orientation = RovQuaternion(x: -0.119873046875, y: 0.99249267578125, z: 0.01611328125, w: 0.01910400390625).scnQuaternion()
         
         tridentControl.setup(delegate: self)
-        videoDecoder = VideoDecoder(sampleBufferLayer: videoView.sampleBufferLayer)
+
+        videoProcessorMulticastDelegate.add(videoView)
+        videoProcessor = VideoProcessor(delegate: videoProcessorMulticastDelegate)
         setVideoSizing(fill: Preference.videoSizingFill)
 
         if Preference.recordOnboardVideo || Preference.recordPilotVideo {
-            cameraControlView = CameraControlView.instantiate(videoDecoder: videoDecoder)
+            cameraControlView = CameraControlView.instantiate(videoProcessorMulticastDelegate)
             view.addSubview(cameraControlView!)
         }
         liveViewContainer.isHidden = true
@@ -402,7 +405,7 @@ class DiveViewController: UIViewController {
         tridentControl.disable()
         cameraControlView?.cleanup()
         FastRTPS.resignAll()
-        videoDecoder.cleanup()
+        videoProcessor.cleanup()
         auxCameraView?.cleanup()
     }
     
@@ -421,7 +424,7 @@ class DiveViewController: UIViewController {
 
     private func registerReaders() {
         FastRTPS.registerReader(topic: .rovCamFwdH2640Video) { [weak self] (videoData: RovVideoData) in
-            self?.videoDecoder.decodeVideo(data: videoData.data, timestamp: videoData.timestamp)
+            self?.videoProcessor.decodeVideo(data: videoData.data, timestamp: videoData.timestamp)
         }
 
         FastRTPS.registerReader(topic: .rovTempWater) { [weak self] (temp: RovTemperature) in
@@ -570,5 +573,33 @@ extension DiveViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
+    }
+}
+
+final class VideoProcessorMulticastDelegate: VideoProcessorDelegate {
+    private let multicast = MulticastDelegate<VideoProcessorDelegate>()
+    
+    init(_ delegates: [VideoProcessorDelegate]) {
+        delegates.forEach(multicast.add)
+    }
+    
+    func add(_ delegate: VideoProcessorDelegate) {
+        multicast.add(delegate)
+    }
+    
+    func remove(_ delegate: VideoProcessorDelegate) {
+        multicast.remove(delegate)
+    }
+    
+    func processNal(sampleBuffer: CMSampleBuffer) {
+        multicast.invoke{ $0.processNal(sampleBuffer: sampleBuffer) }
+    }
+    
+    func set(format: CMVideoFormatDescription, time: CMTime) {
+        multicast.invoke { $0.set(format: format, time: time) }
+    }
+    
+    func cleanup() {
+        multicast.invoke{ $0.cleanup() }
     }
 }
