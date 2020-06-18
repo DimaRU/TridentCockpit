@@ -50,4 +50,10 @@ struct Preference {
     
     @UserPreference("SSIDPassword")
     static var ssidPassword: String?
+    
+    @UserPreference("StreamURL")
+    static var streamURL: String?
+
+    @UserPreference("StreamKey")
+    static var streamKey: String?
 }

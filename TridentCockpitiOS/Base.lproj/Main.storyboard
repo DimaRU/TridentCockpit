@@ -501,7 +501,11 @@
                         <segue destination="6Um-iz-06i" kind="show" id="fKW-lX-RSi"/>
                     </connections>
                 </tapGestureRecognizer>
-                <tapGestureRecognizer id="yuD-D0-Q3u"/>
+                <tapGestureRecognizer id="yuD-D0-Q3u">
+                    <connections>
+                        <segue destination="cHp-zy-A1k" kind="show" id="OWE-q6-X1G"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <tapGestureRecognizer id="zaN-ic-Zn5">
                     <connections>
                         <segue destination="UVi-le-bqL" kind="show" id="kO9-dc-lA7"/>
@@ -518,7 +522,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5va-lX-LtV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1007" y="634"/>
+            <point key="canvasLocation" x="1202" y="-482"/>
+        </scene>
+        <!--StreamSetupViewController-->
+        <scene sceneID="rwv-Ra-XGB">
+            <objects>
+                <viewControllerPlaceholder storyboardName="StreamSetupViewController" id="cHp-zy-A1k" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="jHz-8b-GG2"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cbU-26-qRm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1212" y="-411"/>
         </scene>
         <!--DiveViewController-->
         <scene sceneID="JrH-Uz-gDx">
@@ -526,7 +540,7 @@
                 <viewControllerPlaceholder storyboardName="DiveViewController" id="Pxb-v3-CIo" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5G4-ki-cjR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="821" y="-450"/>
+            <point key="canvasLocation" x="1184" y="-557"/>
         </scene>
         <!--GetWifiAPTableViewController-->
         <scene sceneID="1PM-Nq-r6N">
@@ -534,7 +548,7 @@
                 <viewControllerPlaceholder storyboardName="GetWifiAPTableViewController" id="F53-ad-OZZ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSz-wZ-8wg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1198" y="-446"/>
+            <point key="canvasLocation" x="1522" y="-482"/>
         </scene>
         <!--Maintenance View Controller-->
         <scene sceneID="H9i-V0-Lyb">

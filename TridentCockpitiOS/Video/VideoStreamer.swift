@@ -8,11 +8,16 @@ import Foundation
 import AVFoundation
 import VideoToolbox
 
+protocol VideoStreamerDelegate: class {
+    func state(connected: Bool)
+}
+
 class VideoStreamer: VideoProcessorDelegate {
     private var streamName: String
     private var streamURL: String
     private var sentFormat = false
     private var retryCount: Int = 0
+    weak var delegate: VideoStreamerDelegate?
 
     private lazy var rtmpConnection: RTMPConnection = {
         let connection = RTMPConnection()
@@ -46,6 +51,7 @@ class VideoStreamer: VideoProcessorDelegate {
     
     func disconnect() {
         rtmpConnection.close()
+        delegate?.state(connected: false)
     }
     
     func pause() {
@@ -117,9 +123,12 @@ class VideoStreamer: VideoProcessorDelegate {
             retryCount = 0
             rtmpStream.publish(streamName)
         case RTMPStream.Code.publishStart.rawValue:
+            delegate?.state(connected: true)
             print("Publish start")
         case RTMPConnection.Code.connectFailed.rawValue,
              RTMPConnection.Code.connectClosed.rawValue:
+            
+            delegate?.state(connected: false)
             guard retryCount < 5 else {
                 return
             }

@@ -101,6 +101,8 @@
 		0A0968F7249B87590031F142 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0968F6249B87590031F142 /* MulticastDelegate.swift */; };
 		0A0968F9249B88C80031F142 /* VideoStreamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0968F8249B88C80031F142 /* VideoStreamer.swift */; };
 		0A0968FC249B89DD0031F142 /* Logboard in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0968FB249B89DD0031F142 /* Logboard */; };
+		0A096900249BBD150031F142 /* StreamSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0968FF249BBD150031F142 /* StreamSetupViewController.swift */; };
+		0A096902249BBD250031F142 /* StreamSetupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A096901249BBD250031F142 /* StreamSetupViewController.storyboard */; };
 		0A0C1C8523FE015100D09F77 /* TridentCockpit.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A71311B23636B5C00817593 /* TridentCockpit.scnassets */; };
 		0A134F422464191800FBD929 /* PastDivesViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A134F412464191800FBD929 /* PastDivesViewController.storyboard */; };
 		0A1A5B7823CE4B150038EABE /* DiveCollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7223CE4B150038EABE /* DiveCollectionItem.swift */; };
@@ -542,6 +544,8 @@
 		0A0968F6249B87590031F142 /* MulticastDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
 		0A0968F8249B88C80031F142 /* VideoStreamer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoStreamer.swift; sourceTree = "<group>"; };
 		0A0968FD249B8ACA0031F142 /* TridentCockpitiOS-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TridentCockpitiOS-Bridging-Header.h"; sourceTree = "<group>"; };
+		0A0968FF249BBD150031F142 /* StreamSetupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamSetupViewController.swift; sourceTree = "<group>"; };
+		0A096901249BBD250031F142 /* StreamSetupViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = StreamSetupViewController.storyboard; sourceTree = "<group>"; };
 		0A134F412464191800FBD929 /* PastDivesViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PastDivesViewController.storyboard; sourceTree = "<group>"; };
 		0A1A5B7223CE4B150038EABE /* DiveCollectionItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiveCollectionItem.swift; sourceTree = "<group>"; };
 		0A1A5B7323CE4B150038EABE /* PreviewVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewVideoViewController.swift; sourceTree = "<group>"; };
@@ -905,6 +909,15 @@
 			path = Media;
 			sourceTree = "<group>";
 		};
+		0A0968FE249BBCD80031F142 /* StreamSetupViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0A096901249BBD250031F142 /* StreamSetupViewController.storyboard */,
+				0A0968FF249BBD150031F142 /* StreamSetupViewController.swift */,
+			);
+			path = StreamSetupViewController;
+			sourceTree = "<group>";
+		};
 		0A1A5B6823CE4AEF0038EABE /* PastDivesViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -933,6 +946,8 @@
 		0A1D09F623F93FD6006D9AFD /* TridentCockpitiOS */ = {
 			isa = PBXGroup;
 			children = (
+				0A7B01B2249BDB17006CF6A9 /* Video */,
+				0A0968FE249BBCD80031F142 /* StreamSetupViewController */,
 				0AF06EC523FB56F5000FF36A /* DashboardViewController */,
 				0A3CB025246414D6009F827B /* PastDivesViewController */,
 				0AE05CEE23FD41FC00C7CA08 /* DiveViewController */,
@@ -943,7 +958,6 @@
 				0A95068C23F9DD73004E5546 /* Extensions */,
 				0A95068923F9D7E7004E5546 /* ThirdParty */,
 				0A868C61247FE1FA0037570A /* Etc */,
-				0A09683B249B872D0031F142 /* HaishinKit */,
 				0A0968FD249B8ACA0031F142 /* TridentCockpitiOS-Bridging-Header.h */,
 				0A1D09FD23F93FD6006D9AFD /* Main.storyboard */,
 				0A1D0A0223F93FD7006D9AFD /* LaunchScreen.storyboard */,
@@ -1185,6 +1199,16 @@
 			path = DDSModel;
 			sourceTree = "<group>";
 		};
+		0A7B01B2249BDB17006CF6A9 /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				0A7130CC23636AF100817593 /* VideoProcessor.swift */,
+				0A5612832486BFA200517C8D /* VideoRecorder.swift */,
+				0A0968F8249B88C80031F142 /* VideoStreamer.swift */,
+			);
+			path = Video;
+			sourceTree = "<group>";
+		};
 		0A7BB6072411987500978D41 /* DiveViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1211,6 +1235,7 @@
 		0A95068923F9D7E7004E5546 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				0A09683B249B872D0031F142 /* HaishinKit */,
 				0A488E682413AE8400EBEF19 /* LinearProgressBar.swift */,
 				0A8B26662401645A00ACC72F /* PWSwitch.swift */,
 				0ACCDE6A23FDABD100381207 /* CameraButton.swift */,
@@ -1296,9 +1321,6 @@
 				0A7130D123636AF100817593 /* TridentControl.swift */,
 				0ACCDE6E23FDAE7000381207 /* RovHeadingView.swift */,
 				0AE05CE823FD3D9000C7CA08 /* VideoView.swift */,
-				0A7130CC23636AF100817593 /* VideoProcessor.swift */,
-				0A5612832486BFA200517C8D /* VideoRecorder.swift */,
-				0A0968F8249B88C80031F142 /* VideoStreamer.swift */,
 				0ADD42B1240EBBCD008ECFCC /* TouchJoystickView.swift */,
 				0AAD2D592447368500B6152C /* PlayDemoVideo.swift */,
 			);
@@ -1490,6 +1512,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A1D0A0423F93FD7006D9AFD /* LaunchScreen.storyboard in Resources */,
+				0A096902249BBD250031F142 /* StreamSetupViewController.storyboard in Resources */,
 				0AD8C5D32458402A009E0A9E /* GetWifiAPTableViewController.storyboard in Resources */,
 				0AB110E8245D8B6400BDC00D /* Settings.bundle in Resources */,
 				0A1D09FF23F93FD6006D9AFD /* Main.storyboard in Resources */,
@@ -1612,6 +1635,7 @@
 				0A0968B5249B872D0031F142 /* FLVSoundRate.swift in Sources */,
 				0A0968CE249B872D0031F142 /* TimerDriver.swift in Sources */,
 				0A1D0A2823F941BD006D9AFD /* RovCameraObjectTrack.swift in Sources */,
+				0A096900249BBD150031F142 /* StreamSetupViewController.swift in Sources */,
 				0A0968C3249B872D0031F142 /* AnyUtil.swift in Sources */,
 				0A1D0A3D23F941BD006D9AFD /* RovChannel.swift in Sources */,
 				0A1D0A2423F941BD006D9AFD /* RovTopic.swift in Sources */,
