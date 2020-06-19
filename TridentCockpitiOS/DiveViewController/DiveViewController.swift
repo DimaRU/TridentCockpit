@@ -35,6 +35,7 @@ class DiveViewController: UIViewController {
     private var cameraControlView: CameraControlView?
     private var auxCameraView: AuxCameraControlView?
     private var videoProcessor: VideoProcessor!
+    private weak var videoStreamer: VideoStreamer?
     private let videoProcessorMulticastDelegate = VideoProcessorMulticastDelegate([])
     private let tridentControl = TridentControl()
     private var savedCenter: [UIView: CGPoint] = [:]
@@ -79,9 +80,10 @@ class DiveViewController: UIViewController {
         }
     }
 
-    init?(coder: NSCoder, vehicleId: String) {
-      self.vehicleId = vehicleId
-      super.init(coder: coder)
+    init?(coder: NSCoder, vehicleId: String, videoStreamer: VideoStreamer?) {
+        self.vehicleId = vehicleId
+        self.videoStreamer = videoStreamer
+        super.init(coder: coder)
     }
     
     required init?(coder: NSCoder) {
@@ -139,8 +141,8 @@ class DiveViewController: UIViewController {
         videoProcessor = VideoProcessor(delegate: videoProcessorMulticastDelegate)
         setVideoSizing(fill: Preference.videoSizingFill)
 
-        if Preference.recordOnboardVideo || Preference.recordPilotVideo {
-            cameraControlView = CameraControlView.instantiate(videoProcessorMulticastDelegate)
+        if Preference.recordOnboardVideo || Preference.recordPilotVideo || videoStreamer != nil {
+            cameraControlView = CameraControlView.instantiate(videoProcessorMulticastDelegate, videoStreamer: videoStreamer)
             view.addSubview(cameraControlView!)
         }
         liveViewContainer.isHidden = true

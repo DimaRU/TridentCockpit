@@ -157,7 +157,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
 
     @IBSegueAction
     private func goDiveScreen(coder: NSCoder) -> DiveViewController? {
-        return DiveViewController(coder: coder, vehicleId: tridentID)
+        return DiveViewController(coder: coder, vehicleId: tridentID, videoStreamer: videoStreamer)
     }
     
     @IBSegueAction

@@ -9,17 +9,20 @@ import CoreLocation
 
 class CameraControlView: FloatingView {
     @IBOutlet weak var recordingButton: CameraButton!
+    
     @IBOutlet weak var recordingTimeLabel: UILabel!
     @IBOutlet weak var remainingOnboardLabel: UILabel!
     @IBOutlet weak var remainingLocalLabel: UILabel!
     @IBOutlet weak var onboardLabel: UILabel!
     @IBOutlet weak var iPhoneLabel: UILabel!
     @IBOutlet weak var remainingTimeLabel: UILabel!
+    @IBOutlet weak var streamLabel: UILabel!
+    @IBOutlet weak var streamStateLabel: UILabel!
     
     private var videoSessionId: UUID?
     private var timer: Timer?
     private var videoRecorder: VideoRecorder?
-    private var videoStreamer: VideoStreamer?
+    private weak var videoStreamer: VideoStreamer?
     private weak var videoProcessorMulticastDelegate: VideoProcessorMulticastDelegate?
     var currentLocation: CLLocation?
     
@@ -57,6 +60,8 @@ class CameraControlView: FloatingView {
         
         remainingOnboardLabel.text = " "
         remainingLocalLabel.text = " "
+        streamLabel.isHidden = true
+        streamStateLabel.text = ""
         
         setViewState(recording: false)
     }
@@ -275,11 +280,26 @@ class CameraControlView: FloatingView {
     }
 
     // MARK: Instaniate
-    static func instantiate(_ videoProcessorMulticastDelegate: VideoProcessorMulticastDelegate) -> CameraControlView {
+    static func instantiate(_ videoProcessorMulticastDelegate: VideoProcessorMulticastDelegate, videoStreamer: VideoStreamer?) -> CameraControlView {
         let nib = UINib(nibName: "CameraControlView", bundle: nil)
         let views = nib.instantiate(withOwner: CameraControlView(), options: nil)
         let view = views.first as! CameraControlView
         view.videoProcessorMulticastDelegate = videoProcessorMulticastDelegate
+        if let videoStreamer = videoStreamer {
+            view.videoStreamer = videoStreamer
+            videoProcessorMulticastDelegate.add(videoStreamer)
+            view.streamLabel.isEnabled = true
+            view.streamStateLabel.text = "alive"
+        }
         return view
+    }
+}
+
+extension CameraControlView: VideoStreamerDelegate {
+    func state(connected: Bool) {
+        DispatchQueue.main.async {
+            self.streamStateLabel.text = connected ? "alive":"stopped"
+            print("Steamer connected", connected)
+        }
     }
 }
