@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tza-cf-6VX">
-    <device id="retina6_1" orientation="landscape" appearance="light"/>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OgA-KN-bhl">
+    <device id="retina4_0" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -8,16 +8,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Stream Setup View Controller-->
+        <!--Streaming-->
         <scene sceneID="fXB-UA-Xfx">
             <objects>
                 <viewController id="Tza-cf-6VX" customClass="StreamSetupViewController" customModule="TridentCockpitiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jkh-ry-v7R">
-                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DVS-V7-B3x">
-                                <rect key="frame" x="108" y="64" width="680" height="76"/>
+                                <rect key="frame" x="16" y="96" width="536" height="76"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="En5-z5-HBY">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="76"/>
@@ -40,10 +40,10 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="d0u-df-pyl">
-                                        <rect key="frame" x="98" y="0.0" width="582" height="76"/>
+                                        <rect key="frame" x="98" y="0.0" width="438" height="76"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="rtmps://live-api-s.facebook.com:443/rtmp/" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FIA-Lg-I5v">
-                                                <rect key="frame" x="0.0" y="0.0" width="582" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="438" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="next" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="url"/>
                                                 <connections>
@@ -51,7 +51,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wge-dF-1rB">
-                                                <rect key="frame" x="0.0" y="42" width="582" height="34"/>
+                                                <rect key="frame" x="0.0" y="42" width="438" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 <connections>
@@ -62,32 +62,35 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L4t-uq-twF">
-                                <rect key="frame" x="403.5" y="172" width="89" height="41"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Connect"/>
-                                <state key="highlighted" title="Disconnect"/>
-                                <connections>
-                                    <action selector="connectButtonPress:" destination="Tza-cf-6VX" eventType="touchUpInside" id="nVP-J5-7nu"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="L4t-uq-twF" firstAttribute="top" secondItem="DVS-V7-B3x" secondAttribute="bottom" constant="32" id="Fr3-Jz-JzJ"/>
-                            <constraint firstItem="DVS-V7-B3x" firstAttribute="leading" secondItem="oOC-hK-t8A" secondAttribute="leading" constant="64" id="KT4-l9-ZRa">
+                            <constraint firstItem="DVS-V7-B3x" firstAttribute="leading" secondItem="oOC-hK-t8A" secondAttribute="leading" constant="16" id="KT4-l9-ZRa">
                                 <variation key="widthClass=compact" constant="16"/>
                             </constraint>
                             <constraint firstItem="DVS-V7-B3x" firstAttribute="top" secondItem="oOC-hK-t8A" secondAttribute="top" constant="64" id="mcj-wb-oUC"/>
-                            <constraint firstItem="oOC-hK-t8A" firstAttribute="trailing" secondItem="DVS-V7-B3x" secondAttribute="trailing" constant="64" id="sr5-xf-rSt">
+                            <constraint firstItem="oOC-hK-t8A" firstAttribute="trailing" secondItem="DVS-V7-B3x" secondAttribute="trailing" constant="16" id="sr5-xf-rSt">
                                 <variation key="widthClass=compact" constant="16"/>
                             </constraint>
-                            <constraint firstItem="L4t-uq-twF" firstAttribute="centerX" secondItem="Jkh-ry-v7R" secondAttribute="centerX" id="yyH-LV-N8M"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oOC-hK-t8A"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Streaming" id="o3n-Kw-FNT">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="L8j-Tr-8Ch">
+                            <connections>
+                                <action selector="cancelButtonPress:" destination="Tza-cf-6VX" id="L33-6W-2dy"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Connect" id="nco-dW-AOp">
+                            <connections>
+                                <action selector="connectButtonPress:" destination="Tza-cf-6VX" id="stU-ni-5By"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <value key="contentSizeForViewInPopover" type="size" width="500" height="350"/>
+                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="connectButton" destination="L4t-uq-twF" id="kY3-7T-5Cf"/>
+                        <outlet property="connectButton" destination="nco-dW-AOp" id="B5D-ud-YSk"/>
                         <outlet property="serverURLField" destination="FIA-Lg-I5v" id="oZf-xe-i4R"/>
                         <outlet property="streamKeyField" destination="wge-dF-1rB" id="31C-ds-Kvs"/>
                         <segue destination="XUF-13-0yT" kind="unwind" identifier="unwindToDashboardSegue" customClass="UIStoryboardSegueWithCompletion" customModule="TridentCockpitiOS" customModuleProvider="target" unwindAction="unwindToDashboardWithUnwindSegue:" id="fNA-SH-H8e"/>
@@ -95,6 +98,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Equ-6I-WQy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <exit id="XUF-13-0yT" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="733.25892857142856" y="97.101449275362327"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vdb-LW-46b">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OgA-KN-bhl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wcy-5M-Lfw">
+                        <rect key="frame" x="0.0" y="0.0" width="568" height="32"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Tza-cf-6VX" kind="relationship" relationship="rootViewController" destinationCreationSelector="goSetupStreamViewControlerWithCoder:" id="uG5-84-yfs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3ej-2D-5Vp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-10.044642857142856" y="97.101449275362327"/>
         </scene>

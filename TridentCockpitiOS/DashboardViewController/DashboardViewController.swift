@@ -24,6 +24,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
     }
     private var backgroundWatch: BackgroundWatch?
     private var locationManager: CLLocationManager?
+    private var videoStreamer: VideoStreamer?
     
     // MARK: Trace connection state vars
     private var wifiConnected = false
@@ -159,6 +160,11 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         return DiveViewController(coder: coder, vehicleId: tridentID)
     }
     
+    @IBSegueAction
+    private func goSetupStreamViewControler(coder: NSCoder) -> StreamSetupViewController? {
+        return StreamSetupViewController(coder: coder, delegate: self)
+    }
+
     @IBSegueAction
     private func goGetWifiAPTableViewController(coder: NSCoder) -> GetWifiAPTableViewController? {
         return GetWifiAPTableViewController(coder: coder, delegate: self)
@@ -549,5 +555,11 @@ extension DashboardViewController: GetWifiAPProtocol {
         }.catch {
             self.alertNetwork(error: $0)
         }
+    }
+}
+
+extension DashboardViewController: StreamSetupViewControllerDelegate {
+    func streamer(_ videoStreamer: VideoStreamer) {
+        self.videoStreamer = videoStreamer
     }
 }
