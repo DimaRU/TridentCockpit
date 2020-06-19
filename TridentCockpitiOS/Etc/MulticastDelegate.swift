@@ -13,7 +13,6 @@ class MulticastDelegate<T> {
         semaphore.wait()
         delegates.add(delegate as AnyObject)
         semaphore.signal()
-        print(delegates)
     }
 
     func remove(_ delegateToRemove: T) {
