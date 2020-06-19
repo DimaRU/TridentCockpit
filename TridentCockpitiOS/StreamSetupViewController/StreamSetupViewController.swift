@@ -80,11 +80,13 @@ extension StreamSetupViewController: UITextFieldDelegate {
 }
 extension StreamSetupViewController: VideoStreamerDelegate {
     func state(connected: Bool) {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.connectButton.title = "Connected"
-        }) { finished in
-            self.dismiss(animated: true) {
-                self.delegate?.streamer(self.videoStreamer!)
+        DispatchQueue.main.async {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.connectButton.title = "Connected"
+            }) { finished in
+                self.dismiss(animated: true) {
+                    self.delegate?.streamer(self.videoStreamer!)
+                }
             }
         }
     }

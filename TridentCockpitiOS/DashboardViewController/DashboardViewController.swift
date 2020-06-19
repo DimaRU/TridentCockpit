@@ -452,6 +452,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         
         startRefreshDeviceState()
         navigationItem.getItem(for: .connectWiFi)?.isEnabled = true
+        navigationItem.getItem(for: .setupStreaming)?.isEnabled = true
     }
     
     private func showDisconnectAlert(message: String) {

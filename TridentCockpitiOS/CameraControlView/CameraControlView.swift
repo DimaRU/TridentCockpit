@@ -9,8 +9,8 @@ import CoreLocation
 
 class CameraControlView: FloatingView {
     @IBOutlet weak var recordingButton: CameraButton!
-    
     @IBOutlet weak var recordingTimeLabel: UILabel!
+    
     @IBOutlet weak var remainingOnboardLabel: UILabel!
     @IBOutlet weak var remainingLocalLabel: UILabel!
     @IBOutlet weak var onboardLabel: UILabel!
@@ -48,7 +48,11 @@ class CameraControlView: FloatingView {
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = UIColor(named: "cameraControlBackground")!
         
+        #if targetEnvironment(macCatalyst)
+        iPhoneLabel.text = "mac:"
+        #else
         iPhoneLabel.text = UIDevice.current.model + ":"
+        #endif
         if !Preference.recordOnboardVideo {
             onboardLabel.isHidden = true
             remainingOnboardLabel.isHidden = true
@@ -109,6 +113,8 @@ class CameraControlView: FloatingView {
             onboardLabel,
             iPhoneLabel,
             remainingTimeLabel,
+            streamLabel,
+            streamStateLabel,
         ]
 
         if recording {
@@ -288,7 +294,7 @@ class CameraControlView: FloatingView {
         if let videoStreamer = videoStreamer {
             view.videoStreamer = videoStreamer
             videoProcessorMulticastDelegate.add(videoStreamer)
-            view.streamLabel.isEnabled = true
+            view.streamLabel.isHidden = false
             view.streamStateLabel.text = "alive"
         }
         return view

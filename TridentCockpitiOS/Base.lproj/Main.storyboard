@@ -403,11 +403,9 @@
                                     <action selector="connectCameraButtonPress:" destination="BYZ-38-t0r" id="07s-Sy-kou"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="play.rectangle" catalog="system" id="xuW-5G-i2n">
+                            <barButtonItem tag="4" image="play.rectangle" catalog="system" id="xuW-5G-i2n">
                                 <connections>
-                                    <segue destination="Dgi-hR-HT5" kind="popoverPresentation" popoverAnchorBarButtonItem="xuW-5G-i2n" id="jra-zU-hHh">
-                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
-                                    </segue>
+                                    <segue destination="2T8-Jm-g88" kind="presentation" modalPresentationStyle="formSheet" id="eJw-K8-Gdq"/>
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
@@ -444,12 +442,12 @@
             <point key="canvasLocation" x="880.9859154929577" y="133.125"/>
         </scene>
         <!--StreamSetupViewController-->
-        <scene sceneID="25V-Fg-IVt">
+        <scene sceneID="NC9-bO-KDj">
             <objects>
-                <viewControllerPlaceholder storyboardName="StreamSetupViewController" id="Dgi-hR-HT5" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="MIe-yR-Ese" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="StreamSetupViewController" id="2T8-Jm-g88" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gue-Vq-bV6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="602" y="587"/>
+            <point key="canvasLocation" x="1379" y="688"/>
         </scene>
         <!--PastDivesViewController-->
         <scene sceneID="zVx-NY-IrK">
@@ -459,7 +457,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5va-lX-LtV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1007" y="634"/>
+            <point key="canvasLocation" x="769" y="643"/>
         </scene>
         <!--DiveViewController-->
         <scene sceneID="JrH-Uz-gDx">
@@ -475,7 +473,7 @@
                 <viewControllerPlaceholder storyboardName="GetWifiAPTableViewController" id="F53-ad-OZZ" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bSz-wZ-8wg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1198" y="-446"/>
+            <point key="canvasLocation" x="1403" y="-450"/>
         </scene>
         <!--Maintenance View Controller-->
         <scene sceneID="H9i-V0-Lyb">

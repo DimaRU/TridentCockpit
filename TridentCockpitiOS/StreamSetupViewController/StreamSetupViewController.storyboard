@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OgA-KN-bhl">
-    <device id="retina4_0" orientation="landscape" appearance="light"/>
+    <device id="ipad10_2" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -13,11 +13,11 @@
             <objects>
                 <viewController id="Tza-cf-6VX" customClass="StreamSetupViewController" customModule="TridentCockpitiOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jkh-ry-v7R">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="320"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="356"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DVS-V7-B3x">
-                                <rect key="frame" x="16" y="96" width="536" height="76"/>
+                                <rect key="frame" x="16" y="140" width="568" height="76"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="En5-z5-HBY">
                                         <rect key="frame" x="0.0" y="0.0" width="90" height="76"/>
@@ -40,10 +40,10 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="d0u-df-pyl">
-                                        <rect key="frame" x="98" y="0.0" width="438" height="76"/>
+                                        <rect key="frame" x="98" y="0.0" width="470" height="76"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="rtmps://live-api-s.facebook.com:443/rtmp/" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FIA-Lg-I5v">
-                                                <rect key="frame" x="0.0" y="0.0" width="438" height="34"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="470" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="next" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="url"/>
                                                 <connections>
@@ -51,7 +51,7 @@
                                                 </connections>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wge-dF-1rB">
-                                                <rect key="frame" x="0.0" y="42" width="438" height="34"/>
+                                                <rect key="frame" x="0.0" y="42" width="470" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="go" enablesReturnKeyAutomatically="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 <connections>
@@ -68,7 +68,7 @@
                             <constraint firstItem="DVS-V7-B3x" firstAttribute="leading" secondItem="oOC-hK-t8A" secondAttribute="leading" constant="16" id="KT4-l9-ZRa">
                                 <variation key="widthClass=compact" constant="16"/>
                             </constraint>
-                            <constraint firstItem="DVS-V7-B3x" firstAttribute="top" secondItem="oOC-hK-t8A" secondAttribute="top" constant="64" id="mcj-wb-oUC"/>
+                            <constraint firstItem="DVS-V7-B3x" firstAttribute="centerY" secondItem="Jkh-ry-v7R" secondAttribute="centerY" id="Q6f-hB-UZL"/>
                             <constraint firstItem="oOC-hK-t8A" firstAttribute="trailing" secondItem="DVS-V7-B3x" secondAttribute="trailing" constant="16" id="sr5-xf-rSt">
                                 <variation key="widthClass=compact" constant="16"/>
                             </constraint>
@@ -87,8 +87,8 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <value key="contentSizeForViewInPopover" type="size" width="500" height="350"/>
-                    <modalPageSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="600" height="300"/>
+                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="connectButton" destination="nco-dW-AOp" id="B5D-ud-YSk"/>
                         <outlet property="serverURLField" destination="FIA-Lg-I5v" id="oZf-xe-i4R"/>
@@ -107,7 +107,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="OgA-KN-bhl" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="wcy-5M-Lfw">
-                        <rect key="frame" x="0.0" y="0.0" width="568" height="32"/>
+                        <rect key="frame" x="0.0" y="0.0" width="810" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

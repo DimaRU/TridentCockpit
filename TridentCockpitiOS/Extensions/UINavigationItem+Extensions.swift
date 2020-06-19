@@ -11,6 +11,7 @@ extension UINavigationItem {
         case connectWiFi = 1
         case connectCamera = 2
         case setupAP = 3
+        case setupStreaming = 4
     }
 
     func getLeftItem(for identifier: UINavigationItem.Identifier) -> UIBarButtonItem? {
