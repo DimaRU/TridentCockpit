@@ -4,7 +4,6 @@
 //
 
 import Foundation
-//import HaishinKit
 import AVFoundation
 import VideoToolbox
 
@@ -13,9 +12,8 @@ protocol VideoStreamerDelegate: class {
 }
 
 class VideoStreamer: VideoProcessorDelegate {
-    private var streamName: String
+    private var streamKey: String
     private var streamURL: String
-    private var sentFormat = false
     private var retryCount: Int = 0
     weak var delegate: VideoStreamerDelegate?
 
@@ -30,8 +28,8 @@ class VideoStreamer: VideoProcessorDelegate {
         RTMPStream(connection: rtmpConnection)
     }()
     
-    init(url: String, name: String) {
-        streamName = name
+    init(url: String, key: String) {
+        streamKey = key
         streamURL = url
     }
     
@@ -47,11 +45,14 @@ class VideoStreamer: VideoProcessorDelegate {
 
     func connect() {
         rtmpConnection.connect(streamURL, arguments: nil)
+        rtmpStream.attachAudio(AVCaptureDevice.default(for: .audio)) { error in
+            print(error)
+        }
+        print(AVCaptureDevice.default(for: .audio)?.description ?? "no audio")
     }
     
     func disconnect() {
         rtmpConnection.close()
-        delegate?.state(connected: false)
     }
     
     func pause() {
@@ -62,46 +63,23 @@ class VideoStreamer: VideoProcessorDelegate {
         rtmpStream.paused = false
     }
     
-    func setVideoFormat(width: Int, height: Int, bitrate: Int) {
+    func setVideoFormat() {
         rtmpStream.videoSettings = [
-            .width: width,
-            .height: height,
-            .bitrate: bitrate,
-            .profileLevel: kVTProfileLevel_H264_Baseline_AutoLevel
+            .width: 1280,
+            .height: 720,
+            .bitrate: 1500000,
+            .maxKeyFrameIntervalDuration: 3,
         ]
 
         rtmpStream.audioSettings = [.bitrate: 32000]
     }
-    
-    private func createMetaData() -> ASObject {
-        var metadata = ASObject()
-        metadata["width"] = 1280
-        metadata["height"] = 720
-        metadata["framerate"] = 30
-        metadata["videocodecid"] = FLVVideoCodec.avc.rawValue
-        metadata["videodatarate"] = 1500000 / 1000
-        if AVCaptureDevice.default(for: .audio) != nil {
-            metadata["audiocodecid"] = FLVAudioCodec.aac.rawValue
-            metadata["audiodatarate"] = rtmpStream.mixer.audioIO.encoder.bitrate / 1000
-        }
-        return metadata
-    }
-    
+        
     func set(format: CMVideoFormatDescription, time: CMTime) {
-        guard !sentFormat else { return }
-
-        rtmpStream.attachAudio(AVCaptureDevice.default(for: .audio)) { error in
-            print(error)
-        }
-        print(AVCaptureDevice.default(for: .audio)?.description ?? "no audio")
         rtmpStream.mixer.videoIO.formatDescription = format
-        rtmpStream.metadata(createMetaData())
         rtmpStream.muxer.didSetFormatDescription(video: format)
-        sentFormat = true
     }
     
     func processNal(sampleBuffer: CMSampleBuffer) {
-        guard sentFormat else { return }
         rtmpStream.muxer.sampleOutput(video: sampleBuffer)
     }
     
@@ -121,19 +99,18 @@ class VideoStreamer: VideoProcessorDelegate {
         switch code {
         case RTMPConnection.Code.connectSuccess.rawValue:
             retryCount = 0
-            rtmpStream.publish(streamName)
+            rtmpStream.publish(streamKey)
         case RTMPStream.Code.publishStart.rawValue:
             delegate?.state(connected: true)
             print("Publish start")
         case RTMPConnection.Code.connectFailed.rawValue,
              RTMPConnection.Code.connectClosed.rawValue:
-            
             delegate?.state(connected: false)
             guard retryCount < 5 else {
                 return
             }
             DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 2) {
-                self.connect()
+                self.rtmpConnection.connect(self.streamURL)
             }
         default:
             print(e)

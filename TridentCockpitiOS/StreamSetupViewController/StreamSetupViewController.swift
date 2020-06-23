@@ -40,7 +40,8 @@ class StreamSetupViewController: UIViewController {
         
         Preference.streamURL = serverURLField.text!
         Preference.streamKey = streamKeyField.text!
-        videoStreamer = VideoStreamer(url: serverURLField.text!, name: streamKeyField.text!)
+        videoStreamer = VideoStreamer(url: serverURLField.text!, key: streamKeyField.text!)
+        videoStreamer?.setVideoFormat()
         videoStreamer?.delegate = self
         videoStreamer?.connect()
     }
