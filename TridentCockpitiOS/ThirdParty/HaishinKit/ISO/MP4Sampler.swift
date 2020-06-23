@@ -1,13 +1,8 @@
 import AVFoundation
 
-protocol MP4SamplerDelegate: class {
-    func didOpen(_ reader: MP4Reader)
-    func didSet(config: Data, withID: Int, type: AVMediaType)
-    func output(data: Data, withID: Int, currentTime: Double, keyframe: Bool)
-}
 
 // MARK: -
-public class MP4Sampler {
+public class MP4Sampler: MP4SamplerProtocol {
     public typealias Handler = () -> Void
 
     weak var delegate: MP4SamplerDelegate?
@@ -82,6 +77,15 @@ extension MP4Sampler: Running {
     public func stopRunning() {
         lockQueue.async {
             self.isRunning.mutate { $0 = false }
+        }
+    }
+}
+
+extension RTMPStream {
+    open func appendFile(_ file: URL, completionHandler: (() -> Void)? = nil) {
+        let sampler = MP4Sampler()
+        attach(sampler: sampler) {
+            sampler.appendFile(file, completionHandler: completionHandler)
         }
     }
 }

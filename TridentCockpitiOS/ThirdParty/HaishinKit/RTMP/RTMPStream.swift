@@ -305,7 +305,7 @@ open class RTMPStream: NetStream {
     var audioTimestamp: Double = 0.0
     var videoTimestamp: Double = 0.0
     private(set) var muxer = RTMPMuxer()
-    private var sampler: MP4Sampler?
+    private var sampler: MP4SamplerProtocol?
     private var frameCount: UInt16 = 0
     private var dispatcher: IEventDispatcher!
     private var audioWasSent = false
@@ -478,10 +478,10 @@ open class RTMPStream: NetStream {
         }
     }
 
-    open func appendFile(_ file: URL, completionHandler: MP4Sampler.Handler? = nil) {
+    func attach(sampler: MP4SamplerProtocol, completion: @escaping () -> Void) {
         lockQueue.async {
             if self.sampler == nil {
-                self.sampler = MP4Sampler()
+                self.sampler = sampler
                 self.sampler?.delegate = self.muxer
                 switch self.readyState {
                 case .publishing:
@@ -490,20 +490,20 @@ open class RTMPStream: NetStream {
                     break
                 }
             }
-            self.sampler?.appendFile(file, completionHandler: completionHandler)
+            completion()
         }
     }
 
     func createMetaData() -> ASObject {
         metadata.removeAll()
 #if os(iOS) || os(macOS)
-        if let _: AVCaptureInput = mixer.videoIO.input {
+ //       if let _: AVCaptureInput = mixer.videoIO.input {
             metadata["width"] = mixer.videoIO.encoder.width
             metadata["height"] = mixer.videoIO.encoder.height
             metadata["framerate"] = mixer.videoIO.fps
             metadata["videocodecid"] = FLVVideoCodec.avc.rawValue
             metadata["videodatarate"] = mixer.videoIO.encoder.bitrate / 1000
-        }
+ //       }
         if let _: AVCaptureInput = mixer.audioIO.input {
             metadata["audiocodecid"] = FLVAudioCodec.aac.rawValue
             metadata["audiodatarate"] = mixer.audioIO.encoder.bitrate / 1000

@@ -45,7 +45,6 @@
 		0A0968BE249B872D0031F142 /* H264+AVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A09685E249B872D0031F142 /* H264+AVC.swift */; };
 		0A0968BF249B872D0031F142 /* AudioSpecificConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A09685F249B872D0031F142 /* AudioSpecificConfig.swift */; };
 		0A0968C0249B872D0031F142 /* MP4Sampler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A096860249B872D0031F142 /* MP4Sampler.swift */; };
-		0A0968C1249B872D0031F142 /* NALUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A096861249B872D0031F142 /* NALUnit.swift */; };
 		0A0968C2249B872D0031F142 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A096863249B872D0031F142 /* Constants.swift */; };
 		0A0968C3249B872D0031F142 /* AnyUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A096864249B872D0031F142 /* AnyUtil.swift */; };
 		0A0968C4249B872D0031F142 /* DeviceUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A096865249B872D0031F142 /* DeviceUtil.swift */; };
@@ -307,6 +306,7 @@
 		0AAD2D612447368600B6152C /* PlayDemoVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD2D592447368500B6152C /* PlayDemoVideo.swift */; };
 		0AAD2D632447369300B6152C /* PlayDemoVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD2D622447369300B6152C /* PlayDemoVideo.swift */; };
 		0AB110E8245D8B6400BDC00D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AB110E7245D8B6400BDC00D /* Settings.bundle */; };
+		0AB7210F24A2A04000F8A95C /* MP4SamplerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB7210E24A2A03F00F8A95C /* MP4SamplerProtocol.swift */; };
 		0AC07D43240FE227001A85BE /* SaveCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC07D42240FE227001A85BE /* SaveCenter.swift */; };
 		0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */; };
 		0ACCDE6B23FDABD100381207 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCDE6A23FDABD100381207 /* CameraButton.swift */; };
@@ -488,7 +488,6 @@
 		0A09685E249B872D0031F142 /* H264+AVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "H264+AVC.swift"; sourceTree = "<group>"; };
 		0A09685F249B872D0031F142 /* AudioSpecificConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioSpecificConfig.swift; sourceTree = "<group>"; };
 		0A096860249B872D0031F142 /* MP4Sampler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MP4Sampler.swift; sourceTree = "<group>"; };
-		0A096861249B872D0031F142 /* NALUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NALUnit.swift; sourceTree = "<group>"; };
 		0A096863249B872D0031F142 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0A096864249B872D0031F142 /* AnyUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyUtil.swift; sourceTree = "<group>"; };
 		0A096865249B872D0031F142 /* DeviceUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceUtil.swift; sourceTree = "<group>"; };
@@ -687,6 +686,10 @@
 		0AAD2D592447368500B6152C /* PlayDemoVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayDemoVideo.swift; sourceTree = "<group>"; };
 		0AAD2D622447369300B6152C /* PlayDemoVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayDemoVideo.swift; sourceTree = "<group>"; };
 		0AB110E7245D8B6400BDC00D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		0AB7210524A29E2900F8A95C /* VideoIOComponent+Extension-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VideoIOComponent+Extension-macOS.swift"; sourceTree = "<group>"; };
+		0AB7210624A29E2900F8A95C /* DisplayLink-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DisplayLink-macOS.swift"; sourceTree = "<group>"; };
+		0AB7210724A29E2900F8A95C /* NetStream+Extension-macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetStream+Extension-macOS.swift"; sourceTree = "<group>"; };
+		0AB7210E24A2A03F00F8A95C /* MP4SamplerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MP4SamplerProtocol.swift; sourceTree = "<group>"; };
 		0AC07D42240FE227001A85BE /* SaveCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCenter.swift; sourceTree = "<group>"; };
 		0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiPopupViewController.swift; sourceTree = "<group>"; };
 		0ACCDE6A23FDABD100381207 /* CameraButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
@@ -754,6 +757,7 @@
 				0A096862249B872D0031F142 /* Util */,
 				0A096874249B872D0031F142 /* Codec */,
 				0A09687B249B872D0031F142 /* iOS */,
+				0AB7210424A29E2900F8A95C /* macOS */,
 				0A096880249B872D0031F142 /* RTMP */,
 				0A096892249B872D0031F142 /* Media */,
 			);
@@ -814,10 +818,10 @@
 			isa = PBXGroup;
 			children = (
 				0A09685D249B872D0031F142 /* MP4Reader.swift */,
+				0AB7210E24A2A03F00F8A95C /* MP4SamplerProtocol.swift */,
 				0A09685E249B872D0031F142 /* H264+AVC.swift */,
 				0A09685F249B872D0031F142 /* AudioSpecificConfig.swift */,
 				0A096860249B872D0031F142 /* MP4Sampler.swift */,
-				0A096861249B872D0031F142 /* NALUnit.swift */,
 			);
 			path = ISO;
 			sourceTree = "<group>";
@@ -1303,6 +1307,16 @@
 			path = DashboardViewController;
 			sourceTree = "<group>";
 		};
+		0AB7210424A29E2900F8A95C /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				0AB7210524A29E2900F8A95C /* VideoIOComponent+Extension-macOS.swift */,
+				0AB7210624A29E2900F8A95C /* DisplayLink-macOS.swift */,
+				0AB7210724A29E2900F8A95C /* NetStream+Extension-macOS.swift */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
 		0ACCDE7023FDB25E00381207 /* AuxCamera */ = {
 			isa = PBXGroup;
 			children = (
@@ -1586,7 +1600,6 @@
 				0A1D0A2E23F941BD006D9AFD /* RovFuelgauge.swift in Sources */,
 				0A3CB02E246414D7009F827B /* DiveCollectionViewCell.swift in Sources */,
 				0A0968A5249B872D0031F142 /* NetStream.swift in Sources */,
-				0A0968C1249B872D0031F142 /* NALUnit.swift in Sources */,
 				0A0968BF249B872D0031F142 /* AudioSpecificConfig.swift in Sources */,
 				0A1D0A4123F941C4006D9AFD /* DDSDiscoveryListener.swift in Sources */,
 				0A0968AB249B872D0031F142 /* URL+Extension.swift in Sources */,
@@ -1620,6 +1633,7 @@
 				0A95068123F9B975004E5546 /* DashboardViewController.swift in Sources */,
 				0A0968BC249B872D0031F142 /* FLVTagType.swift in Sources */,
 				0A7C3B7D245C372F00330F63 /* UIStoryboardSegue+Extensions.swift in Sources */,
+				0AB7210F24A2A04000F8A95C /* MP4SamplerProtocol.swift in Sources */,
 				0A72A7F72433C91400AE9B2E /* RovGPS.swift in Sources */,
 				0A0968BD249B872D0031F142 /* MP4Reader.swift in Sources */,
 				0AE206AC2423AADB0017934B /* Alerts.swift in Sources */,
