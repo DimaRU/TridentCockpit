@@ -23,7 +23,6 @@ class DiveViewController: UIViewController {
     @IBOutlet weak var stabilizeSwitch: PWSwitch!
     @IBOutlet weak var stabilizeLabel: UILabel!
     @IBOutlet weak var telemetryOverlayLabel: UILabel!
-    
 
     @IBOutlet weak var lightButton: UIButton!
     @IBOutlet weak var headingView: RovHeadingView!
@@ -141,8 +140,8 @@ class DiveViewController: UIViewController {
         videoProcessor = VideoProcessor(delegate: videoProcessorMulticastDelegate)
         setVideoSizing(fill: Preference.videoSizingFill)
 
-        if Preference.recordOnboardVideo || Preference.recordPilotVideo || videoStreamer != nil {
-            cameraControlView = CameraControlView.instantiate(videoProcessorMulticastDelegate, videoStreamer: videoStreamer)
+        if Preference.recordOnboardVideo || Preference.recordPilotVideo {
+            cameraControlView = CameraControlView.instantiate(videoProcessorMulticastDelegate)
             view.addSubview(cameraControlView!)
         }
         liveViewContainer.isHidden = true
