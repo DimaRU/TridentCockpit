@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DVS-V7-B3x">
-                                <rect key="frame" x="16" y="111.5" width="568" height="133"/>
+                                <rect key="frame" x="16" y="72" width="568" height="133"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="d0u-df-pyl">
                                         <rect key="frame" x="0.0" y="0.0" width="568" height="133"/>
@@ -60,7 +60,7 @@
                             <constraint firstItem="DVS-V7-B3x" firstAttribute="leading" secondItem="oOC-hK-t8A" secondAttribute="leading" constant="16" id="KT4-l9-ZRa">
                                 <variation key="widthClass=compact" constant="16"/>
                             </constraint>
-                            <constraint firstItem="DVS-V7-B3x" firstAttribute="centerY" secondItem="Jkh-ry-v7R" secondAttribute="centerY" id="Q6f-hB-UZL"/>
+                            <constraint firstItem="DVS-V7-B3x" firstAttribute="top" secondItem="oOC-hK-t8A" secondAttribute="top" constant="16" id="YVv-cP-xKO"/>
                             <constraint firstItem="oOC-hK-t8A" firstAttribute="trailing" secondItem="DVS-V7-B3x" secondAttribute="trailing" constant="16" id="sr5-xf-rSt">
                                 <variation key="widthClass=compact" constant="16"/>
                             </constraint>

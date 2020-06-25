@@ -30,6 +30,12 @@ struct Preference {
     @UserPreference("AuxCameraPlayerViewCPH")
     static var auxCameraPlayerViewCPH: CGFloat?
 
+    @UserPreference("StreamStatsViewCPV")
+    static var streamStatsViewCPV: CGFloat?
+
+    @UserPreference("StreamStatsViewCPH")
+    static var streamStatsViewCPH: CGFloat?
+
     @UserPreferenceWithDefault("TridentStabilize", defaultValue: true)
     static var tridentStabilize: Bool
     

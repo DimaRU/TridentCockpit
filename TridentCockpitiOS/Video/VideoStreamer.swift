@@ -45,6 +45,7 @@ class VideoStreamer: NSObject, VideoProcessorDelegate {
     }
     
     func cleanup() {
+        disconnect()
     }
 
     func connect() {

@@ -11,6 +11,7 @@ class FloatingView: UIView {
     private var yConstraint: NSLayoutConstraint?
 
     var alignConst: CGFloat { 10 }
+    var offsetFromTop: CGFloat = 0
     private var viewCenter: CGPoint!
     private var isAlignFeedbackSent = false
 

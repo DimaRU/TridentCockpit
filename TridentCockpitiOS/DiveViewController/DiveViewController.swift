@@ -33,6 +33,7 @@ class DiveViewController: UIViewController {
     private let locationManager = CLLocationManager()
     private var cameraControlView: CameraControlView?
     private var auxCameraView: AuxCameraControlView?
+    private var streamStatsView: StreamStatsView?
     private var videoProcessor: VideoProcessor!
     private weak var videoStreamer: VideoStreamer?
     private let videoProcessorMulticastDelegate = VideoProcessorMulticastDelegate([])
@@ -146,7 +147,9 @@ class DiveViewController: UIViewController {
         }
         if let videoStreamer = videoStreamer {
             videoProcessorMulticastDelegate.add(videoStreamer)
-            videoStreamer.delegate = self
+            streamStatsView = StreamStatsView.instantiate(offsetFromTop: indicatorsView.bounds.height)
+            view.addSubview(streamStatsView!)
+            videoStreamer.delegate = streamStatsView!
         }
         liveViewContainer.isHidden = true
         if Gopro3API.isConnected {
@@ -188,13 +191,14 @@ class DiveViewController: UIViewController {
         headingView.superViewDidResize(to: size)
         auxCameraView?.superViewDidResize(to: size)
         liveViewContainer?.superViewDidResize(to: size)
+        streamStatsView?.superViewDidResize(to: size)
 
         guard let before = self.view.window?.windowScene?.interfaceOrientation else { return }
         coordinator.animate(alongsideTransition: nil) { _ in
             guard let after = self.view.window?.windowScene?.interfaceOrientation else { return }
             if before != after {
                 self.setHeadingOrienation()
-                self.updateLightButtonContraint()
+                self.updateLightButtonConstraint()
             }
         }
     }
@@ -213,7 +217,7 @@ class DiveViewController: UIViewController {
         super.viewDidAppear(animated)
         UIApplication.shared.isIdleTimerDisabled = true
         setHeadingOrienation()
-        updateLightButtonContraint()
+        updateLightButtonConstraint()
         
         if let controllerName = tridentControl.controllerName {
             alertMessage(message: controllerName + " connected", delay: 3)
@@ -345,7 +349,7 @@ class DiveViewController: UIViewController {
         setVideoSizing(fill: !Preference.videoSizingFill)
     }
     
-    private func updateLightButtonContraint() {
+    private func updateLightButtonConstraint() {
         guard
             let orientation = self.view.window?.windowScene?.interfaceOrientation,
             let constraint = view.constraints.first(where: { $0.identifier == "trailing" }) else { return }
@@ -526,15 +530,6 @@ class DiveViewController: UIViewController {
         FastRTPS.registerWriter(topic: .rovControllerStateRequested, ddsType: RovControllerStatus.self)
     }
 
-}
-
-extension DiveViewController: VideoStreamerDelegate {
-    func state(connected: Bool) {
-    }
-    
-    func stats(fps: UInt16, bytesOutPerSecond: Int32, totalBytesOut: Int64) {
-    }
-    
 }
 
 extension DiveViewController: TridentControlDelegate {
