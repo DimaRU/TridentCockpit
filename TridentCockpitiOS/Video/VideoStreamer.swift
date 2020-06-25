@@ -9,12 +9,14 @@ import VideoToolbox
 
 protocol VideoStreamerDelegate: class {
     func state(connected: Bool)
+    func stats(fps: UInt16, bytesOutPerSecond: Int32, totalBytesOut: Int64)
 }
 
-class VideoStreamer: VideoProcessorDelegate {
+class VideoStreamer: NSObject, VideoProcessorDelegate {
     private var streamKey: String
     private var streamURL: String
     private var retryCount: Int = 0
+    private var observation: NSKeyValueObservation?
     weak var delegate: VideoStreamerDelegate?
 
     private lazy var rtmpConnection: RTMPConnection = {
@@ -24,6 +26,7 @@ class VideoStreamer: VideoProcessorDelegate {
         return connection
     }()
     
+    @objc
     private lazy var rtmpStream: RTMPStream = {
         RTMPStream(connection: rtmpConnection)
     }()
@@ -34,6 +37,7 @@ class VideoStreamer: VideoProcessorDelegate {
     }
     
     deinit {
+        observation?.invalidate()
         rtmpConnection.removeEventListener(.ioError, selector: #selector(rtmpErrorHandler), observer: self)
         rtmpConnection.removeEventListener(.rtmpStatus, selector: #selector(rtmpStatusEvent), observer: self)
         rtmpStream.close()
@@ -45,6 +49,11 @@ class VideoStreamer: VideoProcessorDelegate {
 
     func connect() {
         rtmpConnection.connect(streamURL, arguments: nil)
+        observation = observe(\.rtmpStream.currentFPS, options: .new) { (object, change) in
+            self.delegate?.stats(fps: self.rtmpStream.currentFPS,
+                                 bytesOutPerSecond: self.rtmpConnection.currentBytesOutPerSecond,
+                                 totalBytesOut: self.rtmpConnection.totalBytesOut)
+        }
         rtmpStream.attachAudio(AVCaptureDevice.default(for: .audio)) { error in
             print(error)
         }
@@ -70,7 +79,6 @@ class VideoStreamer: VideoProcessorDelegate {
             .bitrate: 1500000,
             .maxKeyFrameIntervalDuration: 3,
         ]
-
         rtmpStream.audioSettings = [.bitrate: 32000]
     }
         
@@ -85,24 +93,34 @@ class VideoStreamer: VideoProcessorDelegate {
     
     @objc
     private func rtmpErrorHandler(_ notification: Notification) {
+        let e = Event.from(notification)
+        print("Error:", e)
         rtmpConnection.connect(streamURL)
     }
     
     @objc
     private func rtmpStatusEvent(_ notification: Notification) {
         let e = Event.from(notification)
+        print(e)
         guard
             let data: ASObject = e.data as? ASObject,
             let code: String = data["code"] as? String else {
                 return
         }
+        print("rtmp status:", code)
         switch code {
+        case RTMPConnection.Code.connectRejected.rawValue:
+            break
         case RTMPConnection.Code.connectSuccess.rawValue:
+            print("Connection success")
             retryCount = 0
             rtmpStream.publish(streamKey)
+        case RTMPStream.Code.publishFailed.rawValue:
+            break
+        case RTMPStream.Code.unpublishSuccess.rawValue:
+            break
         case RTMPStream.Code.publishStart.rawValue:
             delegate?.state(connected: true)
-            print("Publish start")
         case RTMPConnection.Code.connectFailed.rawValue,
              RTMPConnection.Code.connectClosed.rawValue:
             delegate?.state(connected: false)

@@ -80,6 +80,9 @@ extension StreamSetupViewController: UITextFieldDelegate {
 
 }
 extension StreamSetupViewController: VideoStreamerDelegate {
+    func stats(fps: UInt16, bytesOutPerSecond: Int32, totalBytesOut: Int64) {
+    }
+    
     func state(connected: Bool) {
         DispatchQueue.main.async {
             UIView.animate(withDuration: 0.3, animations: {

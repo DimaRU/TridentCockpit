@@ -144,6 +144,10 @@ class DiveViewController: UIViewController {
             cameraControlView = CameraControlView.instantiate(videoProcessorMulticastDelegate)
             view.addSubview(cameraControlView!)
         }
+        if let videoStreamer = videoStreamer {
+            videoProcessorMulticastDelegate.add(videoStreamer)
+            videoStreamer.delegate = self
+        }
         liveViewContainer.isHidden = true
         if Gopro3API.isConnected {
             guard let liveViewController = children.first(where: { $0 is AVPlayerViewController}) as? AVPlayerViewController else { return }
@@ -522,6 +526,15 @@ class DiveViewController: UIViewController {
         FastRTPS.registerWriter(topic: .rovControllerStateRequested, ddsType: RovControllerStatus.self)
     }
 
+}
+
+extension DiveViewController: VideoStreamerDelegate {
+    func state(connected: Bool) {
+    }
+    
+    func stats(fps: UInt16, bytesOutPerSecond: Int32, totalBytesOut: Int64) {
+    }
+    
 }
 
 extension DiveViewController: TridentControlDelegate {
