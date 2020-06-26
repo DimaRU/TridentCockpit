@@ -75,9 +75,9 @@ class VideoStreamer: NSObject, VideoProcessorDelegate {
     }
     
     func cleanup() {
+        disconnect()
         rtmpStream.close()
         rtmpStream.dispose()
-        disconnect()
     }
     
     func connect() {

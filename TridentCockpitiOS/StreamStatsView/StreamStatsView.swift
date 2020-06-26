@@ -14,9 +14,11 @@ class StreamStatsView: FloatingView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        cornerRadius = 6
+        cornerRadius = 3
         translatesAutoresizingMaskIntoConstraints = false
         backgroundColor = UIColor(named: "cameraControlBackground")!
+        fpsLabel.font = UIFont.monospacedSystemFont(ofSize: 14, weight: .regular)
+        bpsLabel.font = UIFont.monospacedSystemFont(ofSize: 14, weight: .regular)
     }
 
     override func loadDefaults() -> CGPoint {
@@ -51,18 +53,23 @@ class StreamStatsView: FloatingView {
 }
 
 extension StreamStatsView: VideoStreamerDelegate {
-    func state(connected: Bool) {
+    func showError(_ error: StreamerError) { }
+    
+    func state(published: Bool) {
         DispatchQueue.main.async {
-            self.streamStateLabel.text = connected ? "Stream: live" : "Stream: disconnected"
+            self.streamStateLabel.text = published ? "Stream: live" : "Stream: disconnected"
+            if !published {
+                self.fpsLabel.text = nil
+                self.bpsLabel.text = nil
+            }
         }
     }
     
     func stats(fps: UInt16, bytesOutPerSecond: Int32, totalBytesOut: Int64) {
         DispatchQueue.main.async {
-//            self.streamStateLabel.text = connected ? "Stream: live" : "Stream: disconnected"
-            self.fpsLabel.text = "fps: " + String(fps)
+            self.fpsLabel.text = String(fps) + "fps"
             let bps = Double(bytesOutPerSecond) * 8 / (1024 * 1024)
-            self.bpsLabel.text = String(format: "bps: %.2fm", bps)
+            self.bpsLabel.text = String(format: "%.1fMbps", bps)
         }
     }
 }

@@ -17,10 +17,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DVS-V7-B3x">
-                                <rect key="frame" x="16" y="72" width="568" height="133"/>
+                                <rect key="frame" x="16" y="64" width="568" height="174"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="d0u-df-pyl">
-                                        <rect key="frame" x="0.0" y="0.0" width="568" height="133"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="d0u-df-pyl">
+                                        <rect key="frame" x="0.0" y="0.0" width="568" height="174"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server URL" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JaO-GB-9W1">
                                                 <rect key="frame" x="0.0" y="0.0" width="568" height="20.5"/>
@@ -50,6 +50,16 @@
                                                     <outlet property="delegate" destination="Tza-cf-6VX" id="IuY-d2-XWY"/>
                                                 </connections>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEh-Gl-Gem">
+                                                <rect key="frame" x="0.0" y="141" width="568" height="33"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <state key="normal" title="Connect"/>
+                                                <state key="selected" title="Disconnect"/>
+                                                <state key="highlighted" title="Disconnect"/>
+                                                <connections>
+                                                    <action selector="connectButtonPress:" destination="Tza-cf-6VX" eventType="touchUpInside" id="NWT-He-DgQ"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -60,7 +70,7 @@
                             <constraint firstItem="DVS-V7-B3x" firstAttribute="leading" secondItem="oOC-hK-t8A" secondAttribute="leading" constant="16" id="KT4-l9-ZRa">
                                 <variation key="widthClass=compact" constant="16"/>
                             </constraint>
-                            <constraint firstItem="DVS-V7-B3x" firstAttribute="top" secondItem="oOC-hK-t8A" secondAttribute="top" constant="16" id="YVv-cP-xKO"/>
+                            <constraint firstItem="DVS-V7-B3x" firstAttribute="top" secondItem="oOC-hK-t8A" secondAttribute="top" constant="8" id="YVv-cP-xKO"/>
                             <constraint firstItem="oOC-hK-t8A" firstAttribute="trailing" secondItem="DVS-V7-B3x" secondAttribute="trailing" constant="16" id="sr5-xf-rSt">
                                 <variation key="widthClass=compact" constant="16"/>
                             </constraint>
@@ -68,21 +78,17 @@
                         <viewLayoutGuide key="safeArea" id="oOC-hK-t8A"/>
                     </view>
                     <navigationItem key="navigationItem" title="Streaming" id="o3n-Kw-FNT">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="L8j-Tr-8Ch">
+                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="L8j-Tr-8Ch">
                             <connections>
                                 <action selector="cancelButtonPress:" destination="Tza-cf-6VX" id="L33-6W-2dy"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Connect" id="nco-dW-AOp">
-                            <connections>
-                                <action selector="connectButtonPress:" destination="Tza-cf-6VX" id="stU-ni-5By"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <value key="contentSizeForViewInPopover" type="size" width="600" height="300"/>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="connectButton" destination="nco-dW-AOp" id="B5D-ud-YSk"/>
+                        <outlet property="cancelButton" destination="L8j-Tr-8Ch" id="SW8-gG-uKe"/>
+                        <outlet property="connectButton" destination="KEh-Gl-Gem" id="cZv-Dg-45F"/>
                         <outlet property="serverURLField" destination="FIA-Lg-I5v" id="oZf-xe-i4R"/>
                         <outlet property="streamKeyField" destination="wge-dF-1rB" id="31C-ds-Kvs"/>
                         <segue destination="XUF-13-0yT" kind="unwind" identifier="unwindToDashboardSegue" customClass="UIStoryboardSegueWithCompletion" customModule="TridentCockpitiOS" customModuleProvider="target" unwindAction="unwindToDashboardWithUnwindSegue:" id="fNA-SH-H8e"/>

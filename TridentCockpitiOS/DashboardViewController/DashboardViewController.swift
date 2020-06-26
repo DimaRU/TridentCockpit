@@ -130,6 +130,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         if connectionMonitor.isConnected {
             startRefreshDeviceState()
         }
+        videoStreamer?.delegate = self
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -297,6 +298,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
             let model = Gopro3API.getString(from: data.advanced(by: 3))
             self.cameraModelLabel.text = model[1]
             self.cameraFirmwareLabel.text = model[0]
+            self.navigationItem.getItem(for: .connectCamera)?.image = UIImage(systemName: "camera.fill")
         }.catch {
             self.alertNetwork(error: $0)
         }
@@ -386,9 +388,10 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         
     func didEnterBackground() {
         print(#function)
-        self.ddsListenerTimer?.invalidate()
-        self.ddsListener?.stop()
-        self.ddsListener = nil
+        ddsListenerTimer?.invalidate()
+        ddsListener?.stop()
+        ddsListener = nil
+        
         spinner?.hide()
         spinner = nil
         view.layer.contents = nil       // save memory
@@ -560,7 +563,21 @@ extension DashboardViewController: GetWifiAPProtocol {
 }
 
 extension DashboardViewController: StreamSetupViewControllerDelegate {
-    func streamer(_ videoStreamer: VideoStreamer) {
+    func streamer(_ videoStreamer: VideoStreamer?) {
         self.videoStreamer = videoStreamer
+        let name = videoStreamer == nil ? "play.rectangle" : "play.rectangle.fill"
+        navigationItem.getItem(for: .setupStreaming)?.image = UIImage(systemName: name)
     }
+}
+
+extension DashboardViewController: VideoStreamerDelegate {
+    func state(published: Bool) {
+        if !published {
+            streamer(nil)
+        }
+    }
+    
+    func stats(fps: UInt16, bytesOutPerSecond: Int32, totalBytesOut: Int64) {}
+    
+    func showError(_ error: StreamerError) {}
 }

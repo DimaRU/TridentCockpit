@@ -7,13 +7,14 @@
 import UIKit
 
 protocol StreamSetupViewControllerDelegate: class {
-    func streamer(_ videoStreamer: VideoStreamer)
+    func streamer(_ videoStreamer: VideoStreamer?)
 }
 
 class StreamSetupViewController: UIViewController {
     @IBOutlet weak var serverURLField: UITextField!
     @IBOutlet weak var streamKeyField: UITextField!
-    @IBOutlet weak var connectButton: UIBarButtonItem!
+    @IBOutlet weak var cancelButton: UIBarButtonItem!
+    @IBOutlet weak var connectButton: UIButton!
     private var videoStreamer: VideoStreamer?
     weak var delegate: StreamSetupViewControllerDelegate?
 
@@ -26,6 +27,9 @@ class StreamSetupViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        print(#file, #function)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +40,16 @@ class StreamSetupViewController: UIViewController {
     }
     
     @IBAction func connectButtonPress(_ sender: Any) {
+        serverURLField.resignFirstResponder()
+        streamKeyField.resignFirstResponder()
+        if connectButton.isSelected {
+            videoStreamer?.disconnect()
+            videoStreamer = nil
+            delegate?.streamer(nil)
+            connectButton.isSelected = false
+            cancelButton.title = "Cancel"
+            return
+        }
         guard checkInput() else { return }
         
         Preference.streamURL = serverURLField.text!
@@ -47,7 +61,9 @@ class StreamSetupViewController: UIViewController {
     }
     
     @IBAction func cancelButtonPress(_ sender: Any) {
-        dismiss(animated: true)
+        dismiss(animated: true) {
+            self.videoStreamer?.delegate = nil
+        }
     }
 
     private func checkInput() -> Bool {
@@ -55,13 +71,11 @@ class StreamSetupViewController: UIViewController {
             let serverURL = serverURLField.text,
             let streamKey = streamKeyField.text,
             let url = URL(string: serverURL),
+            let scheme = url.scheme,
             !streamKey.isEmpty else {
                 return false
         }
-        if url.scheme == "rtmp" || url.scheme == "rtmps" {
-            return true
-        }
-        return false
+        return RTMPConnection.supportedProtocols.contains(scheme)
     }
 }
 
@@ -77,21 +91,21 @@ extension StreamSetupViewController: UITextFieldDelegate {
         }
         return true
     }
-
 }
+
 extension StreamSetupViewController: VideoStreamerDelegate {
-    func stats(fps: UInt16, bytesOutPerSecond: Int32, totalBytesOut: Int64) {
+    func showError(_ error: StreamerError) {
+        error.alert(delay: 5)
     }
     
-    func state(connected: Bool) {
+    func stats(fps: UInt16, bytesOutPerSecond: Int32, totalBytesOut: Int64) {}
+    
+    func state(published: Bool) {
+        guard published else { return }
         DispatchQueue.main.async {
-            UIView.animate(withDuration: 0.3, animations: {
-                self.connectButton.title = "Connected"
-            }) { finished in
-                self.dismiss(animated: true) {
-                    self.delegate?.streamer(self.videoStreamer!)
-                }
-            }
+            self.connectButton.isSelected = true
+            self.cancelButton.title = "Done"
+            self.delegate?.streamer(self.videoStreamer!)
         }
     }
 }

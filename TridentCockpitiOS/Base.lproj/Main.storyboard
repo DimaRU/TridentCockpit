@@ -392,23 +392,23 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Dashboard" id="Nfv-z7-uCU">
-                        <leftBarButtonItems>
-                            <barButtonItem tag="1" image="wifi" catalog="system" width="50" id="7XO-rw-lZX">
-                                <connections>
-                                    <action selector="connectWifiButtonPress:" destination="BYZ-38-t0r" id="tpT-sp-Qco"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem tag="2" image="camera.fill" catalog="system" width="50" id="m2y-o2-9l5">
-                                <connections>
-                                    <action selector="connectCameraButtonPress:" destination="BYZ-38-t0r" id="07s-Sy-kou"/>
-                                </connections>
-                            </barButtonItem>
+                        <barButtonItem key="leftBarButtonItem" tag="1" image="wifi" catalog="system" width="50" id="7XO-rw-lZX">
+                            <connections>
+                                <action selector="connectWifiButtonPress:" destination="BYZ-38-t0r" id="tpT-sp-Qco"/>
+                            </connections>
+                        </barButtonItem>
+                        <rightBarButtonItems>
                             <barButtonItem tag="4" image="play.rectangle" catalog="system" id="xuW-5G-i2n">
                                 <connections>
                                     <segue destination="2T8-Jm-g88" kind="presentation" modalPresentationStyle="formSheet" id="eJw-K8-Gdq"/>
                                 </connections>
                             </barButtonItem>
-                        </leftBarButtonItems>
+                            <barButtonItem tag="2" image="camera" catalog="system" width="50" id="m2y-o2-9l5">
+                                <connections>
+                                    <action selector="connectCameraButtonPress:" destination="BYZ-38-t0r" id="07s-Sy-kou"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="appVersionLabel" destination="Stl-uE-Ea9" id="AEG-Io-cKU"/>
@@ -705,7 +705,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="camera.fill" catalog="system" width="128" height="96"/>
+        <image name="camera" catalog="system" width="128" height="96"/>
         <image name="film.fill" catalog="system" width="128" height="93"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
         <image name="play.rectangle" catalog="system" width="128" height="93"/>

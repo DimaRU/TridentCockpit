@@ -150,6 +150,7 @@ class DiveViewController: UIViewController {
             streamStatsView = StreamStatsView.instantiate(offsetFromTop: indicatorsView.bounds.height)
             view.addSubview(streamStatsView!)
             videoStreamer.delegate = streamStatsView!
+            streamStatsView?.state(published: videoStreamer.isPublished) // May be already dead
         }
         liveViewContainer.isHidden = true
         if Gopro3API.isConnected {

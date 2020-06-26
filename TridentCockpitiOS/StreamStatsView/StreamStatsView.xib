@@ -10,25 +10,25 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTK-Wa-zZe" customClass="StreamStatsView" customModule="TridentCockpitiOS" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="302" height="35"/>
+            <rect key="frame" x="0.0" y="0.0" width="235" height="33"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" alignment="lastBaseline" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="ZOl-eT-yFM">
-                    <rect key="frame" x="8" y="8" width="278" height="19"/>
+                    <rect key="frame" x="12" y="7" width="203" height="19"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stream: disconnected" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQM-Nx-Q2q">
-                            <rect key="frame" x="0.0" y="0.0" width="150.5" height="18"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Stream: live" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LQM-Nx-Q2q">
+                            <rect key="frame" x="0.0" y="0.0" width="80.5" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 fps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fi5-Kc-bzL">
-                            <rect key="frame" x="158.5" y="0.0" width="44.5" height="18"/>
+                            <rect key="frame" x="88.5" y="0.0" width="44.5" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,55Mbps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hm4-2e-TVA">
-                            <rect key="frame" x="211" y="0.0" width="67" height="18"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1,5 Mbps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hm4-2e-TVA">
+                            <rect key="frame" x="141" y="0.0" width="62" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -38,10 +38,10 @@
             </subviews>
             <color key="backgroundColor" name="cameraControlBackground"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="ZOl-eT-yFM" secondAttribute="trailing" constant="16" id="Ra2-Mg-7rK"/>
-                <constraint firstItem="ZOl-eT-yFM" firstAttribute="top" secondItem="aTK-Wa-zZe" secondAttribute="top" constant="8" id="aTg-Tf-Wai"/>
-                <constraint firstItem="ZOl-eT-yFM" firstAttribute="leading" secondItem="aTK-Wa-zZe" secondAttribute="leading" constant="8" id="jjI-GL-EVz"/>
-                <constraint firstAttribute="bottom" secondItem="ZOl-eT-yFM" secondAttribute="bottom" constant="8" id="sBT-An-FeL"/>
+                <constraint firstAttribute="width" constant="235" id="QFB-eE-quN"/>
+                <constraint firstItem="ZOl-eT-yFM" firstAttribute="top" secondItem="aTK-Wa-zZe" secondAttribute="top" constant="7" id="aTg-Tf-Wai"/>
+                <constraint firstItem="ZOl-eT-yFM" firstAttribute="leading" secondItem="aTK-Wa-zZe" secondAttribute="leading" constant="12" id="jjI-GL-EVz"/>
+                <constraint firstAttribute="bottom" secondItem="ZOl-eT-yFM" secondAttribute="bottom" constant="7" id="sBT-An-FeL"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
@@ -51,7 +51,7 @@
                 <outlet property="fpsLabel" destination="Fi5-Kc-bzL" id="51Y-A2-U6i"/>
                 <outlet property="streamStateLabel" destination="LQM-Nx-Q2q" id="sQ0-HM-Z3C"/>
             </connections>
-            <point key="canvasLocation" x="-59.420289855072468" y="153.01339285714286"/>
+            <point key="canvasLocation" x="-104.34782608695653" y="153.01339285714286"/>
         </view>
     </objects>
     <resources>
