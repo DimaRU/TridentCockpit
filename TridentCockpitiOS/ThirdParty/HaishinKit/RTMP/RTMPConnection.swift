@@ -291,8 +291,8 @@ open class RTMPConnection: EventDispatcher {
             }
         }
         socket.delegate = self
-        socket.setProperty(parameters, forKey: "parameters")
         socket.securityLevel = uri.scheme == "rtmps" || uri.scheme == "rtmpts"  ? .negotiatedSSL : .none
+        socket.setProperty(parameters, forKey: "parameters")
         socket.connect(withName: uri.host!, port: uri.port ?? RTMPConnection.defaultPort)
     }
 

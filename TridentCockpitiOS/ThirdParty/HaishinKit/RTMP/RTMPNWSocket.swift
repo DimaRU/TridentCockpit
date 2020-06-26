@@ -15,7 +15,11 @@ final class RTMPNWSocket: RTMPSocketCompatible {
             delegate?.didSetReadyState(readyState)
         }
     }
-    var securityLevel: StreamSocketSecurityLevel = .none
+    var securityLevel: StreamSocketSecurityLevel = .none {
+        didSet {
+            parameters = securityLevel == .none ? .tcp : .tls
+        }
+    }
     var qualityOfService: DispatchQoS = .default
     var inputBuffer = Data()
     weak var delegate: RTMPSocketDelegate?
