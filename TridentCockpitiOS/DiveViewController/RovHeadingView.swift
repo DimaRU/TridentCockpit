@@ -8,20 +8,16 @@ import SceneKit
 
 class RovHeadingView: FloatingView {
 
-    private let sceneView = SCNView()
+    override var alignConst: CGFloat { -1 }
+    private weak var tridentNode: SCNNode?
+    private weak var camera: SCNNode?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         self.cornerRadius = 10
+        let sceneView = SCNView()
         sceneView.frame = bounds
         sceneView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
-        addSubview(sceneView)
-        initScene()
-    }
-
-    override var alignConst: CGFloat { -1 }
-
-    private func initScene() {
         guard let scene = SCNScene(named: "TridentCockpit.scnassets/trident.scn") else {
             fatalError("No scene file")
         }
@@ -30,9 +26,12 @@ class RovHeadingView: FloatingView {
         sceneView.autoenablesDefaultLighting = true
         sceneView.cameraControlConfiguration.allowsTranslation = false
         sceneView.scene = scene
-        let node = modelNode()
-        node.pivot = SCNMatrix4MakeRotation(.pi, 0, 0, 1)
+        camera = sceneView.pointOfView
+        tridentNode = scene.rootNode.childNode(withName: "trident", recursively: true)
+        tridentNode?.pivot = SCNMatrix4MakeRotation(.pi, 0, 0, 1)
         setCameraPos(yaw: .pi)
+
+        addSubview(sceneView)
     }
 
     func setCameraPos(yaw: Float) {
@@ -40,20 +39,14 @@ class RovHeadingView: FloatingView {
         let cz: Float = distance * cos(yaw)
         let cx: Float = distance * sin(yaw)
         let cy: Float = distance * sin(15.0 / 180 * .pi)
-        let camera = sceneView.pointOfView!
-        camera.simdPosition = simd_float3(x: cx, y: cy, z: cz)
-        camera.simdLook(at: simd_float3(x: 0, y: 0, z: 0),
+        camera?.simdPosition = simd_float3(x: cx, y: cy, z: cz)
+        camera?.simdLook(at: simd_float3(x: 0, y: 0, z: 0),
                         up: SCNNode.simdLocalUp,
                         localFront: SCNNode.simdLocalFront)
     }
     
     func setOrientation(_ orientation: RovQuaternion) {
-        let node = modelNode()
-        node.orientation = orientation.scnQuaternion()
-    }
-
-    private func modelNode() -> SCNNode {
-        sceneView.scene!.rootNode.childNode(withName: "trident", recursively: true)!
+        tridentNode?.orientation = orientation.scnQuaternion()
     }
 
     override func loadDefaults() -> CGPoint {
