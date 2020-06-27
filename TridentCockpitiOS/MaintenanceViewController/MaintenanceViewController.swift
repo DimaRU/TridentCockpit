@@ -37,12 +37,6 @@ class MaintenanceViewController: UIViewController, StoryboardInstantiable {
         }
     }
 
-    #if DEBUG
-    deinit {
-        print(String(describing: self), #function)
-    }
-    #endif
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         

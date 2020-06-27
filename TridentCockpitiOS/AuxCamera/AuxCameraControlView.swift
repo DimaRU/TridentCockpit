@@ -81,12 +81,6 @@ class AuxCameraControlView: FloatingView {
         stopLiveView()
     }
     
-    #if DEBUG
-    deinit {
-        print(String(describing: self), #function)
-    }
-    #endif
-    
     // MARK: Instaniate
     static func instantiate(liveViewContainer: FloatingView, liveViewController: AVPlayerViewController) -> AuxCameraControlView {
         let nib = UINib(nibName: "AuxCameraControlView", bundle: nil)

@@ -26,7 +26,6 @@ class StreamStatsView: FloatingView {
         // Top left corner
         let cph = (superview!.frame.minX + bounds.midX) / superview!.frame.width
         let cpv = (superview!.frame.minY + superview!.safeAreaInsets.top + offsetFromTop + bounds.midY) / superview!.frame.height
-        print(superview!.safeAreaInsets.top, superview!.safeAreaLayoutGuide)
         return CGPoint(x: cph, y: cpv)
     }
 

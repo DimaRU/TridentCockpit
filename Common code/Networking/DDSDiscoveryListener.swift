@@ -27,7 +27,6 @@ class DDSDiscoveryListener {
     }
     
     private func listenerStateDidChange(to newState: NWListener.State) {
-        print(newState)
     }
 
     private func didAccept(connection: NWConnection) {

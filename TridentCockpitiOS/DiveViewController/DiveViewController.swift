@@ -88,13 +88,6 @@ class DiveViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-
-    #if DEBUG
-    deinit {
-        print(String(describing: self), #function)
-    }
-    #endif
 
     // MARK: Overrides
     override func viewDidLoad() {

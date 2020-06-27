@@ -66,7 +66,7 @@ class VideoStreamer: NSObject, VideoProcessorDelegate {
     }
     
     deinit {
-        print(#file, #function)
+        print(#file, #line, #function)
         observation?.invalidate()
         rtmpConnection.removeEventListener(.ioError, selector: #selector(rtmpErrorHandler), observer: self)
         rtmpConnection.removeEventListener(.rtmpStatus, selector: #selector(rtmpStatusEvent), observer: self)
