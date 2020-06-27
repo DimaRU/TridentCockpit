@@ -26,7 +26,6 @@ class PastDivesViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        KingfisherManager.shared.cache.clearMemoryCache()
 //        KingfisherManager.shared.cache.clearDiskCache()
         KingfisherManager.shared.downloader.sessionConfiguration.httpMaximumConnectionsPerHost = 1
         KingfisherManager.shared.downloader.sessionConfiguration.waitsForConnectivity = false
@@ -75,6 +74,7 @@ class PastDivesViewController: UIViewController {
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        KingfisherManager.shared.cache.clearMemoryCache()
     }
     
     @objc func deviceRotated() {
@@ -386,21 +386,7 @@ extension PastDivesViewController: UICollectionViewDataSource  {
         cell.previewImage?.kf.setImage(with: imageURL)
         cell.downloadButton.downloadState = downloadState[recording.sessionId]!
         cell.downloadButton.progress = progressState[recording.sessionId] ?? 0
-        
-        cell.playButtonAction = { [weak self] in
-            guard let self = self,
-                let path = self.collectionView.indexPath(for: cell) else { return }
-            let recording = self.getRecording(by: path)
-            self.previewVideo(recording: recording, in: cell)
-        }
-        
-        cell.downloadButtonAction = { [weak self] in
-            guard let self = self,
-                let path = self.collectionView.indexPath(for: cell) else { return }
-            let recording = self.getRecording(by: path)
-            self.download(recordings: [recording])
-        }
-
+        cell.delegate = self
         return cell
     }
     
@@ -453,5 +439,20 @@ extension PastDivesViewController: RecordingsAPIProtocol {
         item.downloadButton.progress = progress
         downloadState[sessionId] = .run
         progressState[sessionId] = progress
+    }
+}
+
+extension PastDivesViewController: DiveCollectionViewCellDelegate {
+    
+    func playButtonAction(cell: DiveCollectionViewCell) {
+        guard let path = self.collectionView.indexPath(for: cell) else { return }
+        let recording = self.getRecording(by: path)
+        self.previewVideo(recording: recording, in: cell)
+    }
+    
+    func downloadButtonAction(cell: DiveCollectionViewCell) {
+        guard let path = self.collectionView.indexPath(for: cell) else { return }
+        let recording = self.getRecording(by: path)
+        self.download(recordings: [recording])
     }
 }

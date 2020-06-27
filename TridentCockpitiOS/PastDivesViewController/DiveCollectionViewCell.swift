@@ -6,6 +6,11 @@
 
 import UIKit
 
+protocol DiveCollectionViewCellDelegate: class {
+    func playButtonAction(cell: DiveCollectionViewCell)
+    func downloadButtonAction(cell: DiveCollectionViewCell)
+}
+
 class DiveCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak var previewImage: UIImageView!
@@ -13,15 +18,15 @@ class DiveCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var selectionImage: UIImageView!
     @IBOutlet weak var playButton: UIButton!
     @IBOutlet weak var downloadButton: SmartDownloadButton!
-    
-    var playButtonAction: (() -> Void)?
-    var downloadButtonAction: (() -> Void)?
+
+    weak var delegate: DiveCollectionViewCellDelegate?
+
     @IBAction func playButtonTap(_ sender: Any) {
-        playButtonAction?()
+        delegate?.playButtonAction(cell: self)
     }
-    
+
     @IBAction func downloadButtonTap(_ sender: Any) {
-        downloadButtonAction?()
+        delegate?.downloadButtonAction(cell: self)
     }
     
     override func awakeFromNib() {
@@ -33,6 +38,7 @@ class DiveCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         DivePlayerViewController.shared?.removeFromContainer()
+        delegate = nil
         downloadButton.downloadState = .start
         selectionImage.isHidden = true
         layer.borderWidth = 0
