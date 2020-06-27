@@ -5,7 +5,6 @@
 
 
 import UIKit
-import SceneKit
 import CoreLocation
 import FastRTPSBridge
 import AVKit
@@ -132,8 +131,8 @@ class DiveViewController: UIViewController {
         lightButton.cornerRadius = 5
         lightButton.backgroundColor = UIColor.white.withAlphaComponent(0.2)
         
-        let node = headingView.modelNode()
-        node.orientation = RovQuaternion(x: -0.119873046875, y: 0.99249267578125, z: 0.01611328125, w: 0.01910400390625).scnQuaternion()
+        let orientation = RovQuaternion(x: -0.119873046875, y: 0.99249267578125, z: 0.01611328125, w: 0.01910400390625)
+        headingView.setOrientation(orientation)
         
         tridentControl.setup(delegate: self)
 
@@ -464,9 +463,8 @@ class DiveViewController: UIViewController {
         }
 
         FastRTPS.registerReader(topic: .rovAttitude) { [weak self] (attitude: RovAttitude) in
-            let node = self?.headingView.modelNode()
             let orientation = attitude.orientation
-            node?.orientation = orientation.scnQuaternion()
+            self?.headingView.setOrientation(orientation)
 //            print((1 + orientation.yaw / .pi) * 180)
         }
         

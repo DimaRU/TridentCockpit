@@ -46,8 +46,13 @@ class RovHeadingView: FloatingView {
                         up: SCNNode.simdLocalUp,
                         localFront: SCNNode.simdLocalFront)
     }
+    
+    func setOrientation(_ orientation: RovQuaternion) {
+        let node = modelNode()
+        node.orientation = orientation.scnQuaternion()
+    }
 
-    func modelNode() -> SCNNode {
+    private func modelNode() -> SCNNode {
         sceneView.scene!.rootNode.childNode(withName: "trident", recursively: true)!
     }
 
