@@ -7,30 +7,28 @@ import Foundation
 
 class MulticastDelegate<T> {
     private let delegates: NSHashTable<AnyObject> = NSHashTable.weakObjects()
-    let semaphore = DispatchSemaphore(value: 1)
-    
+
     func add(_ delegate: T) {
-        semaphore.wait()
+        objc_sync_enter(delegates)
         delegates.add(delegate as AnyObject)
-        semaphore.signal()
+        objc_sync_exit(delegates)
     }
 
     func remove(_ delegateToRemove: T) {
-        semaphore.wait()
+        objc_sync_enter(delegates)
         for delegate in delegates.allObjects {
             if delegate === delegateToRemove as AnyObject {
                 delegates.remove(delegate)
             }
         }
-        semaphore.signal()
+        objc_sync_exit(delegates)
     }
 
     func invoke(_ invocation: (T) -> Void) {
-        semaphore.wait()
-        let allObjects = delegates.allObjects
-        semaphore.signal()
-        for delegate in allObjects.reversed() {
-            invocation(delegate as! T)
+        autoreleasepool {
+            for delegate in delegates.allObjects.reversed() {
+                invocation(delegate as! T)
+            }
         }
     }
 }
