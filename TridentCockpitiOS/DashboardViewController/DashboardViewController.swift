@@ -116,6 +116,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         hideInterface()
         backgroundWatch = BackgroundWatch(delegate: self)
         addCircularProgressView(to: view)
+        navigationItem.rightBarButtonItems?.removeAll(where: { $0.tag == UINavigationItem.Identifier.setupStreaming.rawValue })
         connectTrident()
         if CLLocationManager.authorizationStatus() == .notDetermined {
             locationManager = CLLocationManager()
