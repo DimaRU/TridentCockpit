@@ -18,7 +18,16 @@ class VideoRecorder: VideoProcessorDelegate {
         let fileName = RecordingsAPI.pilotFileName(startTimestamp: startTimestamp)
         let url = RecordingsAPI.moviesURL.appendingPathComponent(fileName)
         try? FileManager.default.removeItem(at: url)
-        writer = try AVAssetWriter(outputURL: url, fileType: .mov)
+        let fileType: AVFileType
+        switch Preference.pilotVideoFileType {
+        case "mov":
+            fileType = .mov
+        case "mp4":
+            fileType = .mp4
+        default:
+            fatalError("Unsupported file type")
+        }
+        writer = try AVAssetWriter(outputURL: url, fileType: fileType)
         
         guard let location = location else { return }
         let gpsMetadata = AVMutableMetadataItem()
