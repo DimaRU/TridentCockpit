@@ -13,6 +13,7 @@ class VideoRecorder: VideoProcessorDelegate {
     var sessionStarted = false
     
     init(startDate: String, location: CLLocation?) throws {
+        RecordingsAPI.setupRecodingsDirs()
         let startTimestamp = startDate.dateFromISO8601!
         let fileName = RecordingsAPI.pilotFileName(startTimestamp: startTimestamp)
         let url = RecordingsAPI.moviesURL.appendingPathComponent(fileName)
