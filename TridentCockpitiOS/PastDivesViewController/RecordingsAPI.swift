@@ -55,6 +55,10 @@ final class RecordingsAPI: NSObject {
         downloadSession.sessionDescription = Bundle.main.bundleIdentifier
         
         // Make Recordings directories
+        RecordingsAPI.setupRecodingsDirs()
+    }
+    
+    static func setupRecodingsDirs() {
         let fileManager = FileManager.default
         let pilotURL = RecordingsAPI.moviesURL.appendingPathComponent(RecordingsAPI.pilotPath)
         let downloadsURL = RecordingsAPI.moviesURL.appendingPathComponent(RecordingsAPI.downloadsPath)
