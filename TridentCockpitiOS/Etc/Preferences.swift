@@ -62,4 +62,7 @@ struct Preference {
 
     @UserPreference("StreamKey")
     static var streamKey: String?
+    
+    @UserPreferenceWithDefault("PilotVideoFileType", defaultValue: "mov")
+    static var pilotVideoFileType: String
 }
