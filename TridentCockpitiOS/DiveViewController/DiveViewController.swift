@@ -32,9 +32,7 @@ class DiveViewController: UIViewController {
     private let locationManager = CLLocationManager()
     private var cameraControlView: CameraControlView?
     private var auxCameraView: AuxCameraControlView?
-    private var streamStatsView: StreamStatsView?
     private var videoProcessor: VideoProcessor!
-    private weak var videoStreamer: VideoStreamer?
     private let videoProcessorMulticastDelegate = VideoProcessorMulticastDelegate([])
     private let tridentControl = TridentControl()
     private var savedCenter: [UIView: CGPoint] = [:]
@@ -79,9 +77,8 @@ class DiveViewController: UIViewController {
         }
     }
 
-    init?(coder: NSCoder, vehicleId: String, videoStreamer: VideoStreamer?) {
+    init?(coder: NSCoder, vehicleId: String) {
         self.vehicleId = vehicleId
-        self.videoStreamer = videoStreamer
         super.init(coder: coder)
     }
     
@@ -137,13 +134,6 @@ class DiveViewController: UIViewController {
             cameraControlView = CameraControlView.instantiate(videoProcessorMulticastDelegate)
             view.addSubview(cameraControlView!)
         }
-        if let videoStreamer = videoStreamer {
-            videoProcessorMulticastDelegate.add(videoStreamer)
-            streamStatsView = StreamStatsView.instantiate(offsetFromTop: indicatorsView.bounds.height)
-            view.addSubview(streamStatsView!)
-            videoStreamer.delegate = streamStatsView!
-            streamStatsView?.state(published: videoStreamer.isPublished) // May be already dead
-        }
         liveViewContainer.isHidden = true
         if Gopro3API.isConnected {
             guard let liveViewController = children.first(where: { $0 is AVPlayerViewController}) as? AVPlayerViewController else { return }
@@ -184,7 +174,6 @@ class DiveViewController: UIViewController {
         headingView.superViewDidResize(to: size)
         auxCameraView?.superViewDidResize(to: size)
         liveViewContainer?.superViewDidResize(to: size)
-        streamStatsView?.superViewDidResize(to: size)
 
         guard let before = self.view.window?.windowScene?.interfaceOrientation else { return }
         coordinator.animate(alongsideTransition: nil) { _ in

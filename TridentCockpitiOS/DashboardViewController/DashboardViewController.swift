@@ -24,7 +24,6 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
     }
     private var backgroundWatch: BackgroundWatch?
     private var locationManager: CLLocationManager?
-    private var videoStreamer: VideoStreamer?
     
     // MARK: Trace connection state vars
     private var wifiConnected = false
@@ -131,7 +130,6 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         if connectionMonitor.isConnected {
             startRefreshDeviceState()
         }
-        videoStreamer?.delegate = self
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -159,14 +157,9 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
 
     @IBSegueAction
     private func goDiveScreen(coder: NSCoder) -> DiveViewController? {
-        return DiveViewController(coder: coder, vehicleId: tridentID, videoStreamer: videoStreamer)
+        return DiveViewController(coder: coder, vehicleId: tridentID)
     }
     
-    @IBSegueAction
-    private func goSetupStreamViewControler(coder: NSCoder) -> StreamSetupViewController? {
-        return StreamSetupViewController(coder: coder, delegate: self)
-    }
-
     @IBSegueAction
     private func goGetWifiAPTableViewController(coder: NSCoder) -> GetWifiAPTableViewController? {
         return GetWifiAPTableViewController(coder: coder, delegate: self)
@@ -563,22 +556,3 @@ extension DashboardViewController: GetWifiAPProtocol {
     }
 }
 
-extension DashboardViewController: StreamSetupViewControllerDelegate {
-    func streamer(_ videoStreamer: VideoStreamer?) {
-        self.videoStreamer = videoStreamer
-        let name = videoStreamer == nil ? "play.rectangle" : "play.rectangle.fill"
-        navigationItem.getItem(for: .setupStreaming)?.image = UIImage(systemName: name)
-    }
-}
-
-extension DashboardViewController: VideoStreamerDelegate {
-    func state(published: Bool) {
-        if !published {
-            streamer(nil)
-        }
-    }
-    
-    func stats(fps: UInt16, bytesOutPerSecond: Int32, totalBytesOut: Int64) {}
-    
-    func showError(_ error: StreamerError) {}
-}
