@@ -91,7 +91,9 @@ extension StreamSetupViewController: UITextFieldDelegate {
 
 extension StreamSetupViewController: VideoStreamerDelegate {
     func showError(_ error: StreamerError) {
-        error.alert(delay: 5)
+        DispatchQueue.main.async {
+            error.alert(delay: 5)
+        }
     }
     
     func stats(fps: UInt16, bytesOutPerSecond: Int32, totalBytesOut: Int64) {}
