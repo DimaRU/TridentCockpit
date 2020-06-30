@@ -34,5 +34,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
         RecordingsAPI.shared.backgroundSessionCompletionHandler = completionHandler
     }
+    
+    override func buildMenu(with builder: UIMenuBuilder) {
+        super.buildMenu(with: builder)
+
+        builder.remove(menu: .file)
+        builder.remove(menu: .services)
+        builder.remove(menu: .format)
+        builder.remove(menu: .spelling)
+        builder.remove(menu: .substitutions)
+        builder.remove(menu: .transformations)
+        builder.remove(menu: .speech)
+        builder.remove(menu: .toolbar)
+        builder.remove(menu: .help)
+    }
 }
 
