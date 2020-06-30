@@ -278,7 +278,7 @@ class DiveViewController: UIViewController {
                 didHandleEvent = didHandleEvent || tridentControl.process(key: key, began: true)
             }
         }
-        if didHandleEvent {
+        if !didHandleEvent {
             super.pressesBegan(presses, with: event)
         }
     }
@@ -291,7 +291,7 @@ class DiveViewController: UIViewController {
                 didHandleEvent = didHandleEvent || tridentControl.process(key: key, began: false)
             }
         }
-        if didHandleEvent {
+        if !didHandleEvent {
             super.pressesEnded(presses, with: event)
         }
     }

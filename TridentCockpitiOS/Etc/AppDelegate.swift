@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Instantiate Recordings API
         _ = RecordingsAPI.shared
         
+        #if !targetEnvironment(macCatalyst)
         let session = AVAudioSession.sharedInstance()
         do {
             try session.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker, .allowBluetooth])
@@ -23,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } catch {
             print(error)
         }
+        #endif
 
         return true
     }
@@ -43,6 +45,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: @escaping () -> Void) {
         RecordingsAPI.shared.backgroundSessionCompletionHandler = completionHandler
+    }
+    
+    override func buildMenu(with builder: UIMenuBuilder) {
+        super.buildMenu(with: builder)
+
+        builder.remove(menu: .file)
+        builder.remove(menu: .services)
+        builder.remove(menu: .format)
+        builder.remove(menu: .spelling)
+        builder.remove(menu: .substitutions)
+        builder.remove(menu: .transformations)
+        builder.remove(menu: .speech)
+        builder.remove(menu: .toolbar)
+        builder.remove(menu: .help)
     }
 }
 

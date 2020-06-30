@@ -84,8 +84,9 @@ final class TridentControl {
     func process(key: UIKey, began: Bool) -> Bool {
         var lever: Float = 0.1
         if key.modifierFlags.contains(.alternate) { lever = 0.25 }
-        if key.modifierFlags.contains(.control) { lever = 0.50 }
-        if key.modifierFlags.contains(.shift) { lever = 1 }
+        if key.modifierFlags.contains(.shift) { lever = 0.50 }
+        if key.modifierFlags.contains([.alternate, .shift]) { lever = 1 }
+
         if began {
             switch key.charactersIgnoringModifiers {
             case UIKeyCommand.inputUpArrow:
