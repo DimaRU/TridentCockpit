@@ -36,8 +36,7 @@ class StreamSetupViewController: UIViewController {
     }
     
     @IBAction func connectButtonPress(_ sender: Any) {
-        serverURLField.resignFirstResponder()
-        streamKeyField.resignFirstResponder()
+        self.view.endEditing(true)
         if connectButton.isSelected {
             videoStreamer?.disconnect()
             videoStreamer = nil
