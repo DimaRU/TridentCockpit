@@ -383,7 +383,7 @@
 		0A1A5B8323CE4B550038EABE /* HeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		0A1A5B8423CE4B550038EABE /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		0A1A5B8723CE4B760038EABE /* RecordingsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsModel.swift; sourceTree = "<group>"; };
-		0A1D09F523F93FD6006D9AFD /* TridentCockpitiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TridentCockpitiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A1D09F523F93FD6006D9AFD /* TridentCockpit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TridentCockpit.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A1D09F723F93FD6006D9AFD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A1D09F923F93FD6006D9AFD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0A1D09FE23F93FD6006D9AFD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -435,7 +435,7 @@
 		0A5CBCA223675F410055131A /* SF-Pro-Display-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Ultralight.otf"; sourceTree = "<group>"; };
 		0A5CBCA323675F410055131A /* SF-Pro-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Black.otf"; sourceTree = "<group>"; };
 		0A5E3FBE23BFA10E00EAC519 /* GoproStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoproStatus.swift; sourceTree = "<group>"; };
-		0A7130B4236369EA00817593 /* TridentCockpit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TridentCockpit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A7130B4236369EA00817593 /* TridentCockpitOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TridentCockpitOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A7130C0236369EC00817593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A7130C823636AF100817593 /* FlatButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatButton.swift; sourceTree = "<group>"; };
 		0A7130CA23636AF100817593 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -771,7 +771,7 @@
 				0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */,
 				0A1D09F623F93FD6006D9AFD /* TridentCockpitiOS */,
 				0A1D0A1A23F94136006D9AFD /* Common code */,
-				0A7130B6236369EA00817593 /* TridentCockpit */,
+				0A7130B6236369EA00817593 /* TridentCockpitOSX */,
 				0A5CBC9A23675F410055131A /* Fonts */,
 				0A7130B5236369EA00817593 /* Products */,
 				0A59790E239583AB006F10FF /* Frameworks */,
@@ -781,13 +781,13 @@
 		0A7130B5236369EA00817593 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0A7130B4236369EA00817593 /* TridentCockpit.app */,
-				0A1D09F523F93FD6006D9AFD /* TridentCockpitiOS.app */,
+				0A7130B4236369EA00817593 /* TridentCockpitOSX.app */,
+				0A1D09F523F93FD6006D9AFD /* TridentCockpit.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		0A7130B6236369EA00817593 /* TridentCockpit */ = {
+		0A7130B6236369EA00817593 /* TridentCockpitOSX */ = {
 			isa = PBXGroup;
 			children = (
 				0A98307623C23F9800BD234B /* DiveViewController */,
@@ -807,7 +807,7 @@
 				0A71311923636B1700817593 /* Main.storyboard */,
 				0A2FF3122363A13B008FD68B /* TridentCockpit.entitlements */,
 			);
-			path = TridentCockpit;
+			path = TridentCockpitOSX;
 			sourceTree = "<group>";
 		};
 		0A7130E023636B0200817593 /* DDSModel */ = {
@@ -1036,12 +1036,12 @@
 				0A0968FB249B89DD0031F142 /* Logboard */,
 			);
 			productName = TridentCockpitiOS;
-			productReference = 0A1D09F523F93FD6006D9AFD /* TridentCockpitiOS.app */;
+			productReference = 0A1D09F523F93FD6006D9AFD /* TridentCockpit.app */;
 			productType = "com.apple.product-type.application";
 		};
-		0A7130B3236369EA00817593 /* TridentCockpit */ = {
+		0A7130B3236369EA00817593 /* TridentCockpitOSX */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 0A7130C4236369EC00817593 /* Build configuration list for PBXNativeTarget "TridentCockpit" */;
+			buildConfigurationList = 0A7130C4236369EC00817593 /* Build configuration list for PBXNativeTarget "TridentCockpitOSX" */;
 			buildPhases = (
 				0A7130B0236369EA00817593 /* Sources */,
 				0A7130B1236369EA00817593 /* Frameworks */,
@@ -1055,14 +1055,14 @@
 				0A20B1922454D19D00FB4961 /* PBXTargetDependency */,
 				0A20B1902454D19500FB4961 /* PBXTargetDependency */,
 			);
-			name = TridentCockpit;
+			name = TridentCockpitOSX;
 			packageProductDependencies = (
 				0A66C52B23AED706001BA93D /* Moya */,
 				0A66C52E23AED776001BA93D /* PromiseKit */,
 				0A1A5B9F23CE57890038EABE /* Kingfisher */,
 			);
 			productName = TridentCockpit;
-			productReference = 0A7130B4236369EA00817593 /* TridentCockpit.app */;
+			productReference = 0A7130B4236369EA00817593 /* TridentCockpitOSX.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1113,7 +1113,7 @@
 			);
 			projectRoot = "";
 			targets = (
-				0A7130B3236369EA00817593 /* TridentCockpit */,
+				0A7130B3236369EA00817593 /* TridentCockpitOSX */,
 				0A1D09F423F93FD6006D9AFD /* TridentCockpitiOS */,
 			);
 		};
@@ -1486,7 +1486,7 @@
 				);
 				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = in.ioshack.TridentCockpitiOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TridentCockpit;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TridentCockpitiOS/TridentCockpitiOS-Bridging-Header.h";
@@ -1512,7 +1512,7 @@
 				);
 				MARKETING_VERSION = 2.2;
 				PRODUCT_BUNDLE_IDENTIFIER = in.ioshack.TridentCockpitiOS;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TridentCockpit;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TridentCockpitiOS/TridentCockpitiOS-Bridging-Header.h";
@@ -1642,7 +1642,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = macOSAppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = TridentCockpit/TridentCockpit.entitlements;
+				CODE_SIGN_ENTITLEMENTS = TridentCockpitOSX/TridentCockpit.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1653,7 +1653,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = TridentCockpit/Info.plist;
+				INFOPLIST_FILE = TridentCockpitOSX/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1673,7 +1673,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = macOSAppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = TridentCockpit/TridentCockpit.entitlements;
+				CODE_SIGN_ENTITLEMENTS = TridentCockpitOSX/TridentCockpit.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -1684,7 +1684,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = TridentCockpit/Info.plist;
+				INFOPLIST_FILE = TridentCockpitOSX/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -1719,7 +1719,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		0A7130C4236369EC00817593 /* Build configuration list for PBXNativeTarget "TridentCockpit" */ = {
+		0A7130C4236369EC00817593 /* Build configuration list for PBXNativeTarget "TridentCockpitOSX" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				0A7130C5236369EC00817593 /* Debug */,
