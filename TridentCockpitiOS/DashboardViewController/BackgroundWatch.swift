@@ -68,10 +68,13 @@ final class BackgroundWatch {
     }
     
     private func startBackgroundTask() {
-        self.backgroundTaskID = UIApplication.shared.beginBackgroundTask (withName: "Trident Cockpit") {
-            UIApplication.shared.endBackgroundTask(self.backgroundTaskID)
-            self.backgroundTaskID = UIBackgroundTaskIdentifier.invalid
-            self.state = .stop
+        if #available(macCatalyst 13.0, *) {
+        } else {
+            self.backgroundTaskID = UIApplication.shared.beginBackgroundTask (withName: "Trident Cockpit") {
+                UIApplication.shared.endBackgroundTask(self.backgroundTaskID)
+                self.backgroundTaskID = UIBackgroundTaskIdentifier.invalid
+                self.state = .stop
+            }
         }
     }
     
