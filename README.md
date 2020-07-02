@@ -5,19 +5,20 @@
 <h2 align="center">Trident Cockpit is an alternative iOS/iPadOS/macOS control app for the <a href="https://www.sofarocean.com/products/trident?aff=30">Sofar Trident Underwater Drone.</a></h2>
 
 <p align="center">
-<a href="https://apps.apple.com/us/app/trident-cockpit/id1501545121"><img src="images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" width="200" /></a>
+<a href="https://apps.apple.com/app/id1501545121"><img src="images/Download_on_the_App_Store_Badge_US-UK_RGB_blk_092917.svg" height="70"/></a>
+<a href="https://apps.apple.com/app/id1501545121"><img src="images/Download_on_the_Mac_App_Store_Badge_US-UK_RGB_blk_092917.svg" height="70"/></a>
 </p>
 
 ![iPhone screenshot](Screenshots/iPhone%2011%20Pro%20Max.png)
 
-### [macOS page (development discontinued)](macOS.md)
 ---
 
 ## Features
 
 * Controls the Trident Underwater Drone by Sofar Ocean
 * Watch live video stream from the drone
-* Gamepad control 
+* Gamepad control
+* Keyboard and touch/mouse control 
 * Controls camera, light, stabilization
 * Recording pilot video stream
 * GPS geotagging pilot video
@@ -41,6 +42,28 @@
 * DualShock 4
 * Any MFi certified gamepad
 
+## Keyboard Shortcuts
+
+### Moton control
+
+ Shortcut | Description
+|:-:|:-:|
+ <kbd>Up Arrow</kbd> | Forward
+ <kbd>Down Arrow</kbd> | Backward
+ <kbd>Left Arrow</kbd> | Turn Left (rotate counterclockwise)
+ <kbd>Right Arrow</kbd> | Turn Right (rotate clockwise)
+ <kbd>W</kbd> | Tilt Down
+ <kbd>E</kbd> | Tilt Up
+
+### Motor speed modifiers
+
+ Shortcut | Description 
+|:-:|:-:|
+without modifiers | 10% of motor speed
+&#8997; <kbd>Option</kbd> + (<kbd>&uarr;</kbd> &#65372; <kbd>&darr;</kbd> &#65372; <kbd>&larr;</kbd> &#65372; <kbd>&rarr;</kbd> &#65372; <kbd>W</kbd> &#65372; <kbd>E</kbd>) | 25% of motor speed
+&#8679; <kbd>Shift</kbd> + (<kbd>&uarr;</kbd> &#65372; <kbd>&darr;</kbd> &#65372; <kbd>&larr;</kbd> &#65372; <kbd>&rarr;</kbd> &#65372; <kbd>W</kbd> &#65372; <kbd>E</kbd>) | 50% of motor speed
+&#8679;+&#8997; <kbd>Shift</kbd>+<kbd>Option</kbd> + (<kbd>&uarr;</kbd> &#65372; <kbd>&darr;</kbd> &#65372; <kbd>&larr;</kbd> &#65372; <kbd>&rarr;</kbd> &#65372; <kbd>W</kbd> &#65372; <kbd>E</kbd>) | 100% of motor speed
+
 ## Support the project
 <a href="https://www.patreon.com/DimaRU" data-patreon-widget-type="become-patron-button"><img src="https://img.shields.io/endpoint?style=for-the-badge&url=https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2FDimaRU"></a>
 
@@ -55,28 +78,7 @@ With Patreon, you can send me a small monthly amount of money, or make a one-tim
 
 ## Building from Source
 
-For build instructions please check out [.travis.yml](https://github.com/DimaRU/TridentCockpit/blob/master/.travis.yml), which should be up-to-date at all times.
-
-### Required software
-
-* CMake
-
-1. Install Xcode from App Store
-2. Install build tools by running `brew install cmake`
-
-### Build
-
-* Run from the terminal:
-
-```
-git clone --recurse-submodules https://github.com/DimaRU/TridentCockpit.git
-cd TridentCockpit
-```
-
-* Open TridentCockpit.xcodeproj in the [latest public version of Xcode](https://itunes.apple.com/us/app/xcode/id497799835). *TridentCockpit may not build if you use any other version.*
-* Change the Team to your own team in the "Signing & Capabilities" panel.
-* Ensure that the scheme is set to TridentCockpitiOS.
-* Build the project.
+For build instructions please check out [build.yml](https://github.com/DimaRU/TridentCockpit/blob/master/.github/workflows/build.yml), which should be up-to-date at all times.
 
 
 ## Dependencies
@@ -93,6 +95,7 @@ cd TridentCockpit
 * [PWSwitch](https://github.com/Shaninnik/PWSwitch) - Highly customizable UISwitch built with CALayers and CAAnimations. Modified version.
 * [LinearProgressBar](https://github.com/gordoneliel/LinearProgressBar) - Simple progress bar for iOS.
 * [CameraButton](https://github.com/otusweb/iOS-camera-button) - A button that behave the same way as the video camera button in the iOS camera. Modified version.
+* [HaishinKit.swift](https://github.com/shogo4405/HaishinKit.swift) - RTMP streaming library for iOS, macOS, tvOS.
 
 
 ## Author

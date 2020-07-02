@@ -7,7 +7,7 @@ header_pages:
 title: Trident Cockpit
 color: "#20A1BD"
 description:  Trident Cockpit is an alternative iPhone/iPad control app for the <a href="https://www.sofarocean.com/products/trident?aff=30">Sofar Trident Underwater Drone.</a>
-appstore: https://apps.apple.com/us/app/trident-cockpit/id1501545121
+appstore: https://apps.apple.com/app/id1501545121
 google_analytics: UA-158634251-2
 relative_links:
   enabled: true
