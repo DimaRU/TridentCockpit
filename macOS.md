@@ -9,12 +9,12 @@
 <img src="https://github.com/DimaRU/TridentCockpit/raw/master/Screenshots/MacBook Pro.png" />
 </p>
 <h3 align="center"> ·
-<a href="https://github.com/DimaRU/TridentCockpit/releases">macOS releases</a> ·
+<a href="https://github.com/DimaRU/TridentCockpit/releases">Releases</a> ·
 </h3>
 
 ---
 
-# Development of the macOS version has been discontinued.
+# Development of the native macOS version has been discontinued.
 
 ## Features
 
@@ -91,29 +91,7 @@ without modifiers | 10% of motor speed
 
 ## Building from Source
 
-For build instructions please check out [.travis.yml](https://github.com/DimaRU/TridentCockpit/blob/master/.travis.yml), which should be up-to-date at all times.
-
-### Required software
-
-* CMake
-
-1. Install Xcode from App Store
-2. Install build tools by running `brew install cmake`
-
-### Build
-
-* Run from the terminal:
-
-```
-git clone --recurse-submodules https://github.com/DimaRU/TridentCockpit.git
-cd TridentCockpit
-```
-
-* Open TridentCockpit.xcodeproj in the [latest public version of Xcode](https://itunes.apple.com/us/app/xcode/id497799835). *TridentCockpit may not build if you use any other version.*
-* Change the Team to your own team in the "Signing & Capabilities" panel.
-* Ensure that the scheme is set to TridentCockpitiOS.
-* Build the project.
-
+For build instructions please check out [build.yml](https://github.com/DimaRU/TridentCockpit/blob/master/.github/workflows/build.yml), which should be up-to-date at all times.
 
 ## Dependencies
 

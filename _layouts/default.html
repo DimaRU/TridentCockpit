@@ -29,7 +29,10 @@
     <header class="page-header" role="banner">
       <h1 class="project-name">{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
       {% if page.url == "/" %}
-      <p><a href="{{ site.appstore }}"><img src="images/App_Store_Badge.svg" width="200" /></a></p>
+      <p>
+      <a href="{{ site.appstore }}"><img src="images/App_Store_Badge.svg" height="70" /></a>
+      <a href="{{ site.appstore }}"><img src="images/Mac_App_Store_Badge.svg" height="70" /></a>
+      </p>
       {% endif %}
     </header>
 

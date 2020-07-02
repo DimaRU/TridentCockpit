@@ -12,7 +12,8 @@
 
 * Controls the Trident Underwater Drone by Sofar Ocean
 * Watch live video stream from the drone
-* Gamepad control 
+* Gamepad control
+* Keyboard and touch/mouse control
 * Controls camera, light, stabilization
 * Recording pilot video stream
 * GPS geotagging pilot video
@@ -34,6 +35,28 @@
 * Xbox Wireless Controller
 * DualShock 4
 * Any MFi certified gamepad
+
+## Keyboard Shortcuts
+
+### Moton control
+
+ Shortcut | Description
+|:-:|:-:|
+ <kbd>Up Arrow</kbd> | Forward
+ <kbd>Down Arrow</kbd> | Backward
+ <kbd>Left Arrow</kbd> | Turn Left (rotate counterclockwise)
+ <kbd>Right Arrow</kbd> | Turn Right (rotate clockwise)
+ <kbd>W</kbd> | Tilt Down
+ <kbd>E</kbd> | Tilt Up
+
+### Motor speed modifiers
+
+ Shortcut | Description 
+|:-:|:-:|
+without modifiers | 10% of motor speed
+&#8997; <kbd>Option</kbd> + (<kbd>&uarr;</kbd> &#65372; <kbd>&darr;</kbd> &#65372; <kbd>&larr;</kbd> &#65372; <kbd>&rarr;</kbd> &#65372; <kbd>W</kbd> &#65372; <kbd>E</kbd>) | 25% of motor speed
+&#8679; <kbd>Shift</kbd> + (<kbd>&uarr;</kbd> &#65372; <kbd>&darr;</kbd> &#65372; <kbd>&larr;</kbd> &#65372; <kbd>&rarr;</kbd> &#65372; <kbd>W</kbd> &#65372; <kbd>E</kbd>) | 50% of motor speed
+&#8679;+&#8997; <kbd>Shift</kbd>+<kbd>Option</kbd> + (<kbd>&uarr;</kbd> &#65372; <kbd>&darr;</kbd> &#65372; <kbd>&larr;</kbd> &#65372; <kbd>&rarr;</kbd> &#65372; <kbd>W</kbd> &#65372; <kbd>E</kbd>) | 100% of motor speed
 
 ## Support the project
 <a href="https://www.patreon.com/DimaRU" data-patreon-widget-type="become-patron-button"><img src="https://img.shields.io/endpoint?style=for-the-badge&url=https%3A%2F%2Fshieldsio-patreon.herokuapp.com%2FDimaRU"></a>
