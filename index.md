@@ -1,6 +1,5 @@
 
-<h2 align="center">Trident Cockpit is an alternative control app for iPhone and iPad for the
-<a href="https://www.sofarocean.com/products/trident?aff=30">Sofar Trident Underwater Drone.</a></h2>
+<h2 align="center">Trident Cockpit is an alternative iOS/iPadOS/macOS control app for the <a href="https://www.sofarocean.com/products/trident?aff=30">Sofar Trident Underwater Drone.</a></h2>
 
 <p align="center">
 <img src="Screenshots/iPhone%2011%20Pro%20Max.png"/>
@@ -92,6 +91,7 @@ This project is unofficial (meaning not supported by or affiliated with Sofar Oc
 <p align="center">
 <img src="Screenshots/iPhone%2011%20Pro%20Max-1.png"/>
 <img src="Screenshots/iPhone%2011%20Pro%20Max-2.png"/>
+<img src="Screenshots/MacBook%20Pro.png"/>
 <img src="Screenshots/11-inch%20iPad%20Pro.png"/>
 <img src="Screenshots/11-inch%20iPad%20Pro-1.png"/>
 </p>

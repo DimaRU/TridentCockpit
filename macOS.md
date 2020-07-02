@@ -1,16 +1,10 @@
 
-<h2 align="center">Trident Cockpit is an alternative macOS control app for the <a href="https://www.sofarocean.com/products/trident?aff=30">Sofar Trident Underwater Drone.</a></h2>
+<h2 align="center">Trident Cockpit is an alternative macOS native control app for the <a href="https://www.sofarocean.com/products/trident?aff=30">Sofar Trident Underwater Drone.</a></h2>
 
 <h1 align="center">
 <a href="https://dimaru.github.com.tridentcockpit">iOS version here</a>
 </h1>
 
-<p align="center">
-<img src="https://github.com/DimaRU/TridentCockpit/raw/master/Screenshots/MacBook Pro.png" />
-</p>
-<h3 align="center"> ·
-<a href="https://github.com/DimaRU/TridentCockpit/releases">Releases</a> ·
-</h3>
 
 ---
 
@@ -52,11 +46,6 @@ The money received will go towards:
 * Buy an iPad to speed up iPad version testing.
 
 With Patreon, you can send me a small monthly amount of money, or make a one-time donation by canceling the monthly subscription after the first payment.
-
-## Installation
-
-To install `Trident Cockpit` on macOS, download the release from the [releases page](https://github.com/DimaRU/TridentCockpit/releases).
-These are all signed and notarized to run out of the box on macOS 10.14+.
 
 ## Keyboard Shortcuts
 
