@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "0A1D09F423F93FD6006D9AFD"
-               BuildableName = "TridentCockpitiOS.app"
+               BuildableName = "TridentCockpit.app"
                BlueprintName = "TridentCockpitiOS"
                ReferencedContainer = "container:TridentCockpit.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0A1D09F423F93FD6006D9AFD"
-            BuildableName = "TridentCockpitiOS.app"
+            BuildableName = "TridentCockpit.app"
             BlueprintName = "TridentCockpitiOS"
             ReferencedContainer = "container:TridentCockpit.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "0A1D09F423F93FD6006D9AFD"
-            BuildableName = "TridentCockpitiOS.app"
+            BuildableName = "TridentCockpit.app"
             BlueprintName = "TridentCockpitiOS"
             ReferencedContainer = "container:TridentCockpit.xcodeproj">
          </BuildableReference>
