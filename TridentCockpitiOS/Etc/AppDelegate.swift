@@ -16,15 +16,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Instantiate Recordings API
         _ = RecordingsAPI.shared
         
-        #if !targetEnvironment(macCatalyst)
-        let session = AVAudioSession.sharedInstance()
-        do {
-            try session.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker, .allowBluetooth])
-            try session.setActive(true)
-        } catch {
-            print(error)
+        if #available(macCatalyst 14.0, *) {
+            let session = AVAudioSession.sharedInstance()
+            do {
+                try session.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker, .allowBluetooth])
+                try session.setActive(true)
+            } catch {
+                print(error)
+            }
         }
-        #endif
 
         return true
     }

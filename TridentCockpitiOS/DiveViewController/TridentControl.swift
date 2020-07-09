@@ -153,7 +153,15 @@ final class TridentControl {
         var indexNumber = 0
         for controller in GCController.controllers() {
             if controller.extendedGamepad != nil {
-                self.controllerName = controller.vendorName ?? controller.productCategory
+                #if swift(>=5.3)
+                if #available(macCatalyst 14.0, iOS 13.0, *) {
+                    self.controllerName = controller.vendorName ?? controller.productCategory
+                } else {
+                    self.controllerName = controller.productCategory
+                }
+                #else
+                    self.controllerName = controller.vendorName ?? controller.productCategory
+                #endif
                 controller.playerIndex = GCControllerPlayerIndex(rawValue: indexNumber)!
                 indexNumber += 1
                 controller.extendedGamepad!.valueChangedHandler = { [weak self] (gamepad: GCExtendedGamepad, element: GCControllerElement) in
