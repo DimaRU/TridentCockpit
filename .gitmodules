@@ -5,4 +5,4 @@
 [submodule "Shout"]
 	path = Shout
 	url = https://github.com/DimaRU/Shout.git
-	branch = ssh-only
+	branch = integrated
