@@ -36,7 +36,10 @@ class RecoveryVideoViewController: UIViewController {
     
     @IBAction func dismissButtonPress(_ sender: Any) {
         ssh = nil
-        self.dismiss(animated: true)
+        let pastDivesViewController = (presentingViewController as? UINavigationController)?.topViewController as? PastDivesViewController
+        self.dismiss(animated: true) {
+            pastDivesViewController?.refreshRecordings()
+        }
     }
 
     @IBAction func recoveryButtonPress(_ sender: Any) {
