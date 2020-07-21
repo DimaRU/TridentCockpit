@@ -82,6 +82,7 @@ class RecoveryVideoViewController: UIViewController {
                     checkFileList.keys.contains("donor.mp4"),
                     checkFileList.keys.contains("untrunc") {} else {
                     DispatchQueue.main.async {
+                        UIApplication.shared.isIdleTimerDisabled = true
                         spinner = SwiftSpinner.addCircularProgress(to: self.view,
                                                                        title: "Setup recovery",
                                                                        verticalSizeClass: self.traitCollection.verticalSizeClass)
@@ -96,6 +97,7 @@ class RecoveryVideoViewController: UIViewController {
                     """
                     let (status, log) = try ssh.capture(script)
                     DispatchQueue.main.async {
+                        UIApplication.shared.isIdleTimerDisabled = false
                         spinner.hide() {
                             spinner.removeConstraints(spinner.constraints)
                             spinner.removeFromSuperview()
