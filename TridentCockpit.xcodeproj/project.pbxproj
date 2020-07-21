@@ -219,6 +219,8 @@
 		0AAD2D612447368600B6152C /* PlayDemoVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD2D592447368500B6152C /* PlayDemoVideo.swift */; };
 		0AAD2D632447369300B6152C /* PlayDemoVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD2D622447369300B6152C /* PlayDemoVideo.swift */; };
 		0AB110E8245D8B6400BDC00D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AB110E7245D8B6400BDC00D /* Settings.bundle */; };
+		0AB9EBFB24C6294200DCDD69 /* untrunc.zip in Resources */ = {isa = PBXBuildFile; fileRef = 0AB9EBFA24C6294200DCDD69 /* untrunc.zip */; };
+		0AB9EBFD24C72CE600DCDD69 /* SwiftSpinner+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB9EBFC24C72CE600DCDD69 /* SwiftSpinner+Extensions.swift */; };
 		0AC07D43240FE227001A85BE /* SaveCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC07D42240FE227001A85BE /* SaveCenter.swift */; };
 		0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */; };
 		0ACCDE6B23FDABD100381207 /* CameraButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACCDE6A23FDABD100381207 /* CameraButton.swift */; };
@@ -239,6 +241,9 @@
 		0AE05CED23FD41E200C7CA08 /* DiveViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AE05CEC23FD41E200C7CA08 /* DiveViewController.storyboard */; };
 		0AE206AC2423AADB0017934B /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE206A324239E870017934B /* Alerts.swift */; };
 		0AE490702448524800C669D0 /* UILabelRotatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4906F2448524800C669D0 /* UILabelRotatable.swift */; };
+		0AED81B824C4959D00820FB8 /* RecoveryVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AED81B124C4959C00820FB8 /* RecoveryVideoViewController.swift */; };
+		0AED81B924C4959D00820FB8 /* RecoveryVideoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AED81B724C4959C00820FB8 /* RecoveryVideoViewController.storyboard */; };
+		0AED81BD24C4963A00820FB8 /* UICircularProgressRing in Frameworks */ = {isa = PBXBuildFile; productRef = 0AED81BC24C4963A00820FB8 /* UICircularProgressRing */; };
 		0AF029D1245F6D36007ADE09 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF029C6245F6D36007ADE09 /* CheckmarkView.swift */; };
 		0AF029D2245F6D36007ADE09 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF029C7245F6D36007ADE09 /* util.swift */; };
 		0AF029D3245F6D36007ADE09 /* CircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF029C8245F6D36007ADE09 /* CircularProgress.swift */; };
@@ -512,6 +517,8 @@
 		0AAD2D592447368500B6152C /* PlayDemoVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayDemoVideo.swift; sourceTree = "<group>"; };
 		0AAD2D622447369300B6152C /* PlayDemoVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayDemoVideo.swift; sourceTree = "<group>"; };
 		0AB110E7245D8B6400BDC00D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		0AB9EBFA24C6294200DCDD69 /* untrunc.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = untrunc.zip; sourceTree = "<group>"; };
+		0AB9EBFC24C72CE600DCDD69 /* SwiftSpinner+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftSpinner+Extensions.swift"; sourceTree = "<group>"; };
 		0AC07D42240FE227001A85BE /* SaveCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCenter.swift; sourceTree = "<group>"; };
 		0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiPopupViewController.swift; sourceTree = "<group>"; };
 		0ACCDE6A23FDABD100381207 /* CameraButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraButton.swift; sourceTree = "<group>"; };
@@ -530,6 +537,8 @@
 		0AE05CEC23FD41E200C7CA08 /* DiveViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = DiveViewController.storyboard; sourceTree = "<group>"; };
 		0AE206A324239E870017934B /* Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alerts.swift; sourceTree = "<group>"; };
 		0AE4906F2448524800C669D0 /* UILabelRotatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabelRotatable.swift; sourceTree = "<group>"; };
+		0AED81B124C4959C00820FB8 /* RecoveryVideoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryVideoViewController.swift; sourceTree = "<group>"; };
+		0AED81B724C4959C00820FB8 /* RecoveryVideoViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RecoveryVideoViewController.storyboard; sourceTree = "<group>"; };
 		0AF029C6245F6D36007ADE09 /* CheckmarkView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckmarkView.swift; sourceTree = "<group>"; };
 		0AF029C7245F6D36007ADE09 /* util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = util.swift; sourceTree = "<group>"; };
 		0AF029C8245F6D36007ADE09 /* CircularProgress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgress.swift; sourceTree = "<group>"; };
@@ -552,6 +561,7 @@
 				0A1D0A5923F948F9006D9AFD /* PromiseKit in Frameworks */,
 				0A1D0A5723F948F3006D9AFD /* Moya in Frameworks */,
 				0A1D0A5B23F948FF006D9AFD /* Kingfisher in Frameworks */,
+				0AED81BD24C4963A00820FB8 /* UICircularProgressRing in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,6 +614,7 @@
 				0A1F3AAA24883E4400384EE1 /* CameraControlView */,
 				0ACCDE7023FDB25E00381207 /* AuxCamera */,
 				0A3CB025246414D6009F827B /* PastDivesViewController */,
+				0AED81BA24C495B900820FB8 /* RecoveryVideoViewController */,
 				0A4D9CD32403E8F600BA6189 /* MaintenanceViewController */,
 				0A95068F23F9DF61004E5546 /* Protocols */,
 				0A95068C23F9DD73004E5546 /* Extensions */,
@@ -615,6 +626,7 @@
 				0A1D0A1223F93FF0006D9AFD /* TridentCockpitiOS.entitlements */,
 				0A1D0A0523F93FD7006D9AFD /* Info.plist */,
 				0A2489F824518F4C0031720B /* InfoPlist.strings */,
+				0AB9EBFA24C6294200DCDD69 /* untrunc.zip */,
 				0AB110E7245D8B6400BDC00D /* Settings.bundle */,
 			);
 			path = TridentCockpitiOS;
@@ -676,10 +688,10 @@
 			isa = PBXGroup;
 			children = (
 				0A134F412464191800FBD929 /* PastDivesViewController.storyboard */,
+				0A3CB02C246414D6009F827B /* PastDivesViewController.swift */,
 				0A3CB029246414D6009F827B /* DiveCollectionViewCell.swift */,
 				0A3CB02A246414D6009F827B /* DivePlayerViewController.swift */,
 				0A3CB02B246414D6009F827B /* DiveCollectionReusableView.swift */,
-				0A3CB02C246414D6009F827B /* PastDivesViewController.swift */,
 				0A3CB03224641572009F827B /* RecordingsAPI.swift */,
 				0A0469C22466DD4900D10073 /* SmartDownloadButton.swift */,
 			);
@@ -906,6 +918,7 @@
 				0A4999BE242230DF00E3FA14 /* UICollectionView+Extensions.swift */,
 				0A7C3B7C245C372F00330F63 /* UIStoryboardSegue+Extensions.swift */,
 				0A5612852486C03700517C8D /* CLLocation+Extensions.swift */,
+				0AB9EBFC24C72CE600DCDD69 /* SwiftSpinner+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -977,6 +990,15 @@
 			path = DiveViewController;
 			sourceTree = "<group>";
 		};
+		0AED81BA24C495B900820FB8 /* RecoveryVideoViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0AED81B724C4959C00820FB8 /* RecoveryVideoViewController.storyboard */,
+				0AED81B124C4959C00820FB8 /* RecoveryVideoViewController.swift */,
+			);
+			path = RecoveryVideoViewController;
+			sourceTree = "<group>";
+		};
 		0AF029C5245F6D36007ADE09 /* CircularProgress */ = {
 			isa = PBXGroup;
 			children = (
@@ -1034,6 +1056,7 @@
 				0A1D0A5823F948F9006D9AFD /* PromiseKit */,
 				0A1D0A5A23F948FF006D9AFD /* Kingfisher */,
 				0A0968FB249B89DD0031F142 /* Logboard */,
+				0AED81BC24C4963A00820FB8 /* UICircularProgressRing */,
 			);
 			productName = TridentCockpitiOS;
 			productReference = 0A1D09F523F93FD6006D9AFD /* TridentCockpit.app */;
@@ -1098,6 +1121,7 @@
 				0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */,
 				0A1A5B9E23CE57890038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				0A0968FA249B89DD0031F142 /* XCRemoteSwiftPackageReference "Logboard" */,
+				0AED81BB24C4963A00820FB8 /* XCRemoteSwiftPackageReference "UICircularProgressRing" */,
 			);
 			productRefGroup = 0A7130B5236369EA00817593 /* Products */;
 			projectDirPath = "";
@@ -1164,6 +1188,8 @@
 			files = (
 				0A1D0A0423F93FD7006D9AFD /* LaunchScreen.storyboard in Resources */,
 				0AD8354824A8F699008DB5D9 /* StreamSetupViewController.storyboard in Resources */,
+				0AED81B924C4959D00820FB8 /* RecoveryVideoViewController.storyboard in Resources */,
+				0AB9EBFB24C6294200DCDD69 /* untrunc.zip in Resources */,
 				0AD8C5D32458402A009E0A9E /* GetWifiAPTableViewController.storyboard in Resources */,
 				0AB110E8245D8B6400BDC00D /* Settings.bundle in Resources */,
 				0A1D09FF23F93FD6006D9AFD /* Main.storyboard in Resources */,
@@ -1241,6 +1267,7 @@
 				0A1D0A4023F941BD006D9AFD /* RovIMUCalibration.swift in Sources */,
 				0A1D0A3C23F941BD006D9AFD /* RovSubsystemStatus.swift in Sources */,
 				0A3CB031246414D7009F827B /* PastDivesViewController.swift in Sources */,
+				0AED81B824C4959D00820FB8 /* RecoveryVideoViewController.swift in Sources */,
 				0AE05CD923FD329E00C7CA08 /* FloatingView.swift in Sources */,
 				0A1D0A2D23F941BD006D9AFD /* RovQuaternion+extensions.swift in Sources */,
 				0A1D0A3A23F941BD006D9AFD /* RovRecording.swift in Sources */,
@@ -1299,6 +1326,7 @@
 				0A95069423F9E647004E5546 /* WiFiPopupViewController.swift in Sources */,
 				0A1D0A3223F941BD006D9AFD /* RovTridentControlTarget.swift in Sources */,
 				0ACCDE6B23FDABD100381207 /* CameraButton.swift in Sources */,
+				0AB9EBFD24C72CE600DCDD69 /* SwiftSpinner+Extensions.swift in Sources */,
 				0A72A7F92433C91400AE9B2E /* RovWaypoint.swift in Sources */,
 				0ACCDE6F23FDAE7000381207 /* RovHeadingView.swift in Sources */,
 				0A1D0A3F23F941BD006D9AFD /* RovLightPower.swift in Sources */,
@@ -1763,6 +1791,14 @@
 				minimumVersion = 6.12.0;
 			};
 		};
+		0AED81BB24C4963A00820FB8 /* XCRemoteSwiftPackageReference "UICircularProgressRing" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/luispadron/UICircularProgressRing.git";
+			requirement = {
+				kind = exactVersion;
+				version = 6.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1800,6 +1836,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */;
 			productName = PromiseKit;
+		};
+		0AED81BC24C4963A00820FB8 /* UICircularProgressRing */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AED81BB24C4963A00820FB8 /* XCRemoteSwiftPackageReference "UICircularProgressRing" */;
+			productName = UICircularProgressRing;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

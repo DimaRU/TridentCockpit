@@ -59,6 +59,10 @@ extension Error {
             alertController.message = error.message()
         }
         
+        if let localized = self as? LocalizedError {
+            alertController.message = localized.failureReason
+        }
+        
         if let error = self as? AFError,
             case AFError.sessionTaskFailed = error,
             let underlying = error.underlyingError {

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_5" orientation="landscape" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Recovery Video View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="RecoveryVideoViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="896" height="414"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zw7-r1-Qvl" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
+                                <rect key="frame" x="348" y="107" width="200" height="200"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Zw7-r1-Qvl" secondAttribute="height" multiplier="1:1" id="aFb-Hh-5fS"/>
+                                    <constraint firstAttribute="height" constant="200" id="cB6-rC-KmF">
+                                        <variation key="widthClass=compact" constant="170"/>
+                                    </constraint>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="value">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minValue">
+                                        <real key="value" value="0.0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="maxValue">
+                                        <real key="value" value="100"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="outerRingColor">
+                                        <color key="value" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="outerRingWidth">
+                                        <real key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="innerRingWidth">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="innerRingColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="innerRingSpacing">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3fR-i3-iog">
+                                <rect key="frame" x="60" y="64" width="149.66666666666669" height="77"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Files: 3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ox-tl-yHd">
+                                        <rect key="frame" x="0.0" y="0.0" width="54.333333333333336" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Total size: 3.25Gb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hho-y4-ozZ">
+                                        <rect key="frame" x="0.0" y="28.333333333333343" width="137.33333333333334" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Free space: 3.25Gb" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jaw-Ao-Ju0">
+                                        <rect key="frame" x="0.0" y="56.666666666666693" width="149.66666666666666" height="20.333333333333336"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recovery broken video" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SmU-Gd-TKz">
+                                <rect key="frame" x="330.66666666666669" y="20" width="234.66666666666669" height="28.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0EM-IV-vHR">
+                                <rect key="frame" x="522" y="323" width="127" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="8" maxX="15" maxY="8"/>
+                                <state key="normal" title="Recovery"/>
+                                <connections>
+                                    <action selector="recoveryButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dLC-Mh-V9M"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfs-1b-nqX">
+                                <rect key="frame" x="271" y="323" width="112" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="8" maxX="15" maxY="8"/>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="dismissButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J5j-qf-vef"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0EM-IV-vHR" firstAttribute="top" secondItem="Zw7-r1-Qvl" secondAttribute="bottom" constant="16" id="JV2-mh-Qfk"/>
+                            <constraint firstItem="SmU-Gd-TKz" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="20" id="JVS-2L-uHZ"/>
+                            <constraint firstItem="3fR-i3-iog" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Nkc-ku-E0G"/>
+                            <constraint firstItem="0EM-IV-vHR" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="PIF-bt-z4h"/>
+                            <constraint firstItem="hfs-1b-nqX" firstAttribute="top" secondItem="Zw7-r1-Qvl" secondAttribute="bottom" constant="16" id="UFf-e9-B79"/>
+                            <constraint firstItem="hfs-1b-nqX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bk7-w1-jdV"/>
+                            <constraint firstItem="Zw7-r1-Qvl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="en0-zj-Wu6"/>
+                            <constraint firstItem="Zw7-r1-Qvl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gxX-Y0-SFr"/>
+                            <constraint firstItem="SmU-Gd-TKz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hCX-FX-jAp"/>
+                            <constraint firstItem="3fR-i3-iog" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="v4x-3q-7Eg"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="dismissButton" destination="hfs-1b-nqX" id="7l1-Mz-55G"/>
+                        <outlet property="fileCountLabel" destination="5ox-tl-yHd" id="2VS-P7-yP7"/>
+                        <outlet property="freeSpaceLabel" destination="jaw-Ao-Ju0" id="ttw-Ry-vzH"/>
+                        <outlet property="infoStackView" destination="3fR-i3-iog" id="eUg-US-u5u"/>
+                        <outlet property="progressView" destination="Zw7-r1-Qvl" id="HOn-Fw-RTt"/>
+                        <outlet property="recoveryButton" destination="0EM-IV-vHR" id="ogB-9x-QQM"/>
+                        <outlet property="totalSizeLabel" destination="Hho-y4-ozZ" id="87n-nv-oN1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1192.753623188406" y="133.92857142857142"/>
+        </scene>
+    </scenes>
+</document>

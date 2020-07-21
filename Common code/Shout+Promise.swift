@@ -18,6 +18,13 @@ extension SSH {
                 return "Error while execute \(name)"
             }
         }
+        
+        var failureReason: String? {
+            switch self {
+            case .scriptError(name: _, log: let log):
+                return log
+            }
+        }
     }
     
     

@@ -197,17 +197,8 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
     }
     
     private func addCircularProgressView(to view: UIView) {
-        let width = traitCollection.verticalSizeClass == .compact ? 170 : 200
-        spinner = SwiftSpinner(frame: CGRect(x: 0, y: 0, width: width, height: width))
-        spinner?.showBlurBackground = false
-        spinner?.titleLabel.textColor = .black
-        let fontSize: CGFloat = traitCollection.verticalSizeClass == .compact ? 17 : 22
-        let font = UIFont.systemFont(ofSize: fontSize)
-        spinner?.setTitleFont(font)
-        spinner?.outerColor = .systemTeal
-        spinner?.innerColor = .lightGray
-        spinner?.show(in: view, title: "Searching\nfor Trident")
-     }
+        spinner = SwiftSpinner.addCircularProgress(to: view, title: "Searching\nfor Trident", verticalSizeClass: traitCollection.verticalSizeClass)
+    }
 
     private func showPopup(with ssids: [SSIDInfo], view: UIView) {
         let controller: WiFiPopupViewController = WiFiPopupViewController()

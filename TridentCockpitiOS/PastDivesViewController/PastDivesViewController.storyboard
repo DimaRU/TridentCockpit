@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WCY-zm-DOs">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WCY-zm-DOs">
     <device id="retina6_1" orientation="landscape" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -8,15 +8,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--RecoveryVideoViewController-->
+        <scene sceneID="JZB-kG-R7k">
+            <objects>
+                <viewControllerPlaceholder storyboardName="RecoveryVideoViewController" id="WBP-ma-wfQ" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ngY-nN-6LA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1633" y="544"/>
+        </scene>
         <!--Past dives-->
         <scene sceneID="SZJ-vC-DX4">
             <objects>
-                <viewController id="WCY-zm-DOs" customClass="PastDivesViewController" customModule="TridentCockpitiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="WCY-zm-DOs" customClass="PastDivesViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="pFh-ng-NSQ">
                         <rect key="frame" x="0.0" y="0.0" width="896" height="370"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="hqG-Et-RxJ" customClass="PWSwitch" customModule="TridentCockpitiOS" customModuleProvider="target">
+                            <view contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hqG-Et-RxJ" customClass="PWSwitch" customModule="TridentCockpit" customModuleProvider="target">
                                 <rect key="frame" x="52" y="4" width="50" height="26"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="color" keyPath="trackOffBorderColor">
@@ -52,7 +60,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="shouldFillOnPush" value="NO"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Delete after download" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVX-MN-1fX">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" ambiguous="YES" text="Delete after download" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVX-MN-1fX">
                                 <rect key="frame" x="110" y="8" width="151" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <nil key="textColor"/>
@@ -67,7 +75,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYu-ry-A7E" customClass="LinearProgressBar" customModule="TridentCockpitiOS" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WYu-ry-A7E" customClass="LinearProgressBar" customModule="TridentCockpit" customModuleProvider="target">
                                         <rect key="frame" x="118" y="2" width="100" height="14"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -118,7 +126,7 @@
                                     <inset key="sectionInset" minX="4" minY="0.0" maxX="4" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DiveCollectionViewCell" id="l1J-Yv-qX5" customClass="DiveCollectionViewCell" customModule="TridentCockpitiOS" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="DiveCollectionViewCell" id="l1J-Yv-qX5" customClass="DiveCollectionViewCell" customModule="TridentCockpit" customModuleProvider="target">
                                         <rect key="frame" x="48" y="35" width="255" height="138"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BBa-Ao-xwb">
@@ -152,7 +160,7 @@
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="30"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6d-6F-Yru" customClass="SmartDownloadButton" customModule="TridentCockpitiOS" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V6d-6F-Yru" customClass="SmartDownloadButton" customModule="TridentCockpit" customModuleProvider="target">
                                                     <rect key="frame" x="102.5" y="63" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="50" id="5rn-JY-3lZ"/>
@@ -203,7 +211,7 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="DiveCollectionReusableView" id="MCQ-48-LmJ" customClass="DiveCollectionReusableView" customModule="TridentCockpitiOS" customModuleProvider="target">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="DiveCollectionReusableView" id="MCQ-48-LmJ" customClass="DiveCollectionReusableView" customModule="TridentCockpit" customModuleProvider="target">
                                     <rect key="frame" x="0.0" y="0.0" width="896" height="35"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -247,7 +255,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Jgu-JK-9Mr"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Past dives" id="gO4-jr-Ai1">
+                    <navigationItem key="navigationItem" title="Past dives" leftItemsSupplementBackButton="YES" id="gO4-jr-Ai1">
+                        <barButtonItem key="leftBarButtonItem" title="Recovery" id="TcU-Xf-Y6W">
+                            <connections>
+                                <segue destination="WBP-ma-wfQ" kind="presentation" id="iA3-kX-dJk"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="stop" id="ZOI-g9-eUa">
                                 <connections>
@@ -282,7 +295,8 @@
                         <outlet property="availableSpaceLabel" destination="2nc-Id-sFA" id="ppE-kL-UPV"/>
                         <outlet property="collectionView" destination="ZkK-Jc-iMs" id="CZR-rC-9gp"/>
                         <outlet property="deleteAfterSwitch" destination="hqG-Et-RxJ" id="pIE-bt-5ML"/>
-                        <segue destination="HDv-J0-a42" kind="unwind" identifier="unwindToDashboardSegue" customClass="UIStoryboardSegueWithCompletion" customModule="TridentCockpitiOS" customModuleProvider="target" unwindAction="unwindToDashboardWithUnwindSegue:" id="mQf-8d-tTZ"/>
+                        <outlet property="recoveryButton" destination="TcU-Xf-Y6W" id="6xg-cv-Uqh"/>
+                        <segue destination="HDv-J0-a42" kind="unwind" identifier="unwindToDashboardSegue" customClass="UIStoryboardSegueWithCompletion" customModule="TridentCockpit" customModuleProvider="target" unwindAction="unwindToDashboardWithUnwindSegue:" id="mQf-8d-tTZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hdN-zT-O1V" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

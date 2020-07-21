@@ -7,6 +7,7 @@
 import UIKit
 import Kingfisher
 import AVKit
+import Shout
 
 class PastDivesViewController: UIViewController {
 
@@ -14,6 +15,7 @@ class PastDivesViewController: UIViewController {
     @IBOutlet weak var availableSpaceBar: LinearProgressBar!
     @IBOutlet weak var availableSpaceLabel: UILabel!
     @IBOutlet weak var deleteAfterSwitch: PWSwitch!
+    @IBOutlet weak var recoveryButton: UIBarButtonItem!
     
     var sectionDates: [Date] = []
     var recordingBySection: [Date: [Recording]] = [:]
@@ -70,6 +72,8 @@ class PastDivesViewController: UIViewController {
         collectionView.refreshControl = refreshControl
         
         refreshRecordings()
+        
+        checkRecovery()
     }
     
     deinit {
@@ -191,6 +195,23 @@ class PastDivesViewController: UIViewController {
     }
     
     // MARK: Private functions
+    private func checkRecovery() {
+        let command = """
+        #!/bin/bash
+        for dir in /data/openrov/video/sessions/.[0-9,a-z]*; do
+          if [ -d "$dir" ]; then
+            echo "Recovery"
+            break
+          fi
+        done
+        """
+        SSH.executeCommand(command)
+        .done {
+            self.recoveryButton.isEnabled = $0.last == "Recovery"
+        }.catch { error in
+            print(error)
+        }
+    }
 
     private func download(recordings: [Recording]) {
         for recording in recordings {
