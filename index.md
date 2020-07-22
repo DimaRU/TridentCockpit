@@ -18,7 +18,8 @@
 * GPS geotagging pilot video
 * Realtime drone orientation view
 * Show depth, temperature, camera and battery times
-* Past dives video from drone: watch, download and delete.
+* Past dives video from drone: watch, download and delete
+* Recovery broken past dives videos
 * Show maintenance data: internal pressure, internal temperature, battery cycle count
 * Support payload connection and control. (now GoPro HERO 3/3+)
 
