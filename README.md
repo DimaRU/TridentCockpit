@@ -24,7 +24,8 @@
 * GPS geotagging pilot video
 * Realtime drone orientation view
 * Show depth, temperature, camera and battery times
-* Past dives video from drone: watch, download and delete.
+* Past dives video from drone: watch, download and delete
+* Recovery broken past dives videos
 * Show maintenance data: internal pressure, internal temperature, battery cycle count
 * Support payload connection and control. (now GoPro HERO 3/3+)
 
@@ -95,6 +96,8 @@ For build instructions please check out [build.yml](https://github.com/DimaRU/Tr
 * [PWSwitch](https://github.com/Shaninnik/PWSwitch) - Highly customizable UISwitch built with CALayers and CAAnimations. Modified version.
 * [LinearProgressBar](https://github.com/gordoneliel/LinearProgressBar) - Simple progress bar for iOS.
 * [CameraButton](https://github.com/otusweb/iOS-camera-button) - A button that behave the same way as the video camera button in the iOS camera. Modified version.
+* [UICircularProgressRing](https://github.com/luispadron/UICircularProgressRing) - A circular progress bar for iOS written in Swift.
+* [Untrunc](https://github.com/DimaRU/untrunc) - Restore a truncated mp4. Embedded version for Trident Cockpit iOS/macOS.
 * [HaishinKit.swift](https://github.com/shogo4405/HaishinKit.swift) - RTMP streaming library for iOS, macOS, tvOS.
 
 
