@@ -57,7 +57,7 @@ class RecoveryVideoViewController: UIViewController {
     {
         DispatchQueue.main.async {
             // Show error
-            print(error)
+            UIApplication.shared.isIdleTimerDisabled = false
             error.alert(delay: 60)
             self.recoveryButton.isHidden = true
             self.dismissButton.isHidden = false
@@ -66,11 +66,24 @@ class RecoveryVideoViewController: UIViewController {
     }
     
     private func checkInstallUntrunc() {
-        var spinner: SwiftSpinner!
         let login = GlobalParams.rovLogin
         let passwordBase64 = GlobalParams.rovPassword
         let password = String(data: Data(base64Encoded: passwordBase64)!, encoding: .utf8)!
         
+
+        UIApplication.shared.isIdleTimerDisabled = true
+        let spinner = SwiftSpinner.addCircularProgress(to: self.view,
+                                                   title: "Setup recovery",
+                                                   verticalSizeClass: self.traitCollection.verticalSizeClass)
+        let removeSpinner = {
+            DispatchQueue.main.async {
+                UIApplication.shared.isIdleTimerDisabled = false
+                spinner.hide() {
+                    spinner.removeConstraints(spinner.constraints)
+                    spinner.removeFromSuperview()
+                }
+            }
+        }
         DispatchQueue.global(qos: .userInitiated).async {
             do {
                 self.ssh = try SSH(host: FastRTPS.remoteAddress, numericHost: true)
@@ -81,12 +94,6 @@ class RecoveryVideoViewController: UIViewController {
                 if let checkFileList = try? sftp.listFiles(in: "/opt/openrov/untrunc"),
                     checkFileList.keys.contains("donor.mp4"),
                     checkFileList.keys.contains("untrunc") {} else {
-                    DispatchQueue.main.async {
-                        UIApplication.shared.isIdleTimerDisabled = true
-                        spinner = SwiftSpinner.addCircularProgress(to: self.view,
-                                                                       title: "Setup recovery",
-                                                                       verticalSizeClass: self.traitCollection.verticalSizeClass)
-                    }
                     let zipFileURL = Bundle.main.url(forResource: "untrunc", withExtension: "zip")!
                     try sftp.upload(localURL: zipFileURL, remotePath: "untrunc.zip")
                     let script = """
@@ -96,14 +103,8 @@ class RecoveryVideoViewController: UIViewController {
                     rm -rf untrunc.zip 2>&1
                     """
                     let (status, log) = try ssh.capture(script)
-                    DispatchQueue.main.async {
-                        UIApplication.shared.isIdleTimerDisabled = false
-                        spinner.hide() {
-                            spinner.removeConstraints(spinner.constraints)
-                            spinner.removeFromSuperview()
-                        }
-                    }
-                    if status != 0 {
+                     if status != 0 {
+                        removeSpinner()
                         let error = SSH.ScriptError.scriptError(name: "unzip", log: log)
                         self.showError(error)
                         return
@@ -111,6 +112,7 @@ class RecoveryVideoViewController: UIViewController {
                 }
                 let script1 = "/opt/openrov/untrunc/untrunc list /data/openrov/video/sessions 2>&1"
                 let (status, log) = try ssh.capture(script1)
+                removeSpinner()
                 if status != 0 {
                     let error = SSH.ScriptError.scriptError(name: "list", log: log)
                     self.showError(error)
@@ -121,6 +123,7 @@ class RecoveryVideoViewController: UIViewController {
                 }
 
             } catch {
+                removeSpinner()
                 self.showError(error)
             }
         }
@@ -171,6 +174,7 @@ class RecoveryVideoViewController: UIViewController {
 
     
     private func recoveryVideo() {
+        UIApplication.shared.isIdleTimerDisabled = true
         DispatchQueue.global(qos: .userInitiated).async {
             do {
                 guard let ssh = self.ssh else { return }
@@ -182,6 +186,7 @@ class RecoveryVideoViewController: UIViewController {
                 }
                 print("End:", status)
                 DispatchQueue.main.async {
+                    UIApplication.shared.isIdleTimerDisabled = false
                     self.progressView.startProgress(to: 100, duration: 0.1)
                     self.dismissButton.isHidden = false
                 }
