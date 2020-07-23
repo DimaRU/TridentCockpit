@@ -258,7 +258,7 @@
                     <navigationItem key="navigationItem" title="Past dives" leftItemsSupplementBackButton="YES" id="gO4-jr-Ai1">
                         <barButtonItem key="leftBarButtonItem" title="Recovery" id="TcU-Xf-Y6W">
                             <connections>
-                                <segue destination="WBP-ma-wfQ" kind="presentation" id="iA3-kX-dJk"/>
+                                <segue destination="WBP-ma-wfQ" kind="presentation" modalPresentationStyle="formSheet" id="iA3-kX-dJk"/>
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
