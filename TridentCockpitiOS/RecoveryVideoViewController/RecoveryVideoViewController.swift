@@ -58,7 +58,7 @@ class RecoveryVideoViewController: UIViewController {
         DispatchQueue.main.async {
             // Show error
             UIApplication.shared.isIdleTimerDisabled = false
-            error.alert(delay: 60)
+            error.alert(delay: 300)
             self.recoveryButton.isHidden = true
             self.dismissButton.isHidden = false
         }
@@ -141,7 +141,7 @@ class RecoveryVideoViewController: UIViewController {
             fileCount == fileSizes.count
         else {
             // Wrong reply
-            let error = SSH.ScriptError.scriptError(name: "list internal error", log: log)
+            let error = SSH.ScriptError.scriptError(name: "list command", log: log)
             self.showError(error)
             return
         }
@@ -174,19 +174,26 @@ class RecoveryVideoViewController: UIViewController {
 
     
     private func recoveryVideo() {
+        var logs = ""
         UIApplication.shared.isIdleTimerDisabled = true
         DispatchQueue.global(qos: .userInitiated).async {
             do {
                 guard let ssh = self.ssh else { return }
-                let script = "/opt/openrov/untrunc/untrunc recovery /opt/openrov/untrunc/donor.mp4 /data/openrov/video/sessions"
+                let script = "/opt/openrov/untrunc/untrunc recovery /opt/openrov/untrunc/donor.mp4 /data/openrov/video/sessions 2>&1"
                 let status = try ssh.execute(script) { log in
                     DispatchQueue.main.async {
-                        self.showProgress(log)
+                        logs += self.showProgress(log)
                     }
                 }
-                print("End:", status)
+
                 DispatchQueue.main.async {
                     UIApplication.shared.isIdleTimerDisabled = false
+                    guard status == 0 else {
+                        print(status, logs)
+                        let error = SSH.ScriptError.scriptError(name: "Recovery command", log: logs)
+                        self.showError(error)
+                        return
+                    }
                     self.progressView.startProgress(to: 100, duration: 0.1)
                     self.dismissButton.isHidden = false
                 }
@@ -196,24 +203,33 @@ class RecoveryVideoViewController: UIViewController {
         }
     }
     
-    private func showProgress(_ log: String) {
-        let logStrings = log.trimmingCharacters(in: .newlines).split(separator: ":")
-        guard logStrings.count == 2 else { return }
-        switch logStrings[0] {
-        case "Count":
-            fileProgress = String(logStrings[1])
-            progressView.resetProgress()
-        case "Save":
-            progressType = "Recovery:"
-            let value = logStrings[1].trimmingCharacters(in: .init(charactersIn: "%"))
-            progressView.startProgress(to: CGFloat(Int(value) ?? 0), duration: 0.1)
-        case "Check":
-            progressType = "Check:"
-            let value = logStrings[1].trimmingCharacters(in: .init(charactersIn: "%"))
-            progressView.startProgress(to: CGFloat(Int(value) ?? 0), duration: 0.1)
-        default:
-            return
+    private func showProgress(_ log: String) -> String {
+        var cleanLog: [String] = []
+        let splitLog = log.replacingOccurrences(of: "\r", with: "\n").split(separator: "\n").map { $0.trimmingCharacters(in: .newlines) }
+        
+        for logString in splitLog {
+            let keyValue = logString.split(separator: ":")
+            guard keyValue.count == 2 else {
+                cleanLog.append(logString)
+                continue
+            }
+            switch keyValue[0] {
+            case "Count":
+                fileProgress = String(keyValue[1])
+                progressView.resetProgress()
+            case "Save":
+                progressType = "Recovery:"
+                let value = keyValue[1].trimmingCharacters(in: .init(charactersIn: "%"))
+                progressView.startProgress(to: CGFloat(Int(value) ?? 0), duration: 0.1)
+            case "Check":
+                progressType = "Check:"
+                let value = keyValue[1].trimmingCharacters(in: .init(charactersIn: "%"))
+                progressView.startProgress(to: CGFloat(Int(value) ?? 0), duration: 0.1)
+            default:
+                cleanLog.append(logString)
+            }
         }
+        return cleanLog.joined(separator: "\n")
     }
 }
 
