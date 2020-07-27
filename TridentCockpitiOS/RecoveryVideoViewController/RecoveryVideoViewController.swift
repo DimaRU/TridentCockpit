@@ -15,23 +15,33 @@ class RecoveryVideoViewController: UIViewController {
     @IBOutlet weak var totalSizeLabel: UILabel!
     @IBOutlet weak var freeSpaceLabel: UILabel!
     @IBOutlet weak var infoStackView: UIStackView!
+    @IBOutlet weak var logButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
+    private let VersionString = "Version:2"
     private var ssh: SSH?
     var fileProgress = ""
     var progressType = ""
-    
+    private var errorLog = ""
+    private var entryList: [String] = []
+    private var result: [Bool] = []
+    private var fileSize: [Int64] = []
+    private let formater = ByteCountFormatter()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        formater.countStyle = .file
         progressView.valueFormatter = self
         progressView.delegate = self
         recoveryButton.isHidden = true
         dismissButton.isHidden = true
         infoStackView.isHidden = true
+        tableView.isHidden = true
+        checkInstallUntrunc()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        checkInstallUntrunc()
     }
     
     @IBAction func dismissButtonPress(_ sender: Any) {
@@ -53,6 +63,12 @@ class RecoveryVideoViewController: UIViewController {
         }
     }
 
+    @IBSegueAction private func showRecoveryLog(coder: NSCoder, sender: Any?, segueIdentifier: String?) -> RecoveryLogViewController? {
+        let recoveryLogViewController = RecoveryLogViewController(coder: coder)
+        recoveryLogViewController?.errorLog = errorLog
+        return recoveryLogViewController
+    }
+    
     private func showError(_ error: Error)
     {
         DispatchQueue.main.async {
@@ -69,7 +85,8 @@ class RecoveryVideoViewController: UIViewController {
         let login = GlobalParams.rovLogin
         let passwordBase64 = GlobalParams.rovPassword
         let password = String(data: Data(base64Encoded: passwordBase64)!, encoding: .utf8)!
-        
+        var version: String?
+        var info = ""
 
         UIApplication.shared.isIdleTimerDisabled = true
         let spinner = SwiftSpinner.addCircularProgress(to: self.view,
@@ -91,37 +108,43 @@ class RecoveryVideoViewController: UIViewController {
                 
                 try ssh.authenticate(username: login, password: password)
                 let sftp = try ssh.openSftp()
-                if let checkFileList = try? sftp.listFiles(in: "/opt/openrov/untrunc"),
-                    checkFileList.keys.contains("donor.mp4"),
-                    checkFileList.keys.contains("untrunc") {} else {
-                    let zipFileURL = Bundle.main.url(forResource: "untrunc", withExtension: "zip")!
-                    try sftp.upload(localURL: zipFileURL, remotePath: "untrunc.zip")
-                    let script = """
-                    set -e
-                    echo \(password) | sudo -S echo START-SCRIPT
-                    sudo unzip -u untrunc.zip -d /opt/openrov/untrunc 2>&1
-                    rm -rf untrunc.zip 2>&1
-                    """
-                    let (status, log) = try ssh.capture(script)
-                     if status != 0 {
+                
+                while version != self.VersionString {
+                    if version == nil,
+                       let checkFileList = try? sftp.listFiles(in: "/opt/openrov/untrunc"),
+                       checkFileList.keys.contains("donor.mp4"),
+                       checkFileList.keys.contains("untrunc") {} else {
+                        let zipFileURL = Bundle.main.url(forResource: "untrunc", withExtension: "zip")!
+                        try sftp.upload(localURL: zipFileURL, remotePath: "untrunc.zip")
+                        let script = """
+                        set -e
+                        echo \(password) | sudo -S echo START-SCRIPT
+                        sudo unzip -o untrunc.zip -d /opt/openrov/untrunc 2>&1
+                        rm -rf untrunc.zip 2>&1
+                        """
+                        let (status, log) = try ssh.capture(script)
+                        if status != 0 {
+                            removeSpinner()
+                            let error = SSH.ScriptError.scriptError(name: "unzip", log: log)
+                            self.showError(error)
+                            return
+                        }
+                    }
+                    let script1 = "/opt/openrov/untrunc/untrunc list /data/openrov/video/sessions 2>&1"
+                    let (status, log) = try ssh.capture(script1)
+                    if status != 0 {
                         removeSpinner()
-                        let error = SSH.ScriptError.scriptError(name: "unzip", log: log)
+                        let error = SSH.ScriptError.scriptError(name: "list", log: log)
                         self.showError(error)
                         return
                     }
+                    info = log
+                    version = String(log.split(separator: "\n").first(where: { $0 == self.VersionString }) ?? "")
                 }
-                let script1 = "/opt/openrov/untrunc/untrunc list /data/openrov/video/sessions 2>&1"
-                let (status, log) = try ssh.capture(script1)
                 removeSpinner()
-                if status != 0 {
-                    let error = SSH.ScriptError.scriptError(name: "list", log: log)
-                    self.showError(error)
-                    return
-                }
                 DispatchQueue.main.async {
-                    self.showInfo(log)
+                    self.showInfo(info)
                 }
-
             } catch {
                 removeSpinner()
                 self.showError(error)
@@ -130,15 +153,15 @@ class RecoveryVideoViewController: UIViewController {
     }
     
     private func showInfo(_ log: String) {
-        let formater = ByteCountFormatter()
-        formater.countStyle = .file
         let info = log.split(separator: "\n").map { $0.split(separator: ":") }
-        let fileSizes = info.compactMap{ $0.first == "File" ? Int64($0.last!):nil }
+        entryList = info.filter{ $0.first == "Entry"}.map { String($0[1]) }
+        result = Array.init(repeating: false, count: entryList.count)
+        fileSize = info.compactMap{ $0.first == "Entry" ? Int64($0.last!):nil }
         guard
             let totals = info.first(where: { $0[0] == "Files/free" })?.last?.split(separator: "/"),
             let fileCount = Int(totals[0]),
             let freeSpace = Int64(totals[1]),
-            fileCount == fileSizes.count
+            fileCount == fileSize.count
         else {
             // Wrong reply
             let error = SSH.ScriptError.scriptError(name: "list command", log: log)
@@ -146,8 +169,8 @@ class RecoveryVideoViewController: UIViewController {
             return
         }
 
-        let maxFileSize = fileSizes.max() ?? 0
-        let totalFileSize = fileSizes.reduce(0, +)
+        let maxFileSize = fileSize.max() ?? 0
+        let totalFileSize = fileSize.reduce(0, +)
         
         // Show data
         fileCountLabel.text = "Videos for recovery: \(fileCount)"
@@ -179,23 +202,28 @@ class RecoveryVideoViewController: UIViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             do {
                 guard let ssh = self.ssh else { return }
-                let script = "/opt/openrov/untrunc/untrunc recovery /opt/openrov/untrunc/donor.mp4 /data/openrov/video/sessions 2>&1"
-                let status = try ssh.execute(script) { log in
-                    DispatchQueue.main.async {
-                        logs += self.showProgress(log)
+                for index in self.entryList.indices {
+                    logs = ""
+                    self.fileProgress = "\(index+1)/\(self.entryList.count)"
+                    let script = "/opt/openrov/untrunc/untrunc recovery /opt/openrov/untrunc/donor.mp4 \(self.entryList[index]) 2>&1"
+                    let status = try ssh.execute(script) { log in
+                        DispatchQueue.main.async {
+                            logs += self.showProgress(log)
+                        }
+                    }
+                    
+                    self.result[index] = status == 0
+                    if status != 22 {
+                        self.errorLog += logs
                     }
                 }
-
                 DispatchQueue.main.async {
                     UIApplication.shared.isIdleTimerDisabled = false
-                    guard status == 0 else {
-                        print(status, logs)
-                        let error = SSH.ScriptError.scriptError(name: "Recovery command", log: logs)
-                        self.showError(error)
-                        return
-                    }
-                    self.progressView.startProgress(to: 100, duration: 0.1)
+                    self.progressView.isHidden = true
+                    self.tableView.isHidden = false
+                    self.tableView.reloadData()
                     self.dismissButton.isHidden = false
+                    self.logButton.isHidden = self.errorLog == ""
                 }
             } catch {
                 self.showError(error)
@@ -214,9 +242,6 @@ class RecoveryVideoViewController: UIViewController {
                 continue
             }
             switch keyValue[0] {
-            case "Count":
-                fileProgress = String(keyValue[1])
-                progressView.resetProgress()
             case "Save":
                 progressType = "Recovery:"
                 let value = keyValue[1].trimmingCharacters(in: .init(charactersIn: "%"))
@@ -230,6 +255,21 @@ class RecoveryVideoViewController: UIViewController {
             }
         }
         return cleanLog.joined(separator: "\n")
+    }
+}
+
+extension RecoveryVideoViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        entryList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "RecoveryVideoTableViewCell", for: indexPath) as! RecoveryVideoTableViewCell
+        let fileSizeString = formater.string(fromByteCount: fileSize[indexPath.row])
+        cell.fileInfoLabel.text = "\(indexPath.row): \(fileSizeString)"
+        cell.resultLabel.text = result[indexPath.row] ? "Recovered" : "Fail"
+        cell.resultLabel.textColor = result[indexPath.row] ? .systemGreen : .systemRed
+        return cell
     }
 }
 
