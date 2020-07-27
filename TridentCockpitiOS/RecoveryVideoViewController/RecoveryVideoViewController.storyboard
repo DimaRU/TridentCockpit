@@ -136,20 +136,20 @@
                                     <action selector="dismissButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="J5j-qf-vef"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0EM-IV-vHR">
-                                <rect key="frame" x="72" y="325" width="127" height="45"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <inset key="contentEdgeInsets" minX="15" minY="8" maxX="15" maxY="8"/>
-                                <state key="normal" title="Recovery"/>
-                                <connections>
-                                    <action selector="recoveryButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dLC-Mh-V9M"/>
-                                </connections>
-                            </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pK1-QI-FfJ">
                                 <rect key="frame" x="417" y="350" width="63" height="30"/>
                                 <state key="normal" title="Show log"/>
                                 <connections>
                                     <segue destination="fJt-Lx-vAb" kind="presentation" destinationCreationSelector="showRecoveryLogWithCoder:sender:segueIdentifier:" modalPresentationStyle="pageSheet" id="UBU-ji-qCH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0EM-IV-vHR">
+                                <rect key="frame" x="49" y="325" width="127" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <inset key="contentEdgeInsets" minX="15" minY="8" maxX="15" maxY="8"/>
+                                <state key="normal" title="Recovery"/>
+                                <connections>
+                                    <action selector="recoveryButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dLC-Mh-V9M"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -167,7 +167,7 @@
                             <constraint firstItem="Zw7-r1-Qvl" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="gxX-Y0-SFr"/>
                             <constraint firstItem="SmU-Gd-TKz" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hCX-FX-jAp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="pK1-QI-FfJ" secondAttribute="trailing" constant="20" id="lGv-XI-AxP"/>
-                            <constraint firstItem="pK1-QI-FfJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hfs-1b-nqX" secondAttribute="trailing" symbolic="YES" id="nIL-hr-ms8"/>
+                            <constraint firstItem="pK1-QI-FfJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hfs-1b-nqX" secondAttribute="trailing" constant="8" symbolic="YES" id="nIL-hr-ms8"/>
                             <constraint firstItem="5Gq-Ov-aZB" firstAttribute="firstBaseline" secondItem="SmU-Gd-TKz" secondAttribute="baseline" symbolType="layoutAnchor" id="o7k-Kl-RaP"/>
                             <constraint firstItem="5Gq-Ov-aZB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sPo-XO-xiG"/>
                             <constraint firstItem="3fR-i3-iog" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="v4x-3q-7Eg"/>

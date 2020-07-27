@@ -18,13 +18,25 @@ class RecoveryVideoViewController: UIViewController {
     @IBOutlet weak var logButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
+    private enum RecoveryResult: String { case Wait, Fail, Recovered, Deleted, Visible
+        var color: UIColor {
+            switch self {
+            case .Wait: return .black
+            case .Fail: return .systemRed
+            case .Recovered: return .systemGreen
+            case .Deleted: return .systemGray
+            case .Visible: return .black
+            }
+        }
+    }
+    
     private let VersionString = "Version:2"
     private var ssh: SSH?
-    var fileProgress = ""
-    var progressType = ""
+    private var fileProgress = ""
+    private var progressType = ""
     private var errorLog = ""
     private var entryList: [String] = []
-    private var result: [Bool] = []
+    private var result: [RecoveryResult] = []
     private var fileSize: [Int64] = []
     private let formater = ByteCountFormatter()
 
@@ -37,6 +49,7 @@ class RecoveryVideoViewController: UIViewController {
         dismissButton.isHidden = true
         infoStackView.isHidden = true
         tableView.isHidden = true
+        presentationController?.delegate = self
         checkInstallUntrunc()
     }
     
@@ -72,13 +85,11 @@ class RecoveryVideoViewController: UIViewController {
     private func showError(_ error: Error)
     {
         DispatchQueue.main.async {
-            // Show error
             UIApplication.shared.isIdleTimerDisabled = false
             error.alert(delay: 300)
             self.recoveryButton.isHidden = true
             self.dismissButton.isHidden = false
         }
-        
     }
     
     private func checkInstallUntrunc() {
@@ -155,7 +166,7 @@ class RecoveryVideoViewController: UIViewController {
     private func showInfo(_ log: String) {
         let info = log.split(separator: "\n").map { $0.split(separator: ":") }
         entryList = info.filter{ $0.first == "Entry"}.map { String($0[1]) }
-        result = Array.init(repeating: false, count: entryList.count)
+        result = Array.init(repeating: .Wait, count: entryList.count)
         fileSize = info.compactMap{ $0.first == "Entry" ? Int64($0.last!):nil }
         guard
             let totals = info.first(where: { $0[0] == "Files/free" })?.last?.split(separator: "/"),
@@ -211,8 +222,9 @@ class RecoveryVideoViewController: UIViewController {
                             logs += self.showProgress(log)
                         }
                     }
-                    
-                    self.result[index] = status == 0
+
+                    self.result[index] = status == 0 ? .Recovered : .Fail
+                    self.result[index] = .Fail
                     if status != 22 {
                         self.errorLog += logs
                     }
@@ -256,6 +268,61 @@ class RecoveryVideoViewController: UIViewController {
         }
         return cleanLog.joined(separator: "\n")
     }
+    
+    private func deleteVideo(at indexPath: IndexPath) {
+        let passwordBase64 = GlobalParams.rovPassword
+        let password = String(data: Data(base64Encoded: passwordBase64)!, encoding: .utf8)!
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                guard let ssh = self.ssh else { return }
+                let script = """
+                echo \(password) | sudo -S echo START-SCRIPT
+                sudo rm -rf \(self.entryList[indexPath.row]) 2>&1
+                """
+                let (status, log) = try ssh.capture(script)
+                if status != 0 {
+                    let error = SSH.ScriptError.scriptError(name: "Delete video", log: log)
+                    self.showError(error)
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.result[indexPath.row] = .Deleted
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            } catch {
+                self.showError(error)
+            }
+        }
+    }
+    
+    private func unhideVideo(at indexPath: IndexPath) {
+        let passwordBase64 = GlobalParams.rovPassword
+        let password = String(data: Data(base64Encoded: passwordBase64)!, encoding: .utf8)!
+        let destPath = entryList[indexPath.row].replacingOccurrences(of: ".", with: "")
+        DispatchQueue.global(qos: .userInitiated).async {
+            do {
+                guard let ssh = self.ssh else { return }
+                let script = """
+                echo \(password) | sudo -S echo START-SCRIPT
+                sudo mv \(self.entryList[indexPath.row]) \(destPath) 2>&1
+                """
+                let (status, log) = try ssh.capture(script)
+                if status != 0 {
+                    let error = SSH.ScriptError.scriptError(name: "Unhide video", log: log)
+                    self.showError(error)
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.result[indexPath.row] = .Visible
+                    self.tableView.reloadRows(at: [indexPath], with: .automatic)
+                }
+            } catch {
+                self.showError(error)
+            }
+        }
+    }
+
 }
 
 extension RecoveryVideoViewController: UITableViewDelegate, UITableViewDataSource {
@@ -267,9 +334,30 @@ extension RecoveryVideoViewController: UITableViewDelegate, UITableViewDataSourc
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecoveryVideoTableViewCell", for: indexPath) as! RecoveryVideoTableViewCell
         let fileSizeString = formater.string(fromByteCount: fileSize[indexPath.row])
         cell.fileInfoLabel.text = "\(indexPath.row): \(fileSizeString)"
-        cell.resultLabel.text = result[indexPath.row] ? "Recovered" : "Fail"
-        cell.resultLabel.textColor = result[indexPath.row] ? .systemGreen : .systemRed
+        cell.resultLabel.text = result[indexPath.row].rawValue
+        cell.resultLabel.textColor = result[indexPath.row].color
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        guard result[indexPath.row] == .Fail else { return nil }
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { (action, sourceView, completionHandler) in
+            self.deleteVideo(at: indexPath)
+            completionHandler(false)
+        }
+        let unhideAction = UIContextualAction(style: .normal, title: "Unhide") { (action, sourceView, completionHandler) in
+            self.unhideVideo(at: indexPath)
+            completionHandler(true)
+        }
+        let actionsConfiguration = UISwipeActionsConfiguration(actions: [deleteAction, unhideAction])
+        actionsConfiguration.performsFirstActionWithFullSwipe = false
+        return actionsConfiguration
+    }
+}
+
+extension RecoveryVideoViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
+        false
     }
 }
 
