@@ -224,8 +224,7 @@ class RecoveryVideoViewController: UIViewController {
                     }
 
                     self.result[index] = status == 0 ? .Recovered : .Fail
-                    self.result[index] = .Fail
-                    if status != 22 {
+                    if status != 0 {
                         self.errorLog += logs
                     }
                 }
