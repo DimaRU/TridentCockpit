@@ -136,6 +136,9 @@
 		0A5CBCB523675F920055131A /* SF-Pro-Display-Ultralight.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA223675F410055131A /* SF-Pro-Display-Ultralight.otf */; };
 		0A5CBCB623675F920055131A /* SF-Pro-Display-Black.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA323675F410055131A /* SF-Pro-Display-Black.otf */; };
 		0A5E3FC823BFA10E00EAC519 /* GoproStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5E3FBE23BFA10E00EAC519 /* GoproStatus.swift */; };
+		0A63FA4F24CF21D200415735 /* RecoveryLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63FA4824CF21D200415735 /* RecoveryLogViewController.swift */; };
+		0A63FA5024CF21D200415735 /* RecoveryVideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63FA4E24CF21D200415735 /* RecoveryVideoTableViewCell.swift */; };
+		0A63FA5224CF22D600415735 /* untrunc.zip in Resources */ = {isa = PBXBuildFile; fileRef = 0A63FA5124CF22D600415735 /* untrunc.zip */; };
 		0A66C52C23AED706001BA93D /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0A66C52B23AED706001BA93D /* Moya */; };
 		0A66C52F23AED776001BA93D /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A66C52E23AED776001BA93D /* PromiseKit */; };
 		0A7130D423636AF200817593 /* FlatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130C823636AF100817593 /* FlatButton.swift */; };
@@ -219,7 +222,6 @@
 		0AAD2D612447368600B6152C /* PlayDemoVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD2D592447368500B6152C /* PlayDemoVideo.swift */; };
 		0AAD2D632447369300B6152C /* PlayDemoVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AAD2D622447369300B6152C /* PlayDemoVideo.swift */; };
 		0AB110E8245D8B6400BDC00D /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0AB110E7245D8B6400BDC00D /* Settings.bundle */; };
-		0AB9EBFB24C6294200DCDD69 /* untrunc.zip in Resources */ = {isa = PBXBuildFile; fileRef = 0AB9EBFA24C6294200DCDD69 /* untrunc.zip */; };
 		0AB9EBFD24C72CE600DCDD69 /* SwiftSpinner+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AB9EBFC24C72CE600DCDD69 /* SwiftSpinner+Extensions.swift */; };
 		0AC07D43240FE227001A85BE /* SaveCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC07D42240FE227001A85BE /* SaveCenter.swift */; };
 		0ACA37A923AE8E5600B73EE5 /* WiFiPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */; };
@@ -440,6 +442,9 @@
 		0A5CBCA223675F410055131A /* SF-Pro-Display-Ultralight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Ultralight.otf"; sourceTree = "<group>"; };
 		0A5CBCA323675F410055131A /* SF-Pro-Display-Black.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Black.otf"; sourceTree = "<group>"; };
 		0A5E3FBE23BFA10E00EAC519 /* GoproStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoproStatus.swift; sourceTree = "<group>"; };
+		0A63FA4824CF21D200415735 /* RecoveryLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryLogViewController.swift; sourceTree = "<group>"; };
+		0A63FA4E24CF21D200415735 /* RecoveryVideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryVideoTableViewCell.swift; sourceTree = "<group>"; };
+		0A63FA5124CF22D600415735 /* untrunc.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = untrunc.zip; sourceTree = "<group>"; };
 		0A7130B4236369EA00817593 /* TridentCockpitOSX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TridentCockpitOSX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A7130C0236369EC00817593 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A7130C823636AF100817593 /* FlatButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlatButton.swift; sourceTree = "<group>"; };
@@ -517,7 +522,6 @@
 		0AAD2D592447368500B6152C /* PlayDemoVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayDemoVideo.swift; sourceTree = "<group>"; };
 		0AAD2D622447369300B6152C /* PlayDemoVideo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayDemoVideo.swift; sourceTree = "<group>"; };
 		0AB110E7245D8B6400BDC00D /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
-		0AB9EBFA24C6294200DCDD69 /* untrunc.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; path = untrunc.zip; sourceTree = "<group>"; };
 		0AB9EBFC24C72CE600DCDD69 /* SwiftSpinner+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SwiftSpinner+Extensions.swift"; sourceTree = "<group>"; };
 		0AC07D42240FE227001A85BE /* SaveCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveCenter.swift; sourceTree = "<group>"; };
 		0ACA379F23AE8E5600B73EE5 /* WiFiPopupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WiFiPopupViewController.swift; sourceTree = "<group>"; };
@@ -626,7 +630,7 @@
 				0A1D0A1223F93FF0006D9AFD /* TridentCockpitiOS.entitlements */,
 				0A1D0A0523F93FD7006D9AFD /* Info.plist */,
 				0A2489F824518F4C0031720B /* InfoPlist.strings */,
-				0AB9EBFA24C6294200DCDD69 /* untrunc.zip */,
+				0A63FA5124CF22D600415735 /* untrunc.zip */,
 				0AB110E7245D8B6400BDC00D /* Settings.bundle */,
 			);
 			path = TridentCockpitiOS;
@@ -993,6 +997,8 @@
 		0AED81BA24C495B900820FB8 /* RecoveryVideoViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0A63FA4824CF21D200415735 /* RecoveryLogViewController.swift */,
+				0A63FA4E24CF21D200415735 /* RecoveryVideoTableViewCell.swift */,
 				0AED81B724C4959C00820FB8 /* RecoveryVideoViewController.storyboard */,
 				0AED81B124C4959C00820FB8 /* RecoveryVideoViewController.swift */,
 			);
@@ -1189,7 +1195,7 @@
 				0A1D0A0423F93FD7006D9AFD /* LaunchScreen.storyboard in Resources */,
 				0AD8354824A8F699008DB5D9 /* StreamSetupViewController.storyboard in Resources */,
 				0AED81B924C4959D00820FB8 /* RecoveryVideoViewController.storyboard in Resources */,
-				0AB9EBFB24C6294200DCDD69 /* untrunc.zip in Resources */,
+				0A63FA5224CF22D600415735 /* untrunc.zip in Resources */,
 				0AD8C5D32458402A009E0A9E /* GetWifiAPTableViewController.storyboard in Resources */,
 				0AB110E8245D8B6400BDC00D /* Settings.bundle in Resources */,
 				0A1D09FF23F93FD6006D9AFD /* Main.storyboard in Resources */,
@@ -1257,6 +1263,7 @@
 				0AF0E07D2435181C009E9806 /* CustomStringConvertible+Extensions.swift in Sources */,
 				0A8B266E2401645A00ACC72F /* PWSwitch.swift in Sources */,
 				0A95068623F9BD8D004E5546 /* MaintenanceViewController.swift in Sources */,
+				0A63FA5024CF21D200415735 /* RecoveryVideoTableViewCell.swift in Sources */,
 				0A0968F7249B87590031F142 /* MulticastDelegate.swift in Sources */,
 				0AE05CDD23FD335A00C7CA08 /* UserDefaultsWrapper.swift in Sources */,
 				0A3CB030246414D7009F827B /* DiveCollectionReusableView.swift in Sources */,
@@ -1302,6 +1309,7 @@
 				0AC07D43240FE227001A85BE /* SaveCenter.swift in Sources */,
 				0A1D0A2223F941B2006D9AFD /* ConnectionInfo.swift in Sources */,
 				0A1D0A4523F941C4006D9AFD /* ResinAPI.swift in Sources */,
+				0A63FA4F24CF21D200415735 /* RecoveryLogViewController.swift in Sources */,
 				0A1D0A4723F941C4006D9AFD /* Gopro3API.swift in Sources */,
 				0A4999BF242230DF00E3FA14 /* UICollectionView+Extensions.swift in Sources */,
 				0A0469C32466DD4900D10073 /* SmartDownloadButton.swift in Sources */,
