@@ -11,6 +11,7 @@ class RecoveryLogViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        presentationController?.delegate = self
         logView.text = errorLog
     }
     
@@ -18,5 +19,10 @@ class RecoveryLogViewController: UIViewController {
         dismiss(animated: true)
     }
     
-    
+}
+
+extension RecoveryLogViewController: UIAdaptivePresentationControllerDelegate {
+    func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
+        false
+    }
 }
