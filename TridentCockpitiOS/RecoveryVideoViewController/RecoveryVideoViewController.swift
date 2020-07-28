@@ -129,8 +129,8 @@ class RecoveryVideoViewController: UIViewController {
                         try sftp.upload(localURL: zipFileURL, remotePath: "untrunc.zip")
                         let script = """
                         set -e
-                        echo \(password) | sudo -S echo START-SCRIPT
-                        sudo unzip -o untrunc.zip -d /opt/openrov/untrunc 2>&1
+                        echo \(password) | sudo -S echo Unzip
+                        sudo unzip -o untrunc.zip -d /opt/openrov/untrunc 2>&1 </dev/null
                         rm -rf untrunc.zip 2>&1
                         """
                         let (status, log) = try ssh.capture(script)
@@ -208,7 +208,9 @@ class RecoveryVideoViewController: UIViewController {
 
     
     private func recoveryVideo() {
+        let password = String(data: Data(base64Encoded: GlobalParams.rovPassword)!, encoding: .utf8)!
         var logs = ""
+
         UIApplication.shared.isIdleTimerDisabled = true
         DispatchQueue.global(qos: .userInitiated).async {
             do {
@@ -216,7 +218,10 @@ class RecoveryVideoViewController: UIViewController {
                 for index in self.entryList.indices {
                     logs = ""
                     self.fileProgress = "\(index+1)/\(self.entryList.count)"
-                    let script = "/opt/openrov/untrunc/untrunc recovery /opt/openrov/untrunc/donor.mp4 \(self.entryList[index]) 2>&1"
+                    let script = """
+                    echo \(password) | sudo -S echo Recovery
+                    sudo /opt/openrov/untrunc/untrunc recovery /opt/openrov/untrunc/donor.mp4 \(self.entryList[index]) 2>&1
+                    """
                     let status = try ssh.execute(script) { log in
                         DispatchQueue.main.async {
                             logs += self.showProgress(log)
@@ -265,7 +270,9 @@ class RecoveryVideoViewController: UIViewController {
                 cleanLog.append(logString)
             }
         }
-        return cleanLog.joined(separator: "\n")
+        
+        guard !cleanLog.isEmpty else { return "" }
+        return cleanLog.joined(separator: "\n") + "\n"
     }
     
     private func deleteVideo(at indexPath: IndexPath) {
@@ -276,8 +283,8 @@ class RecoveryVideoViewController: UIViewController {
             do {
                 guard let ssh = self.ssh else { return }
                 let script = """
-                echo \(password) | sudo -S echo START-SCRIPT
-                sudo rm -rf \(self.entryList[indexPath.row]) 2>&1
+                echo \(password) | sudo -S echo Remove
+                sudo rm -rf \(self.entryList[indexPath.row]) 2>&1 </dev/null
                 """
                 let (status, log) = try ssh.capture(script)
                 if status != 0 {
@@ -303,8 +310,8 @@ class RecoveryVideoViewController: UIViewController {
             do {
                 guard let ssh = self.ssh else { return }
                 let script = """
-                echo \(password) | sudo -S echo START-SCRIPT
-                sudo mv \(self.entryList[indexPath.row]) \(destPath) 2>&1
+                echo \(password) | sudo -S echo Unhide
+                sudo mv \(self.entryList[indexPath.row]) \(destPath) 2>&1 </dev/null
                 """
                 let (status, log) = try ssh.capture(script)
                 if status != 0 {
