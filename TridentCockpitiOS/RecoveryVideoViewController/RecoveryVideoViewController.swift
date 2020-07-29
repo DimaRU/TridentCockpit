@@ -339,7 +339,7 @@ extension RecoveryVideoViewController: UITableViewDelegate, UITableViewDataSourc
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "RecoveryVideoTableViewCell", for: indexPath) as! RecoveryVideoTableViewCell
         let fileSizeString = formater.string(fromByteCount: fileSize[indexPath.row])
-        cell.fileInfoLabel.text = "\(indexPath.row): \(fileSizeString)"
+        cell.fileInfoLabel.text = "Video \(indexPath.row+1): \(fileSizeString)"
         cell.resultLabel.text = result[indexPath.row].rawValue
         cell.resultLabel.textColor = result[indexPath.row].color
         return cell
