@@ -202,6 +202,8 @@
 		0A3FD1FF23A972BA00FE9918 /* ConnectionInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD1FE23A972B900FE9918 /* ConnectionInfo.swift */; };
 		0A3FD20123A9735300FE9918 /* AppInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A3FD20023A9735300FE9918 /* AppInfo.swift */; };
 		0A457D9723B78A7C0042C250 /* Gopro3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A457D8D23B78A7C0042C250 /* Gopro3API.swift */; };
+		0A47C39D24D2D8E300A7EF16 /* RecoveryLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47C39624D2D8E300A7EF16 /* RecoveryLogViewController.swift */; };
+		0A47C39E24D2D8E300A7EF16 /* RecoveryVideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A47C39C24D2D8E300A7EF16 /* RecoveryVideoTableViewCell.swift */; };
 		0A488E692413AE8400EBEF19 /* LinearProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A488E682413AE8400EBEF19 /* LinearProgressBar.swift */; };
 		0A4999BF242230DF00E3FA14 /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4999BE242230DF00E3FA14 /* UICollectionView+Extensions.swift */; };
 		0A4E60DC24A4D20F00A7770A /* StreamStatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A4E60DA24A4D20F00A7770A /* StreamStatsView.swift */; };
@@ -596,6 +598,8 @@
 		0A3FD20023A9735300FE9918 /* AppInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfo.swift; sourceTree = "<group>"; };
 		0A3FD20223A97A3500FE9918 /* RestProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RestProvider.swift; sourceTree = "<group>"; };
 		0A457D8D23B78A7C0042C250 /* Gopro3API.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Gopro3API.swift; sourceTree = "<group>"; };
+		0A47C39624D2D8E300A7EF16 /* RecoveryLogViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryLogViewController.swift; sourceTree = "<group>"; };
+		0A47C39C24D2D8E300A7EF16 /* RecoveryVideoTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecoveryVideoTableViewCell.swift; sourceTree = "<group>"; };
 		0A488E682413AE8400EBEF19 /* LinearProgressBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinearProgressBar.swift; sourceTree = "<group>"; };
 		0A4999BE242230DF00E3FA14 /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		0A4E60DA24A4D20F00A7770A /* StreamStatsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StreamStatsView.swift; sourceTree = "<group>"; };
@@ -1354,6 +1358,8 @@
 		0AD6C77624C7631E00DD61B6 /* RecoveryVideoViewController */ = {
 			isa = PBXGroup;
 			children = (
+				0A47C39624D2D8E300A7EF16 /* RecoveryLogViewController.swift */,
+				0A47C39C24D2D8E300A7EF16 /* RecoveryVideoTableViewCell.swift */,
 				0AD6C77724C7631E00DD61B6 /* RecoveryVideoViewController.swift */,
 				0AD6C77824C7631E00DD61B6 /* RecoveryVideoViewController.storyboard */,
 			);
@@ -1786,11 +1792,13 @@
 				0A1D0A3F23F941BD006D9AFD /* RovLightPower.swift in Sources */,
 				0A0968CF249B872D0031F142 /* VideoGravityUtil.swift in Sources */,
 				0A0968EC249B872D0031F142 /* RTMPStream.swift in Sources */,
+				0A47C39D24D2D8E300A7EF16 /* RecoveryLogViewController.swift in Sources */,
 				0A0968A7249B872D0031F142 /* CMSampleBuffer+Extension.swift in Sources */,
 				0A95068B23F9D7F7004E5546 /* SwiftSpinner.swift in Sources */,
 				0A1D0A4423F941C4006D9AFD /* WifiServiceAPI.swift in Sources */,
 				0A0968AC249B872D0031F142 /* ExpressibleByIntegerLiteral+Extension.swift in Sources */,
 				0AE05CE023FD349D00C7CA08 /* Preferences.swift in Sources */,
+				0A47C39E24D2D8E300A7EF16 /* RecoveryVideoTableViewCell.swift in Sources */,
 				0A0968B6249B872D0031F142 /* FLVVideoCodec.swift in Sources */,
 				0AD6C78124C7637B00DD61B6 /* SwiftSpinner+Extensions.swift in Sources */,
 				0A1D0A2523F941BD006D9AFD /* RovBarometer.swift in Sources */,
@@ -1992,7 +2000,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TridentCockpitiOS/TridentCockpitiOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 21;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_TEAM = 9BEQ8V4XH9;
 				ENABLE_BITCODE = NO;
 				"ENABLE_HARDENED_RUNTIME[sdk=macosx*]" = YES;
