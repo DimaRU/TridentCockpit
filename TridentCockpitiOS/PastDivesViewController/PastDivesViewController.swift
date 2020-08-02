@@ -29,8 +29,7 @@ class PastDivesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        KingfisherManager.shared.cache.clearDiskCache()
-        KingfisherManager.shared.downloader.sessionConfiguration.httpMaximumConnectionsPerHost = 1
-        KingfisherManager.shared.downloader.sessionConfiguration.waitsForConnectivity = false
+        ImageDownloader.default.downloadTimeout = 60
         
         recordingsAPI?.setup(remoteAddress: FastRTPS.remoteAddress, delegate: self)
         
