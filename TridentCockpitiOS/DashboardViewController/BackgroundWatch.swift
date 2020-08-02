@@ -38,7 +38,7 @@ final class BackgroundWatch {
     
     private func didEnterBackground(_ notification: Notification) {
         state = .background
-        timer = Timer.scheduledTimer(withTimeInterval: 15, repeats: false) { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 45, repeats: false) { _ in
             self.state = .transitionBg
             self.delegate?.didEnterBackground()
             self.stopBackgroundTask()
