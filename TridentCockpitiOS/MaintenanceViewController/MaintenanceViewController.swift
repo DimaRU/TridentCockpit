@@ -141,9 +141,9 @@ class MaintenanceViewController: UIViewController, StoryboardInstantiable {
             print("H264_1", descriptor)
         }
 
-        FastRTPS.registerReader(topic: .rovSubsystemStatus) { (status: RovSubsystemStatus) in
-            print("status:", status.subsystemId.rawValue, status.substate)
-        }
+//        FastRTPS.registerReader(topic: .rovSubsystemStatus) { (status: RovSubsystemStatus) in
+//            print("status:", status.subsystemId.rawValue, status.substate)
+//        }
         FastRTPS.registerReader(topic: .rovFirmwareStatus) { (firmwareStatus: RovFirmwareStatus) in
             print(firmwareStatus)
         }
@@ -153,26 +153,12 @@ class MaintenanceViewController: UIViewController, StoryboardInstantiable {
         FastRTPS.registerReader(topic: .rovFirmwareCommandRep) { (command: RovFirmwareCommand) in
             print(command)
         }
-        FastRTPS.registerReader(topic: .rovControlCurrent) { (control: RovTridentControlTarget) in
-            print(control)
+        
+        FastRTPS.registerReader(topic: .rovCamFwdH2640CtrlCurrent) { (cameraControl: RovCameraControl) in
+            print("H264_0", cameraControl)
         }
-        FastRTPS.registerReader(topic: .navTrackingCurrent) { (cameraObjectTrack: RovCameraObjectTrack) in
-            print(cameraObjectTrack)
-        }
-        FastRTPS.registerReader(topic: .mcuI2cStats) { (stats: I2CStats) in
-            print(stats)
-        }
-        FastRTPS.registerReader(topic: .rovSafety) { (state: RovSafetyState) in
-            print(state)
-        }
-        FastRTPS.registerReader(topic: .rovImuCalibration) { (calibration: IMUCalibration) in
-            print(calibration)
-        }
-        FastRTPS.registerReader(topic: .rovDepthConfigCurrent) { (config: RovDepthConfig) in
-            print(config)
-        }
-        FastRTPS.registerReader(topic: .rovControllerStateCurrent) { (status: RovControllerStatus) in
-            print(status)
+        FastRTPS.registerReader(topic: .rovCamFwdH2641CtrlCurrent) { (cameraControl: RovCameraControl) in
+            print("H264_1", cameraControl)
         }
         #endif
 

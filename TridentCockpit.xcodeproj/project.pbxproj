@@ -288,6 +288,7 @@
 		0A82781223A641750039A774 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A82781123A641750039A774 /* MaintenanceViewController.swift */; };
 		0A8B266E2401645A00ACC72F /* PWSwitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8B26662401645A00ACC72F /* PWSwitch.swift */; };
 		0A8B26702401653100ACC72F /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8B266F2401653100ACC72F /* UIViewExtensions.swift */; };
+		0A8C6E2B24D72E7500ACAF44 /* RovCameraControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C6E2424D72DC100ACAF44 /* RovCameraControl.swift */; };
 		0A8E8C6B2455B56600E06610 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8E8C6A2455B56600E06610 /* Bundle+Extensions.swift */; };
 		0A8E8C712455B59F00E06610 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8E8C6A2455B56600E06610 /* Bundle+Extensions.swift */; };
 		0A95068123F9B975004E5546 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068023F9B975004E5546 /* DashboardViewController.swift */; };
@@ -680,6 +681,7 @@
 		0A82781323A689E70039A774 /* ToolbarItemIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarItemIdentifier.swift; sourceTree = "<group>"; };
 		0A8B26662401645A00ACC72F /* PWSwitch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PWSwitch.swift; sourceTree = "<group>"; };
 		0A8B266F2401653100ACC72F /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		0A8C6E2424D72DC100ACAF44 /* RovCameraControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RovCameraControl.swift; sourceTree = "<group>"; };
 		0A8E8C6A2455B56600E06610 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
 		0A95068023F9B975004E5546 /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		0A95068323F9BD62004E5546 /* DiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiveViewController.swift; sourceTree = "<group>"; };
@@ -1194,38 +1196,39 @@
 			isa = PBXGroup;
 			children = (
 				0A72A7F52433C91300AE9B2E /* ASVSubsystemStatus.swift */,
-				0A72A7F42433C91300AE9B2E /* RovAttitudeEuler.swift */,
-				0A72A7EB2433C91300AE9B2E /* RovGPS.swift */,
-				0A72A7F32433C91300AE9B2E /* RovWaypoint.swift */,
-				0A7130E123636B0200817593 /* RovTopic.swift */,
-				0A7130E223636B0200817593 /* RovBarometer.swift */,
-				0A7130E323636B0200817593 /* I2CStats.swift */,
 				0A7130E423636B0200817593 /* BatteryState.swift */,
-				0A7130E523636B0200817593 /* RovCameraObjectTrack.swift */,
-				0A7130E623636B0200817593 /* RovSafetyState.swift */,
-				0A7130E723636B0200817593 /* RovVector3.swift */,
-				0A7130E823636B0200817593 /* RovControlDescriptor.swift */,
-				0A7130E923636B0200817593 /* RovBeacon.swift */,
-				0A7130EA23636B0200817593 /* RovQuaternion+extensions.swift */,
-				0A7130EB23636B0200817593 /* RovFuelgauge.swift */,
-				0A7130EC23636B0200817593 /* RovFirmware.swift */,
-				0A7130ED23636B0200817593 /* RovAttitude.swift */,
-				0A7130EE23636B0200817593 /* RovCommon.swift */,
-				0A7130EF23636B0200817593 /* RovTridentControlTarget.swift */,
-				0A7130F023636B0200817593 /* RovPoint.swift */,
-				0A7130F123636B0200817593 /* RovTridentMotorCommand.swift */,
-				0A7130F223636B0200817593 /* RovTemperature.swift */,
-				0A7130F323636B0200817593 /* RovDepth.swift */,
-				0A7130F423636B0200817593 /* RovQuaternion.swift */,
-				0A7130F523636B0200817593 /* RovControllerStatus.swift */,
 				0A7130F623636B0200817593 /* DDSTypeString.swift */,
-				0A7130F723636B0200817593 /* RovRecording.swift */,
-				0A7130F823636B0200817593 /* RovVideoData.swift */,
-				0A7130F923636B0200817593 /* RovSubsystemStatus.swift */,
-				0A7130FA23636B0200817593 /* RovChannel.swift */,
+				0A7130E323636B0200817593 /* I2CStats.swift */,
+				0A7130ED23636B0200817593 /* RovAttitude.swift */,
+				0A72A7F42433C91300AE9B2E /* RovAttitudeEuler.swift */,
+				0A7130E223636B0200817593 /* RovBarometer.swift */,
+				0A7130E923636B0200817593 /* RovBeacon.swift */,
 				0A7130FB23636B0200817593 /* RovCamera.swift */,
-				0A7130FC23636B0200817593 /* RovLightPower.swift */,
+				0A8C6E2424D72DC100ACAF44 /* RovCameraControl.swift */,
+				0A7130E523636B0200817593 /* RovCameraObjectTrack.swift */,
+				0A7130FA23636B0200817593 /* RovChannel.swift */,
+				0A7130EE23636B0200817593 /* RovCommon.swift */,
+				0A7130E823636B0200817593 /* RovControlDescriptor.swift */,
+				0A7130F523636B0200817593 /* RovControllerStatus.swift */,
+				0A7130F323636B0200817593 /* RovDepth.swift */,
+				0A7130EC23636B0200817593 /* RovFirmware.swift */,
+				0A7130EB23636B0200817593 /* RovFuelgauge.swift */,
+				0A72A7EB2433C91300AE9B2E /* RovGPS.swift */,
 				0A55F6D223B969C500B108B0 /* RovIMUCalibration.swift */,
+				0A7130FC23636B0200817593 /* RovLightPower.swift */,
+				0A7130F023636B0200817593 /* RovPoint.swift */,
+				0A7130F423636B0200817593 /* RovQuaternion.swift */,
+				0A7130EA23636B0200817593 /* RovQuaternion+extensions.swift */,
+				0A7130F723636B0200817593 /* RovRecording.swift */,
+				0A7130E623636B0200817593 /* RovSafetyState.swift */,
+				0A7130F923636B0200817593 /* RovSubsystemStatus.swift */,
+				0A7130F223636B0200817593 /* RovTemperature.swift */,
+				0A7130E123636B0200817593 /* RovTopic.swift */,
+				0A7130EF23636B0200817593 /* RovTridentControlTarget.swift */,
+				0A7130F123636B0200817593 /* RovTridentMotorCommand.swift */,
+				0A7130E723636B0200817593 /* RovVector3.swift */,
+				0A7130F823636B0200817593 /* RovVideoData.swift */,
+				0A72A7F32433C91300AE9B2E /* RovWaypoint.swift */,
 			);
 			path = DDSModel;
 			sourceTree = "<group>";
@@ -1630,6 +1633,7 @@
 				0A0968C7249B872D0031F142 /* DataConvertible.swift in Sources */,
 				0A5612842486BFA200517C8D /* VideoRecorder.swift in Sources */,
 				0A20B18A2454C6B900FB4961 /* Shout+Promise.swift in Sources */,
+				0A8C6E2B24D72E7500ACAF44 /* RovCameraControl.swift in Sources */,
 				0A0968D3249B872D0031F142 /* H264Encoder.swift in Sources */,
 				0A0968C5249B872D0031F142 /* MachUtil.swift in Sources */,
 				0A1D0A2123F941B2006D9AFD /* SSIDInfo.swift in Sources */,
@@ -1988,6 +1992,7 @@
 				PRODUCT_NAME = TridentCockpit;
 				SDKROOT = iphoneos;
 				SUPPORTS_MACCATALYST = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "TridentCockpitiOS/TridentCockpitiOS-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

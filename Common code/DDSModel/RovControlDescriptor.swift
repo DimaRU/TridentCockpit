@@ -11,21 +11,21 @@ import FastRTPSBridge
 struct RovControlDescriptor: DDSKeyed {
     struct RovMenuOption: Codable
     {
-        let value_string: String
-        let value_s64: Int64
+        let valueString: String
+        let valueS64: Int64
     }
     let id: UInt32       //@key
-    let id_string: String
+    let idString: String
     let type: UInt32
     let name: String
     let unit: String
     let minimum: Int64
     let maximum: Int64
     let step: UInt64
-    let default_value_numeric: Int64
-    let default_value_string: String
+    let defaultValueNumeric: Int64
+    let defaultValueString: String
     let flags: UInt32
-    let menu_options: [RovMenuOption]
+    let menuOptions: [RovMenuOption]
 
     var key: Data { String(id).data(using: .utf8)! }
     static var ddsTypeName: String { "orov::msg::image::ControlDescriptor" }
