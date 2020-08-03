@@ -9,11 +9,11 @@ import FastRTPSBridge
 // Topic format: "<topicPrefix_rov_camChannels><channel_id>_ctrl_desc"
 // Ex: rov_cam_forward_H2640_ctrl_desc
 struct RovControlDescriptor: DDSKeyed {
-    struct RovMenuOption: Codable
-    {
+    struct MenuOption: Codable {
         let valueString: String
         let valueS64: Int64
     }
+    
     let id: UInt32       //@key
     let idString: String
     let type: UInt32
@@ -25,7 +25,7 @@ struct RovControlDescriptor: DDSKeyed {
     let defaultValueNumeric: Int64
     let defaultValueString: String
     let flags: UInt32
-    let menuOptions: [RovMenuOption]
+    let menuOptions: [MenuOption]
 
     var key: Data { String(id).data(using: .utf8)! }
     static var ddsTypeName: String { "orov::msg::image::ControlDescriptor" }
