@@ -8,14 +8,79 @@ import Foundation
 import FastRTPSBridge
 
 struct RovCameraControl: DDSKeyed {
-    
     enum ControlUnion: RawRepresentable, Codable {
-        init?(rawValue: UInt32) {
-            return nil
-        }
         typealias RawValue = UInt32
+
+        init?(rawValue: RawValue) {
+            switch rawValue {
+            case 0: self = .S8(value: 0)
+            case 1: self = .S16(value: 0)
+            case 2: self = .S32(value: 0)
+            case 3: self = .S64(value: 0)
+            case 4: self = .U8(value: 0)
+            case 5: self = .U16(value: 0)
+            case 6: self = .U32(value: 0)
+            case 7: self = .U64(value: 0)
+            case 8: self = .Bitmask(bitmask: 0)
+            case 9: self = .Button(button: false)
+            case 10: self = .Boolean(value: false)
+            case 11: self = .StringValue(value: "")
+            case 12: self = .StringMenu(stringMenu: 0)
+            case 13: self = .IntMenu(intMenu: 0)
+            default:
+                return nil
+            }
+        }
         
-        var rawValue: UInt32 {
+        init?(rawValue: RawValue, value: Any) {
+            switch rawValue {
+            case 0:
+                guard let value = value as? Int8 else { return nil }
+                self = .S8(value: value)
+            case 1:
+                guard let value = value as? Int16 else { return nil }
+                self = .S16(value: value)
+            case 2:
+                guard let value = value as? Int32 else { return nil }
+                self = .S32(value: value)
+            case 3:
+                guard let value = value as? Int64 else { return nil }
+                self = .S64(value: value)
+            case 4:
+                guard let value = value as? UInt8 else { return nil }
+                self = .U8(value: value)
+            case 5:
+                guard let value = value as? UInt16 else { return nil }
+                self = .U16(value: value)
+            case 6:
+                guard let value = value as? UInt32 else { return nil }
+                self = .U32(value: value)
+            case 7:
+                guard let value = value as? UInt64 else { return nil }
+                self = .U64(value: value)
+            case 8:
+                guard let value = value as? UInt32 else { return nil }
+                self = .Bitmask(bitmask: value)
+            case 9:
+                guard let value = value as? Bool else { return nil }
+                self = .Button(button: value)
+            case 10:
+                guard let value = value as? Bool else { return nil }
+                self = .Boolean(value: value)
+            case 11:
+                guard let value = value as? String else { return nil }
+                self = .StringValue(value: value)
+            case 12:
+                guard let value = value as? UInt32 else { return nil }
+                self = .StringMenu(stringMenu: value)
+            case 13:
+                guard let value = value as? UInt32 else { return nil }
+                self = .IntMenu(intMenu: value)
+            default:
+                return nil
+            }
+        }
+        var rawValue: RawValue {
             switch self {
             case .S8: return 0
             case .S16: return 1
@@ -102,7 +167,7 @@ struct RovCameraControl: DDSKeyed {
         }
         
         func encode(to encoder: Encoder) throws {
-            var container = encoder.unkeyedContainer()
+            var container = encoder.singleValueContainer()
             try container.encode(self.rawValue)
             switch self {
             case .S8(value: let value): try container.encode(value)
@@ -130,7 +195,6 @@ struct RovCameraControl: DDSKeyed {
     let setToDefault: Bool
     let value: ControlUnion
 
-    
     var key: Data { String(id).data(using: .utf8)! }
     static var ddsTypeName: String { "orov::msg::image::ControlValue" }
 }
