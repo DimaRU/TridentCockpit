@@ -304,6 +304,9 @@
 		0A98306E23C22FCA00BD234B /* AuxCameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98306C23C22FCA00BD234B /* AuxCameraControlView.swift */; };
 		0A98307023C22FFD00BD234B /* AuxPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A98306F23C22FFD00BD234B /* AuxPlayerViewController.swift */; };
 		0A98307423C2355700BD234B /* AuxPlayerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A98307323C2355700BD234B /* AuxPlayerViewController.storyboard */; };
+		0A9AD06124DB6F17003EAFE6 /* EqualizerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A9AD05924DB6F17003EAFE6 /* EqualizerView.xib */; };
+		0A9AD06224DB6F17003EAFE6 /* EqSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9AD05A24DB6F17003EAFE6 /* EqSlider.swift */; };
+		0A9AD06324DB6F17003EAFE6 /* EqualizerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9AD05B24DB6F17003EAFE6 /* EqualizerView.swift */; };
 		0A9DF95C243487960029DDDB /* RTPSConnectionMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A72A80E24347FE300AE9B2E /* RTPSConnectionMonitor.swift */; };
 		0A9DF9652434AEA70029DDDB /* NSViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9DF9642434AEA70029DDDB /* NSViewController+Alert.swift */; };
 		0A9DF9662434BF5C0029DDDB /* GlobalParams.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0A72A80B24347C5900AE9B2E /* GlobalParams.plist */; };
@@ -694,6 +697,9 @@
 		0A98306C23C22FCA00BD234B /* AuxCameraControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuxCameraControlView.swift; sourceTree = "<group>"; };
 		0A98306F23C22FFD00BD234B /* AuxPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuxPlayerViewController.swift; sourceTree = "<group>"; };
 		0A98307323C2355700BD234B /* AuxPlayerViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AuxPlayerViewController.storyboard; sourceTree = "<group>"; };
+		0A9AD05924DB6F17003EAFE6 /* EqualizerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EqualizerView.xib; sourceTree = "<group>"; };
+		0A9AD05A24DB6F17003EAFE6 /* EqSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EqSlider.swift; sourceTree = "<group>"; };
+		0A9AD05B24DB6F17003EAFE6 /* EqualizerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EqualizerView.swift; sourceTree = "<group>"; };
 		0A9DF9642434AEA70029DDDB /* NSViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSViewController+Alert.swift"; sourceTree = "<group>"; };
 		0A9E55BE23BC0AFA008F8A9A /* Average.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Average.swift; sourceTree = "<group>"; };
 		0AA4290123C38D3B003476CB /* PayloadCleanup.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PayloadCleanup.sh; sourceTree = "<group>"; };
@@ -973,6 +979,7 @@
 				0A0968FE249BBCD80031F142 /* StreamSetupViewController */,
 				0AF06EC523FB56F5000FF36A /* DashboardViewController */,
 				0AE05CEE23FD41FC00C7CA08 /* DiveViewController */,
+				0A9AD05824DB6F17003EAFE6 /* Equalizer */,
 				0A1F3AAA24883E4400384EE1 /* CameraControlView */,
 				0ACCDE7023FDB25E00381207 /* AuxCamera */,
 				0A3CB025246414D6009F827B /* PastDivesViewController */,
@@ -1338,6 +1345,16 @@
 			path = DashboardViewController;
 			sourceTree = "<group>";
 		};
+		0A9AD05824DB6F17003EAFE6 /* Equalizer */ = {
+			isa = PBXGroup;
+			children = (
+				0A9AD05924DB6F17003EAFE6 /* EqualizerView.xib */,
+				0A9AD05A24DB6F17003EAFE6 /* EqSlider.swift */,
+				0A9AD05B24DB6F17003EAFE6 /* EqualizerView.swift */,
+			);
+			path = Equalizer;
+			sourceTree = "<group>";
+		};
 		0AB7210424A29E2900F8A95C /* macOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -1586,6 +1603,7 @@
 				0A9DF9662434BF5C0029DDDB /* GlobalParams.plist in Resources */,
 				0A248A0124518F4C0031720B /* InfoPlist.strings in Resources */,
 				0AE05CED23FD41E200C7CA08 /* DiveViewController.storyboard in Resources */,
+				0A9AD06124DB6F17003EAFE6 /* EqualizerView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1731,6 +1749,7 @@
 				0A0968E2249B872D0031F142 /* RTMPConnection.swift in Sources */,
 				0A0968DE249B872D0031F142 /* ASClass.swift in Sources */,
 				0A1F3AAD24883EA100384EE1 /* CameraControlView.swift in Sources */,
+				0A9AD06224DB6F17003EAFE6 /* EqSlider.swift in Sources */,
 				0AC07D43240FE227001A85BE /* SaveCenter.swift in Sources */,
 				0A1D0A2223F941B2006D9AFD /* ConnectionInfo.swift in Sources */,
 				0A1D0A4523F941C4006D9AFD /* ResinAPI.swift in Sources */,
@@ -1779,6 +1798,7 @@
 				0A0968E5249B872D0031F142 /* RTMPChunk.swift in Sources */,
 				0A7C3B86245C67A100330F63 /* BackgroundWatch.swift in Sources */,
 				0A0968AF249B872D0031F142 /* AVFoundation+Extension.swift in Sources */,
+				0A9AD06324DB6F17003EAFE6 /* EqualizerView.swift in Sources */,
 				0A95069423F9E647004E5546 /* WiFiPopupViewController.swift in Sources */,
 				0A0968EF249B872D0031F142 /* ScalingMode.swift in Sources */,
 				0A0968A0249B872D0031F142 /* NetSocket.swift in Sources */,

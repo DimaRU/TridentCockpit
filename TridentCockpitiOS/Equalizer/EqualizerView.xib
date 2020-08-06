@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="landscape" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB" customClass="EqualizerView" customModule="TestSlider" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="340" height="340"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yz6-uS-2HT">
+                    <rect key="frame" x="0.0" y="0.0" width="340" height="340"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="Dop-Ev-e4S">
+                            <rect key="frame" x="10" y="10" width="324" height="267"/>
+                            <subviews>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" id="rZg-HC-sfW">
+                                    <rect key="frame" x="0.0" y="0.0" width="324" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GPy-o6-L6e">
+                                            <rect key="frame" x="0.0" y="7.5" width="80" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="xyz-iu-lyk"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="6hk-Ee-LLW" customClass="EqSlider" customModule="TestSlider" customModuleProvider="target">
+                                            <rect key="frame" x="86" y="1" width="198" height="32"/>
+                                            <accessibility key="accessibilityConfiguration" label="brightness"/>
+                                            <color key="thumbTintColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="sliderValueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="ASf-Tn-Jiu"/>
+                                            </connections>
+                                        </slider>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ab-uE-yuY">
+                                            <rect key="frame" x="290" y="0.0" width="34" height="33"/>
+                                            <accessibility key="accessibilityConfiguration" label="brightness"/>
+                                            <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                            <state key="normal" image="arrow.uturn.left.circle" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="resetButtonTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="azX-kZ-OZk"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" id="Eug-jx-jVL">
+                                    <rect key="frame" x="0.0" y="39" width="324" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contrast:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wo9-xH-pvj">
+                                            <rect key="frame" x="0.0" y="7.5" width="80" height="18"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <bool key="isElement" value="NO"/>
+                                            </accessibility>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="evB-s4-1d7"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="ewj-9c-Sgo" customClass="EqSlider" customModule="TestSlider" customModuleProvider="target">
+                                            <rect key="frame" x="86" y="1" width="198" height="32"/>
+                                            <accessibility key="accessibilityConfiguration" label="contrast"/>
+                                            <connections>
+                                                <action selector="sliderValueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="pzh-XC-mc4"/>
+                                            </connections>
+                                        </slider>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cR0-kx-puQ">
+                                            <rect key="frame" x="290" y="0.0" width="34" height="33"/>
+                                            <accessibility key="accessibilityConfiguration" label="contrast"/>
+                                            <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                            <state key="normal" image="arrow.uturn.left.circle" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="resetButtonTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="5ni-jR-ad2"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" id="cPJ-7M-lKe">
+                                    <rect key="frame" x="0.0" y="78" width="324" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saturation:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eB1-T8-2iv">
+                                            <rect key="frame" x="0.0" y="7.5" width="80" height="18"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <bool key="isElement" value="NO"/>
+                                            </accessibility>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="Bxk-Mw-Itn"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="2zY-61-DnJ" customClass="EqSlider" customModule="TestSlider" customModuleProvider="target">
+                                            <rect key="frame" x="86" y="1" width="198" height="32"/>
+                                            <accessibility key="accessibilityConfiguration" label="saturation"/>
+                                            <connections>
+                                                <action selector="sliderValueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="aWq-82-8p3"/>
+                                            </connections>
+                                        </slider>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aDB-5h-qbF">
+                                            <rect key="frame" x="290" y="0.0" width="34" height="33"/>
+                                            <accessibility key="accessibilityConfiguration" label="saturation"/>
+                                            <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                            <state key="normal" image="arrow.uturn.left.circle" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="resetButtonTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="ySg-bI-m9m"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" id="PKO-EP-gFH">
+                                    <rect key="frame" x="0.0" y="117" width="324" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hue:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BSw-ME-huz">
+                                            <rect key="frame" x="0.0" y="7.5" width="80" height="18"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <bool key="isElement" value="NO"/>
+                                            </accessibility>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="ylh-lf-19k"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="gJf-BK-x5R" customClass="EqSlider" customModule="TestSlider" customModuleProvider="target">
+                                            <rect key="frame" x="86" y="1" width="198" height="32"/>
+                                            <accessibility key="accessibilityConfiguration" label="hue"/>
+                                            <connections>
+                                                <action selector="sliderValueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="vIC-HO-pAN"/>
+                                            </connections>
+                                        </slider>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbO-hV-kmv">
+                                            <rect key="frame" x="290" y="0.0" width="34" height="33"/>
+                                            <accessibility key="accessibilityConfiguration" label="hue"/>
+                                            <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                            <state key="normal" image="arrow.uturn.left.circle" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="resetButtonTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="gZi-6G-HeI"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" id="bbQ-Ka-Sve">
+                                    <rect key="frame" x="0.0" y="156" width="324" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gamma:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEC-B7-nxP">
+                                            <rect key="frame" x="0.0" y="7.5" width="80" height="18"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <bool key="isElement" value="NO"/>
+                                            </accessibility>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="6xk-FH-Cec"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="iDP-Uv-ff5" customClass="EqSlider" customModule="TestSlider" customModuleProvider="target">
+                                            <rect key="frame" x="86" y="1" width="198" height="32"/>
+                                            <accessibility key="accessibilityConfiguration" label="gamma"/>
+                                            <connections>
+                                                <action selector="sliderValueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="hhU-fg-egt"/>
+                                            </connections>
+                                        </slider>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GV8-gq-qfe">
+                                            <rect key="frame" x="290" y="0.0" width="34" height="33"/>
+                                            <accessibility key="accessibilityConfiguration" label="gamma"/>
+                                            <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                            <state key="normal" image="arrow.uturn.left.circle" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="resetButtonTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="SpB-gS-qzT"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" id="rtU-8g-cdB">
+                                    <rect key="frame" x="0.0" y="195" width="324" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sharpness:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anY-AB-CGO">
+                                            <rect key="frame" x="0.0" y="7.5" width="80" height="18"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <bool key="isElement" value="NO"/>
+                                            </accessibility>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="04Y-qR-q4K"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="buk-Bh-vnA" customClass="EqSlider" customModule="TestSlider" customModuleProvider="target">
+                                            <rect key="frame" x="86" y="1" width="198" height="32"/>
+                                            <accessibility key="accessibilityConfiguration" label="sharpness"/>
+                                            <connections>
+                                                <action selector="sliderValueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="cKE-vt-SbR"/>
+                                            </connections>
+                                        </slider>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AEP-eI-MWy">
+                                            <rect key="frame" x="290" y="0.0" width="34" height="33"/>
+                                            <accessibility key="accessibilityConfiguration" label="sharpness"/>
+                                            <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                            <state key="normal" image="arrow.uturn.left.circle" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="resetButtonTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="wuU-hs-qZQ"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" id="fpo-pW-bH4">
+                                    <rect key="frame" x="0.0" y="234" width="324" height="33"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gain:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nMy-CF-8F7">
+                                            <rect key="frame" x="0.0" y="7.5" width="80" height="18"/>
+                                            <accessibility key="accessibilityConfiguration">
+                                                <bool key="isElement" value="NO"/>
+                                            </accessibility>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="Ype-VV-86t"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="gzz-SJ-XFE" customClass="EqSlider" customModule="TestSlider" customModuleProvider="target">
+                                            <rect key="frame" x="86" y="1" width="198" height="32"/>
+                                            <accessibility key="accessibilityConfiguration" label="gain"/>
+                                            <connections>
+                                                <action selector="sliderValueChanged:" destination="iN0-l3-epB" eventType="valueChanged" id="MQm-7R-cxN"/>
+                                            </connections>
+                                        </slider>
+                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDb-rR-gm5">
+                                            <rect key="frame" x="290" y="0.0" width="34" height="33"/>
+                                            <accessibility key="accessibilityConfiguration" label="gain"/>
+                                            <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
+                                            <state key="normal" image="arrow.uturn.left.circle" catalog="system">
+                                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" configurationType="pointSize" pointSize="22"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="resetButtonTap:" destination="iN0-l3-epB" eventType="touchUpInside" id="t0E-FI-EMA"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </stackView>
+                            </subviews>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="320" id="EjQ-H1-KoL"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="qeR-Gg-GUd" firstAttribute="bottom" secondItem="Dop-Ev-e4S" secondAttribute="bottom" constant="10" id="ErH-Ua-BBE"/>
+                        <constraint firstItem="Dop-Ev-e4S" firstAttribute="leading" secondItem="5sI-WN-zoj" secondAttribute="leading" constant="10" id="WBx-0F-nRp"/>
+                        <constraint firstItem="5sI-WN-zoj" firstAttribute="trailing" secondItem="Dop-Ev-e4S" secondAttribute="trailing" constant="6" id="ZBE-oP-tKG"/>
+                        <constraint firstItem="Dop-Ev-e4S" firstAttribute="top" secondItem="qeR-Gg-GUd" secondAttribute="top" constant="10" id="nmT-hK-9lr"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="qeR-Gg-GUd"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="5sI-WN-zoj"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" name="cameraControlBackground"/>
+            <constraints>
+                <constraint firstItem="Yz6-uS-2HT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="9aP-oe-z68"/>
+                <constraint firstAttribute="trailing" secondItem="Yz6-uS-2HT" secondAttribute="trailing" id="IuL-Tc-ieU"/>
+                <constraint firstAttribute="width" constant="340" id="g80-kO-XqD"/>
+                <constraint firstItem="Yz6-uS-2HT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lZh-0f-An3"/>
+                <constraint firstAttribute="bottom" secondItem="Yz6-uS-2HT" secondAttribute="bottom" id="m4S-y1-fDG"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outletCollection property="eSliders" destination="6hk-Ee-LLW" collectionClass="NSMutableArray" id="nQq-kg-HGL"/>
+                <outletCollection property="eSliders" destination="ewj-9c-Sgo" collectionClass="NSMutableArray" id="wsw-Nw-V0H"/>
+                <outletCollection property="eSliders" destination="2zY-61-DnJ" collectionClass="NSMutableArray" id="Z45-vk-mU6"/>
+                <outletCollection property="eSliders" destination="gJf-BK-x5R" collectionClass="NSMutableArray" id="tv6-vy-ST8"/>
+                <outletCollection property="eSliders" destination="iDP-Uv-ff5" collectionClass="NSMutableArray" id="lX4-9W-VdR"/>
+                <outletCollection property="eSliders" destination="buk-Bh-vnA" collectionClass="NSMutableArray" id="dG0-IA-hWX"/>
+                <outletCollection property="eSliders" destination="gzz-SJ-XFE" collectionClass="NSMutableArray" id="Lvh-nI-xtE"/>
+            </connections>
+            <point key="canvasLocation" x="-201.49925037481262" y="-204.80000000000001"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="arrow.uturn.left.circle" catalog="system" width="128" height="121"/>
+        <namedColor name="cameraControlBackground">
+            <color red="0.0" green="0.0" blue="0.0" alpha="0.20000000298023224" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
