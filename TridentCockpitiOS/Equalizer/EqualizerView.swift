@@ -7,9 +7,9 @@ import UIKit
 
 class EqualizerView: UIView {
     @IBOutlet var eSliders: [EqSlider]!
-
+    private var ControlDescriptors: [RovControlDescriptor] = []
     private var equalizerState: [String: RovCameraControl] = [:]
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         setup()
@@ -18,15 +18,30 @@ class EqualizerView: UIView {
     private func setup() {
         layer.cornerRadius = 5
         layer.masksToBounds = true
-        let height: CGFloat = UIDevice.current.userInterfaceIdiom == .phone ? 150: 340
-        heightAnchor.constraint(equalToConstant: height).isActive = true
+        eSliders.forEach{ $0.superview?.isHidden = true }
         
-        for slider in eSliders {
-            guard let descriptor = ControlDescriptors.first(where: { $0.idString == slider.accessibilityLabel }) else { continue }
-            
-            slider.minimumValue = Float(descriptor.minimum)
-            slider.maximumValue = Float(descriptor.maximum)
-            slider.value = Float(descriptor.defaultValueNumeric)
+        FastRTPS.registerWriter(topic: .rovCamFwdH2640CtrlRequested, ddsType: RovCameraControl.self)
+        FastRTPS.registerWriter(topic: .rovCamFwdH2641CtrlRequested, ddsType: RovCameraControl.self)
+
+        FastRTPS.registerReader(topic: .rovCamFwdH2640CtrlDesc) { [weak self] (descriptor: RovControlDescriptor) in
+            guard let self = self else { return }
+            DispatchQueue.main.async {
+                guard let slider = self.eSliders.first(where: { $0.accessibilityLabel == descriptor.idString }) else { return }
+                slider.minimumValue = Float(descriptor.minimum)
+                slider.maximumValue = Float(descriptor.maximum)
+                if descriptor.idString == "hue" {
+                    slider.minimumValue = 0
+                    slider.maximumValue = Float(descriptor.maximum / 10)
+                }
+                slider.value = Float(descriptor.defaultValueNumeric)
+                slider.superview?.isHidden = false
+                self.ControlDescriptors.append(descriptor)
+            }
+        }
+        FastRTPS.registerReader(topic: .rovCamFwdH2640CtrlCurrent) { [weak self] (cameraControl: RovCameraControl) in
+            DispatchQueue.main.async {
+                self?.equalizerState[cameraControl.idString] = cameraControl
+            }
         }
     }
     
@@ -49,22 +64,25 @@ class EqualizerView: UIView {
             fatalError(#function)
         }
         
-        let control = RovCameraControl(id: descriptor.id,
+        let cameraControl = RovCameraControl(id: descriptor.id,
                                        idString: idString,
                                        requestId: 0,
                                        errorCode: 0,
                                        setToDefault: false,
                                        value: controlValue)
         
-        print(control)
+        if let currentState = equalizerState[idString]?.value, controlValue == currentState {
+            return
+        }
+        
+        FastRTPS.send(topic: .rovCamFwdH2640CtrlRequested, ddsData: cameraControl)
+        FastRTPS.send(topic: .rovCamFwdH2641CtrlRequested, ddsData: cameraControl)
      }
 
     @IBAction func sliderValueChanged(_ sender: UISlider) {
         guard let idString = sender.accessibilityLabel else { return }
         let value = sender.value
         sendState(value: value, idString: idString)
-        
-        print(#function, idString, value)
     }
     
     @IBAction func resetButtonTap(_ sender: UIButton) {
@@ -75,23 +93,8 @@ class EqualizerView: UIView {
         else { return }
         
         let value = Float(descriptor.defaultValueNumeric)
-        print(#function, idString, value)
         sendState(value: value, idString: idString)
         slider.value = value
     }
     
-    
-    
 }
-
-fileprivate let ControlDescriptors = [
-    RovControlDescriptor(id: 134217729, idString: "brightness", type: 1, name: "Brightness", unit: "n/a", minimum: -255, maximum: 255, step: 1, defaultValueNumeric: 0, defaultValueString: "", flags: 32, menuOptions: []),
-    RovControlDescriptor(id: 134217730, idString: "contrast",   type: 5, name: "Contrast", unit: "n/a",   minimum: 0, maximum: 200, step: 1, defaultValueNumeric: 100, defaultValueString: "", flags: 32, menuOptions: []),
-    RovControlDescriptor(id: 134217731, idString: "saturation", type: 5, name: "Saturation", unit: "n/a", minimum: 0, maximum: 200, step: 1, defaultValueNumeric: 100, defaultValueString: "", flags: 32, menuOptions: []),
-    RovControlDescriptor(id: 134217732, idString: "hue",        type: 1, name: "Hue", unit: "n/a",        minimum: -18000, maximum: 18000, step: 1, defaultValueNumeric: 0, defaultValueString: "", flags: 32, menuOptions: []),
-    RovControlDescriptor(id: 134217733, idString: "gamma",      type: 5, name: "Gamma", unit: "n/a",      minimum: 0, maximum: 300, step: 1, defaultValueNumeric: 0, defaultValueString: "", flags: 32, menuOptions: []),
-    RovControlDescriptor(id: 134217735, idString: "sharpness",  type: 5, name: "Sharpness", unit: "n/a",  minimum: 1, maximum: 100, step: 1, defaultValueNumeric: 1, defaultValueString: "", flags: 32, menuOptions: []),
-    RovControlDescriptor(id: 134217736, idString: "gain",       type: 5, name: "Gain", unit: "n/a",       minimum: 1, maximum: 100, step: 1, defaultValueNumeric: 1, defaultValueString: "", flags: 32, menuOptions: []),
-    RovControlDescriptor(id: 134218028, idString: "bitrate",    type: 6, name: "Bitrate", unit: "bits/s", minimum: 1000, maximum: 10000000, step: 1, defaultValueNumeric: 1500000, defaultValueString: "", flags: 32, menuOptions: []),
-]
-  
