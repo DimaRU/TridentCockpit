@@ -32,54 +32,6 @@ struct RovCameraControl: DDSKeyed {
             }
         }
         
-        init?(rawValue: RawValue, value: Any) {
-            switch rawValue {
-            case 0:
-                guard let value = value as? Int8 else { return nil }
-                self = .S8(value: value)
-            case 1:
-                guard let value = value as? Int16 else { return nil }
-                self = .S16(value: value)
-            case 2:
-                guard let value = value as? Int32 else { return nil }
-                self = .S32(value: value)
-            case 3:
-                guard let value = value as? Int64 else { return nil }
-                self = .S64(value: value)
-            case 4:
-                guard let value = value as? UInt8 else { return nil }
-                self = .U8(value: value)
-            case 5:
-                guard let value = value as? UInt16 else { return nil }
-                self = .U16(value: value)
-            case 6:
-                guard let value = value as? UInt32 else { return nil }
-                self = .U32(value: value)
-            case 7:
-                guard let value = value as? UInt64 else { return nil }
-                self = .U64(value: value)
-            case 8:
-                guard let value = value as? UInt32 else { return nil }
-                self = .Bitmask(bitmask: value)
-            case 9:
-                guard let value = value as? Bool else { return nil }
-                self = .Button(button: value)
-            case 10:
-                guard let value = value as? Bool else { return nil }
-                self = .Boolean(value: value)
-            case 11:
-                guard let value = value as? String else { return nil }
-                self = .StringValue(value: value)
-            case 12:
-                guard let value = value as? UInt32 else { return nil }
-                self = .StringMenu(stringMenu: value)
-            case 13:
-                guard let value = value as? UInt32 else { return nil }
-                self = .IntMenu(intMenu: value)
-            default:
-                return nil
-            }
-        }
         var rawValue: RawValue {
             switch self {
             case .S8: return 0
