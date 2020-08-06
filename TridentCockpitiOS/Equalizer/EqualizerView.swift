@@ -5,6 +5,22 @@
 
 import UIKit
 
+extension RovCameraControl.ControlUnion {
+    var floatValue: Float? {
+        switch self {
+        case .S8(value: let value): return Float(value)
+        case .S16(value: let value): return Float(value)
+        case .S32(value: let value): return Float(value)
+        case .S64(value: let value): return Float(value)
+        case .U8(value: let value): return Float(value)
+        case .U16(value: let value): return Float(value)
+        case .U32(value: let value): return Float(value)
+        case .U64(value: let value): return Float(value)
+        default: return nil
+        }
+    }
+}
+
 class EqualizerView: UIView {
     @IBOutlet var eSliders: [EqSlider]!
     private var ControlDescriptors: [RovControlDescriptor] = []
@@ -29,18 +45,32 @@ class EqualizerView: UIView {
                 guard let slider = self.eSliders.first(where: { $0.accessibilityLabel == descriptor.idString }) else { return }
                 slider.minimumValue = Float(descriptor.minimum)
                 slider.maximumValue = Float(descriptor.maximum)
+                slider.value = Float(descriptor.defaultValueNumeric)
                 if descriptor.idString == "hue" {
                     slider.minimumValue = 0
                     slider.maximumValue = Float(descriptor.maximum / 10)
                 }
-                slider.value = Float(descriptor.defaultValueNumeric)
                 slider.superview?.isHidden = false
                 self.ControlDescriptors.append(descriptor)
             }
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.currentValueReader()
+        }
+    }
+
+    private func currentValueReader() {
         FastRTPS.registerReader(topic: .rovCamFwdH2640CtrlCurrent) { [weak self] (cameraControl: RovCameraControl) in
             DispatchQueue.main.async {
                 self?.equalizerState[cameraControl.idString] = cameraControl
+                guard let slider = self?.eSliders.first(where: { $0.accessibilityLabel == cameraControl.idString }) else {
+                    return
+                }
+                if let value = cameraControl.value.floatValue,
+                    slider.value != value {
+                    slider.value = value
+                }
             }
         }
     }
@@ -71,9 +101,6 @@ class EqualizerView: UIView {
                                        setToDefault: false,
                                        value: controlValue)
         
-        if let currentState = equalizerState[idString]?.value, controlValue == currentState {
-            return
-        }
         
         FastRTPS.send(topic: .rovCamFwdH2640CtrlRequested, ddsData: cameraControl)
         FastRTPS.send(topic: .rovCamFwdH2641CtrlRequested, ddsData: cameraControl)
