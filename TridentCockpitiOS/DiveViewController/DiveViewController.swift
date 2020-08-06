@@ -36,6 +36,7 @@ class DiveViewController: UIViewController {
     private let videoProcessorMulticastDelegate = VideoProcessorMulticastDelegate([])
     private let tridentControl = TridentControl()
     private var savedCenter: [UIView: CGPoint] = [:]
+    private var equalizerView: EqualizerView!
 
     private var lightOn = false
     let vehicleId: String
@@ -142,7 +143,15 @@ class DiveViewController: UIViewController {
             view.addSubview(auxCameraView!)
             auxCameraView?.delegate = self
         }
-        
+
+        equalizerView = Bundle.main.loadNibNamed("EqualizerView", owner: nil, options: nil)?.first as? EqualizerView
+        view.addSubview(equalizerView)
+        NSLayoutConstraint.activate([
+            equalizerView.topAnchor.constraint(equalTo: indicatorsView.bottomAnchor, constant: 8),
+            equalizerView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 8),
+        ])
+        equalizerView.isHidden = true
+
         startRTPS()
         
         locationManager.delegate = self
@@ -301,6 +310,24 @@ class DiveViewController: UIViewController {
         alert.addAction(cancelAction)
         alert.addAction(okAction)
         present(alert, animated: true)
+    }
+    
+    @IBAction func equalizerButtonPress(_ sender: UIButton) {
+        if equalizerView.isHidden {
+            sender.layer.borderWidth = 1
+            sender.layer.borderColor = UIColor.white.cgColor
+            equalizerView.isHidden = false
+            UIView.animate(withDuration: 0.3) {
+                self.equalizerView.alpha = 1
+            }
+        } else {
+            sender.layer.borderWidth = 0
+            UIView.animate(withDuration: 0.3, animations: {
+                self.equalizerView.alpha = 0
+            }) { _ in
+                self.equalizerView.isHidden = true
+            }
+        }
     }
     
     @IBAction func lightButtonPress(_ sender: Any) {
