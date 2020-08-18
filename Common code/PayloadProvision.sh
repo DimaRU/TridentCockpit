@@ -7,7 +7,7 @@ set -e
 GATEWAYIF=wlan0
 EXPOSEIF=eth0
 GATEWAYIP=$(ip address show dev $GATEWAYIF | grep "inet " | awk '{print $2}' | cut -d/ -f1)
-TARGETIP=$(ip route ls | grep default | awk '{print $3}')
+TARGETIP=$(ip route ls | grep "default.*wlan0" | awk '{print $3}')
 
 # Cleanup
 sudo iptables-legacy -t nat -N trident_cockpit_pre || true
