@@ -4,7 +4,6 @@
 //
 
 import Foundation
-import CDRCodable
 import FastRTPSBridge
 
 final class FastRTPS {
@@ -13,94 +12,61 @@ final class FastRTPS {
     static var remoteAddress: String = ""
     
     private static let shared = FastRTPS()
-#if RTPSDEBUG
-    lazy var fastRTPSBridge: FastRTPSBridge? = FastRTPSBridge.init(logLevel: .warning)
-#else
-    lazy var fastRTPSBridge: FastRTPSBridge? = FastRTPSBridge.init(logLevel: .error)
-#endif
+    lazy var fastRTPSBridge: FastRTPSBridge = {
+        let bridge = FastRTPSBridge.init()
+    #if RTPSDEBUG
+        bridge.setlogLevel(.warning)
+    #else
+        bridge.setlogLevel(.error)
+    #endif
+        return bridge
+    }()
     
-    class func createParticipant(name: String, interfaceIPv4: String? = nil, networkAddress: String? = nil) {
-        FastRTPS.shared.fastRTPSBridge?.createRTPSParticipant(withName: name,
-                                                              interfaceIPv4: interfaceIPv4,
-                                                              networkAddress: networkAddress)
+    class func setRTPSListener(_ delegate: RTPSListenerDelegate?) {
+        FastRTPS.shared.fastRTPSBridge.setRTPSListener(delegate: delegate)
+    }
+    
+    class func setRTPSParticipantListener(_ delegate: RTPSParticipantListenerDelegate?) {
+        FastRTPS.shared.fastRTPSBridge.setRTPSParticipantListener(delegate: delegate)
+    }
+
+    class func createParticipant(name: String, filterAddress: String? = nil) {
+        FastRTPS.shared.fastRTPSBridge.createParticipant(name: name, domainID: 0, localAddress: FastRTPS.localAddress, filterAddress: filterAddress)
     }
     
     class func setPartition(name: String) {
-        FastRTPS.shared.fastRTPSBridge?.setPartition(name)
+        FastRTPS.shared.fastRTPSBridge.setPartition(name: name)
     }
 
     class func deleteParticipant() {
-        FastRTPS.shared.fastRTPSBridge?.deleteParticipant()
+        FastRTPS.shared.fastRTPSBridge.deleteParticipant()
     }
 
     class func registerReader<T: DDSType>(topic: RovReaderTopic, completion: @escaping (T)->Void) {
-        let payloadDecoder = PayloadDecoder(topic: topic.rawValue, completion: completion)
-        FastRTPS.shared.fastRTPSBridge?.registerReader(withTopicName: topic.rawValue,
-                                                      typeName: T.ddsTypeName,
-                                                      keyed: T.isKeyed,
-                                                      transientLocal: topic.transientLocal,
-                                                      reliable: topic.reliable,
-                                                      payloadDecoder: payloadDecoder)
+        FastRTPS.shared.fastRTPSBridge.registerReader(topic: topic, completion: completion)
     }
     
     class func removeReader(topic: RovReaderTopic) {
-        FastRTPS.shared.fastRTPSBridge?.removeReader(withTopicName: topic.rawValue)
+        FastRTPS.shared.fastRTPSBridge.removeReader(topic: topic)
     }
 
-    class func registerWriter(topic: RovWriterTopic, ddsType: DDSType.Type) {
-        FastRTPS.shared.fastRTPSBridge?.registerWriter(withTopicName: topic.rawValue,
-                                                      typeName: ddsType.ddsTypeName,
-                                                      keyed: ddsType.isKeyed,
-                                                      transientLocal: topic.transientLocal)
+    class func registerWriter<T: DDSType>(topic: RovWriterTopic, ddsType: T.Type) {
+        FastRTPS.shared.fastRTPSBridge.registerWriter(topic: topic, ddsType: ddsType)
     }
+    
     class func removeWriter(topic: RovWriterTopic) {
-        FastRTPS.shared.fastRTPSBridge?.removeWriter(withTopicName: topic.rawValue)
+        FastRTPS.shared.fastRTPSBridge.removeWriter(topic: topic)
     }
 
     class func send<T: DDSType>(topic: RovWriterTopic, ddsData: T) {
-        let encoder = CDREncoder()
-        do {
-            let data = try encoder.encode(ddsData)
-            if ddsData is DDSKeyed {
-                if let key = (ddsData as? DDSKeyed)?.key, !key.isEmpty {
-                    FastRTPS.shared.fastRTPSBridge?.send(withTopicName: topic.rawValue, data: data, key: key)
-                } else {
-                    let key = "default".data(using: .utf8)!
-                    FastRTPS.shared.fastRTPSBridge?.send(withTopicName: topic.rawValue, data: data, key: key)
-                }
-            } else {
-                FastRTPS.shared.fastRTPSBridge?.send(withTopicName: topic.rawValue, data: data)
-            }
-        } catch {
-            fatalError(error.localizedDescription)
-        }
+        FastRTPS.shared.fastRTPSBridge.send(topic: topic, ddsData: ddsData)
     }
 
     class func resignAll() {
-        FastRTPS.shared.fastRTPSBridge?.resignAll()
+        FastRTPS.shared.fastRTPSBridge.resignAll()
     }
 
     class func getIP4Address() -> [String: String] {
-        var localIP: [String: String] = [:]
-
-        var ifaddr: UnsafeMutablePointer<ifaddrs>? = nil
-        guard getifaddrs(&ifaddr) == 0 else { return localIP }
-        var ptr = ifaddr
-        while ptr != nil {
-            defer { ptr = ptr?.pointee.ifa_next }
-            
-            let interface = ptr?.pointee
-            let addrFamily = interface?.ifa_addr.pointee.sa_family
-            if addrFamily == UInt8(AF_INET) {
-                let name: String = String(cString: (interface!.ifa_name))
-                var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
-                getnameinfo(interface?.ifa_addr, socklen_t((interface?.ifa_addr.pointee.sa_len)!), &hostname, socklen_t(hostname.count), nil, socklen_t(0), NI_NUMERICHOST)
-                let address = String(cString: hostname)
-                localIP[name] = address
-            }
-        }
-        freeifaddrs(ifaddr)
-        
-        return localIP
+        return FastRTPSBridge.getIP4Address()
     }
 }

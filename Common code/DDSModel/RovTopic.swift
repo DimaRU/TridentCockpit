@@ -6,7 +6,7 @@
 import Foundation
 import FastRTPSBridge
 
-enum RovWriterTopic: String {
+enum RovWriterTopic: String, DDSWriterTopic {
 //    case rovAttitudeEuler            = "rov_attitude_euler"                // orov::msg::sensor::AttitudeEuler                [geoserve]
     case rovCamFwdH2640CtrlRequested = "rov_cam_fwd_H264_0_ctrl_requested" // orov::msg::image::ControlValue                  [geoserve]
     case rovCamFwdH2641CtrlRequested = "rov_cam_fwd_H264_1_ctrl_requested" // orov::msg::image::ControlValue                  [geoserve]
@@ -48,7 +48,7 @@ enum RovWriterTopic: String {
     case rovMcuStatus                = "rov_mcu_status"                    // orov::msg::system::MCUStatus                    [trident-update]
 }
 
-enum RovReaderTopic: String {
+enum RovReaderTopic: String, DDSReaderTopic {
     case rovCamFwd                   = "rov_cam_fwd"                       // orov::msg::image::Channel                       [geoserve]
     case rovCamFwdH2640CtrlCurrent   = "rov_cam_fwd_H264_0_ctrl_current"   // orov::msg::image::ControlValue                  [geoserve]
     case rovCamFwdH2640CtrlDesc      = "rov_cam_fwd_H264_0_ctrl_desc"      // orov::msg::image::ControlDescriptor             [geoserve]
@@ -172,4 +172,6 @@ extension RovWriterTopic {
             return false
         }
     }
+    
+    var reliable: Bool { true }
 }

@@ -316,7 +316,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
             print("Fast connect!")
             let network = FastRTPS.remoteAddress + "/32"
             self.connectionMonitor.delegate = self
-            FastRTPS.createParticipant(name: "TridentCockpitiOS", interfaceIPv4: FastRTPS.localAddress, networkAddress: network)
+            FastRTPS.createParticipant(name: "TridentCockpitiOS", filterAddress: network)
             FastRTPS.setPartition(name: self.tridentID!)
         }.ensure {
             RestProvider.setDefaultTimeout()
@@ -373,7 +373,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         
         let network = FastRTPS.remoteAddress + "/32"
         connectionMonitor.delegate = self
-        FastRTPS.createParticipant(name: "TridentCockpitiOS", interfaceIPv4: localAddress, networkAddress: network)
+        FastRTPS.createParticipant(name: "TridentCockpitiOS", filterAddress: network)
         FastRTPS.setPartition(name: self.tridentID!)
     }
         

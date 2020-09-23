@@ -415,6 +415,13 @@
 			remoteGlobalIDString = 0A8A37DB2366DB1B008E8DC1;
 			remoteInfo = "FastRTPSBridge iOS";
 		};
+		0ADEB2D32512A10000311347 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0A1FE2F524F91977002CBB56;
+			remoteInfo = FastRTPSBridgeTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -1003,7 +1010,6 @@
 		0A1D0A1A23F94136006D9AFD /* Common code */ = {
 			isa = PBXGroup;
 			children = (
-				0A7BB6072411987500978D41 /* DiveViewController */,
 				0A9E55BE23BC0AFA008F8A9A /* Average.swift */,
 				0AE05CDC23FD335A00C7CA08 /* UserDefaultsWrapper.swift */,
 				0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */,
@@ -1117,6 +1123,7 @@
 			children = (
 				0A59790B23958380006F10FF /* FastRTPSBridge.framework */,
 				0A59790D23958380006F10FF /* FastRTPSBridge.framework */,
+				0ADEB2D42512A10000311347 /* FastRTPSBridgeTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1248,13 +1255,6 @@
 				0A0968F8249B88C80031F142 /* VideoStreamer.swift */,
 			);
 			path = Video;
-			sourceTree = "<group>";
-		};
-		0A7BB6072411987500978D41 /* DiveViewController */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = DiveViewController;
 			sourceTree = "<group>";
 		};
 		0A868C61247FE1FA0037570A /* Etc */ = {
@@ -1577,6 +1577,13 @@
 			fileType = wrapper.framework;
 			path = FastRTPSBridge.framework;
 			remoteRef = 0A59790C23958380006F10FF /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0ADEB2D42512A10000311347 /* FastRTPSBridgeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = FastRTPSBridgeTests.xctest;
+			remoteRef = 0ADEB2D32512A10000311347 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
