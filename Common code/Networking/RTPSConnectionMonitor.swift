@@ -37,11 +37,15 @@ final class RTPSConnectionMonitor: RTPSParticipantListenerDelegate, RTPSListener
     }
     
     func readerWriterNotificaton(reason: RTPSReaderWriterNotification, topic: String, type: String, remoteLocators: String) {
+    #if RTPSDEBUG
         print(reason, topic, type, remoteLocators)
+    #endif
     }
     
     func RTPSNotification(reason: RTPSNotification, topic: String) {
+    #if RTPSDEBUG
         print(reason, topic)
+    #endif
     }
     
     func participantNotification(reason: RTPSParticipantNotification, participant: String, unicastLocators: String, properties: [String : String]) {
