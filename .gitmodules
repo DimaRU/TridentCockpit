@@ -1,7 +1,7 @@
 [submodule "FastRTPSBridge"]
 	path = FastRTPSBridge
 	url = https://github.com/DimaRU/FastRTPSBridge.git
-	branch = swift-package
+	branch = master
 [submodule "Shout"]
 	path = Shout
 	url = https://github.com/DimaRU/Shout.git
