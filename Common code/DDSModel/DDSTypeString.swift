@@ -6,7 +6,6 @@
 import Foundation
 import FastRTPSBridge
 
-extension String: DDSType {
-    public static var isKeyed: Bool { false }
+extension String: DDSUnkeyed {
     public static var ddsTypeName: String { "DDS::String" }
 }
