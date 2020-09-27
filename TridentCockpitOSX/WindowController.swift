@@ -14,7 +14,7 @@ class WindowController: NSWindowController {
     }
 
     func windowWillClose(_ notification: Notification) {
-        FastRTPS.deleteParticipant()
+        FastRTPS.removeParticipant()
         DisplayManager.enableSleep()
     }
 

@@ -38,8 +38,8 @@ final class FastRTPS {
         FastRTPS.shared.fastRTPSBridge.setPartition(name: name)
     }
 
-    class func deleteParticipant() {
-        FastRTPS.shared.fastRTPSBridge.deleteParticipant()
+    class func removeParticipant() {
+        FastRTPS.shared.fastRTPSBridge.removeParticipant()
     }
 
     class func registerReader<T: DDSType>(topic: RovReaderTopic, completion: @escaping (T)->Void) {

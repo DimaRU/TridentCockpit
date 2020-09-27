@@ -348,7 +348,7 @@ class DashboardViewController: NSViewController, RTPSConnectionMonitorProtocol {
             }
             
         }
-        FastRTPS.deleteParticipant()
+        FastRTPS.removeParticipant()
         toolbar.items.forEach{ $0.isEnabled = false }
         connectedSSID = nil
         deviceState = nil

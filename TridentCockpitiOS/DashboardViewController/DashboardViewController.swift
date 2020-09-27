@@ -403,7 +403,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         print(#function)
         timer = nil
         connectionMonitor.delegate = nil
-        FastRTPS.deleteParticipant()
+        FastRTPS.removeParticipant()
         
         var currentViewController = navigationController!.topViewController!
         if currentViewController == self, self.presentedViewController != nil {
