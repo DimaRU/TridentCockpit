@@ -31,7 +31,7 @@ final class FastRTPS {
     }
 
     class func createParticipant(name: String, filterAddress: String? = nil) {
-        FastRTPS.shared.fastRTPSBridge.createParticipant(name: name, domainID: 0, localAddress: FastRTPS.localAddress, filterAddress: filterAddress)
+        try! FastRTPS.shared.fastRTPSBridge.createParticipant(name: name, domainID: 0, localAddress: FastRTPS.localAddress, filterAddress: filterAddress)
     }
     
     class func setPartition(name: String) {
@@ -43,23 +43,23 @@ final class FastRTPS {
     }
 
     class func registerReader<T: DDSType>(topic: RovReaderTopic, completion: @escaping (T)->Void) {
-        FastRTPS.shared.fastRTPSBridge.registerReader(topic: topic, completion: completion)
+        try! FastRTPS.shared.fastRTPSBridge.registerReader(topic: topic, completion: completion)
     }
     
     class func removeReader(topic: RovReaderTopic) {
-        FastRTPS.shared.fastRTPSBridge.removeReader(topic: topic)
+        try! FastRTPS.shared.fastRTPSBridge.removeReader(topic: topic)
     }
 
     class func registerWriter<T: DDSType>(topic: RovWriterTopic, ddsType: T.Type) {
-        FastRTPS.shared.fastRTPSBridge.registerWriter(topic: topic, ddsType: ddsType)
+        try! FastRTPS.shared.fastRTPSBridge.registerWriter(topic: topic, ddsType: ddsType)
     }
     
     class func removeWriter(topic: RovWriterTopic) {
-        FastRTPS.shared.fastRTPSBridge.removeWriter(topic: topic)
+        try! FastRTPS.shared.fastRTPSBridge.removeWriter(topic: topic)
     }
 
     class func send<T: DDSType>(topic: RovWriterTopic, ddsData: T) {
-        FastRTPS.shared.fastRTPSBridge.send(topic: topic, ddsData: ddsData)
+        try! FastRTPS.shared.fastRTPSBridge.send(topic: topic, ddsData: ddsData)
     }
 
     class func resignAll() {
