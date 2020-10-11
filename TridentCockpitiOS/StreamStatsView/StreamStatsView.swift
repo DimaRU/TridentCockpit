@@ -5,9 +5,8 @@
 
 import UIKit
 import FastRTPSBridge
-import CoreLocation
 
-class StreamStatsView: FloatingView {
+class StreamStatsView: UIView {
     @IBOutlet weak var streamStateLabel: UILabel!
     @IBOutlet weak var fpsLabel: UILabel!
     @IBOutlet weak var bpsLabel: UILabel!
@@ -21,32 +20,11 @@ class StreamStatsView: FloatingView {
         bpsLabel.font = UIFont.monospacedSystemFont(ofSize: 14, weight: .regular)
     }
 
-    override func loadDefaults() -> CGPoint {
-        assert(superview != nil)
-        // Top left corner
-        let cph = (superview!.frame.minX + bounds.midX) / superview!.frame.width
-        let cpv = (superview!.frame.minY + superview!.safeAreaInsets.top + offsetFromTop + bounds.midY) / superview!.frame.height
-        return CGPoint(x: cph, y: cpv)
-    }
-
-    override func savePosition(cp: CGPoint) {
-        Preference.streamStatsViewCPH = cp.x
-        Preference.streamStatsViewCPV = cp.y
-    }
-
-    override func loadPosition() -> CGPoint? {
-        guard
-            let cph = Preference.streamStatsViewCPH,
-            let cpv = Preference.streamStatsViewCPV else { return nil }
-        return CGPoint(x: cph, y: cpv)
-    }
-
     // MARK: Instaniate
-    static func instantiate(offsetFromTop: CGFloat) -> StreamStatsView {
+    static func instantiate() -> StreamStatsView {
         let nib = UINib(nibName: "StreamStatsView", bundle: nil)
         let views = nib.instantiate(withOwner: StreamStatsView(), options: nil)
         let view = views.first as! StreamStatsView
-        view.offsetFromTop = offsetFromTop
         return view
     }
 }

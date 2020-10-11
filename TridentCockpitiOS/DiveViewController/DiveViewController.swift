@@ -140,10 +140,16 @@ class DiveViewController: UIViewController {
         }
         if let videoStreamer = videoStreamer {
             videoProcessorMulticastDelegate.add(videoStreamer)
-            streamStatsView = StreamStatsView.instantiate(offsetFromTop: indicatorsView.bounds.height)
-            view.addSubview(streamStatsView!)
-            videoStreamer.delegate = streamStatsView!
-            streamStatsView?.state(published: videoStreamer.isPublished) // May be already dead
+            let streamStatsView = StreamStatsView.instantiate()
+            view.addSubview(streamStatsView)
+            NSLayoutConstraint.activate([
+                streamStatsView.topAnchor.constraint(equalTo: indicatorsView.bottomAnchor, constant: 3),
+                streamStatsView.centerXAnchor.constraint(equalTo: indicatorsView.centerXAnchor)
+            ])
+            
+            videoStreamer.delegate = streamStatsView
+            streamStatsView.state(published: videoStreamer.isPublished) // May be already dead
+            self.streamStatsView = streamStatsView
         }
         liveViewContainer.isHidden = true
         if Gopro3API.isConnected {
@@ -193,7 +199,6 @@ class DiveViewController: UIViewController {
         headingView.superViewDidResize(to: size)
         auxCameraView?.superViewDidResize(to: size)
         liveViewContainer?.superViewDidResize(to: size)
-        streamStatsView?.superViewDidResize(to: size)
 
         guard let before = self.view.window?.windowScene?.interfaceOrientation else { return }
         coordinator.animate(alongsideTransition: nil) { _ in
