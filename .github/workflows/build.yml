@@ -13,26 +13,19 @@ jobs:
         name: build
         runs-on: macOS-latest
         steps:
-        - uses: sinoru/actions-setup-xcode@v1.1
-          with:
-            xcode-version: '11.5'
         - name: Checkout
           uses: actions/checkout@v2
           with:
             submodules: true
-        - name: Checkout tools repo
-          uses: actions/checkout@v2
-          with:
-            repository: DimaRU/polly
-            path: polly
-        - name: Add polly to path
-          run: echo "::add-path::`pwd`/polly/bin"
+
         - name: Check XCode Version
-          run: xcodebuild -version
+          run: |
+            xcversion select 12.1
+            xcodebuild -version
 
         - name: iOS Simulator
           run: |
-            set -o pipefail && xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpitiOS -destination "platform=iOS Simulator,name=iPhone 8,OS=13.5" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
+            set -o pipefail && xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpitiOS -destination "platform=iOS Simulator,name=iPhone 8,OS=14.1" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
 
         - name: Mac Catalyst
           run: |
