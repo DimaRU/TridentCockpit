@@ -319,7 +319,6 @@
 		0AD6C77E24C7631E00DD61B6 /* RecoveryVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6C77724C7631E00DD61B6 /* RecoveryVideoViewController.swift */; };
 		0AD6C77F24C7631E00DD61B6 /* RecoveryVideoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AD6C77824C7631E00DD61B6 /* RecoveryVideoViewController.storyboard */; };
 		0AD6C78124C7637B00DD61B6 /* SwiftSpinner+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6C78024C7637B00DD61B6 /* SwiftSpinner+Extensions.swift */; };
-		0AD6C78824C766FB00DD61B6 /* UICircularProgressRing in Frameworks */ = {isa = PBXBuildFile; productRef = 0AD6C78724C766FB00DD61B6 /* UICircularProgressRing */; };
 		0AD8C5D12458400B009E0A9E /* GetWifiAPTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD8C5D02458400B009E0A9E /* GetWifiAPTableViewController.swift */; };
 		0AD8C5D32458402A009E0A9E /* GetWifiAPTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AD8C5D22458402A009E0A9E /* GetWifiAPTableViewController.storyboard */; };
 		0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0ADA653723B119880090D757 /* PayloadProvision.sh */; };
@@ -334,6 +333,7 @@
 		0AE05CED23FD41E200C7CA08 /* DiveViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AE05CEC23FD41E200C7CA08 /* DiveViewController.storyboard */; };
 		0AE206AC2423AADB0017934B /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE206A324239E870017934B /* Alerts.swift */; };
 		0AE490702448524800C669D0 /* UILabelRotatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4906F2448524800C669D0 /* UILabelRotatable.swift */; };
+		0AE522C02545AFDF0038DF08 /* UICircularProgressRing in Frameworks */ = {isa = PBXBuildFile; productRef = 0AE522BF2545AFDF0038DF08 /* UICircularProgressRing */; };
 		0AEC9789251F7DFC0025C49D /* Shout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC9788251F7DF70025C49D /* Shout.framework */; };
 		0AEC978A251F7DFC0025C49D /* Shout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC9788251F7DF70025C49D /* Shout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0AEC9797251F86470025C49D /* Shout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC9788251F7DF70025C49D /* Shout.framework */; };
@@ -717,7 +717,7 @@
 				0A1D0A5723F948F3006D9AFD /* Moya in Frameworks */,
 				0A1D0A5B23F948FF006D9AFD /* Kingfisher in Frameworks */,
 				0A1EE528251E400600CBFF16 /* FastRTPSBridge.framework in Frameworks */,
-				0AD6C78824C766FB00DD61B6 /* UICircularProgressRing in Frameworks */,
+				0AE522C02545AFDF0038DF08 /* UICircularProgressRing in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1410,7 +1410,7 @@
 				0A1D0A5823F948F9006D9AFD /* PromiseKit */,
 				0A1D0A5A23F948FF006D9AFD /* Kingfisher */,
 				0A0968FB249B89DD0031F142 /* Logboard */,
-				0AD6C78724C766FB00DD61B6 /* UICircularProgressRing */,
+				0AE522BF2545AFDF0038DF08 /* UICircularProgressRing */,
 			);
 			productName = TridentCockpitiOS;
 			productReference = 0A1D09F523F93FD6006D9AFD /* TridentCockpit.app */;
@@ -1473,7 +1473,7 @@
 				0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */,
 				0A1A5B9E23CE57890038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				0A0968FA249B89DD0031F142 /* XCRemoteSwiftPackageReference "Logboard" */,
-				0AD6C78624C766FB00DD61B6 /* XCRemoteSwiftPackageReference "UICircularProgressRing" */,
+				0AE522BE2545AFDF0038DF08 /* XCRemoteSwiftPackageReference "UICircularProgressRing" */,
 			);
 			productRefGroup = 0A7130B5236369EA00817593 /* Products */;
 			projectDirPath = "";
@@ -2212,12 +2212,12 @@
 				minimumVersion = 6.12.0;
 			};
 		};
-		0AD6C78624C766FB00DD61B6 /* XCRemoteSwiftPackageReference "UICircularProgressRing" */ = {
+		0AE522BE2545AFDF0038DF08 /* XCRemoteSwiftPackageReference "UICircularProgressRing" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/luispadron/UICircularProgressRing.git";
+			repositoryURL = "https://github.com/DimaRU/UICircularProgressRing.git";
 			requirement = {
-				kind = exactVersion;
-				version = 6.5.0;
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -2258,9 +2258,9 @@
 			package = 0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */;
 			productName = PromiseKit;
 		};
-		0AD6C78724C766FB00DD61B6 /* UICircularProgressRing */ = {
+		0AE522BF2545AFDF0038DF08 /* UICircularProgressRing */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0AD6C78624C766FB00DD61B6 /* XCRemoteSwiftPackageReference "UICircularProgressRing" */;
+			package = 0AE522BE2545AFDF0038DF08 /* XCRemoteSwiftPackageReference "UICircularProgressRing" */;
 			productName = UICircularProgressRing;
 		};
 /* End XCSwiftPackageProductDependency section */
