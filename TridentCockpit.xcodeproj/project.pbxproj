@@ -2139,7 +2139,7 @@
 			repositoryURL = "https://github.com/DimaRU/FastRTPSBridge.git";
 			requirement = {
 				kind = exactVersion;
-				version = "4.0.0-whitelist+dds201";
+				version = "4.0.0-whitelist+dds210";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
