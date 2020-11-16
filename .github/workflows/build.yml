@@ -25,7 +25,7 @@ jobs:
 
         - name: iOS Simulator
           run: |
-            set -o pipefail && xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpitiOS -destination "platform=iOS Simulator,name=iPhone 8,OS=14.1" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
+            set -o pipefail && xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpitiOS -destination "platform=iOS Simulator,name=iPhone 8,OS=14.2" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
 
         - name: Mac Catalyst
           run: |
