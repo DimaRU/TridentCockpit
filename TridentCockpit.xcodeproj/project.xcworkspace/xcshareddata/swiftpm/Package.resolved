@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/Alamofire/Alamofire.git",
         "state": {
           "branch": null,
-          "revision": "becd9a729a37bdbef5bc39dc3c702b99f9e3d046",
-          "version": "5.2.2"
+          "revision": "9e0328127dfb801cefe8ac53a13c0c90a7770448",
+          "version": "5.4.0"
         }
       },
       {
@@ -29,12 +29,39 @@
         }
       },
       {
+        "package": "FastDDS",
+        "repositoryURL": "https://github.com/DimaRU/FastDDSPrebuild.git",
+        "state": {
+          "branch": null,
+          "revision": "8e1112f7b10a356a1643d73bb6212cf0dd06fee7",
+          "version": "2.0.1-whitelist"
+        }
+      },
+      {
+        "package": "FastRTPSBridge",
+        "repositoryURL": "https://github.com/DimaRU/FastRTPSBridge.git",
+        "state": {
+          "branch": null,
+          "revision": "377138c76c0e4df2491c749de9a0b3678fc4ac20",
+          "version": "4.0.0-whitelist+dds201"
+        }
+      },
+      {
         "package": "Kingfisher",
         "repositoryURL": "https://github.com/onevcat/Kingfisher",
         "state": {
           "branch": null,
-          "revision": "ffc614446cab6ae106619606698d642c23ed25be",
-          "version": "5.15.3"
+          "revision": "0e548b700c7c123dd3b2ac776e90d63a540f084d",
+          "version": "5.15.7"
+        }
+      },
+      {
+        "package": "CSSH",
+        "repositoryURL": "https://github.com/DimaRU/Libssh2Prebuild.git",
+        "state": {
+          "branch": null,
+          "revision": "ff6be23117da8c19f11cf68ed118d2a708aba1fc",
+          "version": "1.9.0-OpenSSL_1_1_1h"
         }
       },
       {
@@ -57,11 +84,11 @@
       },
       {
         "package": "PromiseKit",
-        "repositoryURL": "https://github.com/mxcl/PromiseKit.git",
+        "repositoryURL": "https://github.com/DimaRU/PromiseKit.git",
         "state": {
-          "branch": null,
-          "revision": "aea48ea1855f5d82e2dffa6027afce3aab8f3dd7",
-          "version": "6.13.3"
+          "branch": "master",
+          "revision": "521df54b3b8c0a442ff863b4cb3c63450a97774a",
+          "version": null
         }
       },
       {
@@ -80,6 +107,15 @@
           "branch": null,
           "revision": "002d325b0bdee94e7882e1114af5ff4fe1e96afa",
           "version": "5.1.1"
+        }
+      },
+      {
+        "package": "Shout",
+        "repositoryURL": "https://github.com/DimaRU/Shout.git",
+        "state": {
+          "branch": "numericHost",
+          "revision": "3a7491043f6f73ceecda352f674f52c2fbf11794",
+          "version": null
         }
       },
       {

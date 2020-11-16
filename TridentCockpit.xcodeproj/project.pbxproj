@@ -99,7 +99,6 @@
 		0A0968F5249B872D0031F142 /* AudioIOComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A09689A249B872D0031F142 /* AudioIOComponent.swift */; };
 		0A0968F7249B87590031F142 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0968F6249B87590031F142 /* MulticastDelegate.swift */; };
 		0A0968F9249B88C80031F142 /* VideoStreamer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0968F8249B88C80031F142 /* VideoStreamer.swift */; };
-		0A0968FC249B89DD0031F142 /* Logboard in Frameworks */ = {isa = PBXBuildFile; productRef = 0A0968FB249B89DD0031F142 /* Logboard */; };
 		0A096900249BBD150031F142 /* StreamSetupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A0968FF249BBD150031F142 /* StreamSetupViewController.swift */; };
 		0A096902249BBD250031F142 /* StreamSetupViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A096901249BBD250031F142 /* StreamSetupViewController.storyboard */; };
 		0A0C1C8523FE015100D09F77 /* TridentCockpit.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A71311B23636B5C00817593 /* TridentCockpit.scnassets */; };
@@ -166,15 +165,10 @@
 		0A1D0A4723F941C4006D9AFD /* Gopro3API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A457D8D23B78A7C0042C250 /* Gopro3API.swift */; };
 		0A1D0A4823F941C4006D9AFD /* FastRTPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A71313A23637F0700817593 /* FastRTPS.swift */; };
 		0A1D0A5723F948F3006D9AFD /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D0A5623F948F3006D9AFD /* Moya */; };
-		0A1D0A5923F948F9006D9AFD /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D0A5823F948F9006D9AFD /* PromiseKit */; };
 		0A1D0A5B23F948FF006D9AFD /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 0A1D0A5A23F948FF006D9AFD /* Kingfisher */; };
 		0A1D0A5D23F94942006D9AFD /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7E23CE4B2F0038EABE /* Date+Extensions.swift */; };
 		0A1D0A5E23F94942006D9AFD /* iso8601date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1A5B7F23CE4B2F0038EABE /* iso8601date.swift */; };
 		0A1D0A5F23F94C12006D9AFD /* Average.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9E55BE23BC0AFA008F8A9A /* Average.swift */; };
-		0A1EE528251E400600CBFF16 /* FastRTPSBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1EE527251E400600CBFF16 /* FastRTPSBridge.framework */; };
-		0A1EE529251E400600CBFF16 /* FastRTPSBridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1EE527251E400600CBFF16 /* FastRTPSBridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0A1EE52C251E402400CBFF16 /* FastRTPSBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1EE527251E400600CBFF16 /* FastRTPSBridge.framework */; };
-		0A1EE52D251E402400CBFF16 /* FastRTPSBridge.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0A1EE527251E400600CBFF16 /* FastRTPSBridge.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0A1F3AAD24883EA100384EE1 /* CameraControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1F3AAB24883EA000384EE1 /* CameraControlView.swift */; };
 		0A1F3AAE24883EA100384EE1 /* CameraControlView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A1F3AAC24883EA000384EE1 /* CameraControlView.xib */; };
 		0A1F3AB024883EB400384EE1 /* UILabelUnderlined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1F3AAF24883EB400384EE1 /* UILabelUnderlined.swift */; };
@@ -224,7 +218,8 @@
 		0A5CBCB623675F920055131A /* SF-Pro-Display-Black.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA323675F410055131A /* SF-Pro-Display-Black.otf */; };
 		0A5E3FC823BFA10E00EAC519 /* GoproStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5E3FBE23BFA10E00EAC519 /* GoproStatus.swift */; };
 		0A66C52C23AED706001BA93D /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0A66C52B23AED706001BA93D /* Moya */; };
-		0A66C52F23AED776001BA93D /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A66C52E23AED776001BA93D /* PromiseKit */; };
+		0A6DADBE255F36EB00DFBF5F /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A6DADBD255F36EB00DFBF5F /* PromiseKit */; };
+		0A6DADC3255F371200DFBF5F /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A6DADC2255F371200DFBF5F /* PromiseKit */; };
 		0A7130D423636AF200817593 /* FlatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130C823636AF100817593 /* FlatButton.swift */; };
 		0A7130D623636AF200817593 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CA23636AF100817593 /* Extensions.swift */; };
 		0A7130D723636AF200817593 /* DisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CB23636AF100817593 /* DisplayManager.swift */; };
@@ -334,10 +329,11 @@
 		0AE206AC2423AADB0017934B /* Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE206A324239E870017934B /* Alerts.swift */; };
 		0AE490702448524800C669D0 /* UILabelRotatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4906F2448524800C669D0 /* UILabelRotatable.swift */; };
 		0AE522C02545AFDF0038DF08 /* UICircularProgressRing in Frameworks */ = {isa = PBXBuildFile; productRef = 0AE522BF2545AFDF0038DF08 /* UICircularProgressRing */; };
-		0AEC9789251F7DFC0025C49D /* Shout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC9788251F7DF70025C49D /* Shout.framework */; };
-		0AEC978A251F7DFC0025C49D /* Shout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC9788251F7DF70025C49D /* Shout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		0AEC9797251F86470025C49D /* Shout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC9788251F7DF70025C49D /* Shout.framework */; };
-		0AEC9798251F86470025C49D /* Shout.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0AEC9788251F7DF70025C49D /* Shout.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		0AEF24CC2562D7E10011AD98 /* Shout in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEF24CB2562D7E10011AD98 /* Shout */; };
+		0AEF24CE2562DA910011AD98 /* Shout in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEF24CD2562DA910011AD98 /* Shout */; };
+		0AEF24D12562E4290011AD98 /* FastRTPSBridge in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEF24D02562E4290011AD98 /* FastRTPSBridge */; };
+		0AEF24D42562E5C70011AD98 /* FastRTPSBridge in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEF24D32562E5C70011AD98 /* FastRTPSBridge */; };
+		0AEF24D62562E6420011AD98 /* Logboard in Frameworks */ = {isa = PBXBuildFile; productRef = 0AEF24D52562E6420011AD98 /* Logboard */; };
 		0AF029D1245F6D36007ADE09 /* CheckmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF029C6245F6D36007ADE09 /* CheckmarkView.swift */; };
 		0AF029D2245F6D36007ADE09 /* util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF029C7245F6D36007ADE09 /* util.swift */; };
 		0AF029D3245F6D36007ADE09 /* CircularProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF029C8245F6D36007ADE09 /* CircularProgress.swift */; };
@@ -351,37 +347,6 @@
 		0AFE9C4123B3ED7700C13162 /* DDSDiscoveryListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AFE9C3723B3ED7700C13162 /* DDSDiscoveryListener.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		0A1EE526251E400600CBFF16 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0A1EE4B0251E27EC00CBFF16;
-			remoteInfo = FastRTPSBridge;
-		};
-		0A20B1852454C5EF00FB4961 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0A20B1762454C5EF00FB4961 /* Shout.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0A203A26245215F800E8F6B0;
-			remoteInfo = ShoutTests;
-		};
-		0ADEB2D32512A10000311347 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0A1FE2F524F91977002CBB56;
-			remoteInfo = FastRTPSBridgeTests;
-		};
-		0AEC9787251F7DF70025C49D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0A20B1762454C5EF00FB4961 /* Shout.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 0A05E727251E7A7A00A27050;
-			remoteInfo = Shout;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		0A1D0A1723F940E2006D9AFD /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -389,8 +354,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0AEC9798251F86470025C49D /* Shout.framework in Embed Frameworks */,
-				0A1EE529251E400600CBFF16 /* FastRTPSBridge.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,8 +382,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0AEC978A251F7DFC0025C49D /* Shout.framework in Embed Frameworks */,
-				0A1EE52D251E402400CBFF16 /* FastRTPSBridge.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,7 +505,6 @@
 		0A1F3AAB24883EA000384EE1 /* CameraControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraControlView.swift; sourceTree = "<group>"; };
 		0A1F3AAC24883EA000384EE1 /* CameraControlView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraControlView.xib; sourceTree = "<group>"; };
 		0A1F3AAF24883EB400384EE1 /* UILabelUnderlined.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UILabelUnderlined.swift; sourceTree = "<group>"; };
-		0A20B1762454C5EF00FB4961 /* Shout.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Shout.xcodeproj; path = Shout/Shout.xcodeproj; sourceTree = "<group>"; };
 		0A20B1882454C6B900FB4961 /* Shout+Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Shout+Promise.swift"; sourceTree = "<group>"; };
 		0A2489F924518F4C0031720B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0A2E1DA423B0CAD9009048A5 /* KeychainService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
@@ -579,7 +539,6 @@
 		0A5612832486BFA200517C8D /* VideoRecorder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoRecorder.swift; sourceTree = "<group>"; };
 		0A5612852486C03700517C8D /* CLLocation+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CLLocation+Extensions.swift"; sourceTree = "<group>"; };
 		0A56D0BF23D7119900D9495A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = FastRTPSBridge.xcodeproj; path = FastRTPSBridge/FastRTPSBridge.xcodeproj; sourceTree = "<group>"; };
 		0A5CBC9B23675F410055131A /* SF-Pro-Display-Thin.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Thin.otf"; sourceTree = "<group>"; };
 		0A5CBC9C23675F410055131A /* SF-Pro-Display-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Light.otf"; sourceTree = "<group>"; };
 		0A5CBC9D23675F410055131A /* SF-Pro-Display-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Regular.otf"; sourceTree = "<group>"; };
@@ -711,12 +670,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A0968FC249B89DD0031F142 /* Logboard in Frameworks */,
-				0AEC9797251F86470025C49D /* Shout.framework in Frameworks */,
-				0A1D0A5923F948F9006D9AFD /* PromiseKit in Frameworks */,
+				0AEF24D12562E4290011AD98 /* FastRTPSBridge in Frameworks */,
 				0A1D0A5723F948F3006D9AFD /* Moya in Frameworks */,
+				0AEF24CE2562DA910011AD98 /* Shout in Frameworks */,
 				0A1D0A5B23F948FF006D9AFD /* Kingfisher in Frameworks */,
-				0A1EE528251E400600CBFF16 /* FastRTPSBridge.framework in Frameworks */,
+				0AEF24D62562E6420011AD98 /* Logboard in Frameworks */,
+				0A6DADBE255F36EB00DFBF5F /* PromiseKit in Frameworks */,
 				0AE522C02545AFDF0038DF08 /* UICircularProgressRing in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -725,10 +684,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A1EE52C251E402400CBFF16 /* FastRTPSBridge.framework in Frameworks */,
-				0AEC9789251F7DFC0025C49D /* Shout.framework in Frameworks */,
+				0A6DADC3255F371200DFBF5F /* PromiseKit in Frameworks */,
 				0A1A5BA023CE57890038EABE /* Kingfisher in Frameworks */,
-				0A66C52F23AED776001BA93D /* PromiseKit in Frameworks */,
+				0AEF24CC2562D7E10011AD98 /* Shout in Frameworks */,
+				0AEF24D42562E5C70011AD98 /* FastRTPSBridge in Frameworks */,
 				0A66C52C23AED706001BA93D /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1006,15 +965,6 @@
 			path = CameraControlView;
 			sourceTree = "<group>";
 		};
-		0A20B1772454C5EF00FB4961 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0AEC9788251F7DF70025C49D /* Shout.framework */,
-				0A20B1862454C5EF00FB4961 /* ShoutTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		0A3CB025246414D6009F827B /* PastDivesViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1075,15 +1025,6 @@
 			path = StreamStatsView;
 			sourceTree = "<group>";
 		};
-		0A59790423958380006F10FF /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				0A1EE527251E400600CBFF16 /* FastRTPSBridge.framework */,
-				0ADEB2D42512A10000311347 /* FastRTPSBridgeTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		0A59790E239583AB006F10FF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1119,8 +1060,6 @@
 		0A7130AB236369EA00817593 = {
 			isa = PBXGroup;
 			children = (
-				0A20B1762454C5EF00FB4961 /* Shout.xcodeproj */,
-				0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */,
 				0A1D09F623F93FD6006D9AFD /* TridentCockpitiOS */,
 				0A1D0A1A23F94136006D9AFD /* Common code */,
 				0A7130B6236369EA00817593 /* TridentCockpitOSX */,
@@ -1407,10 +1346,12 @@
 			name = TridentCockpitiOS;
 			packageProductDependencies = (
 				0A1D0A5623F948F3006D9AFD /* Moya */,
-				0A1D0A5823F948F9006D9AFD /* PromiseKit */,
 				0A1D0A5A23F948FF006D9AFD /* Kingfisher */,
-				0A0968FB249B89DD0031F142 /* Logboard */,
 				0AE522BF2545AFDF0038DF08 /* UICircularProgressRing */,
+				0A6DADBD255F36EB00DFBF5F /* PromiseKit */,
+				0AEF24CD2562DA910011AD98 /* Shout */,
+				0AEF24D02562E4290011AD98 /* FastRTPSBridge */,
+				0AEF24D52562E6420011AD98 /* Logboard */,
 			);
 			productName = TridentCockpitiOS;
 			productReference = 0A1D09F523F93FD6006D9AFD /* TridentCockpit.app */;
@@ -1433,8 +1374,10 @@
 			name = TridentCockpitOSX;
 			packageProductDependencies = (
 				0A66C52B23AED706001BA93D /* Moya */,
-				0A66C52E23AED776001BA93D /* PromiseKit */,
 				0A1A5B9F23CE57890038EABE /* Kingfisher */,
+				0A6DADC2255F371200DFBF5F /* PromiseKit */,
+				0AEF24CB2562D7E10011AD98 /* Shout */,
+				0AEF24D32562E5C70011AD98 /* FastRTPSBridge */,
 			);
 			productName = TridentCockpit;
 			productReference = 0A7130B4236369EA00817593 /* TridentCockpitOSX.app */;
@@ -1470,23 +1413,15 @@
 			mainGroup = 0A7130AB236369EA00817593;
 			packageReferences = (
 				0A66C52A23AED706001BA93D /* XCRemoteSwiftPackageReference "Moya" */,
-				0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */,
 				0A1A5B9E23CE57890038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				0A0968FA249B89DD0031F142 /* XCRemoteSwiftPackageReference "Logboard" */,
 				0AE522BE2545AFDF0038DF08 /* XCRemoteSwiftPackageReference "UICircularProgressRing" */,
+				0A6DADBC255F36EB00DFBF5F /* XCRemoteSwiftPackageReference "PromiseKit" */,
+				0AEF24C82562D72A0011AD98 /* XCRemoteSwiftPackageReference "Shout" */,
+				0AEF24CF2562E4290011AD98 /* XCRemoteSwiftPackageReference "FastRTPSBridge" */,
 			);
 			productRefGroup = 0A7130B5236369EA00817593 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 0A59790423958380006F10FF /* Products */;
-					ProjectRef = 0A59790323958380006F10FF /* FastRTPSBridge.xcodeproj */;
-				},
-				{
-					ProductGroup = 0A20B1772454C5EF00FB4961 /* Products */;
-					ProjectRef = 0A20B1762454C5EF00FB4961 /* Shout.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				0A7130B3236369EA00817593 /* TridentCockpitOSX */,
@@ -1494,37 +1429,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		0A1EE527251E400600CBFF16 /* FastRTPSBridge.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = FastRTPSBridge.framework;
-			remoteRef = 0A1EE526251E400600CBFF16 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0A20B1862454C5EF00FB4961 /* ShoutTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ShoutTests.xctest;
-			remoteRef = 0A20B1852454C5EF00FB4961 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0ADEB2D42512A10000311347 /* FastRTPSBridgeTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = FastRTPSBridgeTests.xctest;
-			remoteRef = 0ADEB2D32512A10000311347 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		0AEC9788251F7DF70025C49D /* Shout.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Shout.framework;
-			remoteRef = 0AEC9787251F7DF70025C49D /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		0A1D09F323F93FD6006D9AFD /* Resources */ = {
@@ -1930,6 +1834,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 5;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = in.ioshack.TridentCockpitiOS;
 				PRODUCT_NAME = TridentCockpit;
 				SDKROOT = iphoneos;
@@ -1958,6 +1863,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 5;
+				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = in.ioshack.TridentCockpitiOS;
 				PRODUCT_NAME = TridentCockpit;
 				SDKROOT = iphoneos;
@@ -2184,8 +2090,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/shogo4405/Logboard.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.1.2;
+				kind = exactVersion;
+				version = 2.2.0;
 			};
 		};
 		0A1A5B9E23CE57890038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
@@ -2204,12 +2110,12 @@
 				minimumVersion = 14.0.0;
 			};
 		};
-		0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+		0A6DADBC255F36EB00DFBF5F /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mxcl/PromiseKit.git";
+			repositoryURL = "https://github.com/DimaRU/PromiseKit.git";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 6.12.0;
+				branch = master;
+				kind = branch;
 			};
 		};
 		0AE522BE2545AFDF0038DF08 /* XCRemoteSwiftPackageReference "UICircularProgressRing" */ = {
@@ -2220,14 +2126,25 @@
 				minimumVersion = 6.0.0;
 			};
 		};
+		0AEF24C82562D72A0011AD98 /* XCRemoteSwiftPackageReference "Shout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DimaRU/Shout.git";
+			requirement = {
+				branch = numericHost;
+				kind = branch;
+			};
+		};
+		0AEF24CF2562E4290011AD98 /* XCRemoteSwiftPackageReference "FastRTPSBridge" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/DimaRU/FastRTPSBridge.git";
+			requirement = {
+				kind = exactVersion;
+				version = "4.0.0-whitelist+dds201";
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		0A0968FB249B89DD0031F142 /* Logboard */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A0968FA249B89DD0031F142 /* XCRemoteSwiftPackageReference "Logboard" */;
-			productName = Logboard;
-		};
 		0A1A5B9F23CE57890038EABE /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0A1A5B9E23CE57890038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */;
@@ -2237,11 +2154,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0A66C52A23AED706001BA93D /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
-		};
-		0A1D0A5823F948F9006D9AFD /* PromiseKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */;
-			productName = PromiseKit;
 		};
 		0A1D0A5A23F948FF006D9AFD /* Kingfisher */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -2253,15 +2165,45 @@
 			package = 0A66C52A23AED706001BA93D /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
 		};
-		0A66C52E23AED776001BA93D /* PromiseKit */ = {
+		0A6DADBD255F36EB00DFBF5F /* PromiseKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A66C52D23AED776001BA93D /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			package = 0A6DADBC255F36EB00DFBF5F /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			productName = PromiseKit;
+		};
+		0A6DADC2255F371200DFBF5F /* PromiseKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A6DADBC255F36EB00DFBF5F /* XCRemoteSwiftPackageReference "PromiseKit" */;
 			productName = PromiseKit;
 		};
 		0AE522BF2545AFDF0038DF08 /* UICircularProgressRing */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 0AE522BE2545AFDF0038DF08 /* XCRemoteSwiftPackageReference "UICircularProgressRing" */;
 			productName = UICircularProgressRing;
+		};
+		0AEF24CB2562D7E10011AD98 /* Shout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AEF24C82562D72A0011AD98 /* XCRemoteSwiftPackageReference "Shout" */;
+			productName = Shout;
+		};
+		0AEF24CD2562DA910011AD98 /* Shout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AEF24C82562D72A0011AD98 /* XCRemoteSwiftPackageReference "Shout" */;
+			productName = Shout;
+		};
+		0AEF24D02562E4290011AD98 /* FastRTPSBridge */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AEF24CF2562E4290011AD98 /* XCRemoteSwiftPackageReference "FastRTPSBridge" */;
+			productName = FastRTPSBridge;
+		};
+		0AEF24D32562E5C70011AD98 /* FastRTPSBridge */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0AEF24CF2562E4290011AD98 /* XCRemoteSwiftPackageReference "FastRTPSBridge" */;
+			productName = FastRTPSBridge;
+		};
+		0AEF24D52562E6420011AD98 /* Logboard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0A0968FA249B89DD0031F142 /* XCRemoteSwiftPackageReference "Logboard" */;
+			productName = Logboard;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
