@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OgA-KN-bhl">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OgA-KN-bhl">
     <device id="ipad10_2" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Streaming-->
         <scene sceneID="fXB-UA-Xfx">
             <objects>
-                <viewController id="Tza-cf-6VX" customClass="StreamSetupViewController" customModule="TridentCockpitiOS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Tza-cf-6VX" customClass="StreamSetupViewController" customModule="TridentCockpit" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Jkh-ry-v7R">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="356"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="256"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="DVS-V7-B3x">
@@ -50,7 +52,7 @@
                                                     <outlet property="delegate" destination="Tza-cf-6VX" id="IuY-d2-XWY"/>
                                                 </connections>
                                             </textField>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEh-Gl-Gem">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KEh-Gl-Gem">
                                                 <rect key="frame" x="0.0" y="141" width="568" height="33"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <state key="normal" title="Connect"/>
@@ -65,7 +67,8 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="oOC-hK-t8A"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="DVS-V7-B3x" firstAttribute="leading" secondItem="oOC-hK-t8A" secondAttribute="leading" constant="16" id="KT4-l9-ZRa">
                                 <variation key="widthClass=compact" constant="16"/>
@@ -75,7 +78,6 @@
                                 <variation key="widthClass=compact" constant="16"/>
                             </constraint>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="oOC-hK-t8A"/>
                     </view>
                     <navigationItem key="navigationItem" title="Streaming" id="o3n-Kw-FNT">
                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="L8j-Tr-8Ch">
@@ -84,14 +86,14 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <value key="contentSizeForViewInPopover" type="size" width="600" height="300"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="600" height="200"/>
                     <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="cancelButton" destination="L8j-Tr-8Ch" id="SW8-gG-uKe"/>
                         <outlet property="connectButton" destination="KEh-Gl-Gem" id="cZv-Dg-45F"/>
                         <outlet property="serverURLField" destination="FIA-Lg-I5v" id="oZf-xe-i4R"/>
                         <outlet property="streamKeyField" destination="wge-dF-1rB" id="31C-ds-Kvs"/>
-                        <segue destination="XUF-13-0yT" kind="unwind" identifier="unwindToDashboardSegue" customClass="UIStoryboardSegueWithCompletion" customModule="TridentCockpitiOS" customModuleProvider="target" unwindAction="unwindToDashboardWithUnwindSegue:" id="fNA-SH-H8e"/>
+                        <segue destination="XUF-13-0yT" kind="unwind" identifier="unwindToDashboardSegue" customClass="UIStoryboardSegueWithCompletion" customModule="TridentCockpit" customModuleProvider="target" unwindAction="unwindToDashboardWithUnwindSegue:" id="fNA-SH-H8e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Equ-6I-WQy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -118,4 +120,9 @@
             <point key="canvasLocation" x="-10.044642857142856" y="97.101449275362327"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>
