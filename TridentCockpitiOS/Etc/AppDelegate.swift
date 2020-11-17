@@ -10,13 +10,19 @@ import AVFoundation
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Instantiate Recordings API
         _ = RecordingsAPI.shared
         
+        var isAudioSessionSupported = false
         if #available(macCatalyst 14.0, *) {
+            isAudioSessionSupported = true
+        }
+        if #available(iOS 13, *) {
+            isAudioSessionSupported = true
+        }
+        
+        if isAudioSessionSupported {
             let session = AVAudioSession.sharedInstance()
             do {
                 try session.setCategory(.playAndRecord, mode: .default, options: [.defaultToSpeaker, .allowBluetooth])
