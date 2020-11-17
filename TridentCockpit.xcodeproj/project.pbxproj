@@ -1338,6 +1338,7 @@
 				0A1D09F223F93FD6006D9AFD /* Frameworks */,
 				0A1D09F323F93FD6006D9AFD /* Resources */,
 				0A1D0A1723F940E2006D9AFD /* Embed Frameworks */,
+				0A13B4F2256455B100AB91D2 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1476,6 +1477,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A13B4F2256455B100AB91D2 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Remove static libs\nrm -f ${CODESIGNING_FOLDER_PATH}/Contents/Frameworks/*.a\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0A1D09F123F93FD6006D9AFD /* Sources */ = {
@@ -1834,7 +1855,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 5;
-				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = in.ioshack.TridentCockpitiOS;
 				PRODUCT_NAME = TridentCockpit;
 				SDKROOT = iphoneos;
@@ -1863,7 +1883,6 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 5;
-				OTHER_CODE_SIGN_FLAGS = "--deep";
 				PRODUCT_BUNDLE_IDENTIFIER = in.ioshack.TridentCockpitiOS;
 				PRODUCT_NAME = TridentCockpit;
 				SDKROOT = iphoneos;
