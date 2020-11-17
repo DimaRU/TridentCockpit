@@ -6,7 +6,7 @@ import VideoToolbox
 import UIKit
 #endif
 
-protocol VideoEncoderDelegate: class {
+public protocol VideoEncoderDelegate: class {
     func didSetFormatDescription(video formatDescription: CMFormatDescription?)
     func sampleOutput(video sampleBuffer: CMSampleBuffer)
 }
@@ -190,12 +190,7 @@ public final class H264Encoder {
         return properties
     }
 
-    private var callback: VTCompressionOutputCallback = {(
-        outputCallbackRefCon: UnsafeMutableRawPointer?,
-        sourceFrameRefCon: UnsafeMutableRawPointer?,
-        status: OSStatus,
-        infoFlags: VTEncodeInfoFlags,
-        sampleBuffer: CMSampleBuffer?) in
+    private var callback: VTCompressionOutputCallback = {(outputCallbackRefCon: UnsafeMutableRawPointer?, sourceFrameRefCon: UnsafeMutableRawPointer?, status: OSStatus, infoFlags: VTEncodeInfoFlags, sampleBuffer: CMSampleBuffer?) in
         guard
             let refcon: UnsafeMutableRawPointer = outputCallbackRefCon,
             let sampleBuffer: CMSampleBuffer = sampleBuffer, status == noErr else {
@@ -316,6 +311,7 @@ extension H264Encoder: Running {
     public func startRunning() {
         lockQueue.async {
             self.isRunning.mutate { $0 = true }
+            OSAtomicAnd32Barrier(0, &self.locked)
 #if os(iOS)
             NotificationCenter.default.addObserver(
                 self,
@@ -341,7 +337,6 @@ extension H264Encoder: Running {
 #if os(iOS)
             NotificationCenter.default.removeObserver(self)
 #endif
-            OSAtomicAnd32Barrier(0, &self.locked)
             self.isRunning.mutate { $0 = false }
         }
     }

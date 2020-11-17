@@ -47,11 +47,13 @@ final class DisplayLinkedQueue: NSObject {
     private(set) var isRunning: Atomic<Bool> = .init(false)
 
     func enqueue(_ buffer: CMSampleBuffer) {
-        guard buffer.presentationTimeStamp != .invalid else { return }
+        guard buffer.presentationTimeStamp != .invalid else {
+            return
+        }
         if self.buffer.isEmpty {
             delegate?.queue(buffer)
         }
-        let _ = self.buffer.append(buffer)
+        _ = self.buffer.append(buffer)
     }
 
     @objc

@@ -291,8 +291,8 @@ open class RTMPConnection: EventDispatcher {
             }
         }
         socket.delegate = self
-        socket.securityLevel = uri.scheme == "rtmps" || uri.scheme == "rtmpts"  ? .negotiatedSSL : .none
         socket.setProperty(parameters, forKey: "parameters")
+        socket.securityLevel = uri.scheme == "rtmps" || uri.scheme == "rtmpts"  ? .negotiatedSSL : .none
         socket.connect(withName: uri.host!, port: uri.port ?? RTMPConnection.defaultPort)
     }
 
@@ -441,17 +441,17 @@ open class RTMPConnection: EventDispatcher {
             }
             if total == measureInterval - 1 {
                 for (_, stream) in streams {
-                    stream.delegate?.didPublishInsufficientBW(stream, withConnection: self)
+                    stream.delegate?.rtmpStream(stream, didPublishInsufficientBW: self)
                 }
             } else if total == 0 {
                 for (_, stream) in streams {
-                    stream.delegate?.didPublishSufficientBW(stream, withConnection: self)
+                    stream.delegate?.rtmpStream(stream, didPublishSufficientBW: self)
                 }
             }
             previousQueueBytesOut.removeFirst()
         }
         for (_, stream) in streams {
-            stream.delegate?.didStatics(stream, withConneciton: self)
+            stream.delegate?.rtmpStream(stream, didStatics: self)
         }
     }
 }
