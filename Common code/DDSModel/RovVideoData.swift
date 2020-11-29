@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 
 //const unsigned long VIDEO_DATA_MAX_SIZE = 1000 * 1024;           // 1MB

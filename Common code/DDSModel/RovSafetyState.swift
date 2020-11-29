@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 enum ESafetyState: Int32, Codable {
     case off = 0 //Safety is off, controllers are running

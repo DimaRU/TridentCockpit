@@ -4,7 +4,7 @@
 //
 
 import UIKit
-import FastRTPSBridge
+import FastRTPSSwift
 
 class StreamStatsView: UIView {
     @IBOutlet weak var streamStateLabel: UILabel!

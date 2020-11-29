@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 struct RovPoint: Codable {
     let x, y, z: Double

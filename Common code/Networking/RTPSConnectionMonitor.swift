@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 protocol RTPSConnectionMonitorProtocol: AnyObject {
     func rtpsConnectedState()

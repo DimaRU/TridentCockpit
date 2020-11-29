@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 // High-level control commands issued by a user or other high-level control system. Units vary depending on current control mode.
 // E.g., pitch could be a target position in rads, while yaw is a target yaw rate in rads/sec

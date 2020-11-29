@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 struct ResinInfo: Codable {
     let deviceUuid: String         //@key

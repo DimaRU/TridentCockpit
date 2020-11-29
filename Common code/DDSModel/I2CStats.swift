@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 struct I2CStats: DDSKeyed {
     // ID of the MCU reporting the stats

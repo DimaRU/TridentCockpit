@@ -4,7 +4,7 @@
 //
 
 import Cocoa
-import FastRTPSBridge
+import FastRTPSSwift
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {

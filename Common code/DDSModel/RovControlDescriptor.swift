@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 // Topic format: "<topicPrefix_rov_camChannels><channel_id>_ctrl_desc"
 // Ex: rov_cam_forward_H2640_ctrl_desc

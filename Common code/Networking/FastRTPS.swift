@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 final class FastRTPS {
     static var localAddress: String = ""
@@ -12,58 +12,59 @@ final class FastRTPS {
     static var remoteAddress: String = ""
     
     private static let shared = FastRTPS()
-    lazy var fastRTPSBridge: FastRTPSBridge = {
-        let bridge = FastRTPSBridge.init()
+    lazy var fastRTPSSwift: FastRTPSSwift = {
+        let bridge = FastRTPSSwift.init()
+        print("Fast-DDS version:", FastRTPSSwift.fastDDSVersion())
     #if RTPSDEBUG
         bridge.setlogLevel(.warning)
     #else
-        bridge.setlogLevel(.error)
+        bridge.setlogLevel(.warning)
     #endif
         return bridge
     }()
     
     class func setRTPSListener(_ delegate: RTPSListenerDelegate?) {
-        FastRTPS.shared.fastRTPSBridge.setRTPSListener(delegate: delegate)
+        FastRTPS.shared.fastRTPSSwift.setRTPSListener(delegate: delegate)
     }
     
     class func setRTPSParticipantListener(_ delegate: RTPSParticipantListenerDelegate?) {
-        FastRTPS.shared.fastRTPSBridge.setRTPSParticipantListener(delegate: delegate)
+        FastRTPS.shared.fastRTPSSwift.setRTPSParticipantListener(delegate: delegate)
     }
 
     class func createParticipant(name: String, filterAddress: String? = nil) {
-        try! FastRTPS.shared.fastRTPSBridge.createParticipant(name: name, domainID: 0, localAddress: FastRTPS.localAddress, filterAddress: filterAddress)
+        try! FastRTPS.shared.fastRTPSSwift.createParticipant(name: name, domainID: 0, localAddress: FastRTPS.localAddress, remoteWhitelistAddress: filterAddress)
     }
     
     class func setPartition(name: String) {
-        FastRTPS.shared.fastRTPSBridge.setPartition(name: name)
+        FastRTPS.shared.fastRTPSSwift.setPartition(name: name)
     }
 
     class func removeParticipant() {
-        FastRTPS.shared.fastRTPSBridge.removeParticipant()
+        FastRTPS.shared.fastRTPSSwift.removeParticipant()
     }
 
     class func registerReader<T: DDSType>(topic: RovReaderTopic, completion: @escaping (T)->Void) {
-        try! FastRTPS.shared.fastRTPSBridge.registerReader(topic: topic, completion: completion)
+        try! FastRTPS.shared.fastRTPSSwift.registerReader(topic: topic, completion: completion)
     }
     
     class func removeReader(topic: RovReaderTopic) {
-        try! FastRTPS.shared.fastRTPSBridge.removeReader(topic: topic)
+        try! FastRTPS.shared.fastRTPSSwift.removeReader(topic: topic)
     }
 
     class func registerWriter<T: DDSType>(topic: RovWriterTopic, ddsType: T.Type) {
-        try! FastRTPS.shared.fastRTPSBridge.registerWriter(topic: topic, ddsType: ddsType)
+        try! FastRTPS.shared.fastRTPSSwift.registerWriter(topic: topic, ddsType: ddsType)
     }
     
     class func removeWriter(topic: RovWriterTopic) {
-        try! FastRTPS.shared.fastRTPSBridge.removeWriter(topic: topic)
+        try! FastRTPS.shared.fastRTPSSwift.removeWriter(topic: topic)
     }
 
     class func send<T: DDSType>(topic: RovWriterTopic, ddsData: T) {
-        try! FastRTPS.shared.fastRTPSBridge.send(topic: topic, ddsData: ddsData)
+        try! FastRTPS.shared.fastRTPSSwift.send(topic: topic, ddsData: ddsData)
     }
 
     class func resignAll() {
-        FastRTPS.shared.fastRTPSBridge.resignAll()
+        FastRTPS.shared.fastRTPSSwift.resignAll()
     }
 
     /// Get IPV4 addresses of all network interfaces

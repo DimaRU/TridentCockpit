@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 enum ESubsystemType: Int32, Codable {
     case navigator = 0

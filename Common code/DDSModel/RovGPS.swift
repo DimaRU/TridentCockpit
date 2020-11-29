@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 struct RovGPS: DDSUnkeyed {
     let online: UInt8

@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 struct BatteryState: Codable {
     enum PowerSupplyStatus: UInt8, Codable {

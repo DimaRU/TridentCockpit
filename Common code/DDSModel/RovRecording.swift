@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 enum EVideoSessionCommandResponse: Int32, Codable {
     case unknown                   = 0

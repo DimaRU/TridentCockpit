@@ -4,7 +4,8 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
+import FastRTPSDefs
 
 enum RovWriterTopic: String, DDSWriterTopic {
 //    case rovAttitudeEuler            = "rov_attitude_euler"                // orov::msg::sensor::AttitudeEuler                [geoserve]
@@ -102,6 +103,10 @@ enum RovReaderTopic: String, DDSReaderTopic {
 }
 
 extension RovReaderTopic {
+    var readerProfile: RTPSReaderProfile {
+        var profile = RTPSReaderProfile()
+        return profile
+    }
     var transientLocal: Bool {
         switch self {
         case .rovCamFwd,
@@ -163,6 +168,10 @@ extension RovReaderTopic {
 }
 
 extension RovWriterTopic {
+    var writerProfile: RTPSWriterProfile {
+        RTPSWriterProfile()
+    }
+
     var transientLocal: Bool {
         switch self {
         case .rovDatetime,

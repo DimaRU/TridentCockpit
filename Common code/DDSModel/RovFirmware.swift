@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 enum EFirmwareCommandType: Int32, Codable {
     case unknown         = 0

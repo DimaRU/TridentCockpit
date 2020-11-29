@@ -4,7 +4,7 @@
 //
 
 import UIKit
-import FastRTPSBridge
+import FastRTPSSwift
 import CoreLocation
 
 class CameraControlView: FloatingView {

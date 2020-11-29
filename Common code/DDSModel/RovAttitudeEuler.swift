@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 struct RovAttitudeEuler: DDSKeyed {
     struct Axis: Codable {

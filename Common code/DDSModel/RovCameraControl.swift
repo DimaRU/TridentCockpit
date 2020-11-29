@@ -5,7 +5,7 @@
 
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 struct RovCameraControl: DDSKeyed {
     enum ControlUnion: RawRepresentable, Codable {

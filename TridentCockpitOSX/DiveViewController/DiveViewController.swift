@@ -5,7 +5,7 @@
 
 import Cocoa
 import SceneKit
-import FastRTPSBridge
+import FastRTPSSwift
 
 class DiveViewController: NSViewController {
     @IBOutlet weak var videoView: VideoView!

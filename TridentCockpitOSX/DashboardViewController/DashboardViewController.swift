@@ -4,7 +4,7 @@
 //
 
 import Cocoa
-import FastRTPSBridge
+import FastRTPSSwift
 import Moya
 import PromiseKit
 import Shout

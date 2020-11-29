@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 extension String: DDSUnkeyed {
     public static var ddsTypeName: String { "DDS::String" }

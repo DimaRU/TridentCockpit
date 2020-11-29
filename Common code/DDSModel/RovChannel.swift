@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 struct RovChannel: DDSKeyed {
     // See V4L2 API for more details about fields

@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 // Low-level motor commands. These get directly mapped to an equivalent Mavlink message and forwarded to each ESC
 struct RovTridentMotorCommand: DDSKeyed {

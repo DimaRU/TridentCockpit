@@ -6,7 +6,7 @@
 
 import UIKit
 import CoreLocation
-import FastRTPSBridge
+import FastRTPSSwift
 import AVKit
 
 class DiveViewController: UIViewController {

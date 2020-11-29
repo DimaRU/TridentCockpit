@@ -4,7 +4,7 @@
 //
 
 import Foundation
-import FastRTPSBridge
+import FastRTPSSwift
 
 struct RovFuelgaugeStatus: DDSKeyed {
     let state: BatteryState
