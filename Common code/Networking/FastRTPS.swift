@@ -45,7 +45,7 @@ final class FastRTPS {
     }
 
     class func registerReader<T: DDSType>(topic: RovReaderTopic, completion: @escaping (T)->Void) {
-        try! FastRTPS.shared.fastRTPSSwift.registerReaderRaw(topic: topic, ddsType: T.self, ipv4Locator: nil) { (_, data) in
+        try! FastRTPS.shared.fastRTPSSwift.registerReaderRaw(topic: topic, ddsType: T.self) { (_, data) in
             let decoder = CDRDecoder()
             do {
                 let t = try decoder.decode(T.self, from: data)
