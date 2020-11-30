@@ -5,6 +5,7 @@
 
 import Foundation
 import FastRTPSSwift
+import CDRCodable
 
 final class FastRTPS {
     static var localAddress: String = ""
@@ -44,7 +45,15 @@ final class FastRTPS {
     }
 
     class func registerReader<T: DDSType>(topic: RovReaderTopic, completion: @escaping (T)->Void) {
-        try! FastRTPS.shared.fastRTPSSwift.registerReader(topic: topic, completion: completion)
+        try! FastRTPS.shared.fastRTPSSwift.registerReaderRaw(topic: topic, ddsType: T.self, ipv4Locator: nil) { (_, data) in
+            let decoder = CDRDecoder()
+            do {
+                let t = try decoder.decode(T.self, from: data)
+                completion(t)
+            } catch {
+                print(topic.rawValue, error)
+            }
+        }
     }
     
     class func removeReader(topic: RovReaderTopic) {

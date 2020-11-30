@@ -5,7 +5,6 @@
 
 import Foundation
 import FastRTPSSwift
-import FastRTPSDefs
 
 enum RovWriterTopic: String, DDSWriterTopic {
 //    case rovAttitudeEuler            = "rov_attitude_euler"                // orov::msg::sensor::AttitudeEuler                [geoserve]
@@ -104,10 +103,9 @@ enum RovReaderTopic: String, DDSReaderTopic {
 
 extension RovReaderTopic {
     var readerProfile: RTPSReaderProfile {
-        var profile = RTPSReaderProfile()
-        return profile
+        .init(reliability: self.reliability, durability: self.durability)
     }
-    var transientLocal: Bool {
+    var durability: Durability {
         switch self {
         case .rovCamFwd,
              .rovCamFwdH2640CtrlCurrent,
@@ -128,13 +126,13 @@ extension RovReaderTopic {
              .rovVidSessionCurrent,
              .rovFirmwareServiceStatus,
              .rovFirmwareStatus:
-            return true
+            return .transientLocal
         default:
-            return false
+            return .volatile
          }
     }
     
-    var reliable: Bool {
+    var reliability: Reliability {
         switch self {
         case .rovCamFwd,
              .rovCamFwdH2640CtrlCurrent,
@@ -160,27 +158,27 @@ extension RovReaderTopic {
              .rovFirmwareCommandRep,
              .rovFirmwareServiceStatus,
              .rovFirmwareStatus:
-            return true
+            return .reliable
         default:
-            return false
+            return .bestEffort
         }
     }
 }
 
 extension RovWriterTopic {
     var writerProfile: RTPSWriterProfile {
-        RTPSWriterProfile()
+        .init(reliability: .reliable,
+              durability: self.durability,
+              disablePositiveACKs: true)
     }
 
-    var transientLocal: Bool {
+    var durability: Durability {
         switch self {
         case .rovDatetime,
              .rovVideoOverlayModeCommand:
-            return true
+            return .transientLocal
         default:
-            return false
+            return .volatile
         }
     }
-    
-    var reliable: Bool { true }
 }
