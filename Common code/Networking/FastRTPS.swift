@@ -11,6 +11,7 @@ final class FastRTPS {
     static var localAddress: String = ""
     static var localInterface: String = ""
     static var remoteAddress: String = ""
+    static var partition: String = "*"
     
     private static let shared = FastRTPS()
     lazy var fastRTPSSwift: FastRTPSSwift = {
@@ -37,7 +38,7 @@ final class FastRTPS {
     }
     
     class func setPartition(name: String) {
-        FastRTPS.shared.fastRTPSSwift.setPartition(name: name)
+        partition = name
     }
 
     class func removeParticipant() {
@@ -45,7 +46,7 @@ final class FastRTPS {
     }
 
     class func registerReader<T: DDSType>(topic: RovReaderTopic, completion: @escaping (T)->Void) {
-        try! FastRTPS.shared.fastRTPSSwift.registerReaderRaw(topic: topic, ddsType: T.self) { (_, data) in
+        try! FastRTPS.shared.fastRTPSSwift.registerReaderRaw(topic: topic, ddsType: T.self, partition: partition) { (_, data) in
             let decoder = CDRDecoder()
             do {
                 let t = try decoder.decode(T.self, from: data)
@@ -61,7 +62,7 @@ final class FastRTPS {
     }
 
     class func registerWriter<T: DDSType>(topic: RovWriterTopic, ddsType: T.Type) {
-        try! FastRTPS.shared.fastRTPSSwift.registerWriter(topic: topic, ddsType: ddsType)
+        try! FastRTPS.shared.fastRTPSSwift.registerWriter(topic: topic, ddsType: ddsType, partition: partition)
     }
     
     class func removeWriter(topic: RovWriterTopic) {
