@@ -33,17 +33,17 @@
         "repositoryURL": "https://github.com/DimaRU/FastDDSPrebuild.git",
         "state": {
           "branch": null,
-          "revision": "9b47286f4facd9e9925a3a316beb6aa9555de82b",
-          "version": "2.1.0-whitelist"
+          "revision": "1c00740272ecab49caf2dca05e51fc085c77ec73",
+          "version": "2.0.1-whitelist"
         }
       },
       {
-        "package": "FastRTPSBridge",
+        "package": "FastRTPSSwift",
         "repositoryURL": "https://github.com/DimaRU/FastRTPSBridge.git",
         "state": {
-          "branch": null,
-          "revision": "becdec0164714dd33e54a1c8a9512282f5280ffd",
-          "version": "4.0.0-whitelist+dds210"
+          "branch": "whitelist",
+          "revision": "7e2faa35b97aff470a968483a12ed193a5a58684",
+          "version": null
         }
       },
       {
@@ -60,8 +60,8 @@
         "repositoryURL": "https://github.com/DimaRU/Libssh2Prebuild.git",
         "state": {
           "branch": null,
-          "revision": "ff6be23117da8c19f11cf68ed118d2a708aba1fc",
-          "version": "1.9.0-OpenSSL_1_1_1h"
+          "revision": "631d39784b593505a1b37341cda80055363bc753",
+          "version": "1.9.0+OpenSSL_1_1_1h"
         }
       },
       {
@@ -114,7 +114,7 @@
         "repositoryURL": "https://github.com/DimaRU/Shout.git",
         "state": {
           "branch": "numericHost",
-          "revision": "3a7491043f6f73ceecda352f674f52c2fbf11794",
+          "revision": "c39be565844c6e0de7071bcfa83f50b95b716a76",
           "version": null
         }
       },
