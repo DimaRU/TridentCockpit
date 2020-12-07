@@ -33,8 +33,8 @@
         "repositoryURL": "https://github.com/DimaRU/FastDDSPrebuild.git",
         "state": {
           "branch": null,
-          "revision": "1c00740272ecab49caf2dca05e51fc085c77ec73",
-          "version": "2.0.1-whitelist"
+          "revision": "bf56fa5de4cfa9e01f16e25ce58262dd65f5cff1",
+          "version": "2.1.0-whitelist"
         }
       },
       {
@@ -42,7 +42,7 @@
         "repositoryURL": "https://github.com/DimaRU/FastRTPSBridge.git",
         "state": {
           "branch": "whitelist",
-          "revision": "7e2faa35b97aff470a968483a12ed193a5a58684",
+          "revision": "a5081946372e0c96f56c682fa3ec1e286051a6be",
           "version": null
         }
       },

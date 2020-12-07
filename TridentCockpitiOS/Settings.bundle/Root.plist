@@ -59,6 +59,11 @@
 			<string>PilotVideoFileType</string>
 			<key>DefaultValue</key>
 			<string>mov</string>
+            <key>ShortTitles</key>
+            <array>
+                <string>mov</string>
+                <string>mp4</string>
+            </array>
 			<key>Titles</key>
 			<array>
 				<string>mov</string>
