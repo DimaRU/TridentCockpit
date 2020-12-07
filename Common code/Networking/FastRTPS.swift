@@ -34,7 +34,12 @@ final class FastRTPS {
     }
 
     class func createParticipant(name: String, filterAddress: String? = nil) {
-        try! FastRTPS.shared.fastRTPSSwift.createParticipant(name: name, domainID: 0, localAddress: FastRTPS.localAddress, remoteWhitelistAddress: filterAddress)
+        let profile = RTPSParticipantProfile(leaseDuration_announcementperiod: 3, leaseDuration: 10, participantFilter: .SameProcess)
+        try! FastRTPS.shared.fastRTPSSwift.createParticipant(name: name,
+                                                             domainID: 0,
+                                                             participantProfile: profile,
+                                                             localAddress: FastRTPS.localAddress,
+                                                             remoteWhitelistAddress: filterAddress)
     }
     
     class func setPartition(name: String) {
