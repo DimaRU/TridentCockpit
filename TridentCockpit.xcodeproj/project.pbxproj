@@ -320,6 +320,10 @@
 		0AD8C5D32458402A009E0A9E /* GetWifiAPTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AD8C5D22458402A009E0A9E /* GetWifiAPTableViewController.storyboard */; };
 		0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0ADA653723B119880090D757 /* PayloadProvision.sh */; };
 		0ADD42B9240EBBCD008ECFCC /* TouchJoystickView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD42B1240EBBCD008ECFCC /* TouchJoystickView.swift */; };
+		0ADD815A2596900700562A56 /* PID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD81592596900700562A56 /* PID.swift */; };
+		0ADD815B2596900700562A56 /* PID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD81592596900700562A56 /* PID.swift */; };
+		0ADD815D259690CF00562A56 /* RovMCUStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD815C259690CF00562A56 /* RovMCUStatus.swift */; };
+		0ADD815E259690CF00562A56 /* RovMCUStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADD815C259690CF00562A56 /* RovMCUStatus.swift */; };
 		0AE05CD923FD329E00C7CA08 /* FloatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE05CD123FD329E00C7CA08 /* FloatingView.swift */; };
 		0AE05CDB23FD32FB00C7CA08 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE05CDA23FD32FB00C7CA08 /* Extensions.swift */; };
 		0AE05CDD23FD335A00C7CA08 /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE05CDC23FD335A00C7CA08 /* UserDefaultsWrapper.swift */; };
@@ -646,6 +650,8 @@
 		0AD8C5D22458402A009E0A9E /* GetWifiAPTableViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GetWifiAPTableViewController.storyboard; sourceTree = "<group>"; };
 		0ADA653723B119880090D757 /* PayloadProvision.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = PayloadProvision.sh; sourceTree = "<group>"; };
 		0ADD42B1240EBBCD008ECFCC /* TouchJoystickView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchJoystickView.swift; sourceTree = "<group>"; };
+		0ADD81592596900700562A56 /* PID.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PID.swift; sourceTree = "<group>"; };
+		0ADD815C259690CF00562A56 /* RovMCUStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RovMCUStatus.swift; sourceTree = "<group>"; };
 		0AE05CD123FD329E00C7CA08 /* FloatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatingView.swift; sourceTree = "<group>"; };
 		0AE05CDA23FD32FB00C7CA08 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		0AE05CDC23FD335A00C7CA08 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
@@ -1138,6 +1144,8 @@
 				0A7130E723636B0200817593 /* RovVector3.swift */,
 				0A7130F823636B0200817593 /* RovVideoData.swift */,
 				0A72A7F32433C91300AE9B2E /* RovWaypoint.swift */,
+				0ADD815C259690CF00562A56 /* RovMCUStatus.swift */,
+				0ADD81592596900700562A56 /* PID.swift */,
 			);
 			path = DDSModel;
 			sourceTree = "<group>";
@@ -1516,6 +1524,7 @@
 				0A3532DD24041485000F572D /* UINavigationItem+Extensions.swift in Sources */,
 				0A0968B0249B872D0031F142 /* Data+Extension.swift in Sources */,
 				0A8B26702401653100ACC72F /* UIViewExtensions.swift in Sources */,
+				0ADD815E259690CF00562A56 /* RovMCUStatus.swift in Sources */,
 				0A0968C6249B872D0031F142 /* Running.swift in Sources */,
 				0A1D0A5E23F94942006D9AFD /* iso8601date.swift in Sources */,
 				0A0968C7249B872D0031F142 /* DataConvertible.swift in Sources */,
@@ -1650,6 +1659,7 @@
 				0A1D0A1F23F941B2006D9AFD /* APIVersion.swift in Sources */,
 				0A0968E1249B872D0031F142 /* RTMPObjectEncoding.swift in Sources */,
 				0A1D0A3123F941BD006D9AFD /* RovCommon.swift in Sources */,
+				0ADD815B2596900700562A56 /* PID.swift in Sources */,
 				0A0968B3249B872D0031F142 /* FLVFrameType.swift in Sources */,
 				0A0968CC249B872D0031F142 /* DisplayLinkedQueue.swift in Sources */,
 				0A0968AD249B872D0031F142 /* CMFormatDescription+Extension.swift in Sources */,
@@ -1709,7 +1719,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A71310A23636B0200817593 /* RovCommon.swift in Sources */,
+				0ADD815A2596900700562A56 /* PID.swift in Sources */,
 				0A7130D923636AF200817593 /* AppDelegate.swift in Sources */,
+				0ADD815D259690CF00562A56 /* RovMCUStatus.swift in Sources */,
 				0A71310C23636B0200817593 /* RovPoint.swift in Sources */,
 				0A71311523636B0200817593 /* RovSubsystemStatus.swift in Sources */,
 				0A71310923636B0200817593 /* RovAttitude.swift in Sources */,

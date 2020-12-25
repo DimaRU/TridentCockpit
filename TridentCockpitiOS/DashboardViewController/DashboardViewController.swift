@@ -278,7 +278,7 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         .then {
             Gopro3API.requestData(.getPassword)
         }.then { (passwordData: Data) -> Promise<Void> in
-            let password = Gopro3API.getString(from: passwordData.advanced(by: 1)).first!
+            let password = Gopro3API.getString(from: passwordData.advanced(by: 1)).first ?? ""
             Gopro3API.cameraPassword = password
             return Gopro3API.request(.power(on: true))
         }.then {
