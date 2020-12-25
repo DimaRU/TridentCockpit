@@ -10,31 +10,31 @@ import FastRTPSSwift
 import AVKit
 
 class DiveViewController: UIViewController {
-    @IBOutlet weak var videoView: VideoView!
+    @IBOutlet unowned var videoView: VideoView!
 
-    @IBOutlet weak var indicatorsView: UIView!
-    @IBOutlet weak var videoSizingButton: UIButton!
-    @IBOutlet weak var depthLabel: UILabel!
-    @IBOutlet weak var tempLabel: UILabel!
-    @IBOutlet weak var batteryTimeLabel: UILabel!
-    @IBOutlet weak var batterySymbol: UIImageView!
-    @IBOutlet weak var propellerButton: UIButton!
-    @IBOutlet weak var stabilizeSwitch: PWSwitch!
-    @IBOutlet weak var stabilizeLabel: UILabel!
-    @IBOutlet weak var telemetryOverlayLabel: UILabel!
+    @IBOutlet unowned var indicatorsView: UIView!
+    @IBOutlet unowned var videoSizingButton: UIButton!
+    @IBOutlet unowned var depthLabel: UILabel!
+    @IBOutlet unowned var tempLabel: UILabel!
+    @IBOutlet unowned var batteryTimeLabel: UILabel!
+    @IBOutlet unowned var batterySymbol: UIImageView!
+    @IBOutlet unowned var propellerButton: UIButton!
+    @IBOutlet unowned var stabilizeSwitch: PWSwitch!
+    @IBOutlet unowned var stabilizeLabel: UILabel!
+    @IBOutlet unowned var telemetryOverlayLabel: UILabel!
 
-    @IBOutlet weak var lightButton: UIButton!
-    @IBOutlet weak var headingView: RovHeadingView!
-    @IBOutlet weak var throttleJoystickView: TouchJoystickView!
-    @IBOutlet weak var yawPitchJoystickView: TouchJoystickView!
-    @IBOutlet weak var liveViewContainer: AuxCameraPlayerView!
+    @IBOutlet unowned var lightButton: UIButton!
+    @IBOutlet unowned var headingView: RovHeadingView!
+    @IBOutlet unowned var throttleJoystickView: TouchJoystickView!
+    @IBOutlet unowned var yawPitchJoystickView: TouchJoystickView!
+    @IBOutlet unowned var liveViewContainer: AuxCameraPlayerView!
 
     private let locationManager = CLLocationManager()
     private var cameraControlView: CameraControlView?
     private var auxCameraView: AuxCameraControlView?
     private var streamStatsView: StreamStatsView?
     private var videoProcessor: VideoProcessor!
-    private weak var videoStreamer: VideoStreamer?
+    private unowned var videoStreamer: VideoStreamer?
     private let videoProcessorMulticastDelegate = VideoProcessorMulticastDelegate([])
     private let tridentControl = TridentControl()
     private var savedCenter: [UIView: CGPoint] = [:]
@@ -49,15 +49,15 @@ class DiveViewController: UIViewController {
     @Average(10) private var temperature: Double
 
     private func setupAverage() {
-        _depth.configure { [weak self] avg in
+        _depth.configure { [unowned self] avg in
             DispatchQueue.main.async {
-                self?.depthLabel.text = String(format: "%.1f", avg)
+                self.depthLabel.text = String(format: "%.1f", avg)
             }
         }
 
-        _temperature.configure { [weak self] avg in
+        _temperature.configure { [unowned self] avg in
             DispatchQueue.main.async {
-                self?.tempLabel.text = String(format: "%.1f", avg)
+                self.tempLabel.text = String(format: "%.1f", avg)
             }
         }
     }
@@ -457,24 +457,23 @@ class DiveViewController: UIViewController {
     }
 
     private func registerReaders() {
-        FastRTPS.registerReader(topic: .rovCamFwdH2640Video) { [weak self] (videoData: RovVideoData) in
-            self?.videoProcessor.decodeVideo(data: videoData.data, timestamp: videoData.timestamp)
+        FastRTPS.registerReader(topic: .rovCamFwdH2640Video) { [unowned self] (videoData: RovVideoData) in
+            self.videoProcessor.decodeVideo(data: videoData.data, timestamp: videoData.timestamp)
         }
 
-        FastRTPS.registerReader(topic: .rovTempWater) { [weak self] (temp: RovTemperature) in
-            self?.temperature = temp.temperature.temperature
+        FastRTPS.registerReader(topic: .rovTempWater) { [unowned self] (temp: RovTemperature) in
+            self.temperature = temp.temperature.temperature
         }
         
-        FastRTPS.registerReader(topic: .rovDepth) { [weak self] (depth: RovDepth) in
-            self?.depth = depth.depth
+        FastRTPS.registerReader(topic: .rovDepth) { [unowned self] (depth: RovDepth) in
+            self.depth = depth.depth
         }
         
-        FastRTPS.registerReader(topic: .rovFuelgaugeHealth) { [weak self] (health: RovFuelgaugeHealth) in
-            self?.batteryTime = health.average_time_to_empty_mins
+        FastRTPS.registerReader(topic: .rovFuelgaugeHealth) { [unowned self] (health: RovFuelgaugeHealth) in
+            self.batteryTime = health.average_time_to_empty_mins
         }
         
-        FastRTPS.registerReader(topic: .rovFuelgaugeStatus) { [weak self] (status: RovFuelgaugeStatus) in
-            guard let self = self else { return }
+        FastRTPS.registerReader(topic: .rovFuelgaugeStatus) { [unowned self] (status: RovFuelgaugeStatus) in
             guard self.batteryTime == 65535 else { return }
         
             DispatchQueue.main.async {
@@ -487,14 +486,13 @@ class DiveViewController: UIViewController {
             }
         }
 
-        FastRTPS.registerReader(topic: .rovAttitude) { [weak self] (attitude: RovAttitude) in
+        FastRTPS.registerReader(topic: .rovAttitude) { [unowned self] (attitude: RovAttitude) in
             let orientation = attitude.orientation
-            self?.headingView.setOrientation(orientation)
+            self.headingView.setOrientation(orientation)
 //            print((1 + orientation.yaw / .pi) * 180)
         }
         
-        FastRTPS.registerReader(topic: .rovLightPowerCurrent) { [weak self] (lightPower: RovLightPower) in
-            guard let self = self else { return }
+        FastRTPS.registerReader(topic: .rovLightPowerCurrent) { [unowned self] (lightPower: RovLightPower) in
             DispatchQueue.main.async {
                 if lightPower.power > 0 {
                     // Light On
@@ -512,21 +510,20 @@ class DiveViewController: UIViewController {
             }
         }
         
-        FastRTPS.registerReader(topic: .rovVideoOverlayModeCurrent) { [weak self] (overlayMode: String) in
+        FastRTPS.registerReader(topic: .rovVideoOverlayModeCurrent) { [unowned self] (overlayMode: String) in
             DispatchQueue.main.async {
-                self?.setTelemetryOverlay(mode: overlayMode)
+                self.setTelemetryOverlay(mode: overlayMode)
             }
         }
 
-        FastRTPS.registerReader(topic: .rovControllerStateCurrent) { [weak self] (controllerStatus: RovControllerStatus) in
+        FastRTPS.registerReader(topic: .rovControllerStateCurrent) { [unowned self] (controllerStatus: RovControllerStatus) in
             guard controllerStatus.controllerId == .trident else { return }
             DispatchQueue.main.async {
-                self?.setStabilize(status: controllerStatus.state == .enabled)
+                self.setStabilize(status: controllerStatus.state == .enabled)
             }
         }
 
-        FastRTPS.registerReader(topic: .rovSafety) { [weak self] (rovSafetyState: RovSafetyState) in
-            guard let self = self else { return }
+        FastRTPS.registerReader(topic: .rovSafety) { [unowned self] (rovSafetyState: RovSafetyState) in
             DispatchQueue.main.async {
                 self.rovSafetyState = rovSafetyState
                 self.setStabilize(status: self.stabilizeSwitch.on)
@@ -534,11 +531,11 @@ class DiveViewController: UIViewController {
             
         }
 
-        FastRTPS.registerReader(topic: .rovBeacon) { [weak self] (rovBeacon: RovBeacon) in
-            guard self?.rovBeacon == nil else { return }
+        FastRTPS.registerReader(topic: .rovBeacon) { [unowned self] (rovBeacon: RovBeacon) in
+            guard self.rovBeacon == nil else { return }
             DispatchQueue.main.async {
-                self?.rovBeacon = rovBeacon
-                self?.rovProvision()
+                self.rovBeacon = rovBeacon
+                self.rovProvision()
                 FastRTPS.removeReader(topic: .rovBeacon)
             }
         }
