@@ -117,8 +117,8 @@ class DashboardViewController: UIViewController, RTPSConnectionMonitorProtocol, 
         backgroundWatch = BackgroundWatch(delegate: self)
         addCircularProgressView(to: view)
         connectTrident()
-        if CLLocationManager.authorizationStatus() == .notDetermined {
-            locationManager = CLLocationManager()
+        locationManager = CLLocationManager()
+        if locationManager?.authorizationStatus == .notDetermined {
             locationManager?.requestWhenInUseAuthorization()
         }
     }

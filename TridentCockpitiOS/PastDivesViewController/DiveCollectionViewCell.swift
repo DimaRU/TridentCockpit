@@ -6,7 +6,7 @@
 
 import UIKit
 
-protocol DiveCollectionViewCellDelegate: class {
+protocol DiveCollectionViewCellDelegate: AnyObject {
     func playButtonAction(cell: DiveCollectionViewCell)
     func downloadButtonAction(cell: DiveCollectionViewCell)
 }

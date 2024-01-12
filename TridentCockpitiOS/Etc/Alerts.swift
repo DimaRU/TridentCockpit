@@ -9,7 +9,7 @@ import Alamofire
 
 extension UIAlertController {
     func presentOntop() {
-        let window = UIApplication.shared.windows.first{ $0.isKeyWindow }
+        let window = view.window?.windowScene?.keyWindow
         var controller = window?.rootViewController
         if let navController = controller as? UINavigationController {
             controller = navController.presentedViewController ?? navController.viewControllers.first

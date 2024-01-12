@@ -104,17 +104,13 @@ class DiveViewController: UIViewController {
         throttleJoystickView.isHidden = true
         yawPitchJoystickView.isHidden = true
         #else
-        if let window: UIWindow = {
-            if #available(iOS 13, *) {
-                return UIApplication.shared.windows.first{ $0.isKeyWindow }
-            } else {
-                return UIApplication.shared.keyWindow
-            }
-            }() {
+        if let window = view.window?.windowScene?.keyWindow {
             let bounds = window.bounds
             let offset: CGFloat = UITraitCollection.current.verticalSizeClass == .compact ? 185 : 250
             throttleJoystickView.center = CGPoint(x: bounds.minX + offset, y: bounds.maxY - offset)
             yawPitchJoystickView.center = CGPoint(x: bounds.maxX - offset, y: bounds.maxY - offset)
+        } else {
+            print("Window not found!")
         }
 
         #endif

@@ -6,7 +6,7 @@
 
 import UIKit
 
-protocol BackgroundWatchProtocol: class {
+protocol BackgroundWatchProtocol: AnyObject {
     func didEnterBackground()
     func willEnterForeground()
 }
