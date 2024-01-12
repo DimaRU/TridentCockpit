@@ -6,7 +6,7 @@
 
 import UIKit
 
-protocol StreamSetupViewControllerDelegate: class {
+protocol StreamSetupViewControllerDelegate: AnyObject {
     func streamer(_ videoStreamer: VideoStreamer?)
 }
 

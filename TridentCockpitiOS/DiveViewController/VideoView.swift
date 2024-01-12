@@ -24,8 +24,8 @@ class VideoView: UIView {
         sampleBufferLayer.videoGravity = AVLayerVideoGravity.resizeAspect
         sampleBufferLayer.isOpaque = true
 
-        CMTimebaseCreateWithMasterClock(allocator: kCFAllocatorDefault,
-                                        masterClock: CMClockGetHostTimeClock(),
+        CMTimebaseCreateWithSourceClock(allocator: kCFAllocatorDefault,
+                                        sourceClock: CMClockGetHostTimeClock(),
                                         timebaseOut: &controlTimebase)
         if let controlTimebase = controlTimebase {
             sampleBufferLayer.controlTimebase = controlTimebase

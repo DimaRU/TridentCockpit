@@ -5,7 +5,7 @@
 
 import UIKit
 
-protocol TouchJoystickViewDelegate: class {
+protocol TouchJoystickViewDelegate: AnyObject {
     func joystickDidMove(_ joystickType: TouchJoystickView.JoystickType, to x: Float, y: Float)
     func joystickEndMoving(_ joystickType: TouchJoystickView.JoystickType)
 }

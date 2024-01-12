@@ -7,7 +7,7 @@ import Foundation
 import AVFoundation
 import VideoToolbox
 
-protocol VideoStreamerDelegate: class {
+protocol VideoStreamerDelegate: AnyObject {
     func state(published: Bool)
     func stats(fps: UInt16, bytesOutPerSecond: Int32, totalBytesOut: Int64)
     func showError(_ error: StreamerError)

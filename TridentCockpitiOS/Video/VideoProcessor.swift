@@ -7,7 +7,7 @@ import Foundation
 import AVFoundation
 import VideoToolbox
 
-protocol VideoProcessorDelegate: class {
+protocol VideoProcessorDelegate: AnyObject {
     func processNal(sampleBuffer: CMSampleBuffer)
     func set(format: CMVideoFormatDescription, time: CMTime)
     func cleanup()

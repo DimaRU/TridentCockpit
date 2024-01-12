@@ -7,7 +7,7 @@
 import Foundation
 import UIKit
 
-protocol RecordingsAPIProtocol: class {
+protocol RecordingsAPIProtocol: AnyObject {
     func progress(sessionId: String, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64)
     func downloadEnd(sessionId: String)
     func downloadError(sessionId: String, error: Error)
