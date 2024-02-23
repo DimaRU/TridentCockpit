@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/DimaRU/CDRCodable.git",
       "state" : {
-        "revision" : "cf08263779f64a228e0077511f29eb027dfe0f21",
-        "version" : "1.0.1"
+        "revision" : "8203aabca6f74066a659a4f954e7125d0a8c76cf",
+        "version" : "1.1.1"
       }
     },
     {
@@ -37,9 +37,9 @@
       }
     },
     {
-      "identity" : "fastrtpsbridge",
+      "identity" : "fastrtpsswift",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/DimaRU/FastRTPSBridge.git",
+      "location" : "https://github.com/DimaRU/FastRTPSSwift.git",
       "state" : {
         "branch" : "whitelist",
         "revision" : "7cd0e748fdd85d9e21584e3652a64e150e1b27c5"
@@ -120,10 +120,10 @@
     {
       "identity" : "promisekit",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/DimaRU/PromiseKit.git",
+      "location" : "https://github.com/mxcl/PromiseKit.git",
       "state" : {
-        "branch" : "master",
-        "revision" : "57b69be16fe7f79c4f999d0c871ec6f9bf1f34e2"
+        "revision" : "cb70b070cde06837cd10a1febdf6105c1a3bb348",
+        "version" : "8.1.1"
       }
     },
     {

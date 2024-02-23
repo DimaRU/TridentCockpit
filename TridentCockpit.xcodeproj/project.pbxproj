@@ -218,8 +218,6 @@
 		0A5CBCB623675F920055131A /* SF-Pro-Display-Black.otf in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0A5CBCA323675F410055131A /* SF-Pro-Display-Black.otf */; };
 		0A5E3FC823BFA10E00EAC519 /* GoproStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5E3FBE23BFA10E00EAC519 /* GoproStatus.swift */; };
 		0A66C52C23AED706001BA93D /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = 0A66C52B23AED706001BA93D /* Moya */; };
-		0A6DADBE255F36EB00DFBF5F /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A6DADBD255F36EB00DFBF5F /* PromiseKit */; };
-		0A6DADC3255F371200DFBF5F /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A6DADC2255F371200DFBF5F /* PromiseKit */; };
 		0A7130D423636AF200817593 /* FlatButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130C823636AF100817593 /* FlatButton.swift */; };
 		0A7130D623636AF200817593 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CA23636AF100817593 /* Extensions.swift */; };
 		0A7130D723636AF200817593 /* DisplayManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7130CB23636AF100817593 /* DisplayManager.swift */; };
@@ -282,6 +280,8 @@
 		0A8C6E2B24D72E7500ACAF44 /* RovCameraControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8C6E2424D72DC100ACAF44 /* RovCameraControl.swift */; };
 		0A8E8C6B2455B56600E06610 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8E8C6A2455B56600E06610 /* Bundle+Extensions.swift */; };
 		0A8E8C712455B59F00E06610 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8E8C6A2455B56600E06610 /* Bundle+Extensions.swift */; };
+		0A9115DA2B87E927006A64B4 /* PromiseKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0A9115D92B87E927006A64B4 /* PromiseKit */; };
+		0A9115DD2B87E9E2006A64B4 /* FastRTPSSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0A9115DC2B87E9E2006A64B4 /* FastRTPSSwift */; };
 		0A95068123F9B975004E5546 /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068023F9B975004E5546 /* DashboardViewController.swift */; };
 		0A95068423F9BD62004E5546 /* DiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068323F9BD62004E5546 /* DiveViewController.swift */; };
 		0A95068623F9BD8D004E5546 /* MaintenanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A95068523F9BD8D004E5546 /* MaintenanceViewController.swift */; };
@@ -314,8 +314,6 @@
 		0AD6C77E24C7631E00DD61B6 /* RecoveryVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6C77724C7631E00DD61B6 /* RecoveryVideoViewController.swift */; };
 		0AD6C77F24C7631E00DD61B6 /* RecoveryVideoViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AD6C77824C7631E00DD61B6 /* RecoveryVideoViewController.storyboard */; };
 		0AD6C78124C7637B00DD61B6 /* SwiftSpinner+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD6C78024C7637B00DD61B6 /* SwiftSpinner+Extensions.swift */; };
-		0AD819FC257556F100E657B8 /* FastRTPSSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0AD819FB257556F100E657B8 /* FastRTPSSwift */; };
-		0AD819FE2575571200E657B8 /* FastRTPSSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 0AD819FD2575571200E657B8 /* FastRTPSSwift */; };
 		0AD8C5D12458400B009E0A9E /* GetWifiAPTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD8C5D02458400B009E0A9E /* GetWifiAPTableViewController.swift */; };
 		0AD8C5D32458402A009E0A9E /* GetWifiAPTableViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0AD8C5D22458402A009E0A9E /* GetWifiAPTableViewController.storyboard */; };
 		0ADA653823B119880090D757 /* PayloadProvision.sh in Resources */ = {isa = PBXBuildFile; fileRef = 0ADA653723B119880090D757 /* PayloadProvision.sh */; };
@@ -676,12 +674,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AD819FC257556F100E657B8 /* FastRTPSSwift in Frameworks */,
+				0A9115DD2B87E9E2006A64B4 /* FastRTPSSwift in Frameworks */,
 				0A1D0A5723F948F3006D9AFD /* Moya in Frameworks */,
 				0AEF24CE2562DA910011AD98 /* Shout in Frameworks */,
 				0A1D0A5B23F948FF006D9AFD /* Kingfisher in Frameworks */,
 				0AEF24D62562E6420011AD98 /* Logboard in Frameworks */,
-				0A6DADBE255F36EB00DFBF5F /* PromiseKit in Frameworks */,
+				0A9115DA2B87E927006A64B4 /* PromiseKit in Frameworks */,
 				0AE522C02545AFDF0038DF08 /* UICircularProgressRing in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -690,8 +688,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A6DADC3255F371200DFBF5F /* PromiseKit in Frameworks */,
-				0AD819FE2575571200E657B8 /* FastRTPSSwift in Frameworks */,
 				0A1A5BA023CE57890038EABE /* Kingfisher in Frameworks */,
 				0AEF24CC2562D7E10011AD98 /* Shout in Frameworks */,
 				0A66C52C23AED706001BA93D /* Moya in Frameworks */,
@@ -1357,10 +1353,10 @@
 				0A1D0A5623F948F3006D9AFD /* Moya */,
 				0A1D0A5A23F948FF006D9AFD /* Kingfisher */,
 				0AE522BF2545AFDF0038DF08 /* UICircularProgressRing */,
-				0A6DADBD255F36EB00DFBF5F /* PromiseKit */,
 				0AEF24CD2562DA910011AD98 /* Shout */,
 				0AEF24D52562E6420011AD98 /* Logboard */,
-				0AD819FB257556F100E657B8 /* FastRTPSSwift */,
+				0A9115D92B87E927006A64B4 /* PromiseKit */,
+				0A9115DC2B87E9E2006A64B4 /* FastRTPSSwift */,
 			);
 			productName = TridentCockpitiOS;
 			productReference = 0A1D09F523F93FD6006D9AFD /* TridentCockpit.app */;
@@ -1384,9 +1380,7 @@
 			packageProductDependencies = (
 				0A66C52B23AED706001BA93D /* Moya */,
 				0A1A5B9F23CE57890038EABE /* Kingfisher */,
-				0A6DADC2255F371200DFBF5F /* PromiseKit */,
 				0AEF24CB2562D7E10011AD98 /* Shout */,
-				0AD819FD2575571200E657B8 /* FastRTPSSwift */,
 			);
 			productName = TridentCockpit;
 			productReference = 0A7130B4236369EA00817593 /* TridentCockpitOSX.app */;
@@ -1426,9 +1420,9 @@
 				0A1A5B9E23CE57890038EABE /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				0A0968FA249B89DD0031F142 /* XCRemoteSwiftPackageReference "Logboard" */,
 				0AE522BE2545AFDF0038DF08 /* XCRemoteSwiftPackageReference "UICircularProgressRing" */,
-				0A6DADBC255F36EB00DFBF5F /* XCRemoteSwiftPackageReference "PromiseKit" */,
 				0AEF24C82562D72A0011AD98 /* XCRemoteSwiftPackageReference "Shout" */,
-				0AD819FA257556F100E657B8 /* XCRemoteSwiftPackageReference "FastRTPSBridge" */,
+				0A9115D82B87E927006A64B4 /* XCRemoteSwiftPackageReference "PromiseKit" */,
+				0A9115DB2B87E971006A64B4 /* XCRemoteSwiftPackageReference "FastRTPSSwift" */,
 			);
 			productRefGroup = 0A7130B5236369EA00817593 /* Products */;
 			projectDirPath = "";
@@ -1963,7 +1957,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2021,7 +2015,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -2150,17 +2144,17 @@
 				minimumVersion = 14.0.0;
 			};
 		};
-		0A6DADBC255F36EB00DFBF5F /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
+		0A9115D82B87E927006A64B4 /* XCRemoteSwiftPackageReference "PromiseKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/DimaRU/PromiseKit.git";
+			repositoryURL = "https://github.com/mxcl/PromiseKit.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.1;
 			};
 		};
-		0AD819FA257556F100E657B8 /* XCRemoteSwiftPackageReference "FastRTPSBridge" */ = {
+		0A9115DB2B87E971006A64B4 /* XCRemoteSwiftPackageReference "FastRTPSSwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/DimaRU/FastRTPSBridge.git";
+			repositoryURL = "https://github.com/DimaRU/FastRTPSSwift.git";
 			requirement = {
 				branch = whitelist;
 				kind = branch;
@@ -2205,24 +2199,14 @@
 			package = 0A66C52A23AED706001BA93D /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
 		};
-		0A6DADBD255F36EB00DFBF5F /* PromiseKit */ = {
+		0A9115D92B87E927006A64B4 /* PromiseKit */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A6DADBC255F36EB00DFBF5F /* XCRemoteSwiftPackageReference "PromiseKit" */;
+			package = 0A9115D82B87E927006A64B4 /* XCRemoteSwiftPackageReference "PromiseKit" */;
 			productName = PromiseKit;
 		};
-		0A6DADC2255F371200DFBF5F /* PromiseKit */ = {
+		0A9115DC2B87E9E2006A64B4 /* FastRTPSSwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 0A6DADBC255F36EB00DFBF5F /* XCRemoteSwiftPackageReference "PromiseKit" */;
-			productName = PromiseKit;
-		};
-		0AD819FB257556F100E657B8 /* FastRTPSSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0AD819FA257556F100E657B8 /* XCRemoteSwiftPackageReference "FastRTPSBridge" */;
-			productName = FastRTPSSwift;
-		};
-		0AD819FD2575571200E657B8 /* FastRTPSSwift */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0AD819FA257556F100E657B8 /* XCRemoteSwiftPackageReference "FastRTPSBridge" */;
+			package = 0A9115DB2B87E971006A64B4 /* XCRemoteSwiftPackageReference "FastRTPSSwift" */;
 			productName = FastRTPSSwift;
 		};
 		0AE522BF2545AFDF0038DF08 /* UICircularProgressRing */ = {
