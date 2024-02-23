@@ -10,7 +10,7 @@ on:
 
 jobs:
   build_check:
-    runs-on: macOS-13
+    runs-on: macOS-14
     strategy:
       max-parallel: 2
       fail-fast: false
