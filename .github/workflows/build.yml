@@ -9,29 +9,24 @@ on:
       - master
 
 jobs:
-    build:
-        name: build
-        runs-on: macOS-latest
-        steps:
-        - name: Checkout
-          uses: actions/checkout@v2
-          with:
-            submodules: true
-
-        - name: Check XCode Version
-          run: |
-            xcversion select 12.2
-            xcodebuild -version
-
-        - name: iOS Simulator
-          run: |
-            set -o pipefail && xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpitiOS -destination "platform=iOS Simulator,name=iPhone 8,OS=14.2" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
-
-        - name: Mac Catalyst
-          run: |
-            set -o pipefail && xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpitiOS -destination "platform=macOS,variant=Mac Catalyst" CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
-
-        - name: macOS Native
-          run: |
-            set -o pipefail && xcodebuild clean build -project TridentCockpit.xcodeproj -scheme TridentCockpitOSX -destination "platform=macOS"  CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO ONLY_ACTIVE_ARCH=NO | xcpretty
-
+  build_check:
+    runs-on: macOS-13
+    strategy:
+      max-parallel: 2
+      fail-fast: false
+      matrix:
+        destination:
+        - "generic/platform=iOS Simulator"
+        - "generic/platform=macOS,variant=Mac Catalyst"
+        - "generic/platform=iOS"
+    steps:
+    - name: Select Xcode
+      run: |
+        xcodes select 15.2
+    - name: Check XCode Version
+      run: xcodebuild -version
+    - name: Checkout
+      uses: actions/checkout@v4
+    - name: Build
+      run: |
+        set -o pipefail && xcodebuild build -project TridentCockpit.xcodeproj -scheme TridentCockpitiOS -destination "${{ matrix.destination }}" | xcpretty
