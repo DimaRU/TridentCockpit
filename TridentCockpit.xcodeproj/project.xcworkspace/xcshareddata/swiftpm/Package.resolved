@@ -1,4 +1,5 @@
 {
+  "originHash" : "9763ead72b0e67ba3c786893aac46b9fdcabd1e54b2f748c4fc7913054af5f24",
   "pins" : [
     {
       "identity" : "alamofire",
@@ -183,10 +184,10 @@
     {
       "identity" : "uicircularprogressring",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/DimaRU/UICircularProgressRing.git",
+      "location" : "https://github.com/luispadron/UICircularProgressRing.git",
       "state" : {
-        "revision" : "0eaf918bdb0c54e09900853bb21efde749d5bc9a",
-        "version" : "6.5.1"
+        "revision" : "4a1fd4a77bcc27f8b3714aae3ea35835251dcef3",
+        "version" : "6.5.0"
       }
     },
     {
@@ -199,5 +200,5 @@
       }
     }
   ],
-  "version" : 2
+  "version" : 3
 }
